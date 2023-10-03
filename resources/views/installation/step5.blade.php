@@ -6,7 +6,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="mar-ver pad-btm text-center">
-                            <h1 class="h3">Workdesk Settings</h1>
+                            <h1 class="h3">myBuilders Settings</h1>
                             <p>Fill this form with basic information & admin login credentials</p>
                         </div>
                         <p class="text-muted font-13">

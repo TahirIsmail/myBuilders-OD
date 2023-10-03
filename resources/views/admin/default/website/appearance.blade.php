@@ -12,7 +12,7 @@
 					@csrf
 					<div class="form-group">
 	                    <label for="types">{{translate('Frontend Website Name')}}</label>
-	                    <input type="text" name="website_name" class="form-control" placeholder="{{ translate('Workdesk') }}" value="{{ get_setting('website_name') }}">
+	                    <input type="text" name="website_name" class="form-control" placeholder="{{ translate('myBuilders') }}" value="{{ get_setting('website_name') }}">
 	                </div>
 	                <div class="form-group">
 	                    <label for="types">{{translate('Site Motto')}}</label>

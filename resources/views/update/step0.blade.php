@@ -6,7 +6,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="mar-ver pad-btm text-center">
-                            <h1 class="h3">Active Workdesk Update Process</h1>
+                            <h1 class="h3">Active MyBuilders Update Process</h1>
                             <p>You will need to know the following items before
                             proceeding.</p>
                         </div>
