@@ -15,6 +15,7 @@
     <link rel="icon" href="{{ custom_asset(get_setting('site_icon')) }}">
 
 	<!-- google font -->
+    <!--  Font Awesome Stylesheet  -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700">
 
 	<!-- aiz core css -->
