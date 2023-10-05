@@ -36,7 +36,7 @@ class User extends Authenticatable implements MustVerifyEmail
         try {
             $this->notify(new EmailVerificationNotification());
         } catch (\Throwable $th) {
-            //throw $th;
+            throw $th;
         }
     }
 

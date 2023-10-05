@@ -2,7 +2,7 @@
 
 return [
     'driver' => env('FCM_PROTOCOL', 'http'),
-    'log_enabled' => false,
+    'log_enabled' => true,
 
     'http' => [
         'server_key' => env('FCM_SERVER_KEY', 'Your FCM server key'),
