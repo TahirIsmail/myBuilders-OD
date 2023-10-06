@@ -1207,194 +1207,42 @@
             </section>
 
             {{-- Builder FOR  any JOB --}}
-
+            
             <div class="col-md-12 d-flex justify-content-center align-items-center" style="background: #eef2f6 ">
                 <section class="hp-trades">
                     <h1 class="heading heading--x-large">Builders for any job</h1>
 
                     <div class="row-fluid">
-                        <ul class="hp-trades__trade-list span6 unstyled">
-                            <li class="hp-trades__trade">
-                                <a title="Find the right architectural designer for your project in UK."
-                                    href="/architects/in/uk">Architectural Designers</a>
-                            </li>
-                            <li class="hp-trades__trade">
-                                <a title="Find the right bathroom fitter for your project in UK."
-                                    href="/bathroom-fitters/in/uk">Bathroom Fitters</a>
-                            </li>
-                            <li class="hp-trades__trade">
-                                <a title="Find the right bricklayer for your project in UK."
-                                    href="/bricklayers/in/uk">Bricklayers</a>
-                            </li>
-                            <li class="hp-trades__trade">
-                                <a title="Find the right builder for your project in UK."
-                                    href="/builders/in/uk">Builders</a>
-                            </li>
-                            <li class="hp-trades__trade">
-                                <a title="Find the right carpenter &amp; joiner for your project in UK."
-                                    href="/carpenters-and-joiners/in/uk">Carpenters &amp; Joiners</a>
-                            </li>
-                            <li class="hp-trades__trade">
-                                <a title="Find the right carpet &amp; lino fitter for your project in UK."
-                                    href="/carpet-fitters/in/uk">Carpet &amp; Lino Fitters</a>
-                            </li>
-                            <li class="hp-trades__trade">
-                                <a title="Find the right chimney &amp; fireplace specialist for your project in UK."
-                                    href="/chimney-fireplace-specialists/in/uk">Chimney &amp; Fireplace Specialists</a>
-                            </li>
-                            <li class="hp-trades__trade">
-                                <a title="Find the right conservatory installer for your project in UK."
-                                    href="/conservatories-specialists/in/uk">Conservatory Installers</a>
-                            </li>
-                            <li class="hp-trades__trade">
-                                <a title="Find the right conversion specialist for your project in UK."
-                                    href="/conversions/in/uk">Conversion Specialists</a>
-                            </li>
-                            <li class="hp-trades__trade">
-                                <a title="Find the right damp proofing specialist for your project in UK."
-                                    href="/damp-proofing-specialists/in/uk">Damp Proofing Specialists</a>
-                            </li>
-                            <li class="hp-trades__trade">
-                                <a title="Find the right decking specialist for your project in UK."
-                                    href="/decking-specialists/in/uk">Decking Specialists</a>
-                            </li>
-                        </ul>
-                        <ul class="hp-trades__trade-list span6 unstyled">
-                            <li class="hp-trades__trade">
-                                <a title="Find the right demolition specialist for your project in UK."
-                                    href="/demolition-specialists/in/uk">Demolition Specialists</a>
-                            </li>
-                            <li class="hp-trades__trade">
-                                <a title="Find the right driveway paver for your project in UK."
-                                    href="/driveway-specialists/in/uk">Driveway Pavers</a>
-                            </li>
-                            <li class="hp-trades__trade">
-                                <a title="Find the right electrician for your project in UK."
-                                    href="/electricians/in/uk">Electricians</a>
-                            </li>
-                            <li class="hp-trades__trade">
-                                <a title="Find the right extension builder for your project in UK."
-                                    href="/extension-specialists/in/uk">Extension Builders</a>
-                            </li>
-                            <li class="hp-trades__trade">
-                                <a title="Find the right fascias &amp; soffits specialist for your project in UK."
-                                    href="/fascias-soffits-specialists/in/uk">Fascias &amp; Soffits Specialists</a>
-                            </li>
-                            <li class="hp-trades__trade">
-                                <a title="Find the right fencer for your project in UK." href="/fencers/in/uk">Fencers</a>
-                            </li>
-                            <li class="hp-trades__trade">
-                                <a title="Find the right flooring fitter for your project in UK."
-                                    href="/flooring-fitters/in/uk">Flooring Fitters</a>
-                            </li>
-                            <li class="hp-trades__trade">
-                                <a title="Find the right gardener for your project in UK."
-                                    href="/gardeners/in/uk">Gardeners</a>
-                            </li>
-                            <li class="hp-trades__trade">
-                                <a title="Find the right gas engineer for your project in UK."
-                                    href="/gas-engineers/in/uk">Gas Engineers</a>
-                            </li>
-                            <li class="hp-trades__trade">
-                                <a title="Find the right groundworker for your project in UK."
-                                    href="/groundwork-and-foundations-specialists/in/uk">Groundworkers</a>
-                            </li>
-                            <li class="hp-trades__trade">
-                                <a title="Find the right guttering installer for your project in UK."
-                                    href="/guttering-installers/in/uk">Guttering Installers</a>
-                            </li>
-                        </ul>
-                        <ul class="hp-trades__trade-list span6 unstyled">
-                            <li class="hp-trades__trade">
-                                <a title="Find the right handyman for your project in UK."
-                                    href="/handymen/in/uk">Handymen</a>
-                            </li>
-                            <li class="hp-trades__trade">
-                                <a title="Find the right heating engineer for your project in UK."
-                                    href="/heating-engineers/in/uk">Heating Engineers</a>
-                            </li>
-                            <li class="hp-trades__trade">
-                                <a title="Find the right insulation installer for your project in UK."
-                                    href="/insulation-specialists/in/uk">Insulation Installers</a>
-                            </li>
-                            <li class="hp-trades__trade">
-                                <a title="Find the right kitchen fitter for your project in UK."
-                                    href="/kitchen-fitters/in/uk">Kitchen Fitters</a>
-                            </li>
-                            <li class="hp-trades__trade">
-                                <a title="Find the right landscape gardener for your project in UK."
-                                    href="/landscape-gardeners/in/uk">Landscape Gardeners</a>
-                            </li>
-                            <li class="hp-trades__trade">
-                                <a title="Find the right locksmith for your project in UK."
-                                    href="/locksmiths/in/uk">Locksmiths</a>
-                            </li>
-                            <li class="hp-trades__trade">
-                                <a title="Find the right loft conversion specialist for your project in UK."
-                                    href="/loft-conversion-specialists/in/uk">Loft Conversion Specialists</a>
-                            </li>
-                            <li class="hp-trades__trade">
-                                <a title="Find the right new home builder for your project in UK."
-                                    href="/new-builds-specialists/in/uk">New Home Builders</a>
-                            </li>
-                            <li class="hp-trades__trade">
-                                <a title="Find the right painter &amp; decorator for your project in UK."
-                                    href="/painters-and-decorators/in/uk">Painters &amp; Decorators</a>
-                            </li>
-                            <li class="hp-trades__trade">
-                                <a title="Find the right plasterer for your project in UK."
-                                    href="/plasterers/in/uk">Plasterers</a>
-                            </li>
-                            <li class="hp-trades__trade">
-                                <a title="Find the right plumber for your project in UK."
-                                    href="/plumbers/in/uk">Plumbers</a>
-                            </li>
-                        </ul>
-                        <ul class="hp-trades__trade-list span6 unstyled">
-                            <li class="hp-trades__trade">
-                                <a title="Find the right repointing specialist for your project in UK."
-                                    href="/repointing-specialists/in/uk">Repointing Specialists</a>
-                            </li>
-                            <li class="hp-trades__trade">
-                                <a title="Find the right restoration &amp; refurb specialist for your project in UK."
-                                    href="/restoration-and-refurbishment-specialists/in/uk">Restoration &amp; Refurb
-                                    Specialists</a>
-                            </li>
-                            <li class="hp-trades__trade">
-                                <a title="Find the right roofer for your project in UK." href="/roofers/in/uk">Roofers</a>
-                            </li>
-                            <li class="hp-trades__trade">
-                                <a title="Find the right security system installer for your project in UK."
-                                    href="/security-system-installers/in/uk">Security System Installers</a>
-                            </li>
-                            <li class="hp-trades__trade">
-                                <a title="Find the right stonemason for your project in UK."
-                                    href="/stonemasons/in/uk">Stonemasons</a>
-                            </li>
-                            <li class="hp-trades__trade">
-                                <a title="Find the right tarmac driveway specialist for your project in UK."
-                                    href="/driveway-tarmac-specialists/in/uk">Tarmac Driveway Specialists</a>
-                            </li>
-                            <li class="hp-trades__trade">
-                                <a title="Find the right tiler for your project in UK." href="/tilers/in/uk">Tilers</a>
-                            </li>
-                            <li class="hp-trades__trade">
-                                <a title="Find the right tradesman for your project in UK."
-                                    href="/tradesmen/in/uk">Tradesmen</a>
-                            </li>
-                            <li class="hp-trades__trade">
-                                <a title="Find the right tree surgeon for your project in UK."
-                                    href="/tree-surgeons/in/uk">Tree Surgeons</a>
-                            </li>
-                            <li class="hp-trades__trade">
-                                <a title="Find the right waste clearance specialist for your project in UK."
-                                    href="/clearance-specialists/in/uk">Waste Clearance Specialists</a>
-                            </li>
-                            <li class="hp-trades__trade">
-                                <a title="Find the right window &amp; door fitter for your project in UK."
-                                    href="/window-fitters/in/uk">Window &amp; Door Fitters</a>
-                            </li>
-                        </ul>
+                        @isset($categories)
+                            @forelse ($categories->chunk(11) as $chunk)
+                            <ul class="hp-trades__trade-list span6 unstyled">
+
+                                @forelse ($chunk as $category)
+
+                                        <li class="hp-trades__trade">
+                                            <a title="Find the right architectural designer for your project in UK."
+                                                @php $cat_url = route('services.category',['category_slug' => $category->slug]) @endphp
+                                                href="{{ $cat_url }}"> {{ $category->name }}</a>
+                                        </li>
+
+
+
+                                @empty
+                                    <li class="hp-trades__trade">
+                                        <a title="Find the right architectural designer for your project in UK."
+                                            href="/architects/in/uk">No Categories</a>
+                                    </li>
+                                @endforelse
+                            </ul>
+                            
+                            @empty
+                                <li class="hp-trades__trade">
+                                    <a title="Find the right architectural designer for your project in UK."
+                                        href="/architects/in/uk">No Categories</a>
+                                </li>
+                            @endforelse
+                        @endisset
+
                     </div>
 
                 </section>
@@ -1415,7 +1263,7 @@
 
             {{-- /////bottomSLIDER// --}}
             <div class="bottom-slider col-md-12 ">
-                <div class="bottom-slider-heading col-md-4 pt-2" >
+                <div class="bottom-slider-heading col-md-4 pt-2">
                     <h1 class="heading heading--x-large">Our customers love&nbsp;us</h1>
                 </div>
                 <div class="containerr">
@@ -1517,7 +1365,7 @@
                                                 <div class="top-row">
                                                     <h3 class="feedback-row-title">
                                                         <a href="/profile/view/broderick_building_services">Broderick
-                                                            
+
                                                             Services</a>
                                                     </h3>
 
@@ -1553,7 +1401,7 @@
                                                     <h3 class="feedback-row-title">
                                                         <a href="/profile/view/broderick_building_services">Broderick
                                                             Building
-                                                            </a>
+                                                        </a>
                                                     </h3>
 
                                                 </div>
@@ -1595,7 +1443,7 @@
 
                                                 <div class="review_title">
 
-                                                    Received  feedback
+                                                    Received feedback
 
                                                 </div>
                                                 <div class="item_comment">
@@ -1739,7 +1587,7 @@
                                     class="d-block card-project-rounded card mb-3 text-inherit">
                                     <div class="row">
                                         {{-- card row --}}
-                                           {{-- card row --}}
+                                        {{-- card row --}}
                                         <div class="col-8">
                                             <h5 class="h6 fw-600 lh-1-5">
                                                 {{ $project->name }}
@@ -1814,7 +1662,7 @@
                 </div>
             </section>
         @endif
-       
+
         @if (get_setting('featured_category_show') == 'on')
             <section class="bg-white pt-5 pb-4">
                 <div class="container">
@@ -1824,7 +1672,7 @@
                             <p class="fs-17 text-white">{{ get_setting('featured_category_subtitle') }}</p>
                         </div>
                         <div class="row gutters-10">
-                           
+
                             @if (get_setting('featured_category_list') != null)
                                 @foreach (json_decode(get_setting('featured_category_list'), true) as $key => $category_id)
                                     @if (($category = \App\Models\ProjectCategory::find($category_id)) != null)

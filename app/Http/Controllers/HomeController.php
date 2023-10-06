@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Project;
 use App\Models\ChatThread;
 use App\Models\UserProfile;
+use App\Models\ProjectCategory as Categories;
 use Carbon;
 use Illuminate\Support\Str;
 use Spatie\Permission\Models\Permission;
@@ -32,7 +33,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('frontend.default.index');
+        $data['categories'] = Categories::select('name','slug')->orderBy('name')->get();
+        
+        return view('frontend.default.index',$data);
     }
 
     //Admin login
