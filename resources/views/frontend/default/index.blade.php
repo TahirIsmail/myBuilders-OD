@@ -1738,6 +1738,8 @@
                                 <a href="{{ route('project.details', $project->slug) }}"
                                     class="d-block card-project-rounded card mb-3 text-inherit">
                                     <div class="row">
+                                        {{-- card row --}}
+                                           {{-- card row --}}
                                         <div class="col-8">
                                             <h5 class="h6 fw-600 lh-1-5">
                                                 {{ $project->name }}
