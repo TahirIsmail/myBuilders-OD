@@ -1213,36 +1213,37 @@
                     <h1 class="heading heading--x-large">Builders for any job</h1>
 
                     <div class="row-fluid">
-                        @isset($categories)
-                            @forelse ($categories->chunk(11) as $chunk)
-                            <ul class="hp-trades__trade-list span6 unstyled">
-
-                                @forelse ($chunk as $category)
-
+                        <div class="row">
+                            @isset($categories)
+                              @php
+                              $categoriesCount = count($categories);
+                              $columnsCount = 4; // Set the number of columns to 4
+                              $itemsPerColumn = ceil($categoriesCount / $columnsCount); // Calculate items per column dynamically
+                              $currentCategoryIndex = 0; // Initialize the current category index
+                              @endphp
+                        
+                              @for ($i = 0; $i < $columnsCount; $i++)
+                                <div class="col-md-3">
+                                  <ul class="hp-trades__trade-list span6 unstyled">
+                                    @for ($j = 0; $j < $itemsPerColumn; $j++)
+                                      @if ($currentCategoryIndex < $categoriesCount)
+                                        @php
+                                        $category = $categories[$currentCategoryIndex];
+                                        $currentCategoryIndex++;
+                                        @endphp
                                         <li class="hp-trades__trade">
-                                            <a title="Find the right architectural designer for your project in UK."
-                                                @php $cat_url = route('services.category',['category_slug' => $category->slug]) @endphp
-                                                href="{{ $cat_url }}"> {{ $category->name }}</a>
+                                          <a title="Find the right architectural designer for your project in UK."
+                                             @php $cat_url = route('services.category',['category_slug' => $category->slug]) @endphp
+                                             href="{{ $cat_url }}"> {{ $category->name }}</a>
                                         </li>
-
-
-
-                                @empty
-                                    <li class="hp-trades__trade">
-                                        <a title="Find the right architectural designer for your project in UK."
-                                            href="/architects/in/uk">No Categories</a>
-                                    </li>
-                                @endforelse
-                            </ul>
-                            
-                            @empty
-                                <li class="hp-trades__trade">
-                                    <a title="Find the right architectural designer for your project in UK."
-                                        href="/architects/in/uk">No Categories</a>
-                                </li>
-                            @endforelse
-                        @endisset
-
+                                      @endif
+                                    @endfor
+                                  </ul>
+                                </div>
+                              @endfor
+                            @endisset
+                          </div>
+                        </div>
                     </div>
 
                 </section>

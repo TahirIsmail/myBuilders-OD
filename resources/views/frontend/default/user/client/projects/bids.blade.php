@@ -31,7 +31,7 @@
                                         <div class="flex-grow-1">
                                             <h5 class="fw-600 mb-1"><a href="" target="_blank" class="text-inherit">{{ $bid_user->freelancer->name }}</a></h5>
                                             @if($bid_user->freelancer->profile->specialist != null )
-                                            <p class="opacity-50 mb-2">{{ $bid_user->freelancer->profile->specialistAt->name }}</p>
+                                            <p class="opacity-50 mb-2">{{ @$bid_user->freelancer->profile->specialistAt->name }}</p>
                                             @endif
                                             <div class="d-flex text-secondary fs-12 mb-3">
                                                 <div class="mr-2">
