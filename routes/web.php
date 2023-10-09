@@ -259,31 +259,31 @@ Route::get('/paypal/payment/done', 'App\Http\Controllers\Payment\PaypalControlle
 Route::get('/paypal/payment/cancel', 'App\Http\Controllers\Payment\PaypalController@getCancel')->name('payment.cancel');
 
 //STRIPE
-Route::get('/stripe', 'StripeController@pay');
-Route::post('/stripe/create-checkout-session', 'StripeController@create_checkout_session')->name('stripe.get_token');
-Route::any('/stripe/payment/callback', 'StripeController@callback')->name('stripe.callback');
-Route::get('/stripe/success', 'StripeController@success')->name('stripe.success');
-Route::get('/stripe/cancel', 'StripeController@cancel')->name('stripe.cancel');
+Route::get('/stripe', 'App\Http\Controllers\Payment\StripeController@pay');
+Route::post('/stripe/create-checkout-session', 'App\Http\Controllers\Payment\StripeController@create_checkout_session')->name('stripe.get_token');
+Route::any('/stripe/payment/callback', 'App\Http\Controllers\Payment\StripeController@callback')->name('stripe.callback');
+Route::get('/stripe/success', 'App\Http\Controllers\Payment\StripeController@success')->name('stripe.success');
+Route::get('/stripe/cancel', 'App\Http\Controllers\Payment\StripeController@cancel')->name('stripe.cancel');
 
 //Paystack
-Route::get('/paystack/payment/callback', 'PaystackController@handleGatewayCallback');
+Route::get('/paystack/payment/callback', 'App\Http\Controllers\Payment\PaystackController@handleGatewayCallback');
 
 // SSLCOMMERZ Start
-Route::get('/sslcommerz/pay', 'SslcommerzController@pay');
-Route::POST('/sslcommerz/success', 'SslcommerzController@success');
-Route::POST('/sslcommerz/fail', 'SslcommerzController@fail');
-Route::POST('/sslcommerz/cancel', 'SslcommerzController@cancel');
-Route::POST('/sslcommerz/ipn', 'SslcommerzController@ipn');
+Route::get('/sslcommerz/pay', 'App\Http\Controllers\Payment\SslcommerzController@pay');
+Route::POST('/sslcommerz/success', 'App\Http\Controllers\Payment\SslcommerzController@success');
+Route::POST('/sslcommerz/fail', 'App\Http\Controllers\Payment\SslcommerzController@fail');
+Route::POST('/sslcommerz/cancel', 'App\Http\Controllers\Payment\SslcommerzController@cancel');
+Route::POST('/sslcommerz/ipn', 'App\Http\Controllers\Payment\SslcommerzController@ipn');
 
 //Instamojo
-Route::get('/instamojo/payment/pay-success', 'InstamojoController@success')->name('instamojo.success');
+Route::get('/instamojo/payment/pay-success', 'App\Http\Controllers\Payment\InstamojoController@success')->name('instamojo.success');
 
 //Paytm
-Route::get('/paytm/index', 'PaytmController@pay');
-Route::post('/paytm/callback', 'PaytmController@callback')->name('paytm.callback');
+Route::get('/paytm/index', 'App\Http\Controllers\Payment\PaytmController@pay');
+Route::post('/paytm/callback', 'App\Http\Controllers\Payment\PaytmController@callback')->name('paytm.callback');
 
 //flutterwave
-Route::get('/rave/callback', 'FlutterwaveController@callback')->name('flutterwave.callback');
+Route::get('/rave/callback', 'App\Http\Controllers\Payment\FlutterwaveController@callback')->name('flutterwave.callback');
 
 //Mercadopago
 Route::controller(MercadopagoController::class)->group(function () {
