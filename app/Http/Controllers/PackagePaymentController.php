@@ -6,7 +6,7 @@ use App\Utility\EmailUtility;
 use App\Utility\NotificationUtility;
 use Illuminate\Http\Request;
 use App\Http\Controllers\StripePaymentController;
-use App\Http\Controllers\PayPalController;
+use App\Http\Controllers\Payment\PayPalController;
 use App\Http\Controllers\WalletPaymentController;
 use App\Models\PackagePayment;
 use App\Models\UserProfile;

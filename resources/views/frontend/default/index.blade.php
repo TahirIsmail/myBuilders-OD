@@ -886,8 +886,8 @@
                             <h1 class="lp-header__heading">The better way to find a builder</h1>
                             <p class="lp-header__subheading">MyBuilder makes it easy to find quality local tradespeople,
                                 reviewed by other homeowners, all across the UK.</p>
-                            <a title="Post a job today and we'll alert the relevant tradespeople." href="/postajob"
-                                class="btn--lp">Post a job</a>
+                            <a title="Post a job today and we'll alert the relevant tradespeople." href="{{ route('post_projects')}}"
+                                class="btn--lp">Post a Project</a>
                             <a title="Start winning more work" href="/register-as-tradesman" class="btn--hollow">Trade sign
                                 up</a>
                         </div>
@@ -1249,12 +1249,12 @@
                 </section>
             </div>
 
-            <div class="post_btn-box ">
+            <div class="post_btn-box">
                 <div class="col-md-8 star-content">
                     <h1 class="sub-heading heading--x-large">Start your next home improvement project today</h1>
                     <div style="margin-left:20px">
                         <a rel="nofollow" title="Post a job today and we'll alert the relevant tradespeople."
-                            href="/postajob" class="btn--lp">Post a job</a>
+                            href="/postajob" class="btn--lp">Post a Project</a>
                     </div>
 
                 </div>

@@ -4,13 +4,13 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Payment\PaytmController;
 use App\Http\Controllers\Payment\PaypalController;
-use App\Http\Controllers\Payment\StripeController;
+
 use App\Http\Controllers\Payment\PaystackController;
 use App\Http\Controllers\Payment\InstamojoController;
 use App\Http\Controllers\Payment\SslcommerzController;
 use App\Http\Controllers\Payment\FlutterwaveController;
 use App\Http\Controllers\Payment\MercadopagoController;
-
+use App\Http\Controllers\Payment\StripeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -255,8 +255,8 @@ Route::get('/get_freelancer_skills','SkillController@freelancer_skills')->name('
 //Payments
 
 //Paypal
-Route::get('/paypal/payment/done', 'PaypalController@getDone')->name('payment.done');
-Route::get('/paypal/payment/cancel', 'PaypalController@getCancel')->name('payment.cancel');
+Route::get('/paypal/payment/done', 'App\Http\Controllers\Payment\PaypalController@getDone')->name('payment.done');
+Route::get('/paypal/payment/cancel', 'App\Http\Controllers\Payment\PaypalController@getCancel')->name('payment.cancel');
 
 //STRIPE
 Route::get('/stripe', 'StripeController@pay');
@@ -294,3 +294,4 @@ Route::controller(MercadopagoController::class)->group(function () {
 
 
 Route::get('/{slug}', 'PageController@show_custom_page')->name('custom-pages.show_custom_page');
+Route::get('/post-job', 'PageController@post_job')->name('post_projects');

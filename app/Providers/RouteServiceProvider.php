@@ -14,7 +14,11 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'App\Http\Controllers';
+    protected $namespace = [
+        'App\Http\Controllers',           // Default namespace
+        'App\Http\Controllers\Payment',   // Custom namespace
+        'App\Http\Controllers\Auth',    // Another custom namespace
+    ];
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -39,11 +43,11 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapAdminRoutes();
 
-        $this->mapSupportTicketRoutes();
+        // $this->mapSupportTicketRoutes();
 
         $this->mapWebRoutes();
 
-        $this->mapOfflinePaymentRoutes();
+        // $this->mapOfflinePaymentRoutes();
 
         // $this->mapInstallRoutes();
 
