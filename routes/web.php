@@ -40,7 +40,7 @@ Route::post('/aiz-uploader/get_file_by_ids', 'AizUploadController@get_preview_fi
 Route::get('/aiz-uploader/download/{id}', 'AizUploadController@attachment_download')->name('download_attachment');
 
 Route::get('/', 'HomeController@index')->name('home');
-
+Route::get('/post-job', 'HomeController@post_job')->name('post_projects');
 
 // Subscribe
 Route::resource('subscribers', 'SubscriberController');
@@ -294,4 +294,3 @@ Route::controller(MercadopagoController::class)->group(function () {
 
 
 Route::get('/{slug}', 'PageController@show_custom_page')->name('custom-pages.show_custom_page');
-Route::get('/post-job', 'PageController@post_job')->name('post_projects');

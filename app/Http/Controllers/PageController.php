@@ -121,7 +121,5 @@ class PageController extends Controller
         abort(404);
     }
 
-    public function post_job(){
-        return view('frontend.default.post_projects');
-    }
+    
 }

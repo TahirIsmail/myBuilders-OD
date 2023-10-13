@@ -1,5 +1,5 @@
 const mix = require('laravel-mix');
-
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -11,5 +11,27 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+
+
+
+
+mix.js("resources/js/app.js", "public/assets/backend/default/js/app.js")
+.vue({ version: 3 })
+.sass("resources/sass/app.scss", "public/assets/backend/default/css/app.css")
+   
+mix.webpackConfig({
+    plugins: [
+        new BrowserSyncPlugin({
+            host: 'localhost',
+            port: 3000,  // You can change the port if needed
+            proxy: 'http://builderio.dev', // Your Laravel development server URL
+            files: [
+                'app/**/*.php',
+                'resources/views/**/*.php',
+                'public/js/**/*.js',
+                'public/css/**/*.css',
+            ],
+            open: false, // Set to false to prevent the browser from opening automatically
+        })
+    ]
+});

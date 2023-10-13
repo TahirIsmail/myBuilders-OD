@@ -181,6 +181,10 @@ class HomeController extends Controller
 
         return redirect()->route('dashboard');
     }
+    public function post_job(){
+        
+        return view('frontend.default.post_projects');
+    }
 
     function clearCache(Request $request)
     {

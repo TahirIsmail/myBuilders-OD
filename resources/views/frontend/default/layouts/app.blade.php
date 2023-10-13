@@ -70,7 +70,7 @@
     <link rel="stylesheet" href="{{ my_asset('assets/frontend/default/css/custom.css') }}">
     <link rel="stylesheet" href="{{ my_asset('assets/common/css/jssocials.css') }}">
     <link rel="stylesheet" href="{{ my_asset('assets/common/css/jssocials-theme-flat.css') }}">
-
+   
     @if (get_setting('running_project_chat_activation_checkbox') == 1)
     <!-- firebase -->
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
@@ -93,7 +93,7 @@
     <!-- axios -->
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
     @endif
-
+   
     <script>
     	var AIZ = AIZ || {};
         AIZ.local = {
@@ -175,7 +175,7 @@
 
         <!-- ========== MAIN CONTENT ========== -->
 
-        <div class="p-0 m-0 bg-white">
+        <div class="p-0 m-0 bg-white" id="app">
             @yield('content')
         </div>
 
@@ -256,7 +256,7 @@
             AIZ.plugins.notify('{{ $message['level'] }}', '{{ $message['message'] }}');
         @endforeach
     </script>
-
+     <script src="{{ asset('public\assets\backend\default\js\app.js') }}"></script>
     @yield('script')
 
 </body>
