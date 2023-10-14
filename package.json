@@ -13,7 +13,7 @@
         "@types/jquery": "^3.5.5",
         "@vue/compiler-sfc": "^3.1.2",
         "axios": "^0.21.1",
-        "bootstrap": "^4.6.0",
+        "bootstrap": "^5.3.2",
         "browser-sync": "^2.29.3",
         "browser-sync-webpack-plugin": "^2.3.0",
         "cross-env": "^7.0.3",
@@ -21,21 +21,24 @@
         "laravel-mix": "^6.0.19",
         "lodash": "^4.17.21",
         "popper.js": "^1.16.1",
-        "postcss": "^8.3.0",
+        "postcss": "^8.4.31",
+        "postcss-loader": "^7.3.3",
         "resolve-url-loader": "^3.1.2",
-        "sass": "^1.15.2",
-        "sass-loader": "^8.0.0",
+        "sass": "^1.69.3",
+        "sass-loader": "^8.0.2",
         "ts-loader": "^9.2.2",
         "typescript": "^4.3.2",
         "vue": "^3.1.2",
-        "vue-loader": "^16.0.2"
+        "vue-loader": "^16.0.2",
+        "webpack": "^5.89.0"
     },
     "dependencies": {
         "@babel/core": "^7.14.6",
         "@babel/preset-env": "^7.14.7",
         "@fortawesome/fontawesome-free": "5.*",
         "@popperjs/core": "^2.9.2",
-        "vue-router": "^4.0.10"
+        "vue-router": "^4.0.10",
+        "vue-select": "^4.0.0-beta.6"
     },
     "externals": {
         "moment": "moment"
