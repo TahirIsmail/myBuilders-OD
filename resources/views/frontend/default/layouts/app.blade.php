@@ -63,6 +63,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap">
     <link rel="stylesheet" href="{{ my_asset('assets/common/css/vendors.css') }}">
+    <link rel="stylesheet" href="{{ my_asset('assets/backend/default/css/app.css')}}">
     @if($lang != null && $lang->rtl == 1)
     <link rel="stylesheet" href="{{ my_asset('assets/common/css/bootstrap-rtl.min.css') }}">
     @endif
@@ -70,7 +71,7 @@
     <link rel="stylesheet" href="{{ my_asset('assets/frontend/default/css/custom.css') }}">
     <link rel="stylesheet" href="{{ my_asset('assets/common/css/jssocials.css') }}">
     <link rel="stylesheet" href="{{ my_asset('assets/common/css/jssocials-theme-flat.css') }}">
-   
+    
     @if (get_setting('running_project_chat_activation_checkbox') == 1)
     <!-- firebase -->
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
@@ -256,7 +257,7 @@
             AIZ.plugins.notify('{{ $message['level'] }}', '{{ $message['message'] }}');
         @endforeach
     </script>
-     <script src="{{ asset('public\assets\backend\default\js\app.js') }}"></script>
+     <script src="{{ my_asset('assets/backend/default/js/app.js') }}"></script>
     @yield('script')
 
 </body>
