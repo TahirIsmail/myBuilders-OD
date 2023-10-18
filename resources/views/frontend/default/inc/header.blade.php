@@ -1,7 +1,7 @@
 <style>
     #navbarSupportedContent {
         height: 70px !important;
-        margin-left: 35rem !important;
+        margin-left: 30rem !important;
     }
     .btn-post {
         background-color: #4a90e2 !important;
@@ -16,12 +16,15 @@
         margin-left: 10%;
         margin-right: 5px;
     }
+    
 
     .btn-post:hover {
         background-color: white !important;
         color: #4a90e2;
     }
-
+    #navbarSupportedContent > div.menu > nav > ul > li.nav-item.ml-xl-3 {
+        width:135px;
+    }
 
     .aiz-header {
         background-color: #4a90e2 !important;
@@ -259,7 +262,7 @@
                         </li>
                         @if (!Auth::check())
                             <li class="nav-item ml-xl-3">
-                                <a class="nav-link" style="color: #f2f2f2;"
+                                <a class="btn-post" style="color: #f2f2f2;"
                                     href="{{ route('login') }}">{{ translate('Log In') }}</a>
                             </li>
                             {{-- <li class="nav-item ml-xl-3">
