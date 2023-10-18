@@ -145,8 +145,11 @@
 
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <img src="https://www.mybuilder.com/assets/24c10e5/bundles/mybuilderapplication/images/mybuilder.svg"
+        <a href="{{route('home')}}">
+            <img src="https://www.mybuilder.com/assets/24c10e5/bundles/mybuilderapplication/images/mybuilder.svg"
             alt="MyBuilder - A new way to find and hire tradespeople" width="150" height="50" style="margin-left:10%">
+        </a>
+        
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

@@ -128,7 +128,7 @@
             font-weight: 500;
         }
         :root{
-            --primary: {{ get_setting('base_color', '#377dff') }};
+            --primary: {{ get_setting('base_color', '#4a90e2') }};
             --hov-primary: {{ get_setting('base_hov_color', '#0069d9') }};
             --soft-primary: {{ hex2rgba(get_setting('base_hov_color','#377dff'),.15) }};
             --soft-hov-primary: {{ hex2rgba(get_setting('base_hov_color','#0069d9'),.06) }};

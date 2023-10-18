@@ -1021,7 +1021,7 @@
                     </div>
                     <div class="col-md-3 star-rating ">
 
-                        <img src="{{ asset('public\assets\frontend\default\img\rating.png') }}" />
+                        <img src="{{ my_asset('assets\frontend\default\img\rating.png') }}" />
 
                     </div>
                     <div class="col-md-3 rated-icon">
@@ -2230,7 +2230,7 @@
                         <div class="hp-trade-sign-up__content containers " style="margin-left: 30px">
                             <p class=" " style="font-size:large ; font-weight:bold">Become a trade member</p>
                             <h2 class="heading heading--x-large">Start winning more work</h2>
-                            <a href={{ route('register') }}class="btn--lp">Apply now</a>
+                            <a href={{ route('register') }} class="btn--lp">Apply now</a>
                         </div>
                     </div>
                 </div>

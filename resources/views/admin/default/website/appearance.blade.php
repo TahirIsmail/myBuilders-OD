@@ -32,12 +32,12 @@
 					</div>
 	                <div class="form-group">
 	                    <label for="types">{{translate('Website Base Color')}}</label>
-	                    <input type="text" name="base_color" class="form-control" placeholder="#377dff" value="{{ get_setting('base_color') }}">
+	                    <input type="text" name="base_color" class="form-control" placeholder="#4a90e2" value="{{ get_setting('base_color') }}">
 						<small class="text-muted">{{ translate('Hex Color Code') }}</small>
 	                </div>
 	                <div class="form-group">
 	                    <label for="types">{{translate('Website Base Hover Color')}}</label>
-	                    <input type="text" name="base_hov_color" class="form-control" placeholder="#377dff" value="{{  get_setting('base_hov_color') }}">
+	                    <input type="text" name="base_hov_color" class="form-control" placeholder="#4a90e2" value="{{  get_setting('base_hov_color') }}">
 						<small class="text-muted">{{ translate('Hex Color Code') }}</small>
 	                </div>
 					<div class="text-right">
