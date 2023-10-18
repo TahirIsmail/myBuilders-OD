@@ -999,16 +999,16 @@
             <div class="row">
                 <div class="backcover col-md-12">
 
-
+{{--  href="{{  }}" --}}
 
                     <div class="overlay col-md-8">
                         <div class="lp-header__content">
                             <h1 class="lp-header__heading">The better way to find a builder</h1>
                             <p class="lp-header__subheading">MyBuilder makes it easy to find quality local tradespeople,
                                 reviewed by other homeowners, all across the UK.</p>
-                            <a title="Post a job today and we'll alert the relevant tradespeople." href="{{ route('post_projects')}}"
+                            <a title="Post a job today and we'll alert the relevant tradespeople." href="{{ route('register')}}"
                                 class="btn--lp">Post a job</a>
-                            <a title="Start winning more work" href="/register-as-tradesman" class="btn--hollow">Trade sign
+                            <a title="Start winning more work" href="{{ route('register') }}" class="btn--hollow">Trade sign
                                 up</a>
                         </div>
                     </div>
@@ -1964,7 +1964,7 @@
                         <h1 class="sub-heading heading--x-large">Start your next home improvement project today</h1>
                         <div style="margin-left:20px">
                             <a rel="nofollow" title="Post a job today and we'll alert the relevant tradespeople."
-                            href="{{ route('post_projects')}}" class="btn--lp">Post a job</a>
+                            href="{{ route('register') }}" class="btn--lp">Post a job</a>
                         </div>
 
                     </div>
@@ -2230,7 +2230,7 @@
                         <div class="hp-trade-sign-up__content containers " style="margin-left: 30px">
                             <p class=" " style="font-size:large ; font-weight:bold">Become a trade member</p>
                             <h2 class="heading heading--x-large">Start winning more work</h2>
-                            <a href="/register-as-tradesman" class="btn--lp">Apply now</a>
+                            <a href={{ route('register') }}class="btn--lp">Apply now</a>
                         </div>
                     </div>
                 </div>

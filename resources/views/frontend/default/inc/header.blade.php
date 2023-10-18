@@ -251,14 +251,14 @@
                             </a>
                         </li>
                         @if (!Auth::check())
-                            <li class="nav-item d-none d-lg-block">
+                            <li class="nav-item ml-xl-3">
                                 <a class="nav-link" style="color: #f2f2f2;"
                                     href="{{ route('login') }}">{{ translate('Log In') }}</a>
                             </li>
-                            <li class="nav-item ml-xl-3">
+                            {{-- <li class="nav-item ml-xl-3">
                                 <a class="btn btn-primary rounded-1; width:100px"
                                     href="{{ route('register') }}">{{ translate('Get Started') }}</a>
-                            </li>
+                            </li> --}}
                         @elseif (isAdmin())
                             <li class="nav-item d-none d-lg-block">
                                 <a class="nav-link fw-700"
@@ -269,7 +269,7 @@
                                 <a class="dropdown-toggle no-arrow position-relative p-2" data-toggle="dropdown"
                                     href="javascript:void(0);" role="button" aria-haspopup="false"
                                     aria-expanded="false">
-                                    <i class="las la-bell la-2x"></i>
+                                   
                                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="20"
                                         viewBox="0 0 18 20">
                                         <g id="Group_22092" data-name="Group 22092"
