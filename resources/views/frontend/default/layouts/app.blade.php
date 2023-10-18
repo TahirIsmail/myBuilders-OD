@@ -63,7 +63,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap">
     <link rel="stylesheet" href="{{ my_asset('assets/common/css/vendors.css') }}">
-    <link rel="stylesheet" href="{{ my_asset('assets/backend/default/css/app.css')}}">
+    @stack('component-styles')
     @if($lang != null && $lang->rtl == 1)
     <link rel="stylesheet" href="{{ my_asset('assets/common/css/bootstrap-rtl.min.css') }}">
     @endif
@@ -176,7 +176,7 @@
 
         <!-- ========== MAIN CONTENT ========== -->
 
-        <div class="p-0 m-0 bg-white" id="app">
+        <div class="p-0 m-0 bg-white">
             @yield('content')
         </div>
 
@@ -257,7 +257,7 @@
             AIZ.plugins.notify('{{ $message['level'] }}', '{{ $message['message'] }}');
         @endforeach
     </script>
-     <script src="{{ my_asset('assets/backend/default/js/app.js') }}"></script>
+
     @yield('script')
 
 </body>

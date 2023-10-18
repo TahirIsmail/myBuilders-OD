@@ -15,9 +15,9 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 
 
-mix.js("resources/js/app.js", "public/assets/backend/default/js/app.js")
+mix.js("resources/js/app.js", "public/assets/frontend/default/js/app.js")
 .vue({ version: 3 })
-.sass("resources/sass/app.scss", "public/assets/backend/default/css/app.css")
+.sass("resources/sass/app.scss", "public/assets/frontend/default/css/app.css")
    
 mix.webpackConfig({
     plugins: [

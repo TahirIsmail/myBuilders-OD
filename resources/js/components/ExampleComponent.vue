@@ -16,26 +16,30 @@
                 <div class="col col-lg-8 text-center">
                     <p>What would you like to have done? </p>
                     <select class="select2 form-control form-control-lg aiz-selectpicker mb-3" data-live-search="true">
-                        <option value="">{{ translate('Filter by Project Categories') }}</option>
+                        <option value="">Architectural Services</option>
                        
                     </select>
                     <button aria-hidden="false" type="submit" class="btn btn-primary"
                         style="opacity: 1; transition: opacity 0.3s ease-in-out 0s;">Continue</button>
                 </div>
             </div>
+            
         </div>
     </div>
 </template>
 
 <script>
+'use strict';
+import { VueSelect } from "vue-select"
 export default {
-    props: ['project-categories'],
-    setup(props) {
-        // setup() receives props as the first argument.
-        console.log(props.project-categories)
+    
+    data(){
+        console.log("threat")
     },
-        mounted() {
+    
+    mounted() {
         console.log('Component mounted.')
+        
     }
 }
 </script>
