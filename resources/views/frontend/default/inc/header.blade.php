@@ -1,4 +1,8 @@
 <style>
+    #navbarSupportedContent {
+        height: 70px !important;
+        margin-left: 35rem !important;
+    }
     .btn-post {
         background-color: #4a90e2 !important;
         color: white;
