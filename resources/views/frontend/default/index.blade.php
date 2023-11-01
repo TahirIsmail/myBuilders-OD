@@ -10,89 +10,12 @@
     }
 
 
-    .overlay {
-        position: absolute;
-        height: 100% !important;
-        top: 0;
-        left: -210px !important;
-        right: 0;
-        bottom: 0;
-        transform: skew(-5deg);
-        z-index: 1;
-        background-color: rgba(255, 255, 255, 0.926) !important;
-        overflow: hidden;
-    }
 
-    .lp-header__content {
-        margin-left: 400px;
-        margin-top: 100px;
-    }
 
-    .lp-header__heading {
-        font-size: 60px;
-        font-weight: bold;
-        line-height: 1.1em;
-        font-family: 'sofia_probold', "Trebuchet MS", "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", Verdana, "Verdana Ref", sans-serif;
 
-        margin-bottom: 0.4em
-    }
 
-    .sub-heading {
-        font-weight: bold;
-        font-size: 24px;
-        font-family: 'sofia_probold', "Trebuchet MS", "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", Verdana, "Verdana Ref", sans-serif;
-        margin-right: 28px;
-        color: #343944;
-    }
 
-    .lp-header__subheading {
-        font-size: 18px;
-        font-weight: bold;
-        margin-bottom: 1.5em;
-    }
 
-    .btn--lp {
-        font-weight: normal;
-        font-size: 24px;
-        line-height: 1em;
-        font-family: 'sofia_probold', "Trebuchet MS", "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", Verdana, "Verdana Ref", sans-serif;
-        padding: 0.6em 1.25em 0.7em;
-        -webkit-border-radius: 0.25em;
-        -moz-border-radius: .25em;
-        border-radius: 0.25em;
-        background-color: #51c57d;
-        color: #fff;
-        display: inline-block;
-        border: 2px solid #51c57d;
-        transition: color ease 100ms, border-color ease 100ms;
-    }
-
-    .btn--lp:hover {
-        background-color: rgb(98, 208, 142) !important;
-        color: white !important;
-    }
-
-    .btn--hollow {
-        font-weight: normal;
-        font-size: 24px;
-        line-height: 1em;
-        font-family: 'sofia_probold', "Trebuchet MS", "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", Verdana, "Verdana Ref", sans-serif;
-        padding: 0.6em 1.25em 0.7em;
-        -webkit-border-radius: 0.25em;
-        -moz-border-radius: .25em;
-        border-radius: 0.25em;
-        background: transparent;
-        border: 2px solid #c6c6c6;
-        color: #51c57d;
-        display: inline-block;
-        transition: color ease 100ms, border-color ease 100ms;
-        margin-left: 10px;
-    }
-
-    .btn--hollow:hover {
-        border: 2px solid #51c57d !important;
-        color: #51c57d !important;
-    }
 
     .backcover {
         background-image: url('https://www.mybuilder.com/assets/bdabfd5/bundles/mybuilderhomepage/images/top-spot/bricklayer.jpg');
@@ -252,7 +175,7 @@
     }
 
     .card-body {
-        width:100% !important;
+        width: 100% !important;
         background-color: white;
         border-radius: 10px;
         padding: 0px;
@@ -948,7 +871,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-       
+
 
     }
 
@@ -970,7 +893,234 @@
     .aiz-main-wrapper {
         background: white !important;
     }
-</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .custom-slider {
+        position: relative;
+
+        /* Change this height as needed */
+        overflow: hidden;
+
+    }
+
+    /* .custom-slide {
+        display: none;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    } */
+    .custom-slide {
+        position: absolute;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+        width: 100%;
+        height: 100%;
+    }
+
+    .custom-slide.active {
+        opacity: 1;
+    }
+
+    .custom-slide img {
+        width: 100%;
+        height: 100%;
+        background-size: 100% auto;
+        /* Set the width to 100% and auto for the height */
+        background-repeat: no-repeat;
+        /* Prevent the background image from repeating */
+        background-position: center;
+
+    }
+
+    .custom-content {
+        position: absolute;
+        background: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        padding: 10px;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        /* Set the flex direction to column to stack the elements vertically */
+        justify-content: center;
+        align-items: center;
+    }
+
+
+
+    /* Media query for small screens (full width) */
+    @media (max-width: 768px) {
+        .custom-content h1 {
+            width: 100%;
+        }
+    }
+
+    /* Media query for medium and large screens (50% width) */
+    @media (min-width: 769px) {
+        .custom-content h1 {
+            width: 50%;
+        }
+    }
+
+
+
+
+    /* Media query for small screens (full width) */
+    @media (max-width: 768px) {
+        .custom-content h2 {
+            width: 100%;
+
+        }
+    }
+
+    /* Media query for medium and large screens (50% width) */
+    @media (min-width: 769px) {
+        .custom-content h2 {
+            width: 50%;
+
+        }
+    }
+
+    .custom-content h1 {
+        margin: 0;
+        /* Remove any default margins on the h3 element */
+        color: #ffffff;
+        font-weight: bold;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+
+    }
+
+    .custom-content h2 {
+        margin: 0;
+        font-size: 1.3rem !important;
+        color: #ffffff;
+        font-weight: bold;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+
+    }
+
+    .overlay {
+
+        opacity: 0.84 !important;
+        fill: rgb(255, 255, 255) !important;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        z-index: 1;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        height: 30% !important;
+        margin-top: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+
+
+
+    .lp-header__heading {
+        font-size: 60px;
+        font-weight: bold;
+        line-height: 1.1em;
+        font-family: 'sofia_probold', "Trebuchet MS", "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", Verdana, "Verdana Ref", sans-serif;
+
+        margin-bottom: 0.4em
+    }
+
+    .sub-heading {
+        font-weight: bold;
+        font-size: 24px;
+        font-family: 'sofia_probold', "Trebuchet MS", "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", Verdana, "Verdana Ref", sans-serif;
+        margin-right: 28px;
+        color: #343944;
+    }
+
+    .lp-header__subheading {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 1.5em;
+    }
+
+
+
+    .p-4 h2 {
+        font-weight: bolder !important;
+        font-size: 21px !important;
+        margin-bottom: 15px !important;
+        text-align: center !important;
+
+    }
+
+    .p-4 p {
+        font-size: 15px !important;
+        line-height: 1.5 !important;
+        text-align: center !important;
+        color: #333 !important;
+    }
+
+
+    .rounded {
+
+        border: 2px solid #dadee6;
+        border-radius: 6%;
+
+    }
+
+
+    .sign_backcover {
+    background-image: url("{{ asset('public/assets/frontend/default/img/how_its_work_mge/mobile_use.jpg') }}");
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    border-radius: 50%;
+    height: 50% !important;
+ 
+  
+    
+  }
+
+
+.respond_backcover{
+    background-image: url("{{ asset('public/assets/frontend/default/img/how_its_work_mge/feedback.jpg') }}");
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    border-radius: 50%;
+
+}
+.postjob_backcover
+{
+    background-image: url("{{ asset('public/assets/frontend/default/img/how_its_work_mge/laptop_use.jpg') }}");
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    border-radius: 50%;
+}
+    </style>
 
 
 
@@ -996,25 +1146,60 @@
     @if (get_setting('slider_section_show') == 'on')
         <section class="position-relative " style="min-height: 550px;">
 
+
             <div class="row">
-                <div class="backcover col-md-12">
+                <div class="custom-slider col-md-12" style="height: 1000px ;">
+                    <div class="custom-slide">
+                        <img src="{{ asset('public\assets\frontend\default\img\slider_img\global 2.jpg') }}" />
+                        <div class="custom-content">
+                            <h1>We are Everywhere</h1>
+                            <h2>Builder’s Valley offers a complete solution if you're looking for a new project or searching
+                                for tradespeople</h2>
+                        </div>
 
-{{--  href="{{  }}" --}}
 
-                    <div class="overlay col-md-8">
+                    </div>
+                    <div class="custom-slide">
+                        <img src="{{ asset('public\assets\frontend\default\img\slider_img\slider2.jpg') }}" />
+                        <div class="custom-content">
+                            <h1>We are all here.</h1>
+                            <h2>Now you don't need your neighbor's recommendations. We're providing the complete solution.
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="custom-slide">
+                        <img src="{{ asset('public\assets\frontend\default\img\slider_img\slider3.jpg') }}" />
+                        <div class="custom-content">
+                            <h1>Join today and become a proud member of the Builder's Valley community.</h1>
+                            <h2>If you are recruiting people across the country , internationally
+                                or you are looking for a new career, join today.</h2>
+                        </div>
+                    </div>
+                    <div class="custom-slide">
+                        <img src="{{ asset('public\assets\frontend\default\img\slider_img\slider4.jpg') }}" />
+                        <div class="custom-content">
+                            <h1>Builder's Valley now makes it easier for you to find a local professional trade worker in
+                                your area</h1>
+
+                        </div>
+                    </div>
+                    <div class="overlay">
                         <div class="lp-header__content">
-                            <h1 class="lp-header__heading">The better way to find a builder</h1>
-                            <p class="lp-header__subheading">MyBuilder makes it easy to find quality local tradespeople,
-                                reviewed by other homeowners, all across the UK.</p>
-                            <a title="Post a job today and we'll alert the relevant tradespeople." href="{{ route('register')}}"
-                                class="btn--lp">Post a job</a>
+                            <a title="Post a job today and we'll alert the relevant tradespeople."
+                                href="{{ route('register') }}" class="btn--lp">Post a job</a>
                             <a title="Start winning more work" href="{{ route('register') }}" class="btn--hollow">Trade sign
                                 up</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="container">
+
+
+
+
+
+
+            {{-- <div class="container">
                 <div class="post_btn-box">
                     <div class="col-md-7 star-content">
                         <h1 class="heading heading--x-large">Don't just take our word for it</h1>
@@ -1031,82 +1216,257 @@
                             data-src="https://www.mybuilder.com/assets/2d01362/bundles/mybuilderhomepage/images/mumsnet.png">
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </section @endif
         @if (get_setting('client_logo_show') == 'on')
             <section class="bg-white py-4">
-                <div class="hire-exc-content ">
+                {{-- <div class ="container">
+                    <div class="hire-exc-content ">
 
-                    <div class="col-md-8">
+                        <div class="col-md-8">
 
-                        <section class="hp-how-it-works ">
+                            <section class="hp-how-it-works ">
 
-                            <h1 class="heading heading--x-large">Hire an exceptional tradesperson</h1>
+                                <h1 class="heading heading--x-large">Hire an exceptional tradesperson</h1>
 
-                            <ol class="row-fluid hp-how-it-works__steps">
-                                <li title="Post a job today and we'll alert the relevant tradespeople." class="span8">
-                                    <div class="image-wrapper">
-                                        <img class="svg-img"
-                                            src="https://www.mybuilder.com/assets/2d01362/bundles/mybuilderhomepage/images/step1@2x.png"
-                                            data-lazyimg=""
-                                            data-src="https://www.mybuilder.com/assets/2d01362/bundles/mybuilderhomepage/images/step1@2x.png"
-                                            alt="Step 1 Illustration of some one posting a job on their phone">
+                                <ol class="row-fluid hp-how-it-works__steps">
+                                    <li title="Post a job today and we'll alert the relevant tradespeople." class="span8">
+                                        <div class="image-wrapper">
+                                            <img class="svg-img"
+                                                src="https://www.mybuilder.com/assets/2d01362/bundles/mybuilderhomepage/images/step1@2x.png"
+                                                data-lazyimg=""
+                                                data-src="https://www.mybuilder.com/assets/2d01362/bundles/mybuilderhomepage/images/step1@2x.png"
+                                                alt="Step 1 Illustration of some one posting a job on their phone">
+                                        </div>
+                                        <h2 class="heading heading--medium">
+                                            Post a job today
+                                        </h2>
+                                        <p>Tell us about your job, and we'll alert suitable<br> tradespeople in your area.
+                                            It’s
+                                            simple and free.</p>
+                                    </li>
+                                    <li class="span8">
+                                        <div class="image-wrapper">
+                                            <img class="svg-img"
+                                                src="https://www.mybuilder.com/assets/2d01362/bundles/mybuilderhomepage/images/step2@2x.png"
+                                                data-lazyimg=""
+                                                data-src="https://www.mybuilder.com/assets/2d01362/bundles/mybuilderhomepage/images/step2@2x.png"
+                                                alt="Step 2 Illustration of a tradesperson responding to a posted job">
+                                        </div>
+                                        <h2 class="heading heading--medium">
+                                            Tradespeople respond
+                                        </h2>
+                                        <p>Once your job is posted, you'll get responses from<br> interested tradespeople
+                                            through
+                                            the website.</p>
+                                    </li>
+                                    <li class="span8">
+                                        <div class="image-wrapper">
+                                            <img class="svg-img"
+                                                src="https://www.mybuilder.com/assets/2d01362/bundles/mybuilderhomepage/images/step3-@2x.png"
+                                                data-lazyimg=""
+                                                data-src="https://www.mybuilder.com/assets/2d01362/bundles/mybuilderhomepage/images/step3-@2x.png"
+                                                alt="Step 3 Illustration of a list of trade profiles to choose from">
+                                        </div>
+                                        <h2 class="heading heading--medium">
+                                            Review and choose
+                                        </h2>
+                                        <p>Browse profiles, work history, and feedback, then <br>choose who you wish to
+                                            share your
+                                            details with.</p>
+                                    </li>
+                                </ol>
+                                <a class="btn--lp" href="/how-it-works">See how it works</a>
+
+                            </section>
+
+                        </div>
+                    </div>
+
+                </div> --}}
+
+
+
+
+                <div class="container" style="height: auto ;">
+                    <div class="py-3">
+
+                        <div class="row justify-content-center">
+                            <div class="col-xl-4 col-md-6 " style="margin-bottom: 10px;position: relative;">
+                                <div class="px-xl-5 px-md-3 mb-4 text-center rounded"
+                                    style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+
+                                    <div class="p-4">
+                                        <h2>Post your job</h2>
+                                        <p>Sign up to our online platform to start posting your home improvement projects
+                                            and connect with trustworthy tradespeople.</p>
                                     </div>
-                                    <h2 class="heading heading--medium">
-                                        Post a job today
-                                    </h2>
-                                    <p>Tell us about your job, and we'll alert suitable tradespeople in your area. It’s
-                                        simple and free.</p>
-                                </li>
-                                <li class="span8">
-                                    <div class="image-wrapper">
-                                        <img class="svg-img"
-                                            src="https://www.mybuilder.com/assets/2d01362/bundles/mybuilderhomepage/images/step2@2x.png"
-                                            data-lazyimg=""
-                                            data-src="https://www.mybuilder.com/assets/2d01362/bundles/mybuilderhomepage/images/step2@2x.png"
-                                            alt="Step 2 Illustration of a tradesperson responding to a posted job">
-                                    </div>
-                                    <h2 class="heading heading--medium">
-                                        Tradespeople respond
-                                    </h2>
-                                    <p>Once your job is posted, you'll get responses from interested tradespeople through
-                                        the website.</p>
-                                </li>
-                                <li class="span8">
-                                    <div class="image-wrapper">
-                                        <img class="svg-img"
-                                            src="https://www.mybuilder.com/assets/2d01362/bundles/mybuilderhomepage/images/step3-@2x.png"
-                                            data-lazyimg=""
-                                            data-src="https://www.mybuilder.com/assets/2d01362/bundles/mybuilderhomepage/images/step3-@2x.png"
-                                            alt="Step 3 Illustration of a list of trade profiles to choose from">
-                                    </div>
-                                    <h2 class="heading heading--medium">
-                                        Review and choose
-                                    </h2>
-                                    <p>Browse profiles, work history, and feedback, then choose who you wish to share your
-                                        details with.</p>
-                                </li>
-                            </ol>
-                            <a class="btn--lp" href="/how-it-works">See how it works</a>
 
-                        </section>
+                                    <div style="text-align: center;margin-bottom: 15px !important;">
+                                        <a title="Post a job today and we'll alert the relevant tradespeople."
+                                            href="http://localhost/mybuilder/register" class="btn--lp">Post a job</a>
+                                    </div>
+                                </div>
+                            </div>
 
+                            <div class="col-xl-4 col-md-6" style="margin-bottom: 10px;position: relative;">
+                                <div class="px-xl-5 px-md-3 mb-4 text-center rounded"
+                                    style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+
+                                    <div class="p-4">
+                                        <h2>Trade sign up</h2>
+                                        <p>Once your business is registered, you can choose from the many jobs available
+                                            across the country.</p>
+                                    </div>
+
+                                    <div style="text-align: center;margin-bottom: 15px !important;">
+                                        <a title="Post a job today and we'll alert the relevant tradespeople."
+                                            href="http://localhost/mybuilder/register" class="btn--lp1 ">Join Our Site</a>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-xl-4 col-md-6" style="margin-bottom: 10px;position: relative;">
+                                <div class="px-xl-5 px-md-3 mb-4 text-center rounded"
+                                    style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+
+                                    <div class="p-4">
+                                        <h2>Find Employment</h2>
+                                        <p>Businesses across the country & internationally are searching for skilled people
+                                            to join their team. Find your next role here.</p>
+                                    </div>
+
+                                    <div style="text-align: center;margin-bottom: 15px !important;">
+                                        <a title="Post a job today and we'll alert the relevant tradespeople."
+                                            href="http://localhost/mybuilder/register" class="btn--lp2">Career
+                                            Opportunities</a>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
                     </div>
                 </div>
 
 
 
-                <div class="post_btn-box" style="background: #eef2f6 ">
+
+
+
+                <div class="container" style="height: auto ; ">
+                    <div class="py-3">
+
+                        <div class="row justify-content-center">
+                            <div class="col-xl-12 col-md-6 " style="margin-bottom: 10px;position: relative;">
+                                <div class="px-xl-5 px-md-3 mb-4 text-center "
+                                    style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+
+                                    <div class="p-4">
+                                        <h2 style="color: green !important">Find the right tradespeople for your job!</h2>
+                                        <p>Builder’s valley understanding finding tradespeople you can trust is a challenge.
+                                        </p>
+                                        <p> Our site is an online platform for a variety of tradespeople. You can post your
+                                            job, tradespeople will respond, and then you can review each business and choose
+                                            the right one for you!
+                                        </p>
+                                    </div>
+
+                                    <div style="text-align: center;margin-bottom: 15px !important;">
+                                        <a title="Post a job today and we'll alert the relevant tradespeople."
+                                            href="http://localhost/mybuilder/register" class="btn--hollow">CONTACT US </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="container col-md-12">
+                    <div class="py-3 rounded-2 border-1  bg-hov-soft-primary">
+                        <div class="w-xl-50 w-lg-75 mx-auto my-5 text-center">
+                            <h2 class="fw-700 fs-40">How it Works</h2>
+
+                        </div>
+                        <div class="row justify-content-center">
+
+                            <div class="col-xl-4 col-md-6">
+                                <div class="col-md-12">
+                                    <div class="sign_backcover "  style="height:350px !important ;">
+
+                                    </div>
+
+                                    <div class="p-4" style="height:250px !important ;">
+                                        <h2><span style="color: green;">1</span>  Sign up</h2>
+                                        <p>Joining as a homeowner/customer is a competitively priced way for you to access skilled tradespeople across the country.
+                                        </p>   
+                                        <p>Only approved members can post in our forums.
+                                        </p>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+                            <div class="col-xl-4 col-md-6">
+                                <div class="col-md-12">
+                                    <div class="postjob_backcover "  style="height:350px !important  ;">
+
+                                    </div>
+
+                                    <div class="p-4" style="height:250px !important ;">
+                                        <h2><span style="color: green;">2</span>  Post a job </h2>
+                                        <p>Once you’ve joined our site, you’ll be able to post the details for the project you need to hire a tradesperson for remember to include your location, photos and if you have one a budget.</p>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+                            <div class="col-xl-4 col-md-6">
+                                <div class="col-md-12">
+                                    <div class="respond_backcover "  style="height:350px !important  ;">
+
+                                    </div>
+
+                                    <div class="p-4" style="height:250px !important ;">
+                                        <h2><span style="color: green;">3</span>  Respond to messages </h2>
+                                        <p>Companies that have joined our site will be able to see your job postings. You can then contact them directly to arrange a quote.</p>
+                                    </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                           
+
+            
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+                {{-- <div class="post_btn-box" style="background: #eef2f6 ">
                     <div class="col-md-12 Fanatical-content">
                         <h2 class="heading heading--x-large">Fanatical about&nbsp;feedback</h2>
                         <div>
 
-                            <p>The best way to know a tradesperson is to listen to their customers.<br>
-                                Feedback isn't just a feature on MyBuilder. We've built our whole business on it.</p>
+                            <p>The best way to know a tradesperson is to listen to<br> their customers.<br>
+                                Feedback isn't just a feature on<br> MyBuilder. We've built our whole business on it.</p>
                         </div>
                     </div>
 
-                </div>
+                </div> --}}
 
                 {{-- ////try////////////////////////////////////////////////////////////////////////// --}}
 
@@ -1403,242 +1763,241 @@
                         <!-- End of 3D Slider and TNC -->
                     </div>
                 </div> --}}
+                {{-- ///////////////////////////////feedback slider//////////////////// --}}
+                {{-- <div class="row">
+                    <div class="   col-md-12 d-flex justify-content-center align-items-center" style="background: #eef2f6 ">
 
-                 <div class="row">
-                        <div class="   col-md-12 d-flex justify-content-center align-items-center"
-                            style="background: #eef2f6 ">
-
-                            <div>
-                                <button class="arrow left">
-                                    <i class="fa fa-arrow-left fa-2x"></i>
-                                </button>
-                            </div>
-                            <div class="slider-container">
-
+                        <div>
+                            <button class="arrow left">
+                                <i class="fa fa-arrow-left fa-2x"></i>
+                            </button>
+                        </div>
+                        <div class="slider-container">
 
 
-                                <div class="slide slide-1">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="feedback-item__header">
-                                                <h3 class="feedback-item__username">
-                                                    <a href="/profile/view/broderick_building_services">Broderick Building
-                                                        Services</a>
-                                                </h3>
-                                                <p>
-                                                    <span class="feedback-item__jobs">77&nbsp;feedback,</span>
-                                                    <span class="feedback-item__feedback">99%&nbsp;positive</span>
-                                                </p>
-                                            </div>
 
-                                            <div class="feedback-item__rating">
-
-                                                Received positive feedback
-
-                                            </div>
-
-                                            <p class="feedback-item__body text-center">
-                                                <span class="feedback-item__comment">Really great work thank you. Didn’t ask
-                                                    for all payment up front and paid as the work was completed, so clean
-                                                    and
-                                                    tidy I didn’t even know we had...</span>
-                                                <br>
-                                                <span class="feedback-item__posted">Received
-                                                    <span class="feedback-item__time timeago"
-                                                        title="2023-10-04T06:52:31+01:00">2
-                                                        hours 5
-                                                        minutes ago</span></span>
+                            <div class="slide slide-1">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="feedback-item__header">
+                                            <h3 class="feedback-item__username">
+                                                <a href="/profile/view/broderick_building_services">Broderick Building
+                                                    Services</a>
+                                            </h3>
+                                            <p>
+                                                <span class="feedback-item__jobs">77&nbsp;feedback,</span>
+                                                <span class="feedback-item__feedback">99%&nbsp;positive</span>
                                             </p>
                                         </div>
-                                    </div>
-                                </div> 
-                                <div class="slide slide-2">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="feedback-item__header">
-                                                <h3 class="feedback-item__username">
-                                                    <a href="/profile/view/broderick_building_services">Broderick Building
-                                                        Services</a>
-                                                </h3>
-                                                <p>
-                                                    <span class="feedback-item__jobs">77&nbsp;feedback,</span>
-                                                    <span class="feedback-item__feedback">99%&nbsp;positive</span>
-                                                </p>
-                                            </div>
 
-                                            <div class="feedback-item__rating">
+                                        <div class="feedback-item__rating">
 
-                                                Received positive feedback
+                                            Received positive feedback
 
-                                            </div>
-
-                                            <p class="feedback-item__body text-center">
-                                                <span class="feedback-item__comment">Really great work thank you. Didn’t ask
-                                                    for all payment up front and paid as the work was completed, so clean
-                                                    and
-                                                    tidy I didn’t even know we had...</span>
-                                                <br>
-                                                <span class="feedback-item__posted">Received
-                                                    <span class="feedback-item__time timeago"
-                                                        title="2023-10-04T06:52:31+01:00">2
-                                                        hours 5
-                                                        minutes ago</span></span>
-                                            </p>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="slide slide-3">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="feedback-item__header">
-                                                <h3 class="feedback-item__username">
-                                                    <a href="/profile/view/broderick_building_services">Broderick Building
-                                                        Services</a>
-                                                </h3>
-                                                <p>
-                                                    <span class="feedback-item__jobs">77&nbsp;feedback,</span>
-                                                    <span class="feedback-item__feedback">99%&nbsp;positive</span>
-                                                </p>
-                                            </div>
 
-                                            <div class="feedback-item__rating">
-
-                                                Received positive feedback
-
-                                            </div>
-
-                                            <p class="feedback-item__body text-center">
-                                                <span class="feedback-item__comment">Really great work thank you. Didn’t
-                                                    ask
-                                                    for all payment up front and paid as the work was completed, so clean
-                                                    and
-                                                    tidy I didn’t even know we had...</span>
-                                                <br>
-                                                <span class="feedback-item__posted">Received
-                                                    <span class="feedback-item__time timeago"
-                                                        title="2023-10-04T06:52:31+01:00">2
-                                                        hours 5
-                                                        minutes ago</span></span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="slide slide-4">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="feedback-item__header">
-                                                <h3 class="feedback-item__username">
-                                                    <a href="/profile/view/broderick_building_services">Broderick Building
-                                                        Services</a>
-                                                </h3>
-                                                <p>
-                                                    <span class="feedback-item__jobs">77&nbsp;feedback,</span>
-                                                    <span class="feedback-item__feedback">99%&nbsp;positive</span>
-                                                </p>
-                                            </div>
-
-                                            <div class="feedback-item__rating">
-
-                                                Received positive feedback
-
-                                            </div>
-
-                                            <p class="feedback-item__body text-center">
-                                                <span class="feedback-item__comment">Really great work thank you. Didn’t
-                                                    ask
-                                                    for all payment up front and paid as the work was completed, so clean
-                                                    and
-                                                    tidy I didn’t even know we had...</span>
-                                                <br>
-                                                <span class="feedback-item__posted">Received
-                                                    <span class="feedback-item__time timeago"
-                                                        title="2023-10-04T06:52:31+01:00">2
-                                                        hours 5
-                                                        minutes ago</span></span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="slide slide-5">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="feedback-item__header">
-                                                <h3 class="feedback-item__username">
-                                                    <a href="/profile/view/broderick_building_services">Broderick Building
-                                                        Services</a>
-                                                </h3>
-                                                <p>
-                                                    <span class="feedback-item__jobs">77&nbsp;feedback,</span>
-                                                    <span class="feedback-item__feedback">99%&nbsp;positive</span>
-                                                </p>
-                                            </div>
-
-                                            <div class="feedback-item__rating">
-
-                                                Received positive feedback
-
-                                            </div>
-
-                                            <p class="feedback-item__body text-center">
-                                                <span class="feedback-item__comment">Really great work thank you. Didn’t
-                                                    ask
-                                                    for all payment up front and paid as the work was completed, so clean
-                                                    and
-                                                    tidy I didn’t even know we had...</span>
-                                                <br>
-                                                <span class="feedback-item__posted">Received
-                                                    <span class="feedback-item__time timeago"
-                                                        title="2023-10-04T06:52:31+01:00">2
-                                                        hours 5
-                                                        minutes ago</span></span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="slide slide-6">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="feedback-item__header">
-                                                <h3 class="feedback-item__username">
-                                                    <a href="/profile/view/broderick_building_services">Broderick Building
-                                                        Services</a>
-                                                </h3>
-                                                <p>
-                                                    <span class="feedback-item__jobs">77&nbsp;feedback,</span>
-                                                    <span class="feedback-item__feedback">99%&nbsp;positive</span>
-                                                </p>
-                                            </div>
-
-                                            <div class="feedback-item__rating">
-
-                                                Received positive feedback
-
-                                            </div>
-
-                                            <p class="feedback-item__body text-center">
-                                                <span class="feedback-item__comment">Really great work thank you. Didn’t
-                                                    ask
-                                                    for all payment up front and paid as the work was completed, so clean
-                                                    and
-                                                    tidy I didn’t even know we had...</span>
-                                                <br>
-                                                <span class="feedback-item__posted">Received
-                                                    <span class="feedback-item__time timeago"
-                                                        title="2023-10-04T06:52:31+01:00">2
-                                                        hours 5
-                                                        minutes ago</span></span>
-                                            </p>
-                                        </div>
+                                        <p class="feedback-item__body text-center">
+                                            <span class="feedback-item__comment">Really great work thank you. Didn’t ask
+                                                for all payment up front and paid as the work was completed, so clean
+                                                and
+                                                tidy I didn’t even know we had...</span>
+                                            <br>
+                                            <span class="feedback-item__posted">Received
+                                                <span class="feedback-item__time timeago"
+                                                    title="2023-10-04T06:52:31+01:00">2
+                                                    hours 5
+                                                    minutes ago</span></span>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
-                            <div>
-                                <button class="arrow right">
-                                    <i class="fa fa-arrow-right fa-2x"></i>
-                                </button>
+                            <div class="slide slide-2">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="feedback-item__header">
+                                            <h3 class="feedback-item__username">
+                                                <a href="/profile/view/broderick_building_services">Broderick Building
+                                                    Services</a>
+                                            </h3>
+                                            <p>
+                                                <span class="feedback-item__jobs">77&nbsp;feedback,</span>
+                                                <span class="feedback-item__feedback">99%&nbsp;positive</span>
+                                            </p>
+                                        </div>
+
+                                        <div class="feedback-item__rating">
+
+                                            Received positive feedback
+
+                                        </div>
+
+                                        <p class="feedback-item__body text-center">
+                                            <span class="feedback-item__comment">Really great work thank you. Didn’t ask
+                                                for all payment up front and paid as the work was completed, so clean
+                                                and
+                                                tidy I didn’t even know we had...</span>
+                                            <br>
+                                            <span class="feedback-item__posted">Received
+                                                <span class="feedback-item__time timeago"
+                                                    title="2023-10-04T06:52:31+01:00">2
+                                                    hours 5
+                                                    minutes ago</span></span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slide slide-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="feedback-item__header">
+                                            <h3 class="feedback-item__username">
+                                                <a href="/profile/view/broderick_building_services">Broderick Building
+                                                    Services</a>
+                                            </h3>
+                                            <p>
+                                                <span class="feedback-item__jobs">77&nbsp;feedback,</span>
+                                                <span class="feedback-item__feedback">99%&nbsp;positive</span>
+                                            </p>
+                                        </div>
+
+                                        <div class="feedback-item__rating">
+
+                                            Received positive feedback
+
+                                        </div>
+
+                                        <p class="feedback-item__body text-center">
+                                            <span class="feedback-item__comment">Really great work thank you. Didn’t
+                                                ask
+                                                for all payment up front and paid as the work was completed, so clean
+                                                and
+                                                tidy I didn’t even know we had...</span>
+                                            <br>
+                                            <span class="feedback-item__posted">Received
+                                                <span class="feedback-item__time timeago"
+                                                    title="2023-10-04T06:52:31+01:00">2
+                                                    hours 5
+                                                    minutes ago</span></span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slide slide-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="feedback-item__header">
+                                            <h3 class="feedback-item__username">
+                                                <a href="/profile/view/broderick_building_services">Broderick Building
+                                                    Services</a>
+                                            </h3>
+                                            <p>
+                                                <span class="feedback-item__jobs">77&nbsp;feedback,</span>
+                                                <span class="feedback-item__feedback">99%&nbsp;positive</span>
+                                            </p>
+                                        </div>
+
+                                        <div class="feedback-item__rating">
+
+                                            Received positive feedback
+
+                                        </div>
+
+                                        <p class="feedback-item__body text-center">
+                                            <span class="feedback-item__comment">Really great work thank you. Didn’t
+                                                ask
+                                                for all payment up front and paid as the work was completed, so clean
+                                                and
+                                                tidy I didn’t even know we had...</span>
+                                            <br>
+                                            <span class="feedback-item__posted">Received
+                                                <span class="feedback-item__time timeago"
+                                                    title="2023-10-04T06:52:31+01:00">2
+                                                    hours 5
+                                                    minutes ago</span></span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slide slide-5">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="feedback-item__header">
+                                            <h3 class="feedback-item__username">
+                                                <a href="/profile/view/broderick_building_services">Broderick Building
+                                                    Services</a>
+                                            </h3>
+                                            <p>
+                                                <span class="feedback-item__jobs">77&nbsp;feedback,</span>
+                                                <span class="feedback-item__feedback">99%&nbsp;positive</span>
+                                            </p>
+                                        </div>
+
+                                        <div class="feedback-item__rating">
+
+                                            Received positive feedback
+
+                                        </div>
+
+                                        <p class="feedback-item__body text-center">
+                                            <span class="feedback-item__comment">Really great work thank you. Didn’t
+                                                ask
+                                                for all payment up front and paid as the work was completed, so clean
+                                                and
+                                                tidy I didn’t even know we had...</span>
+                                            <br>
+                                            <span class="feedback-item__posted">Received
+                                                <span class="feedback-item__time timeago"
+                                                    title="2023-10-04T06:52:31+01:00">2
+                                                    hours 5
+                                                    minutes ago</span></span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slide slide-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="feedback-item__header">
+                                            <h3 class="feedback-item__username">
+                                                <a href="/profile/view/broderick_building_services">Broderick Building
+                                                    Services</a>
+                                            </h3>
+                                            <p>
+                                                <span class="feedback-item__jobs">77&nbsp;feedback,</span>
+                                                <span class="feedback-item__feedback">99%&nbsp;positive</span>
+                                            </p>
+                                        </div>
+
+                                        <div class="feedback-item__rating">
+
+                                            Received positive feedback
+
+                                        </div>
+
+                                        <p class="feedback-item__body text-center">
+                                            <span class="feedback-item__comment">Really great work thank you. Didn’t
+                                                ask
+                                                for all payment up front and paid as the work was completed, so clean
+                                                and
+                                                tidy I didn’t even know we had...</span>
+                                            <br>
+                                            <span class="feedback-item__posted">Received
+                                                <span class="feedback-item__time timeago"
+                                                    title="2023-10-04T06:52:31+01:00">2
+                                                    hours 5
+                                                    minutes ago</span></span>
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>  
+                        <div>
+                            <button class="arrow right">
+                                <i class="fa fa-arrow-right fa-2x"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div> --}}
                 {{-- <div class="container">
                     <div class="col-md-10 mt-5">
 
@@ -1917,7 +2276,7 @@
                 <div class="container" style ="padding: 0px">
                     <div class="col-md-12 d-flex justify-content-center align-items-center" style="background: #eef2f6 ">
                         <section class="hp-trades">
-                            <h1 class="heading heading--x-large">Builders for any job</h1>
+                            <h1 class="heading heading--x-large"> Our line directory is the perfect place to find </h1>
 
                             <div class="row-fluid">
                                 <div class="row">
@@ -1964,7 +2323,7 @@
                         <h1 class="sub-heading heading--x-large">Start your next home improvement project today</h1>
                         <div style="margin-left:20px">
                             <a rel="nofollow" title="Post a job today and we'll alert the relevant tradespeople."
-                            href="{{ route('register') }}" class="btn--lp">Post a job</a>
+                                href="{{ route('register') }}" class="btn--lp">Post a job</a>
                         </div>
 
                     </div>
@@ -1975,7 +2334,7 @@
             {{-- /////bottomSLIDER// --}}
             <div class="bottom-slider col-md-12 ">
                 <div class="container" style="  background-color: #eef2f6 !important;">
-                    <div class="bottom-slider-heading col-md-4 pt-2">
+                    <div class="bottom-slider-heading col-md-4  col-lg-5 pt-2">
                         <h1 class="heading heading--x-large">Our customers love&nbsp;us</h1>
                     </div>
 
@@ -2672,7 +3031,7 @@
         @endif
     @endsection
 
-    
+
 
 
     @section('script')
@@ -2981,9 +3340,34 @@
                 itemClass: 'cascade-slider_item',
                 arrowClass: 'cascade-slider_arrow',
                 autoplay: true,
-                delay: 5, 
+                delay: 5,
                 pauseOnHover: true,
-                itemCount: 5 
+                itemCount: 5
+            });
+        </script>
+
+
+
+
+        <script>
+            $(document).ready(function() {
+                let currentIndex = 0;
+                const slides = $(".custom-slider .custom-slide");
+                const numSlides = slides.length;
+
+                function showSlide(index) {
+                    slides.removeClass('active');
+                    slides.eq(index).addClass('active');
+                }
+
+                function nextSlide() {
+                    currentIndex = (currentIndex + 1) % numSlides;
+                    showSlide(currentIndex);
+                }
+
+                setInterval(nextSlide, 5000); // Change slide every 5 seconds
+
+                showSlide(currentIndex);
             });
         </script>
     @endsection

@@ -153,7 +153,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a href="{{route('home')}}">
-            <img src="https://www.mybuilder.com/assets/24c10e5/bundles/mybuilderapplication/images/mybuilder.svg"
+            <img src="{{ asset('public\assets\frontend\default\img\logo\builder_valley_logo.png') }}"
             alt="MyBuilder - A new way to find and hire tradespeople" width="150" height="50" style="margin-left:10%">
         </a>
         
