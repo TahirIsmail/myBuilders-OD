@@ -7,7 +7,7 @@
  */
 
 namespace App\Utility;
-
+use App\Jobs\SendUserEmailJob;
 use App\Mail\EmailManager;
 use App\Models\Notification;
 use Illuminate\Support\Facades\Auth;
@@ -27,11 +27,12 @@ class EmailUtility
         $array['from'] = env('MAIL_USERNAME');
         $array['content'] = $content;
         $array['link'] = $link;
-
+       
         try {
             Mail::to($email)->queue(new EmailManager($array));
+            //SendUserEmailJob::dispatch($array,$email)->onQueue('user-emails');
         } catch (\Exception $e) {
-            //dd($e->getMessage());
+            dd($e->getMessage());
         }
     }
 }

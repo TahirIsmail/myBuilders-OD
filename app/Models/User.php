@@ -41,16 +41,27 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     protected $fillable = [
-        'name', 'email', 'password', 'user_name', 'user_type', 'fcm_token',
+        'name', 'email', 'password', 'user_name', 'user_type', 'fcm_token','phone_number',
     ];
 
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token','verified',
     ];
 
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function hasVerifiedPhone()
+    {
+        return (bool)$this->verified;
+    }
+
+    public function markPhoneAsVerified()
+    {
+        return $this->forceFill([
+            'verified' => true,
+        ])->save();
+    }
 
     public function address()
     {

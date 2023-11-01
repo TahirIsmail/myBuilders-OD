@@ -76,5 +76,11 @@ return [
         'channel' => env('PAYTM_CHANNEL'),
         'industry_type' => env('PAYTM_INDUSTRY_TYPE'),
     ],
+    'twilio' => [
+        'sid' => env('TWILLIO_ACOUNT_ID'),
+        'token' => env('TWILLIO_AUTH_TOKEN'),
+        'phone_number' => env('TWILLIO_PHONE_NUMBER'),
+        'service_id' => env('TWILLIO_SERVICE_SID'),
+    ],
 
 ];

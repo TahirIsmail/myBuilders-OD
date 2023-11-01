@@ -182,6 +182,20 @@ return [
         App\Providers\RouteServiceProvider::class,
 
     ],
+    /*
+    |--------------------------------------------------------------------------
+    | Twilio access keys
+    |--------------------------------------------------------------------------
+    |
+    | This array has the required values to use Twilio verification service
+    |
+    */
+
+    'twilio' => [
+        'account_sid' => env('TWILIO_ACCOUNT_SID'),
+        'auth_token' => env('TWILIO_AUTH_TOKEN'),
+        'verification_sid' => env('TWILIO_VERIFICATION_SID'),
+    ],
 
     /*
     |--------------------------------------------------------------------------

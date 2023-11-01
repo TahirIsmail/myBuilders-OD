@@ -29,6 +29,7 @@ class UserRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
+            'contact_no' => ['required', 'string', 'max:14'],
             'user_type' => ['required', 'string'],
             'g-recaptcha-response' => [
                 Rule::when(get_setting('google_recaptcha_activation_checkbox') == 1, ['required', new RecaptchaRule()], ['sometimes'])

@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('QUEUE_CONNECTION', 'sync'),
+    'default' => env('QUEUE_CONNECTION', 'sync'), // Thats a queue driver
 
     /*
     |--------------------------------------------------------------------------
@@ -40,6 +40,8 @@ return [
             'queue' => 'default',
             'retry_after' => 90,
         ],
+        
+        
 
         'beanstalkd' => [
             'driver' => 'beanstalkd',

@@ -1,8 +1,5 @@
 <style>
-    #navbarSupportedContent {
-        height: 70px !important;
-        margin-left: 30rem !important;
-    }
+    
     .btn-post {
         background-color: #4a90e2 !important;
         color: white;
@@ -223,7 +220,7 @@
                         <select class="form-control aiz-selectpicker  rounded-left-0" name="type">
                             <option value="freelancer"
                                 @isset($type) @if ($type == 'freelancer') selected @endif @endisset>
-                                {{ translate('Freelancers') }}
+                                {{ translate('Tradesmen') }}
                             </option>
                             <option value="project"
                                 @isset($type) @if ($type == 'project') selected @endif @endisset>

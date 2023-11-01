@@ -7,7 +7,8 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\VerifiesEmails;
-
+use Illuminate\Support\MessageBag;
+use App\Verify\Service;
 class VerificationController extends Controller
 {
     /*
@@ -29,17 +30,18 @@ class VerificationController extends Controller
      * @var string
      */
     protected $redirectTo = '/home';
-
+    protected $verify;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Service $verify)
     {
         $this->middleware('auth');
-        $this->middleware('signed')->only('verify');
+        // $this->middleware('signed')->only('verify');
         $this->middleware('throttle:6,1')->only('verify', 'resend');
+        $this->verify = $verify;
     }
 
       public function resend(Request $request)
@@ -70,5 +72,80 @@ class VerificationController extends Controller
         }
 
         return redirect()->route('dashboard');
+    }
+        /**
+     * Show the phone verification form.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Request $request)
+    {
+        return $request->user()->hasVerifiedPhone()
+            ? redirect($this->redirectPath())
+            : view('auth.phone.verify');
+    }
+
+    /**
+     * Mark the authenticated user's phone number as verified.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function verify(Request $request)
+    {
+        if ($request->user()->hasVerifiedPhone()) {
+            return redirect($this->redirectPath());
+        }
+
+        $code = $request->post('code');
+        $phone = $request->user()->address->phone;
+
+        $verification = $this->verify->checkVerification($phone, $code);
+
+        if ($verification->isValid()) {
+            $request->user()->markPhoneAsVerified();
+            return redirect($this->redirectPath());
+        }
+
+        $errors = new MessageBag();
+        foreach ($verification->getErrors() as $error) {
+            $errors->add('verification', $error);
+        }
+
+        return view('auth.phone.verify')->withErrors($errors);
+    }
+
+    /**
+     * Resend the email verification notification.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function phoneresend(Request $request)
+    {
+        if ($request->user()->hasVerifiedPhone()) {
+            return redirect($this->redirectPath());
+        }
+
+        $phone = $request->user()->phone_number;
+        $channel = $request->post('channel', 'sms');
+        $verification = $this->verify->startVerification($phone, $channel);
+
+        if (!$verification->isValid()) {
+
+            $errors = new MessageBag();
+            foreach($verification->getErrors() as $error) {
+                $errors->add('verification', $error);
+            }
+
+            return redirect('/verify')->withErrors($errors);
+        }
+
+        $messages = new MessageBag();
+        $messages->add('verification', "Another code sent to {$request->user()->phone_number}");
+
+        return redirect('/verify')->with('messages', $messages);
     }
 }

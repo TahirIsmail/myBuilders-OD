@@ -14,9 +14,11 @@ use Illuminate\Validation\Rule;
 use App\Http\Requests\UserRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
+use App\Verify\Service;
+use Illuminate\Support\MessageBag;
 class RegisterController extends Controller
 {
     /*
@@ -38,15 +40,17 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = '/dashboard';
-
+    protected $verify;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Service $twilio_service)
     {
         $this->middleware('guest');
+        $this->verify = $twilio_service;
+
     }
 
     /**
@@ -56,6 +60,7 @@ class RegisterController extends Controller
      */
     public function showRegistrationForm()
     {
+       
         return view('frontend.default.user_sign_up');
     }
 
@@ -75,20 +80,21 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        $address = new Address;
+        $address = new Address(['phone' =>  $data['contact_no']]);
         $user->address()->save($address);
 
         $user_profile = new UserProfile;
         $user_profile->user_id = $user->id;        
         $user_profile->save();
-
+        
         return $user;
     }
 
     public function register(UserRequest $request)
     {
+        
         $user = $this->create($request->validated() + $request->all());
-
+       
         $this->guard()->login($user);
 
         if($user->email != null){
@@ -98,7 +104,11 @@ class RegisterController extends Controller
                 flash(translate('Registration successful.'))->success();
             }
             else {
+                
+               
                 try {
+                    
+                    
                     $user->sendEmailVerificationNotification();
                     flash(translate('Registration successful. Please verify your email.'))->success();
                 } catch (\Throwable $th) {
@@ -110,6 +120,26 @@ class RegisterController extends Controller
 
         return $this->registered($request, $user)
             ?: redirect($this->redirectPath());
+    }
+
+    protected function registered(Request $request, User $user)
+    {
+        $verification = $this->verify->startVerification($user->address->phone, $request->post('channel', 'sms'));
+        if (!$verification->isValid()) {
+            $user->delete();
+
+            $errors = new MessageBag();
+            foreach($verification->getErrors() as $error) {
+                $errors->add('verification', $error);
+            }
+
+            return view('auth.register')->withErrors($errors);
+        }
+
+        $messages = new MessageBag();
+        $messages->add('verification', "Code sent to {$request->user()->phone_number}");
+
+        return redirect('/verify')->with('messages', $messages);
     }
 
 }

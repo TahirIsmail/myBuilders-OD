@@ -1,7 +1,6 @@
 @extends('frontend.default.layouts.app')
 
 @section('content')
-
     <section class="py-5">
         <div class="container">
             <div class="d-flex align-items-start">
@@ -20,7 +19,8 @@
                             <h5 class="mb-0 h6">{{ translate('Post A New Project') }}</h5>
                         </div>
                         <div class="card-body">
-                            <form class="form-horizontal" action="{{ route('projects.store') }}" method="POST" enctype="multipart/form-data">
+                            <form class="form-horizontal" action="{{ route('projects.store') }}" method="POST"
+                                enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                     <label class="form-label">
@@ -28,7 +28,8 @@
                                         <span class="text-danger">*</span>
                                     </label>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="name" placeholder="{{ translate('Enter project title') }}">
+                                        <input type="text" class="form-control" name="name"
+                                            placeholder="{{ translate('Enter project title') }}">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -38,8 +39,10 @@
                                     </div class="aiz-radio-inline">
                                     @if ($client_package->fixed_limit > 0)
                                         <div class="custom-control custom-radio custom-control-inline">
-                                            <input type="radio" id="projectTypeFixed" name="projectType" class="custom-control-input" value="Fixed" checked>
-                                            <label class="custom-control-label" for="projectTypeFixed">{{ translate('Fixed') }}</label>
+                                            <input type="radio" id="projectTypeFixed" name="projectType"
+                                                class="custom-control-input" value="Fixed" checked>
+                                            <label class="custom-control-label"
+                                                for="projectTypeFixed">{{ translate('Fixed') }}</label>
                                         </div>
                                     @else
                                         <div class="alert alert-info custom-control-inline mb-0" role="alert">
@@ -48,8 +51,10 @@
                                     @endif
                                     @if ($client_package->long_term_limit > 0)
                                         <div class="custom-control custom-radio custom-control-inline">
-                                            <input type="radio" id="projectTypeLong" name="projectType" class="custom-control-input" value="Long Term">
-                                            <label class="custom-control-label" for="projectTypeLong">{{ translate('Long term') }}</label>
+                                            <input type="radio" id="projectTypeLong" name="projectType"
+                                                class="custom-control-input" value="Long Term">
+                                            <label class="custom-control-label"
+                                                for="projectTypeLong">{{ translate('Long term') }}</label>
                                         </div>
                                     @else
                                         <div class="alert alert-info custom-control-inline mb-0" role="alert">
@@ -64,10 +69,22 @@
                                     </label>
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <input type="number" min="0" step="0.01" class="form-control" name="price" placeholder="{{ translate('Enter project budget') }}">
+                                            <input type="number" min="0" step="0.01" class="form-control"
+                                                name="price" placeholder="{{ translate('Enter project budget') }}">
                                             <div class="input-group-append">
                                                 <span class="input-group-text">{{ currency_symbol() }}</span>
                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">
+                                        {{ translate('Project Location') }}
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div id="map" style="width: 100%; height: 400px;"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -76,14 +93,15 @@
                                         {{ translate('Project category') }}
                                         <span class="text-danger">*</span>
                                     </label>
-                                    <select class="form-control aiz-selectpicker" id="category_id" name="category_id" data-live-search="true" required>
+                                    <select class="form-control aiz-selectpicker" id="category_id" name="category_id"
+                                        data-live-search="true" required>
                                         @foreach ($categories as $category)
                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label >
+                                    <label>
                                         {{ translate('Project summary') }}
                                         <span class="text-danger">*</span>
                                     </label>
@@ -94,7 +112,9 @@
                                         {{ translate('Skills required') }}
                                         <span class="text-danger">*</span>
                                     </label>
-                                    <select multiple class="form-control aiz-selectpicker" name="skills[]" required data-live-search="true" data-placeholder="Select required skills" data-selected-text-format="count">
+                                    <select multiple class="form-control aiz-selectpicker" name="skills[]" required
+                                        data-live-search="true" data-placeholder="Select required skills"
+                                        data-selected-text-format="count">
                                         @foreach ($skills as $skill)
                                             <option value="{{ $skill->id }}">{{ $skill->name }}</option>
                                         @endforeach
@@ -105,7 +125,8 @@
                                         {{ translate('Project Details') }}
                                         <span class="text-danger">*</span>
                                     </label>
-                                    <textarea class="form-control aiz-text-editor" data-height="300" rows="3" name="description" required data-toolbar='[
+                                    <textarea class="form-control aiz-text-editor" data-height="300" rows="3" name="description" required
+                                        data-toolbar='[
                                         ["style", ["style"]],
                                         ["font", ["bold", "underline", "clear"]],
                                         ["fontsize", ["fontsize"]],
@@ -114,10 +135,12 @@
                                     </textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label" for="signinSrEmail">{{ translate('File attachment') }}</label>
+                                    <label class="form-label"
+                                        for="signinSrEmail">{{ translate('File attachment') }}</label>
                                     <div class="input-group" data-toggle="aizuploader" data-multiple="true">
                                         <div class="input-group-prepend">
-                                            <div class="input-group-text bg-soft-secondary font-weight-medium">{{ translate('Browse') }}</div>
+                                            <div class="input-group-text bg-soft-secondary font-weight-medium">
+                                                {{ translate('Browse') }}</div>
                                         </div>
                                         <div class="form-control file-amount">{{ translate('Choose File') }}</div>
                                         <input type="hidden" name="attachments" class="selected-files">
@@ -126,7 +149,8 @@
                                 </div>
                                 <div class="text-right">
                                     @if ($client_package->fixed_limit > 0 || $client_package->fixed_limit > 0)
-                                        <button type="submit" class="btn btn-primary transition-3d-hover mr-1 rounded-1">{{ translate('Post Project') }}</button>
+                                        <button type="submit"
+                                            class="btn btn-primary transition-3d-hover mr-1 rounded-1">{{ translate('Post Project') }}</button>
                                     @else
                                         <div class="alert alert-info custom-control-inline mb-0" role="alert">
                                             {{ translate('Upgrade your Package.') }}
@@ -140,5 +164,42 @@
             </div>
         </div>
     </section>
+@endsection
+@section('script')
+    <script type="text/javascript">
+        // Initialize and add the map
+        let map;
 
+        async function initMap() {
+            // The location of Uluru
+            const position = {
+                lat: 52.489471,
+                lng: -1.898575
+            };
+            // Request needed libraries.
+            //@ts-ignore
+            const {
+                Map
+            } = await google.maps.importLibrary("maps");
+            const {
+                AdvancedMarkerElement
+            } = await google.maps.importLibrary("marker");
+
+            // The map, centered at Uluru
+            map = new Map(document.getElementById("map"), {
+                zoom: 4,
+                center: position,
+                mapId: "DEMO_MAP_ID",
+            });
+
+            // The marker, positioned at Uluru
+            const marker = new AdvancedMarkerElement({
+                map: map,
+                position: position,
+                title: "Uluru",
+            });
+        }
+
+        initMap();
+    </script>
 @endsection

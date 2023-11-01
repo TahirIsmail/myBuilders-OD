@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\Payment\PaytmController;
 use App\Http\Controllers\Payment\PaypalController;
 
@@ -11,6 +12,7 @@ use App\Http\Controllers\Payment\SslcommerzController;
 use App\Http\Controllers\Payment\FlutterwaveController;
 use App\Http\Controllers\Payment\MercadopagoController;
 use App\Http\Controllers\Payment\StripeController;
+use App\Http\Controllers\Auth\RegisterController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,9 +49,13 @@ Route::resource('subscribers', 'SubscriberController');
 
 Auth::routes(['verify' => true]);
 
+
 Route::controller('Auth\VerificationController')->group(function () {
     Route::get('/email/resend', 'resend')->name('verification.resend');
     Route::get('/verification-confirmation/{code}', 'verification_confirmation')->name('email.verification.confirmation');
+	Route::get('/verify', 'show');
+	Route::post('/verify', 'verify');
+	Route::post('/resend', 'phoneresend');
 });
 
 Route::get('/admin/login', 'HomeController@admin_login')->name('admin.login');
@@ -90,7 +96,7 @@ Route::group(['middleware' => ['user']], function(){
 	Route::post('/view-messages','FCMController@view_messages')->name('project_chat_view');
 });
 
-Route::group(['middleware' => ['user', 'verified', 'packagePurchased']], function(){
+Route::group(['middleware' => ['user', 'verified','phoneverified', 'packagePurchased']], function(){
 	Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
 
 	Route::get('/projects/running-project', 'ProjectController@my_running_project')->name('projects.my_running_project');
@@ -294,3 +300,4 @@ Route::controller(MercadopagoController::class)->group(function () {
 
 
 Route::get('/{slug}', 'PageController@show_custom_page')->name('custom-pages.show_custom_page');
+

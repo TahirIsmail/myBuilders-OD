@@ -12,7 +12,15 @@
 					<div class="card-body">
 
 						<div class="mb-5 text-center">
-							<h1 class="h3 text-primary mb-0">{{ translate('Join with us') }}</h1>
+							
+							@if($type == 'client')
+								<h1 class="h3 text-primary mb-0">{{ translate('Join with us to post a job today') }}</h1>
+							@endif
+							@if($type == 'freelancer')
+							
+								<h1 class="h3 text-primary mb-0">{{ translate('Join with us to find a Perfect Job') }}</h1>
+							@endif
+							
 							<p>{{ translate('Fill out the form to get started') }}.</p>
 						</div>
 						<form class="" id="reg-form" method="POST" action="{{ route('register') }}">
@@ -30,6 +38,13 @@
 								<label class="form-label" for="email">{{ translate('Email address') }}</label>
 								<input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="signinSrEmail" placeholder="{{ translate('Email address') }}"  required>
                                 @error('email')
+                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                @enderror
+							</div>
+							<div class="form-group">
+								<label class="form-label" for="email">{{ translate('Contact No') }}</label>
+								<input type="text" class="form-control @error('contact_no') is-invalid @enderror" name="contact_no" id="contact_no" placeholder="{{ translate('Contact No') }}"  required>
+                                @error('contact_no')
                                     <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                 @enderror
 							</div>

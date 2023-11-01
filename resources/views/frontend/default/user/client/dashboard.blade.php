@@ -66,7 +66,7 @@
 								</div>
 								<a href="{{ route('search') }}?type=freelancer" class="text-primary fs-14 fw-700 d-flex align-items-center mb-1">
 									<i class="la la-search fs-20 fw-900 mr-2" style="transform-origin: 0 50%; transform: rotate(-90deg) translate(-50%, 50%);"></i>
-									<span>{{ translate('Freelancers') }}</span>
+									<span>{{ translate('Tradesmen') }}</span>
 								</a>
             				</div>
             			</div>
