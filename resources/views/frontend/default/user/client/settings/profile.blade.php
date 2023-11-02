@@ -259,15 +259,15 @@
 
                                 <div class="js-form-message">
                                     <div class="form-group row">
-                                        <div class="col-md-6">
+                                        {{-- <div class="col-md-6">
                                             <label id="nameLabel" class="form-label">
                                                 {{ translate('Phone') }}
                                                 <span class="text-danger">*</span>
                                             </label>
                                             <input type="text" class="form-control" name="phone"
-                                                @if ($user_profile->user->address->phone != null) value="{{ $user_profile->user->address->phone }}" @endif
+                                                @if ($user_profile->user->address->phone != null) value="{{ $user_profile->user->address->phone }}" disabled @endif
                                                 placeholder="{{ translate('Enter your contact number') }}" required>
-                                        </div>
+                                        </div> --}}
                                         <div class="col-md-6">
                                             <label id="nameLabel" class="form-label">
                                                 {{ translate('Nationality') }}

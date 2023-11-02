@@ -45,6 +45,9 @@
     --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
         "Liberation Mono", "Courier New", monospace;
 }
+.bg_content{
+    background:#eef2f6;
+}
 .tagify {
     --tags-border-color: #e2e5ec;
     --tag-bg: #e2e5ec;
@@ -137,7 +140,8 @@ pre {
     transition: all 0.3s ease-in;
     -webkit-transition: all 0.3s ease-in;
     z-index: 1;
-    background-color: rgba(0, 0, 0, 0.6);
+    opacity:1;
+    background-color: #fff
 }
 .overlay.overlay-fixed {
     position: fixed;
@@ -2914,7 +2918,8 @@ fixed-bottom 1030*/
     }
 
     .container {
-        max-width: 1250px;
+        max-width: 1500px;
+        
     }
     .col-xxl {
         -ms-flex-preferred-size: 0;
@@ -7036,7 +7041,7 @@ svg {
 }
 .btn--lp {
     font-weight: normal;
-    font-size: 23px;
+    font-size: 20px;
     line-height: 1em;
     font-family: 'sofia_probold', "Trebuchet MS", "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", Verdana, "Verdana Ref", sans-serif;
     padding: 0.6em 1.25em 0.7em;
@@ -7060,9 +7065,10 @@ svg {
 
 
 
+
 .btn--lp1 {
     font-weight: normal;
-    font-size: 23px;
+    font-size: 20px;
     line-height: 1em;
     font-family: 'sofia_probold', "Trebuchet MS", "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", Verdana, "Verdana Ref", sans-serif;
     padding: 0.6em 1.25em 0.7em;
@@ -7087,7 +7093,7 @@ svg {
 .btn--lp2 {
 
     font-weight: normal;
-    font-size: 23px;
+    font-size: 20px;
     line-height: 1em;
     font-family: 'sofia_probold', "Trebuchet MS", "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", Verdana, "Verdana Ref", sans-serif;
     padding: 0.6em 1.25em 0.7em;
@@ -7109,7 +7115,7 @@ svg {
 
 .btn--hollow {
     font-weight: normal;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 1em;
     font-family: 'sofia_probold', "Trebuchet MS", "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", Verdana, "Verdana Ref", sans-serif;
     padding: 0.6em 1.25em 0.7em;

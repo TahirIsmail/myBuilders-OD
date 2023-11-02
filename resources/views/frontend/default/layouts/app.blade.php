@@ -71,7 +71,10 @@
     <link rel="stylesheet" href="{{ my_asset('assets/frontend/default/css/custom.css') }}">
     <link rel="stylesheet" href="{{ my_asset('assets/common/css/jssocials.css') }}">
     <link rel="stylesheet" href="{{ my_asset('assets/common/css/jssocials-theme-flat.css') }}">
-    
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"
+    />
     @if (get_setting('running_project_chat_activation_checkbox') == 1)
     <!-- firebase -->
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
@@ -121,6 +124,8 @@
             files: '{{ translate('Files') }}',
         }
 	</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+
     <style type="text/css">
         body{
             /* font-family: 'Montserrat', sans-serif; */

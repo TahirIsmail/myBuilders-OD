@@ -72,6 +72,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+       
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -80,7 +81,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        $address = new Address(['phone' =>  $data['contact_no']]);
+        $address = new Address(['phone' =>  $data['full_phone']]);
         $user->address()->save($address);
 
         $user_profile = new UserProfile;

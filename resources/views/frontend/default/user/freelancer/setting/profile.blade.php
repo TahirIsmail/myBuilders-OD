@@ -302,18 +302,18 @@
                                         aria-describedby="nameLabel">
                                 </div>
                                 <div class="form-group row">
-                                    <div class="col-md-6">
+                                    {{-- <div class="col-md-6">
                                         <label id="nameLabel" class="form-label">
                                             {{ translate('Contact') }}
                                             <span class="text-danger">*</span>
                                         </label>
                                         <input type="text" class="form-control" name="phone"
-                                            @if (optional($user_profile->user->address)->phone != null) value="{{ $user_profile->user->address->phone }}" @endif
+                                            @if (optional($user_profile->user->address)->phone != null) value="{{ $user_profile->user->address->phone }}" disabled @endif
                                             placeholder="{{ translate('Enter your contact number') }}"
                                             aria-label="Enter your contact number" required aria-describedby="nameLabel"
                                             data-msg="Enter your contact number." data-error-class="u-has-error"
                                             data-success-class="u-has-success">
-                                    </div>
+                                    </div> --}}
                                     <div class="col-md-6">
                                         <label id="nameLabel" class="form-label">
                                             {{ translate('Nationality') }}

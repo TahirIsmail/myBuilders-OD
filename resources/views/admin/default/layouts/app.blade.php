@@ -17,7 +17,10 @@
 	<!-- google font -->
     <!--  Font Awesome Stylesheet  -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700">
-
+    <link
+     rel="stylesheet"
+     href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"
+   />
 	<!-- aiz core css -->
 	<link rel="stylesheet" href="{{ my_asset('assets/common/css/vendors.css') }}">
 	<link rel="stylesheet" href="{{ my_asset('assets/common/css/aiz-core.css') }}">
@@ -49,7 +52,7 @@
             files: '{{ translate('Files') }}',
         }
 	</script>
-
+    
 </head>
 <body>
 

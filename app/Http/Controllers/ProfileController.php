@@ -97,7 +97,7 @@ class ProfileController extends Controller
                 $user_address->country_id = $request->country_id;
                 $user_address->city_id = $request->city_id;
                 $user_address->postal_code = $request->postal_code;
-                $user_address->phone = $request->phone;
+                // $user_address->phone = $request->phone;
                 if ($user->address()->save($user_address)) {
                     flash(translate('Your Info has been updated successfully'))->success();
                     return redirect()->route('user.profile');

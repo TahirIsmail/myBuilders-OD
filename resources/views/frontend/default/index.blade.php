@@ -1,6 +1,3 @@
-
-
-
 @extends('frontend.default.layouts.app')
 
 
@@ -93,8 +90,8 @@
     }
 
     .hp-how-it-works h1 {
-        font-size: 28px;
-        font-weight: bold;
+        font-size: 30px;
+        font-weight: bolder;
     }
 
     .hp-how-it-works__steps {
@@ -1095,35 +1092,35 @@
 
 
     .sign_backcover {
-    background-image: url("{{ asset('public/assets/frontend/default/img/how_its_work_mge/mobile_use.jpg') }}");
-    background-size: cover;
-    background-position: center;
-    width: 100%;
-    border-radius: 50%;
-    height: 50% !important;
- 
-  
-    
-  }
+        background-image: url("{{ asset('public/assets/frontend/default/img/how_its_work_mge/mobile_use.jpg') }}");
+        background-size: cover;
+        background-position: center;
+        width: 100%;
+        border-radius: 50%;
+        height: 50% !important;
 
 
-.respond_backcover{
-    background-image: url("{{ asset('public/assets/frontend/default/img/how_its_work_mge/feedback.jpg') }}");
-    background-size: cover;
-    background-position: center;
-    width: 100%;
-    border-radius: 50%;
 
-}
-.postjob_backcover
-{
-    background-image: url("{{ asset('public/assets/frontend/default/img/how_its_work_mge/laptop_use.jpg') }}");
-    background-size: cover;
-    background-position: center;
-    width: 100%;
-    border-radius: 50%;
-}
-    </style>
+    }
+
+
+    .respond_backcover {
+        background-image: url("{{ asset('public/assets/frontend/default/img/how_its_work_mge/feedback.jpg') }}");
+        background-size: cover;
+        background-position: center;
+        width: 100%;
+        border-radius: 50%;
+
+    }
+
+    .postjob_backcover {
+        background-image: url("{{ asset('public/assets/frontend/default/img/how_its_work_mge/laptop_use.jpg') }}");
+        background-size: cover;
+        background-position: center;
+        width: 100%;
+        border-radius: 50%;
+    }
+</style>
 
 
 
@@ -1190,7 +1187,7 @@
                         <div class="lp-header__content">
                             <a title="Post a job today and we'll alert the relevant tradespeople."
                                 href="{{ route('register') }}" class="btn--lp">Post a job</a>
-                            <a title="Start winning more work" href="{{ route('register') }}" class="btn--hollow">Trade sign
+                            <a title="Start winning more work" href="{{ route('register',['type' => '2']) }}" class="btn--hollow">Trade sign
                                 up</a>
                         </div>
                     </div>
@@ -1307,7 +1304,7 @@
 
                                     <div style="text-align: center;margin-bottom: 15px !important;">
                                         <a title="Post a job today and we'll alert the relevant tradespeople."
-                                        href="{{ route('register',['type'=>'2'])}}" class="btn--lp">Post a job</a>
+                                        href="{{ route('register',['type' => '2']) }}" class="btn--lp">Post a job</a>
                                     </div>
                                 </div>
                             </div>
@@ -1324,7 +1321,7 @@
 
                                     <div style="text-align: center;margin-bottom: 15px !important;">
                                         <a title="Post a job today and we'll alert the relevant tradespeople."
-                                            href="{{ route('register')}}" class="btn--lp1 ">Join Our Site</a>
+                                        href="{{ route('register',['type' => '2']) }}" class="btn--lp1 ">Join Our Site</a>
                                     </div>
                                 </div>
                             </div>
@@ -1366,15 +1363,17 @@
                                 <div class="px-xl-5 px-md-3 mb-4 text-center "
                                     style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
 
-                                    <div class="p-4">
+                                    <div class="p-4 text-center">
                                         <h2 style="color: green !important">Find the right tradespeople for your job!</h2>
-                                        <p>Builder’s valley understanding finding tradespeople you can trust is a challenge.
-                                        </p>
-                                        <p> Our site is an online platform for a variety of tradespeople. You can post your
-                                            job, tradespeople will respond, and then you can review each business and choose
-                                            the right one for you!
-                                        </p>
+                                        <p>Builder’s valley understands that finding tradespeople you can trust is a
+                                            challenge.</p>
+                                        <div class="col-md-7 mx-auto">
+                                            <p>Our site is an online platform for a variety of tradespeople. You can post
+                                                your job, tradespeople will respond, and then you can review each business
+                                                and choose the right one for you!</p>
+                                        </div>
                                     </div>
+
 
                                     <div style="text-align: center;margin-bottom: 15px !important;">
                                         <a title="Post a job today and we'll alert the relevant tradespeople."
@@ -1388,29 +1387,66 @@
                 </div>
 
 
+                <div class="col-md-12 bg_content">
 
 
+                    <div class="container bg_content" style="padding:0px">
+                        <div class="py-3 bg_content">
+                            <div class="w-xl-50 w-lg-75 mx-auto my-5 text-center">
+                                <h2 class="fw-700 fs-40">How it Works</h2>
 
-                <div class="container col-md-12">
-                    <div class="py-3 rounded-2 border-1  bg-hov-soft-primary">
-                        <div class="w-xl-50 w-lg-75 mx-auto my-5 text-center">
-                            <h2 class="fw-700 fs-40">How it Works</h2>
+                            </div>
+                            <div class="row justify-content-center">
 
-                        </div>
-                        <div class="row justify-content-center">
+                                <div class="col-xl-4 col-md-6">
+                                    <div class="col-md-12">
+                                        <div class="sign_backcover " style="height:350px !important ;">
 
-                            <div class="col-xl-4 col-md-6">
-                                <div class="col-md-12">
-                                    <div class="sign_backcover "  style="height:350px !important ;">
+                                        </div>
 
+                                        <div class="p-4" style="height:250px !important ;">
+                                            <h2><span style="color: green;">1</span> Sign up</h2>
+                                            <p>Joining as a homeowner/customer is a competitively priced way for you to
+                                                access skilled tradespeople across the country.
+                                            </p>
+                                            <p>Only approved members can post in our forums.
+                                            </p>
+                                        </div>
                                     </div>
 
-                                    <div class="p-4" style="height:250px !important ;">
-                                        <h2><span style="color: green;">1</span>  Sign up</h2>
-                                        <p>Joining as a homeowner/customer is a competitively priced way for you to access skilled tradespeople across the country.
-                                        </p>   
-                                        <p>Only approved members can post in our forums.
-                                        </p>
+
+                                </div>
+
+
+                                <div class="col-xl-4 col-md-6">
+                                    <div class="col-md-12">
+                                        <div class="postjob_backcover " style="height:350px !important  ;">
+
+                                        </div>
+
+                                        <div class="p-4" style="height:250px !important ;">
+                                            <h2><span style="color: green;">2</span> Post a job </h2>
+                                            <p>Once you’ve joined our site, you’ll be able to post the details for the
+                                                project you need to hire a tradesperson for remember to include your
+                                                location, photos and if you have one a budget.</p>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+
+                                <div class="col-xl-4 col-md-6">
+                                    <div class="col-md-12">
+                                        <div class="respond_backcover " style="height:350px !important  ;">
+
+                                        </div>
+
+                                        <div class="p-4" style="height:250px !important ;">
+                                            <h2><span style="color: green;">3</span> Respond to messages </h2>
+                                            <p>Companies that have joined our site will be able to see your job postings.
+                                                You can then contact them directly to arrange a quote.</p>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -1418,46 +1454,14 @@
                             </div>
 
 
-                            <div class="col-xl-4 col-md-6">
-                                <div class="col-md-12">
-                                    <div class="postjob_backcover "  style="height:350px !important  ;">
 
-                                    </div>
-
-                                    <div class="p-4" style="height:250px !important ;">
-                                        <h2><span style="color: green;">2</span>  Post a job </h2>
-                                        <p>Once you’ve joined our site, you’ll be able to post the details for the project you need to hire a tradesperson for remember to include your location, photos and if you have one a budget.</p>
-                                    </div>
-                                </div>
-
-
-                            </div>
-
-
-                            <div class="col-xl-4 col-md-6">
-                                <div class="col-md-12">
-                                    <div class="respond_backcover "  style="height:350px !important  ;">
-
-                                    </div>
-
-                                    <div class="p-4" style="height:250px !important ;">
-                                        <h2><span style="color: green;">3</span>  Respond to messages </h2>
-                                        <p>Companies that have joined our site will be able to see your job postings. You can then contact them directly to arrange a quote.</p>
-                                    </div>
-                                    </div>
-                                </div>
-
-
-                            </div>
-                           
-
-            
 
 
 
 
                         </div>
                     </div>
+                </div>
                 </div>
                 {{-- <div class="post_btn-box" style="background: #eef2f6 ">
                     <div class="col-md-12 Fanatical-content">
@@ -2322,9 +2326,9 @@
 
             <div class="container" style="background: white !important">
                 <div class="post_btn-box ">
-                    <div class="col-md-8 star-content">
+                    <div class="col-md-9 star-content">
                         <h1 class="sub-heading heading--x-large">Start your next home improvement project today</h1>
-                        <div style="margin-left:20px">
+                        <div class ="col-md-3" style="margin-left:20px">
                             <a rel="nofollow" title="Post a job today and we'll alert the relevant tradespeople."
                                 href="{{ route('register') }}" class="btn--lp">Post a job</a>
                         </div>
@@ -2357,7 +2361,8 @@
                             </div>
 
                             <!-- Slideshow -->
-                            <div class="carousel-inner">
+                            <div class="carousel-inner"
+                                style=" justify-content: center; align-items: center; height: 200px;">
 
                                 <!-- First item -->
                                 <div class="carousel-item active">
@@ -2577,6 +2582,13 @@
 
                         </div>
                     </div>
+
+
+
+
+
+
+
 
                 </div>
             </div>

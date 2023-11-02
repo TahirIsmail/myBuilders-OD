@@ -1,8 +1,7 @@
 <style>
-    
     .btn-post {
-        background-color: #4a90e2 !important;
-        color: white;
+        background-color: #FAF9F6 !important;
+        color: #545454;
         border: 2px solid white;
         transition: background-color 0.3s, color 0.3s;
         border-radius: 4px;
@@ -13,14 +12,15 @@
         margin-left: 10%;
         margin-right: 5px;
     }
-    
+
 
     .btn-post:hover {
         background-color: white !important;
         color: #4a90e2;
     }
-    #navbarSupportedContent > div.menu > nav > ul > li.nav-item.ml-xl-3 {
-        width:135px;
+
+    #navbarSupportedContent>div.menu>nav>ul>li.nav-item.ml-xl-3 {
+        width: 135px;
     }
 
     .aiz-header {
@@ -41,7 +41,7 @@
 
     .navbar {
         padding: 0px !important;
-        background-color: #4a90e2 !important;
+        background-color: #FAF9F6 !important;
 
     }
 
@@ -51,7 +51,7 @@
         text-decoration: none;
         display: block;
         border-top: 2px solid #f2f2f2;
-        color: #4990e2;
+        color:#545454;
         text-decoration: none;
     }
 
@@ -62,7 +62,8 @@
     }
 
     .nav-link.dropdown-toggle {
-        color: white !important;
+        background-color: ##FAF9F6 !important;
+        color: #092540;
         border: 0;
         font-weight: bold;
         padding: 0.8rem 1rem;
@@ -77,7 +78,7 @@
 
 
     .my-custom-button {
-        background-color: #4990e2 !important;
+
         color: white;
         padding: 10px 20px;
         border: none !important;
@@ -89,7 +90,7 @@
 
 
     .my-custom-button:hover {
-        background-color: #4279e8 !important;
+        color: #4279e8 !important;
 
     }
 
@@ -121,6 +122,11 @@
 
     }
 
+    .btn-primary {
+        background-color: #545454 !important;
+        border-color: #333333   !important;
+    }
+
     /* .search{
         margin-top: 4px;
     } */
@@ -149,11 +155,12 @@
 
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a href="{{route('home')}}">
-            <img src="https://www.mybuilder.com/assets/24c10e5/bundles/mybuilderapplication/images/mybuilder.svg"
-            alt="MyBuilder - A new way to find and hire tradespeople" width="150" height="50" style="margin-left:10%">
+        <a href="{{ route('home') }}">
+            <img src="{{ asset('public\assets\frontend\default\img\logo\builder_valley_logo.png') }}"
+                alt="MyBuilder - A new way to find and hire tradespeople" width="150" height="50"
+                style="margin-left:10%">
         </a>
-        
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -259,8 +266,7 @@
                         </li>
                         @if (!Auth::check())
                             <li class="nav-item ml-xl-3">
-                                <a class="btn-post" style="color: #f2f2f2;"
-                                    href="{{ route('login') }}">{{ translate('Log In') }}</a>
+                                <a class="btn-post" href="{{ route('login') }}">{{ translate('Log In') }}</a>
                             </li>
                             {{-- <li class="nav-item ml-xl-3">
                                 <a class="btn btn-primary rounded-1; width:100px"
@@ -276,7 +282,7 @@
                                 <a class="dropdown-toggle no-arrow position-relative p-2" data-toggle="dropdown"
                                     href="javascript:void(0);" role="button" aria-haspopup="false"
                                     aria-expanded="false">
-                                   
+
                                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="20"
                                         viewBox="0 0 18 20">
                                         <g id="Group_22092" data-name="Group 22092"

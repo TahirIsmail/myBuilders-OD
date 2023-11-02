@@ -5,7 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Pagination\Paginator;
-use  App\Services\TwilioService;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
