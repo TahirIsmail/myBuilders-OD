@@ -84,7 +84,8 @@
                                     </label>
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <div id="map" style="width: 100%; height: 400px;"></div>
+
+                                            <div id="map" style="width: 100%; height: 400px"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -166,40 +167,42 @@
     </section>
 @endsection
 @section('script')
-    <script type="text/javascript">
-        // Initialize and add the map
-        let map;
+    <script>
+        const map = new mapboxgl.Map({
+            container: 'map',
+            // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+            style: 'mapbox://styles/mapbox/streets-v12',
+            center: [-79.4512, 43.6568],
+            zoom: 13
+        });
+        
+        map.on('load', function() {
+            map.addControl(
+                new MapboxGeocoder({
+                    accessToken: mapboxgl.accessToken,
+                    mapboxgl: mapboxgl
+                })
+            );
+            
+            // Event listener for the "Add Marker" button
+            map.on('dblclick', function(e) {
+                initializeMap();
+                
+                var marker = new mapboxgl.Marker()
+                    .setLngLat(coordinates)
+                    .addTo(map);
+                marker.setDraggable(true);
+                
 
-        async function initMap() {
-            // The location of Uluru
-            const position = {
-                lat: 52.489471,
-                lng: -1.898575
-            };
-            // Request needed libraries.
-            //@ts-ignore
-            const {
-                Map
-            } = await google.maps.importLibrary("maps");
-            const {
-                AdvancedMarkerElement
-            } = await google.maps.importLibrary("marker");
+                // Display the coordinates in a popup when the marker is clicked
+                marker.setPopup(new mapboxgl.Popup().setHTML(
+                    'Latitude: ' + coordinates.lat + '<br>Longitude: ' + coordinates.lng
+                ));
 
-            // The map, centered at Uluru
-            map = new Map(document.getElementById("map"), {
-                zoom: 4,
-                center: position,
-                mapId: "DEMO_MAP_ID",
+                // Access the coordinates for other purposes, e.g., saving to a database
+                console.log('Marker Location:', coordinates);
+                
             });
-
-            // The marker, positioned at Uluru
-            const marker = new AdvancedMarkerElement({
-                map: map,
-                position: position,
-                title: "Uluru",
-            });
-        }
-
-        initMap();
+        });
     </script>
 @endsection

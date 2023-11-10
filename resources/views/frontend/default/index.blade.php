@@ -279,7 +279,7 @@
         transform-style: preserve-3d;
         overflow-x: hidden;
         overflow-y: visible;
-        background: #eef2f6";
+        background: " #eef2f6";
 
     }
 
@@ -391,7 +391,7 @@
 
     .hp-trades {
         background-color: #eef2f6;
-        padding: 50px;
+        /* padding: 50px; */
         text-align: center;
     }
 
@@ -417,7 +417,7 @@
     }
 
     .star-content {
-        height: 180px;
+        height: 100px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -475,11 +475,11 @@
     }
 
     .side-controls a[data-slide=prev] {
-        left: -4rem;
+        left: -3.1rem;
     }
 
     .side-controls a[data-slide=next] {
-        right: -4rem;
+        right: -3.1rem;
     }
 
 
@@ -914,7 +914,33 @@
 
         /* Change this height as needed */
         overflow: hidden;
+        height: 600px;
 
+    }
+
+    @media only screen and (min-width: 376px) and (max-width: 600px) {
+        .custom-slider {
+            height: 500px;
+        }
+    }
+
+    @media only screen and (min-width: 601px) and (max-width: 1024px) {
+        .custom-slider {
+            height: 700px;
+        }
+    }
+
+
+    @media only screen and (min-width: 1025px) and (max-width: 1440px) {
+        .custom-slider {
+            height: 800px;
+        }
+    }
+
+    @media only screen and (min-width: 1441px) {
+        .custom-slider {
+            height: 900px;
+        }
     }
 
     /* .custom-slide {
@@ -929,32 +955,53 @@
         transition: opacity 1s ease-in-out;
         width: 100%;
         height: 100%;
+        padding: 0px !important;
     }
 
     .custom-slide.active {
         opacity: 1;
     }
 
+    /* .custom-slide img {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            object-fit: cover;
+        
+        } */
+
     .custom-slide img {
         width: 100%;
         height: 100%;
-        background-size: 100% auto;
-        /* Set the width to 100% and auto for the height */
-        background-repeat: no-repeat;
-        /* Prevent the background image from repeating */
+        background-size: cover;
         background-position: center;
+
 
     }
 
     .custom-content {
         position: absolute;
         background: rgba(0, 0, 0, 0.5);
-        color: #fff;
-        padding: 10px;
+
+        z-index: 1;
         bottom: 0;
         left: 0;
         width: 100%;
         height: 100%;
+
+    }
+
+    .custom-content-inner {
+        position: absolute;
+        margin-bottom: 20px;
+        color: #fff;
+        z-index: 1;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+
         display: flex;
         flex-direction: column;
         /* Set the flex direction to column to stack the elements vertically */
@@ -962,18 +1009,16 @@
         align-items: center;
     }
 
-
-
     /* Media query for small screens (full width) */
     @media (max-width: 768px) {
-        .custom-content h1 {
+        .custom-content-inner h1 {
             width: 100%;
         }
     }
 
     /* Media query for medium and large screens (50% width) */
     @media (min-width: 769px) {
-        .custom-content h1 {
+        .custom-content-inner h1 {
             width: 50%;
         }
     }
@@ -983,7 +1028,7 @@
 
     /* Media query for small screens (full width) */
     @media (max-width: 768px) {
-        .custom-content h2 {
+        .custom-content-inner h2 {
             width: 100%;
 
         }
@@ -991,36 +1036,36 @@
 
     /* Media query for medium and large screens (50% width) */
     @media (min-width: 769px) {
-        .custom-content h2 {
+        .custom-content-inner h2 {
             width: 50%;
 
         }
     }
 
-    .custom-content h1 {
+    .custom-content-inner h1 {
         margin: 0;
         /* Remove any default margins on the h3 element */
         color: #ffffff;
         font-weight: bold;
         text-align: center;
         text-transform: uppercase;
-        letter-spacing: 2px;
+        /* letter-spacing: 2px; */
 
     }
 
-    .custom-content h2 {
+    .custom-content-inner h5 {
         margin: 0;
-        font-size: 1.3rem !important;
+
         color: #ffffff;
         font-weight: bold;
         text-align: center;
         text-transform: uppercase;
-        letter-spacing: 2px;
+        /* letter-spacing: 2px; */
 
     }
 
     .overlay {
-
+        height: 75px !important;
         opacity: 0.84 !important;
         fill: rgb(255, 255, 255) !important;
         position: absolute;
@@ -1031,7 +1076,6 @@
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
-        height: 30% !important;
         margin-top: auto;
         display: flex;
         justify-content: center;
@@ -1095,9 +1139,9 @@
         background-image: url("{{ asset('public/assets/frontend/default/img/how_its_work_mge/mobile_use.jpg') }}");
         background-size: cover;
         background-position: center;
-        width: 100%;
+        width: 150px !important;
         border-radius: 50%;
-        height: 50% !important;
+        height: 150px !important;
 
 
 
@@ -1108,7 +1152,8 @@
         background-image: url("{{ asset('public/assets/frontend/default/img/how_its_work_mge/feedback.jpg') }}");
         background-size: cover;
         background-position: center;
-        width: 100%;
+        width: 150px !important;
+        height: 150px;
         border-radius: 50%;
 
     }
@@ -1117,7 +1162,8 @@
         background-image: url("{{ asset('public/assets/frontend/default/img/how_its_work_mge/laptop_use.jpg') }}");
         background-size: cover;
         background-position: center;
-        width: 100%;
+        width: 150px;
+        height: 150px;
         border-radius: 50%;
     }
 </style>
@@ -1144,53 +1190,127 @@
 
 
     @if (get_setting('slider_section_show') == 'on')
-        <section class="position-relative " style="min-height: 550px;">
+        <section class="position-relative " >
+
 
 
             <div class="row">
-                <div class="custom-slider col-md-12" style="height: 1000px ;">
+                <div class="custom-slider col-md-12">
                     <div class="custom-slide">
                         <img src="{{ asset('public\assets\frontend\default\img\slider_img\global 2.jpg') }}" />
+
                         <div class="custom-content">
-                            <h1>We are Everywhere</h1>
-                            <h2>Builder’s Valley offers a complete solution if you're looking for a new project or searching
-                                for tradespeople</h2>
+                            <div class="custom-content-inner">
+
+                                <h1>We are Everywhere</h1>
+                                <h5>Builder’s Valley offers a complete solution if you're looking for a new project or
+                                    searching
+
+                                    <div class=" lp-header__content">
+                                        <a title="Post a job today and we'll alert the relevant tradespeople."
+                                            href="{{ route('register') }}" class="btn--lp">Post a job</a>
+                                        <a title="Start winning more work" href="{{ route('register') }}"
+                                            class="btn--hollow">Trade sign
+                                            up</a>
+
+                                        <a title="Start winning more work" href="{{ route('register') }}"
+                                            class="btn--hollow">
+                                            Trade Career</a>
+
+                                        <a title="Start winning more work" href="{{ route('register') }}"
+                                            class="btn--hollow">Employee Trade Worker</a>
+
+                                    </div>
+
+                            </div>
+
                         </div>
-
-
                     </div>
                     <div class="custom-slide">
                         <img src="{{ asset('public\assets\frontend\default\img\slider_img\slider2.jpg') }}" />
                         <div class="custom-content">
-                            <h1>We are all here.</h1>
-                            <h2>Now you don't need your neighbor's recommendations. We're providing the complete solution.
-                            </h2>
+                            <div class="custom-content-inner">
+                                <h1>We are all here.</h1>
+                                <h5>Now you don't need your neighbor's recommendations. We're providing the complete
+                                    solution.
+                                </h5>
+                                <div class="lp-header__content">
+                                    <a title="Post a job today and we'll alert the relevant tradespeople."
+                                        href="{{ route('register') }}" class="btn--lp">Post a job</a>
+                                    <a title="Start winning more work" href="{{ route('register') }}"
+                                        class="btn--hollow">Trade
+                                        sign
+                                        up</a>
+
+                                    <a title="Start winning more work" href="{{ route('register') }}" class="btn--hollow">
+                                        Trade Career</a>
+
+                                    <a title="Start winning more work" href="{{ route('register') }}"
+                                        class="btn--hollow">Employee Trade Worker</a>
+
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="custom-slide">
                         <img src="{{ asset('public\assets\frontend\default\img\slider_img\slider3.jpg') }}" />
                         <div class="custom-content">
-                            <h1>Join today and become a proud member of the Builder's Valley community.</h1>
-                            <h2>If you are recruiting people across the country , internationally
-                                or you are looking for a new career, join today.</h2>
+                            <div class="custom-content-inner">
+                                <h1>Join today and become a proud member of the Builder's Valley community.</h1>
+                                <h5>If you are recruiting people across the country , internationally
+                                    or you are looking for a new career, join today.</h5>
+
+                                <div class="lp-header__content">
+                                    <a title="Post a job today and we'll alert the relevant tradespeople."
+                                        href="{{ route('register') }}" class="btn--lp">Post a job</a>
+                                    <a title="Start winning more work" href="{{ route('register') }}"
+                                        class="btn--hollow">Trade
+                                        sign
+                                        up</a>
+
+                                    <a title="Start winning more work" href="{{ route('register') }}" class="btn--hollow">
+                                        Trade Career</a>
+
+                                    <a title="Start winning more work" href="{{ route('register') }}"
+                                        class="btn--hollow">Employee Trade Worker</a>
+
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="custom-slide">
                         <img src="{{ asset('public\assets\frontend\default\img\slider_img\slider4.jpg') }}" />
                         <div class="custom-content">
-                            <h1>Builder's Valley now makes it easier for you to find a local professional trade worker in
-                                your area</h1>
+                            <div class="custom-content-inner">
+                                <h1>Builder's Valley now makes it easier for you to find a local professional trade worker
+                                    in
+                                    your area</h1>
+                                <div class="lp-header__content">
+                                    <a title="Post a job today and we'll alert the relevant tradespeople."
+                                        href="{{ route('register') }}" class="btn--lp">Post a job</a>
+                                    <a title="Start winning more work" href="{{ route('register') }}"
+                                        class="btn--hollow">Trade
+                                        sign
+                                        up</a>
 
+                                    <a title="Start winning more work" href="{{ route('register') }}" class="btn--hollow">
+                                        Trade Career</a>
+
+                                    <a title="Start winning more work" href="{{ route('register') }}"
+                                        class="btn--hollow">Employee Trade Worker</a>
+
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="overlay">
+                    {{-- <div class="overlay">
                         <div class="lp-header__content">
                             <a title="Post a job today and we'll alert the relevant tradespeople."
                                 href="{{ route('register') }}" class="btn--lp">Post a job</a>
-                            <a title="Start winning more work" href="{{ route('register',['type' => '2']) }}" class="btn--hollow">Trade sign
+                            <a title="Start winning more work" href="{{ route('register') }}" class="btn--hollow">Trade sign
                                 up</a>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
 
@@ -1219,7 +1339,7 @@
             </div> --}}
         </section @endif
         @if (get_setting('client_logo_show') == 'on')
-            <section class="bg-white py-4">
+            <section class="bg-white py-4 ">
                 {{-- <div class ="container">
                     <div class="hire-exc-content ">
 
@@ -1294,34 +1414,34 @@
                         <div class="row justify-content-center">
                             <div class="col-xl-4 col-md-6 " style="margin-bottom: 10px;position: relative;">
                                 <div class="px-xl-5 px-md-3 mb-4 text-center rounded"
-                                    style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                                    style="height: 100%; display: flex; flex-direction: column;">
 
-                                    <div class="p-4">
+                                    <div class="p-4" style="height: 70%;">
                                         <h2>Post your job</h2>
                                         <p>Sign up to our online platform to start posting your home improvement projects
                                             and connect with trustworthy tradespeople.</p>
                                     </div>
 
-                                    <div style="text-align: center;margin-bottom: 15px !important;">
+                                    <div style="text-align: center;">
                                         <a title="Post a job today and we'll alert the relevant tradespeople."
-                                        href="{{ route('register',['type' => '2']) }}" class="btn--lp">Post a job</a>
+                                            href="http://localhost/mybuilder/register" class="btn--lp">Post a job</a>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-xl-4 col-md-6" style="margin-bottom: 10px;position: relative;">
                                 <div class="px-xl-5 px-md-3 mb-4 text-center rounded"
-                                    style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                                    style="height: 100%; display: flex; flex-direction: column;">
 
-                                    <div class="p-4">
+                                    <div class="p-4" style="height: 70%;">
                                         <h2>Trade sign up</h2>
                                         <p>Once your business is registered, you can choose from the many jobs available
                                             across the country.</p>
                                     </div>
 
-                                    <div style="text-align: center;margin-bottom: 15px !important;">
+                                    <div style="text-align: center;">
                                         <a title="Post a job today and we'll alert the relevant tradespeople."
-                                        href="{{ route('register',['type' => '2']) }}" class="btn--lp1 ">Join Our Site</a>
+                                            href="http://localhost/mybuilder/register" class="btn--lp1 ">Join Our Site</a>
                                     </div>
                                 </div>
                             </div>
@@ -1329,15 +1449,15 @@
 
                             <div class="col-xl-4 col-md-6" style="margin-bottom: 10px;position: relative;">
                                 <div class="px-xl-5 px-md-3 mb-4 text-center rounded"
-                                    style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                                    style="height: 100%; display: flex; flex-direction: column; ;">
 
-                                    <div class="p-4">
+                                    <div class="p-4" style="height: 70%;">
                                         <h2>Find Employment</h2>
                                         <p>Businesses across the country & internationally are searching for skilled people
                                             to join their team. Find your next role here.</p>
                                     </div>
 
-                                    <div style="text-align: center;margin-bottom: 15px !important;">
+                                    <div style="text-align: center;">
                                         <a title="Post a job today and we'll alert the relevant tradespeople."
                                             href="http://localhost/mybuilder/register" class="btn--lp2">Career
                                             Opportunities</a>
@@ -1349,6 +1469,262 @@
                         </div>
                     </div>
                 </div>
+
+
+
+
+
+
+
+
+
+                {{-- 
+ADVETISMENT SLIDER --}}
+
+
+                {{--                
+                <div class="bottom-slider col-md-12 ">
+                    <div class="container" style="  background-color: #eef2f6 !important;">
+
+
+                        <div class="col-md-12 mt-5">
+
+                            <!-- Multiple Slider -->
+                            <div id="adv-slider" class="carousel" data-ride="carousel" data-interval="5000">
+
+
+                                <!-- Slideshow -->
+                                <div class="carousel-inner"
+                                    style=" justify-content: center; align-items: center; height: 200px;">
+
+                                    <!-- First item -->
+                                    <div class="carousel-item active">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="review-card-body ">
+                                                    <div class="top-row">
+                                                        <h3 class="feedback-row-title">
+                                                            <a href="/profile/view/broderick_building_services">Broderick
+                                                                Building
+                                                                Services</a>
+                                                        </h3>
+
+                                                    </div>
+
+                                                    <div class="review_title">
+
+                                                        Received positive feedback
+
+                                                    </div>
+                                                    <div class="item_comment">
+                                                        <p class="feedback-item__body text-center">
+                                                            <span class="review_item_comment">Really great work thank you.
+                                                                Didn’t ask
+                                                                for all payment up front and paid as the work was
+                                                                completed</span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="review-item__posted ">
+                                                        <span>Received
+                                                            <span>2 hours 5 minutes ago</span></span>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Rest of the items -->
+                                    <div class="carousel-item ">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="review-card-body ">
+                                                    <div class="top-row">
+                                                        <h3 class="feedback-row-title">
+                                                            <a href="/profile/view/broderick_building_services">Broderick
+                                                                Building
+                                                                Services</a>
+                                                        </h3>
+
+                                                    </div>
+
+                                                    <div class="review_title">
+
+                                                        Received positive feedback
+
+                                                    </div>
+                                                    <div class="item_comment">
+                                                        <p class="feedback-item__body text-center">
+                                                            <span class="review_item_comment">Really great work thank you.
+                                                                Didn’t ask
+                                                                for all payment up front and paid as the work was
+                                                                completed</span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="review-item__posted ">
+                                                        <span>Received
+                                                            <span>2 hours 5 minutes ago</span></span>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="review-card-body ">
+                                                    <div class="top-row">
+                                                        <h3 class="feedback-row-title">
+                                                            <a href="/profile/view/broderick_building_services">Broderick
+
+                                                                Services</a>
+                                                        </h3>
+
+                                                    </div>
+
+                                                    <div class="review_title">
+
+                                                        Received positive feedback
+
+                                                    </div>
+                                                    <div class="item_comment">
+                                                        <p class="feedback-item__body text-center">
+                                                            <span class="review_item_comment">Really great work thank you.
+                                                                Didn’t ask
+                                                                for all payment up front and paid as the work was
+                                                                completed</span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="review-item__posted ">
+                                                        <span>Received
+                                                            <span>2 hours 5 minutes ago</span></span>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="review-card-body ">
+                                                    <div class="top-row">
+                                                        <h3 class="feedback-row-title">
+                                                            <a href="/profile/view/broderick_building_services">Broderick
+                                                                Building
+                                                            </a>
+                                                        </h3>
+
+                                                    </div>
+
+                                                    <div class="review_title">
+
+                                                        Received positive feedback
+
+                                                    </div>
+                                                    <div class="item_comment">
+                                                        <p class="feedback-item__body text-center">
+                                                            <span class="review_item_comment">Really great work thank you.
+                                                                Didn’t ask
+                                                                for all payment up front and paid as the work was
+                                                                completed</span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="review-item__posted ">
+                                                        <span>Received
+                                                            <span>2 hours 5 minutes ago</span></span>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="review-card-body ">
+                                                    <div class="top-row">
+                                                        <h3 class="feedback-row-title">
+                                                            <a href="/profile/view/broderick_building_services">Broderick
+                                                                Building
+                                                                Services</a>
+                                                        </h3>
+
+                                                    </div>
+
+                                                    <div class="review_title">
+
+                                                        Received feedback
+
+                                                    </div>
+                                                    <div class="item_comment">
+                                                        <p class="feedback-item__body text-center">
+                                                            <span class="review_item_comment">Really great work thank you.
+                                                                Didn’t ask
+                                                                for all payment up front and paid as the work was
+                                                                completed</span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="review-item__posted ">
+                                                        <span>Received
+                                                            <span>2 hours 5 minutes ago</span></span>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="review-card-body ">
+                                                    <div class="top-row">
+                                                        <h3 class="feedback-row-title">
+                                                            <a href="/profile/view/broderick_building_services">
+                                                                Building
+                                                                Services</a>
+                                                        </h3>
+
+                                                    </div>
+
+                                                    <div class="review_title">
+
+                                                        Received positive feedback
+
+                                                    </div>
+                                                    <div class="item_comment">
+                                                        <p class="feedback-item__body text-center">
+                                                            <span class="review_item_comment">Really great work thank you.
+                                                                Didn’t ask
+                                                                for all payment up front and paid as the work was
+                                                                completed</span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="review-item__posted ">
+                                                        <span>Received
+                                                            <span>2 hours 5 minutes ago</span></span>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div> --}}
+
+
+
+
+
+
+
 
 
 
@@ -1393,34 +1769,32 @@
                     <div class="container bg_content" style="padding:0px">
                         <div class="py-3 bg_content">
                             <div class="w-xl-50 w-lg-75 mx-auto my-5 text-center">
-                                <h2 class="fw-700 fs-40">How it Works</h2>
+                                <h2 class="fw-700 fs-30">How it Works</h2>
 
                             </div>
                             <div class="row justify-content-center">
-
                                 <div class="col-xl-4 col-md-6">
-                                    <div class="col-md-12">
-                                        <div class="sign_backcover " style="height:350px !important ;">
-
+                                    <div class="col-md-12"
+                                        style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                                        <div class="sign_backcover">
+                                            <!-- Content of sign_backcover -->
                                         </div>
 
-                                        <div class="p-4" style="height:250px !important ;">
+                                        <div class="p-4" style="height: 250px !important;">
                                             <h2><span style="color: green;">1</span> Sign up</h2>
                                             <p>Joining as a homeowner/customer is a competitively priced way for you to
-                                                access skilled tradespeople across the country.
-                                            </p>
-                                            <p>Only approved members can post in our forums.
-                                            </p>
+                                                access skilled tradespeople across the country.</p>
+                                            <p>Only approved members can post in our forums.</p>
                                         </div>
                                     </div>
-
-
                                 </div>
 
 
+
                                 <div class="col-xl-4 col-md-6">
-                                    <div class="col-md-12">
-                                        <div class="postjob_backcover " style="height:350px !important  ;">
+                                    <div class="col-md-12"
+                                        style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                                        <div class="postjob_backcover ">
 
                                         </div>
 
@@ -1437,12 +1811,13 @@
 
 
                                 <div class="col-xl-4 col-md-6">
-                                    <div class="col-md-12">
-                                        <div class="respond_backcover " style="height:350px !important  ;">
+                                    <div class="col-md-12"
+                                        style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                                        <div class="respond_backcover ">
 
                                         </div>
 
-                                        <div class="p-4" style="height:250px !important ;">
+                                        <div class="p-4">
                                             <h2><span style="color: green;">3</span> Respond to messages </h2>
                                             <p>Companies that have joined our site will be able to see your job postings.
                                                 You can then contact them directly to arrange a quote.</p>
@@ -2283,7 +2658,7 @@
                 <div class="container" style ="padding: 0px">
                     <div class="col-md-12 d-flex justify-content-center align-items-center" style="background: #eef2f6 ">
                         <section class="hp-trades">
-                            <h1 class="heading heading--x-large"> Our line directory is the perfect place to find </h1>
+                            <h2 class="fw-700 fs-30"> Our line directory is the perfect place to find </h2>
 
                             <div class="row-fluid">
                                 <div class="row">
@@ -2296,7 +2671,7 @@
                                         @endphp
 
                                         @for ($i = 0; $i < $columnsCount; $i++)
-                                            <div class="col-md-3">
+                                            <div class="col-md-3 data1">
                                                 <ul class="hp-trades__trade-list span6 unstyled">
                                                     @for ($j = 0; $j < $itemsPerColumn; $j++)
                                                         @if ($currentCategoryIndex < $categoriesCount)
@@ -2324,7 +2699,7 @@
             </div>
 
 
-            <div class="container" style="background: white !important">
+            {{-- <div class="container" style="background: white !important">
                 <div class="post_btn-box ">
                     <div class="col-md-9 star-content">
                         <h1 class="sub-heading heading--x-large">Start your next home improvement project today</h1>
@@ -2337,12 +2712,12 @@
 
 
                 </div>
-            </div>
+            </div> --}}
             {{-- /////bottomSLIDER// --}}
             <div class="bottom-slider col-md-12 ">
                 <div class="container" style="  background-color: #eef2f6 !important;">
-                    <div class="bottom-slider-heading col-md-4  col-lg-5 pt-2">
-                        <h1 class="heading heading--x-large">Our customers love&nbsp;us</h1>
+                    <div class="bottom-slider-heading col-md-4  col-lg-5 pt-2 text-center">
+                        <h2 class="fw-700 fs-30">Our customers love&nbsp;us</h2>
                     </div>
 
                     <div class="col-md-12 mt-5">
@@ -2353,10 +2728,10 @@
                             <!-- Controls -->
                             <div class="text-center mb-4 side-controls">
                                 <a href="#multi-slider" data-slide="prev">
-                                    <i class="fas fa-chevron-circle-left"></i>
+                                    <i class="fas fa-chevron-circle-left fa-sm"></i>
                                 </a>
                                 <a href="#multi-slider" data-slide="next">
-                                    <i class="fas fa-chevron-circle-right"></i>
+                                    <i class="fas fa-chevron-circle-right fa-sm"></i>
                                 </a>
                             </div>
 
@@ -2592,7 +2967,7 @@
 
                 </div>
             </div>
-            <div class=" col-md-12 " style="background: white">
+            {{-- <div class=" col-md-12 " style="background: white">
                 <div class="container">
 
                     <div class="bottom-box">
@@ -2608,7 +2983,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         @endif
         @if (get_setting('how_it_works_show') == 'on')
             <section class="bg-white py-4">
@@ -3100,22 +3475,8 @@
             }
         </script>
 
-        <script>
-            //Add two other images to the 3-image set of a carousel-item
-            $('#multi-slider .carousel-item').each(function() {
-                var next = $(this).next();
 
-                for (var i = 0; i < 2; i++) {
-                    if (!next.length) {
-                        next = $(this).siblings(':first');
-                    }
-                    next.children(':first').children(':first').clone().addClass('d-none d-md-block').appendTo($(this)
-                        .children(':first'));
 
-                    next = next.next();
-                }
-            });
-        </script>
 
 
         <script>
@@ -3165,13 +3526,35 @@
             });
         </script>
 
+        <script>
+            $(document).ready(function() {
+                $('#myCustomCarousel').carousel({
+                    interval: 3000 // Set the interval for auto-sliding in milliseconds
+                });
+            });
+        </script>
+        {{-- <script>
+            $(document).ready(function() {
+                // Add two other images to the 3-image set of a carousel-item
+                $('#adv-slider .carousel-item').each(function() {
+                    var next = $(this).next();
 
+                    for (var i = 0; i < 2; i++) {
+                        if (!next.length) {
+                            next = $(this).siblings(':first');
+                        }
+                        next.children(':first').children(':first').clone().addClass('d-none d-md-block')
+                            .appendTo($(this).children(':first'));
 
-
+                        next = next.next();
+                    }
+                });
+            });
+        </script> --}}
 
         <script>
-            // Add two other images to the 3-image set of a carousel-item
-            $('#custom-slider .carousel-item').each(function() {
+            //Add two other images to the 3-image set of a carousel-item
+            $('#multi-slider .carousel-item').each(function() {
                 var next = $(this).next();
 
                 for (var i = 0; i < 2; i++) {
@@ -3185,6 +3568,7 @@
                 }
             });
         </script>
+
         <script>
             (function($) {
                 $.fn.cascadeSlider = function(opt) {

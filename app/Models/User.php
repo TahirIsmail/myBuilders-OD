@@ -60,7 +60,6 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->forceFill([
             'verified' => true,
-            'email_verified_at' => date('Y-m-d H:m:s'),
         ])->save();
     }
 

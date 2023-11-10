@@ -41,13 +41,17 @@
     .index-card:hover {
         background-color: #005599;
     }
+  
 </style>
-<footer class="aiz-footer fs-13 mt-auto p-1 p-sm-2 p-lg-4" style="background: #343944">
+<footer class="aiz-footer " style="background: #343944">
     <div class="footer-content rounded-2" style="background: #343944">
         <div class="aiz-footer-widget"style="background:#343944">
             <div class="container"style="background:#343944 !important">
                 <div class="aiz-front-widget mb-5">
-                    <img src="{{ custom_asset(get_setting('footer_logo')) }}" height="40" class="mb-4">
+
+                    <img src="{{ asset('public\assets\frontend\default\img\logo\builder_valley_logo.png') }}"
+                    alt="MyBuilder - A new way to find and hire tradespeople"  height="40" class="mb-4">
+                 
                     <div class="fs-14 text-soft-info-light">
                         @php
                             echo get_setting('about_description_footer');
@@ -55,7 +59,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xl-3 col-sm-6">
+                    <div class="col-xl-3 col-sm-6 data1">
                         <div class="aiz-front-widget mb-5">
                             <h4 class="title">{{ get_setting('widget_one') }}</h4>
                             <ul class="menu ">
@@ -70,7 +74,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-sm-6">
+                    <div class="col-xl-3 col-sm-6 data1">
                         <div class="aiz-front-widget mb-5">
                             <h4 class="title">{{ get_setting('widget_two') }}</h4>
                             <ul class="menu">
@@ -85,7 +89,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-sm-6">
+                    <div class="col-xl-3 col-sm-6 data1">
                         <div class="aiz-front-widget mb-5">
                             <h4 class="title">{{ get_setting('widget_three') }}</h4>
                             <ul class="menu">
@@ -100,7 +104,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-sm-6">
+                    <div class="col-xl-3 col-sm-6 data1">
                         <div class="aiz-front-widget mb-5">
                             <h4 class="title">{{ get_setting('widget_four') }}</h4>
                             <ul class="menu">
@@ -120,11 +124,12 @@
 
 
 
-                    <section class=" " style=" background:#343944 !important">
+                    <section class=" all_trades" style=" background:#343944 !important">
                         <p class="title">ALL TRADES COVERED</p>
 
                         <div class="row-fluid">
                             <div class="row">
+                                
                                 @isset($categories)
                                     @php
                                         $categoriesCount = count($categories);
@@ -134,7 +139,7 @@
                                     @endphp
 
                                     @for ($i = 0; $i < $columnsCount; $i++)
-                                        <div class="col-md-3">
+                                        <div class="col-md-3 data  ">
                                             <ul class="hp-trades__trade-list span6 unstyled">
                                                 @for ($j = 0; $j < $itemsPerColumn; $j++)
                                                     @if ($currentCategoryIndex < $categoriesCount)
@@ -194,13 +199,13 @@
                                 @if (!empty(get_setting('facebook_link')))
                                     <li class="list-inline-item">
                                         <a href="{{ get_setting('facebook_link') }}" target="_blank"
-                                            class="facebook"><i class="lab la-facebook-f"></i></a>
+                                            class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                                     </li>
                                 @endif
                                 @if (!empty(get_setting('twitter_link')))
                                     <li class="list-inline-item">
                                         <a href="{{ get_setting('twitter_link') }}" target="_blank" class="twitter"><i
-                                                class="lab la-twitter"></i></a>
+                                                class="fa fa-twitter" aria-hidden="true"></i></a>
                                     </li>
                                 @endif
                                 @if (!empty(get_setting('instagram_link')))
@@ -257,7 +262,7 @@
             <div class="container">
                 <hr style="background: #666666; filter: drop-shadow(0px 10px 30px rgba(0, 0, 0, 0.08));">
             </div>
-            <div class="aiz-footer-copyright fs-12 pb-xl-4 pt-4 pb-7">
+            <div class="aiz-footer-copyright fs-12  pt-4 ">
                 <div class="container">
                     <div class="row align-items-center" style=" background: #343944 !important;">
 

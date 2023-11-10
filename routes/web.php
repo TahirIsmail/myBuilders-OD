@@ -143,7 +143,7 @@ Route::group(['middleware' => ['user', 'verified','phoneverified', 'packagePurch
 });
 
 // Client middleware
-Route::group(['middleware' => ['auth','verified', 'client', 'packagePurchased']], function(){
+Route::group(['middleware' => ['auth','verified','phoneverified', 'client', 'packagePurchased']], function(){
 	Route::resource('/projects', 'ProjectController');
 	Route::get('/my-open-projects', 'ProjectController@my_open_project')->name('projects.my_open_project');
 	Route::get('/project-bids/{slug}', 'ProjectController@project_bids')->name('project.bids');
@@ -179,7 +179,7 @@ Route::post('/service/package-purchase','ServiceController@purchase_service_pack
 
 
 // Freelancer middleware
-Route::group(['middleware' => ['auth', 'verified', 'freelancer', 'packagePurchased']], function(){
+Route::group(['middleware' => ['auth', 'verified','phoneverified', 'freelancer', 'packagePurchased']], function(){
     Route::post('/bids/store', 'BiddingController@store')->name('bids.store');
 
 

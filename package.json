@@ -37,7 +37,10 @@
         "@babel/preset-env": "^7.14.7",
         "@fortawesome/fontawesome-free": "5.*",
         "@inertiajs/inertia": "^0.11.1",
+        "@inertiajs/vue3": "^1.0.14",
+        "@mapbox/mapbox-gl-geocoder": "^5.0.1",
         "@popperjs/core": "^2.9.2",
+        "mapbox-gl": "^2.15.0",
         "vue-router": "^4.0.10",
         "vue-select": "^4.0.0-beta.6"
     },

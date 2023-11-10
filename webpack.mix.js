@@ -15,16 +15,21 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 
 
-mix.js("resources/js/app.js", "public/assets/frontend/default/js/app.js")
+mix.js("resources/js/app.js", "public/assets/common/js/app.js")
 .vue({ version: 3 })
-.sass("resources/sass/app.scss", "public/assets/frontend/default/css/app.css")
+.sass("resources/sass/app.scss", "public/assets/common/css/app.css")
    
 mix.webpackConfig({
+    resolve: {
+        alias: {
+            'mapbox-gl$': 'mapbox-gl/dist/mapbox-gl.js',
+        },
+    },
     plugins: [
         new BrowserSyncPlugin({
             host: 'localhost',
             port: 3000,  // You can change the port if needed
-            proxy: 'http://builderio.dev', // Your Laravel development server URL
+            proxy: 'http://builderio.test', // Your Laravel development server URL
             files: [
                 'app/**/*.php',
                 'resources/views/**/*.php',
