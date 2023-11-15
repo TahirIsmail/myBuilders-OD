@@ -41,6 +41,7 @@
         "@mapbox/mapbox-gl-geocoder": "^5.0.1",
         "@popperjs/core": "^2.9.2",
         "mapbox-gl": "^2.15.0",
+        "pinia": "^2.1.7",
         "vue-router": "^4.0.10",
         "vue-select": "^4.0.0-beta.6"
     },

@@ -18,4 +18,7 @@ class ProjectCategory extends Model
     {
         return $this->hasMany(Service::class, 'project_cat_id');
     }
+    public function questions(){
+        return $this->hasMany(Question::class, 'job_category_id');
+    }
 }

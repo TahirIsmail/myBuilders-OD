@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('job_category_id')->nullable();
-            $table->string('question');
-            $table->string('slug')->unique();
+            $table->mediumText('question');
+            $table->mediumText('slug');
             $table->timestamps();
             
             // Define the foreign key constraint

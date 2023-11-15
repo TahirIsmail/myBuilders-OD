@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('answers', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('question_id');
-            $table->string('answer');
-            $table->string('slug')->unique();
+            $table->mediumText('answer');
+            $table->mediumText('slug');
             $table->unsignedBigInteger('leads_to_question_id')->nullable();
             $table->timestamps();
 

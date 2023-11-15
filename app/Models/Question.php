@@ -11,4 +11,7 @@ class Question extends Model
     public function answers() {
         return $this->hasMany(Answer::class, 'question_id');
     }
+    public function job_category(){
+        return $this->belongsTo(ProjectCategory::class, 'job_category_id');
+    }
 }
