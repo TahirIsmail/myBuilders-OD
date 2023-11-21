@@ -5,7 +5,7 @@
     
         <div>
                 
-        <example :job_categories="{{ json_encode($projectCategories) }}"/>
+        <post-a-job />
 
         </div>
     

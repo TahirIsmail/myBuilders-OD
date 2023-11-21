@@ -18,6 +18,12 @@ class ProjectCategory extends Model
     {
         return $this->hasMany(Service::class, 'project_cat_id');
     }
+    
+    
+    public function firstquestion()
+    {
+        return $this->hasOne(Question::class,'job_category_id')->oldestOfMany();
+    }
     public function questions(){
         return $this->hasMany(Question::class, 'job_category_id');
     }

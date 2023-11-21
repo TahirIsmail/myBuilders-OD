@@ -1,60 +1,58 @@
 <template>
   <div class="question_div">
-      <p class="left-align">{{ question.question }}</p>
-      <div class="answer-outer">
-          <div
-              class="form-step"
-              v-for="answer in question.answers"
-              :key="answer.id"
-          >
-              <input
-                  type="radio"
-                  :value="answer"
-                  :id="`answer-${answer.id}`"
-                  v-model="selectedAnswers"
-              />
-              <label :for="`answer-${answer.id}`" v-html="answer.answer"></label>
-          </div>
+    <p class="left-align">{{ question.question }}</p>
+    <div class="answer-outer">
+      <div class="form-step" v-for="answer in question.answers" :key="answer.id">
+        <input type="radio" :value="answer" :id="`answer-${answer.id}`" v-model="selectedAnswer"
+          @change="onAnswerSelected(answer)" />
+
+        <label :for="`answer-${answer.id}`" v-html="answer.answer"></label>
+
       </div>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref, watch, defineEmits } from "vue";
+import { ref } from "vue";
 
-// Define the props the component accepts
 const props = defineProps({
   question: {
-      type: Object,
-      required: true,
+    type: Object,
+    required: true,
   },
 });
 
-// Define the emits the component can send
-const emit = defineEmits(["update:answers"]);
+const emit = defineEmits(["answer-selected"]);
 
-// A ref to hold the selected answers
-const selectedAnswers = ref(null);
+const selectedAnswer = ref(null);
 
-// Watch the selectedAnswers and emit an event when it changes
-watch(selectedAnswers, (newAnswers) => {
-  emit("update:answers", newAnswers);
-});
+const onAnswerSelected = (answer) => {
+  // Set the selected answer
+  selectedAnswer.value = answer;
+  // Emit the event with the selected answer, including the `leads_to_question_id`
+  emit("answer-selected", answer);
+};
 </script>
+
+
+
 <style scoped>
 @import "vue-select/dist/vue-select.css";
+
 .question_div {
   margin: 15px;
   background-color: #f9f9f9;
 }
-.answer-outer
-{
-background-color: white ;
-border: 2px solid rgb(223, 229, 237);   
-border-radius: 5px;;
-}
-.form-step {
 
+.answer-outer {
+  background-color: white;
+  border: 2px solid rgb(223, 229, 237);
+  border-radius: 5px;
+  ;
+}
+
+.form-step {
   background-color: white;
   transition: all 0.3s ease;
   border-top: 2px solid rgb(223, 229, 237);
@@ -64,8 +62,15 @@ border-radius: 5px;;
   font-size: medium;
   font-weight: bold;
   display: flex;
-  align-items: center; /* Vertically center the content */
-  justify-content: flex-start; /* Align content to the left */
+  align-items: flex-start;
+  justify-content: flex-start;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+.form-step label {
+  text-align: left;
+  flex-grow: 1;
 }
 
 .form-step input[type="radio"] {
@@ -80,9 +85,12 @@ border-radius: 5px;;
   margin-bottom: 0;
   /* Additional styling for label if needed */
 }
+
 .form-step input[type="radio"] {
-  margin-right: 10px; /* Space between radio button and label */
+  margin-right: 10px;
+  /* Space between radio button and label */
 }
+
 .left-align {
   text-align: left;
   display: flex;
