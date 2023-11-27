@@ -9,6 +9,7 @@ use App\Models\Project;
 use App\Models\ChatThread;
 use App\Models\UserProfile;
 use App\Models\ProjectCategory as Categories;
+use App\Models\ProjectCategory;
 use Carbon;
 use Illuminate\Support\Str;
 use Spatie\Permission\Models\Permission;
@@ -182,8 +183,12 @@ class HomeController extends Controller
         return redirect()->route('dashboard');
     }
     public function post_job(){
+        $data['projectCategories'] = ProjectCategory::with(['questions.answers'])->whereHas('questions', function ($query) {
+            $query->has('answers');
+        })->get();
         
-        return view('frontend.default.post_projects');
+        // Return or process $projectCategories as needed
+        return view('frontend.default.post_projects',$data);
     }
 
     function clearCache(Request $request)

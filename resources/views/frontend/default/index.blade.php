@@ -580,6 +580,7 @@
     }
 
     .carousel-item {
+        transition: transform 0.5s ease-in-out;
         position: relative;
         min-height: 100%;
     }
@@ -1166,6 +1167,361 @@
         height: 150px;
         border-radius: 50%;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .rbd-review-slider .rbd-preloader {
+        width: 36px;
+        height: 36px;
+        margin: 0 auto;
+    }
+
+    .rbd-review-slider .rbd-review.rbd-prev {
+        transform: translate3d(-100px, 0, -50px);
+        display: inline-block;
+    }
+
+    .rbd-review-slider .rbd-review.rbd-next {
+        transform: translate3d(100px, 0, -50px);
+        display: inline-block;
+    }
+
+    .rbd-review-slider .rbd-review.rbd-curr {
+        z-index: 10;
+        transform: translate3d(0, 0, 0) scale(1);
+        opacity: 1;
+        display: inline-block;
+    }
+
+    .rbd-review-slider .rbd-review {
+        padding: 20px 30px;
+        height: 300px font-size: 18px;
+        line-height: 1.612;
+        border-radius: 4px;
+        box-shadow: 0 10px 30px -8px rgba(0, 0, 0, .5);
+
+        display: none;
+        vertical-align: top;
+        transition: opacity .35s ease-out, transform .35s ease-out;
+        ;
+        opacity: 1;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        overflow: hidden;
+        opacity: 0;
+
+        background: #fff;
+        max-width: 600px;
+    }
+
+    .rbd-review-slider .rbd-review.rbd-first {
+        display: block;
+    }
+
+    .rbd-review-slider .rbd-heading {
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+
+    .rbd-review-slider svg {
+        fill: #ffbb58;
+        width: 24px;
+        margin-right: 1px;
+    }
+
+    .rbd-review-slider .rbd-review-meta {
+        font-size: 12px;
+        color: #565656;
+        margin-top: 12px;
+        text-align: center;
+    }
+
+    .rbd-review-slider .rbd-gravatar {
+        border-radius: 100%;
+        width: 100px;
+        float: left;
+        margin-right: 15px;
+        border: 6px solid transparent;
+        box-shadow: 0 3px 12px -2px rgba(0, 0, 0, .35);
+    }
+
+    .rbd-footing {
+        margin: 20px 0 0;
+        text-align: center;
+    }
+
+    @keyframes round {
+        25% {
+            opacity: 1;
+        }
+
+        40% {
+            opacity: 0;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /* Slider */
+
+    .slick-slider {
+        position: relative;
+        display: block;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -ms-touch-action: none;
+        touch-action: none;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    .slick-list {
+        position: relative;
+        overflow: hidden;
+        display: block;
+        margin: 0;
+        padding: 0;
+
+        &:focus {
+            outline: none;
+        }
+
+        .slick-loading & {
+            background: white url(./ajax-loader.gif) center center no-repeat;
+        }
+
+        &.dragging {
+            cursor: pointer;
+            cursor: hand;
+        }
+    }
+
+    .slick-slider .slick-list,
+    .slick-track,
+    .slick-slide,
+    .slick-slide img {
+        -webkit-transform: translate3d(0, 0, 0);
+        -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+        -o-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+
+    .slick-track {
+        position: relative;
+        left: 0;
+        top: 0;
+        display: block;
+        zoom: 1;
+
+        &:before,
+        &:after {
+            content: "";
+            display: table;
+        }
+
+        &:after {
+            clear: both;
+        }
+
+        .slick-loading & {
+            visibility: hidden;
+        }
+    }
+
+    .slick-slide {
+        float: left;
+        height: 100%;
+        min-height: 1px;
+
+        img {
+            display: block;
+
+            &.slick-loading {
+                background: white url(./ajax-loader.gif) center center no-repeat;
+                padding-bottom: 100%;
+            }
+        }
+
+        display: none;
+
+        &.dragging img {
+            pointer-events: none;
+        }
+
+        .slick-initialized & {
+            display: block;
+        }
+
+        .slick-loading & {
+            visibility: hidden;
+        }
+
+        .slick-vertical & {
+            display: block;
+            height: auto;
+            border: 1px solid transparent;
+        }
+    }
+
+
+    /* Arrows */
+
+    .slick-prev,
+    .slick-next {
+        position: absolute;
+        display: block;
+        height: 20px;
+        width: 20px;
+        line-height: 0;
+        font-size: 0;
+        cursor: pointer;
+        background: transparent;
+        color: transparent;
+        top: 50%;
+        margin-top: -10px;
+        padding: 0;
+        border: none;
+        outline: none;
+
+        &:focus {
+            outline: none;
+        }
+
+        &.slick-disabled:before {
+            opacity: 0.25;
+        }
+    }
+
+    .slick-prev:before,
+    .slick-next:before {
+        font-family: "slick";
+        font-size: 20px;
+        line-height: 1;
+        color: white;
+        opacity: 0.85;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    .slick-prev {
+        left: -25px;
+
+        &:before {
+            content: '\2190';
+        }
+    }
+
+    .slick-next {
+        right: -25px;
+
+        &:before {
+            content: '\2192';
+        }
+    }
+
+    /* Dots */
+
+    .slick-slider {
+        margin-bottom: 30px;
+    }
+
+    .container {
+        width: 80%;
+        margin: auto;
+    }
+
+    .blue,
+    html {
+        background: #3498db;
+        color: #fff;
+    }
+
+    /* .review-card {
+       
+        margin: 0 2rem;
+    } */
+
+
+
+
+
+
+    .slick-prev,
+    .slick-next {
+        display: none !important;
+        /* Force hiding the arrows */
+    }
+
+
+
+
+    
 </style>
 
 
@@ -1188,2209 +1544,957 @@
 
 @section('content')
 
+    <section class="position-relative ">
 
-    @if (get_setting('slider_section_show') == 'on')
-        <section class="position-relative " >
+        <div class="row">
+            <div class="custom-slider col-md-12">
+                <div class="custom-slide">
+                    <img src="{{ asset('public\assets\frontend\default\img\slider_img\global 2.jpg') }}" />
+
+                    <div class="custom-content">
+                        <div class="custom-content-inner">
+
+                            <h1>We are Everywhere</h1>
+                            <h5>Builder’s Valley offers a complete solution if you're looking for a new project or
+                                searching
+
+                                <div class=" lp-header__content">
+                                    <a title="Post a job today and we'll alert the relevant tradespeople."
+                                        href="{{ route('register') }}" class="btn--lp">Post a job</a>
+                                    <a title="Start winning more work" href="{{ route('register') }}"
+                                        class="btn--hollow">Trade sign
+                                        up</a>
+
+                                    <a title="Start winning more work" href="{{ route('register') }}" class="btn--hollow">
+                                        Trade Career</a>
+
+                                    <a title="Start winning more work" href="{{ route('register') }}"
+                                        class="btn--hollow">Employee Trade Worker</a>
+
+                                </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="custom-slide">
+                    <img src="{{ asset('public\assets\frontend\default\img\slider_img\slider2.jpg') }}" />
+                    <div class="custom-content">
+                        <div class="custom-content-inner">
+                            <h1>We are all here.</h1>
+                            <h5>Now you don't need your neighbor's recommendations. We're providing the complete
+                                solution.
+                            </h5>
+                            <div class="lp-header__content">
+                                <a title="Post a job today and we'll alert the relevant tradespeople."
+                                    href="{{ route('register') }}" class="btn--lp">Post a job</a>
+                                <a title="Start winning more work" href="{{ route('register') }}" class="btn--hollow">Trade
+                                    sign
+                                    up</a>
+
+                                <a title="Start winning more work" href="{{ route('register') }}" class="btn--hollow">
+                                    Trade Career</a>
+
+                                <a title="Start winning more work" href="{{ route('register') }}"
+                                    class="btn--hollow">Employee Trade Worker</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="custom-slide">
+                    <img src="{{ asset('public\assets\frontend\default\img\slider_img\slider3.jpg') }}" />
+                    <div class="custom-content">
+                        <div class="custom-content-inner">
+                            <h1>Join today and become a proud member of the Builder's Valley community.</h1>
+                            <h5>If you are recruiting people across the country , internationally
+                                or you are looking for a new career, join today.</h5>
+
+                            <div class="lp-header__content">
+                                <a title="Post a job today and we'll alert the relevant tradespeople."
+                                    href="{{ route('register') }}" class="btn--lp">Post a job</a>
+                                <a title="Start winning more work" href="{{ route('register') }}" class="btn--hollow">Trade
+                                    sign
+                                    up</a>
+
+                                <a title="Start winning more work" href="{{ route('register') }}" class="btn--hollow">
+                                    Trade Career</a>
+
+                                <a title="Start winning more work" href="{{ route('register') }}"
+                                    class="btn--hollow">Employee Trade Worker</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="custom-slide">
+                    <img src="{{ asset('public\assets\frontend\default\img\slider_img\slider4.jpg') }}" />
+                    <div class="custom-content">
+                        <div class="custom-content-inner">
+                            <h1>Builder's Valley now makes it easier for you to find a local professional trade worker
+                                in
+                                your area</h1>
+                            <div class="lp-header__content">
+                                <a title="Post a job today and we'll alert the relevant tradespeople."
+                                    href="{{ route('register') }}" class="btn--lp">Post a job</a>
+                                <a title="Start winning more work" href="{{ route('register') }}" class="btn--hollow">Trade
+                                    sign
+                                    up</a>
+
+                                <a title="Start winning more work" href="{{ route('register') }}" class="btn--hollow">
+                                    Trade Career</a>
+
+                                <a title="Start winning more work" href="{{ route('register') }}"
+                                    class="btn--hollow">Employee Trade Worker</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container" style="height: 300px ; padding-top:30px">
+            <div class="rbd-core-ui">
+                <div class="rbd-review-slider">
+                    <div class="rbd-review-container">
+                        <div class="rbd-review review1.1 rbd-curr">
+                            <h3 class="rbd-heading">Extremely Professional</h3>
+                            <i class="renderSVG" data-icon="star" data-repeat="5"></i>
+                            <div class="rbd-content"><img class="rbd-gravatar"
+                                    src="https://en.gravatar.com/userimage/26363586/56972d52aba494b6f068d289c6d3d63d.jpg">Materials
+                                are top notch. People are top notch... they knew exactly how to handle my ignorance
+                                and turn it to a positive working business…</div>
+                            <div class="rbd-footing">
+                                <a class="rbd-button rbd-small" href="#">Read More</a>
+                            </div>
+                            <div class="rbd-review-meta">Written by Mark P. on Feb. 18, 2018</div>
+                        </div>
+                        <div class="rbd-review review1.2 rbd-next">
+                            <h3 class="rbd-heading">Test Company Marketing Delivers Such Great Service!</h3>
+                            <i class="renderSVG" data-icon="star" data-repeat="5"></i>
+                            <div class="rbd-content"><img class="rbd-gravatar"
+                                    src="https://www.gravatar.com/avatar/ee304528491d860812f73d7d5cd0dc72?s=256">I'm
+                                a big fan of this test company. They really do the best work around, and their
+                                prices just can't be beat! I hear that Alex is a pretty cool guy…</div>
+                            <div class="rbd-footing">
+                                <a class="rbd-button rbd-small" href="#">Read More</a>
+                            </div>
+                            <div class="rbd-review-meta">Written by Alex D. on Feb. 19, 2018</div>
+                        </div>
+                        <div class="rbd-review review1.3">
+                            <h3 class="rbd-heading">Test Review </h3>
+                            <i class="renderSVG" data-icon="star" data-repeat="5"></i>
+                            <div class="rbd-content">No Gravatar but here's a review…No Gravatar but here's a
+                                review…No Gravatar but here's a review…No Gravatar but here's a review…</div>
+                            <div class="rbd-footing">
+                                <a class="rbd-button rbd-small" href="#">Read More</a>
+                            </div>
+                            <div class="rbd-review-meta">Written by Anonymous. on Feb. 18, 2018</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
 
 
 
+
+    </section>
+
+    <section>
+
+
+
+
+        <div class="container" style="height: auto ;">
+            <div class="py-3">
+
+                <div class="row justify-content-center">
+                    <div class="col-xl-4 col-md-6 " style="margin-bottom: 10px;position: relative;">
+                        <div class="px-xl-5 px-md-3 mb-4 text-center rounded"
+                            style="height: 100%; display: flex; flex-direction: column;">
+
+                            <div class="p-4" style="height: 70%;">
+                                <h2>Post your job</h2>
+                                <p>
+                                    Sign up to our online platform to start posting your home improvement projects and connect with trustworthy tradespeople.
+                                </p>
+                                
+                            </div>
+
+                            <div style="text-align: center;">
+                                <a title="Post a job today and we'll alert the relevant tradespeople."
+                                    href="http://localhost/mybuilder/register" class="btn--lp">Post a job</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-md-6" style="margin-bottom: 10px;position: relative;">
+                        <div class="px-xl-5 px-md-3 mb-4 text-center rounded"
+                            style="height: 100%; display: flex; flex-direction: column;">
+
+                            <div class="p-4" style="height: 70%;">
+                                <h2>Trade sign up</h2>
+                                <p>Once your business is registered, you can choose from the many jobs available
+                                    across the country.</p>
+                            </div>
+
+                            <div style="text-align: center;">
+                                <a title="Post a job today and we'll alert the relevant tradespeople."
+                                    href="http://localhost/mybuilder/register" class="btn--lp1 ">Join Our Site</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-xl-4 col-md-6" style="margin-bottom: 10px;position: relative;">
+                        <div class="px-xl-5 px-md-3 mb-4 text-center rounded"
+                            style="height: 100%; display: flex; flex-direction: column; ;">
+
+                            <div class="p-4" style="height: 70%;">
+                                <h2>Find Employment</h2>
+                                <p>Businesses across the country & internationally are searching for skilled people
+                                    to join their team. Find your next role here.</p>
+                            </div>
+
+                            <div style="text-align: center;">
+                                <a title="Post a job today and we'll alert the relevant tradespeople."
+                                    href="http://localhost/mybuilder/register" class="btn--lp2">Career
+                                    Opportunities</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="container" style="height: auto ; ">
+            <div class="py-3">
+
+                <div class="row justify-content-center">
+                    <div class="col-xl-12 col-md-6 " style="margin-bottom: 10px;position: relative;">
+                        <div class="px-xl-5 px-md-3 mb-4 text-center "
+                            style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+
+                            <div class="p-4 text-center">
+                                <h2 style="color: green !important">Find the right tradespeople for your job!</h2>
+                                <p>Builder’s valley understands that finding tradespeople you can trust is a
+                                    challenge.</p>
+                                <div class="col-md-7 mx-auto">
+                                    <p>Our site is an online platform for a variety of tradespeople. You can post
+                                        your job, tradespeople will respond, and then you can review each business
+                                        and choose the right one for you!</p>
+                                </div>
+                            </div>
+
+
+                            <div style="text-align: center;margin-bottom: 15px !important;">
+                                <a title="Post a job today and we'll alert the relevant tradespeople."
+                                    href="http://localhost/mybuilder/register" class="btn--hollow">CONTACT US </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-12 bg_content">
+
+
+            <div class="container bg_content" style="padding:0px">
+                <div class="py-3 bg_content">
+                    <div class="w-xl-50 w-lg-75 mx-auto my-5 text-center">
+                        <h2 class="fw-700 fs-30">How it Works</h2>
+
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-xl-4 col-md-6">
+                            <div class="col-md-12"
+                                style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                                <div class="sign_backcover">
+
+                                </div>
+
+                                <div class="p-4" style="height: 250px !important;">
+                                    <h2><span style="color: green;">1</span> Sign up</h2>
+                                    <p>Joining as a homeowner/customer is a competitively priced way for you to
+                                        access skilled tradespeople across the country.</p>
+                                    <p>Only approved members can post in our forums.</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-xl-4 col-md-6">
+                            <div class="col-md-12"
+                                style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                                <div class="postjob_backcover ">
+
+                                </div>
+
+                                <div class="p-4" style="height:250px !important ;">
+                                    <h2><span style="color: green;">2</span> Post a job </h2>
+                                    <p>Once you’ve joined our site, you’ll be able to post the details for the
+                                        project you need to hire a tradesperson for remember to include your
+                                        location, photos and if you have one a budget.</p>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="col-xl-4 col-md-6">
+                            <div class="col-md-12"
+                                style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                                <div class="respond_backcover ">
+
+                                </div>
+
+                                <div class="p-4">
+                                    <h2><span style="color: green;">3</span> Respond to messages </h2>
+                                    <p>Companies that have joined our site will be able to see your job postings.
+                                        You can then contact them directly to arrange a quote.</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </section>
+
+
+    <div class="col-md-12" style="background:#eef2f6">
+        <div class="container" style ="padding: 0px">
+            <div class="col-md-12 d-flex justify-content-center align-items-center" style="background: #eef2f6 ">
+                <section class="hp-trades">
+                    <h2 class="fw-700 fs-30"> Our line directory is the perfect place to find </h2>
+
+                    <div class="row-fluid">
+                        <div class="row">
+                            @isset($categories)
+                                @php
+                                    $categoriesCount = count($categories);
+                                    $columnsCount = 4;
+                                    $itemsPerColumn = ceil($categoriesCount / $columnsCount);
+                                    $currentCategoryIndex = 0;
+                                @endphp
+
+                                @for ($i = 0; $i < $columnsCount; $i++)
+                                    <div class="col-md-3 data1">
+                                        <ul class="hp-trades__trade-list span6 unstyled">
+                                            @for ($j = 0; $j < $itemsPerColumn; $j++)
+                                                @if ($currentCategoryIndex < $categoriesCount)
+                                                    @php
+                                                        $category = $categories[$currentCategoryIndex];
+                                                        $currentCategoryIndex++;
+                                                    @endphp
+                                                    <li class="hp-trades__trade">
+                                                        <a title="Find the right architectural designer for your project in UK."
+                                                            @php $cat_url = route('services.category',['category_slug' => $category->slug]) @endphp
+                                                            href="{{ $cat_url }}"> {{ $category->name }}</a>
+                                                    </li>
+                                                @endif
+                                            @endfor
+                                        </ul>
+                                    </div>
+                                @endfor
+                            @endisset
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <section style="  background-color: #eef2f6">
+        <div class="container" style="  background-color: #eef2f6 !important;margin-bottom:-30px !important">
+            <div class="bottom-slider-heading col-md-4  col-lg-5 pt-2 text-center">
+                <h2 class="fw-700 fs-30">Our customers love&nbsp;us</h2>
+            </div>
+            <div class=" col-md-12 slider review-slider">
+
+
+                <div class="col-sm-12  col-md-4 review-card">
+                    <div class="review-card-body ">
+                        <div class="top-row">
+                            <h3 class="feedback-row-title">
+                                <a href="/profile/view/broderick_building_services">Broderick
+                                    Building
+                                    Services</a>
+                            </h3>
+
+                        </div>
+
+                        <div class="review_title">
+
+                            Received positive feedback
+
+                        </div>
+                        <div class="item_comment">
+                            <p class="feedback-item__body text-center">
+                                <span class="review_item_comment">Really great work thank you.
+                                    Didn’t ask
+                                    for all payment up front and paid as the work was
+                                    completed</span>
+                            </p>
+                        </div>
+                        <div class="review-item__posted ">
+                            <span>Received
+                                <span>2 hours 5 minutes ago</span></span>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-12  col-md-4 review-card">
+                    <div class="review-card-body ">
+                        <div class="top-row">
+                            <h3 class="feedback-row-title">
+                                <a href="/profile/view/broderick_building_services">Broderick
+                                    Building
+                                    Services</a>
+                            </h3>
+
+                        </div>
+
+                        <div class="review_title">
+
+                            Received positive feedback
+
+                        </div>
+                        <div class="item_comment">
+                            <p class="feedback-item__body text-center">
+                                <span class="review_item_comment">Really great work thank you.
+                                    Didn’t ask
+                                    for all payment up front and paid as the work was
+                                    completed</span>
+                            </p>
+                        </div>
+                        <div class="review-item__posted ">
+                            <span>Received
+                                <span>2 hours 5 minutes ago</span></span>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-12  col-md-4 review-card">
+                    <div class="review-card-body ">
+                        <div class="top-row">
+                            <h3 class="feedback-row-title">
+                                <a href="/profile/view/broderick_building_services">Broderick
+                                    Building
+                                    Services</a>
+                            </h3>
+
+                        </div>
+
+                        <div class="review_title">
+
+                            Received positive feedback
+
+                        </div>
+                        <div class="item_comment">
+                            <p class="feedback-item__body text-center">
+                                <span class="review_item_comment">Really great work thank you.
+                                    Didn’t ask
+                                    for all payment up front and paid as the work was
+                                    completed</span>
+                            </p>
+                        </div>
+                        <div class="review-item__posted ">
+                            <span>Received
+                                <span>2 hours 5 minutes ago</span></span>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-12  col-md-4 review-card">
+                    <div class="review-card-body ">
+                        <div class="top-row">
+                            <h3 class="feedback-row-title">
+                                <a href="/profile/view/broderick_building_services">Broderick
+                                    Building
+                                    Services</a>
+                            </h3>
+
+                        </div>
+
+                        <div class="review_title">
+
+                            Received positive feedback
+
+                        </div>
+                        <div class="item_comment">
+                            <p class="feedback-item__body text-center">
+                                <span class="review_item_comment">Really great work thank you.
+                                    Didn’t ask
+                                    for all payment up front and paid as the work was
+                                    completed</span>
+                            </p>
+                        </div>
+                        <div class="review-item__posted ">
+                            <span>Received
+                                <span>2 hours 5 minutes ago</span></span>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-12  col-md-4 review-card">
+                    <div class="review-card-body ">
+                        <div class="top-row">
+                            <h3 class="feedback-row-title">
+                                <a href="/profile/view/broderick_building_services">Broderick
+                                    Building
+                                    Services</a>
+                            </h3>
+
+                        </div>
+
+                        <div class="review_title">
+
+                            Received positive feedback
+
+                        </div>
+                        <div class="item_comment">
+                            <p class="feedback-item__body text-center">
+                                <span class="review_item_comment">Really great work thank you.
+                                    Didn’t ask
+                                    for all payment up front and paid as the work was
+                                    completed</span>
+                            </p>
+                        </div>
+                        <div class="review-item__posted ">
+                            <span>Received
+                                <span>2 hours 5 minutes ago</span></span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <section   style="  bbackground-color: #eef2f6">
+        <div class="container">
+            <div class="py-3 rounded-2 border-1 border-primary bg-hov-soft-primary">
+                <div class="w-xl-50 w-lg-75 mx-auto my-5 text-center">
+                    <h2 class="fw-700 fs-40">{{ get_setting('how_it_works_title') }}</h2>
+                    <p class="fs-17 text-secondary">{{ get_setting('how_it_works_subtitle') }}</p>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-xl-4 col-md-6">
+                        <div class="px-xl-5 px-md-3 mb-4 text-center">
+                            <img src="{{ get_setting('how_it_works_banner_1') ? custom_asset(get_setting('how_it_works_banner_1')) : my_asset('assets/placeholder.jpg') }}"
+                                class="img-fluid mx-auto">
+                            <div class="p-4">
+                                @php
+                                    echo get_setting('how_it_works_description_1');
+                                @endphp
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6">
+                        <div class="px-xl-5 px-md-3 mb-4 text-center">
+                            <img src="{{ get_setting('how_it_works_banner_2') ? custom_asset(get_setting('how_it_works_banner_2')) : my_asset('assets/placeholder.jpg') }}"
+                                class="img-fluid mx-auto">
+                            <div class="p-4">
+                                @php
+                                    echo get_setting('how_it_works_description_2');
+                                @endphp
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6">
+                        <div class="px-xl-5 px-md-3 mb-4 text-center">
+                            <img src="{{ get_setting('how_it_works_banner_3') ? custom_asset(get_setting('how_it_works_banner_3')) : my_asset('assets/placeholder.jpg') }}"
+                                class="img-fluid mx-auto">
+                            <div class="p-4">
+                                @php
+                                    echo get_setting('how_it_works_description_3');
+                                @endphp
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-white py-7">
+        <div class="container">
+            <div class="w-lg-75 w-xl-50 lh-1-8 mx-auto mb-5 text-center">
+                <h2 class="fw-700 fs-40">{{ get_setting('latest_project_title') }}</h2>
+                <p class="fs-17 text-secondary">{{ get_setting('latest_project_subtitle') }}</p>
+            </div>
             <div class="row">
-                <div class="custom-slider col-md-12">
-                    <div class="custom-slide">
-                        <img src="{{ asset('public\assets\frontend\default\img\slider_img\global 2.jpg') }}" />
+                <div class="col-xl-10 mx-auto">
+                    @if (\App\Models\SystemConfiguration::where('type', 'project_approval')->first()->value == 1)
+                        @php
+                            $projects = \App\Models\Project::biddable()
+                                ->notcancel()
+                                ->open()
+                                ->where('project_approval', 1)
+                                ->latest()
+                                ->get()
+                                ->take(3);
+                        @endphp
+                    @else
+                        @php
+                            $projects = \App\Models\Project::biddable()
+                                ->notcancel()
+                                ->open()
+                                ->latest()
+                                ->get()
+                                ->take(3);
+                        @endphp
+                    @endif
+                    @foreach ($projects as $key => $project)
+                        <a href="{{ route('project.details', $project->slug) }}"
+                            class="d-block card-project-rounded card mb-3 text-inherit">
+                            <div class="row">
 
-                        <div class="custom-content">
-                            <div class="custom-content-inner">
+                                <div class="col-8">
+                                    <h5 class="h6 fw-600 lh-1-5">
+                                        {{ $project->name }}
+                                    </h5>
+                                    <ul class="list-inline fs-12 mb-0 opacity-70">
+                                        <li class="list-inline-item mr-3">
 
-                                <h1>We are Everywhere</h1>
-                                <h5>Builder’s Valley offers a complete solution if you're looking for a new project or
-                                    searching
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                                                viewBox="0 0 12 12">
+                                                <g id="Group_22" data-name="Group 22" transform="translate(-365 -1963)">
+                                                    <path id="Subtraction_5" data-name="Subtraction 5"
+                                                        d="M-13,12a6.007,6.007,0,0,1-6-6,6.007,6.007,0,0,1,6-6A6.007,6.007,0,0,1-7,6,6.006,6.006,0,0,1-13,12Zm-.5-9V7h.013l2.109,2.109.707-.706L-12.5,6.572V3Z"
+                                                        transform="translate(384 1963)" fill="#989ea8" />
+                                                </g>
+                                            </svg>
+                                            <span
+                                                class="ml-1">{{ Carbon\Carbon::parse($project->created_at)->diffForHumans() }}</span>
+                                        </li>
+                                        <li class="list-inline-item mr-3">
 
-                                    <div class=" lp-header__content">
-                                        <a title="Post a job today and we'll alert the relevant tradespeople."
-                                            href="{{ route('register') }}" class="btn--lp">Post a job</a>
-                                        <a title="Start winning more work" href="{{ route('register') }}"
-                                            class="btn--hollow">Trade sign
-                                            up</a>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11"
+                                                viewBox="0 0 12 11">
+                                                <g id="Group_23" data-name="Group 23" transform="translate(-498 -1963)">
+                                                    <path id="Subtraction_2" data-name="Subtraction 2"
+                                                        d="M1.5,0h7a1.5,1.5,0,0,1,0,3h-7a1.5,1.5,0,0,1,0-3Z"
+                                                        transform="translate(498 1963)" fill="#989ea8" />
+                                                    <path id="Subtraction_4" data-name="Subtraction 4"
+                                                        d="M1.5,0h5a1.5,1.5,0,0,1,0,3h-5a1.5,1.5,0,0,1,0-3Z"
+                                                        transform="translate(498 1971)" fill="#989ea8" />
+                                                    <path id="Subtraction_3" data-name="Subtraction 3"
+                                                        d="M1.5,0h7a1.5,1.5,0,0,1,0,3h-7a1.5,1.5,0,0,1,0-3Z"
+                                                        transform="translate(500 1967)" fill="#989ea8" />
+                                                </g>
+                                            </svg>
+                                            <span class="ml-1">{{ $project->project_category->name }}</span>
+                                        </li>
+                                        <li class="list-inline-item">
 
-                                        <a title="Start winning more work" href="{{ route('register') }}"
-                                            class="btn--hollow">
-                                            Trade Career</a>
-
-                                        <a title="Start winning more work" href="{{ route('register') }}"
-                                            class="btn--hollow">Employee Trade Worker</a>
-
-                                    </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="custom-slide">
-                        <img src="{{ asset('public\assets\frontend\default\img\slider_img\slider2.jpg') }}" />
-                        <div class="custom-content">
-                            <div class="custom-content-inner">
-                                <h1>We are all here.</h1>
-                                <h5>Now you don't need your neighbor's recommendations. We're providing the complete
-                                    solution.
-                                </h5>
-                                <div class="lp-header__content">
-                                    <a title="Post a job today and we'll alert the relevant tradespeople."
-                                        href="{{ route('register') }}" class="btn--lp">Post a job</a>
-                                    <a title="Start winning more work" href="{{ route('register') }}"
-                                        class="btn--hollow">Trade
-                                        sign
-                                        up</a>
-
-                                    <a title="Start winning more work" href="{{ route('register') }}" class="btn--hollow">
-                                        Trade Career</a>
-
-                                    <a title="Start winning more work" href="{{ route('register') }}"
-                                        class="btn--hollow">Employee Trade Worker</a>
-
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="7.643" height="12"
+                                                viewBox="0 0 7.643 12">
+                                                <g id="Group_24" data-name="Group 24" transform="translate(-131 -59.8)">
+                                                    <path id="Path_9" data-name="Path 9"
+                                                        d="M136.142,161.028,133.614,161A3.381,3.381,0,0,0,131,164.281v4.708a.92.92,0,0,0,.917.917h5.809a.92.92,0,0,0,.917-.917v-4.708A3.361,3.361,0,0,0,136.142,161.028Zm-1.321,4.488a1.122,1.122,0,0,1,.306,2.2v.248a.306.306,0,0,1-.611,0v-.248a1.123,1.123,0,0,1-.816-1.079.306.306,0,0,1,.611,0,.511.511,0,1,0,.511-.511,1.122,1.122,0,0,1-.306-2.2v-.183a.306.306,0,1,1,.611,0v.183a1.123,1.123,0,0,1,.816,1.079.306.306,0,1,1-.611,0,.511.511,0,1,0-.511.511Z"
+                                                        transform="translate(0 -98.106)" fill="#989ea8" />
+                                                    <path id="Path_10" data-name="Path 10"
+                                                        d="M219.424,124.641l.15-.52L217.1,124.1l.171.52Z"
+                                                        transform="translate(-83.468 -62.334)" fill="#989ea8" />
+                                                    <path id="Path_11" data-name="Path 11"
+                                                        d="M199.1,61.179l.4-1.379h-3.7l.449,1.351Z"
+                                                        transform="translate(-62.819)" fill="#989ea8" />
+                                                </g>
+                                            </svg>
+                                            <span class="ml-1">{{ translate($project->type) }}</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-4 text-right">
+                                    <span class="stext-size fw-600"
+                                        style="font-size:30px">{{ single_price($project->price) }}</span>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="custom-slide">
-                        <img src="{{ asset('public\assets\frontend\default\img\slider_img\slider3.jpg') }}" />
-                        <div class="custom-content">
-                            <div class="custom-content-inner">
-                                <h1>Join today and become a proud member of the Builder's Valley community.</h1>
-                                <h5>If you are recruiting people across the country , internationally
-                                    or you are looking for a new career, join today.</h5>
-
-                                <div class="lp-header__content">
-                                    <a title="Post a job today and we'll alert the relevant tradespeople."
-                                        href="{{ route('register') }}" class="btn--lp">Post a job</a>
-                                    <a title="Start winning more work" href="{{ route('register') }}"
-                                        class="btn--hollow">Trade
-                                        sign
-                                        up</a>
-
-                                    <a title="Start winning more work" href="{{ route('register') }}" class="btn--hollow">
-                                        Trade Career</a>
-
-                                    <a title="Start winning more work" href="{{ route('register') }}"
-                                        class="btn--hollow">Employee Trade Worker</a>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="custom-slide">
-                        <img src="{{ asset('public\assets\frontend\default\img\slider_img\slider4.jpg') }}" />
-                        <div class="custom-content">
-                            <div class="custom-content-inner">
-                                <h1>Builder's Valley now makes it easier for you to find a local professional trade worker
-                                    in
-                                    your area</h1>
-                                <div class="lp-header__content">
-                                    <a title="Post a job today and we'll alert the relevant tradespeople."
-                                        href="{{ route('register') }}" class="btn--lp">Post a job</a>
-                                    <a title="Start winning more work" href="{{ route('register') }}"
-                                        class="btn--hollow">Trade
-                                        sign
-                                        up</a>
-
-                                    <a title="Start winning more work" href="{{ route('register') }}" class="btn--hollow">
-                                        Trade Career</a>
-
-                                    <a title="Start winning more work" href="{{ route('register') }}"
-                                        class="btn--hollow">Employee Trade Worker</a>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {{-- <div class="overlay">
-                        <div class="lp-header__content">
-                            <a title="Post a job today and we'll alert the relevant tradespeople."
-                                href="{{ route('register') }}" class="btn--lp">Post a job</a>
-                            <a title="Start winning more work" href="{{ route('register') }}" class="btn--hollow">Trade sign
-                                up</a>
-                        </div>
-                    </div> --}}
+                        </a>
+                    @endforeach
                 </div>
             </div>
-
-
-
-
-
-
-            {{-- <div class="container">
-                <div class="post_btn-box">
-                    <div class="col-md-7 star-content">
-                        <h1 class="heading heading--x-large">Don't just take our word for it</h1>
-                    </div>
-                    <div class="col-md-3 star-rating ">
-
-                        <img src="{{ my_asset('assets\frontend\default\img\rating.png') }}" />
-
-                    </div>
-                    <div class="col-md-3 rated-icon">
-                        <img height="125" alt="Mumsnet rated 2019"
-                            src="https://www.mybuilder.com/assets/2d01362/bundles/mybuilderhomepage/images/mumsnet.png"
-                            data-lazyimg=""
-                            data-src="https://www.mybuilder.com/assets/2d01362/bundles/mybuilderhomepage/images/mumsnet.png">
-                    </div>
-                </div>
-            </div> --}}
-        </section @endif
-        @if (get_setting('client_logo_show') == 'on')
-            <section class="bg-white py-4 ">
-                {{-- <div class ="container">
-                    <div class="hire-exc-content ">
-
-                        <div class="col-md-8">
-
-                            <section class="hp-how-it-works ">
-
-                                <h1 class="heading heading--x-large">Hire an exceptional tradesperson</h1>
-
-                                <ol class="row-fluid hp-how-it-works__steps">
-                                    <li title="Post a job today and we'll alert the relevant tradespeople." class="span8">
-                                        <div class="image-wrapper">
-                                            <img class="svg-img"
-                                                src="https://www.mybuilder.com/assets/2d01362/bundles/mybuilderhomepage/images/step1@2x.png"
-                                                data-lazyimg=""
-                                                data-src="https://www.mybuilder.com/assets/2d01362/bundles/mybuilderhomepage/images/step1@2x.png"
-                                                alt="Step 1 Illustration of some one posting a job on their phone">
-                                        </div>
-                                        <h2 class="heading heading--medium">
-                                            Post a job today
-                                        </h2>
-                                        <p>Tell us about your job, and we'll alert suitable<br> tradespeople in your area.
-                                            It’s
-                                            simple and free.</p>
-                                    </li>
-                                    <li class="span8">
-                                        <div class="image-wrapper">
-                                            <img class="svg-img"
-                                                src="https://www.mybuilder.com/assets/2d01362/bundles/mybuilderhomepage/images/step2@2x.png"
-                                                data-lazyimg=""
-                                                data-src="https://www.mybuilder.com/assets/2d01362/bundles/mybuilderhomepage/images/step2@2x.png"
-                                                alt="Step 2 Illustration of a tradesperson responding to a posted job">
-                                        </div>
-                                        <h2 class="heading heading--medium">
-                                            Tradespeople respond
-                                        </h2>
-                                        <p>Once your job is posted, you'll get responses from<br> interested tradespeople
-                                            through
-                                            the website.</p>
-                                    </li>
-                                    <li class="span8">
-                                        <div class="image-wrapper">
-                                            <img class="svg-img"
-                                                src="https://www.mybuilder.com/assets/2d01362/bundles/mybuilderhomepage/images/step3-@2x.png"
-                                                data-lazyimg=""
-                                                data-src="https://www.mybuilder.com/assets/2d01362/bundles/mybuilderhomepage/images/step3-@2x.png"
-                                                alt="Step 3 Illustration of a list of trade profiles to choose from">
-                                        </div>
-                                        <h2 class="heading heading--medium">
-                                            Review and choose
-                                        </h2>
-                                        <p>Browse profiles, work history, and feedback, then <br>choose who you wish to
-                                            share your
-                                            details with.</p>
-                                    </li>
-                                </ol>
-                                <a class="btn--lp" href="/how-it-works">See how it works</a>
-
-                            </section>
-
-                        </div>
-                    </div>
-
-                </div> --}}
-
-
-
-
-                <div class="container" style="height: auto ;">
-                    <div class="py-3">
-
-                        <div class="row justify-content-center">
-                            <div class="col-xl-4 col-md-6 " style="margin-bottom: 10px;position: relative;">
-                                <div class="px-xl-5 px-md-3 mb-4 text-center rounded"
-                                    style="height: 100%; display: flex; flex-direction: column;">
-
-                                    <div class="p-4" style="height: 70%;">
-                                        <h2>Post your job</h2>
-                                        <p>Sign up to our online platform to start posting your home improvement projects
-                                            and connect with trustworthy tradespeople.</p>
-                                    </div>
-
-                                    <div style="text-align: center;">
-                                        <a title="Post a job today and we'll alert the relevant tradespeople."
-                                            href="http://localhost/mybuilder/register" class="btn--lp">Post a job</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-4 col-md-6" style="margin-bottom: 10px;position: relative;">
-                                <div class="px-xl-5 px-md-3 mb-4 text-center rounded"
-                                    style="height: 100%; display: flex; flex-direction: column;">
-
-                                    <div class="p-4" style="height: 70%;">
-                                        <h2>Trade sign up</h2>
-                                        <p>Once your business is registered, you can choose from the many jobs available
-                                            across the country.</p>
-                                    </div>
-
-                                    <div style="text-align: center;">
-                                        <a title="Post a job today and we'll alert the relevant tradespeople."
-                                            href="http://localhost/mybuilder/register" class="btn--lp1 ">Join Our Site</a>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="col-xl-4 col-md-6" style="margin-bottom: 10px;position: relative;">
-                                <div class="px-xl-5 px-md-3 mb-4 text-center rounded"
-                                    style="height: 100%; display: flex; flex-direction: column; ;">
-
-                                    <div class="p-4" style="height: 70%;">
-                                        <h2>Find Employment</h2>
-                                        <p>Businesses across the country & internationally are searching for skilled people
-                                            to join their team. Find your next role here.</p>
-                                    </div>
-
-                                    <div style="text-align: center;">
-                                        <a title="Post a job today and we'll alert the relevant tradespeople."
-                                            href="http://localhost/mybuilder/register" class="btn--lp2">Career
-                                            Opportunities</a>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </div>
-                </div>
-
-
-
-
-
-
-
-
-
-                {{-- 
-ADVETISMENT SLIDER --}}
-
-
-                {{--                
-                <div class="bottom-slider col-md-12 ">
-                    <div class="container" style="  background-color: #eef2f6 !important;">
-
-
-                        <div class="col-md-12 mt-5">
-
-                            <!-- Multiple Slider -->
-                            <div id="adv-slider" class="carousel" data-ride="carousel" data-interval="5000">
-
-
-                                <!-- Slideshow -->
-                                <div class="carousel-inner"
-                                    style=" justify-content: center; align-items: center; height: 200px;">
-
-                                    <!-- First item -->
-                                    <div class="carousel-item active">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="review-card-body ">
-                                                    <div class="top-row">
-                                                        <h3 class="feedback-row-title">
-                                                            <a href="/profile/view/broderick_building_services">Broderick
-                                                                Building
-                                                                Services</a>
-                                                        </h3>
-
-                                                    </div>
-
-                                                    <div class="review_title">
-
-                                                        Received positive feedback
-
-                                                    </div>
-                                                    <div class="item_comment">
-                                                        <p class="feedback-item__body text-center">
-                                                            <span class="review_item_comment">Really great work thank you.
-                                                                Didn’t ask
-                                                                for all payment up front and paid as the work was
-                                                                completed</span>
-                                                        </p>
-                                                    </div>
-                                                    <div class="review-item__posted ">
-                                                        <span>Received
-                                                            <span>2 hours 5 minutes ago</span></span>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Rest of the items -->
-                                    <div class="carousel-item ">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="review-card-body ">
-                                                    <div class="top-row">
-                                                        <h3 class="feedback-row-title">
-                                                            <a href="/profile/view/broderick_building_services">Broderick
-                                                                Building
-                                                                Services</a>
-                                                        </h3>
-
-                                                    </div>
-
-                                                    <div class="review_title">
-
-                                                        Received positive feedback
-
-                                                    </div>
-                                                    <div class="item_comment">
-                                                        <p class="feedback-item__body text-center">
-                                                            <span class="review_item_comment">Really great work thank you.
-                                                                Didn’t ask
-                                                                for all payment up front and paid as the work was
-                                                                completed</span>
-                                                        </p>
-                                                    </div>
-                                                    <div class="review-item__posted ">
-                                                        <span>Received
-                                                            <span>2 hours 5 minutes ago</span></span>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="review-card-body ">
-                                                    <div class="top-row">
-                                                        <h3 class="feedback-row-title">
-                                                            <a href="/profile/view/broderick_building_services">Broderick
-
-                                                                Services</a>
-                                                        </h3>
-
-                                                    </div>
-
-                                                    <div class="review_title">
-
-                                                        Received positive feedback
-
-                                                    </div>
-                                                    <div class="item_comment">
-                                                        <p class="feedback-item__body text-center">
-                                                            <span class="review_item_comment">Really great work thank you.
-                                                                Didn’t ask
-                                                                for all payment up front and paid as the work was
-                                                                completed</span>
-                                                        </p>
-                                                    </div>
-                                                    <div class="review-item__posted ">
-                                                        <span>Received
-                                                            <span>2 hours 5 minutes ago</span></span>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="review-card-body ">
-                                                    <div class="top-row">
-                                                        <h3 class="feedback-row-title">
-                                                            <a href="/profile/view/broderick_building_services">Broderick
-                                                                Building
-                                                            </a>
-                                                        </h3>
-
-                                                    </div>
-
-                                                    <div class="review_title">
-
-                                                        Received positive feedback
-
-                                                    </div>
-                                                    <div class="item_comment">
-                                                        <p class="feedback-item__body text-center">
-                                                            <span class="review_item_comment">Really great work thank you.
-                                                                Didn’t ask
-                                                                for all payment up front and paid as the work was
-                                                                completed</span>
-                                                        </p>
-                                                    </div>
-                                                    <div class="review-item__posted ">
-                                                        <span>Received
-                                                            <span>2 hours 5 minutes ago</span></span>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="review-card-body ">
-                                                    <div class="top-row">
-                                                        <h3 class="feedback-row-title">
-                                                            <a href="/profile/view/broderick_building_services">Broderick
-                                                                Building
-                                                                Services</a>
-                                                        </h3>
-
-                                                    </div>
-
-                                                    <div class="review_title">
-
-                                                        Received feedback
-
-                                                    </div>
-                                                    <div class="item_comment">
-                                                        <p class="feedback-item__body text-center">
-                                                            <span class="review_item_comment">Really great work thank you.
-                                                                Didn’t ask
-                                                                for all payment up front and paid as the work was
-                                                                completed</span>
-                                                        </p>
-                                                    </div>
-                                                    <div class="review-item__posted ">
-                                                        <span>Received
-                                                            <span>2 hours 5 minutes ago</span></span>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="review-card-body ">
-                                                    <div class="top-row">
-                                                        <h3 class="feedback-row-title">
-                                                            <a href="/profile/view/broderick_building_services">
-                                                                Building
-                                                                Services</a>
-                                                        </h3>
-
-                                                    </div>
-
-                                                    <div class="review_title">
-
-                                                        Received positive feedback
-
-                                                    </div>
-                                                    <div class="item_comment">
-                                                        <p class="feedback-item__body text-center">
-                                                            <span class="review_item_comment">Really great work thank you.
-                                                                Didn’t ask
-                                                                for all payment up front and paid as the work was
-                                                                completed</span>
-                                                        </p>
-                                                    </div>
-                                                    <div class="review-item__posted ">
-                                                        <span>Received
-                                                            <span>2 hours 5 minutes ago</span></span>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div> --}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-                <div class="container" style="height: auto ; ">
-                    <div class="py-3">
-
-                        <div class="row justify-content-center">
-                            <div class="col-xl-12 col-md-6 " style="margin-bottom: 10px;position: relative;">
-                                <div class="px-xl-5 px-md-3 mb-4 text-center "
-                                    style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
-
-                                    <div class="p-4 text-center">
-                                        <h2 style="color: green !important">Find the right tradespeople for your job!</h2>
-                                        <p>Builder’s valley understands that finding tradespeople you can trust is a
-                                            challenge.</p>
-                                        <div class="col-md-7 mx-auto">
-                                            <p>Our site is an online platform for a variety of tradespeople. You can post
-                                                your job, tradespeople will respond, and then you can review each business
-                                                and choose the right one for you!</p>
-                                        </div>
-                                    </div>
-
-
-                                    <div style="text-align: center;margin-bottom: 15px !important;">
-                                        <a title="Post a job today and we'll alert the relevant tradespeople."
-                                            href="http://localhost/mybuilder/register" class="btn--hollow">CONTACT US </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-md-12 bg_content">
-
-
-                    <div class="container bg_content" style="padding:0px">
-                        <div class="py-3 bg_content">
-                            <div class="w-xl-50 w-lg-75 mx-auto my-5 text-center">
-                                <h2 class="fw-700 fs-30">How it Works</h2>
-
-                            </div>
-                            <div class="row justify-content-center">
-                                <div class="col-xl-4 col-md-6">
-                                    <div class="col-md-12"
-                                        style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                                        <div class="sign_backcover">
-                                            <!-- Content of sign_backcover -->
-                                        </div>
-
-                                        <div class="p-4" style="height: 250px !important;">
-                                            <h2><span style="color: green;">1</span> Sign up</h2>
-                                            <p>Joining as a homeowner/customer is a competitively priced way for you to
-                                                access skilled tradespeople across the country.</p>
-                                            <p>Only approved members can post in our forums.</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-                                <div class="col-xl-4 col-md-6">
-                                    <div class="col-md-12"
-                                        style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                                        <div class="postjob_backcover ">
-
-                                        </div>
-
-                                        <div class="p-4" style="height:250px !important ;">
-                                            <h2><span style="color: green;">2</span> Post a job </h2>
-                                            <p>Once you’ve joined our site, you’ll be able to post the details for the
-                                                project you need to hire a tradesperson for remember to include your
-                                                location, photos and if you have one a budget.</p>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-
-
-                                <div class="col-xl-4 col-md-6">
-                                    <div class="col-md-12"
-                                        style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                                        <div class="respond_backcover ">
-
-                                        </div>
-
-                                        <div class="p-4">
-                                            <h2><span style="color: green;">3</span> Respond to messages </h2>
-                                            <p>Companies that have joined our site will be able to see your job postings.
-                                                You can then contact them directly to arrange a quote.</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                            </div>
-
-
-
-
-
-
-
-                        </div>
-                    </div>
-                </div>
-                </div>
-                {{-- <div class="post_btn-box" style="background: #eef2f6 ">
-                    <div class="col-md-12 Fanatical-content">
-                        <h2 class="heading heading--x-large">Fanatical about&nbsp;feedback</h2>
-                        <div>
-
-                            <p>The best way to know a tradesperson is to listen to<br> their customers.<br>
-                                Feedback isn't just a feature on<br> MyBuilder. We've built our whole business on it.</p>
-                        </div>
-                    </div>
-
-                </div> --}}
-
-                {{-- ////try////////////////////////////////////////////////////////////////////////// --}}
-
-                {{-- <div class="container p-mainContainer overflow-hidden">
-                    <div class="mainContent ">
-                        <!-- Start of 3D Slider -->
-                        <section class="sliders mt-5 pt-3">
-                            <!-- 3d Slider -->
-                            <div class="cascade-slider_container" id="cascade-slider">
-                                <div class="cascade-slider_slides">
-                                    <div class="cascade-slider_item ">
-                                        <a href="javvascript:void(0)">
-                                            <div class="card-body">
-                                                <div class="feedback-item__header">
-                                                    <h3 class="feedback-item__username">
-                                                        <a href="/profile/view/broderick_building_services">
-                                                            Building
-                                                            Services</a>
-                                                    </h3>
-                                                    <p>
-                                                        <span class="feedback-item__jobs">77&nbsp;feedback,</span>
-                                                        <span class="feedback-item__feedback">99%&nbsp;positive</span>
-                                                    </p>
-                                                </div>
-
-                                                <div class="feedback-item__rating">
-
-                                                    Received positive feedback
-
-                                                </div>
-
-                                                <p class="feedback-item__body text-center">
-                                                    <span class="feedback-item__comment">Really great work thank you.
-                                                        Didn’t
-                                                        ask
-                                                        for all payment up front and paid as the work was completed, so
-                                                        clean
-                                                        and
-                                                        tidy I didn’t even know we had...</span>
-                                                    <br>
-                                                    <span class="feedback-item__posted">Received
-                                                        <span class="feedback-item__time timeago"
-                                                            title="2023-10-04T06:52:31+01:00">2
-                                                            hours 5
-                                                            minutes ago</span></span>
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="cascade-slider_item ">
-                                        <a href="javvascript:void(0)">
-                                            <div class="card-body">
-                                                <div class="feedback-item__header">
-                                                    <h3 class="feedback-item__username">
-                                                        <a href="/profile/view/broderick_building_services">
-                                                            Building
-                                                            Services</a>
-                                                    </h3>
-                                                    <p>
-                                                        <span class="feedback-item__jobs">77&nbsp;feedback,</span>
-                                                        <span class="feedback-item__feedback">99%&nbsp;positive</span>
-                                                    </p>
-                                                </div>
-
-                                                <div class="feedback-item__rating">
-
-                                                    Received positive feedback
-
-                                                </div>
-
-                                                <p class="feedback-item__body text-center">
-                                                    <span class="feedback-item__comment">Really great work thank you.
-                                                        Didn’t
-                                                        ask
-                                                        for all payment up front and paid as the work was completed, so
-                                                        clean
-                                                        and
-                                                        tidy I didn’t even know we had...</span>
-                                                    <br>
-                                                    <span class="feedback-item__posted">Received
-                                                        <span class="feedback-item__time timeago"
-                                                            title="2023-10-04T06:52:31+01:00">2
-                                                            hours 5
-                                                            minutes ago</span></span>
-                                                </p>
-                                            </div>
-
-                                        </a>
-                                    </div>
-                                    <div class="cascade-slider_item ">
-                                        <a href="javvascript:void(0)">
-                                            <div class="card-body">
-                                                <div class="feedback-item__header">
-                                                    <h3 class="feedback-item__username">
-                                                        <a href="/profile/view/broderick_building_services">
-                                                            Building
-                                                            Services</a>
-                                                    </h3>
-                                                    <p>
-                                                        <span class="feedback-item__jobs">77&nbsp;feedback,</span>
-                                                        <span class="feedback-item__feedback">99%&nbsp;positive</span>
-                                                    </p>
-                                                </div>
-
-                                                <div class="feedback-item__rating">
-
-                                                    Received positive feedback
-
-                                                </div>
-
-                                                <p class="feedback-item__body text-center">
-                                                    <span class="feedback-item__comment">Really great work thank you.
-                                                        Didn’t
-                                                        ask
-                                                        for all payment up front and paid as the work was completed, so
-                                                        clean
-                                                        and
-                                                        tidy I didn’t even know we had...</span>
-                                                    <br>
-                                                    <span class="feedback-item__posted">Received
-                                                        <span class="feedback-item__time timeago"
-                                                            title="2023-10-04T06:52:31+01:00">2
-                                                            hours 5
-                                                            minutes ago</span></span>
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="cascade-slider_item ">
-                                        <a href="javvascript:void(0)">
-                                            <div class="card-body">
-                                                <div class="feedback-item__header">
-                                                    <h3 class="feedback-item__username">
-                                                        <a href="/profile/view/broderick_building_services">
-                                                            Building
-                                                            Services</a>
-                                                    </h3>
-                                                    <p>
-                                                        <span class="feedback-item__jobs">77&nbsp;feedback,</span>
-                                                        <span class="feedback-item__feedback">99%&nbsp;positive</span>
-                                                    </p>
-                                                </div>
-
-                                                <div class="feedback-item__rating">
-
-                                                    Received positive feedback
-
-                                                </div>
-
-                                                <p class="feedback-item__body text-center">
-                                                    <span class="feedback-item__comment">Really great work thank you.
-                                                        Didn’t
-                                                        ask
-                                                        for all payment up front and paid as the work was completed, so
-                                                        clean
-                                                        and
-                                                        tidy I didn’t even know we had...</span>
-                                                    <br>
-                                                    <span class="feedback-item__posted">Received
-                                                        <span class="feedback-item__time timeago"
-                                                            title="2023-10-04T06:52:31+01:00">2
-                                                            hours 5
-                                                            minutes ago</span></span>
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="cascade-slider_item">
-                                        <a href="javvascript:void(0)">
-                                            <div class="card-body">
-                                                <div class="feedback-item__header">
-                                                    <h3 class="feedback-item__username">
-                                                        <a href="/profile/view/broderick_building_services">
-                                                            Building
-                                                            Services</a>
-                                                    </h3>
-                                                    <p>
-                                                        <span class="feedback-item__jobs">77&nbsp;feedback,</span>
-                                                        <span class="feedback-item__feedback">99%&nbsp;positive</span>
-                                                    </p>
-                                                </div>
-
-                                                <div class="feedback-item__rating">
-
-                                                    Received positive feedback
-
-                                                </div>
-
-                                                <p class="feedback-item__body text-center">
-                                                    <span class="feedback-item__comment">Really great work thank you.
-                                                        Didn’t
-                                                        ask
-                                                        for all payment up front and paid as the work was completed, so
-                                                        clean
-                                                        and
-                                                        tidy I didn’t even know we had...</span>
-                                                    <br>
-                                                    <span class="feedback-item__posted">Received
-                                                        <span class="feedback-item__time timeago"
-                                                            title="2023-10-04T06:52:31+01:00">2
-                                                            hours 5
-                                                            minutes ago</span></span>
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="cascade-slider_item ">
-                                        <a href="javvascript:void(0)">
-                                            <div class="card-body">
-                                                <div class="feedback-item__header">
-                                                    <h3 class="feedback-item__username">
-                                                        <a href="/profile/view/broderick_building_services">
-                                                            Building
-                                                            Services</a>
-                                                    </h3>
-                                                    <p>
-                                                        <span class="feedback-item__jobs">77&nbsp;feedback,</span>
-                                                        <span class="feedback-item__feedback">99%&nbsp;positive</span>
-                                                    </p>
-                                                </div>
-
-                                                <div class="feedback-item__rating">
-
-                                                    Received positive feedback
-
-                                                </div>
-
-                                                <p class="feedback-item__body text-center">
-                                                    <span class="feedback-item__comment">Really great work thank you.
-                                                        Didn’t
-                                                        ask
-                                                        for all payment up front and paid as the work was completed, so
-                                                        clean
-                                                        and
-                                                        tidy I didn’t even know we had...</span>
-                                                    <br>
-                                                    <span class="feedback-item__posted">Received
-                                                        <span class="feedback-item__time timeago"
-                                                            title="2023-10-04T06:52:31+01:00">2
-                                                            hours 5
-                                                            minutes ago</span></span>
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="cascade-slider_item ">
-                                        <a href="javvascript:void(0)">
-                                            <div class="card-body">
-                                                <div class="feedback-item__header">
-                                                    <h3 class="feedback-item__username">
-                                                        <a href="/profile/view/broderick_building_services">
-                                                            Building
-                                                            Services</a>
-                                                    </h3>
-                                                    <p>
-                                                        <span class="feedback-item__jobs">77&nbsp;feedback,</span>
-                                                        <span class="feedback-item__feedback">99%&nbsp;positive</span>
-                                                    </p>
-                                                </div>
-
-                                                <div class="feedback-item__rating">
-
-                                                    Received positive feedback
-
-                                                </div>
-
-                                                <p class="feedback-item__body text-center">
-                                                    <span class="feedback-item__comment">Really great work thank you.
-                                                        Didn’t
-                                                        ask
-                                                        for all payment up front and paid as the work was completed, so
-                                                        clean
-                                                        and
-                                                        tidy I didn’t even know we had...</span>
-                                                    <br>
-                                                    <span class="feedback-item__posted">Received
-                                                        <span class="feedback-item__time timeago"
-                                                            title="2023-10-04T06:52:31+01:00">2
-                                                            hours 5
-                                                            minutes ago</span></span>
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <span class="cascade-slider_arrow cascade-slider_arrow-left" data-action="prev">
-                                    <i class="fa-solid fa-chevron-left"></i>
-                                </span>
-                                <span class="cascade-slider_arrow cascade-slider_arrow-right" data-action="next">
-                                    <i class="fa-solid fa-chevron-right"></i>
-                                </span>
-                            </div>
-                        </section>
-                        <!-- End of 3D Slider and TNC -->
-                    </div>
-                </div> --}}
-                {{-- ///////////////////////////////feedback slider//////////////////// --}}
-                {{-- <div class="row">
-                    <div class="   col-md-12 d-flex justify-content-center align-items-center" style="background: #eef2f6 ">
-
-                        <div>
-                            <button class="arrow left">
-                                <i class="fa fa-arrow-left fa-2x"></i>
-                            </button>
-                        </div>
-                        <div class="slider-container">
-
-
-
-                            <div class="slide slide-1">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="feedback-item__header">
-                                            <h3 class="feedback-item__username">
-                                                <a href="/profile/view/broderick_building_services">Broderick Building
-                                                    Services</a>
-                                            </h3>
-                                            <p>
-                                                <span class="feedback-item__jobs">77&nbsp;feedback,</span>
-                                                <span class="feedback-item__feedback">99%&nbsp;positive</span>
-                                            </p>
-                                        </div>
-
-                                        <div class="feedback-item__rating">
-
-                                            Received positive feedback
-
-                                        </div>
-
-                                        <p class="feedback-item__body text-center">
-                                            <span class="feedback-item__comment">Really great work thank you. Didn’t ask
-                                                for all payment up front and paid as the work was completed, so clean
-                                                and
-                                                tidy I didn’t even know we had...</span>
-                                            <br>
-                                            <span class="feedback-item__posted">Received
-                                                <span class="feedback-item__time timeago"
-                                                    title="2023-10-04T06:52:31+01:00">2
-                                                    hours 5
-                                                    minutes ago</span></span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="slide slide-2">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="feedback-item__header">
-                                            <h3 class="feedback-item__username">
-                                                <a href="/profile/view/broderick_building_services">Broderick Building
-                                                    Services</a>
-                                            </h3>
-                                            <p>
-                                                <span class="feedback-item__jobs">77&nbsp;feedback,</span>
-                                                <span class="feedback-item__feedback">99%&nbsp;positive</span>
-                                            </p>
-                                        </div>
-
-                                        <div class="feedback-item__rating">
-
-                                            Received positive feedback
-
-                                        </div>
-
-                                        <p class="feedback-item__body text-center">
-                                            <span class="feedback-item__comment">Really great work thank you. Didn’t ask
-                                                for all payment up front and paid as the work was completed, so clean
-                                                and
-                                                tidy I didn’t even know we had...</span>
-                                            <br>
-                                            <span class="feedback-item__posted">Received
-                                                <span class="feedback-item__time timeago"
-                                                    title="2023-10-04T06:52:31+01:00">2
-                                                    hours 5
-                                                    minutes ago</span></span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="slide slide-3">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="feedback-item__header">
-                                            <h3 class="feedback-item__username">
-                                                <a href="/profile/view/broderick_building_services">Broderick Building
-                                                    Services</a>
-                                            </h3>
-                                            <p>
-                                                <span class="feedback-item__jobs">77&nbsp;feedback,</span>
-                                                <span class="feedback-item__feedback">99%&nbsp;positive</span>
-                                            </p>
-                                        </div>
-
-                                        <div class="feedback-item__rating">
-
-                                            Received positive feedback
-
-                                        </div>
-
-                                        <p class="feedback-item__body text-center">
-                                            <span class="feedback-item__comment">Really great work thank you. Didn’t
-                                                ask
-                                                for all payment up front and paid as the work was completed, so clean
-                                                and
-                                                tidy I didn’t even know we had...</span>
-                                            <br>
-                                            <span class="feedback-item__posted">Received
-                                                <span class="feedback-item__time timeago"
-                                                    title="2023-10-04T06:52:31+01:00">2
-                                                    hours 5
-                                                    minutes ago</span></span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="slide slide-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="feedback-item__header">
-                                            <h3 class="feedback-item__username">
-                                                <a href="/profile/view/broderick_building_services">Broderick Building
-                                                    Services</a>
-                                            </h3>
-                                            <p>
-                                                <span class="feedback-item__jobs">77&nbsp;feedback,</span>
-                                                <span class="feedback-item__feedback">99%&nbsp;positive</span>
-                                            </p>
-                                        </div>
-
-                                        <div class="feedback-item__rating">
-
-                                            Received positive feedback
-
-                                        </div>
-
-                                        <p class="feedback-item__body text-center">
-                                            <span class="feedback-item__comment">Really great work thank you. Didn’t
-                                                ask
-                                                for all payment up front and paid as the work was completed, so clean
-                                                and
-                                                tidy I didn’t even know we had...</span>
-                                            <br>
-                                            <span class="feedback-item__posted">Received
-                                                <span class="feedback-item__time timeago"
-                                                    title="2023-10-04T06:52:31+01:00">2
-                                                    hours 5
-                                                    minutes ago</span></span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="slide slide-5">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="feedback-item__header">
-                                            <h3 class="feedback-item__username">
-                                                <a href="/profile/view/broderick_building_services">Broderick Building
-                                                    Services</a>
-                                            </h3>
-                                            <p>
-                                                <span class="feedback-item__jobs">77&nbsp;feedback,</span>
-                                                <span class="feedback-item__feedback">99%&nbsp;positive</span>
-                                            </p>
-                                        </div>
-
-                                        <div class="feedback-item__rating">
-
-                                            Received positive feedback
-
-                                        </div>
-
-                                        <p class="feedback-item__body text-center">
-                                            <span class="feedback-item__comment">Really great work thank you. Didn’t
-                                                ask
-                                                for all payment up front and paid as the work was completed, so clean
-                                                and
-                                                tidy I didn’t even know we had...</span>
-                                            <br>
-                                            <span class="feedback-item__posted">Received
-                                                <span class="feedback-item__time timeago"
-                                                    title="2023-10-04T06:52:31+01:00">2
-                                                    hours 5
-                                                    minutes ago</span></span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="slide slide-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="feedback-item__header">
-                                            <h3 class="feedback-item__username">
-                                                <a href="/profile/view/broderick_building_services">Broderick Building
-                                                    Services</a>
-                                            </h3>
-                                            <p>
-                                                <span class="feedback-item__jobs">77&nbsp;feedback,</span>
-                                                <span class="feedback-item__feedback">99%&nbsp;positive</span>
-                                            </p>
-                                        </div>
-
-                                        <div class="feedback-item__rating">
-
-                                            Received positive feedback
-
-                                        </div>
-
-                                        <p class="feedback-item__body text-center">
-                                            <span class="feedback-item__comment">Really great work thank you. Didn’t
-                                                ask
-                                                for all payment up front and paid as the work was completed, so clean
-                                                and
-                                                tidy I didn’t even know we had...</span>
-                                            <br>
-                                            <span class="feedback-item__posted">Received
-                                                <span class="feedback-item__time timeago"
-                                                    title="2023-10-04T06:52:31+01:00">2
-                                                    hours 5
-                                                    minutes ago</span></span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <button class="arrow right">
-                                <i class="fa fa-arrow-right fa-2x"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div> --}}
-                {{-- <div class="container">
-                    <div class="col-md-10 mt-5">
-
-                  
-                        <div id="custom-slider" class="carousel" data-ride="carousel">
-
-                     
-                            <div class="text-center mb-4 slider-controls">
-                                <a href="#custom-slider" data-slide="prev">
-                                    <i class="fas fa-chevron-circle-left"></i>
-                                </a>
-                                <a href="#custom-slider" data-slide="next">
-                                    <i class="fas fa-chevron-circle-right"></i>
-                                </a>
-                            </div>
-
-                  
-                            <div class="carousel-inner">
-
-                   
-                                <div class="carousel-item active">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="card-body">
-                                                <div class="feedback-item__header">
-                                                    <h3 class="feedback-item__username">
-                                                        <a href="/profile/view/broderick_building_services">
-                                                            Building
-                                                            Services</a>
-                                                    </h3>
-                                                    <p>
-                                                        <span class="feedback-item__jobs">77&nbsp;feedback,</span>
-                                                        <span class="feedback-item__feedback">99%&nbsp;positive</span>
-                                                    </p>
-                                                </div>
-
-                                                <div class="feedback-item__rating">
-
-                                                    Received positive feedback
-
-                                                </div>
-
-                                                <p class="feedback-item__body text-center">
-                                                    <span class="feedback-item__comment">Really great work thank you.
-                                                        Didn’t
-                                                        ask
-                                                        for all payment up front and paid as the work was completed, so
-                                                        clean
-                                                        and
-                                                        tidy I didn’t even know we had...</span>
-                                                    <br>
-                                                    <span class="feedback-item__posted">Received
-                                                        <span class="feedback-item__time timeago"
-                                                            title="2023-10-04T06:52:31+01:00">2
-                                                            hours 5
-                                                            minutes ago</span></span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                       
-                                <div class="carousel-item">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="card-body">
-                                                <div class="feedback-item__header">
-                                                    <h3 class="feedback-item__username">
-                                                        <a href="/profile/view/broderick_building_services">Broderick
-                                                            Building
-                                                            Services</a>
-                                                    </h3>
-                                                    <p>
-                                                        <span class="feedback-item__jobs">77&nbsp;feedback,</span>
-                                                        <span class="feedback-item__feedback">99%&nbsp;positive</span>
-                                                    </p>
-                                                </div>
-
-                                                <div class="feedback-item__rating">
-
-                                                    Received positive feedback
-
-                                                </div>
-
-                                                <p class="feedback-item__body text-center">
-                                                    <span class="feedback-item__comment">Really great work thank you.
-                                                        Didn’t
-                                                        ask
-                                                        for all payment up front and paid as the work was completed, so
-                                                        clean
-                                                        and
-                                                        tidy I didn’t even know we had...</span>
-                                                    <br>
-                                                    <span class="feedback-item__posted">Received
-                                                        <span class="feedback-item__time timeago"
-                                                            title="2023-10-04T06:52:31+01:00">2
-                                                            hours 5
-                                                            minutes ago</span></span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="card-body">
-                                                <div class="feedback-item__header">
-                                                    <h3 class="feedback-item__username">
-                                                        <a href="/profile/view/broderick_building_services">Broderick
-                                                            Building
-                                                            Services</a>
-                                                    </h3>
-                                                    <p>
-                                                        <span class="feedback-item__jobs">77&nbsp;feedback,</span>
-                                                        <span class="feedback-item__feedback">99%&nbsp;positive</span>
-                                                    </p>
-                                                </div>
-
-                                                <div class="feedback-item__rating">
-
-                                                    Received positive feedback
-
-                                                </div>
-
-                                                <p class="feedback-item__body text-center">
-                                                    <span class="feedback-item__comment">Really great work thank you.
-                                                        Didn’t
-                                                        ask
-                                                        for all payment up front and paid as the work was completed, so
-                                                        clean
-                                                        and
-                                                        tidy I didn’t even know we had...</span>
-                                                    <br>
-                                                    <span class="feedback-item__posted">Received
-                                                        <span class="feedback-item__time timeago"
-                                                            title="2023-10-04T06:52:31+01:00">2
-                                                            hours 5
-                                                            minutes ago</span></span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="card-body">
-                                                <div class="feedback-item__header">
-                                                    <h3 class="feedback-item__username">
-                                                        <a href="/profile/view/broderick_building_services">Broderick
-                                                            Building
-                                                            Services</a>
-                                                    </h3>
-                                                    <p>
-                                                        <span class="feedback-item__jobs">77&nbsp;feedback,</span>
-                                                        <span class="feedback-item__feedback">99%&nbsp;positive</span>
-                                                    </p>
-                                                </div>
-
-                                                <div class="feedback-item__rating">
-
-                                                    Received positive feedback
-
-                                                </div>
-
-                                                <p class="feedback-item__body text-center">
-                                                    <span class="feedback-item__comment">Really great work thank you.
-                                                        Didn’t
-                                                        ask
-                                                        for all payment up front and paid as the work was completed, so
-                                                        clean
-                                                        and
-                                                        tidy I didn’t even know we had...</span>
-                                                    <br>
-                                                    <span class="feedback-item__posted">Received
-                                                        <span class="feedback-item__time timeago"
-                                                            title="2023-10-04T06:52:31+01:00">2
-                                                            hours 5
-                                                            minutes ago</span></span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="card-body">
-                                                <div class="feedback-item__header">
-                                                    <h3 class="feedback-item__username">
-                                                        <a href="/profile/view/broderick_building_services">Broderick
-                                                            Building
-                                                            Services</a>
-                                                    </h3>
-                                                    <p>
-                                                        <span class="feedback-item__jobs">77&nbsp;feedback,</span>
-                                                        <span class="feedback-item__feedback">99%&nbsp;positive</span>
-                                                    </p>
-                                                </div>
-
-                                                <div class="feedback-item__rating">
-
-                                                    Received positive feedback
-
-                                                </div>
-
-                                                <p class="feedback-item__body text-center">
-                                                    <span class="feedback-item__comment">Really great work thank you.
-                                                        Didn’t
-                                                        ask
-                                                        for all payment up front and paid as the work was completed, so
-                                                        clean
-                                                        and
-                                                        tidy I didn’t even know we had...</span>
-                                                    <br>
-                                                    <span class="feedback-item__posted">Received
-                                                        <span class="feedback-item__time timeago"
-                                                            title="2023-10-04T06:52:31+01:00">2
-                                                            hours 5
-                                                            minutes ago</span></span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="card-body">
-                                                <div class="feedback-item__header">
-                                                    <h3 class="feedback-item__username">
-                                                        <a href="/profile/view/broderick_building_services">Broderick
-                                                            Building
-                                                            Services</a>
-                                                    </h3>
-                                                    <p>
-                                                        <span class="feedback-item__jobs">77&nbsp;feedback,</span>
-                                                        <span class="feedback-item__feedback">99%&nbsp;positive</span>
-                                                    </p>
-                                                </div>
-
-                                                <div class="feedback-item__rating">
-
-                                                    Received positive feedback
-
-                                                </div>
-
-                                                <p class="feedback-item__body text-center">
-                                                    <span class="feedback-item__comment">Really great work thank you.
-                                                        Didn’t ask
-                                                        for all payment up front and paid as the work was completed, so
-                                                        clean
-                                                        and
-                                                        tidy I didn’t even know we had...</span>
-                                                    <br>
-                                                    <span class="feedback-item__posted">Received
-                                                        <span class="feedback-item__time timeago"
-                                                            title="2023-10-04T06:52:31+01:00">2
-                                                            hours 5
-                                                            minutes ago</span></span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
-
-            </section>
-
-            {{-- Builder FOR  any JOB --}}
-            <div class="col-md-12" style="background:#eef2f6">
-                <div class="container" style ="padding: 0px">
-                    <div class="col-md-12 d-flex justify-content-center align-items-center" style="background: #eef2f6 ">
-                        <section class="hp-trades">
-                            <h2 class="fw-700 fs-30"> Our line directory is the perfect place to find </h2>
-
-                            <div class="row-fluid">
-                                <div class="row">
-                                    @isset($categories)
-                                        @php
-                                            $categoriesCount = count($categories);
-                                            $columnsCount = 4; // Set the number of columns to 4
-                                            $itemsPerColumn = ceil($categoriesCount / $columnsCount); // Calculate items per column dynamically
-                                            $currentCategoryIndex = 0; // Initialize the current category index
-                                        @endphp
-
-                                        @for ($i = 0; $i < $columnsCount; $i++)
-                                            <div class="col-md-3 data1">
-                                                <ul class="hp-trades__trade-list span6 unstyled">
-                                                    @for ($j = 0; $j < $itemsPerColumn; $j++)
-                                                        @if ($currentCategoryIndex < $categoriesCount)
-                                                            @php
-                                                                $category = $categories[$currentCategoryIndex];
-                                                                $currentCategoryIndex++;
-                                                            @endphp
-                                                            <li class="hp-trades__trade">
-                                                                <a title="Find the right architectural designer for your project in UK."
-                                                                    @php $cat_url = route('services.category',['category_slug' => $category->slug]) @endphp
-                                                                    href="{{ $cat_url }}"> {{ $category->name }}</a>
-                                                            </li>
-                                                        @endif
-                                                    @endfor
-                                                </ul>
-                                            </div>
-                                        @endfor
-                                    @endisset
-                                </div>
-                            </div>
-                    </div>
-                </div>
+            <div class="pt-4 text-center">
+                <a href="{{ route('search') }}?keyword=&type=project"
+                    class="btn--lp rounded-1">{{ translate('Check All Projects') }}</a>
             </div>
-            </section>
-            </div>
+        </div>
+    </section>
 
-
-            {{-- <div class="container" style="background: white !important">
-                <div class="post_btn-box ">
-                    <div class="col-md-9 star-content">
-                        <h1 class="sub-heading heading--x-large">Start your next home improvement project today</h1>
-                        <div class ="col-md-3" style="margin-left:20px">
-                            <a rel="nofollow" title="Post a job today and we'll alert the relevant tradespeople."
-                                href="{{ route('register') }}" class="btn--lp">Post a job</a>
-                        </div>
-
-                    </div>
-
-
+    <section class="bg-white pt-5 pb-4">
+        <div class="container">
+            <div class="bg-primary py-7 px-6 rounded-2">
+                <div class="lh-1-8 mx-auto mb-5">
+                    <h2 class="fw-700 fs-40 text-white">{{ get_setting('featured_category_title') }}</h2>
+                    <p class="fs-17 text-white">{{ get_setting('featured_category_subtitle') }}</p>
                 </div>
-            </div> --}}
-            {{-- /////bottomSLIDER// --}}
-            <div class="bottom-slider col-md-12 ">
-                <div class="container" style="  background-color: #eef2f6 !important;">
-                    <div class="bottom-slider-heading col-md-4  col-lg-5 pt-2 text-center">
-                        <h2 class="fw-700 fs-30">Our customers love&nbsp;us</h2>
-                    </div>
+                <div class="row gutters-10">
 
-                    <div class="col-md-12 mt-5">
-
-                        <!-- Multiple Slider -->
-                        <div id="multi-slider" class="carousel" data-ride="carousel">
-
-                            <!-- Controls -->
-                            <div class="text-center mb-4 side-controls">
-                                <a href="#multi-slider" data-slide="prev">
-                                    <i class="fas fa-chevron-circle-left fa-sm"></i>
-                                </a>
-                                <a href="#multi-slider" data-slide="next">
-                                    <i class="fas fa-chevron-circle-right fa-sm"></i>
-                                </a>
-                            </div>
-
-                            <!-- Slideshow -->
-                            <div class="carousel-inner"
-                                style=" justify-content: center; align-items: center; height: 200px;">
-
-                                <!-- First item -->
-                                <div class="carousel-item active">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="review-card-body ">
-                                                <div class="top-row">
-                                                    <h3 class="feedback-row-title">
-                                                        <a href="/profile/view/broderick_building_services">Broderick
-                                                            Building
-                                                            Services</a>
-                                                    </h3>
-
-                                                </div>
-
-                                                <div class="review_title">
-
-                                                    Received positive feedback
-
-                                                </div>
-                                                <div class="item_comment">
-                                                    <p class="feedback-item__body text-center">
-                                                        <span class="review_item_comment">Really great work thank you.
-                                                            Didn’t ask
-                                                            for all payment up front and paid as the work was
-                                                            completed</span>
-                                                    </p>
-                                                </div>
-                                                <div class="review-item__posted ">
-                                                    <span>Received
-                                                        <span>2 hours 5 minutes ago</span></span>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
+                    @if (get_setting('featured_category_list') != null)
+                        @foreach (json_decode(get_setting('featured_category_list'), true) as $key => $category_id)
+                            @if (($category = \App\Models\ProjectCategory::find($category_id)) != null)
+                                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                                    <a class="featured_category d-block card bg-transparent py-5 px-2 text-center text-inherit shadow-none rounded-2 bg-transparent"
+                                        href="{{ route('projects.category', $category->slug) }}"
+                                        style="height: 176px;border: 1px solid #ced2d9;">
+                                        <img src="{{ custom_asset($category->photo) }}" class="mw-100 h-50px mb-2">
+                                        <p class="fs-16 fw-600 text-white mb-0">{{ $category->name }}</p>
+                                    </a>
                                 </div>
-
-                                <!-- Rest of the items -->
-                                <div class="carousel-item">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="review-card-body ">
-                                                <div class="top-row">
-                                                    <h3 class="feedback-row-title">
-                                                        <a href="/profile/view/broderick_building_services">Broderick
-                                                            Building
-                                                            Services</a>
-                                                    </h3>
-
-                                                </div>
-
-                                                <div class="review_title">
-
-                                                    Received positive feedback
-
-                                                </div>
-                                                <div class="item_comment">
-                                                    <p class="feedback-item__body text-center">
-                                                        <span class="review_item_comment">Really great work thank you.
-                                                            Didn’t ask
-                                                            for all payment up front and paid as the work was
-                                                            completed</span>
-                                                    </p>
-                                                </div>
-                                                <div class="review-item__posted ">
-                                                    <span>Received
-                                                        <span>2 hours 5 minutes ago</span></span>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="review-card-body ">
-                                                <div class="top-row">
-                                                    <h3 class="feedback-row-title">
-                                                        <a href="/profile/view/broderick_building_services">Broderick
-
-                                                            Services</a>
-                                                    </h3>
-
-                                                </div>
-
-                                                <div class="review_title">
-
-                                                    Received positive feedback
-
-                                                </div>
-                                                <div class="item_comment">
-                                                    <p class="feedback-item__body text-center">
-                                                        <span class="review_item_comment">Really great work thank you.
-                                                            Didn’t ask
-                                                            for all payment up front and paid as the work was
-                                                            completed</span>
-                                                    </p>
-                                                </div>
-                                                <div class="review-item__posted ">
-                                                    <span>Received
-                                                        <span>2 hours 5 minutes ago</span></span>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="review-card-body ">
-                                                <div class="top-row">
-                                                    <h3 class="feedback-row-title">
-                                                        <a href="/profile/view/broderick_building_services">Broderick
-                                                            Building
-                                                        </a>
-                                                    </h3>
-
-                                                </div>
-
-                                                <div class="review_title">
-
-                                                    Received positive feedback
-
-                                                </div>
-                                                <div class="item_comment">
-                                                    <p class="feedback-item__body text-center">
-                                                        <span class="review_item_comment">Really great work thank you.
-                                                            Didn’t ask
-                                                            for all payment up front and paid as the work was
-                                                            completed</span>
-                                                    </p>
-                                                </div>
-                                                <div class="review-item__posted ">
-                                                    <span>Received
-                                                        <span>2 hours 5 minutes ago</span></span>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="review-card-body ">
-                                                <div class="top-row">
-                                                    <h3 class="feedback-row-title">
-                                                        <a href="/profile/view/broderick_building_services">Broderick
-                                                            Building
-                                                            Services</a>
-                                                    </h3>
-
-                                                </div>
-
-                                                <div class="review_title">
-
-                                                    Received feedback
-
-                                                </div>
-                                                <div class="item_comment">
-                                                    <p class="feedback-item__body text-center">
-                                                        <span class="review_item_comment">Really great work thank you.
-                                                            Didn’t ask
-                                                            for all payment up front and paid as the work was
-                                                            completed</span>
-                                                    </p>
-                                                </div>
-                                                <div class="review-item__posted ">
-                                                    <span>Received
-                                                        <span>2 hours 5 minutes ago</span></span>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="review-card-body ">
-                                                <div class="top-row">
-                                                    <h3 class="feedback-row-title">
-                                                        <a href="/profile/view/broderick_building_services">
-                                                            Building
-                                                            Services</a>
-                                                    </h3>
-
-                                                </div>
-
-                                                <div class="review_title">
-
-                                                    Received positive feedback
-
-                                                </div>
-                                                <div class="item_comment">
-                                                    <p class="feedback-item__body text-center">
-                                                        <span class="review_item_comment">Really great work thank you.
-                                                            Didn’t ask
-                                                            for all payment up front and paid as the work was
-                                                            completed</span>
-                                                    </p>
-                                                </div>
-                                                <div class="review-item__posted ">
-                                                    <span>Received
-                                                        <span>2 hours 5 minutes ago</span></span>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </div>
-
-
-
-
-
-
-
-
-                </div>
-            </div>
-            {{-- <div class=" col-md-12 " style="background: white">
-                <div class="container">
-
-                    <div class="bottom-box">
-                        <div class="parallelogram-bottom">
-
-
-                        </div>
-
-                        <div class="hp-trade-sign-up__content containers " style="margin-left: 30px">
-                            <p class=" " style="font-size:large ; font-weight:bold">Become a trade member</p>
-                            <h2 class="heading heading--x-large">Start winning more work</h2>
-                            <a href={{ route('register') }} class="btn--lp">Apply now</a>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
-        @endif
-        @if (get_setting('how_it_works_show') == 'on')
-            <section class="bg-white py-4">
-                <div class="container">
-                    <div class="py-3 rounded-2 border-1 border-primary bg-hov-soft-primary">
-                        <div class="w-xl-50 w-lg-75 mx-auto my-5 text-center">
-                            <h2 class="fw-700 fs-40">{{ get_setting('how_it_works_title') }}</h2>
-                            <p class="fs-17 text-secondary">{{ get_setting('how_it_works_subtitle') }}</p>
-                        </div>
-                        <div class="row justify-content-center">
-                            <div class="col-xl-4 col-md-6">
-                                <div class="px-xl-5 px-md-3 mb-4 text-center">
-                                    <img src="{{ get_setting('how_it_works_banner_1') ? custom_asset(get_setting('how_it_works_banner_1')) : my_asset('assets/placeholder.jpg') }}"
-                                        class="img-fluid mx-auto">
-                                    <div class="p-4">
-                                        @php
-                                            echo get_setting('how_it_works_description_1');
-                                        @endphp
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-md-6">
-                                <div class="px-xl-5 px-md-3 mb-4 text-center">
-                                    <img src="{{ get_setting('how_it_works_banner_2') ? custom_asset(get_setting('how_it_works_banner_2')) : my_asset('assets/placeholder.jpg') }}"
-                                        class="img-fluid mx-auto">
-                                    <div class="p-4">
-                                        @php
-                                            echo get_setting('how_it_works_description_2');
-                                        @endphp
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-md-6">
-                                <div class="px-xl-5 px-md-3 mb-4 text-center">
-                                    <img src="{{ get_setting('how_it_works_banner_3') ? custom_asset(get_setting('how_it_works_banner_3')) : my_asset('assets/placeholder.jpg') }}"
-                                        class="img-fluid mx-auto">
-                                    <div class="p-4">
-                                        @php
-                                            echo get_setting('how_it_works_description_3');
-                                        @endphp
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        @endif
-        @if (get_setting('latest_project_show') == 'on')
-            <section class="bg-white py-7">
-                <div class="container">
-                    <div class="w-lg-75 w-xl-50 lh-1-8 mx-auto mb-5 text-center">
-                        <h2 class="fw-700 fs-40">{{ get_setting('latest_project_title') }}</h2>
-                        <p class="fs-17 text-secondary">{{ get_setting('latest_project_subtitle') }}</p>
-                    </div>
-                    <div class="row">
-                        <div class="col-xl-10 mx-auto">
-                            @if (\App\Models\SystemConfiguration::where('type', 'project_approval')->first()->value == 1)
-                                @php
-                                    $projects = \App\Models\Project::biddable()
-                                        ->notcancel()
-                                        ->open()
-                                        ->where('project_approval', 1)
-                                        ->latest()
-                                        ->get()
-                                        ->take(3);
-                                @endphp
-                            @else
-                                @php
-                                    $projects = \App\Models\Project::biddable()
-                                        ->notcancel()
-                                        ->open()
-                                        ->latest()
-                                        ->get()
-                                        ->take(3);
-                                @endphp
                             @endif
-                            @foreach ($projects as $key => $project)
-                                <a href="{{ route('project.details', $project->slug) }}"
-                                    class="d-block card-project-rounded card mb-3 text-inherit">
-                                    <div class="row">
-                                        {{-- card row --}}
-                                        {{-- card row --}}
-                                        <div class="col-8">
-                                            <h5 class="h6 fw-600 lh-1-5">
-                                                {{ $project->name }}
-                                            </h5>
-                                            <ul class="list-inline fs-12 mb-0 opacity-70">
-                                                <li class="list-inline-item mr-3">
-                                                    {{-- <i class="las la-clock opacity-40"></i> --}}
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
-                                                        viewBox="0 0 12 12">
-                                                        <g id="Group_22" data-name="Group 22"
-                                                            transform="translate(-365 -1963)">
-                                                            <path id="Subtraction_5" data-name="Subtraction 5"
-                                                                d="M-13,12a6.007,6.007,0,0,1-6-6,6.007,6.007,0,0,1,6-6A6.007,6.007,0,0,1-7,6,6.006,6.006,0,0,1-13,12Zm-.5-9V7h.013l2.109,2.109.707-.706L-12.5,6.572V3Z"
-                                                                transform="translate(384 1963)" fill="#989ea8" />
-                                                        </g>
-                                                    </svg>
-                                                    <span
-                                                        class="ml-1">{{ Carbon\Carbon::parse($project->created_at)->diffForHumans() }}</span>
-                                                </li>
-                                                <li class="list-inline-item mr-3">
-                                                    {{-- <i class="las la-stream opacity-40"></i> --}}
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11"
-                                                        viewBox="0 0 12 11">
-                                                        <g id="Group_23" data-name="Group 23"
-                                                            transform="translate(-498 -1963)">
-                                                            <path id="Subtraction_2" data-name="Subtraction 2"
-                                                                d="M1.5,0h7a1.5,1.5,0,0,1,0,3h-7a1.5,1.5,0,0,1,0-3Z"
-                                                                transform="translate(498 1963)" fill="#989ea8" />
-                                                            <path id="Subtraction_4" data-name="Subtraction 4"
-                                                                d="M1.5,0h5a1.5,1.5,0,0,1,0,3h-5a1.5,1.5,0,0,1,0-3Z"
-                                                                transform="translate(498 1971)" fill="#989ea8" />
-                                                            <path id="Subtraction_3" data-name="Subtraction 3"
-                                                                d="M1.5,0h7a1.5,1.5,0,0,1,0,3h-7a1.5,1.5,0,0,1,0-3Z"
-                                                                transform="translate(500 1967)" fill="#989ea8" />
-                                                        </g>
-                                                    </svg>
-                                                    <span class="ml-1">{{ $project->project_category->name }}</span>
-                                                </li>
-                                                <li class="list-inline-item">
-                                                    {{-- <i class="las la-handshake"></i> --}}
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="7.643" height="12"
-                                                        viewBox="0 0 7.643 12">
-                                                        <g id="Group_24" data-name="Group 24"
-                                                            transform="translate(-131 -59.8)">
-                                                            <path id="Path_9" data-name="Path 9"
-                                                                d="M136.142,161.028,133.614,161A3.381,3.381,0,0,0,131,164.281v4.708a.92.92,0,0,0,.917.917h5.809a.92.92,0,0,0,.917-.917v-4.708A3.361,3.361,0,0,0,136.142,161.028Zm-1.321,4.488a1.122,1.122,0,0,1,.306,2.2v.248a.306.306,0,0,1-.611,0v-.248a1.123,1.123,0,0,1-.816-1.079.306.306,0,0,1,.611,0,.511.511,0,1,0,.511-.511,1.122,1.122,0,0,1-.306-2.2v-.183a.306.306,0,1,1,.611,0v.183a1.123,1.123,0,0,1,.816,1.079.306.306,0,1,1-.611,0,.511.511,0,1,0-.511.511Z"
-                                                                transform="translate(0 -98.106)" fill="#989ea8" />
-                                                            <path id="Path_10" data-name="Path 10"
-                                                                d="M219.424,124.641l.15-.52L217.1,124.1l.171.52Z"
-                                                                transform="translate(-83.468 -62.334)" fill="#989ea8" />
-                                                            <path id="Path_11" data-name="Path 11"
-                                                                d="M199.1,61.179l.4-1.379h-3.7l.449,1.351Z"
-                                                                transform="translate(-62.819)" fill="#989ea8" />
-                                                        </g>
-                                                    </svg>
-                                                    <span class="ml-1">{{ translate($project->type) }}</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-4 text-right">
-                                            <span class="fs-30 fw-600">{{ single_price($project->price) }}</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            @endforeach
-                        </div>
-                    </div>
-                    <div class="pt-4 text-center">
-                        <a href="{{ route('search') }}?keyword=&type=project"
-                            class="btn--lp rounded-1">{{ translate('Check All Projects') }}</a>
-                    </div>
+                        @endforeach
+                    @endif
                 </div>
-            </section>
-        @endif
 
-        @if (get_setting('featured_category_show') == 'on')
-            <section class="bg-white pt-5 pb-4">
-                <div class="container">
-                    <div class="bg-primary py-7 px-6 rounded-2">
-                        <div class="lh-1-8 mx-auto mb-5">
-                            <h2 class="fw-700 fs-40 text-white">{{ get_setting('featured_category_title') }}</h2>
-                            <p class="fs-17 text-white">{{ get_setting('featured_category_subtitle') }}</p>
-                        </div>
-                        <div class="row gutters-10">
-
-                            @if (get_setting('featured_category_list') != null)
-                                @foreach (json_decode(get_setting('featured_category_list'), true) as $key => $category_id)
-                                    @if (($category = \App\Models\ProjectCategory::find($category_id)) != null)
-                                        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
-                                            <a class="featured_category d-block card bg-transparent py-5 px-2 text-center text-inherit shadow-none rounded-2 bg-transparent"
-                                                href="{{ route('projects.category', $category->slug) }}"
-                                                style="height: 176px;border: 1px solid #ced2d9;">
-                                                <img src="{{ custom_asset($category->photo) }}"
-                                                    class="mw-100 h-50px mb-2">
-                                                <p class="fs-16 fw-600 text-white mb-0">{{ $category->name }}</p>
-                                            </a>
-                                        </div>
-                                    @endif
-                                @endforeach
-                            @endif
-                        </div>
-                        {{-- <div class="row gutters-10 mt-5">
-                        <div class="col-lg-6">
-                            <img src="{{ custom_asset(get_setting('featured_category_left_banner')) }}"
-                                class="img-fluid">
-                        </div>
-                        <div class="col-lg-6">
-                            <img src="{{ custom_asset(get_setting('featured_category_right_banner')) }}"
-                                class="img-fluid">
-                        </div>
-                    </div> --}}
-                        <div class="mt-5">
-                            <a href="{{ route('search') }}?category="
-                                class="btn bg-white
+                <div class="mt-5">
+                    <a href="{{ route('search') }}?category="
+                        class="btn bg-white
                                 text-primary rounded-1">{{ translate('Browse More Categories') }}</a>
-                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pt-8 pb-2 bg-white">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-xl-6 col-md-8 mx-auto">
+                    <div class="text-center">
+                        <h2 class="fw-700 fs-40">{{ get_setting('service_section_title') }}</h2>
+                        <p class="fs-17 text-secondary">{{ get_setting('service_section_subtitle') }}</p>
                     </div>
                 </div>
-            </section>
-        @endif
+            </div>
+            @php
+                $user_ids = \App\Models\UserPackage::where('package_invalid_at', '!=', null)
+                    ->where('package_invalid_at', '>', Carbon\Carbon::now()->format('Y-m-d'))
+                    ->pluck('user_id');
 
-        @if (get_setting('service_section_show') == 'on')
-            <section class="pt-8 pb-2 bg-white">
-                <div class="container">
-                    <div class="row mb-5">
-                        <div class="col-xl-6 col-md-8 mx-auto">
-                            <div class="text-center">
-                                <h2 class="fw-700 fs-40">{{ get_setting('service_section_title') }}</h2>
-                                <p class="fs-17 text-secondary">{{ get_setting('service_section_subtitle') }}</p>
+                $services = \App\Models\Service::inRandomOrder()
+                    ->whereIn('user_id', $user_ids)
+                    ->take(get_setting('max_service_show_homepage'))
+                    ->get();
+            @endphp
+            <div class="row">
+                <div class="aiz-carousel gutters-15 w-100" data-items="4" data-xl-items="3" data-md-items="2"
+                    data-sm-items="1" data-arrows='true'>
+                    @foreach ($services as $service)
+                        <div class="caorusel-box">
+                            <div class="card bg-transparent rounded-2 border-gray-light hov-box overflow-hidden">
+                                <a href="{{ route('service.show', $service->slug) }}">
+                                    @if ($service->image != null)
+                                        <img src="{{ custom_asset($service->image) }}" class="card-img-top img-fit"
+                                            alt="service_image" height="212">
+                                    @else
+                                        <img src="{{ my_asset('assets/frontend/default/img/placeholder-service.jpg') }}"
+                                            class="card-img-top img-fit" alt="{{ translate('Service Image') }}"
+                                            height="212">
+                                    @endif
+                                </a>
+                                <div class="card-body hov-box-body">
+                                    <div class="d-flex mb-2">
+                                        <span class="mr-2">
+                                            @if ($service->user->photo != null)
+                                                <img src="{{ custom_asset($service->user->photo) }}"
+                                                    alt="{{ translate('image') }}" height="35" width="35"
+                                                    class="rounded-circle">
+                                            @else
+                                                <img src="{{ my_asset('assets/frontend/default/img/avatar-place.png') }}"
+                                                    alt="{{ translate('image') }}" height="35" width="35"
+                                                    class="rounded-circle">
+                                            @endif
+                                        </span>
+                                        <span class="d-flex flex-column justify-content-center">
+                                            <a href="{{ route('freelancer.details', $service->user->user_name) }}"
+                                                class="text-secondary fs-14"><span
+                                                    class="font-weight-bold">{{ $service->user->name }}</span></a>
+                                        </span>
+                                    </div>
+
+                                    <a href="{{ route('service.show', $service->slug) }}" class="text-dark"
+                                        title="{{ $service->title }}">
+                                        <h5 class="card-title fs-16 fw-700 h-40px">
+                                            {{ \Illuminate\Support\Str::limit($service->title, 45, $end = '...') }}
+                                        </h5>
+                                    </a>
+                                    <div class="text-warning">
+                                        <span class="rating rating-lg rating-mr-1">
+                                            {{ renderStarRating(getAverageRating($service->user->id)) }}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+            </div>
+            <div class="pt-5 text-center">
+                <a href="{{ route('search') }}?keyword=&type=service"
+                    class="btn btn-primary rounded-1">{{ translate('Explore More Services') }}</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta_section py-8 bg-white">
+        <div class="container">
+            <div class="bg-white">
+                <div class="row mx-0 sm-no-gutters rounded-2 overflow-hidden">
+                    <div class="col-lg-6 px-0">
+                        <img src="{{ get_setting('cta_section_banner') ? custom_asset(get_setting('cta_section_banner')) : my_asset('assets/placeholder.jpg') }}"
+                            alt="" class="w-100 h-100">
+                    </div>
+                    <div class="col-lg-6 px-0">
+                        <div class="bg-primary py-6 px-4 h-100">
+                            <nav class="nav mb-3">
+                                <a class="nav-link text-white opacity-50 active" href="#nav-client"
+                                    data-toggle="tab">{{ translate('Client') }}</a>
+                                <a class="nav-link text-white opacity-50" href="#nav-freelancer"
+                                    data-toggle="tab">{{ translate('Freelancer') }}</a>
+                            </nav>
+                            <div class="tab-content">
+                                <div class="tab-pane fade show active " id="nav-client">
+                                    <div class="lh-1-8 mx-auto mb-5">
+                                        <h2 class="fw-700 fs-40 text-white">
+                                            {{ get_setting('cta_section_title_client') }}</h2>
+                                        <p class="fs-16 text-white mt-3">{!! get_setting('cta_section_subtitle_client') !!}</p>
+                                    </div>
+                                    <div>
+                                        <div><a href="{{ route('login') }}"
+                                                class="text-white hov-text-light">{{ translate('Already a Client') }},
+                                                <strong>{{ translate('Login to Get Started') }} <i
+                                                        class="las la-long-arrow-alt-right"></i></strong></a></div>
+                                        <a href="{{ route('register') }}?type=2"
+                                            class="btn bg-white text-primary hov-text-soft-primary rounded-1 mt-3">{{ translate('Or, Create an Account to Get Started') }}</a>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade " id="nav-freelancer">
+                                    <div class="lh-1-8 mx-auto mb-5">
+                                        <h2 class="fw-700 fs-40 text-white">
+                                            {{ get_setting('cta_section_title_freelancer') }}</h2>
+                                        <p class="fs-16 text-white mt-3">{!! get_setting('cta_section_subtitle_freelancer') !!}</p>
+                                    </div>
+                                    <div>
+                                        <div><a href="{{ route('login') }}"
+                                                class="text-white hov-text-light">{{ translate('Already a Freelancer') }},
+                                                <strong>{{ translate('Login to Get Started') }} <i
+                                                        class="las la-long-arrow-alt-right"></i></strong></a></div>
+                                        <a href="{{ route('register') }}?type=1"
+                                            class="btn bg-white text-primary rounded-1 mt-3">{{ translate('Or, Create an Account to Get Started') }}</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    @php
-                        $user_ids = \App\Models\UserPackage::where('package_invalid_at', '!=', null)
-                            ->where('package_invalid_at', '>', Carbon\Carbon::now()->format('Y-m-d'))
-                            ->pluck('user_id');
+                </div>
+            </div>
+        </div>
+    </section>
 
-                        $services = \App\Models\Service::inRandomOrder()
-                            ->whereIn('user_id', $user_ids)
-                            ->take(get_setting('max_service_show_homepage'))
+    <section class="bg-white pt-4 pb-7 text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-xl-8 col-xxl-6 mx-auto">
+                    <div class="section-title mb-5 text-center">
+                        <h2 class="fw-700 fs-40 text-dark">{{ get_setting('blog_section_title') }}</h2>
+                        <p class="fs-17 text-secondary">{{ get_setting('blog_section_subtitle') }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="aiz-carousel gutters-15 w-100" data-items="4" data-xl-items="3" data-md-items="2"
+                    data-sm-items="1" data-arrows='true'>
+                    @php
+                        $blogs = \App\Models\Blog::where('status', 1)
+                            ->latest()
+                            ->limit(get_setting('max_blog_show_homepage'))
                             ->get();
                     @endphp
-                    <div class="row">
-                        <div class="aiz-carousel gutters-15 w-100" data-items="4" data-xl-items="3" data-md-items="2"
-                            data-sm-items="1" data-arrows='true'>
-                            @foreach ($services as $service)
-                                <div class="caorusel-box">
-                                    <div class="card bg-transparent rounded-2 border-gray-light hov-box overflow-hidden">
-                                        <a href="{{ route('service.show', $service->slug) }}">
-                                            @if ($service->image != null)
-                                                <img src="{{ custom_asset($service->image) }}"
-                                                    class="card-img-top img-fit" alt="service_image" height="212">
-                                            @else
-                                                <img src="{{ my_asset('assets/frontend/default/img/placeholder-service.jpg') }}"
-                                                    class="card-img-top img-fit" alt="{{ translate('Service Image') }}"
-                                                    height="212">
-                                            @endif
+                    @foreach ($blogs as $key => $blog)
+                        <div class="caorusel-box">
+                            <div class="card text-dark mb-3 overflow-hidden rounded-2 border-gray-light hov-box">
+                                <a href="{{ route('blog.details', $blog->slug) }}" class="text-reset d-block">
+                                    <img src="{{ custom_asset($blog->banner) }}" alt="{{ $blog->title }}"
+                                        class="card-img-top img-fit" height="212">
+                                </a>
+                                <div class="p-4">
+                                    <h2 class="fs-18 fw-600 mb-1 h-45px">
+                                        <a href="{{ route('blog.details', $blog->slug) }}" class="text-dark fs-16 fw-700"
+                                            title="{{ $blog->title }}">
+                                            {{ \Illuminate\Support\Str::limit($blog->title, 45, $end = '...') }}
                                         </a>
-                                        <div class="card-body hov-box-body">
-                                            <div class="d-flex mb-2">
-                                                <span class="mr-2">
-                                                    @if ($service->user->photo != null)
-                                                        <img src="{{ custom_asset($service->user->photo) }}"
-                                                            alt="{{ translate('image') }}" height="35" width="35"
-                                                            class="rounded-circle">
-                                                    @else
-                                                        <img src="{{ my_asset('assets/frontend/default/img/avatar-place.png') }}"
-                                                            alt="{{ translate('image') }}" height="35" width="35"
-                                                            class="rounded-circle">
-                                                    @endif
-                                                </span>
-                                                <span class="d-flex flex-column justify-content-center">
-                                                    <a href="{{ route('freelancer.details', $service->user->user_name) }}"
-                                                        class="text-secondary fs-14"><span
-                                                            class="font-weight-bold">{{ $service->user->name }}</span></a>
-                                                </span>
-                                            </div>
-
-                                            <a href="{{ route('service.show', $service->slug) }}" class="text-dark"
-                                                title="{{ $service->title }}">
-                                                <h5 class="card-title fs-16 fw-700 h-40px">
-                                                    {{ \Illuminate\Support\Str::limit($service->title, 45, $end = '...') }}
-                                                </h5>
-                                            </a>
-                                            <div class="text-warning">
-                                                <span class="rating rating-lg rating-mr-1">
-                                                    {{ renderStarRating(getAverageRating($service->user->id)) }}
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-
-                    </div>
-                    <div class="pt-5 text-center">
-                        <a href="{{ route('search') }}?keyword=&type=service"
-                            class="btn btn-primary rounded-1">{{ translate('Explore More Services') }}</a>
-                    </div>
-                </div>
-            </section>
-        @endif
-
-
-        @if (get_setting('cta_section_show') == 'on')
-            <section class="cta_section py-8 bg-white">
-                <div class="container">
-                    <div class="bg-white">
-                        <div class="row mx-0 sm-no-gutters rounded-2 overflow-hidden">
-                            <div class="col-lg-6 px-0">
-                                <img src="{{ get_setting('cta_section_banner') ? custom_asset(get_setting('cta_section_banner')) : my_asset('assets/placeholder.jpg') }}"
-                                    alt="" class="w-100 h-100">
-                            </div>
-                            <div class="col-lg-6 px-0">
-                                <div class="bg-primary py-6 px-4 h-100">
-                                    <nav class="nav mb-3">
-                                        <a class="nav-link text-white opacity-50 active" href="#nav-client"
-                                            data-toggle="tab">{{ translate('Client') }}</a>
-                                        <a class="nav-link text-white opacity-50" href="#nav-freelancer"
-                                            data-toggle="tab">{{ translate('Freelancer') }}</a>
-                                    </nav>
-                                    <div class="tab-content">
-                                        <div class="tab-pane fade show active " id="nav-client">
-                                            <div class="lh-1-8 mx-auto mb-5">
-                                                <h2 class="fw-700 fs-40 text-white">
-                                                    {{ get_setting('cta_section_title_client') }}</h2>
-                                                <p class="fs-16 text-white mt-3">{!! get_setting('cta_section_subtitle_client') !!}</p>
-                                            </div>
-                                            <div>
-                                                <div><a href="{{ route('login') }}"
-                                                        class="text-white hov-text-light">{{ translate('Already a Client') }},
-                                                        <strong>{{ translate('Login to Get Started') }} <i
-                                                                class="las la-long-arrow-alt-right"></i></strong></a></div>
-                                                <a href="{{ route('register') }}?type=2"
-                                                    class="btn bg-white text-primary hov-text-soft-primary rounded-1 mt-3">{{ translate('Or, Create an Account to Get Started') }}</a>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade " id="nav-freelancer">
-                                            <div class="lh-1-8 mx-auto mb-5">
-                                                <h2 class="fw-700 fs-40 text-white">
-                                                    {{ get_setting('cta_section_title_freelancer') }}</h2>
-                                                <p class="fs-16 text-white mt-3">{!! get_setting('cta_section_subtitle_freelancer') !!}</p>
-                                            </div>
-                                            <div>
-                                                <div><a href="{{ route('login') }}"
-                                                        class="text-white hov-text-light">{{ translate('Already a Freelancer') }},
-                                                        <strong>{{ translate('Login to Get Started') }} <i
-                                                                class="las la-long-arrow-alt-right"></i></strong></a></div>
-                                                <a href="{{ route('register') }}?type=1"
-                                                    class="btn bg-white text-primary rounded-1 mt-3">{{ translate('Or, Create an Account to Get Started') }}</a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    </h2>
+                                    @if ($blog->category != null)
+                                        <p class="mt-3 mb-0 text-primary fs-14 fw-700">
+                                            {{ $blog->category->category_name }}</p>
+                                    @endif
+                                    <p class="mb-4 fs-14 text-secondary opacity-70">
+                                        {{ $blog->created_at ? date('d.m.Y', strtotime($blog->created_at)) : '' }}
+                                    </p>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
-            </section>
-        @endif
+            </div>
+            <div class="mt-4 text-center">
+                <a href="{{ route('blog') }}" class="btn btn-primary rounded-1">{{ translate('View More') }}</a>
+            </div>
+        </div>
+    </section>
 
-        @if (get_setting('blog_section_show') == 'on')
-            <section class="bg-white pt-4 pb-7 text-white">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-10 col-xl-8 col-xxl-6 mx-auto">
-                            <div class="section-title mb-5 text-center">
-                                <h2 class="fw-700 fs-40 text-dark">{{ get_setting('blog_section_title') }}</h2>
-                                <p class="fs-17 text-secondary">{{ get_setting('blog_section_subtitle') }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="aiz-carousel gutters-15 w-100" data-items="4" data-xl-items="3" data-md-items="2"
-                            data-sm-items="1" data-arrows='true'>
-                            @php
-                                $blogs = \App\Models\Blog::where('status', 1)
-                                    ->latest()
-                                    ->limit(get_setting('max_blog_show_homepage'))
-                                    ->get();
-                            @endphp
-                            @foreach ($blogs as $key => $blog)
-                                <div class="caorusel-box">
-                                    <div class="card text-dark mb-3 overflow-hidden rounded-2 border-gray-light hov-box">
-                                        <a href="{{ route('blog.details', $blog->slug) }}" class="text-reset d-block">
-                                            <img src="{{ custom_asset($blog->banner) }}" alt="{{ $blog->title }}"
-                                                class="card-img-top img-fit" height="212">
-                                        </a>
-                                        <div class="p-4">
-                                            <h2 class="fs-18 fw-600 mb-1 h-45px">
-                                                <a href="{{ route('blog.details', $blog->slug) }}"
-                                                    class="text-dark fs-16 fw-700" title="{{ $blog->title }}">
-                                                    {{ \Illuminate\Support\Str::limit($blog->title, 45, $end = '...') }}
-                                                </a>
-                                            </h2>
-                                            @if ($blog->category != null)
-                                                <p class="mt-3 mb-0 text-primary fs-14 fw-700">
-                                                    {{ $blog->category->category_name }}</p>
-                                            @endif
-                                            <p class="mb-4 fs-14 text-secondary opacity-70">
-                                                {{ $blog->created_at ? date('d.m.Y', strtotime($blog->created_at)) : '' }}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                    <div class="mt-4 text-center">
-                        <a href="{{ route('blog') }}" class="btn btn-primary rounded-1">{{ translate('View More') }}</a>
-                    </div>
-                </div>
-            </section>
-        @endif
-    @endsection
+@endsection
 
 
 
-
-    @section('modal')
-        @if (
-            (Session::has('new_user') && Session::get('new_user') == true) ||
-                (auth()->check() && auth()->user()->user_type == null))
+ @section('modal')
+        @if ((Session::has('new_user') && Session::get('new_user') == true) || (auth()->check() && auth()->user()->user_type == null))
             <div class="modal fade" id="show_new_user_modal">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
@@ -3419,354 +2523,3132 @@ ADVETISMENT SLIDER --}}
                 </div>
             </div>
         @endif
-    @endsection
+    @endsection  
 
 
 
 
-    @section('script')
-        @if (
-            (Session::has('new_user') && Session::get('new_user') == true) ||
-                (auth()->check() && auth()->user()->user_type == null))
-            <script>
-                $('#show_new_user_modal').modal({
-                    show: true
+@section('script')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollToPlugin.min.js"></script>
+
+
+    <script>
+        $(function() {
+            var $window = $(window);
+            var scrollTime = 1.2; // Scroll time
+            var scrollDistance =
+            170; // Distance. Use smaller value for shorter scroll and greater value for longer scroll
+
+            $window.on("mousewheel DOMMouseScroll", function(event) {
+                event.preventDefault();
+
+                var delta = event.originalEvent.wheelDelta / 120 || -event.originalEvent.detail / 3;
+                var scrollTop = $window.scrollTop();
+                var finalScroll = scrollTop - parseInt(delta * scrollDistance);
+
+                TweenMax.to($window, scrollTime, {
+                    scrollTo: {
+                        y: finalScroll,
+                        autoKill: true
+                    },
+                    ease: Power1
+                    .easeOut, // For more easing functions see https://greensock.com/docs/v2/Easing
+                    autoKill: true,
+                    overwrite: 5
                 });
-            </script>
-        @endif
-        <script>
-            const leftButton = document.querySelector('.arrow.left');
-            const rightButton = document.querySelector('.arrow.right');
-
-            leftButton.addEventListener('click', () => {
-                turnSlider('left');
             });
+            
+        });
+    </script>
 
-            rightButton.addEventListener('click', () => {
-                turnSlider('right');
-            });
 
-            function turnSlider(direction) {
-                const slides = document.querySelectorAll(`.slide`);
-                slides.forEach(slide => {
-                    let currentSlide = +(slide.classList + '').split('-')[1];
-                    let slideToBe;
-                    switch (direction) {
-                        case 'left': {
-                            slideToBe = currentSlide - 1;
-                            if (slideToBe < 1) {
-                                slideToBe = slides.length;
-                                slide.style.left = '-500px';
-                            }
-                            break;
-                        }
-                        case 'right': {
-                            slideToBe = currentSlide + 1;
-                            if (slideToBe > slides.length) {
-                                slideToBe = 1;
-                                slide.style.left = '2000px';
-                            }
-                            break;
-                        }
+
+    <script>
+        $(document).ready(function() {
+
+            $('.review-slider').slick({
+                // dots: true,
+                autoplay: true,
+                autoplaySpeed: 2000,
+                infinite: true,
+                speed: 300,
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                responsive: [{
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                        // centerMode: true,
+
                     }
-                    slide.classList.remove(`slide-${currentSlide}`);
-                    slide.classList.add(`slide-${slideToBe}`);
-                });
+
+                }, {
+                    breakpoint: 800,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 2,
+                        dots: false,
+                        infinite: true,
+
+                    }
+
+
+                }, {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2,
+                        dots: false,
+                        infinite: true,
+
+                    }
+                }, {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        dots: false,
+                        infinite: true,
+                        autoplay: true,
+                        autoplaySpeed: 2000,
+                    }
+                }]
+            });
+
+
+        });
+
+        (function(factory) {
+            'use strict';
+            if (typeof define === 'function' && define.amd) {
+                define(['jquery'], factory);
+            } else if (typeof exports !== 'undefined') {
+                module.exports = factory(require('jquery'));
+            } else {
+                factory(jQuery);
             }
-        </script>
+
+        }(function($) {
+            'use strict';
+            var Slick = window.Slick || {};
+
+            Slick = (function() {
+
+                var instanceUid = 0;
+
+                function Slick(element, settings) {
+
+                    var _ = this,
+                        dataSettings;
+
+                    _.defaults = {
+                        accessibility: true,
+                        adaptiveHeight: false,
+                        appendArrows: $(element),
+                        appendDots: $(element),
+                        arrows: true,
+                        asNavFor: null,
+                        prevArrow: '<button type="button" data-role="none" class="slick-prev" aria-label="Previous" tabindex="0" role="button">Previous</button>',
+                        nextArrow: '<button type="button" data-role="none" class="slick-next" aria-label="Next" tabindex="0" role="button">Next</button>',
+                        autoplay: false,
+                        autoplaySpeed: 3000,
+                        centerMode: false,
+                        centerPadding: '50px',
+                        cssEase: 'ease',
+                        customPaging: function(slider, i) {
+                            return $(
+                                '<button type="button" data-role="none" role="button" tabindex="0" />'
+                            ).text(i + 1);
+                        },
+                        dots: false,
+                        dotsClass: 'slick-dots',
+                        draggable: true,
+                        easing: 'linear',
+                        edgeFriction: 0.35,
+                        fade: false,
+                        focusOnSelect: false,
+                        infinite: true,
+                        initialSlide: 0,
+                        lazyLoad: 'ondemand',
+                        mobileFirst: false,
+                        pauseOnHover: true,
+                        pauseOnFocus: true,
+                        pauseOnDotsHover: false,
+                        respondTo: 'window',
+                        responsive: null,
+                        rows: 1,
+                        rtl: false,
+                        slide: '',
+                        slidesPerRow: 1,
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        speed: 500,
+                        swipe: true,
+                        swipeToSlide: false,
+                        touchMove: true,
+                        touchThreshold: 5,
+                        useCSS: true,
+                        useTransform: true,
+                        variableWidth: false,
+                        vertical: false,
+                        verticalSwiping: false,
+                        waitForAnimate: true,
+                        zIndex: 1000
+                    };
+
+                    _.initials = {
+                        animating: false,
+                        dragging: false,
+                        autoPlayTimer: null,
+                        currentDirection: 0,
+                        currentLeft: null,
+                        currentSlide: 0,
+                        direction: 1,
+                        $dots: null,
+                        listWidth: null,
+                        listHeight: null,
+                        loadIndex: 0,
+                        $nextArrow: null,
+                        $prevArrow: null,
+                        slideCount: null,
+                        slideWidth: null,
+                        $slideTrack: null,
+                        $slides: null,
+                        sliding: false,
+                        slideOffset: 0,
+                        swipeLeft: null,
+                        $list: null,
+                        touchObject: {},
+                        transformsEnabled: false,
+                        unslicked: false
+                    };
+
+                    $.extend(_, _.initials);
+
+                    _.activeBreakpoint = null;
+                    _.animType = null;
+                    _.animProp = null;
+                    _.breakpoints = [];
+                    _.breakpointSettings = [];
+                    _.cssTransitions = false;
+                    _.focussed = false;
+                    _.interrupted = false;
+                    _.hidden = 'hidden';
+                    _.paused = true;
+                    _.positionProp = null;
+                    _.respondTo = null;
+                    _.rowCount = 1;
+                    _.shouldClick = true;
+                    _.$slider = $(element);
+                    _.$slidesCache = null;
+                    _.transformType = null;
+                    _.transitionType = null;
+                    _.visibilityChange = 'visibilitychange';
+                    _.windowWidth = 0;
+                    _.windowTimer = null;
+
+                    dataSettings = $(element).data('slick') || {};
+
+                    _.options = $.extend({}, _.defaults, settings, dataSettings);
+
+                    _.currentSlide = _.options.initialSlide;
+
+                    _.originalSettings = _.options;
+
+                    if (typeof document.mozHidden !== 'undefined') {
+                        _.hidden = 'mozHidden';
+                        _.visibilityChange = 'mozvisibilitychange';
+                    } else if (typeof document.webkitHidden !== 'undefined') {
+                        _.hidden = 'webkitHidden';
+                        _.visibilityChange = 'webkitvisibilitychange';
+                    }
+
+                    _.autoPlay = $.proxy(_.autoPlay, _);
+                    _.autoPlayClear = $.proxy(_.autoPlayClear, _);
+                    _.autoPlayIterator = $.proxy(_.autoPlayIterator, _);
+                    _.changeSlide = $.proxy(_.changeSlide, _);
+                    _.clickHandler = $.proxy(_.clickHandler, _);
+                    _.selectHandler = $.proxy(_.selectHandler, _);
+                    _.setPosition = $.proxy(_.setPosition, _);
+                    _.swipeHandler = $.proxy(_.swipeHandler, _);
+                    _.dragHandler = $.proxy(_.dragHandler, _);
+                    _.keyHandler = $.proxy(_.keyHandler, _);
+
+                    _.instanceUid = instanceUid++;
+
+                    // A simple way to check for HTML strings
+                    // Strict HTML recognition (must start with <)
+                    // Extracted from jQuery v1.11 source
+                    _.htmlExpr = /^(?:\s*(<[\w\W]+>)[^>]*)$/;
 
 
+                    _.registerBreakpoints();
+                    _.init(true);
 
+                }
 
+                return Slick;
 
-        <script>
-            $(document).ready(function() {
+            }());
 
-                var opcionesnav = $('.navoption').length;
-                var clickhamb = 0;
+            Slick.prototype.activateADA = function() {
+                var _ = this;
 
-                $("#hamburger").click(function() {
-                    clickhamb = 1;
-                    var header = $("#myTopnav");
-                    if (header[0].classList.length == 1) {
-                        header.addClass("responsive");
-                        $("header").height((opcionesnav + 1) * 48);
-                        $(".navlist a:not(.icon)").css("display", "block");
-                        setTimeout(
-                            function() {
-                                $(".navlist a:not(.icon)").css("transform", "translateX(0px)");
-                            }, 50);
+                _.$slideTrack.find('.slick-active').attr({
+                    'aria-hidden': 'false'
+                }).find('a, input, button, select').attr({
+                    'tabindex': '0'
+                });
+
+            };
+
+            Slick.prototype.addSlide = Slick.prototype.slickAdd = function(markup, index, addBefore) {
+
+                var _ = this;
+
+                if (typeof(index) === 'boolean') {
+                    addBefore = index;
+                    index = null;
+                } else if (index < 0 || (index >= _.slideCount)) {
+                    return false;
+                }
+
+                _.unload();
+
+                if (typeof(index) === 'number') {
+                    if (index === 0 && _.$slides.length === 0) {
+                        $(markup).appendTo(_.$slideTrack);
+                    } else if (addBefore) {
+                        $(markup).insertBefore(_.$slides.eq(index));
+                    } else {
+                        $(markup).insertAfter(_.$slides.eq(index));
+                    }
+                } else {
+                    if (addBefore === true) {
+                        $(markup).prependTo(_.$slideTrack);
+                    } else {
+                        $(markup).appendTo(_.$slideTrack);
+                    }
+                }
+
+                _.$slides = _.$slideTrack.children(this.options.slide);
+
+                _.$slideTrack.children(this.options.slide).detach();
+
+                _.$slideTrack.append(_.$slides);
+
+                _.$slides.each(function(index, element) {
+                    $(element).attr('data-slick-index', index);
+                });
+
+                _.$slidesCache = _.$slides;
+
+                _.reinit();
+
+            };
+
+            Slick.prototype.animateHeight = function() {
+                var _ = this;
+                if (_.options.slidesToShow === 1 && _.options.adaptiveHeight === true && _.options.vertical ===
+                    false) {
+                    var targetHeight = _.$slides.eq(_.currentSlide).outerHeight(true);
+                    _.$list.animate({
+                        height: targetHeight
+                    }, _.options.speed);
+                }
+            };
+
+            Slick.prototype.animateSlide = function(targetLeft, callback) {
+
+                var animProps = {},
+                    _ = this;
+
+                _.animateHeight();
+
+                if (_.options.rtl === true && _.options.vertical === false) {
+                    targetLeft = -targetLeft;
+                }
+                if (_.transformsEnabled === false) {
+                    if (_.options.vertical === false) {
+                        _.$slideTrack.animate({
+                            left: targetLeft
+                        }, _.options.speed, _.options.easing, callback);
+                    } else {
+                        _.$slideTrack.animate({
+                            top: targetLeft
+                        }, _.options.speed, _.options.easing, callback);
+                    }
+
+                } else {
+
+                    if (_.cssTransitions === false) {
+                        if (_.options.rtl === true) {
+                            _.currentLeft = -(_.currentLeft);
+                        }
+                        $({
+                            animStart: _.currentLeft
+                        }).animate({
+                            animStart: targetLeft
+                        }, {
+                            duration: _.options.speed,
+                            easing: _.options.easing,
+                            step: function(now) {
+                                now = Math.ceil(now);
+                                if (_.options.vertical === false) {
+                                    animProps[_.animType] = 'translate(' +
+                                        now + 'px, 0px)';
+                                    _.$slideTrack.css(animProps);
+                                } else {
+                                    animProps[_.animType] = 'translate(0px,' +
+                                        now + 'px)';
+                                    _.$slideTrack.css(animProps);
+                                }
+                            },
+                            complete: function() {
+                                if (callback) {
+                                    callback.call();
+                                }
+                            }
+                        });
 
                     } else {
-                        $(".navlist a:not(.icon)").css("transform", "translateX(600px)");
-                        header.height(48);
-                        setTimeout(
-                            function() {
-                                header.removeClass("responsive");
-                                header.height(48);
-                                $(".navlist a:not(.icon)").css("display", "none");
-                            }, 1600);
-                    }
-                });
 
+                        _.applyTransition();
+                        targetLeft = Math.ceil(targetLeft);
 
-                $(window).on('resize', function() {
-                    console.log(clickhamb);
-                    if (($(window).width() > 600) && (clickhamb == 1)) {
-                        console.log(clickhamb + "     " + $(window).width());
-                        $("#myTopnav").height(48);
-                        $(".navlist a:not(.icon)").css("display", "block");
-                        setTimeout(
-                            function() {
-                                $(".navlist a:not(.icon)").css("transform", "translateX(0px)");
-                            }, 500);
-                    }
-                });
-
-            });
-        </script>
-
-        <script>
-            $(document).ready(function() {
-                $('#myCustomCarousel').carousel({
-                    interval: 3000 // Set the interval for auto-sliding in milliseconds
-                });
-            });
-        </script>
-        {{-- <script>
-            $(document).ready(function() {
-                // Add two other images to the 3-image set of a carousel-item
-                $('#adv-slider .carousel-item').each(function() {
-                    var next = $(this).next();
-
-                    for (var i = 0; i < 2; i++) {
-                        if (!next.length) {
-                            next = $(this).siblings(':first');
+                        if (_.options.vertical === false) {
+                            animProps[_.animType] = 'translate3d(' + targetLeft + 'px, 0px, 0px)';
+                        } else {
+                            animProps[_.animType] = 'translate3d(0px,' + targetLeft + 'px, 0px)';
                         }
-                        next.children(':first').children(':first').clone().addClass('d-none d-md-block')
-                            .appendTo($(this).children(':first'));
+                        _.$slideTrack.css(animProps);
 
-                        next = next.next();
+                        if (callback) {
+                            setTimeout(function() {
+
+                                _.disableTransition();
+
+                                callback.call();
+                            }, _.options.speed);
+                        }
+
                     }
-                });
-            });
-        </script> --}}
 
-        <script>
-            //Add two other images to the 3-image set of a carousel-item
-            $('#multi-slider .carousel-item').each(function() {
-                var next = $(this).next();
-
-                for (var i = 0; i < 2; i++) {
-                    if (!next.length) {
-                        next = $(this).siblings(':first');
-                    }
-                    next.children(':first').children(':first').clone().addClass('d-none d-md-block').appendTo($(this)
-                        .children(':first'));
-
-                    next = next.next();
                 }
-            });
-        </script>
 
-        <script>
-            (function($) {
-                $.fn.cascadeSlider = function(opt) {
-                    var $this = this,
-                        itemClass = opt.itemClass || 'cascade-slider_item',
-                        arrowClass = opt.arrowClass || 'cascade-slider_arrow',
-                        $item = $this.find('.' + itemClass),
-                        $arrow = $this.find('.' + arrowClass),
-                        itemCount = $item.length;
-                    items = opt.itemCount;
+            };
 
-                    // Additional option for autoplay
-                    autoplayDelay = opt.delay;
-                    if (autoplayDelay == null || autoplayDelay == 0) {
-                        autoplayDelay = 3;
+            Slick.prototype.getNavTarget = function() {
+
+                var _ = this,
+                    asNavFor = _.options.asNavFor;
+
+                if (asNavFor && asNavFor !== null) {
+                    asNavFor = $(asNavFor).not(_.$slider);
+                }
+
+                return asNavFor;
+
+            };
+
+            Slick.prototype.asNavFor = function(index) {
+
+                var _ = this,
+                    asNavFor = _.getNavTarget();
+
+                if (asNavFor !== null && typeof asNavFor === 'object') {
+                    asNavFor.each(function() {
+                        var target = $(this).slick('getSlick');
+                        if (!target.unslicked) {
+                            target.slideHandler(index, true);
+                        }
+                    });
+                }
+
+            };
+
+            Slick.prototype.applyTransition = function(slide) {
+
+                var _ = this,
+                    transition = {};
+
+                if (_.options.fade === false) {
+                    transition[_.transitionType] = _.transformType + ' ' + _.options.speed + 'ms ' + _.options
+                        .cssEase;
+                } else {
+                    transition[_.transitionType] = 'opacity ' + _.options.speed + 'ms ' + _.options.cssEase;
+                }
+
+                if (_.options.fade === false) {
+                    _.$slideTrack.css(transition);
+                } else {
+                    _.$slides.eq(slide).css(transition);
+                }
+
+            };
+
+            Slick.prototype.autoPlay = function() {
+
+                var _ = this;
+
+                _.autoPlayClear();
+
+                if (_.slideCount > _.options.slidesToShow) {
+                    _.autoPlayTimer = setInterval(_.autoPlayIterator, _.options.autoplaySpeed);
+                }
+
+            };
+
+            Slick.prototype.autoPlayClear = function() {
+
+                var _ = this;
+
+                if (_.autoPlayTimer) {
+                    clearInterval(_.autoPlayTimer);
+                }
+
+            };
+
+            Slick.prototype.autoPlayIterator = function() {
+
+                var _ = this,
+                    slideTo = _.currentSlide + _.options.slidesToScroll;
+
+                if (!_.paused && !_.interrupted && !_.focussed) {
+
+                    if (_.options.infinite === false) {
+
+                        if (_.direction === 1 && (_.currentSlide + 1) === (_.slideCount - 1)) {
+                            _.direction = 0;
+                        } else if (_.direction === 0) {
+
+                            slideTo = _.currentSlide - _.options.slidesToScroll;
+
+                            if (_.currentSlide - 1 === 0) {
+                                _.direction = 1;
+                            }
+
+                        }
+
                     }
-                    pohClass = '.cascade-slider_item, .cascade-slider_arrow, .cascade-slider_dot';
-                    if (opt.autoplay == true) {
-                        autoPlay();
-                        if (opt.pauseOnHover == true) {
-                            $this.find(pohClass).on('mouseenter', function() {
-                                clearInterval(effectInterval);
-                            }).on('mouseleave', function() {
-                                autoPlay();
-                            })
+
+                    _.slideHandler(slideTo);
+
+                }
+
+            };
+
+            Slick.prototype.buildArrows = function() {
+
+                var _ = this;
+
+                if (_.options.arrows === true) {
+
+                    _.$prevArrow = $(_.options.prevArrow).addClass('slick-arrow');
+                    _.$nextArrow = $(_.options.nextArrow).addClass('slick-arrow');
+
+                    if (_.slideCount > _.options.slidesToShow) {
+
+                        _.$prevArrow.removeClass('slick-hidden').removeAttr('aria-hidden tabindex');
+                        _.$nextArrow.removeClass('slick-hidden').removeAttr('aria-hidden tabindex');
+
+                        if (_.htmlExpr.test(_.options.prevArrow)) {
+                            _.$prevArrow.prependTo(_.options.appendArrows);
+                        }
+
+                        if (_.htmlExpr.test(_.options.nextArrow)) {
+                            _.$nextArrow.appendTo(_.options.appendArrows);
+                        }
+
+                        if (_.options.infinite !== true) {
+                            _.$prevArrow
+                                .addClass('slick-disabled')
+                                .attr('aria-disabled', 'true');
+                        }
+
+                    } else {
+
+                        _.$prevArrow.add(_.$nextArrow)
+
+                            .addClass('slick-hidden')
+                            .attr({
+                                'aria-disabled': 'true',
+                                'tabindex': '-1'
+                            });
+
+                    }
+
+                }
+
+            };
+
+            Slick.prototype.buildDots = function() {
+
+                var _ = this,
+                    i, dot;
+
+                if (_.options.dots === true && _.slideCount > _.options.slidesToShow) {
+
+                    _.$slider.addClass('slick-dotted');
+
+                    dot = $('<ul />').addClass(_.options.dotsClass);
+
+                    for (i = 0; i <= _.getDotCount(); i += 1) {
+                        dot.append($('<li />').append(_.options.customPaging.call(this, _, i)));
+                    }
+
+                    _.$dots = dot.appendTo(_.options.appendDots);
+
+                    _.$dots.find('li').first().addClass('slick-active').attr('aria-hidden', 'false');
+
+                }
+
+            };
+
+            Slick.prototype.buildOut = function() {
+
+                var _ = this;
+
+                _.$slides =
+                    _.$slider
+                    .children(_.options.slide + ':not(.slick-cloned)')
+                    .addClass('slick-slide');
+
+                _.slideCount = _.$slides.length;
+
+                _.$slides.each(function(index, element) {
+                    $(element)
+                        .attr('data-slick-index', index)
+                        .data('originalStyling', $(element).attr('style') || '');
+                });
+
+                _.$slider.addClass('slick-slider');
+
+                _.$slideTrack = (_.slideCount === 0) ?
+                    $('<div class="slick-track"/>').appendTo(_.$slider) :
+                    _.$slides.wrapAll('<div class="slick-track"/>').parent();
+
+                _.$list = _.$slideTrack.wrap(
+                    '<div aria-live="polite" class="slick-list"/>').parent();
+                _.$slideTrack.css('opacity', 0);
+
+                if (_.options.centerMode === true || _.options.swipeToSlide === true) {
+                    _.options.slidesToScroll = 1;
+                }
+
+                $('img[data-lazy]', _.$slider).not('[src]').addClass('slick-loading');
+
+                _.setupInfinite();
+
+                _.buildArrows();
+
+                _.buildDots();
+
+                _.updateDots();
+
+
+                _.setSlideClasses(typeof _.currentSlide === 'number' ? _.currentSlide : 0);
+
+                if (_.options.draggable === true) {
+                    _.$list.addClass('draggable');
+                }
+
+            };
+
+            Slick.prototype.buildRows = function() {
+
+                var _ = this,
+                    a, b, c, newSlides, numOfSlides, originalSlides, slidesPerSection;
+
+                newSlides = document.createDocumentFragment();
+                originalSlides = _.$slider.children();
+
+                if (_.options.rows > 1) {
+
+                    slidesPerSection = _.options.slidesPerRow * _.options.rows;
+                    numOfSlides = Math.ceil(
+                        originalSlides.length / slidesPerSection
+                    );
+
+                    for (a = 0; a < numOfSlides; a++) {
+                        var slide = document.createElement('div');
+                        for (b = 0; b < _.options.rows; b++) {
+                            var row = document.createElement('div');
+                            for (c = 0; c < _.options.slidesPerRow; c++) {
+                                var target = (a * slidesPerSection + ((b * _.options.slidesPerRow) + c));
+                                if (originalSlides.get(target)) {
+                                    row.appendChild(originalSlides.get(target));
+                                }
+                            }
+                            slide.appendChild(row);
+                        }
+                        newSlides.appendChild(slide);
+                    }
+
+                    _.$slider.empty().append(newSlides);
+                    _.$slider.children().children().children()
+                        .css({
+                            'width': (100 / _.options.slidesPerRow) + '%',
+                            'display': 'inline-block'
+                        });
+
+                }
+
+            };
+
+            Slick.prototype.checkResponsive = function(initial, forceUpdate) {
+
+                var _ = this,
+                    breakpoint, targetBreakpoint, respondToWidth, triggerBreakpoint = false;
+                var sliderWidth = _.$slider.width();
+                var windowWidth = window.innerWidth || $(window).width();
+
+                if (_.respondTo === 'window') {
+                    respondToWidth = windowWidth;
+                } else if (_.respondTo === 'slider') {
+                    respondToWidth = sliderWidth;
+                } else if (_.respondTo === 'min') {
+                    respondToWidth = Math.min(windowWidth, sliderWidth);
+                }
+
+                if (_.options.responsive &&
+                    _.options.responsive.length &&
+                    _.options.responsive !== null) {
+
+                    targetBreakpoint = null;
+
+                    for (breakpoint in _.breakpoints) {
+                        if (_.breakpoints.hasOwnProperty(breakpoint)) {
+                            if (_.originalSettings.mobileFirst === false) {
+                                if (respondToWidth < _.breakpoints[breakpoint]) {
+                                    targetBreakpoint = _.breakpoints[breakpoint];
+                                }
+                            } else {
+                                if (respondToWidth > _.breakpoints[breakpoint]) {
+                                    targetBreakpoint = _.breakpoints[breakpoint];
+                                }
+                            }
                         }
                     }
 
-                    function autoPlay() {
-                        effectInterval = setInterval(function() {
-                            var action = 'next',
-                                nowIndex = $item.index($this.find('.now'));
-
-                            if (action == 'next') {
-                                if (nowIndex == itemCount - 1) {
-                                    changeIndex(0);
+                    if (targetBreakpoint !== null) {
+                        if (_.activeBreakpoint !== null) {
+                            if (targetBreakpoint !== _.activeBreakpoint || forceUpdate) {
+                                _.activeBreakpoint =
+                                    targetBreakpoint;
+                                if (_.breakpointSettings[targetBreakpoint] === 'unslick') {
+                                    _.unslick(targetBreakpoint);
                                 } else {
-                                    changeIndex(nowIndex + 1);
+                                    _.options = $.extend({}, _.originalSettings,
+                                        _.breakpointSettings[
+                                            targetBreakpoint]);
+                                    if (initial === true) {
+                                        _.currentSlide = _.options.initialSlide;
+                                    }
+                                    _.refresh(initial);
                                 }
-                            } else if (action == 'prev') {
-                                if (nowIndex == 0) {
-                                    changeIndex(itemCount - 1);
-                                } else {
-                                    changeIndex(nowIndex - 1);
-                                }
+                                triggerBreakpoint = targetBreakpoint;
                             }
-                            var slideCount = $('.cascade-slider_item.now').attr('data-slide-number');
-                            $('.cascade-slider_dot').removeClass('cur');
-                            $('.cascade-slider_dot').eq(slideCount).addClass('cur');
-                        }, autoplayDelay * 1000000000000);
+                        } else {
+                            _.activeBreakpoint = targetBreakpoint;
+                            if (_.breakpointSettings[targetBreakpoint] === 'unslick') {
+                                _.unslick(targetBreakpoint);
+                            } else {
+                                _.options = $.extend({}, _.originalSettings,
+                                    _.breakpointSettings[
+                                        targetBreakpoint]);
+                                if (initial === true) {
+                                    _.currentSlide = _.options.initialSlide;
+                                }
+                                _.refresh(initial);
+                            }
+                            triggerBreakpoint = targetBreakpoint;
+                        }
+                    } else {
+                        if (_.activeBreakpoint !== null) {
+                            _.activeBreakpoint = null;
+                            _.options = _.originalSettings;
+                            if (initial === true) {
+                                _.currentSlide = _.options.initialSlide;
+                            }
+                            _.refresh(initial);
+                            triggerBreakpoint = targetBreakpoint;
+                        }
                     }
-                    // END of Additional option for autoplay
 
-                    var defaultIndex = 0;
+                    // only trigger breakpoints during an actual break. not on initialize.
+                    if (!initial && triggerBreakpoint !== false) {
+                        _.$slider.trigger('breakpoint', [_, triggerBreakpoint]);
+                    }
+                }
 
-                    changeIndex(defaultIndex);
+            };
 
-                    $arrow.on('click', function() {
-                        var action = $(this).data('action'),
-                            nowIndex = $item.index($this.find('.now'));
+            Slick.prototype.changeSlide = function(event, dontAnimate) {
 
-                        if (action == 'next') {
-                            if (nowIndex == itemCount - 1) {
-                                changeIndex(0);
+                var _ = this,
+                    $target = $(event.currentTarget),
+                    indexOffset, slideOffset, unevenOffset;
+
+                // If target is a link, prevent default action.
+                if ($target.is('a')) {
+                    event.preventDefault();
+                }
+
+                // If target is not the <li> element (ie: a child), find the <li>.
+                if (!$target.is('li')) {
+                    $target = $target.closest('li');
+                }
+
+                unevenOffset = (_.slideCount % _.options.slidesToScroll !== 0);
+                indexOffset = unevenOffset ? 0 : (_.slideCount - _.currentSlide) % _.options.slidesToScroll;
+
+                switch (event.data.message) {
+
+                    case 'previous':
+                        slideOffset = indexOffset === 0 ? _.options.slidesToScroll : _.options.slidesToShow -
+                            indexOffset;
+                        if (_.slideCount > _.options.slidesToShow) {
+                            _.slideHandler(_.currentSlide - slideOffset, false, dontAnimate);
+                        }
+                        break;
+
+                    case 'next':
+                        slideOffset = indexOffset === 0 ? _.options.slidesToScroll : indexOffset;
+                        if (_.slideCount > _.options.slidesToShow) {
+                            _.slideHandler(_.currentSlide + slideOffset, false, dontAnimate);
+                        }
+                        break;
+
+                    case 'index':
+                        var index = event.data.index === 0 ? 0 :
+                            event.data.index || $target.index() * _.options.slidesToScroll;
+
+                        _.slideHandler(_.checkNavigable(index), false, dontAnimate);
+                        $target.children().trigger('focus');
+                        break;
+
+                    default:
+                        return;
+                }
+
+            };
+
+            Slick.prototype.checkNavigable = function(index) {
+
+                var _ = this,
+                    navigables, prevNavigable;
+
+                navigables = _.getNavigableIndexes();
+                prevNavigable = 0;
+                if (index > navigables[navigables.length - 1]) {
+                    index = navigables[navigables.length - 1];
+                } else {
+                    for (var n in navigables) {
+                        if (index < navigables[n]) {
+                            index = prevNavigable;
+                            break;
+                        }
+                        prevNavigable = navigables[n];
+                    }
+                }
+
+                return index;
+            };
+
+            Slick.prototype.cleanUpEvents = function() {
+
+                var _ = this;
+
+                if (_.options.dots && _.$dots !== null) {
+
+                    $('li', _.$dots)
+                        .off('click.slick', _.changeSlide)
+                        .off('mouseenter.slick', $.proxy(_.interrupt, _, true))
+                        .off('mouseleave.slick', $.proxy(_.interrupt, _, false));
+
+                }
+
+                _.$slider.off('focus.slick blur.slick');
+
+                if (_.options.arrows === true && _.slideCount > _.options.slidesToShow) {
+                    _.$prevArrow && _.$prevArrow.off('click.slick', _.changeSlide);
+                    _.$nextArrow && _.$nextArrow.off('click.slick', _.changeSlide);
+                }
+
+                _.$list.off('touchstart.slick mousedown.slick', _.swipeHandler);
+                _.$list.off('touchmove.slick mousemove.slick', _.swipeHandler);
+                _.$list.off('touchend.slick mouseup.slick', _.swipeHandler);
+                _.$list.off('touchcancel.slick mouseleave.slick', _.swipeHandler);
+
+                _.$list.off('click.slick', _.clickHandler);
+
+                $(document).off(_.visibilityChange, _.visibility);
+
+                _.cleanUpSlideEvents();
+
+                if (_.options.accessibility === true) {
+                    _.$list.off('keydown.slick', _.keyHandler);
+                }
+
+                if (_.options.focusOnSelect === true) {
+                    $(_.$slideTrack).children().off('click.slick', _.selectHandler);
+                }
+
+                $(window).off('orientationchange.slick.slick-' + _.instanceUid, _.orientationChange);
+
+                $(window).off('resize.slick.slick-' + _.instanceUid, _.resize);
+
+                $('[draggable!=true]', _.$slideTrack).off('dragstart', _.preventDefault);
+
+                $(window).off('load.slick.slick-' + _.instanceUid, _.setPosition);
+                $(document).off('ready.slick.slick-' + _.instanceUid, _.setPosition);
+
+            };
+
+            Slick.prototype.cleanUpSlideEvents = function() {
+
+                var _ = this;
+
+                _.$list.off('mouseenter.slick', $.proxy(_.interrupt, _, true));
+                _.$list.off('mouseleave.slick', $.proxy(_.interrupt, _, false));
+
+            };
+
+            Slick.prototype.cleanUpRows = function() {
+
+                var _ = this,
+                    originalSlides;
+
+                if (_.options.rows > 1) {
+                    originalSlides = _.$slides.children().children();
+                    originalSlides.removeAttr('style');
+                    _.$slider.empty().append(originalSlides);
+                }
+
+            };
+
+            Slick.prototype.clickHandler = function(event) {
+
+                var _ = this;
+
+                if (_.shouldClick === false) {
+                    event.stopImmediatePropagation();
+                    event.stopPropagation();
+                    event.preventDefault();
+                }
+
+            };
+
+            Slick.prototype.destroy = function(refresh) {
+
+                var _ = this;
+
+                _.autoPlayClear();
+
+                _.touchObject = {};
+
+                _.cleanUpEvents();
+
+                $('.slick-cloned', _.$slider).detach();
+
+                if (_.$dots) {
+                    _.$dots.remove();
+                }
+
+
+                if (_.$prevArrow && _.$prevArrow.length) {
+
+                    _.$prevArrow
+                        .removeClass('slick-disabled slick-arrow slick-hidden')
+                        .removeAttr('aria-hidden aria-disabled tabindex')
+                        .css('display', '');
+
+                    if (_.htmlExpr.test(_.options.prevArrow)) {
+                        _.$prevArrow.remove();
+                    }
+                }
+
+                if (_.$nextArrow && _.$nextArrow.length) {
+
+                    _.$nextArrow
+                        .removeClass('slick-disabled slick-arrow slick-hidden')
+                        .removeAttr('aria-hidden aria-disabled tabindex')
+                        .css('display', '');
+
+                    if (_.htmlExpr.test(_.options.nextArrow)) {
+                        _.$nextArrow.remove();
+                    }
+
+                }
+
+
+                if (_.$slides) {
+
+                    _.$slides
+                        .removeClass('slick-slide slick-active slick-center slick-visible slick-current')
+                        .removeAttr('aria-hidden')
+                        .removeAttr('data-slick-index')
+                        .each(function() {
+                            $(this).attr('style', $(this).data('originalStyling'));
+                        });
+
+                    _.$slideTrack.children(this.options.slide).detach();
+
+                    _.$slideTrack.detach();
+
+                    _.$list.detach();
+
+                    _.$slider.append(_.$slides);
+                }
+
+                _.cleanUpRows();
+
+                _.$slider.removeClass('slick-slider');
+                _.$slider.removeClass('slick-initialized');
+                _.$slider.removeClass('slick-dotted');
+
+                _.unslicked = true;
+
+                if (!refresh) {
+                    _.$slider.trigger('destroy', [_]);
+                }
+
+            };
+
+            Slick.prototype.disableTransition = function(slide) {
+
+                var _ = this,
+                    transition = {};
+
+                transition[_.transitionType] = '';
+
+                if (_.options.fade === false) {
+                    _.$slideTrack.css(transition);
+                } else {
+                    _.$slides.eq(slide).css(transition);
+                }
+
+            };
+
+            Slick.prototype.fadeSlide = function(slideIndex, callback) {
+
+                var _ = this;
+
+                if (_.cssTransitions === false) {
+
+                    _.$slides.eq(slideIndex).css({
+                        zIndex: _.options.zIndex
+                    });
+
+                    _.$slides.eq(slideIndex).animate({
+                        opacity: 1
+                    }, _.options.speed, _.options.easing, callback);
+
+                } else {
+
+                    _.applyTransition(slideIndex);
+
+                    _.$slides.eq(slideIndex).css({
+                        opacity: 1,
+                        zIndex: _.options.zIndex
+                    });
+
+                    if (callback) {
+                        setTimeout(function() {
+
+                            _.disableTransition(slideIndex);
+
+                            callback.call();
+                        }, _.options.speed);
+                    }
+
+                }
+
+            };
+
+            Slick.prototype.fadeSlideOut = function(slideIndex) {
+
+                var _ = this;
+
+                if (_.cssTransitions === false) {
+
+                    _.$slides.eq(slideIndex).animate({
+                        opacity: 0,
+                        zIndex: _.options.zIndex - 2
+                    }, _.options.speed, _.options.easing);
+
+                } else {
+
+                    _.applyTransition(slideIndex);
+
+                    _.$slides.eq(slideIndex).css({
+                        opacity: 0,
+                        zIndex: _.options.zIndex - 2
+                    });
+
+                }
+
+            };
+
+            Slick.prototype.filterSlides = Slick.prototype.slickFilter = function(filter) {
+
+                var _ = this;
+
+                if (filter !== null) {
+
+                    _.$slidesCache = _.$slides;
+
+                    _.unload();
+
+                    _.$slideTrack.children(this.options.slide).detach();
+
+                    _.$slidesCache.filter(filter).appendTo(_.$slideTrack);
+
+                    _.reinit();
+
+                }
+
+            };
+
+            Slick.prototype.focusHandler = function() {
+
+                var _ = this;
+
+                _.$slider
+                    .off('focus.slick blur.slick')
+                    .on('focus.slick blur.slick',
+                        '*:not(.slick-arrow)',
+                        function(event) {
+
+                            event.stopImmediatePropagation();
+                            var $sf = $(this);
+
+                            setTimeout(function() {
+
+                                if (_.options.pauseOnFocus) {
+                                    _.focussed = $sf.is(':focus');
+                                    _.autoPlay();
+                                }
+
+                            }, 0);
+
+                        });
+            };
+
+            Slick.prototype.getCurrent = Slick.prototype.slickCurrentSlide = function() {
+
+                var _ = this;
+                return _.currentSlide;
+
+            };
+
+            Slick.prototype.getDotCount = function() {
+
+                var _ = this;
+
+                var breakPoint = 0;
+                var counter = 0;
+                var pagerQty = 0;
+
+                if (_.options.infinite === true) {
+                    while (breakPoint < _.slideCount) {
+                        ++pagerQty;
+                        breakPoint = counter + _.options.slidesToScroll;
+                        counter += _.options.slidesToScroll <= _.options.slidesToShow ? _.options
+                            .slidesToScroll : _.options.slidesToShow;
+                    }
+                } else if (_.options.centerMode === true) {
+                    pagerQty = _.slideCount;
+                } else if (!_.options.asNavFor) {
+                    pagerQty = 1 + Math.ceil((_.slideCount - _.options.slidesToShow) / _.options
+                        .slidesToScroll);
+                } else {
+                    while (breakPoint < _.slideCount) {
+                        ++pagerQty;
+                        breakPoint = counter + _.options.slidesToScroll;
+                        counter += _.options.slidesToScroll <= _.options.slidesToShow ? _.options
+                            .slidesToScroll : _.options.slidesToShow;
+                    }
+                }
+
+                return pagerQty - 1;
+
+            };
+
+            Slick.prototype.getLeft = function(slideIndex) {
+
+                var _ = this,
+                    targetLeft,
+                    verticalHeight,
+                    verticalOffset = 0,
+                    targetSlide;
+
+                _.slideOffset = 0;
+                verticalHeight = _.$slides.first().outerHeight(true);
+
+                if (_.options.infinite === true) {
+                    if (_.slideCount > _.options.slidesToShow) {
+                        _.slideOffset = (_.slideWidth * _.options.slidesToShow) * -1;
+                        verticalOffset = (verticalHeight * _.options.slidesToShow) * -1;
+                    }
+                    if (_.slideCount % _.options.slidesToScroll !== 0) {
+                        if (slideIndex + _.options.slidesToScroll > _.slideCount && _.slideCount > _.options
+                            .slidesToShow) {
+                            if (slideIndex > _.slideCount) {
+                                _.slideOffset = ((_.options.slidesToShow - (slideIndex - _.slideCount)) * _
+                                    .slideWidth) * -1;
+                                verticalOffset = ((_.options.slidesToShow - (slideIndex - _.slideCount)) *
+                                    verticalHeight) * -1;
                             } else {
-                                changeIndex(nowIndex + 1);
-                            }
-                        } else if (action == 'prev') {
-                            if (nowIndex == 0) {
-                                changeIndex(itemCount - 1);
-                            } else {
-                                changeIndex(nowIndex - 1);
+                                _.slideOffset = ((_.slideCount % _.options.slidesToScroll) * _.slideWidth) * -1;
+                                verticalOffset = ((_.slideCount % _.options.slidesToScroll) * verticalHeight) *
+                                    -1;
                             }
                         }
-                        var slideCount = $('.cascade-slider_item.now').attr('data-slide-number');
-                        $('.cascade-slider_dot').removeClass('cur');
-                        $('.cascade-slider_dot').eq(slideCount).addClass('cur');
+                    }
+                } else {
+                    if (slideIndex + _.options.slidesToShow > _.slideCount) {
+                        _.slideOffset = ((slideIndex + _.options.slidesToShow) - _.slideCount) * _.slideWidth;
+                        verticalOffset = ((slideIndex + _.options.slidesToShow) - _.slideCount) *
+                            verticalHeight;
+                    }
+                }
+
+                if (_.slideCount <= _.options.slidesToShow) {
+                    _.slideOffset = 0;
+                    verticalOffset = 0;
+                }
+
+                if (_.options.centerMode === true && _.options.infinite === true) {
+                    _.slideOffset += _.slideWidth * Math.floor(_.options.slidesToShow / 2) - _.slideWidth;
+                } else if (_.options.centerMode === true) {
+                    _.slideOffset = 0;
+                    _.slideOffset += _.slideWidth * Math.floor(_.options.slidesToShow / 2);
+                }
+
+                if (_.options.vertical === false) {
+                    targetLeft = ((slideIndex * _.slideWidth) * -1) + _.slideOffset;
+                } else {
+                    targetLeft = ((slideIndex * verticalHeight) * -1) + verticalOffset;
+                }
+
+                if (_.options.variableWidth === true) {
+
+                    if (_.slideCount <= _.options.slidesToShow || _.options.infinite === false) {
+                        targetSlide = _.$slideTrack.children('.slick-slide').eq(slideIndex);
+                    } else {
+                        targetSlide = _.$slideTrack.children('.slick-slide').eq(slideIndex + _.options
+                            .slidesToShow);
+                    }
+
+                    if (_.options.rtl === true) {
+                        if (targetSlide[0]) {
+                            targetLeft = (_.$slideTrack.width() - targetSlide[0].offsetLeft - targetSlide
+                                .width()) * -1;
+                        } else {
+                            targetLeft = 0;
+                        }
+                    } else {
+                        targetLeft = targetSlide[0] ? targetSlide[0].offsetLeft * -1 : 0;
+                    }
+
+                    if (_.options.centerMode === true) {
+                        if (_.slideCount <= _.options.slidesToShow || _.options.infinite === false) {
+                            targetSlide = _.$slideTrack.children('.slick-slide').eq(slideIndex);
+                        } else {
+                            targetSlide = _.$slideTrack.children('.slick-slide').eq(slideIndex + _.options
+                                .slidesToShow + 1);
+                        }
+
+                        if (_.options.rtl === true) {
+                            if (targetSlide[0]) {
+                                targetLeft = (_.$slideTrack.width() - targetSlide[0].offsetLeft - targetSlide
+                                    .width()) * -1;
+                            } else {
+                                targetLeft = 0;
+                            }
+                        } else {
+                            targetLeft = targetSlide[0] ? targetSlide[0].offsetLeft * -1 : 0;
+                        }
+
+                        targetLeft += (_.$list.width() - targetSlide.outerWidth()) / 2;
+                    }
+                }
+
+                return targetLeft;
+
+            };
+
+            Slick.prototype.getOption = Slick.prototype.slickGetOption = function(option) {
+
+                var _ = this;
+
+                return _.options[option];
+
+            };
+
+            Slick.prototype.getNavigableIndexes = function() {
+
+                var _ = this,
+                    breakPoint = 0,
+                    counter = 0,
+                    indexes = [],
+                    max;
+
+                if (_.options.infinite === false) {
+                    max = _.slideCount;
+                } else {
+                    breakPoint = _.options.slidesToScroll * -1;
+                    counter = _.options.slidesToScroll * -1;
+                    max = _.slideCount * 2;
+                }
+
+                while (breakPoint < max) {
+                    indexes.push(breakPoint);
+                    breakPoint = counter + _.options.slidesToScroll;
+                    counter += _.options.slidesToScroll <= _.options.slidesToShow ? _.options.slidesToScroll : _
+                        .options.slidesToShow;
+                }
+
+                return indexes;
+
+            };
+
+            Slick.prototype.getSlick = function() {
+
+                return this;
+
+            };
+
+            Slick.prototype.getSlideCount = function() {
+
+                var _ = this,
+                    slidesTraversed, swipedSlide, centerOffset;
+
+                centerOffset = _.options.centerMode === true ? _.slideWidth * Math.floor(_.options
+                    .slidesToShow / 2) : 0;
+
+                if (_.options.swipeToSlide === true) {
+                    _.$slideTrack.find('.slick-slide').each(function(index, slide) {
+                        if (slide.offsetLeft - centerOffset + ($(slide).outerWidth() / 2) > (_
+                                .swipeLeft * -1)) {
+                            swipedSlide = slide;
+                            return false;
+                        }
+                    });
+
+                    slidesTraversed = Math.abs($(swipedSlide).attr('data-slick-index') - _.currentSlide) || 1;
+
+                    return slidesTraversed;
+
+                } else {
+                    return _.options.slidesToScroll;
+                }
+
+            };
+
+            Slick.prototype.goTo = Slick.prototype.slickGoTo = function(slide, dontAnimate) {
+
+                var _ = this;
+
+                _.changeSlide({
+                    data: {
+                        message: 'index',
+                        index: parseInt(slide)
+                    }
+                }, dontAnimate);
+
+            };
+
+            Slick.prototype.init = function(creation) {
+
+                var _ = this;
+
+                if (!$(_.$slider).hasClass('slick-initialized')) {
+
+                    $(_.$slider).addClass('slick-initialized');
+
+                    _.buildRows();
+                    _.buildOut();
+                    _.setProps();
+                    _.startLoad();
+                    _.loadSlider();
+                    _.initializeEvents();
+                    _.updateArrows();
+                    _.updateDots();
+                    _.checkResponsive(true);
+                    _.focusHandler();
+
+                }
+
+                if (creation) {
+                    _.$slider.trigger('init', [_]);
+                }
+
+                if (_.options.accessibility === true) {
+                    _.initADA();
+                }
+
+                if (_.options.autoplay) {
+
+                    _.paused = false;
+                    _.autoPlay();
+
+                }
+
+            };
+
+            Slick.prototype.initADA = function() {
+                var _ = this;
+                _.$slides.add(_.$slideTrack.find('.slick-cloned')).attr({
+                    'aria-hidden': 'true',
+                    'tabindex': '-1'
+                }).find('a, input, button, select').attr({
+                    'tabindex': '-1'
+                });
+
+                _.$slideTrack.attr('role', 'listbox');
+
+                _.$slides.not(_.$slideTrack.find('.slick-cloned')).each(function(i) {
+                    $(this).attr({
+                        'role': 'option',
+                        'aria-describedby': 'slick-slide' + _.instanceUid + i + ''
+                    });
+                });
+
+                if (_.$dots !== null) {
+                    _.$dots.attr('role', 'tablist').find('li').each(function(i) {
+                            $(this).attr({
+                                'role': 'presentation',
+                                'aria-selected': 'false',
+                                'aria-controls': 'navigation' + _.instanceUid + i + '',
+                                'id': 'slick-slide' + _.instanceUid + i + ''
+                            });
+                        })
+                        .first().attr('aria-selected', 'true').end()
+                        .find('button').attr('role', 'button').end()
+                        .closest('div').attr('role', 'toolbar');
+                }
+                _.activateADA();
+
+            };
+
+            Slick.prototype.initArrowEvents = function() {
+
+                var _ = this;
+
+                if (_.options.arrows === true && _.slideCount > _.options.slidesToShow) {
+                    _.$prevArrow
+                        .off('click.slick')
+                        .on('click.slick', {
+                            message: 'previous'
+                        }, _.changeSlide);
+                    _.$nextArrow
+                        .off('click.slick')
+                        .on('click.slick', {
+                            message: 'next'
+                        }, _.changeSlide);
+                }
+
+            };
+
+            Slick.prototype.initDotEvents = function() {
+
+                var _ = this;
+
+                if (_.options.dots === true && _.slideCount > _.options.slidesToShow) {
+                    $('li', _.$dots).on('click.slick', {
+                        message: 'index'
+                    }, _.changeSlide);
+                }
+
+                if (_.options.dots === true && _.options.pauseOnDotsHover === true) {
+
+                    $('li', _.$dots)
+                        .on('mouseenter.slick', $.proxy(_.interrupt, _, true))
+                        .on('mouseleave.slick', $.proxy(_.interrupt, _, false));
+
+                }
+
+            };
+
+            Slick.prototype.initSlideEvents = function() {
+
+                var _ = this;
+
+                if (_.options.pauseOnHover) {
+
+                    _.$list.on('mouseenter.slick', $.proxy(_.interrupt, _, true));
+                    _.$list.on('mouseleave.slick', $.proxy(_.interrupt, _, false));
+
+                }
+
+            };
+
+            Slick.prototype.initializeEvents = function() {
+
+                var _ = this;
+
+                _.initArrowEvents();
+
+                _.initDotEvents();
+                _.initSlideEvents();
+
+                _.$list.on('touchstart.slick mousedown.slick', {
+                    action: 'start'
+                }, _.swipeHandler);
+                _.$list.on('touchmove.slick mousemove.slick', {
+                    action: 'move'
+                }, _.swipeHandler);
+                _.$list.on('touchend.slick mouseup.slick', {
+                    action: 'end'
+                }, _.swipeHandler);
+                _.$list.on('touchcancel.slick mouseleave.slick', {
+                    action: 'end'
+                }, _.swipeHandler);
+
+                _.$list.on('click.slick', _.clickHandler);
+
+                $(document).on(_.visibilityChange, $.proxy(_.visibility, _));
+
+                if (_.options.accessibility === true) {
+                    _.$list.on('keydown.slick', _.keyHandler);
+                }
+
+                if (_.options.focusOnSelect === true) {
+                    $(_.$slideTrack).children().on('click.slick', _.selectHandler);
+                }
+
+                $(window).on('orientationchange.slick.slick-' + _.instanceUid, $.proxy(_.orientationChange, _));
+
+                $(window).on('resize.slick.slick-' + _.instanceUid, $.proxy(_.resize, _));
+
+                $('[draggable!=true]', _.$slideTrack).on('dragstart', _.preventDefault);
+
+                $(window).on('load.slick.slick-' + _.instanceUid, _.setPosition);
+                $(document).on('ready.slick.slick-' + _.instanceUid, _.setPosition);
+
+            };
+
+            Slick.prototype.initUI = function() {
+
+                var _ = this;
+
+                if (_.options.arrows === true && _.slideCount > _.options.slidesToShow) {
+
+                    _.$prevArrow.show();
+                    _.$nextArrow.show();
+
+                }
+
+                if (_.options.dots === true && _.slideCount > _.options.slidesToShow) {
+
+                    _.$dots.show();
+
+                }
+
+            };
+
+            Slick.prototype.keyHandler = function(event) {
+
+                var _ = this;
+                //Dont slide if the cursor is inside the form fields and arrow keys are pressed
+                if (!event.target.tagName.match('TEXTAREA|INPUT|SELECT')) {
+                    if (event.keyCode === 37 && _.options.accessibility === true) {
+                        _.changeSlide({
+                            data: {
+                                message: _.options.rtl === true ? 'next' : 'previous'
+                            }
+                        });
+                    } else if (event.keyCode === 39 && _.options.accessibility === true) {
+                        _.changeSlide({
+                            data: {
+                                message: _.options.rtl === true ? 'previous' : 'next'
+                            }
+                        });
+                    }
+                }
+
+            };
+
+            Slick.prototype.lazyLoad = function() {
+
+                var _ = this,
+                    loadRange, cloneRange, rangeStart, rangeEnd;
+
+                function loadImages(imagesScope) {
+
+                    $('img[data-lazy]', imagesScope).each(function() {
+
+                        var image = $(this),
+                            imageSource = $(this).attr('data-lazy'),
+                            imageToLoad = document.createElement('img');
+
+                        imageToLoad.onload = function() {
+
+                            image
+                                .animate({
+                                    opacity: 0
+                                }, 100, function() {
+                                    image
+                                        .attr('src', imageSource)
+                                        .animate({
+                                            opacity: 1
+                                        }, 200, function() {
+                                            image
+                                                .removeAttr('data-lazy')
+                                                .removeClass('slick-loading');
+                                        });
+                                    _.$slider.trigger('lazyLoaded', [_, image, imageSource]);
+                                });
+
+                        };
+
+                        imageToLoad.onerror = function() {
+
+                            image
+                                .removeAttr('data-lazy')
+                                .removeClass('slick-loading')
+                                .addClass('slick-lazyload-error');
+
+                            _.$slider.trigger('lazyLoadError', [_, image, imageSource]);
+
+                        };
+
+                        imageToLoad.src = imageSource;
 
                     });
 
-                    // add data attributes
-                    for (var i = 0; i < itemCount; i++) {
-                        $('.cascade-slider_item').each(function(i) {
-                            $(this).attr('data-slide-number', [i]);
-                        });
+                }
+
+                if (_.options.centerMode === true) {
+                    if (_.options.infinite === true) {
+                        rangeStart = _.currentSlide + (_.options.slidesToShow / 2 + 1);
+                        rangeEnd = rangeStart + _.options.slidesToShow + 2;
+                    } else {
+                        rangeStart = Math.max(0, _.currentSlide - (_.options.slidesToShow / 2 + 1));
+                        rangeEnd = 2 + (_.options.slidesToShow / 2 + 1) + _.currentSlide;
+                    }
+                } else {
+                    rangeStart = _.options.infinite ? _.options.slidesToShow + _.currentSlide : _.currentSlide;
+                    rangeEnd = Math.ceil(rangeStart + _.options.slidesToShow);
+                    if (_.options.fade === true) {
+                        if (rangeStart > 0) rangeStart--;
+                        if (rangeEnd <= _.slideCount) rangeEnd++;
+                    }
+                }
+
+                loadRange = _.$slider.find('.slick-slide').slice(rangeStart, rangeEnd);
+                loadImages(loadRange);
+
+                if (_.slideCount <= _.options.slidesToShow) {
+                    cloneRange = _.$slider.find('.slick-slide');
+                    loadImages(cloneRange);
+                } else
+                if (_.currentSlide >= _.slideCount - _.options.slidesToShow) {
+                    cloneRange = _.$slider.find('.slick-cloned').slice(0, _.options.slidesToShow);
+                    loadImages(cloneRange);
+                } else if (_.currentSlide === 0) {
+                    cloneRange = _.$slider.find('.slick-cloned').slice(_.options.slidesToShow * -1);
+                    loadImages(cloneRange);
+                }
+
+            };
+
+            Slick.prototype.loadSlider = function() {
+
+                var _ = this;
+
+                _.setPosition();
+
+                _.$slideTrack.css({
+                    opacity: 1
+                });
+
+                _.$slider.removeClass('slick-loading');
+
+                _.initUI();
+
+                if (_.options.lazyLoad === 'progressive') {
+                    _.progressiveLazyLoad();
+                }
+
+            };
+
+            Slick.prototype.next = Slick.prototype.slickNext = function() {
+
+                var _ = this;
+
+                _.changeSlide({
+                    data: {
+                        message: 'next'
+                    }
+                });
+
+            };
+
+            Slick.prototype.orientationChange = function() {
+
+                var _ = this;
+
+                _.checkResponsive();
+                _.setPosition();
+
+            };
+
+            Slick.prototype.pause = Slick.prototype.slickPause = function() {
+
+                var _ = this;
+
+                _.autoPlayClear();
+                _.paused = true;
+
+            };
+
+            Slick.prototype.play = Slick.prototype.slickPlay = function() {
+
+                var _ = this;
+
+                _.autoPlay();
+                _.options.autoplay = true;
+                _.paused = false;
+                _.focussed = false;
+                _.interrupted = false;
+
+            };
+
+            Slick.prototype.postSlide = function(index) {
+
+                var _ = this;
+
+                if (!_.unslicked) {
+
+                    _.$slider.trigger('afterChange', [_, index]);
+
+                    _.animating = false;
+
+                    _.setPosition();
+
+                    _.swipeLeft = null;
+
+                    if (_.options.autoplay) {
+                        _.autoPlay();
                     }
 
-                    // dots
-                    $('.cascade-slider_dot').bind('click', function() {
-                        // add class to current dot on click
-                        $('.cascade-slider_dot').removeClass('cur');
-                        $(this).addClass('cur');
+                    if (_.options.accessibility === true) {
+                        _.initADA();
+                    }
 
-                        var index = $(this).index();
+                }
 
-                        $('.cascade-slider_item').removeClass('now prev next');
-                        var slide = $('.cascade-slider_slides').find('[data-slide-number=' + index + ']');
-                        slide.prev().addClass('prev');
-                        slide.addClass('now');
-                        slide.next().addClass('next');
+            };
 
-                        if (slide.next().length == 0) {
-                            $('.cascade-slider_item:first-child').addClass('next');
+            Slick.prototype.prev = Slick.prototype.slickPrev = function() {
+
+                var _ = this;
+
+                _.changeSlide({
+                    data: {
+                        message: 'previous'
+                    }
+                });
+
+            };
+
+            Slick.prototype.preventDefault = function(event) {
+
+                event.preventDefault();
+
+            };
+
+            Slick.prototype.progressiveLazyLoad = function(tryCount) {
+
+                tryCount = tryCount || 1;
+
+                var _ = this,
+                    $imgsToLoad = $('img[data-lazy]', _.$slider),
+                    image,
+                    imageSource,
+                    imageToLoad;
+
+                if ($imgsToLoad.length) {
+
+                    image = $imgsToLoad.first();
+                    imageSource = image.attr('data-lazy');
+                    imageToLoad = document.createElement('img');
+
+                    imageToLoad.onload = function() {
+
+                        image
+                            .attr('src', imageSource)
+                            .removeAttr('data-lazy')
+                            .removeClass('slick-loading');
+
+                        if (_.options.adaptiveHeight === true) {
+                            _.setPosition();
                         }
 
-                        if (slide.prev().length == 0) {
-                            $('.cascade-slider_item:last-child').addClass('prev');
+                        _.$slider.trigger('lazyLoaded', [_, image, imageSource]);
+                        _.progressiveLazyLoad();
+
+                    };
+
+                    imageToLoad.onerror = function() {
+
+                        if (tryCount < 3) {
+
+                            /**
+                             * try to load the image 3 times,
+                             * leave a slight delay so we don't get
+                             * servers blocking the request.
+                             */
+                            setTimeout(function() {
+                                _.progressiveLazyLoad(tryCount + 1);
+                            }, 500);
+
+                        } else {
+
+                            image
+                                .removeAttr('data-lazy')
+                                .removeClass('slick-loading')
+                                .addClass('slick-lazyload-error');
+
+                            _.$slider.trigger('lazyLoadError', [_, image, imageSource]);
+
+                            _.progressiveLazyLoad();
+
                         }
+
+                    };
+
+                    imageToLoad.src = imageSource;
+
+                } else {
+
+                    _.$slider.trigger('allImagesLoaded', [_]);
+
+                }
+
+            };
+
+            Slick.prototype.refresh = function(initializing) {
+
+                var _ = this,
+                    currentSlide, lastVisibleIndex;
+
+                lastVisibleIndex = _.slideCount - _.options.slidesToShow;
+
+                // in non-infinite sliders, we don't want to go past the
+                // last visible index.
+                if (!_.options.infinite && (_.currentSlide > lastVisibleIndex)) {
+                    _.currentSlide = lastVisibleIndex;
+                }
+
+                // if less slides than to show, go to start.
+                if (_.slideCount <= _.options.slidesToShow) {
+                    _.currentSlide = 0;
+
+                }
+
+                currentSlide = _.currentSlide;
+
+                _.destroy(true);
+
+                $.extend(_, _.initials, {
+                    currentSlide: currentSlide
+                });
+
+                _.init();
+
+                if (!initializing) {
+
+                    _.changeSlide({
+                        data: {
+                            message: 'index',
+                            index: currentSlide
+                        }
+                    }, false);
+
+                }
+
+            };
+
+            Slick.prototype.registerBreakpoints = function() {
+
+                var _ = this,
+                    breakpoint, currentBreakpoint, l,
+                    responsiveSettings = _.options.responsive || null;
+
+                if ($.type(responsiveSettings) === 'array' && responsiveSettings.length) {
+
+                    _.respondTo = _.options.respondTo || 'window';
+
+                    for (breakpoint in responsiveSettings) {
+
+                        l = _.breakpoints.length - 1;
+                        currentBreakpoint = responsiveSettings[breakpoint].breakpoint;
+
+                        if (responsiveSettings.hasOwnProperty(breakpoint)) {
+
+                            // loop through the breakpoints and cut out any existing
+                            // ones with the same breakpoint number, we don't want dupes.
+                            while (l >= 0) {
+                                if (_.breakpoints[l] && _.breakpoints[l] === currentBreakpoint) {
+                                    _.breakpoints.splice(l, 1);
+                                }
+                                l--;
+                            }
+
+                            _.breakpoints.push(currentBreakpoint);
+                            _.breakpointSettings[currentBreakpoint] = responsiveSettings[breakpoint].settings;
+
+                        }
+
+                    }
+
+                    _.breakpoints.sort(function(a, b) {
+                        return (_.options.mobileFirst) ? a - b : b - a;
                     });
 
-                    function changeIndex(nowIndex) {
-                        // clern all class
-                        $this.find('.now').removeClass('now');
-                        $this.find('.next').removeClass('next');
-                        $this.find('.prev').removeClass('prev');
-                        $this.find('.next2').removeClass('next2');
-                        $this.find('.prev2').removeClass('prev2');
+                }
 
-                        if (nowIndex == itemCount - 1) {
-                            $item.eq(0).addClass('next');
-                        }
-                        if (nowIndex == 0) {
-                            $item.eq(itemCount - 1).addClass('prev');
-                        }
+            };
 
-                        $item.each(function(index) {
-                            if (index == nowIndex) {
-                                $item.eq(index).addClass('now');
-                            }
-                            if (index == nowIndex + 1) {
-                                $item.eq(index).addClass('next');
-                            }
-                            if (index == nowIndex - 1) {
-                                $item.eq(index).addClass('prev');
-                            }
+            Slick.prototype.reinit = function() {
+
+                var _ = this;
+
+                _.$slides =
+                    _.$slideTrack
+                    .children(_.options.slide)
+                    .addClass('slick-slide');
+
+                _.slideCount = _.$slides.length;
+
+                if (_.currentSlide >= _.slideCount && _.currentSlide !== 0) {
+                    _.currentSlide = _.currentSlide - _.options.slidesToScroll;
+                }
+
+                if (_.slideCount <= _.options.slidesToShow) {
+                    _.currentSlide = 0;
+                }
+
+                _.registerBreakpoints();
+
+                _.setProps();
+                _.setupInfinite();
+                _.buildArrows();
+                _.updateArrows();
+                _.initArrowEvents();
+                _.buildDots();
+                _.updateDots();
+                _.initDotEvents();
+                _.cleanUpSlideEvents();
+                _.initSlideEvents();
+
+                _.checkResponsive(false, true);
+
+                if (_.options.focusOnSelect === true) {
+                    $(_.$slideTrack).children().on('click.slick', _.selectHandler);
+                }
+
+                _.setSlideClasses(typeof _.currentSlide === 'number' ? _.currentSlide : 0);
+
+                _.setPosition();
+                _.focusHandler();
+
+                _.paused = !_.options.autoplay;
+                _.autoPlay();
+
+                _.$slider.trigger('reInit', [_]);
+
+            };
+
+            Slick.prototype.resize = function() {
+
+                var _ = this;
+
+                if ($(window).width() !== _.windowWidth) {
+                    clearTimeout(_.windowDelay);
+                    _.windowDelay = window.setTimeout(function() {
+                        _.windowWidth = $(window).width();
+                        _.checkResponsive();
+                        if (!_.unslicked) {
+                            _.setPosition();
+                        }
+                    }, 50);
+                }
+            };
+
+            Slick.prototype.removeSlide = Slick.prototype.slickRemove = function(index, removeBefore, removeAll) {
+
+                var _ = this;
+
+                if (typeof(index) === 'boolean') {
+                    removeBefore = index;
+                    index = removeBefore === true ? 0 : _.slideCount - 1;
+                } else {
+                    index = removeBefore === true ? --index : index;
+                }
+
+                if (_.slideCount < 1 || index < 0 || index > _.slideCount - 1) {
+                    return false;
+                }
+
+                _.unload();
+
+                if (removeAll === true) {
+                    _.$slideTrack.children().remove();
+                } else {
+                    _.$slideTrack.children(this.options.slide).eq(index).remove();
+                }
+
+                _.$slides = _.$slideTrack.children(this.options.slide);
+
+                _.$slideTrack.children(this.options.slide).detach();
+
+                _.$slideTrack.append(_.$slides);
+
+                _.$slidesCache = _.$slides;
+
+                _.reinit();
+
+            };
+
+            Slick.prototype.setCSS = function(position) {
+
+                var _ = this,
+                    positionProps = {},
+                    x, y;
+
+                if (_.options.rtl === true) {
+                    position = -position;
+                }
+                x = _.positionProp == 'left' ? Math.ceil(position) + 'px' : '0px';
+                y = _.positionProp == 'top' ? Math.ceil(position) + 'px' : '0px';
+
+                positionProps[_.positionProp] = position;
+
+                if (_.transformsEnabled === false) {
+                    _.$slideTrack.css(positionProps);
+                } else {
+                    positionProps = {};
+                    if (_.cssTransitions === false) {
+                        positionProps[_.animType] = 'translate(' + x + ', ' + y + ')';
+                        _.$slideTrack.css(positionProps);
+                    } else {
+                        positionProps[_.animType] = 'translate3d(' + x + ', ' + y + ', 0px)';
+                        _.$slideTrack.css(positionProps);
+                    }
+                }
+
+            };
+
+            Slick.prototype.setDimensions = function() {
+
+                var _ = this;
+
+                if (_.options.vertical === false) {
+                    if (_.options.centerMode === true) {
+                        _.$list.css({
+                            padding: ('0px ' + _.options.centerPadding)
                         });
+                    }
+                } else {
+                    _.$list.height(_.$slides.first().outerHeight(true) * _.options.slidesToShow);
+                    if (_.options.centerMode === true) {
+                        _.$list.css({
+                            padding: (_.options.centerPadding + ' 0px')
+                        });
+                    }
+                }
 
-                        if (items == 5) {
-                            otherIndex();
+                _.listWidth = _.$list.width();
+                _.listHeight = _.$list.height();
+
+
+                if (_.options.vertical === false && _.options.variableWidth === false) {
+                    _.slideWidth = Math.ceil(_.listWidth / _.options.slidesToShow);
+                    _.$slideTrack.width(Math.ceil((_.slideWidth * _.$slideTrack.children('.slick-slide')
+                        .length)));
+
+                } else if (_.options.variableWidth === true) {
+                    _.$slideTrack.width(5000 * _.slideCount);
+                } else {
+                    _.slideWidth = Math.ceil(_.listWidth);
+                    _.$slideTrack.height(Math.ceil((_.$slides.first().outerHeight(true) * _.$slideTrack
+                        .children('.slick-slide').length)));
+                }
+
+                var offset = _.$slides.first().outerWidth(true) - _.$slides.first().width();
+                if (_.options.variableWidth === false) _.$slideTrack.children('.slick-slide').width(_
+                    .slideWidth - offset);
+
+            };
+
+            Slick.prototype.setFade = function() {
+
+                var _ = this,
+                    targetLeft;
+
+                _.$slides.each(function(index, element) {
+                    targetLeft = (_.slideWidth * index) * -1;
+                    if (_.options.rtl === true) {
+                        $(element).css({
+                            position: 'relative',
+                            right: targetLeft,
+                            top: 0,
+                            zIndex: _.options.zIndex - 2,
+                            opacity: 0
+                        });
+                    } else {
+                        $(element).css({
+                            position: 'relative',
+                            left: targetLeft,
+                            top: 0,
+                            zIndex: _.options.zIndex - 2,
+                            opacity: 0
+                        });
+                    }
+                });
+
+                _.$slides.eq(_.currentSlide).css({
+                    zIndex: _.options.zIndex - 1,
+                    opacity: 1
+                });
+
+            };
+
+            Slick.prototype.setHeight = function() {
+
+                var _ = this;
+
+                if (_.options.slidesToShow === 1 && _.options.adaptiveHeight === true && _.options.vertical ===
+                    false) {
+                    var targetHeight = _.$slides.eq(_.currentSlide).outerHeight(true);
+                    _.$list.css('height', targetHeight);
+                }
+
+            };
+
+            Slick.prototype.setOption =
+                Slick.prototype.slickSetOption = function() {
+
+                    /**
+                     * accepts arguments in format of:
+                     *
+                     *  - for changing a single option's value:
+                     *     .slick("setOption", option, value, refresh )
+                     *
+                     *  - for changing a set of responsive options:
+                     *     .slick("setOption", 'responsive', [{}, ...], refresh )
+                     *
+                     *  - for updating multiple values at once (not responsive)
+                     *     .slick("setOption", { 'option': value, ... }, refresh )
+                     */
+
+                    var _ = this,
+                        l, item, option, value, refresh = false,
+                        type;
+
+                    if ($.type(arguments[0]) === 'object') {
+
+                        option = arguments[0];
+                        refresh = arguments[1];
+                        type = 'multiple';
+
+                    } else if ($.type(arguments[0]) === 'string') {
+
+                        option = arguments[0];
+                        value = arguments[1];
+                        refresh = arguments[2];
+
+                        if (arguments[0] === 'responsive' && $.type(arguments[1]) === 'array') {
+
+                            type = 'responsive';
+
+                        } else if (typeof arguments[1] !== 'undefined') {
+
+                            type = 'single';
+
                         }
 
                     }
 
-                    function otherIndex() {
-                        var slideItemsCount = $this.find('.cascade-slider_item').length - 1;
-                        var nextSlide = $this.find('.next').index()
-                        var prevSlide = $this.find('.prev').index()
+                    if (type === 'single') {
 
-                        if (nextSlide + 1 <= slideItemsCount) {
-                            $this.find('.cascade-slider_item').eq(nextSlide + 1).addClass('next2');
-                        } else if (nextSlide + 1 > slideItemsCount) {
-                            $this.find('.cascade-slider_item').eq(0).addClass('next2');
+                        _.options[option] = value;
+
+
+                    } else if (type === 'multiple') {
+
+                        $.each(option, function(opt, val) {
+
+                            _.options[opt] = val;
+
+                        });
+
+
+                    } else if (type === 'responsive') {
+
+                        for (item in value) {
+
+                            if ($.type(_.options.responsive) !== 'array') {
+
+                                _.options.responsive = [value[item]];
+
+                            } else {
+
+                                l = _.options.responsive.length - 1;
+
+                                // loop through the responsive object and splice out duplicates.
+                                while (l >= 0) {
+
+                                    if (_.options.responsive[l].breakpoint === value[item].breakpoint) {
+
+                                        _.options.responsive.splice(l, 1);
+
+                                    }
+
+                                    l--;
+
+                                }
+
+                                _.options.responsive.push(value[item]);
+
+                            }
+
                         }
-                        if (prevSlide - 1 <= slideItemsCount) {
-                            $this.find('.cascade-slider_item').eq(prevSlide - 1).addClass('prev2');
-                        } else if (prevSlide - 1 > slideItemsCount) {
-                            $this.find('.cascade-slider_item').eq(slideItemsCount).addClass('prev2');
-                        }
+
+                    }
+
+                    if (refresh) {
+
+                        _.unload();
+                        _.reinit();
 
                     }
 
                 };
-            })(jQuery);
 
+            Slick.prototype.setPosition = function() {
 
+                var _ = this;
 
-            $('#cascade-slider').cascadeSlider({
-                itemClass: 'cascade-slider_item',
-                arrowClass: 'cascade-slider_arrow',
-                autoplay: true,
-                delay: 5,
-                pauseOnHover: true,
-                itemCount: 5
-            });
-        </script>
+                _.setDimensions();
 
+                _.setHeight();
 
-
-
-        <script>
-            $(document).ready(function() {
-                let currentIndex = 0;
-                const slides = $(".custom-slider .custom-slide");
-                const numSlides = slides.length;
-
-                function showSlide(index) {
-                    slides.removeClass('active');
-                    slides.eq(index).addClass('active');
+                if (_.options.fade === false) {
+                    _.setCSS(_.getLeft(_.currentSlide));
+                } else {
+                    _.setFade();
                 }
 
-                function nextSlide() {
-                    currentIndex = (currentIndex + 1) % numSlides;
-                    showSlide(currentIndex);
+                _.$slider.trigger('setPosition', [_]);
+
+            };
+
+            Slick.prototype.setProps = function() {
+
+                var _ = this,
+                    bodyStyle = document.body.style;
+
+                _.positionProp = _.options.vertical === true ? 'top' : 'left';
+
+                if (_.positionProp === 'top') {
+                    _.$slider.addClass('slick-vertical');
+                } else {
+                    _.$slider.removeClass('slick-vertical');
                 }
 
-                setInterval(nextSlide, 5000); // Change slide every 5 seconds
+                if (bodyStyle.WebkitTransition !== undefined ||
+                    bodyStyle.MozTransition !== undefined ||
+                    bodyStyle.msTransition !== undefined) {
+                    if (_.options.useCSS === true) {
+                        _.cssTransitions = true;
+                    }
+                }
 
+                if (_.options.fade) {
+                    if (typeof _.options.zIndex === 'number') {
+                        if (_.options.zIndex < 3) {
+                            _.options.zIndex = 3;
+                        }
+                    } else {
+                        _.options.zIndex = _.defaults.zIndex;
+                    }
+                }
+
+                if (bodyStyle.OTransform !== undefined) {
+                    _.animType = 'OTransform';
+                    _.transformType = '-o-transform';
+                    _.transitionType = 'OTransition';
+                    if (bodyStyle.perspectiveProperty === undefined && bodyStyle.webkitPerspective ===
+                        undefined) _.animType = false;
+                }
+                if (bodyStyle.MozTransform !== undefined) {
+                    _.animType = 'MozTransform';
+                    _.transformType = '-moz-transform';
+                    _.transitionType = 'MozTransition';
+                    if (bodyStyle.perspectiveProperty === undefined && bodyStyle.MozPerspective === undefined) _
+                        .animType = false;
+                }
+                if (bodyStyle.webkitTransform !== undefined) {
+                    _.animType = 'webkitTransform';
+                    _.transformType = '-webkit-transform';
+                    _.transitionType = 'webkitTransition';
+                    if (bodyStyle.perspectiveProperty === undefined && bodyStyle.webkitPerspective ===
+                        undefined) _.animType = false;
+                }
+                if (bodyStyle.msTransform !== undefined) {
+                    _.animType = 'msTransform';
+                    _.transformType = '-ms-transform';
+                    _.transitionType = 'msTransition';
+                    if (bodyStyle.msTransform === undefined) _.animType = false;
+                }
+                if (bodyStyle.transform !== undefined && _.animType !== false) {
+                    _.animType = 'transform';
+                    _.transformType = 'transform';
+                    _.transitionType = 'transition';
+                }
+                _.transformsEnabled = _.options.useTransform && (_.animType !== null && _.animType !== false);
+            };
+
+
+            Slick.prototype.setSlideClasses = function(index) {
+
+                var _ = this,
+                    centerOffset, allSlides, indexOffset, remainder;
+
+                allSlides = _.$slider
+                    .find('.slick-slide')
+                    .removeClass('slick-active slick-center slick-current')
+                    .attr('aria-hidden', 'true');
+
+                _.$slides
+                    .eq(index)
+                    .addClass('slick-current');
+
+                if (_.options.centerMode === true) {
+
+                    centerOffset = Math.floor(_.options.slidesToShow / 2);
+
+                    if (_.options.infinite === true) {
+
+                        if (index >= centerOffset && index <= (_.slideCount - 1) - centerOffset) {
+
+                            _.$slides
+                                .slice(index - centerOffset, index + centerOffset + 1)
+                                .addClass('slick-active')
+                                .attr('aria-hidden', 'false');
+
+                        } else {
+
+                            indexOffset = _.options.slidesToShow + index;
+                            allSlides
+                                .slice(indexOffset - centerOffset + 1, indexOffset + centerOffset + 2)
+                                .addClass('slick-active')
+                                .attr('aria-hidden', 'false');
+
+                        }
+
+                        if (index === 0) {
+
+                            allSlides
+                                .eq(allSlides.length - 1 - _.options.slidesToShow)
+                                .addClass('slick-center');
+
+                        } else if (index === _.slideCount - 1) {
+
+                            allSlides
+                                .eq(_.options.slidesToShow)
+                                .addClass('slick-center');
+
+                        }
+
+                    }
+
+                    _.$slides
+                        .eq(index)
+                        .addClass('slick-center');
+
+                } else {
+
+                    if (index >= 0 && index <= (_.slideCount - _.options.slidesToShow)) {
+
+                        _.$slides
+                            .slice(index, index + _.options.slidesToShow)
+                            .addClass('slick-active')
+                            .attr('aria-hidden', 'false');
+
+                    } else if (allSlides.length <= _.options.slidesToShow) {
+
+                        allSlides
+                            .addClass('slick-active')
+                            .attr('aria-hidden', 'false');
+
+                    } else {
+
+                        remainder = _.slideCount % _.options.slidesToShow;
+                        indexOffset = _.options.infinite === true ? _.options.slidesToShow + index : index;
+
+                        if (_.options.slidesToShow == _.options.slidesToScroll && (_.slideCount - index) < _
+                            .options.slidesToShow) {
+
+                            allSlides
+                                .slice(indexOffset - (_.options.slidesToShow - remainder), indexOffset +
+                                    remainder)
+                                .addClass('slick-active')
+                                .attr('aria-hidden', 'false');
+
+                        } else {
+
+                            allSlides
+                                .slice(indexOffset, indexOffset + _.options.slidesToShow)
+                                .addClass('slick-active')
+                                .attr('aria-hidden', 'false');
+
+                        }
+
+                    }
+
+                }
+
+                if (_.options.lazyLoad === 'ondemand') {
+                    _.lazyLoad();
+                }
+
+            };
+
+            Slick.prototype.setupInfinite = function() {
+
+                var _ = this,
+                    i, slideIndex, infiniteCount;
+
+                if (_.options.fade === true) {
+                    _.options.centerMode = false;
+                }
+
+                if (_.options.infinite === true && _.options.fade === false) {
+
+                    slideIndex = null;
+
+                    if (_.slideCount > _.options.slidesToShow) {
+
+                        if (_.options.centerMode === true) {
+                            infiniteCount = _.options.slidesToShow + 1;
+                        } else {
+                            infiniteCount = _.options.slidesToShow;
+                        }
+
+                        for (i = _.slideCount; i > (_.slideCount -
+                                infiniteCount); i -= 1) {
+                            slideIndex = i - 1;
+                            $(_.$slides[slideIndex]).clone(true).attr('id', '')
+                                .attr('data-slick-index', slideIndex - _.slideCount)
+                                .prependTo(_.$slideTrack).addClass('slick-cloned');
+                        }
+                        for (i = 0; i < infiniteCount; i += 1) {
+                            slideIndex = i;
+                            $(_.$slides[slideIndex]).clone(true).attr('id', '')
+                                .attr('data-slick-index', slideIndex + _.slideCount)
+                                .appendTo(_.$slideTrack).addClass('slick-cloned');
+                        }
+                        _.$slideTrack.find('.slick-cloned').find('[id]').each(function() {
+                            $(this).attr('id', '');
+                        });
+
+                    }
+
+                }
+
+            };
+
+            Slick.prototype.interrupt = function(toggle) {
+
+                var _ = this;
+
+                if (!toggle) {
+                    _.autoPlay();
+                }
+                _.interrupted = toggle;
+
+            };
+
+            Slick.prototype.selectHandler = function(event) {
+
+                var _ = this;
+
+                var targetElement =
+                    $(event.target).is('.slick-slide') ?
+                    $(event.target) :
+                    $(event.target).parents('.slick-slide');
+
+                var index = parseInt(targetElement.attr('data-slick-index'));
+
+                if (!index) index = 0;
+
+                if (_.slideCount <= _.options.slidesToShow) {
+
+                    _.setSlideClasses(index);
+                    _.asNavFor(index);
+                    return;
+
+                }
+
+                _.slideHandler(index);
+
+            };
+
+            Slick.prototype.slideHandler = function(index, sync, dontAnimate) {
+
+                var targetSlide, animSlide, oldSlide, slideLeft, targetLeft = null,
+                    _ = this,
+                    navTarget;
+
+                sync = sync || false;
+
+                if (_.animating === true && _.options.waitForAnimate === true) {
+                    return;
+                }
+
+                if (_.options.fade === true && _.currentSlide === index) {
+                    return;
+                }
+
+                if (_.slideCount <= _.options.slidesToShow) {
+                    return;
+                }
+
+                if (sync === false) {
+                    _.asNavFor(index);
+                }
+
+                targetSlide = index;
+                targetLeft = _.getLeft(targetSlide);
+                slideLeft = _.getLeft(_.currentSlide);
+
+                _.currentLeft = _.swipeLeft === null ? slideLeft : _.swipeLeft;
+
+                if (_.options.infinite === false && _.options.centerMode === false && (index < 0 || index > _
+                        .getDotCount() * _.options.slidesToScroll)) {
+                    if (_.options.fade === false) {
+                        targetSlide = _.currentSlide;
+                        if (dontAnimate !== true) {
+                            _.animateSlide(slideLeft, function() {
+                                _.postSlide(targetSlide);
+                            });
+                        } else {
+                            _.postSlide(targetSlide);
+                        }
+                    }
+                    return;
+                } else if (_.options.infinite === false && _.options.centerMode === true && (index < 0 ||
+                        index > (_.slideCount - _.options.slidesToScroll))) {
+                    if (_.options.fade === false) {
+                        targetSlide = _.currentSlide;
+                        if (dontAnimate !== true) {
+                            _.animateSlide(slideLeft, function() {
+                                _.postSlide(targetSlide);
+                            });
+                        } else {
+                            _.postSlide(targetSlide);
+                        }
+                    }
+                    return;
+                }
+
+                if (_.options.autoplay) {
+                    clearInterval(_.autoPlayTimer);
+                }
+
+                if (targetSlide < 0) {
+                    if (_.slideCount % _.options.slidesToScroll !== 0) {
+                        animSlide = _.slideCount - (_.slideCount % _.options.slidesToScroll);
+                    } else {
+                        animSlide = _.slideCount + targetSlide;
+                    }
+                } else if (targetSlide >= _.slideCount) {
+                    if (_.slideCount % _.options.slidesToScroll !== 0) {
+                        animSlide = 0;
+                    } else {
+                        animSlide = targetSlide - _.slideCount;
+                    }
+                } else {
+                    animSlide = targetSlide;
+                }
+
+                _.animating = true;
+
+                _.$slider.trigger('beforeChange', [_, _.currentSlide, animSlide]);
+
+                oldSlide = _.currentSlide;
+                _.currentSlide = animSlide;
+
+                _.setSlideClasses(_.currentSlide);
+
+                if (_.options.asNavFor) {
+
+                    navTarget = _.getNavTarget();
+                    navTarget = navTarget.slick('getSlick');
+
+                    if (navTarget.slideCount <= navTarget.options.slidesToShow) {
+                        navTarget.setSlideClasses(_.currentSlide);
+                    }
+
+                }
+
+                _.updateDots();
+                _.updateArrows();
+
+                if (_.options.fade === true) {
+                    if (dontAnimate !== true) {
+
+                        _.fadeSlideOut(oldSlide);
+
+                        _.fadeSlide(animSlide, function() {
+                            _.postSlide(animSlide);
+                        });
+
+                    } else {
+                        _.postSlide(animSlide);
+                    }
+                    _.animateHeight();
+                    return;
+                }
+
+                if (dontAnimate !== true) {
+                    _.animateSlide(targetLeft, function() {
+                        _.postSlide(animSlide);
+                    });
+                } else {
+                    _.postSlide(animSlide);
+                }
+
+            };
+
+            Slick.prototype.startLoad = function() {
+
+                var _ = this;
+
+                if (_.options.arrows === true && _.slideCount > _.options.slidesToShow) {
+
+                    _.$prevArrow.hide();
+                    _.$nextArrow.hide();
+
+                }
+
+                if (_.options.dots === true && _.slideCount > _.options.slidesToShow) {
+
+                    _.$dots.hide();
+
+                }
+
+                _.$slider.addClass('slick-loading');
+
+            };
+
+            Slick.prototype.swipeDirection = function() {
+
+                var xDist, yDist, r, swipeAngle, _ = this;
+
+                xDist = _.touchObject.startX - _.touchObject.curX;
+                yDist = _.touchObject.startY - _.touchObject.curY;
+                r = Math.atan2(yDist, xDist);
+
+                swipeAngle = Math.round(r * 180 / Math.PI);
+                if (swipeAngle < 0) {
+                    swipeAngle = 360 - Math.abs(swipeAngle);
+                }
+
+                if ((swipeAngle <= 45) && (swipeAngle >= 0)) {
+                    return (_.options.rtl === false ? 'left' : 'right');
+                }
+                if ((swipeAngle <= 360) && (swipeAngle >= 315)) {
+                    return (_.options.rtl === false ? 'left' : 'right');
+                }
+                if ((swipeAngle >= 135) && (swipeAngle <= 225)) {
+                    return (_.options.rtl === false ? 'right' : 'left');
+                }
+                if (_.options.verticalSwiping === true) {
+                    if ((swipeAngle >= 35) && (swipeAngle <= 135)) {
+                        return 'down';
+                    } else {
+                        return 'up';
+                    }
+                }
+
+                return 'vertical';
+
+            };
+
+            Slick.prototype.swipeEnd = function(event) {
+
+                var _ = this,
+                    slideCount,
+                    direction;
+
+                _.dragging = false;
+                _.interrupted = false;
+                _.shouldClick = (_.touchObject.swipeLength > 10) ? false : true;
+
+                if (_.touchObject.curX === undefined) {
+                    return false;
+                }
+
+                if (_.touchObject.edgeHit === true) {
+                    _.$slider.trigger('edge', [_, _.swipeDirection()]);
+                }
+
+                if (_.touchObject.swipeLength >= _.touchObject.minSwipe) {
+
+                    direction = _.swipeDirection();
+
+                    switch (direction) {
+
+                        case 'left':
+                        case 'down':
+
+                            slideCount =
+                                _.options.swipeToSlide ?
+                                _.checkNavigable(_.currentSlide + _.getSlideCount()) :
+                                _.currentSlide + _.getSlideCount();
+
+                            _.currentDirection = 0;
+
+                            break;
+
+                        case 'right':
+                        case 'up':
+
+                            slideCount =
+                                _.options.swipeToSlide ?
+                                _.checkNavigable(_.currentSlide - _.getSlideCount()) :
+                                _.currentSlide - _.getSlideCount();
+
+                            _.currentDirection = 1;
+
+                            break;
+
+                        default:
+
+
+                    }
+
+                    if (direction != 'vertical') {
+
+                        _.slideHandler(slideCount);
+                        _.touchObject = {};
+                        _.$slider.trigger('swipe', [_, direction]);
+
+                    }
+
+                } else {
+
+                    if (_.touchObject.startX !== _.touchObject.curX) {
+
+                        _.slideHandler(_.currentSlide);
+                        _.touchObject = {};
+
+                    }
+
+                }
+
+            };
+
+            Slick.prototype.swipeHandler = function(event) {
+
+                var _ = this;
+
+                if ((_.options.swipe === false) || ('ontouchend' in document && _.options.swipe === false)) {
+                    return;
+                } else if (_.options.draggable === false && event.type.indexOf('mouse') !== -1) {
+                    return;
+                }
+
+                _.touchObject.fingerCount = event.originalEvent && event.originalEvent.touches !== undefined ?
+                    event.originalEvent.touches.length : 1;
+
+                _.touchObject.minSwipe = _.listWidth / _.options
+                    .touchThreshold;
+
+                if (_.options.verticalSwiping === true) {
+                    _.touchObject.minSwipe = _.listHeight / _.options
+                        .touchThreshold;
+                }
+
+                switch (event.data.action) {
+
+                    case 'start':
+                        _.swipeStart(event);
+                        break;
+
+                    case 'move':
+                        _.swipeMove(event);
+                        break;
+
+                    case 'end':
+                        _.swipeEnd(event);
+                        break;
+
+                }
+
+            };
+
+            Slick.prototype.swipeMove = function(event) {
+
+                var _ = this,
+                    edgeWasHit = false,
+                    curLeft, swipeDirection, swipeLength, positionOffset, touches;
+
+                touches = event.originalEvent !== undefined ? event.originalEvent.touches : null;
+
+                if (!_.dragging || touches && touches.length !== 1) {
+                    return false;
+                }
+
+                curLeft = _.getLeft(_.currentSlide);
+
+                _.touchObject.curX = touches !== undefined ? touches[0].pageX : event.clientX;
+                _.touchObject.curY = touches !== undefined ? touches[0].pageY : event.clientY;
+
+                _.touchObject.swipeLength = Math.round(Math.sqrt(
+                    Math.pow(_.touchObject.curX - _.touchObject.startX, 2)));
+
+                if (_.options.verticalSwiping === true) {
+                    _.touchObject.swipeLength = Math.round(Math.sqrt(
+                        Math.pow(_.touchObject.curY - _.touchObject.startY, 2)));
+                }
+
+                swipeDirection = _.swipeDirection();
+
+                if (swipeDirection === 'vertical') {
+                    return;
+                }
+
+                if (event.originalEvent !== undefined && _.touchObject.swipeLength > 4) {
+                    event.preventDefault();
+                }
+
+                positionOffset = (_.options.rtl === false ? 1 : -1) * (_.touchObject.curX > _.touchObject
+                    .startX ? 1 : -1);
+                if (_.options.verticalSwiping === true) {
+                    positionOffset = _.touchObject.curY > _.touchObject.startY ? 1 : -1;
+                }
+
+
+                swipeLength = _.touchObject.swipeLength;
+
+                _.touchObject.edgeHit = false;
+
+                if (_.options.infinite === false) {
+                    if ((_.currentSlide === 0 && swipeDirection === 'right') || (_.currentSlide >= _
+                            .getDotCount() && swipeDirection === 'left')) {
+                        swipeLength = _.touchObject.swipeLength * _.options.edgeFriction;
+                        _.touchObject.edgeHit = true;
+                    }
+                }
+
+                if (_.options.vertical === false) {
+                    _.swipeLeft = curLeft + swipeLength * positionOffset;
+                } else {
+                    _.swipeLeft = curLeft + (swipeLength * (_.$list.height() / _.listWidth)) * positionOffset;
+                }
+                if (_.options.verticalSwiping === true) {
+                    _.swipeLeft = curLeft + swipeLength * positionOffset;
+                }
+
+                if (_.options.fade === true || _.options.touchMove === false) {
+                    return false;
+                }
+
+                if (_.animating === true) {
+                    _.swipeLeft = null;
+                    return false;
+                }
+
+                _.setCSS(_.swipeLeft);
+
+            };
+
+            Slick.prototype.swipeStart = function(event) {
+
+                var _ = this,
+                    touches;
+
+                _.interrupted = true;
+
+                if (_.touchObject.fingerCount !== 1 || _.slideCount <= _.options.slidesToShow) {
+                    _.touchObject = {};
+                    return false;
+                }
+
+                if (event.originalEvent !== undefined && event.originalEvent.touches !== undefined) {
+                    touches = event.originalEvent.touches[0];
+                }
+
+                _.touchObject.startX = _.touchObject.curX = touches !== undefined ? touches.pageX : event
+                    .clientX;
+                _.touchObject.startY = _.touchObject.curY = touches !== undefined ? touches.pageY : event
+                    .clientY;
+
+                _.dragging = true;
+
+            };
+
+            Slick.prototype.unfilterSlides = Slick.prototype.slickUnfilter = function() {
+
+                var _ = this;
+
+                if (_.$slidesCache !== null) {
+
+                    _.unload();
+
+                    _.$slideTrack.children(this.options.slide).detach();
+
+                    _.$slidesCache.appendTo(_.$slideTrack);
+
+                    _.reinit();
+
+                }
+
+            };
+
+            Slick.prototype.unload = function() {
+
+                var _ = this;
+
+                $('.slick-cloned', _.$slider).remove();
+
+                if (_.$dots) {
+                    _.$dots.remove();
+                }
+
+                if (_.$prevArrow && _.htmlExpr.test(_.options.prevArrow)) {
+                    _.$prevArrow.remove();
+                }
+
+                if (_.$nextArrow && _.htmlExpr.test(_.options.nextArrow)) {
+                    _.$nextArrow.remove();
+                }
+
+                _.$slides
+                    .removeClass('slick-slide slick-active slick-visible slick-current')
+                    .attr('aria-hidden', 'true')
+                    .css('width', '');
+
+            };
+
+            Slick.prototype.unslick = function(fromBreakpoint) {
+
+                var _ = this;
+                _.$slider.trigger('unslick', [_, fromBreakpoint]);
+                _.destroy();
+
+            };
+
+            Slick.prototype.updateArrows = function() {
+
+                var _ = this,
+                    centerOffset;
+
+                centerOffset = Math.floor(_.options.slidesToShow / 2);
+
+                if (_.options.arrows === true &&
+                    _.slideCount > _.options.slidesToShow &&
+                    !_.options.infinite) {
+
+                    _.$prevArrow.removeClass('slick-disabled').attr('aria-disabled', 'false');
+                    _.$nextArrow.removeClass('slick-disabled').attr('aria-disabled', 'false');
+
+                    if (_.currentSlide === 0) {
+
+                        _.$prevArrow.addClass('slick-disabled').attr('aria-disabled', 'true');
+                        _.$nextArrow.removeClass('slick-disabled').attr('aria-disabled', 'false');
+
+                    } else if (_.currentSlide >= _.slideCount - _.options.slidesToShow && _.options
+                        .centerMode === false) {
+
+                        _.$nextArrow.addClass('slick-disabled').attr('aria-disabled', 'true');
+                        _.$prevArrow.removeClass('slick-disabled').attr('aria-disabled', 'false');
+
+                    } else if (_.currentSlide >= _.slideCount - 1 && _.options.centerMode === true) {
+
+                        _.$nextArrow.addClass('slick-disabled').attr('aria-disabled', 'true');
+                        _.$prevArrow.removeClass('slick-disabled').attr('aria-disabled', 'false');
+
+                    }
+
+                }
+
+            };
+
+            Slick.prototype.updateDots = function() {
+
+                var _ = this;
+
+                if (_.$dots !== null) {
+
+                    _.$dots
+                        .find('li')
+                        .removeClass('slick-active')
+                        .attr('aria-hidden', 'true');
+
+                    _.$dots
+                        .find('li')
+                        .eq(Math.floor(_.currentSlide / _.options.slidesToScroll))
+                        .addClass('slick-active')
+                        .attr('aria-hidden', 'false');
+
+                }
+
+            };
+
+            Slick.prototype.visibility = function() {
+
+                var _ = this;
+
+                if (_.options.autoplay) {
+
+                    if (document[_.hidden]) {
+
+                        _.interrupted = true;
+
+                    } else {
+
+                        _.interrupted = false;
+
+                    }
+
+                }
+
+            };
+
+            $.fn.slick = function() {
+                var _ = this,
+                    opt = arguments[0],
+                    args = Array.prototype.slice.call(arguments, 1),
+                    l = _.length,
+                    i,
+                    ret;
+                for (i = 0; i < l; i++) {
+                    if (typeof opt == 'object' || typeof opt == 'undefined')
+                        _[i].slick = new Slick(_[i], opt);
+                    else
+                        ret = _[i].slick[opt].apply(_[i].slick, args);
+                    if (typeof ret != 'undefined') return ret;
+                }
+                return _;
+            };
+
+        }));
+    </script>
+
+
+
+
+
+
+
+
+
+    <script>
+        //Add two other images to the 3-image set of a carousel-item
+        $('#multi-slider .carousel-item').each(function() {
+            var next = $(this).next();
+
+            for (var i = 0; i < 2; i++) {
+                if (!next.length) {
+                    next = $(this).siblings(':first');
+                }
+                next.children(':first').children(':first').clone().addClass('d-none d-md-block').appendTo($(this)
+                    .children(':first'));
+
+                next = next.next();
+            }
+        });
+    </script>
+
+
+
+
+
+    <script>
+        $(document).ready(function() {
+            let currentIndex = 0;
+            const slides = $(".custom-slider .custom-slide");
+            const numSlides = slides.length;
+
+            function showSlide(index) {
+                slides.removeClass('active');
+                slides.eq(index).addClass('active');
+            }
+
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % numSlides;
                 showSlide(currentIndex);
-            });
-        </script>
-    @endsection
+            }
+
+            setInterval(nextSlide, 500000); // Change slide every 5 seconds
+
+            showSlide(currentIndex);
+        });
+    </script>
+    <script>
+        let options = {
+            'speed': 3000,
+            'pause': true,
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            let slider = document.querySelector('.rbd-review-slider');
+            let slides = slider.querySelectorAll('.rbd-review');
+            let total = slides.length;
+            let pause = false;
+
+            function pauseSlide() {
+                slider.onmouseleave = function() {
+                    pause = false;
+                };
+                slider.onmouseenter = function() {
+                    pause = true;
+                };
+                return pause;
+            }
+
+            function slide() {
+                if (options.pause && pauseSlide()) return;
+
+                let activeSlide = document.querySelector('.rbd-review-slider .rbd-review.rbd-curr');
+                let prev, curr, next, soon;
+
+                curr = activeSlide;
+                prev = activeSlide.previousElementSibling;
+                next = activeSlide.nextElementSibling;
+
+                if (next != null) {
+                    soon = next.nextElementSibling == null ? slides[0] : next.nextElementSibling;
+                } else {
+                    next = slides[0];
+                    soon = slides[1];
+                }
+
+                if (prev != null) prev.classList.remove('rbd-prev', 'rbd-curr', 'rbd-next');
+                if (curr != null) curr.classList.remove('rbd-prev', 'rbd-curr', 'rbd-next');
+                curr.classList.add('rbd-prev');
+                if (next != null) next.classList.remove('rbd-prev', 'rbd-curr', 'rbd-next');
+                next.classList.add('rbd-curr');
+                if (soon != null) soon.classList.remove('rbd-prev', 'rbd-curr', 'rbd-next');
+                soon.classList.add('rbd-next');
+            }
+
+            let slideTimer = setInterval(function() {
+                slide();
+            }, options.speed);
+        }, true);
+    </script>
+@endsection

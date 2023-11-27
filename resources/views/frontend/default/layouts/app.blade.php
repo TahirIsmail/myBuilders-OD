@@ -176,7 +176,7 @@
         </noscript>
         <!-- End Facebook Pixel Code -->
     @endif
-    <script src="{{ my_asset('assets/common/js/app.js') }}"></script>
+   
     
 </head>
 <body class="text-left position-relative">
@@ -187,7 +187,7 @@
 
         <!-- ========== MAIN CONTENT ========== -->
 
-        <div class="p-0 m-0 bg-white">
+        <div id = "app"class="p-0 m-0 bg-white">
             
             @yield('content')
         </div>
@@ -263,6 +263,7 @@
     <script src="{{ my_asset('assets/common/js/vendors.js') }}"></script>
     <script src="{{ my_asset('assets/common/js/jssocials.min.js') }}" ></script>
     <script src="{{ my_asset('assets/common/js/aiz-core.js?v=') }}{{ rand(1000,9999) }}"></script>
+    <script src="{{ my_asset('assets/common/js/app.js') }}"></script>
    
     <script type="text/javascript">
         @foreach (session('flash_notification', collect())->toArray() as $message)
@@ -278,6 +279,6 @@
         });
       </script>
     @yield('script')
-
+    
 </body>
 </html>
