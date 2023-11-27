@@ -26215,8 +26215,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _QuestionWithOptionsComponent_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./QuestionWithOptionsComponent.vue */ "./resources/js/components/QuestionWithOptionsComponent.vue");
 /* harmony import */ var _SignUpComponent_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SignUpComponent.vue */ "./resources/js/components/SignUpComponent.vue");
 /* harmony import */ var _JobHeadlineComponent_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./JobHeadlineComponent.vue */ "./resources/js/components/JobHeadlineComponent.vue");
-/* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-select */ "./node_modules/vue-select/dist/vue-select.es.js");
-/* harmony import */ var _store_questionnaireStore__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../store/questionnaireStore */ "./resources/js/store/questionnaireStore.js");
+/* harmony import */ var _store_questionnaireStore__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../store/questionnaireStore */ "./resources/js/store/questionnaireStore.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw new Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw new Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -26238,7 +26237,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
   setup: function setup(__props, _ref) {
     var __expose = _ref.expose;
     __expose();
-    var store = (0,_store_questionnaireStore__WEBPACK_IMPORTED_MODULE_6__.useQuestionnaireStore)();
+    var store = (0,_store_questionnaireStore__WEBPACK_IMPORTED_MODULE_5__.useQuestionnaireStore)();
     var jobCategories = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(function () {
       return store.jobCategories.map(function (category) {
         return _objectSpread(_objectSpread({}, category), {}, {
@@ -26247,6 +26246,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       });
     });
     var selectedCategory = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
+    var jobHeadlineShow = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
     var questions = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(new Set()); // Now a list of question data
 
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.onBeforeMount)( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
@@ -26283,14 +26283,14 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
     }();
 
     // Event handler for when an answer is selected
-    function handleAnswerSelected(selectedAnswer) {
-      fetchNextQuestion(selectedAnswer);
+    function handleAnswerSelected(index, selectedAnswer) {
+      fetchNextQuestion(index, selectedAnswer);
     }
 
     // API call to get the next question based on answer
     var fetchNextQuestion = /*#__PURE__*/function () {
-      var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(selectedAnswer) {
-        var response, newQuestion, previousquestion, questionExists;
+      var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(index, selectedAnswer) {
+        var response, newQuestion;
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
@@ -26306,32 +26306,31 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
             case 3:
               response = _context3.sent;
               // Handle the response, e.g., append to questions array or update state
-              newQuestion = response.data[0];
-              console.log(selectedAnswer.question_id, selectedAnswer.id, newQuestion.id);
-              console.log(questions.value);
-              previousquestion = selectedAnswer.question_id;
-              questionExists = questions.value.some(function (q) {
-                return q.id === newQuestion.id;
-              });
-              console.log(questionExists);
-              // If the question does not exist, push it into the array
+              if (!response.data.length) {
+                // Array is empty
+                isEmptyArray = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(function () {
+                  return response.data.length === 0;
+                });
+              } else {
+                newQuestion = response.data[0]; // Array is not empty
+                questions.value.splice(index + 1, questions.value.length - index - 1);
 
-              if (!questionExists) {
+                // Insert the new question after the current question
                 questions.value.push(newQuestion);
               }
-              _context3.next = 16;
+              _context3.next = 10;
               break;
-            case 13:
-              _context3.prev = 13;
+            case 7:
+              _context3.prev = 7;
               _context3.t0 = _context3["catch"](0);
               console.error('Error fetching next question:', _context3.t0);
-            case 16:
+            case 10:
             case "end":
               return _context3.stop();
           }
-        }, _callee3, null, [[0, 13]]);
+        }, _callee3, null, [[0, 7]]);
       }));
-      return function fetchNextQuestion(_x) {
+      return function fetchNextQuestion(_x, _x2) {
         return _ref4.apply(this, arguments);
       };
     }();
@@ -26345,18 +26344,15 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
     }, {
       immediate: true
     });
-    var goToNextStep = function goToNextStep() {
-      // Handle the next step logic here
-    };
     var __returned__ = {
       store: store,
       jobCategories: jobCategories,
       selectedCategory: selectedCategory,
+      jobHeadlineShow: jobHeadlineShow,
       questions: questions,
       fetchInitialQuestion: fetchInitialQuestion,
       handleAnswerSelected: handleAnswerSelected,
       fetchNextQuestion: fetchNextQuestion,
-      goToNextStep: goToNextStep,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
       computed: vue__WEBPACK_IMPORTED_MODULE_0__.computed,
       watch: vue__WEBPACK_IMPORTED_MODULE_0__.watch,
@@ -26367,11 +26363,8 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       QuestionComponent: _QuestionWithOptionsComponent_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
       SignUp: _SignUpComponent_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
       JobHeadline: _JobHeadlineComponent_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
-      get vSelect() {
-        return vue_select__WEBPACK_IMPORTED_MODULE_5__["default"];
-      },
       get useQuestionnaireStore() {
-        return _store_questionnaireStore__WEBPACK_IMPORTED_MODULE_6__.useQuestionnaireStore;
+        return _store_questionnaireStore__WEBPACK_IMPORTED_MODULE_5__.useQuestionnaireStore;
       }
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
@@ -26403,6 +26396,9 @@ __webpack_require__.r(__webpack_exports__);
     question: {
       type: Object,
       required: true
+    },
+    index: {
+      type: Number
     }
   },
   emits: ["answer-selected"],
@@ -26412,18 +26408,24 @@ __webpack_require__.r(__webpack_exports__);
     __expose();
     var props = __props;
     var selectedAnswer = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
-    var onAnswerSelected = function onAnswerSelected(answer) {
-      // Set the selected answer
+    var index = props.index;
+    console.log(props.question.answers.length);
+    (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(selectedAnswer, function (newOption, oldOption) {
+      if (newOption != oldOption) {}
+    });
+    var goToNextStep = function goToNextStep(answer) {
+      // Handle the next step logic here
       selectedAnswer.value = answer;
-      // Emit the event with the selected answer, including the `leads_to_question_id`
-      emit("answer-selected", answer);
+      emit("answer-selected", index, answer);
     };
     var __returned__ = {
       props: props,
       emit: emit,
       selectedAnswer: selectedAnswer,
-      onAnswerSelected: onAnswerSelected,
-      ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref
+      index: index,
+      goToNextStep: goToNextStep,
+      ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
+      watch: vue__WEBPACK_IMPORTED_MODULE_0__.watch
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -26645,19 +26647,25 @@ var _hoisted_7 = /*#__PURE__*/_withScopeId(function () {
   }, " What would you like to have done? ", -1 /* HOISTED */);
 });
 var _hoisted_8 = {
-  "class": "col-lg-8"
+  "class": "container mt-4 mb-4"
 };
-var _hoisted_9 = {
-  "class": "form-group button-container"
-};
+var _hoisted_9 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    "class": "container mt-5"
+  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    "class": "form-group button-container"
+  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    type: "submit",
+    "class": "btn btn-primary"
+  }, " Continue ")])], -1 /* HOISTED */);
+});
 var _hoisted_10 = {
-  "class": "container"
-};
-var _hoisted_11 = {
-  "class": "div"
+  key: 0,
+  "class": "container mt-4 mb-4"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Display the selected category but faded "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["vSelect"], {
+  var _component_v_select = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-select");
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Display the selected category but faded "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_select, {
     modelValue: $setup.selectedCategory,
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
       return $setup.selectedCategory = $event;
@@ -26666,23 +26674,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     label: "name",
     "class": "mb-3",
     placeholder: "Select a category"
-  }, null, 8 /* PROPS */, ["modelValue", "options"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Form Steps "), $setup.selectedCategory ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+  }, null, 8 /* PROPS */, ["modelValue", "options"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Form Steps ")])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [$setup.selectedCategory ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 0
   }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.questions, function (question, index) {
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-      key: question.id,
-      "class": "mx-auto row justify-content-md-center"
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["QuestionComponent"], {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["QuestionComponent"], {
       question: question,
-      key: index,
+      index: index,
+      key: question.id,
       onAnswerSelected: $setup.handleAnswerSelected
-    }, null, 8 /* PROPS */, ["question"]))])]);
-  }), 128 /* KEYED_FRAGMENT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [$setup.questions.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
-    key: 0,
-    onClick: $setup.goToNextStep,
-    type: "button",
-    "class": "mx-auto btn btn-primary"
-  }, " Continue ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Continue button "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["JobHeadline"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["SignUp"])])], 64 /* STABLE_FRAGMENT */);
+    }, null, 8 /* PROPS */, ["question", "index"]);
+  }), 128 /* KEYED_FRAGMENT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), _hoisted_9, $setup.jobHeadlineShow ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["JobHeadline"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),
@@ -26704,18 +26705,39 @@ var _withScopeId = function _withScopeId(n) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.pushScopeId)("data-v-5d3ef256"), n = n(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.popScopeId)(), n;
 };
 var _hoisted_1 = {
-  "class": "question_div"
+  "class": "container mx-auto row justify-content-md-center"
 };
 var _hoisted_2 = {
-  "class": "left-align"
+  "class": "question_div"
 };
 var _hoisted_3 = {
+  "class": "left-align"
+};
+var _hoisted_4 = {
+  key: 0
+};
+var _hoisted_5 = {
   "class": "answer-outer"
 };
-var _hoisted_4 = ["value", "id", "onChange"];
-var _hoisted_5 = ["for", "innerHTML"];
+var _hoisted_6 = ["value", "id", "onClick"];
+var _hoisted_7 = ["for", "innerHTML"];
+var _hoisted_8 = {
+  key: 1
+};
+var _hoisted_9 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    "class": "custom-textarea-container"
+  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+    placeholder: "Include any details you think the tradesperson should know (approx. extension dimensions, timeframe, etc.)",
+    name: "basicOutlineExtensionDescription",
+    "class": "custom-textarea"
+  }), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+    "class": "character-count"
+  }, "0/3000")], -1 /* HOISTED */);
+});
+var _hoisted_10 = [_hoisted_9];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.question.question), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.question.answers, function (answer) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.question.question), 1 /* TEXT */), $props.question.answers.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.question.answers, function (answer) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       "class": "form-step",
       key: answer.id
@@ -26723,17 +26745,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       type: "radio",
       value: answer,
       id: "answer-".concat(answer.id),
+      onClick: function onClick($event) {
+        return $setup.goToNextStep(answer);
+      },
       "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
         return $setup.selectedAnswer = $event;
-      }),
-      onChange: function onChange($event) {
-        return $setup.onAnswerSelected(answer);
-      }
-    }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_4), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $setup.selectedAnswer]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+      })
+    }, null, 8 /* PROPS */, _hoisted_6), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $setup.selectedAnswer]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
       "for": "answer-".concat(answer.id),
       innerHTML: answer.answer
-    }, null, 8 /* PROPS */, _hoisted_5)]);
-  }), 128 /* KEYED_FRAGMENT */))])]);
+    }, null, 8 /* PROPS */, _hoisted_7)]);
+  }), 128 /* KEYED_FRAGMENT */))])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_8, _hoisted_10))])]);
 }
 
 /***/ }),
@@ -27025,7 +27047,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 var useQuestionnaireStore = (0,pinia__WEBPACK_IMPORTED_MODULE_1__.defineStore)('questionnaire', {
   state: function state() {
     return {
-      jobCategories: []
+      jobCategories: [],
+      questions: []
     };
   },
   actions: {
@@ -31744,7 +31767,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_select_dist_vue_select_css__WEBPACK_IMPORTED_MODULE_1__["default"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\ncontainer[data-v-06285eb4] {\r\n  max-width: 800px !important;\r\n  margin: 20px auto !important;\n}\n.form-header[data-v-06285eb4] {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  height: 100%;\r\n  padding-top: 10px;\n}\n.text-center[data-v-06285eb4] {\r\n  text-align: center !important;\n}\n.faded-category[data-v-06285eb4] {\r\n  color: #999 !important;\r\n  font-size: 1.5em !important;\r\n  margin-bottom: 15px !important;\n}\r\n\r\n/* Style for form elements and the container */\n.mx-auto[data-v-06285eb4] {\r\n  margin-right: auto !important;\r\n  margin-left: auto !important;\n}\n.row[data-v-06285eb4] {\r\n  display: flex !important;\r\n  justify-content: center !important;\n}\n.col-lg-8[data-v-06285eb4] {\r\n  width: 100% !important;\r\n  max-width: 800px !important;\r\n  /* Adjust as needed */\n}\n.form-control-lg[data-v-06285eb4] {\r\n  height: calc(1.5em + 1rem + 2px) !important;\r\n  padding: 0.5rem 1rem !important;\r\n  font-size: 1.25rem !important;\r\n  line-height: 1.5 !important;\n}\r\n\r\n/* Style for vue-select */\n.vue-select[data-v-06285eb4] {\r\n  width: 100% !important;\r\n  margin-bottom: 1rem !important;\n}\r\n\r\n/* Button styling */\n.btn-primary[data-v-06285eb4] {\r\n  color: #fff !important;\r\n  background-color: rgb(81, 197, 125) !important;\n}\n.btn[data-v-06285eb4] {\r\n  width: 500px !important;\r\n  display: inline-block !important;\r\n  font-weight: 400 !important;\r\n  color: white !important;\r\n  text-align: center !important;\r\n  vertical-align: middle !important;\r\n  -webkit-user-select: none !important;\r\n     -moz-user-select: none !important;\r\n          user-select: none !important;\r\n  border: 1px solid transparent !important;\r\n  padding: 0.375rem 0.75rem !important;\r\n  font-size: 1rem !important;\r\n  line-height: 1.5 !important;\r\n  border-radius: 0.25rem !important;\r\n  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,\r\n    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;\n}\n.btn-primary[data-v-06285eb4]:hover {\r\n  color: #fff;\r\n  background-color: rgb(101, 217, 145) !important;\n}\r\n\r\n/* Additional styles for responsiveness and spacing */\n@media (max-width: 768px) {\n.col-lg-8[data-v-06285eb4] {\r\n    max-width: 100%;\n}\n}\n.mb-3[data-v-06285eb4] {\r\n  margin-bottom: 1rem;\n}\n.v-select .vs__dropdown-toggle[data-v-06285eb4] {\r\n  border: none !important;\r\n  /* Removes border */\n}\n.left-align[data-v-06285eb4] {\r\n  text-align: left;\r\n  display: flex;\r\n  align-items: center;\r\n  padding: 10px;\r\n\r\n\r\n\r\n\r\n  font-size: 1.5em;\r\n  letter-spacing: 0px;\r\n  margin-bottom: 0.5em;\r\n  color: rgb(52, 57, 68);\r\n  font-weight: bold;\r\n  -webkit-font-smoothing: antialiased;\n}\n.button-container[data-v-06285eb4] {\r\n    display: flex;\r\n    justify-content: center;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\ncontainer[data-v-06285eb4] {\r\n  max-width: 800px !important;\r\n  margin: 20px auto !important;\n}\n.form-header[data-v-06285eb4] {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  height: 100%;\r\n  padding-top: 10px;\n}\n.text-center[data-v-06285eb4] {\r\n  text-align: center !important;\n}\n.faded-category[data-v-06285eb4] {\r\n  color: #999 !important;\r\n  font-size: 1.5em !important;\r\n  margin-bottom: 15px !important;\n}\r\n\r\n/* Style for form elements and the container */\n.mx-auto[data-v-06285eb4] {\r\n  margin-right: auto !important;\r\n  margin-left: auto !important;\n}\n.row[data-v-06285eb4] {\r\n  display: flex !important;\r\n  justify-content: center !important;\n}\n.button-container[data-v-06285eb4] {\r\n    display: flex;\r\n    justify-content: center;\n}\n.col-lg-8[data-v-06285eb4] {\r\n  width: 100% !important;\r\n  max-width: 800px !important;\r\n  /* Adjust as needed */\n}\n.form-control-lg[data-v-06285eb4] {\r\n  height: calc(1.5em + 1rem + 2px) !important;\r\n  padding: 0.5rem 1rem !important;\r\n  font-size: 1.25rem !important;\r\n  line-height: 1.5 !important;\n}\r\n\r\n/* Style for vue-select */\n.vue-select[data-v-06285eb4] {\r\n  width: 100% !important;\r\n  margin-bottom: 1rem !important;\n}\r\n\r\n/* Button styling */\n.btn-primary[data-v-06285eb4] {\r\n  color: #fff !important;\r\n  background-color: rgb(81, 197, 125) !important;\n}\r\n\r\n\r\n\r\n\r\n/* Additional styles for responsiveness and spacing */\n@media (max-width: 768px) {\n.col-lg-8[data-v-06285eb4] {\r\n    max-width: 100%;\n}\n}\n.mb-3[data-v-06285eb4] {\r\n  margin-bottom: 1rem;\n}\n.v-select .vs__dropdown-toggle[data-v-06285eb4] {\r\n  border: none !important;\r\n  /* Removes border */\n}\n.left-align[data-v-06285eb4] {\r\n  text-align: left;\r\n  display: flex;\r\n  align-items: center;\r\n  padding: 10px;\r\n\r\n\r\n\r\n\r\n  font-size: 1.5em;\r\n  letter-spacing: 0px;\r\n  margin-bottom: 0.5em;\r\n  color: rgb(52, 57, 68);\r\n  font-weight: bold;\r\n  -webkit-font-smoothing: antialiased;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -31771,7 +31794,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_select_dist_vue_select_css__WEBPACK_IMPORTED_MODULE_1__["default"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.question_div[data-v-5d3ef256] {\r\n  margin: 15px;\r\n  background-color: #f9f9f9;\n}\n.answer-outer[data-v-5d3ef256] {\r\n  background-color: white;\r\n  border: 2px solid rgb(223, 229, 237);\r\n  border-radius: 5px;\n}\n.form-step[data-v-5d3ef256] {\r\n  background-color: white;\r\n  transition: all 0.3s ease;\r\n  border-top: 2px solid rgb(223, 229, 237);\r\n  color: rgb(73, 144, 226);\r\n  margin-top: -2px;\r\n  padding: 0.75em;\r\n  font-size: medium;\r\n  font-weight: bold;\r\n  display: flex;\r\n  align-items: flex-start;\r\n  justify-content: flex-start;\r\n  word-wrap: break-word;\r\n  white-space: normal;\n}\n.form-step label[data-v-5d3ef256] {\r\n  text-align: left;\r\n  flex-grow: 1;\n}\n.form-step input[type=\"radio\"][data-v-5d3ef256] {\r\n  margin-top: 0;\r\n  margin-bottom: 0;\r\n  /* Adjust margin-right if needed for spacing between radio and label */\r\n  margin-right: 10px;\n}\n.form-step label[data-v-5d3ef256] {\r\n  margin-top: 0;\r\n  margin-bottom: 0;\r\n  /* Additional styling for label if needed */\n}\n.form-step input[type=\"radio\"][data-v-5d3ef256] {\r\n  margin-right: 10px;\r\n  /* Space between radio button and label */\n}\n.left-align[data-v-5d3ef256] {\r\n  text-align: left;\r\n  display: flex;\r\n  align-items: center;\r\n  padding: 10px;\r\n\r\n\r\n\r\n\r\n  font-size: 1.5em;\r\n  letter-spacing: 0px;\r\n  margin-bottom: 0.5em;\r\n  color: rgb(52, 57, 68);\r\n  font-weight: bold;\r\n  -webkit-font-smoothing: antialiased;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.question_div[data-v-5d3ef256] {\r\n  margin: 15px;\r\n  background-color: #f9f9f9;\n}\n.answer-outer[data-v-5d3ef256] {\r\n  background-color: white;\r\n  border: 2px solid rgb(223, 229, 237);\r\n  border-radius: 5px;\n}\n.form-step[data-v-5d3ef256] {\r\n  background-color: white;\r\n  transition: all 0.3s ease;\r\n  border-top: 2px solid rgb(223, 229, 237);\r\n  color: rgb(73, 144, 226);\r\n  margin-top: -2px;\r\n  padding: 0.75em;\r\n  font-size: medium;\r\n  font-weight: bold;\r\n  display: flex;\r\n  align-items: flex-start;\r\n  justify-content: flex-start;\r\n  word-wrap: break-word;\r\n  white-space: normal;\n}\n.form-step label[data-v-5d3ef256] {\r\n  text-align: left;\r\n  flex-grow: 1;\n}\n.form-step input[type=\"radio\"][data-v-5d3ef256] {\r\n  margin-top: 0;\r\n  margin-bottom: 0;\r\n  /* Adjust margin-right if needed for spacing between radio and label */\r\n  margin-right: 10px;\n}\n.form-step label[data-v-5d3ef256] {\r\n  margin-top: 0;\r\n  margin-bottom: 0;\r\n  /* Additional styling for label if needed */\n}\n.form-step input[type=\"radio\"][data-v-5d3ef256] {\r\n  margin-right: 10px;\r\n  /* Space between radio button and label */\n}\n.left-align[data-v-5d3ef256] {\r\n  text-align: left;\r\n  display: flex;\r\n  align-items: center;\r\n  padding: 10px;\r\n\r\n\r\n\r\n\r\n  font-size: 1.5em;\r\n  letter-spacing: 0px;\r\n  margin-bottom: 0.5em;\r\n  color: rgb(52, 57, 68);\r\n  font-weight: bold;\r\n  -webkit-font-smoothing: antialiased;\n}\n.btn[data-v-5d3ef256] {\r\n  width: 500px !important;\r\n  display: inline-block !important;\r\n  font-weight: 400 !important;\r\n  color: white !important;\r\n  text-align: center !important;\r\n  vertical-align: middle !important;\r\n  -webkit-user-select: none !important;\r\n     -moz-user-select: none !important;\r\n          user-select: none !important;\r\n  border: 1px solid transparent !important;\r\n  padding: 0.375rem 0.75rem !important;\r\n  font-size: 1rem !important;\r\n  line-height: 1.5 !important;\r\n  border-radius: 0.25rem !important;\r\n  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,\r\n  border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;\r\n  background-color: rgb(101, 217, 145) !important;\n}\n.btn-primary[data-v-5d3ef256]:hover {\r\n  color: #fff;\r\n  background-color: rgb(101, 217, 145) !important;\n}\n.custom-textarea-container[data-v-5d3ef256] {\r\n  display: flex;\r\n  flex-flow: wrap;\r\n  overflow: hidden;\n}\n.custom-textarea[data-v-5d3ef256] {\r\n  height: 81px !important;\r\n  -webkit-text-size-adjust: 100%;\r\n  --vh: 7.42px;\r\n  font-family: 'Trebuchet MS', 'Segoe UI', Candara, 'Bitstream Vera Sans', 'DejaVu Sans', 'Bitstream Vera Sans', Verdana, 'Verdana Ref', sans-serif;\r\n  color: #464c5b;\r\n  line-height: 1.5em;\r\n  font-size: 18px;\r\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\r\n  cursor: pointer;\r\n  flex: 1; /* Allow the textarea to grow */\r\n  border-radius: 0.333333em;\r\n  border: 2px solid rgb(223, 229, 237);\r\n  background-color: rgb(239, 242, 246);\n}\n.character-count[data-v-5d3ef256] {\r\n  font-weight: bold;\r\n  margin-left: 10px;\r\n  color: #333;\n}\r\n\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

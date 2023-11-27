@@ -9,6 +9,7 @@ use App\Models\Service;
 class ProjectCategory extends Model
 {
     use SoftDeletes;
+    protected $guarded = ['create_at', 'update_at', 'id'];
     public function projects()
     {
         return $this->hasMany(Project::class);

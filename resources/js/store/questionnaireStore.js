@@ -4,9 +4,9 @@ import axios from 'axios';
 export const useQuestionnaireStore = defineStore('questionnaire', {
   state: () => ({
     jobCategories: [],
-    
+    questions: [],
   }),
-
+ 
   actions: {
     
     async loadJobCategories() {
