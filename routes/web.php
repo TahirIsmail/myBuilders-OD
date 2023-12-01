@@ -57,7 +57,9 @@ Route::controller('Auth\VerificationController')->group(function () {
 	Route::post('/verify', 'verify');
 	Route::post('/resend', 'phoneresend');
 });
-
+Route::controller('Auth\RegisterController')->group(function(){
+	Route::post('/jobInfo');
+});
 Route::get('/admin/login', 'HomeController@admin_login')->name('admin.login');
 Route::get('/users/login', 'HomeController@login')->name('user.login');
 //sociallite login

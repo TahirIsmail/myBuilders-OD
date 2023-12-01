@@ -1,75 +1,149 @@
 <template>
-  
-  <div class="container mx-auto row justify-content-md-center">
-  <div class="question_div">
-    <p class="left-align">{{ question.question }}</p>
-    <div v-if="question.answers.length > 0">
-      <div  class="answer-outer">
-      <div class="form-step" v-for="answer in question.answers" :key="answer.id">
-        <input type="radio" :value="answer" :id="`answer-${answer.id}`"  @click="goToNextStep(answer)"  v-model="selectedAnswer"/>
+  <div class="col-md-12 mx-auto row justify-content-md-center">
+      <div class="col-md-6 question_div">
+          <p class="left-align">{{ question.question }}</p>
+          <div v-if="question.answers.length > 0">
+              <div class="answer-outer">
+                  <div
+                      class="form-step"
+                      v-for="answer in question.answers"
+                      :key="answer.id"
+                  >
+                      <input
+                          type="radio"
+                          :value="answer"
+                          :id="`answer-${answer.id}`"
+                          @click="goToNextStep(answer)"
+                          v-model="selectedAnswer"
+                          style="margin-top: 6px"
+                      />
 
-        <label :for="`answer-${answer.id}`" v-html="answer.answer"></label>
-
+                      <label
+                          :for="`answer-${answer.id}`"
+                          v-html="answer.answer"
+                      ></label>
+                  </div>
+              </div>
+          </div>
+          <div v-else>
+              <div class="custom-textarea-container">
+                  <textarea
+                      v-model="text"
+                      @input="updateCharacterCount"
+                      :disabled="isLimitExceeded"
+                      :style="{ borderColor: isLimitExceeded ? 'red' : '' }"
+                      ref="customTextarea"
+                      placeholder="Include any details you think the tradesperson should know (approx. extension dimensions, timeframe, etc.)"
+                      name="basicOutlineExtensionDescription"
+                      class="custom-textarea custom-textarea1"
+                  ></textarea>
+                  <span
+                      class="character-count"
+                      :class="{ exceeded: isLimitExceeded }"
+                      >{{ characterCount }}/3000</span
+                  >
+              </div>
+          </div>
       </div>
-    </div>
-    
-    </div>
-    <div v-else>
-      <div class="custom-textarea-container">
-        <textarea
-        placeholder="Include any details you think the tradesperson should know (approx. extension dimensions, timeframe, etc.)"
-        name="basicOutlineExtensionDescription"
-        class="custom-textarea"
-      ></textarea>
-      <span class="character-count">0/3000</span>
-      </div>
-      
-      
-      
-    </div>
-    
-  </div>
-  
   </div>
 </template>
 
 <script setup>
-import { ref,watch } from "vue";
 
+import { ref, watch ,onMounted,computed } from "vue";
+import { useQuestionnaireStore } from "../store/questionnaireStore"
+const store = useQuestionnaireStore()
 const props = defineProps({
   question: {
-    type: Object,
-    required: true,
+      type: Object,
+      required: true,
   },
-  index:{
-    type:Number
-  }
+  index: {
+      type: Number,
+  },
 });
 
-const emit = defineEmits(["answer-selected"]);
+const emit = defineEmits(["answer-selected","is-last"]);
 
 const selectedAnswer = ref(null);
-const index = props.index
-console.log(props.question.answers.length);
-watch(selectedAnswer,(newOption,oldOption) =>{
-  if(newOption != oldOption){
-    
+const index = props.index;
+const isLast  = computed(() => (props.question.answers.length === 0 ? true : false)) 
+watch(selectedAnswer, (newOption, oldOption) => {
+  if (newOption != oldOption) {
   }
-})
+});
+const isLastCheck = () => {
+emit("is-last",isLast)
+
+}
 const goToNextStep = (answer) => {
   // Handle the next step logic here
-  selectedAnswer.value = answer
-  emit("answer-selected",index,answer);
+  selectedAnswer.value = answer;
+  emit("answer-selected", index, answer);
+};
+onMounted(() => {
+isLastCheck();
+
+})
+
+
+
+
+
+
+
+const initialText = ""; // Set your initial text here
+const text = ref(initialText);
+const characterCount = ref(0);
+const customTextarea = ref(null);
+const maxWordCount = 3000;
+const isLimitExceeded = ref(false);
+
+watch(text, (newText) => {
+  characterCount.value = newText.length;
+  isLimitExceeded.value = characterCount.value > maxWordCount;
+  
+  store.setJobDescription(newText)
+});
+
+const updateCharacterCount = () => {
+  const words = text.value.trim().split(/\s+/);
+  const wordCount = words.length;
+
+  if (wordCount <= maxWordCount) {
+      characterCount.value = text.value.length;
+      isLimitExceeded.value = false;
+  } else {
+      // Trim excess words to meet the limit
+      const trimmedText = words.slice(0, maxWordCount).join(' ');
+      text.value = trimmedText;
+      characterCount.value = trimmedText.length;
+      isLimitExceeded.value = true;
+  }
+};
+
+// Example of using the customTextarea ref
+const focusTextarea = () => {
+  customTextarea.value.focus();
 };
 </script>
 
-
-
 <style scoped>
 @import "vue-select/dist/vue-select.css";
+.custom-textarea-container {
+  position: relative;
+}
 
-.question_div {
+.character-count {
+  position: absolute !important;
+  bottom: 5px !important;
+  right: 5px !important;
+  color: #555 !important;
+  font-size: 12px !important;
+}
+F .question_div {
   margin: 15px;
+  margin-top: 40px;
   background-color: #f9f9f9;
 }
 
@@ -77,7 +151,6 @@ const goToNextStep = (answer) => {
   background-color: white;
   border: 2px solid rgb(223, 229, 237);
   border-radius: 5px;
-  ;
 }
 
 .form-step {
@@ -125,16 +198,12 @@ const goToNextStep = (answer) => {
   align-items: center;
   padding: 10px;
 
-
-
-
   font-size: 1.5em;
   letter-spacing: 0px;
   margin-bottom: 0.5em;
   color: rgb(52, 57, 68);
   font-weight: bold;
   -webkit-font-smoothing: antialiased;
-
 }
 
 .btn {
@@ -151,7 +220,7 @@ const goToNextStep = (answer) => {
   line-height: 1.5 !important;
   border-radius: 0.25rem !important;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-  border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   background-color: rgb(101, 217, 145) !important;
 }
 .btn-primary:hover {
@@ -166,10 +235,10 @@ const goToNextStep = (answer) => {
 }
 
 .custom-textarea {
-  height: 81px !important;
   -webkit-text-size-adjust: 100%;
   --vh: 7.42px;
-  font-family: 'Trebuchet MS', 'Segoe UI', Candara, 'Bitstream Vera Sans', 'DejaVu Sans', 'Bitstream Vera Sans', Verdana, 'Verdana Ref', sans-serif;
+  font-family: "Trebuchet MS", "Segoe UI", Candara, "Bitstream Vera Sans",
+      "DejaVu Sans", "Bitstream Vera Sans", Verdana, "Verdana Ref", sans-serif;
   color: #464c5b;
   line-height: 1.5em;
   font-size: 18px;
@@ -179,6 +248,11 @@ const goToNextStep = (answer) => {
   border-radius: 0.333333em;
   border: 2px solid rgb(223, 229, 237);
   background-color: rgb(239, 242, 246);
+  width: 100% !important;
+  height: 200px !important; /* Adjust the height as needed */
+  resize: none !important;
+  border: 1px solid #ccc !important;
+  padding: 5px !important;
 }
 
 .character-count {
@@ -187,4 +261,7 @@ const goToNextStep = (answer) => {
   color: #333;
 }
 
+.exceeded {
+  color: red;
+}
 </style>

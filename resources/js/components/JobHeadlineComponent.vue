@@ -48,7 +48,8 @@
                     </div>
 
                     <!-- Email Address Input -->
-                    <div class="form-group">
+                    
+                    <div v-if = "!user" class="form-group">
                         <label for="email">Email address</label>
                         <input
                             type="email"
@@ -62,6 +63,7 @@
                             with anybody else.
                         </small>
                     </div>
+                    
 
                     <div class="form-group button-container">
                         <button type="submit" class="btn btn-primary">
@@ -74,25 +76,34 @@
     </div>
 </template>
 
-<script>
-export default {
-    data() {
-        return {
-            form: {
-                jobHeadline: "",
-                postcode: "",
-                email: "",
-            },
-        };
-    },
-    methods: {
-        submitForm() {
-            // Handle the form submission
-            console.log(this.form);
-            // You would typically send this data to a server here
-        },
-    },
+<script setup>
+import { reactive, ref ,inject} from 'vue';
+import { useQuestionnaireStore } from '../store/questionnaireStore';
+import { axios } from 'axios'
+const user = inject("user")
+const form = reactive({
+  jobHeadline: '',
+  postcode: '',
+  email: '',
+});
+const store = useQuestionnaireStore()
+const submitForm = () => {
+  // Handle the form submission
+    
+    
+ store.setjobInformation({
+    ...user,
+    ...form,
+    JobQuestionAnswer:store.getAllSelectedAnswers,
+    SelectedCategory:store.selectedCategory,
+    setJobDescription:store.getJobDescription
+ })
+  
+  store.sendJobinformation()
 };
+
+
+
 </script>
 
 <!-- Add Bootstrap CSS in your project for this to work -->

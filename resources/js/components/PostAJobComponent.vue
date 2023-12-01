@@ -1,6 +1,7 @@
 <template>
   <div class="form-header container">
     <!-- Header content... -->
+    
   </div>
   <div style="background-color: #f9f9f9">
     <div class="container mt-4 mb-4">
@@ -23,41 +24,52 @@
 
     </div>
     <div class="container mt-4 mb-4">
-      <QuestionComponent v-if="selectedCategory" v-for="(question, index) in questions" :question="question"
-        :index="index" :key="question.id" @answer-selected="handleAnswerSelected" />
+      <QuestionComponent 
+      v-if="selectedCategory"
+      :ref="`questionComponent-${index}`" 
+      v-for="(question, index) in questions" :question="question"
+      :index="index"
+      :key="question.id" 
+      @answer-selected="handleAnswerSelected" 
+      @is-last="handleLast"
+      
+      />
+
     </div>
 
-    <div class="container mt-5">
-        <div class="form-group button-container">
-                        <button type="submit" class="btn btn-primary">
-                            Continue
-                        </button>
-        </div>
+    <div v-if="isLastComponent && selectedCategory" class="container mt-5">
+      <div class="form-group button-container">
+        <JobHeadline/>
       </div>
-
-    <div v-if="jobHeadlineShow" class="container mt-4 mb-4">
-      <JobHeadline />
     </div>
+
+
   </div>
 </template>
 <script setup>
-import { ref, computed, watch, onBeforeMount } from "vue";
+import { ref, computed, watch, onBeforeMount,provide } from "vue";
+import SignUp from './SignUpComponent.vue';
+import JobHeadline from './JobHeadlineComponent.vue'// Make sure you import your dynamic question component
 import axios from 'axios';
 import QuestionComponent from './QuestionWithOptionsComponent.vue';
 
-import SignUp from './SignUpComponent.vue';
-import JobHeadline from './JobHeadlineComponent.vue'// Make sure you import your dynamic question component
 
 import { useQuestionnaireStore } from "../store/questionnaireStore"
 const store = useQuestionnaireStore();
+const props = defineProps({
+  user:Object
+})
+provide("user",props.user)
+const isLastComponent = ref(false);
 const jobCategories = computed(() => {
   return store.jobCategories.map((category) => ({
     ...category,
     name: category.name,
   }));
 });
+
 const selectedCategory = ref(null);
-const jobHeadlineShow = ref(null);
+
 const questions = ref(new Set()); // Now a list of question data
 
 onBeforeMount(async () => {
@@ -72,10 +84,17 @@ const fetchInitialQuestion = async () => {
 
   }
 };
+//
+function handleLast(isLast) {
+  isLastComponent.value = isLast.value
 
+  
+
+}
 // Event handler for when an answer is selected
 function handleAnswerSelected(index, selectedAnswer) {
-
+  store.setAnswerForQuestion(index, selectedAnswer);
+  
   fetchNextQuestion(index, selectedAnswer);
 }
 
@@ -101,6 +120,7 @@ const fetchNextQuestion = async (index, selectedAnswer) => {
       // Array is not empty
       questions.value.splice(index + 1, questions.value.length - index - 1);
 
+
       // Insert the new question after the current question
       questions.value.push(newQuestion);
     }
@@ -116,11 +136,17 @@ const fetchNextQuestion = async (index, selectedAnswer) => {
     console.error('Error fetching next question:', error);
   }
 };
+
+const moveToSignUp = () => {
+  
+}
 watch(selectedCategory, (newCategory, oldCategory) => {
   // Check if the category has actually changed
   if (newCategory && (!oldCategory || newCategory.id !== oldCategory.id)) {
     // Reset the questions array and fetch the initial question for the new category
+    store.setSelectedCategory(newCategory)
     questions.value = []; // Clear the previous questions
+    
     fetchInitialQuestion(); // Fetch the initial question for the new category
   }
 }, { immediate: true });
@@ -132,7 +158,7 @@ watch(selectedCategory, (newCategory, oldCategory) => {
 <style scoped>
 @import "vue-select/dist/vue-select.css";
 
-container {
+.container {
   max-width: 800px !important;
   margin: 20px auto !important;
 }
@@ -165,10 +191,12 @@ container {
   display: flex !important;
   justify-content: center !important;
 }
+
 .button-container {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
+
 .col-lg-8 {
   width: 100% !important;
   max-width: 800px !important;

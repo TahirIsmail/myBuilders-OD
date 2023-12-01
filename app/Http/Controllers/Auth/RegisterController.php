@@ -90,7 +90,9 @@ class RegisterController extends Controller
         
         return $user;
     }
-
+    public function jobInfo(Request $request){
+        dd($request);
+    }
     public function register(UserRequest $request)
     {
         
