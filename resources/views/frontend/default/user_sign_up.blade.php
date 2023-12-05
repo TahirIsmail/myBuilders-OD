@@ -2,6 +2,7 @@
 
 @section('content')
     @php
+       
         $type = Request::get('type') && Request::get('type') == 2 ? 'client' : 'freelancer';
     @endphp
     <style type="text/css">

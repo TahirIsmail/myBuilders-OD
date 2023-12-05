@@ -34,6 +34,10 @@ Route::get('/demo/cron_2', 'DemoController@cron_2');
 Route::get('/refresh-csrf', function(){
     return csrf_token();
 });
+Route::get('/', function () {
+    return view('../resources/views/frontend/default/layouts/app.blade.php');
+});
+
 Route::post('/aiz-uploader', 'AizUploadController@show_uploader');
 Route::post('/aiz-uploader/upload', 'AizUploadController@upload');
 Route::get('/aiz-uploader/get_uploaded_files', 'AizUploadController@get_uploaded_files');
@@ -57,9 +61,7 @@ Route::controller('Auth\VerificationController')->group(function () {
 	Route::post('/verify', 'verify');
 	Route::post('/resend', 'phoneresend');
 });
-Route::controller('Auth\RegisterController')->group(function(){
-	Route::post('/jobInfo');
-});
+Route::post('/jobinfo', '\App\Http\Controllers\Auth\RegisterController@jobinfo');
 Route::get('/admin/login', 'HomeController@admin_login')->name('admin.login');
 Route::get('/users/login', 'HomeController@login')->name('user.login');
 //sociallite login

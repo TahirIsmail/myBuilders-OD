@@ -79,7 +79,7 @@
 <script setup>
 import { reactive, ref ,inject} from 'vue';
 import { useQuestionnaireStore } from '../store/questionnaireStore';
-import { axios } from 'axios'
+
 const user = inject("user")
 const form = reactive({
   jobHeadline: '',
@@ -99,7 +99,7 @@ const submitForm = () => {
     setJobDescription:store.getJobDescription
  })
   
-  store.sendJobinformation()
+ 
 };
 
 

@@ -52,7 +52,13 @@ export const useQuestionnaireStore = defineStore('questionnaire', {
       },
      async sendJobinformation(){
       try{
-        const response = await axios.post('/job-info',this.jobInformation)
+        const response = await axios.post('/jobinfo',{
+          ...this.jobInformation
+        },{
+          headers: {
+        'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content,
+    },
+        })
         return response
       }
       catch(e){

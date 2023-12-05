@@ -49,6 +49,7 @@ class RegisterController extends Controller
     public function __construct(Service $twilio_service)
     {
         $this->middleware('guest');
+        $this->middleware('cors');
         $this->verify = $twilio_service;
 
     }
@@ -91,7 +92,8 @@ class RegisterController extends Controller
         return $user;
     }
     public function jobInfo(Request $request){
-        dd($request);
+        $data = $request->all();
+        return view('frontend.default.user_sign_up',$data);
     }
     public function register(UserRequest $request)
     {

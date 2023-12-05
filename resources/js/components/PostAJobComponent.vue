@@ -38,17 +38,17 @@
     </div>
 
     <div v-if="isLastComponent && selectedCategory" class="container mt-5">
-      <div class="form-group button-container">
-        <JobHeadline/>
+      <div class="form-group button-container" v-if="store.jobInformation">
+        <JobHeadline />
       </div>
     </div>
 
-
+    
   </div>
 </template>
 <script setup>
 import { ref, computed, watch, onBeforeMount,provide } from "vue";
-import SignUp from './SignUpComponent.vue';
+
 import JobHeadline from './JobHeadlineComponent.vue'// Make sure you import your dynamic question component
 import axios from 'axios';
 import QuestionComponent from './QuestionWithOptionsComponent.vue';

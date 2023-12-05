@@ -60,6 +60,7 @@ class Kernel extends HttpKernel
      */
     protected $routeMiddleware = [
         'auth' => \App\Http\Middleware\Authenticate::class,
+        'cors' => \App\Http\Middleware\CorsMiddleware::class,
         'admin' => AdminMiddleware::class,
         'user' => UserMiddleware::class,
         'freelancer' => FreelancerMiddleware::class,
