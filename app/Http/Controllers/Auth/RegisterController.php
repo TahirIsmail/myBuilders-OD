@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Verify\Service;
 use Illuminate\Support\MessageBag;
+use App\Http\Requests\JobPostRequest;
 class RegisterController extends Controller
 {
     /*
@@ -73,16 +74,18 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-       
+       dd($data);
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'user_type' => $data['user_type'],
-            'user_name' =>Str::slug($data['name'], '-').date('Ymd-his'),
+            'user_type' => 'client',
+            'user_name' =>Str::slug($data['username'], '-').date('Ymd-his'),
+            'public_username' => $data['username'],
             'password' => Hash::make($data['password']),
+            
         ]);
 
-        $address = new Address(['phone' =>  $data['full_phone']]);
+        $address = new Address(['phone' =>  $data['phone']]);
         $user->address()->save($address);
 
         $user_profile = new UserProfile;
@@ -91,12 +94,10 @@ class RegisterController extends Controller
         
         return $user;
     }
-    public function jobInfo(Request $request){
-        $data = $request->all();
-        return view('frontend.default.user_sign_up',$data);
-    }
-    public function register(UserRequest $request)
+    
+    public function register(JobPostRequest $request)
     {
+       
         
         $user = $this->create($request->validated() + $request->all());
        
@@ -124,7 +125,7 @@ class RegisterController extends Controller
         }
 
         return $this->registered($request, $user)
-            ?: redirect($this->redirectPath());
+            ?: response()->json(['redirectPath' => $this->redirectPath()]);
     }
 
     protected function registered(Request $request, User $user)

@@ -48,8 +48,8 @@
                     </div>
 
                     <!-- Email Address Input -->
-                    
-                    <div v-if = "!user" class="form-group">
+                    <div class="container" v-if = "!store.jobInformation">
+                        <div v-if = "!user" class="form-group">
                         <label for="email">Email address</label>
                         <input
                             type="email"
@@ -62,14 +62,21 @@
                             We value your privacy and won't share your email
                             with anybody else.
                         </small>
-                    </div>
-                    
-
-                    <div class="form-group button-container">
+                        <div class="form-group button-container">
                         <button type="submit" class="btn btn-primary">
                             Continue
                         </button>
+                        </div>
                     </div>
+
+                    
+
+                   
+                    </div>
+                    <div v-else>
+                        <SignUp />
+                    </div>
+                    
                 </form>
             </div>
         </div>
@@ -79,7 +86,7 @@
 <script setup>
 import { reactive, ref ,inject} from 'vue';
 import { useQuestionnaireStore } from '../store/questionnaireStore';
-
+import SignUp from '../components/SignUpComponent.vue'
 const user = inject("user")
 const form = reactive({
   jobHeadline: '',
@@ -99,6 +106,7 @@ const submitForm = () => {
     setJobDescription:store.getJobDescription
  })
   
+
  
 };
 

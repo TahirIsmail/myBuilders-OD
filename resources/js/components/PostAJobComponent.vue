@@ -38,7 +38,7 @@
     </div>
 
     <div v-if="isLastComponent && selectedCategory" class="container mt-5">
-      <div class="form-group button-container" v-if="store.jobInformation">
+      <div class="form-group button-container">
         <JobHeadline />
       </div>
     </div>
