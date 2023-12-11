@@ -1,26 +1,49 @@
 <template>
-    <div class="container" style="padding: 30px">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="question_div">
-                    <p class="left-align">{{ question.question }}</p>
-                    <div class="answer-outer">
-                        <div
-                            class="form-step"
-                            v-for="answer in question.answers"
-                            :key="answer.id"
-                        >
-                            <input
-                                type="radio"
-                                :value="answer"
-                                :id="`answer-${answer.id}`"
-                                v-model="selectedAnswers"
-                            />
-                            <label :for="`answer-${answer.id}`">{{
-                                answer.answer
-                            }}</label>
-                        </div>
+    <div class="col-md-12 mx-auto row justify-content-md-center">
+        <div class="col-md-6 question_div">
+          
+            <p class="left-align" v-html="question.question"></p>
+           
+            <div v-if="question.answers.length > 0">
+                <div class="answer-outer">
+                    <div
+                        class="form-step"
+                        v-for="answer in question.answers"
+                        :key="answer.id"
+                    >
+                        <input
+                            type="radio"
+                            :value="answer"
+                            :id="`answer-${answer.id}`"
+                            @click="goToNextStep(answer)"
+                            v-model="selectedAnswer"
+                            style="margin-top: 6px"
+                        />
+
+                        <label
+                            :for="`answer-${answer.id}`"
+                            v-html="answer.answer"
+                        ></label>
                     </div>
+                </div>
+            </div>
+            <div v-else>
+                <div class="custom-textarea-container">
+                    <textarea
+                        v-model="text"
+                        @input="updateCharacterCount"
+                        :disabled="isLimitExceeded"
+                        :style="{ borderColor: isLimitExceeded ? 'red' : '' }"
+                        ref="customTextarea"
+                        placeholder="Include any details you think the tradesperson should know (approx. extension dimensions, timeframe, etc.)"
+                        name="basicOutlineExtensionDescription"
+                        class="custom-textarea custom-textarea1"
+                    ></textarea>
+                    <span
+                        class="character-count"
+                        :class="{ exceeded: isLimitExceeded }"
+                        >{{ characterCount }}/3000</span
+                    >
                 </div>
             </div>
         </div>
@@ -28,38 +51,105 @@
 </template>
 
 <script setup>
-import { ref, watch, defineEmits } from "vue";
+import { onMounted, ref, watch } from "vue";
 
-// Define the props the component accepts
 const props = defineProps({
     question: {
         type: Object,
         required: true,
     },
+    index: {
+        type: Number,
+    },
 });
 
-// Define the emits the component can send
-const emit = defineEmits(["update:answers"]);
+const emit = defineEmits(["answer-selected"]);
 
-// A ref to hold the selected answers
-const selectedAnswers = ref(null);
+const selectedAnswer = ref(null);
+const index = props.index;
 
-// Watch the selectedAnswers and emit an event when it changes
-watch(selectedAnswers, (newAnswers) => {
-    emit("update:answers", newAnswers);
+watch(selectedAnswer, (newOption, oldOption) => {
+    if (newOption != oldOption) {
+    }
 });
+const goToNextStep = (answer) => {
+    // Handle the next step logic here
+    selectedAnswer.value = answer;
+    emit("answer-selected", index, answer);
+};
+onMounted(() => {
+  console.log(props.question.answers)
+})
+
+
+
+
+
+
+
+const initialText = ""; // Set your initial text here
+const text = ref(initialText);
+const characterCount = ref(0);
+const customTextarea = ref(null);
+const maxWordCount = 3000;
+const isLimitExceeded = ref(false);
+
+watch(text, (newText) => {
+    characterCount.value = newText.length;
+    isLimitExceeded.value = characterCount.value > maxWordCount;
+});
+
+const updateCharacterCount = () => {
+    const words = text.value.trim().split(/\s+/);
+    const wordCount = words.length;
+
+    if (wordCount <= maxWordCount) {
+        characterCount.value = text.value.length;
+        isLimitExceeded.value = false;
+    } else {
+        // Trim excess words to meet the limit
+        const trimmedText = words.slice(0, maxWordCount).join(' ');
+        text.value = trimmedText;
+        characterCount.value = trimmedText.length;
+        isLimitExceeded.value = true;
+    }
+};
+
+// Example of using the customTextarea ref
+const focusTextarea = () => {
+    customTextarea.value.focus();
+};
+
+
+
+
 </script>
+
 <style scoped>
 @import "vue-select/dist/vue-select.css";
-.question_div {
+.custom-textarea-container {
+    position: relative;
+}
+
+.character-count {
+    position: absolute !important;
+    bottom: 5px !important;
+    right: 5px !important;
+    color: #555 !important;
+    font-size: 12px !important;
+}
+F .question_div {
     margin: 15px;
+    margin-top: 40px;
     background-color: #f9f9f9;
 }
+
 .answer-outer {
     background-color: white;
     border: 2px solid rgb(223, 229, 237);
     border-radius: 5px;
 }
+
 .form-step {
     background-color: white;
     transition: all 0.3s ease;
@@ -77,15 +167,8 @@ watch(selectedAnswers, (newAnswers) => {
 }
 
 .form-step label {
-    text-align: left; /* Align text to the left */
-    flex-grow: 1; /* Allows the label to take up available space */
-}
-
-/* Dynamic font size (optional) */
-@media screen and (max-width: 600px) {
-    .form-step {
-        font-size: smaller; /* Smaller font for smaller screens */
-    }
+    text-align: left;
+    flex-grow: 1;
 }
 
 .form-step input[type="radio"] {
@@ -100,12 +183,15 @@ watch(selectedAnswers, (newAnswers) => {
     margin-bottom: 0;
     /* Additional styling for label if needed */
 }
+
 .form-step input[type="radio"] {
-    margin-right: 10px; /* Space between radio button and label */
+    margin-right: 10px;
+    /* Space between radio button and label */
 }
+
 .left-align {
     text-align: left;
-    display: flex;
+   
     align-items: center;
     padding: 10px;
 
@@ -115,5 +201,64 @@ watch(selectedAnswers, (newAnswers) => {
     color: rgb(52, 57, 68);
     font-weight: bold;
     -webkit-font-smoothing: antialiased;
+}
+
+.btn {
+    width: 500px !important;
+    display: inline-block !important;
+    font-weight: 400 !important;
+    color: white !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+    user-select: none !important;
+    border: 1px solid transparent !important;
+    padding: 0.375rem 0.75rem !important;
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+    border-radius: 0.25rem !important;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    background-color: rgb(101, 217, 145) !important;
+}
+.btn-primary:hover {
+    color: #fff;
+    background-color: rgb(101, 217, 145) !important;
+}
+
+.custom-textarea-container {
+    display: flex;
+    flex-flow: wrap;
+    overflow: hidden;
+}
+
+.custom-textarea {
+    -webkit-text-size-adjust: 100%;
+    --vh: 7.42px;
+    font-family: "Trebuchet MS", "Segoe UI", Candara, "Bitstream Vera Sans",
+        "DejaVu Sans", "Bitstream Vera Sans", Verdana, "Verdana Ref", sans-serif;
+    color: #464c5b;
+    line-height: 1.5em;
+    font-size: 18px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+    flex: 1; /* Allow the textarea to grow */
+    border-radius: 0.333333em;
+    border: 2px solid rgb(223, 229, 237);
+    background-color: rgb(239, 242, 246);
+    width: 100% !important;
+    height: 200px !important; /* Adjust the height as needed */
+    resize: none !important;
+    border: 1px solid #ccc !important;
+    padding: 5px !important;
+}
+
+.character-count {
+    font-weight: bold;
+    margin-left: 10px;
+    color: #333;
+}
+
+.exceeded {
+    color: red;
 }
 </style>

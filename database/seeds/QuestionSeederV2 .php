@@ -1862,8 +1862,8 @@ class QuestionSeederV2 extends Seeder
                             'slug' =>  'yes'
                         ],
                         [
-                            'answer' => 'I will - purchase in progress',
-                            'slug' =>   'i-will---purchase-in-progress'
+                            'answer' => 'I will,-purchase in progress',
+                            'slug' =>   'i-will, purchase-in-progress'
                         ],
                         [
                             'answer' => 'No, I am posting on behalf of the property owner',
@@ -1940,7 +1940,7 @@ class QuestionSeederV2 extends Seeder
                             'answer' => 'Other',
                             'slug' =>   'other'
                         ],
-                        
+
                     ],
                 ],
 
@@ -1949,6 +1949,762 @@ class QuestionSeederV2 extends Seeder
                     'question' => 'Describe your kitchen fitting job in detail <br> Good descriptions attract good tradespeople. Include if you need design, supply and fit or fit only. Describe the size and shape of the kitchen, or number of units required, along with any additional work required, i.e. plastering, tiling, electrics, etc.',
                     'slug' =>     'describe-your-kitchen-fitting-job-in-detail-<br>-good-descriptions-attract-good-tradespeople.-include-if-you-need-design,-supply-and-fit-or-fit-only.-describe-the-size-and-shape-of-the-kitchen,-or-number-of-units-required,-along-with-any-additional-work-required,-i.e.-plastering,-tiling,-electrics,-etc.',
                 ],
+
+
+                [
+                    'job_category_id' => 63,
+                    'question' => 'What do you need a locksmith to do?',
+                    'slug' =>    'what-do-you-need-a-locksmith-to-do?',
+                    'answers' => [
+                        
+                            [
+                                'answer' => 'Install new locks',
+                                'slug' =>  'install-new-locks',
+                            ],
+                            [
+                                'answer' => 'Repair locks',
+                                'slug' =>   'repair-locks'
+                            ],
+                            [
+                                'answer' => 'Other (e.g. locked out)',
+                                'slug' =>   'other-(e.g.-locked-out)'
+                            ],
+
+                        
+                    ],
+                ],
+
+
+                [
+                    'job_category_id' => 63,
+                    'question' => 'How many locks do you require fitting?',
+                    'slug' =>     'how-many-locks-do-you-require-fitting?',
+                    'answers' => [
+                        
+                            [
+                                'answer' => '1 lock',
+                                'slug' =>   '1-lock',
+                            ],
+                            [
+                                'answer' => '2 locks',
+                                'slug' =>   '2-locks'
+                            ],
+                            [
+                                'answer' => '3 or more locks',
+                                'slug' =>   '3-or-more-locks'
+                            ],
+
+                        
+                    ],
+                ],
+
+
+                [
+                    'job_category_id' => 63,
+                    'question' => 'Add a description to your job',
+                    'slug' =>     'add-a-description-to-your-job',
+                ],
+                [
+                    'job_category_id' => 63,
+                    'question' => 'Describe your locksmith job in detail <br> Good descriptions attract good tradespeople. Add as much detail as you can. If you know the type of lock include that. Also add the type of door or window it’s fitted to.',
+                    'slug' =>     'describe-your-locksmith-job-in-detail-<br>-good-descriptions-attract-good-tradespeople.-add-as-much-detail-as-you-can.-if-you-know-the-type-of-lock-include-that.-also-add-the-type-of-door-or-window-it’s-fitted-to.',
+                ],
+
+
+
+
+
+
+
+
+
+                [
+                    'job_category_id' => 64,
+                    'question' => 'What type of loft conversion do you want?',
+                    'slug' =>     'what-type-of-loft-conversion-do-you-want?',
+                    'answers' => [
+                        
+                            [
+                                'answer' => 'Loft conversion with structural changes<br>Requires a change to the roof structure, e.g. dormers, hip-to-gable, etc.',
+                                'slug' =>   'loft-conversion-with-structural-changes<br>requires-a-change-to-the-roof-structure,-e.g.-dormers,-hip-to-gable,-etc.',
+                            ],
+                            [
+                                'answer' => 'Loft conversion (no structural changes)<br>No alterations to the roof shape or structure.',
+                                'slug' =>   'loft-conversion-(no-structural-changes)<br>no-alterations-to-the-roof-shape-or-structure.'
+                            ],
+                            [
+                                'answer' => 'Loft conversion for storage purposes<br>Creating an accessible space by boarding, decorating etc.',
+                                'slug' =>   'loft-conversion-for-storage-purposes<br>creating-an-accessible-space-by-boarding-decorating-etc.'
+                            ],
+                            [
+                                'answer' => 'Fit a skylight<br>Add one or more windows to the roof, e.g. velux windows.',
+                                'slug' =>   'fit-a-skylight<br>add-one-or-more-windows-to-the-roof,-e.g.-velux-windows.'
+                            ],
+
+                        
+                    ],
+                ],
+
+
+                [
+                    'job_category_id' => 64,
+                    'question' => 'What type of house is the loft conversion for?',
+                    'slug' =>     'what-type-of-house-is-the-loft-conversion-for?',
+                    'answers' => [
+                        
+                            [
+                                'answer' => 'Detached',
+                                'slug' =>   'Detached',
+                            ],
+                            [
+                                'answer' => 'Semi detached',
+                                'slug' =>   'semi-detached'
+                            ],
+                            [
+                                'answer' => 'Terraced',
+                                'slug' =>   'terraced'
+                            ],
+                            [
+                                'answer' => 'End of Terrace',
+                                'slug' =>   'end-of-terrace'
+                            ],
+                            [
+                                'answer' => 'Bungalow',
+                                'slug' =>   'bungalow'
+                            ],
+                            [
+                                'answer' => 'Other',
+                                'slug' =>   'other'
+                            ],
+                        
+                    ],
+                ],
+
+
+
+                [
+                    'job_category_id' => 64,
+                    'question' => 'Do you own the property?',
+                    'slug' =>     'do-you-own-the-property?',
+                    'answers' => [
+                        [
+                            'answer' => 'Yes',
+                            'slug' =>  'yes'
+                        ],
+                        [
+                            'answer' => 'No ',
+                            'slug' =>   'no'
+                        ],
+                        [
+                            'answer' => 'I will - purchase in progress',
+                            'slug' =>   'i-will-purchase-in-progress'
+                        ]
+
+
+                    ],
+                ],
+
+                [
+                    'job_category_id' => 64,
+                    'question' => 'Have you had any plans drawn up?',
+                    'slug' =>     'have-you-had-any-plans-drawn-up?',
+                    'answers' => [
+                        [
+                            'answer' => 'Yes I have plans',
+                            'slug' =>   'yes-i-have-plans'
+                        ],
+                        [
+                            'answer' => 'Plans are being drawn up',
+                            'slug' =>   'plans-are-being-drawn-up'
+                        ],
+                        [
+                            'answer' => 'No plans have been drawn up',
+                            'slug' =>   'no-plans-have-been-drawn-up'
+                        ]
+
+
+                    ],
+                ],
+                [
+                    'job_category_id' => 64,
+                    'question' => 'Add a description to your job',
+                    'slug' =>     'add-a-description-to-your-job',
+                ],
+
+
+                [
+                    'job_category_id' => 64,
+                    'question' => 'Your builder will probably require plans <br> Loft conversions typically require building regulations, so we recommend we talk to an architect first to ensure your project meets any relevant regulatory requirements.',
+                    'slug' =>     'your-builder-will-probably-require-plans <br> loft-conversions-typically-require-building-regulations,-so-we-recommend-we-talk-to-an-architect-first-to-ensure-your-project-meets-any-relevant-regulatory-requirements.',
+                    'answers' => [
+                        [
+                            'answer' => 'Okay, send my job to architects',
+                            'slug' =>   'okay,-send-my-job-to-architects'
+                        ],
+                        [
+                            'answer' => 'Continue posting this job without plans',
+                            'slug' =>   'continue-posting-this-job-without-plans'
+                        ]
+
+                    ],
+                ],
+
+
+                [
+                    'job_category_id' => 64,
+                    'question' => 'What extra work do you need doing in your loft?',
+                    'slug'     => 'what-extra-work-do-you-need-doing-in-your-loft?',
+                    'answers' => [
+                        [
+                            'answer' => 'Fixed staircase',
+                            'slug' =>   'fixed-staircase'
+                        ],
+                        [
+                            'answer' => 'Finishing work (plastering, painting & decorating)',
+                            'slug' =>   'finishing-work-(plastering,-painting-&-decorating)'
+                        ],
+                        [
+                            'answer' => 'Electrics',
+                            'slug' =>   'electrics'
+                        ],
+                        [
+                            'answer' => 'Velux windows',
+                            'slug' =>   'velux-windows'
+                        ]
+                    ],
+                ],
+
+
+
+
+                [
+                    'job_category_id' => 65,
+                    'question' => 'Do you own the land you plan to build on?',
+                    'slug'     => 'do-you-own-the-land-you-plan-to-build-on?',
+                    'answers' => [
+                        [
+                            'answer' => 'Yes',
+                            'slug' =>  'yes'
+                        ],
+                        [
+                            'answer' => 'No ',
+                            'slug' =>   'no'
+                        ],
+                        [
+                            'answer' => 'I will, purchase in progress',
+                            'slug' =>   'i-will,-purchase-in-progress'
+                        ]
+
+
+                    ],
+                ],
+
+
+                [
+                    'job_category_id' => 65,
+                    'question' => 'Do you have planning permission?',
+                    'slug'     => 'do-you-have-planning-permission?',
+                    'answers' => [
+                        [
+                            'answer' => 'Yes',
+                            'slug' =>   'yes'
+                        ],
+                        [
+                            'answer' => 'In progress',
+                            'slug' =>   'in-progress'
+                        ],
+                        [
+                            'answer' => 'Not applied for yet',
+                            'slug' =>   'not-applied-for-yet'
+                        ]
+
+
+                    ],
+                ],
+
+
+
+
+
+                [
+                    'job_category_id' => 65,
+                    'question' => 'Roughly what is the budget?',
+                    'slug'     => 'roughly-what-is-the-budget?',
+                    'answers' => [
+                        [
+                            'answer' => 'Less than £200k',
+                            'slug' =>   'less-than-£200k'
+                        ],
+                        [
+                            'answer' => '£200k to £500k',
+                            'slug' =>   '£200k-to-£500k'
+                        ],
+                        [
+                            'answer' => '£500k to £1m',
+                            'slug' =>   '£500k-to-£1m'
+                        ],
+                        [
+                            'answer' => 'More than £1m',
+                            'slug' =>   'more-than-£1m'
+                        ],
+                        [
+                            'answer' => 'I do not know at this stage',
+                            'slug' =>   'i-do-not-know-at-this-stage'
+                        ],
+                    ],
+                ],
+
+
+
+
+
+
+                [
+                    'job_category_id' => 65,
+                    'question' => 'Describe your new build project in detail<br>Good descriptions attract good tradespeople. How many flats/houses are planned, and how many bedrooms? Are you starting the project from the beginning or has some work been done? Do you also require project management?',
+                    'slug'     => 'describe-your-new-build-project-in-detail<br>good-descriptions-attract-good-tradespeople.-how-many-flats/houses-are-planned,-and-how-many-bedrooms?-are-you-starting-the-project-from-the-beginning-or-has-some-work-been-done?-do-you-also-require-project-management?',
+
+                ],
+
+
+
+                [
+                    'job_category_id' => 66,
+                    'question' => 'Are the painting / decorating works inside or outside the house?',
+                    'slug'     => 'are-the-painting-/-decorating-works-inside-or-outside-the-house?',
+                    'answers' => [
+                        [
+                            'answer' => 'Inside',
+                            'slug' =>   'inside'
+                        ],
+                        [
+                            'answer' => 'Outside',
+                            'slug' =>   'outside'
+                        ],
+                        [
+                            'answer' => 'Both',
+                            'slug' =>   'both'
+                        ],
+                    ],
+                ],
+
+
+                [
+                    'job_category_id' => 66,
+                    'question' => 'Roughly, how much decorating work is it?',
+                    'slug'     => 'roughly,-how-much-decorating-work-is-it?',
+                    'answers' => [
+                        [
+                            'answer' => 'Part of a room',
+                            'slug' =>   'inside'
+                        ],
+                        [
+                            'answer' => '1 room',
+                            'slug' =>   '1-room'
+                        ],
+                        [
+                            'answer' => '2 rooms',
+                            'slug' =>   '2-room'
+                        ],
+
+                        [
+                            'answer' => '3 rooms',
+                            'slug' =>   '3-room'
+                        ],
+                        [
+                            'answer' => '4 rooms',
+                            'slug' =>   '4-room'
+                        ],
+                        [
+                            'answer' => '5+ rooms',
+                            'slug' =>   '5+-room'
+                        ],
+
+                    ],
+                ],
+
+                [
+                    'job_category_id' => 66,
+                    'question' => 'Add a description to your job',
+                    'slug' =>     'add-a-description-to-your-job',
+                ],
+
+                [
+                    'job_category_id' => 66,
+                    'question' => 'Does this include your hallway, stairs and landing?',
+                    'slug'     => 'does-this-include-your-hallway-stairs-and-landing?',
+                    'answers' => [
+                        [
+                            'answer' => 'Yes',
+                            'slug' =>   'yes'
+                        ],
+                        [
+                            'answer' => 'No',
+                            'slug' =>   'no'
+                        ],
+
+
+                    ],
+                ],
+                [
+                    'job_category_id' => 66,
+                    'question' => 'What do you want painted / decorated?',
+                    'slug'     => 'what-do-you-want-painted-/-decorated?',
+                    'answers' => [
+                        [
+                            'answer' => 'Exterior walls',
+                            'slug' =>   'exterior-walls'
+                        ],
+                        [
+                            'answer' => 'Windows & doors',
+                            'slug' =>   'windows-&-doors'
+                        ],
+                        [
+                            'answer' => 'Fascias & soffits',
+                            'slug' =>   'fascias-&-soffits'
+                        ],
+                        [
+                            'answer' => 'Other or several of the above',
+                            'slug' =>   'other-or-several-of-the-above'
+                        ],
+
+
+                    ],
+                ],
+
+                [
+                    'job_category_id' => 66,
+                    'question' => 'How many walls need painting?',
+                    'slug'     => 'how-many-walls-need-painting?',
+                    'answers' => [
+                        [
+                            'answer' => 'Only a small area',
+                            'slug' =>   'only-a-small-area'
+                        ],
+                        [
+                            'answer' => '1 wall',
+                            'slug' =>   '1-wall'
+                        ],
+                        [
+                            'answer' => '2-3 walls',
+                            'slug' =>   '2-3-walls'
+                        ],
+                        [
+                            'answer' => 'The whole house',
+                            'slug' =>   'the-whole-house'
+                        ],
+                        [
+                            'answer' => 'Multiple buildings / properties',
+                            'slug' =>   'multiple-buildings-/-properties'
+                        ],
+
+                    ],
+                ],
+
+
+
+
+                [
+                    'job_category_id' => 66,
+                    'question' => 'How many windows / doors need painting?',
+                    'slug'     => 'how-many-windows-/-doors-need-painting?',
+                    'answers' => [
+                        [
+                            'answer' => '1',
+                            'slug' =>   '1'
+                        ],
+                        [
+                            'answer' => '2 to 5',
+                            'slug' =>   '2-to-5'
+                        ],
+                        [
+                            'answer' => 'more than 6',
+                            'slug' =>   'more-than-6'
+                        ],
+                    ],
+                ],
+
+
+
+                [
+                    'job_category_id' => 66,
+                    'question' => 'How extensive is your fascias & soffits painting job?',
+                    'slug'     => 'how-extensive-is-your-fascias-&-soffits-painting-job?',
+                    'answers' => [
+                        [
+                            'answer' => 'Small<br>E.g. only 1 side of the house',
+                            'slug' =>  'small<br>e.g.-only-1-side-of-the-house'
+                        ],
+                        [
+                            'answer' => 'Medium<br>E.g. 2-3 sides of the house',
+                            'slug' =>   'medium<br>e.g.-2-3-sides-of-the-house'
+                        ],
+                        [
+                            'answer' => 'Large<br>E.g. all fascias and/or soffits',
+                            'slug' =>   'large<br>e.g.-all-fascias-and/or-soffits'
+                        ],
+                    ],
+                ],
+
+                [
+                    'job_category_id' => 66,
+                    'question' => 'How extensive is your painting job?',
+                    'slug'     => 'how-extensive-is-your-painting-job?',
+                    'answers' => [
+                        [
+                            'answer' => 'Small decoration job<br>E.g. touch up paint on 1 wall and re-paint 1 window',
+                            'slug' =>   'small-decoration-job<br>e.g.-touch-up-paint-on-1-wall-and-re-paint-1-window'
+                        ],
+                        [
+                            'answer' => 'Medium decoration job<br>E.g. paint fence, 2 windows and 1 fascia',
+                            'slug' =>   'medium-decoration-job<br>e.g.-paint-fence-2-windows-and-1-fascia'
+                        ],
+                        [
+                            'answer' => 'Large decoration job<br>E.g. paint 2 walls, all windows and fascias',
+                            'slug' =>   'large-decoration-job<br>e.g.-paint-2-walls-all-windows-and-fascias'
+                        ],
+
+                        [
+                            'answer' => 'Very large decoration job<br>E.g. all external wall and all windows and doors',
+                            'slug' =>   'very-large-decoration-job<br>e.g.-all-external-wall-and-all-windows-and-doors'
+                        ],
+                    ],
+                ],
+
+
+
+
+                [
+                    'job_category_id' => 66,
+                    'question' => 'Internal painting / decorating<br>Roughly, how much decorating work is it?',
+                    'slug'     => 'internal-painting-/-decorating<br>roughly,-how-much-decorating-work-is-it?',
+                    'answers' => [
+                        [
+                            'answer' => 'Part of a room',
+                            'slug' =>   'part-of-a-room'
+                        ],
+                        [
+                            'answer' => '1 room',
+                            'slug' =>   '1-room'
+                        ],
+                        [
+                            'answer' => '2 room',
+                            'slug' =>   '2-room'
+                        ],
+                        [
+                            'answer' => '3 room',
+                            'slug' =>   '3-room'
+                        ],
+                        [
+                            'answer' => '4 room',
+                            'slug' =>   '4-room'
+                        ],
+                        [
+                            'answer' => 'More than 5 room',
+                            'slug' =>   'more-than-5-room'
+                        ],
+
+                    ],
+                ],
+
+                [
+                    'job_category_id' => 66,
+                    'question' => 'External painting<br>What painting / decorating do you need?',
+                    'slug'     => 'external-painting<br>what-painting-/-decorating-do-you-need?',
+                    'answers' => [
+                        [
+                            'answer' => 'Exterior walls',
+                            'slug' =>   'exterior-walls'
+                        ],
+                        [
+                            'answer' => 'Windows & doors',
+                            'slug' =>   'windows-&-doors'
+                        ],
+                        [
+                            'answer' => 'Fascias & soffits',
+                            'slug' =>   'fascias-&-soffits'
+                        ],
+                        [
+                            'answer' => 'Other or several of the above',
+                            'slug' =>   'other-or-several-of-the-above'
+                        ],
+
+
+                    ],
+                ],
+
+                [
+                    'job_category_id' => 67,
+                    'question' => 'What service do you require?',
+                    'slug'     => 'what-service-do-you-require?',
+                    'answers' => [
+                        [
+                            'answer' => 'Plastering (indoors)',
+                            'slug' =>   'plastering-(indoors)'
+                        ],
+                        [
+                            'answer' => 'Rendering (outdoors)',
+                            'slug' =>   'rendering-(outdoors)'
+                        ]
+
+                    ],
+                ],
+
+                [
+                    'job_category_id' => 67,
+                    'question' => 'What type of plastering do you need?',
+                    'slug'     => 'what-type-of-plastering-do-you-need?',
+                    'answers' => [
+                        [
+                            'answer' => 'Skim only<br>Plastering over existing plaster or over plasterboard',
+                            'slug' =>   'skim-only<br>plastering-over-existing-plaster-or-over-plasterboard'
+                        ],
+                        [
+                            'answer' => 'Plasterboard and skim<br>For new stud walls and ceilings',
+                            'slug' =>   'plasterboard-and-skim<br>for-new-stud-walls-and-ceilings'
+                        ],
+                        [
+                            'answer' => 'Other or I do not know',
+                            'slug' =>   'other-or-i-do-not-know'
+                        ]
+
+                    ],
+                ],
+
+
+
+                [
+                    'job_category_id' => 67,
+                    'question' => 'Roughly, how much work is it?',
+                    'slug'     => 'roughly,-how-much-work-is-it?',
+                    'answers' => [
+                        [
+                            'answer' => 'A small area (less than one full wall or ceiling)',
+                            'slug' =>   'a-small-area-(less-than-one-full-wall-or-ceiling)'
+                        ],
+                        [
+                            'answer' => 'Up to 5 walls and / or ceilings',
+                            'slug' =>   'up-to-5-walls-and/or-ceilings'
+                        ],
+                        [
+                            'answer' => '6-to-10 walls and / or ceilings',
+                            'slug' =>   '6-to-10-walls-and-/-or-ceilings'
+                        ],
+                        [
+                            'answer' => '11-to-20 walls and / or ceilings',
+                            'slug' =>   '11-to-20-walls-and-/-or-ceilings'
+                        ],
+                        [
+                            'answer' => 'More than 20 walls and / or ceilings',
+                            'slug' =>   'more-than-20-walls-and-/-or-ceilings'
+                        ]
+
+                    ],
+                ],
+
+
+                [
+                    'job_category_id' => 67,
+                    'question' => 'Is this area your hallway, stairs and landing?',
+                    'slug'     => 'is-this-area-your-hallway,-stairs-and-landing?',
+                    'answers' => [
+                        [
+                            'answer' => 'Yes',
+                            'slug' =>   'yes'
+                        ],
+                        [
+                            'answer' => 'No',
+                            'slug' =>   'no'
+                        ]
+
+
+                    ],
+                ],
+
+
+                [
+                    'job_category_id' => 67,
+                    'question' => 'Add a description to your job',
+                    'slug' =>     'add-a-description-to-your-job',
+                ],
+
+                [
+                    'job_category_id' => 67,
+                    'question' => 'What do you need rendered?',
+                    'slug'     => 'is-this-area-your-hallway,-stairs-and-landing?',
+                    'answers' => [
+                        [
+                            'answer' => 'Exterior of house',
+                            'slug' =>   'exterior-of-house'
+                        ],
+                        [
+                            'answer' => 'Garden wall(s)',
+                            'slug' =>   'garden-wall(s)'
+                        ]
+
+
+                    ],
+                ],
+
+
+                [
+                    'job_category_id' => 67,
+                    'question' => 'Roughly how large is your rendering job?',
+                    'slug'     => 'roughly-how-large-is-your-rendering-job?',
+                    'answers' => [
+                        [
+                            'answer' => 'Small area (less than one wall)<br>e.g. a crack or hole in an external wall',
+                            'slug' =>   'small-area-(less-than-one-wall)<br>e.g.-a-crack-or-hole-in-an-external-wall'
+                        ],
+                        [
+                            'answer' => '1 to 2 exterior walls',
+                            'slug' =>   '1-to-2-exterior-walls'
+                        ],
+                        [
+                            'answer' => '3 to 4 exterior walls',
+                            'slug' =>   '3-to-4-exterior-walls'
+                        ],
+                        [
+                            'answer' => 'More than exterior walls',
+                            'slug' =>   'more-than-exterior-walls'
+                        ]
+
+
+                    ],
+                ],
+
+
+
+                [
+                    'job_category_id' => 67,
+                    'question' => 'Roughly how large is your rendering job?',
+                    'slug'     => 'roughly-how-large-is-your-rendering-job?',
+                    'answers' => [
+                        [
+                            'answer' => 'Repair a Small area',
+                            'slug' =>   'repair-a-small-area'
+                        ],
+                        [
+                            'answer' => 'Small (up to 10m²)',
+                            'slug' =>   'small-(up-to-10m²)'
+                        ],
+                        [
+                            'answer' => 'Medium (10-to-30m²)',
+                            'slug' =>   'medium-(10-to-30m²)'
+                        ],
+                        [
+                            'answer' => 'Large (over 30m²)',
+                            'slug' =>   'large-(over-30m²)'
+                        ]
+
+
+                    ],
+                ],
+
+
+
+
+
             ];
             foreach ($data as $item) {
                 $question = Question::create([

@@ -4,7 +4,7 @@
         "dev": "npm run development",
         "development": "mix",
         "watch": "mix watch",
-        "watch-poll": "mix watch -- --watch-options-poll=1000",
+        "watch-poll": "mix watch -- --watch-options-poll=3000",
         "hot": "mix watch --hot",
         "prod": "npm run production",
         "production": "mix --production"
@@ -12,7 +12,7 @@
     "devDependencies": {
         "@types/jquery": "^3.5.5",
         "@vue/compiler-sfc": "^3.1.2",
-        "axios": "^0.21.1",
+        "axios": "^0.21.4",
         "bootstrap": "^5.3.2",
         "browser-sync": "^2.29.3",
         "browser-sync-webpack-plugin": "^2.3.0",
@@ -41,6 +41,7 @@
         "@mapbox/mapbox-gl-geocoder": "^5.0.1",
         "@popperjs/core": "^2.9.2",
         "mapbox-gl": "^2.15.0",
+        "pinia": "^2.1.7",
         "vue-router": "^4.0.10",
         "vue-select": "^4.0.0-beta.6"
     },

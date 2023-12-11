@@ -129,8 +129,8 @@ class QuestionTableSeeder extends Seeder
                             'slug' => ' skirting-&-architraves'
                         ],
                         [
-                            'answer' => 'A few of the aforementioned',
-                            'slug' =>   'a-few-of-the-aforementioned'
+                            'answer' => 'Several of the above',
+                            'slug' =>   'several-of-the-above'
                         ],
                     ],
                 ],
@@ -160,7 +160,8 @@ class QuestionTableSeeder extends Seeder
                             'slug' =>   'several-of-the-above'
                         ],
                     ],
-                ],
+                ]
+                ,
                 [
                     'job_category_id' => 40,
                     'question' => 'What type of doors need fitting?',
@@ -187,7 +188,13 @@ class QuestionTableSeeder extends Seeder
                             'slug' =>   'more-than-one-type-of-door-(you-can-provide-more-details-on-the-next-screen)'
                         ],
                     ],
-                ],
+                ]
+
+
+
+
+
+                ,
                 [
                     'job_category_id' => 40,
                     'question' => 'Who is supplying the door(s)?',
@@ -201,9 +208,12 @@ class QuestionTableSeeder extends Seeder
                             'answer' => 'I would like the tradesperson to supply the door(s)',
                             'slug' =>   'i-would-like-the-tradesperson-to-supply-the-door(s)'
                         ],
-
+                      
                     ],
-                ],
+                ]
+
+
+                ,
                 [
                     'job_category_id' => 40,
                     'question' => 'How many new doors do you need fitted?',
@@ -234,9 +244,12 @@ class QuestionTableSeeder extends Seeder
                             'slug' =>   'more-than-5'
                         ],
 
-
+                      
                     ],
-                ],
+                ]
+
+
+                ,
                 [
                     'job_category_id' => 40,
                     'question' => 'What type of door(s) do you need fitted?',
@@ -262,23 +275,36 @@ class QuestionTableSeeder extends Seeder
                             'answer' => 'Other materials / I dont know',
                             'slug' =>   'other-materials-/-i-dont-know'
                         ],
+                      
 
-
-
+                      
                     ],
-                ],
+                ]
+
+                ,
                 [
                     'job_category_id' => 40,
                     'question' => 'Additional information about your job',
                     'slug' =>     'additional-information-about-your-job',
+                    'answers' => [
+                       
+                      
+                    ],
+                ]
 
-                ],
+                
+                ,
                 [
                     'job_category_id' => 40,
                     'question' => 'How many doors do you need fitted?',
                     'slug' =>     'how-many-doors-do-you-need-fitted',
+                    'answers' => [
+                       
+                      
+                    ],
+                ]
 
-                ],
+                ,
                 [
                     'job_category_id' => 40,
                     'question' => 'How many doors do you need hanging?',
@@ -296,31 +322,33 @@ class QuestionTableSeeder extends Seeder
                             'answer' => '5 or more doors',
                             'slug' =>   '5-or-more-doors'
                         ],
+                        
+                      
 
-
-
-
+                      
                     ],
-                ],
+                ]
+                ,
                 [
                     'job_category_id' => 40,
-                    'question' => 'How many internal doors do you need to install?',
-                    'slug' =>     'how-many-internal-doors-do-you-need-to-install',
+                    'question' => 'How many doors do you need hanging?',
+                    'slug' =>     'how-many-doors-do-you-need-hanging',
                     'answers' => [
                         [
-                            'answer' => 'A single door installation',
-                            'slug' =>   'a-single-door-installation'
+                            'answer' => 'A single door',
+                            'slug' =>   'a-single-door'
                         ],
                         [
                             'answer' => 'Multiple doors',
                             'slug' =>   'multiple-doors'
                         ],
+                      
+                      
 
-
-
-
+                      
                     ],
-                ],
+                ]
+                ,
                 [
                     'job_category_id' => 40,
                     'question' => 'What help do you need with your doors?',
@@ -334,12 +362,14 @@ class QuestionTableSeeder extends Seeder
                             'answer' => 'Repair / alter doors',
                             'slug' =>   'repair-/-alter-doors'
                         ],
+                      
+                      
 
-
-
-
+                      
                     ],
-                ],
+                ]
+
+                ,
                 [
                     'job_category_id' => 40,
                     'question' => 'What service do you require?',
@@ -357,12 +387,12 @@ class QuestionTableSeeder extends Seeder
                             'answer' => 'Other',
                             'slug' =>   'other'
                         ]
+                      
+                      
 
-
-
-
+                      
                     ],
-                ],
+                ] ,
                 [
                     'job_category_id' => 40,
                     'question' => 'How many doors do you need hanging?',
@@ -379,22 +409,28 @@ class QuestionTableSeeder extends Seeder
                         [
                             'answer' => '5 to 10',
                             'slug' =>   '5-to-10'
-                        ],
+                        ]
+                        ,
                         [
                             'answer' => '10 or more',
                             'slug' =>   '10-or-more'
                         ]
+                        
+                      
 
-
-
-
+                      
                     ],
-                ],
+                ]
+
+                ,
                 [
                     'job_category_id' => 40,
                     'question' => 'Describe your window fitting job in detail(Good descriptions attract good tradespeople. Mention the property type and age.Is any special glazing required (e.g. frosted bathroom windows)?)',
                     'slug' =>     'describe-your-window-fitting-job-in-detail(good-descriptions-attract-good-tradespeople.-mention-the-property-type-and-age.is-any-special-glazing-required-(e.g.-frosted-bathroom-windows)?)',
-                    'answers' => [],
+                    'answers' => [
+                       
+                      
+                    ],
                 ],
                 [
                     'job_category_id' => 40,
@@ -413,11 +449,11 @@ class QuestionTableSeeder extends Seeder
                             'answer' => 'Install, sand, or repair a new floor(New floor finish on top of floorboards)',
                             'slug' =>   'install,-sand,-or-repair-a-new-floor(new-floor-finish-on-top-of-floorboards)'
                         ]
+                        
+                        
+                      
 
-
-
-
-
+                      
                     ],
                 ],
                 [
@@ -436,17 +472,19 @@ class QuestionTableSeeder extends Seeder
                         [
                             'answer' => '3 to 4 rooms',
                             'slug' =>   '3-to-4-rooms'
-                        ],
+                        ]
+                        ,
                         [
                             'answer' => 'More than 5 rooms',
                             'slug' =>   'more-than-5-rooms'
                         ]
+                        
+                      
 
-
-
-
+                      
                     ],
-                ],
+                ]
+                ,
                 [
                     'job_category_id' => 40,
                     'question' => 'How large an area do the floorboards cover?',
@@ -463,17 +501,19 @@ class QuestionTableSeeder extends Seeder
                         [
                             'answer' => '3 to 4 rooms',
                             'slug' =>   '3-to-4-rooms'
-                        ],
+                        ]
+                        ,
                         [
                             'answer' => 'More than 5 rooms',
                             'slug' =>   'more-than-5-rooms'
                         ]
+                        
+                      
 
-
-
-
+                      
                     ],
-                ],
+                ]
+                ,
                 [
                     'job_category_id' => 40,
                     'question' => 'What type of flooring work do you need?',
@@ -490,17 +530,19 @@ class QuestionTableSeeder extends Seeder
                         [
                             'answer' => '3 to 4 rooms',
                             'slug' =>   '3-to-4-rooms'
-                        ],
+                        ]
+                        ,
                         [
                             'answer' => 'More than 5 rooms',
                             'slug' =>   'more-than-5-rooms'
                         ]
+                        
+                      
 
-
-
-
+                      
                     ],
-                ],
+                ]
+                ,
                 [
                     'job_category_id' => 40,
                     'question' => 'What kind of flooring do you need fitted?',
@@ -517,13 +559,16 @@ class QuestionTableSeeder extends Seeder
                         [
                             'answer' => 'Parquet',
                             'slug' =>   'parquet'
-                        ],
+                        ]
+                        ,
                         [
                             'answer' => 'Parquet',
                             'slug' =>   'parquet'
                         ]
                     ],
-                ],
+                ]
+
+                ,
                 [
                     'job_category_id' => 40,
                     'question' => 'How many rooms need flooring?(A hallway should be counted as 1 room)',
@@ -540,13 +585,16 @@ class QuestionTableSeeder extends Seeder
                         [
                             'answer' => 'More than 5 rooms',
                             'slug' =>   'More-than-5-rooms'
-                        ],
+                        ]
+                        ,
                         [
                             'answer' => 'Commercial property',
                             'slug' =>   'Commercial-property'
                         ]
                     ],
-                ],
+                ]
+                
+                ,
                 [
                     'job_category_id' => 40,
                     'question' => 'Do you have the flooring already?',
@@ -561,7 +609,8 @@ class QuestionTableSeeder extends Seeder
                             'slug' =>   'no-i-dont-have-the-flooring'
                         ]
                     ],
-                ],
+                ]
+                ,
                 [
                     'job_category_id' => 40,
                     'question' => 'What kind of flooring do you need sanded / restored?',
@@ -578,13 +627,15 @@ class QuestionTableSeeder extends Seeder
                         [
                             'answer' => 'Parquet',
                             'slug' =>   'parquet'
-                        ],
+                        ]
+                        ,
                         [
                             'answer' => 'Other',
                             'slug' =>   'Other'
                         ]
                     ],
-                ],
+                ]
+                ,
                 [
                     'job_category_id' => 40,
                     'question' => 'How many rooms need sanding / restoring?',
@@ -601,13 +652,16 @@ class QuestionTableSeeder extends Seeder
                         [
                             'answer' => 'More than 5 rooms',
                             'slug' =>   'More-than-5-rooms'
-                        ],
+                        ]
+                        ,
                         [
                             'answer' => 'Commercial property',
                             'slug' =>   'Commercial-property'
                         ]
                     ],
-                ],
+                ]
+
+                ,
                 [
                     'job_category_id' => 40,
                     'question' => 'What kind of flooring do you need repaired?',
@@ -624,19 +678,26 @@ class QuestionTableSeeder extends Seeder
                         [
                             'answer' => 'Parquet',
                             'slug' =>   'parquet'
-                        ],
+                        ]
+                        ,
                         [
                             'answer' => 'Other',
                             'slug' =>   'Other'
                         ]
                     ],
-                ],
+                ]
+                ,
                 [
                     'job_category_id' => 40,
                     'question' => 'Describe your flooring job (Good descriptions attract good tradespeople.State what rooms are involved and even better if you have the room sizes. Also mention if you require supply and fit or fit only. Do you need underlay and beading installing?)',
                     'slug' =>     'describe-your-flooring-job(good-descriptions-attract-good-tradespeople.-state-what-rooms-are-involved-and-even-better-if-you-have-the-room-sizes.-also-mention-if-you-require-supply-and-fit-or-fit-only.-do-you-need-underlay-and-beading-installing)',
-                    'answers' => [],
-                ],
+                    'answers' => [
+                     
+                    ],
+                ]
+
+
+                ,
                 [
                     'job_category_id' => 40,
                     'question' => 'Do you need skirting, architraves, or both?',
@@ -654,9 +715,10 @@ class QuestionTableSeeder extends Seeder
                             'answer' => 'Both',
                             'slug' =>   'both'
                         ]
-
+                        
                     ],
-                ],
+                ]
+                ,
                 [
                     'job_category_id' => 40,
                     'question' => 'How many doors needs architraves?',
@@ -674,12 +736,13 @@ class QuestionTableSeeder extends Seeder
                             'answer' => '4 or more doors',
                             'slug' =>   '4-or-more-doors'
                         ],
+                        
+                      
 
-
-
-
+                      
                     ],
-                ],
+                ]
+                ,
                 [
                     'job_category_id' => 40,
                     'question' => 'How much skirting do you need?',
@@ -697,15 +760,16 @@ class QuestionTableSeeder extends Seeder
                             'answer' => '4 to 5 rooms',
                             'slug' =>   '4-to-5-rooms'
                         ],
-
+                        
                         [
                             'answer' => 'More than 6 rooms',
                             'slug' =>   'more-than-6-rooms'
                         ],
 
-
+                      
                     ],
-                ],
+                ]
+                ,
                 [
                     'job_category_id' => 40,
                     'question' => 'In how many rooms do you need skirting & architraves?',
@@ -723,21 +787,25 @@ class QuestionTableSeeder extends Seeder
                             'answer' => '4 to 5 rooms',
                             'slug' =>   '4-to-5-rooms'
                         ],
-
+                        
                         [
                             'answer' => 'More than 6 rooms',
                             'slug' =>   'more-than-6-rooms'
                         ],
 
-
+                      
                     ],
-                ],
+                ]
+                ,
                 [
                     'job_category_id' => 40,
                     'question' => 'Describe your carpentry job in detail(Good descriptions attract good tradespeople. What do you need doing, with which fixtures, and in which rooms? Include any materials, finishes and dimensions if you know them.)',
                     'slug' =>     'describe-your-carpentry-job-in-detail(good-descriptions-attract-good-tradespeople.-what-do-you-need-doing,-with-which-fixtures,-and-in-which-rooms?-include-any-materials,-finishes,-and-dimensions-if-you-know-them.)',
-                    'answers' => [],
-                ],
+                    'answers' => [
+                     
+                    ],
+                ]
+                ,
                 [
                     'job_category_id' => 40,
                     'question' => 'What do you need?',
@@ -755,11 +823,13 @@ class QuestionTableSeeder extends Seeder
                             'answer' => 'I need furniture repaired',
                             'slug' =>   'i-need-furniture-repaired'
                         ],
-
-
-
+                        
+                       
+                      
                     ],
-                ],
+                ]
+
+                ,
                 [
                     'job_category_id' => 40,
                     'question' => 'What kind of furniture do you need made?',
@@ -777,11 +847,12 @@ class QuestionTableSeeder extends Seeder
                             'answer' => 'Other custom furniture(E.g. Tables, chairs, bed, other, or multiple items)',
                             'slug' =>   'other-custom-furniture(e.g.-tables,-chairs,-bed,-other,-or-multiple-items)'
                         ],
-
-
-
+                        
+                       
+                      
                     ],
-                ],
+                ]
+                ,
                 [
                     'job_category_id' => 40,
                     'question' => 'How many kitchen units do you need making?',
@@ -799,11 +870,12 @@ class QuestionTableSeeder extends Seeder
                             'answer' => 'More than 12 units',
                             'slug' =>   'more-than-12-units'
                         ],
-
-
-
+                        
+                       
+                      
                     ],
-                ],
+                ]
+                ,
                 [
                     'job_category_id' => 40,
                     'question' => 'What type of custom storage do you need?',
@@ -825,10 +897,11 @@ class QuestionTableSeeder extends Seeder
                             'answer' => 'Other storage',
                             'slug' =>   'other-storage'
                         ]
-
-
+                       
+                      
                     ],
-                ],
+                ]
+                ,
                 [
                     'job_category_id' => 40,
                     'question' => 'What do you need made?',
@@ -850,26 +923,27 @@ class QuestionTableSeeder extends Seeder
                             'answer' => 'Other',
                             'slug' =>   'other'
                         ]
-
-
+                       
+                      
                     ],
-                ],
+                ]
+                ,
                 [
                     'job_category_id' => 40,
                     'question' => 'What best describes your repair job?',
                     'slug'     => 'what-best-describes-your-repair-job?',
                     'answers' => [
                         [
-                            'answer' => 'Simple furniture repair job(A handyman could probably fix it E.g. wobbly chairs, fix sliding door, repair small drawer of a cabinet)',
+                            'answer' => 'Simple furniture repair job(A handyman could probably fix it E.g. wobbly chairs, fix sliding door, repair small drawer of a cabinet)' ,
                             'slug' =>   'simple-furniture-repair-job(a-handyman-could-probably-fix-it-e.g.-wobbly-chairs,-fix-sliding-door,-repair-small-drawer-of-a-cabinet)'
                         ],
                         [
                             'answer' => 'Larger furniture repair job(I may need someone skilled in carpentry & joinery E.g. make a new chair leg, repair solid oak dining table, refurbish built-in wardrobes)',
                             'slug' =>   'larger-furniture-repair-job(i-may-need-someone-skilled-in-carpentry-&-joinery-e.g.-make-a-new-chair-leg,-repair-solid-oak-dining-table,-refurbish-built-in-wardrobes)'
-                        ]
-
+                        ]                    
+                      
                     ],
-                ],
+                ] ,
                 [
                     'job_category_id' => 40,
                     'question' => 'What kitchen carpentry work do you need?',
@@ -886,17 +960,19 @@ class QuestionTableSeeder extends Seeder
                         [
                             'answer' => 'Install kitchen units',
                             'slug' =>   'install-kitchen-units'
-                        ],
+                        ]
+                        ,
                         [
                             'answer' => 'Build custom kitchen units',
                             'slug' =>   'build-custom-kitchen-units'
-                        ],
+                        ]
+                        ,
                         [
                             'answer' => 'Repair / adjust kitchen units',
                             'slug' =>   'repair-/-adjust-kitchen-units'
                         ]
-
-
+                       
+                      
                     ],
                 ],
                 [
@@ -916,9 +992,9 @@ class QuestionTableSeeder extends Seeder
                             'answer' => 'More than 12 units',
                             'slug' =>   'more-than-units'
                         ],
-
-
-
+                        
+                       
+                      
                     ],
                 ],
                 [
@@ -927,16 +1003,16 @@ class QuestionTableSeeder extends Seeder
                     'slug'     => 'what-type-of-decking-work-do-you-require?',
                     'answers' => [
                         [
-                            'answer' => 'Build a new deck',
+                            'answer' => 'Build a new deck' ,
                             'slug' =>   'build-a-new-deck'
                         ],
                         [
                             'answer' => 'Repair existing deck',
                             'slug' =>  'repair-existing-deck'
-                        ]
-
+                        ]                    
+                      
                     ],
-                ],
+                ] ,
 
                 [
                     'job_category_id' => 40,
@@ -959,11 +1035,11 @@ class QuestionTableSeeder extends Seeder
                             'answer' => 'X-Large(Over 60m² / 600 sq ft)',
                             'slug' =>   'x-large(over-60m/600-sq-ft)'
                         ],
-
-
+                       
+                      
                     ],
                 ],
-
+                
                 [
                     'job_category_id' => 40,
                     'question' => 'What carpentry work is involved in your job?',
@@ -981,19 +1057,22 @@ class QuestionTableSeeder extends Seeder
                             'answer' => 'Outdoor structure',
                             'slug' =>  'outdoor-structure'
                         ],
-
+                        
                         [
                             'answer' => 'Roof',
                             'slug' =>   'roof'
-                        ],
+                        ]
+                        ,
                         [
                             'answer' => 'Shelving',
                             'slug' =>   'shelving'
-                        ],
+                        ]
+                        ,
                         [
                             'answer' => 'Skirting & Architraves',
                             'slug' =>   'skirting-&-architraves'
-                        ],
+                        ]
+                        ,
                         [
                             'answer' => 'Stud walls',
                             'slug' =>   'stud-walls'
@@ -1003,7 +1082,7 @@ class QuestionTableSeeder extends Seeder
                             'slug' =>   'stairs-/-handrails'
                         ]
                     ],
-                ],
+                ],  
                 [
                     'job_category_id' => 40,
                     'question' => 'How can a carpenter help you with your loft hatch?',
@@ -1021,8 +1100,8 @@ class QuestionTableSeeder extends Seeder
                             'answer' => 'Change the size of my loft hatch',
                             'slug' =>   'change-the-size-of-my-loft-hatch'
                         ]
-
-
+                       
+                      
                     ],
                 ],
 
@@ -1044,8 +1123,8 @@ class QuestionTableSeeder extends Seeder
                             'answer' => 'Large (e.g. garage or multiple structures)',
                             'slug' =>   'large(e.g.-garage-or-multiple-structures)'
                         ]
-
-
+                       
+                      
                     ],
                 ],
                 [
@@ -1065,8 +1144,8 @@ class QuestionTableSeeder extends Seeder
                             'answer' => 'Large(e.g. house, commercial property etc.)',
                             'slug' =>   'large(e.g.-house,-commercial-property-etc.)'
                         ]
-
-
+                       
+                      
                     ],
                 ],
                 [
@@ -1082,8 +1161,8 @@ class QuestionTableSeeder extends Seeder
                             'answer' => 'Build custom shelves',
                             'slug' =>   'build-custom-shelves'
                         ]
-
-
+                       
+                      
                     ],
                 ],
                 [
@@ -1098,12 +1177,13 @@ class QuestionTableSeeder extends Seeder
                         [
                             'answer' => 'Skirting (Decorative boards between the wall and the floor)',
                             'slug' =>   'skirting(decorative-boards-between-the-wall-and-the-floor)'
-                        ],
+                        ]
+                        ,
                         [
                             'answer' => 'Both',
                             'slug' =>   'both'
                         ]
-
+                      
                     ],
                 ],
                 [
@@ -1118,12 +1198,13 @@ class QuestionTableSeeder extends Seeder
                         [
                             'answer' => '2 to 3 doors',
                             'slug' =>   '2-to-3-doors'
-                        ],
+                        ]
+                        ,
                         [
                             'answer' => 'More than 4 doors',
                             'slug' =>   'more-than-4-doors',
                         ]
-
+                      
                     ],
                 ],
                 [
@@ -1138,18 +1219,19 @@ class QuestionTableSeeder extends Seeder
                         [
                             'answer' => '2 to 3',
                             'slug' =>   '2-to-3'
-                        ],
+                        ]
+                        ,
                         [
                             'answer' => 'More than 4',
                             'slug' =>   'more-than-4',
                         ]
-
+                      
                     ],
                 ],
                 [
                     'job_category_id' => 40,
                     'question' => 'What staircase work do you require?',
-                    'slug'     => 'What-staircase-work-do-you-require??',
+                    'slug'     => 'how-many-stud-walls?',
                     'answers' => [
                         [
                             'answer' => 'Minor repair / refurb (e.g. Replace handrail or some spindles)',
@@ -1158,34 +1240,13 @@ class QuestionTableSeeder extends Seeder
                         [
                             'answer' => 'Major repair / refurbishment(e.g. Replace multiple steps, new handrail and multiple spindles)',
                             'slug' =>   'major-repair/refurbishment(e.g.-replace-multiple-steps,-new-handrail,-and-multiple-spindles)'
-                        ],
+                        ]
+                        ,
                         [
                             'answer' => 'Build / install new staircase',
                             'slug' =>   'build/install-new-staircase',
                         ]
-
-                    ],
-                ],
-
-                [
-                    'job_category_id' => 40,
-                    'question' => 'Roughly, how large is the structure that needs a new roof?',
-                    'slug'     => 'roughly-how-large-is-the-structure-that-needs-a-new-roof',
-                    'answers' => [
-                        [
-                            'answer' => 'Small <br> e.g. Shed, porch etc...',
-                            'slug' =>   'small-eg-shed-porch-etc'
-                        ],
-                        [
-                            'answer' => 'Medium <br> e.g. Extension, garage etc...',
-                            'slug' =>   'medium-eg-extension-garage-etc'
-                        ],
-                        [
-                            'answer' => 'Large <br> e.g. House, commercial property etc...',
-                            'slug' =>  'large-eg-house-commercial-property-etc'
-                        ]
-
-
+                      
                     ],
                 ],
             ];

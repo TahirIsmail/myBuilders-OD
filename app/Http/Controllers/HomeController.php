@@ -187,8 +187,9 @@ class HomeController extends Controller
             $query->has('answers');
         })->get();
         
+        
         // Return or process $projectCategories as needed
-        return view('frontend.default.post_projects',$data);
+        return view('frontend.default.post_projects');
     }
 
     function clearCache(Request $request)

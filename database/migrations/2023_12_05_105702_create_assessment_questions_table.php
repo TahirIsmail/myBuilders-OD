@@ -13,17 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('questions', function (Blueprint $table) {
+        Schema::create('assessment_questions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('job_category_id')->nullable();
-            $table->string('question');
-            $table->string('slug')->unique();
+            $table->mediumText('question');
+            $table->mediumText('slug');
             $table->timestamps();
             
             // Define the foreign key constraint
             $table->foreign('job_category_id')->references('id')->on('project_categories');
         });
-        
     }
 
     /**
@@ -33,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('questions');
+        Schema::dropIfExists('assessment_questions');
     }
 };
