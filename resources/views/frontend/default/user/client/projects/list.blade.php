@@ -14,9 +14,9 @@
                                 <h1 class="fs-16 fw-700">{{ translate('All Projects') }}</h1>
                             </div>
 							<div class="col-md-6 text-md-right">
-								<a href="{{ route('projects.create') }}" class="btn btn-primary rounded-1">
+								<a href="{{ route('post_project') }}" class="btn btn-primary rounded-1">
 									<i class="las la-plus"></i>
-									<span>{{ translate('Add New Project') }}</span>
+									<span>{{ translate('Add New Job') }}</span>
 								</a>
 							</div>
                         </div>

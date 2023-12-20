@@ -62,3 +62,9 @@ mapboxgl.accessToken = 'pk.eyJ1IjoidGFoaXItdGVzdDEyIiwiYSI6ImNsb2g1ZDlhczEzYnQyb
 // Attach mapboxgl to the window object
 window.mapboxgl = mapboxgl;
 window.MapboxGeocoder = MapboxGeocoder;
+
+
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+import 'sweetalert2/src/sweetalert2.scss';
+
+window.Swal = Swal;

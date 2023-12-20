@@ -519,6 +519,15 @@ if (!function_exists('get_setting')) {
         return $setting == "" ? $default : $setting;
     }
 }
+if (!function_exists('userExistsWithEmail')) {
+    function userExistsWithEmail($email)
+    {
+        // Use the Eloquent ORM to check if a user with the specified email exists
+        $user = \App\Models\User::where('email', $email)->first();
+
+        return !is_null($user);
+    }
+}
 
 function hex2rgba($color, $opacity = false) {
     return (new ColorCodeConverter())->convertHexToRgba($color, $opacity);

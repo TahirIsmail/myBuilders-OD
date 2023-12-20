@@ -46,9 +46,12 @@ Route::post('/aiz-uploader/get_file_by_ids', 'AizUploadController@get_preview_fi
 Route::get('/aiz-uploader/download/{id}', 'AizUploadController@attachment_download')->name('download_attachment');
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/post-job', 'HomeController@post_job')->name('post_projects');
-
+Route::get('/post-job', 'HomeController@post_job')->name('post_project');
+Route::get('/post_job_magic', 'HomeController@post_job_magic');
+Route::post('/magic-job-post', 'HomeController@storemagicjobpost');
+Route::post('/checkuser','HomeController@checkuser')->name('check_user_exist');
 // Subscribe
+
 Route::resource('subscribers', 'SubscriberController');
 
 Auth::routes(['verify' => true]);
@@ -61,12 +64,13 @@ Route::controller('Auth\VerificationController')->group(function () {
 	Route::post('/verify', 'verify');
 	Route::post('/resend', 'phoneresend');
 });
-Route::post('/jobinfo', '\App\Http\Controllers\Auth\RegisterController@jobinfo');
+
 Route::get('/admin/login', 'HomeController@admin_login')->name('admin.login');
 Route::get('/users/login', 'HomeController@login')->name('user.login');
 //sociallite login
 Route::get('/social-login/redirect/{provider}', 'Auth\LoginController@redirectToProvider')->name('social.login');
 Route::get('/social-login/{provider}/callback', 'Auth\LoginController@handleProviderCallback')->name('social.callback');
+
 
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::get('/language/{locale}', 'LanguageController@changeLanguage')->name('language.change');
@@ -100,7 +104,7 @@ Route::group(['middleware' => ['user']], function(){
 	Route::post('/view-messages','FCMController@view_messages')->name('project_chat_view');
 });
 
-Route::group(['middleware' => ['user']], function(){
+Route::group(['middleware' => ['user','auth']], function(){
 	Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
 
 	Route::get('/projects/running-project', 'ProjectController@my_running_project')->name('projects.my_running_project');
@@ -149,6 +153,7 @@ Route::group(['middleware' => ['user']], function(){
 // Client middleware
 Route::group(['middleware' => ['auth']], function(){
 	Route::resource('/projects', 'ProjectController');
+	Route::post('/jobinfo','ProjectController@storejobpost');
 	Route::get('/my-open-projects', 'ProjectController@my_open_project')->name('projects.my_open_project');
 	Route::get('/project-bids/{slug}', 'ProjectController@project_bids')->name('project.bids');
 	Route::get('/invition-for-hire-freelancer/{username}', 'HireController@freelancer_invition')->name('invition_for_hire_freelancer');

@@ -19,11 +19,11 @@
 						{{ translate('Please verify your Email') }}. <a href="{{ route('user.profile') }}" class="alert-link">{{ translate('Verify Now') }}</a>
 					</div>
 				@endif
-				@if(Auth::user()->userPackage->package_invalid_at != null && Carbon\Carbon::now()->diffInDays(Carbon\Carbon::parse(Auth::user()->userPackage->package_invalid_at), false) < 8)
+				{{-- @if(Auth::user()->userPackage->package_invalid_at != null && Carbon\Carbon::now()->diffInDays(Carbon\Carbon::parse(Auth::user()->userPackage->package_invalid_at), false) < 8)
 					<div class="alert alert-danger mb-3">
 						{{ translate('Please renew/upgrade your package. Your current package will expire soon') }}. <a href="{{ route('select_package') }}" class="alert-link">{{ translate('Upgrade Now') }}</a>
 					</div>
-				@endif
+				@endif --}}
 				<div class="">
 					<div class="card p-4 rounded-2 bg-hov-soft-primary border-1 border-gray-light">
 						<div class="row gutters-15">
@@ -49,10 +49,10 @@
             		<div class="col-md-4 d-flex">
             			<div class="card w-100 rounded-2 bg-hov-soft-primary border-1 border-gray-light">
             				<div class="card-body mt-3">
-            					<a href="{{ route('projects.create') }}" class="btn btn-primary btn-block rounded-1 py-3 mb-3">
+            					<a href="{{ route('post_project') }}" class="btn btn-primary btn-block rounded-1 py-3 mb-3">
 									<i class="las la-plus fs-40"></i>
 									<br>
-									<span class="fw-700">{{ translate('Add New Project') }}</span>
+									<span class="fw-700">{{ translate('Add New Job') }}</span>
 								</a>
 								<div class="mb-1">
 									<small class="fs-12 text-secondary">{{ translate('Meet your need from our') }}</small>
@@ -226,13 +226,13 @@
                             <div class="card-header border-0">
                                 <h6 class="mb-0 fs-16 fw-700">{{ translate('Current Package') }}</h6>
                             </div>
-            				<div class="card-body pt-3">
+            				{{-- <div class="card-body pt-3">
             					<img src="{{ custom_asset(Auth::user()->userPackage->package->badge) }}" class="img-fluid mb-4 h-70px">
             					<h4 class="fw-700 mb-3 text-primary fs-21">{{ Auth::user()->userPackage->package->name }}</h4>
             					<p class="mb-1 fs-13 pb-2">{{ translate('Remaining Fixed Projects') }} - <strong>{{ Auth::user()->userPackage->fixed_limit }}</strong></p>
             					<p class="mb-4 fs-13">{{ translate('Remaining Long Term Projects') }} - <strong>{{ Auth::user()->userPackage->long_term_limit }}</strong></p>
             					<a href="{{ route('select_package') }}" class="btn btn-block btn-primary d-inline-block py-3 rounded-1">{{ translate('Upgrade/ Extend') }}</a>
-            				</div>
+            				</div> --}}
             			</div>
             		</div>
             		<div class="col-md-4 d-flex">
@@ -240,7 +240,7 @@
                             <div class="card-header border-0">
                                 <h6 class="mb-0 fs-16 fw-700">{{ translate('Current Package Summary') }}</h6>
                             </div>
-            				<div class="card-body pt-0">
+            				{{-- <div class="card-body pt-0">
             					<ul class="list-unstyled mb-0">
             						<li class="py-2">
                                         @if(Auth::user()->userPackage->package->fixed_limit > 0)
@@ -291,10 +291,10 @@
                                         <span>{{ translate('Freelancer Bookmark option') }}</span>
                                     </li>
             					</ul>
-            				</div>
+            				</div> --}}
             			</div>
             		</div>
-                    <div class="col-md-4 d-flex">
+                    {{-- <div class="col-md-4 d-flex">
                         <div class="card overflow-hidden rounded-2 border-gray-light w-100">
                             <div class="card-header border-0">
                                 <h6 class="mb-0 fs-16 fw-700">{{ translate('Suggested Package') }}</h6>
@@ -316,7 +316,7 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
             	</div>
             </div>
         </div>
