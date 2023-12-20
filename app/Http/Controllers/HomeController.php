@@ -183,13 +183,10 @@ class HomeController extends Controller
         return redirect()->route('dashboard');
     }
     public function post_job(){
-        $data['projectCategories'] = ProjectCategory::with(['questions.answers'])->whereHas('questions', function ($query) {
-            $query->has('answers');
-        })->get();
-        
+       $data['user'] = auth()->user();
         
         // Return or process $projectCategories as needed
-        return view('frontend.default.post_projects');
+        return view('frontend.default.post_projects',$data);
     }
 
     function clearCache(Request $request)

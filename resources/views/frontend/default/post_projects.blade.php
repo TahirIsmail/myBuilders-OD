@@ -4,12 +4,12 @@
     
     
         <div>
-                
-        <post-a-job />
-        
+               
+        <post-a-job :user="{{ json_encode($user) }}"/>
+               
         </div>
-    
-    
+        
+
     
 @endsection
 

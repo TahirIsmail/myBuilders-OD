@@ -1,9 +1,7 @@
 <template>
     <div class="col-md-12 mx-auto row justify-content-md-center">
-        <div class="col-md-6 question_div">
-          
+        <div class="col-md-10 question_div">
             <p class="left-align" v-html="question.question"></p>
-           
             <div v-if="question.answers.length > 0">
                 <div class="answer-outer">
                     <div
@@ -51,8 +49,9 @@
 </template>
 
 <script setup>
-import { onMounted, ref, watch } from "vue";
-
+import { ref, watch, onMounted, computed } from "vue";
+import { useQuestionnaireStore } from "../store/questionnaireStore";
+const store = useQuestionnaireStore();
 const props = defineProps({
     question: {
         type: Object,
@@ -63,29 +62,28 @@ const props = defineProps({
     },
 });
 
-const emit = defineEmits(["answer-selected"]);
+const emit = defineEmits(["answer-selected", "is-last"]);
 
 const selectedAnswer = ref(null);
 const index = props.index;
-
+const isLast = computed(() =>
+    props.question.answers.length === 0 ? true : false
+);
 watch(selectedAnswer, (newOption, oldOption) => {
     if (newOption != oldOption) {
     }
 });
+const isLastCheck = () => {
+    emit("is-last", isLast);
+};
 const goToNextStep = (answer) => {
     // Handle the next step logic here
     selectedAnswer.value = answer;
     emit("answer-selected", index, answer);
 };
 onMounted(() => {
-  console.log(props.question.answers)
-})
-
-
-
-
-
-
+    isLastCheck();
+});
 
 const initialText = ""; // Set your initial text here
 const text = ref(initialText);
@@ -97,6 +95,8 @@ const isLimitExceeded = ref(false);
 watch(text, (newText) => {
     characterCount.value = newText.length;
     isLimitExceeded.value = characterCount.value > maxWordCount;
+
+    store.setJobDescription(newText);
 });
 
 const updateCharacterCount = () => {
@@ -108,7 +108,7 @@ const updateCharacterCount = () => {
         isLimitExceeded.value = false;
     } else {
         // Trim excess words to meet the limit
-        const trimmedText = words.slice(0, maxWordCount).join(' ');
+        const trimmedText = words.slice(0, maxWordCount).join(" ");
         text.value = trimmedText;
         characterCount.value = trimmedText.length;
         isLimitExceeded.value = true;
@@ -119,10 +119,6 @@ const updateCharacterCount = () => {
 const focusTextarea = () => {
     customTextarea.value.focus();
 };
-
-
-
-
 </script>
 
 <style scoped>
@@ -148,6 +144,7 @@ F .question_div {
     background-color: white;
     border: 2px solid rgb(223, 229, 237);
     border-radius: 5px;
+    margin-bottom: 50px;
 }
 
 .form-step {
@@ -191,7 +188,7 @@ F .question_div {
 
 .left-align {
     text-align: left;
-   
+
     align-items: center;
     padding: 10px;
 

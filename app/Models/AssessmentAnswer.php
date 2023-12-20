@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class AssessmentAnswer extends Model
 {
     use HasFactory;
+    protected $guarded = ['id','updated_at','created_at'];
+
     public function question() {
-        return $this->belongsTo(AssessmentQuestion::class, 'question_id');
+        return $this->belongsTo(AssessmentQuestion::class, 'assessment_question_id');
     }
 }

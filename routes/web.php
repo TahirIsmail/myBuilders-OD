@@ -34,6 +34,10 @@ Route::get('/demo/cron_2', 'DemoController@cron_2');
 Route::get('/refresh-csrf', function(){
     return csrf_token();
 });
+Route::get('/', function () {
+    return view('../resources/views/frontend/default/layouts/app.blade.php');
+});
+
 Route::post('/aiz-uploader', 'AizUploadController@show_uploader');
 Route::post('/aiz-uploader/upload', 'AizUploadController@upload');
 Route::get('/aiz-uploader/get_uploaded_files', 'AizUploadController@get_uploaded_files');
@@ -57,7 +61,7 @@ Route::controller('Auth\VerificationController')->group(function () {
 	Route::post('/verify', 'verify');
 	Route::post('/resend', 'phoneresend');
 });
-
+Route::post('/jobinfo', '\App\Http\Controllers\Auth\RegisterController@jobinfo');
 Route::get('/admin/login', 'HomeController@admin_login')->name('admin.login');
 Route::get('/users/login', 'HomeController@login')->name('user.login');
 //sociallite login
@@ -96,7 +100,7 @@ Route::group(['middleware' => ['user']], function(){
 	Route::post('/view-messages','FCMController@view_messages')->name('project_chat_view');
 });
 
-Route::group(['middleware' => ['user', 'verified','phoneverified', 'packagePurchased']], function(){
+Route::group(['middleware' => ['user']], function(){
 	Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
 
 	Route::get('/projects/running-project', 'ProjectController@my_running_project')->name('projects.my_running_project');
@@ -143,7 +147,7 @@ Route::group(['middleware' => ['user', 'verified','phoneverified', 'packagePurch
 });
 
 // Client middleware
-Route::group(['middleware' => ['auth','verified','phoneverified', 'client', 'packagePurchased']], function(){
+Route::group(['middleware' => ['auth']], function(){
 	Route::resource('/projects', 'ProjectController');
 	Route::get('/my-open-projects', 'ProjectController@my_open_project')->name('projects.my_open_project');
 	Route::get('/project-bids/{slug}', 'ProjectController@project_bids')->name('project.bids');
@@ -179,7 +183,7 @@ Route::post('/service/package-purchase','ServiceController@purchase_service_pack
 
 
 // Freelancer middleware
-Route::group(['middleware' => ['auth', 'verified','phoneverified', 'freelancer', 'packagePurchased']], function(){
+Route::group(['middleware' => ['auth']], function(){
     Route::post('/bids/store', 'BiddingController@store')->name('bids.store');
 
 

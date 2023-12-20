@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('assessment_answers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('question_id');
+            $table->unsignedBigInteger('assessment_question_id');
             $table->mediumText('answer');
             $table->mediumText('slug');
             $table->mediumText('type');
             $table->timestamps();
 
-            $table->foreign('question_id')->references('id')->on('questions');
+            $table->foreign('assessment_question_id')->references('id')->on('assessment_questions');
             
         });
     }
