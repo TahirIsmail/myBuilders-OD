@@ -148,7 +148,10 @@
                                 </div>
                                 <!-- End Title -->
                                 <div class="form-group">
-                                    <textarea class="form-control" rows="3" maxlength="{{ $user_profile->user->userPackage->bio_text_limit }}"
+                                    {{-- <textarea class="form-control" rows="3" maxlength="{{ $user_profile->user->userPackage->bio_text_limit }}"
+                                        name="bio" required>{{ $user_profile->bio }}</textarea> --}}
+                                        {{-- Package omission change --}}
+                                        <textarea class="form-control" rows="3" maxlength="200"
                                         name="bio" required>{{ $user_profile->bio }}</textarea>
                                 </div>
 

@@ -37,30 +37,30 @@
                                         {{ translate('Project type') }}
                                         <span class="text-danger">*</span>
                                     </div class="aiz-radio-inline">
-                                    @if ($client_package->fixed_limit > 0)
+                                    {{-- @if ($client_package->fixed_limit > 0) --}}
                                         <div class="custom-control custom-radio custom-control-inline">
                                             <input type="radio" id="projectTypeFixed" name="projectType"
                                                 class="custom-control-input" value="Fixed" checked>
                                             <label class="custom-control-label"
                                                 for="projectTypeFixed">{{ translate('Fixed') }}</label>
                                         </div>
-                                    @else
-                                        <div class="alert alert-info custom-control-inline mb-0" role="alert">
+                                    {{-- @else --}}
+                                        {{-- <div class="alert alert-info custom-control-inline mb-0" role="alert">
                                             {{ translate('Your fixed type project post limit is over.') }}
-                                        </div>
-                                    @endif
-                                    @if ($client_package->long_term_limit > 0)
+                                        </div> --}}
+                                    {{-- @endif --}}
+                                    {{-- @if ($client_package->long_term_limit > 0) --}}
                                         <div class="custom-control custom-radio custom-control-inline">
                                             <input type="radio" id="projectTypeLong" name="projectType"
                                                 class="custom-control-input" value="Long Term">
                                             <label class="custom-control-label"
                                                 for="projectTypeLong">{{ translate('Long term') }}</label>
                                         </div>
-                                    @else
-                                        <div class="alert alert-info custom-control-inline mb-0" role="alert">
+                                    {{-- @else --}}
+                                        {{-- <div class="alert alert-info custom-control-inline mb-0" role="alert">
                                             {{ translate('Your long term project post limit is over.') }}
-                                        </div>
-                                    @endif
+                                        </div> --}}
+                                    {{-- @endif --}}
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">
@@ -149,14 +149,14 @@
                                     <div class="file-preview"></div>
                                 </div>
                                 <div class="text-right">
-                                    @if ($client_package->fixed_limit > 0 || $client_package->fixed_limit > 0)
+                                    {{-- @if ($client_package->fixed_limit > 0 || $client_package->fixed_limit > 0) --}}
                                         <button type="submit"
                                             class="btn btn-primary transition-3d-hover mr-1 rounded-1">{{ translate('Post Project') }}</button>
-                                    @else
+                                    {{-- @else
                                         <div class="alert alert-info custom-control-inline mb-0" role="alert">
                                             {{ translate('Upgrade your Package.') }}
                                         </div>
-                                    @endif
+                                    @endif --}}
                                 </div>
                             </form>
                         </div>

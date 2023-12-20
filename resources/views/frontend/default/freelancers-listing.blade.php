@@ -6,7 +6,7 @@
         @if ($keyword != null)
             <div class="row">
                 <div class="col-xl-8 offset-xl-2 text-center">
-                    <h1 class="h5 mt-3 mt-lg-0 mb-5 fw-400">{{ translate('Total') }} <span class="fw-600">{{ $total }}</span> {{ translate('freelancers found for') }} <span class="fw-600">{{ $keyword }}</span></h1>
+                    <h1 class="h5 mt-3 mt-lg-0 mb-5 fw-400">{{ translate('Total') }} <span class="fw-600">{{ $total }}</span> {{ translate('Tradesmen found for') }} <span class="fw-600">{{ $keyword }}</span></h1>
                 </div>
             </div>
         @endif

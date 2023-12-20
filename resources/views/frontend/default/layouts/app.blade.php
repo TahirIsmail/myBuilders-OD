@@ -74,6 +74,8 @@
     <link rel="stylesheet" href="{{ my_asset('assets/frontend/default/css/custom.css') }}">
     <link rel="stylesheet" href="{{ my_asset('assets/common/css/jssocials.css') }}">
     <link rel="stylesheet" href="{{ my_asset('assets/common/css/jssocials-theme-flat.css') }}">
+    @yield('style')
+   
     
     <link
     rel="stylesheet"
@@ -187,7 +189,7 @@
 
         <!-- ========== MAIN CONTENT ========== -->
 
-        <div id = "app"class="p-0 m-0 bg-white">
+        <div class="p-0 m-0 bg-white">
             
             @yield('content')
         </div>
@@ -263,7 +265,6 @@
     <script src="{{ my_asset('assets/common/js/vendors.js') }}"></script>
     <script src="{{ my_asset('assets/common/js/jssocials.min.js') }}" ></script>
     <script src="{{ my_asset('assets/common/js/aiz-core.js?v=') }}{{ rand(1000,9999) }}"></script>
-    <script src="{{ my_asset('assets/common/js/app.js') }}"></script>
    
     <script type="text/javascript">
         @foreach (session('flash_notification', collect())->toArray() as $message)

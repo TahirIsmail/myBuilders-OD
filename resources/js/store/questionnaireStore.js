@@ -9,7 +9,8 @@ export const useQuestionnaireStore = defineStore('questionnaire', {
     isUserSignedUp : false,
     selectedAnswers : reactive({}),
     jobDescription: '',
-    selectedCategory: null
+    selectedCategory: null,
+    email: '',
   }),
   getters: {
     getAllSelectedAnswers: (state) => {
@@ -66,7 +67,19 @@ export const useQuestionnaireStore = defineStore('questionnaire', {
         'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content,
     },
         })
-        return response
+        if (response.status === 200) {
+          // Check if there is a redirect in the response headers
+            console.log(response.data);
+          if (response.headers['x-redirect']) {
+            // Handle the redirect on the client side
+            alert(response.headers['x-redirect']);
+            window.location.href = response.headers['x-redirect'];
+          } else {
+            // Handle other successful responses as needed
+            window.location.href = response.headers['x-redirect'];
+
+          }
+        }
       }
       catch(e){
         console.error("Error Sending data to the server")
@@ -75,19 +88,42 @@ export const useQuestionnaireStore = defineStore('questionnaire', {
      async sendUserinfoWithJobInfo(){
       try{
         const response = await axios.post('/register',{
-          ...this.jobInformation,
+          job_information: this.jobInformation,
           ...this.userInformation
         },{
           headers: {
         'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content,
     },
         })
-        return response
+        if (response.status === 200) {
+          // Check if there is a redirect in the response headers
+            console.log(response.data);
+          if (response.headers['x-redirect']) {
+            // Handle the redirect on the client side
+            alert(response.headers['x-redirect']);
+            window.location.href = response.headers['x-redirect'];
+          } else {
+            // Handle other successful responses as needed
+            window.location.href = response.headers['x-redirect'];
+
+          }
+        }
       }
       catch(e){
         console.error("Error Sending data to the server")
       }
-     }
+     },
+     resetState(){
+      this.jobInformation = null,
+      this.userInformation = null,
+      this.isUserSignedUp = false,
+      this.selectedAnswers = reactive({}),
+      this.jobDescription = '',
+      this.selectedCategory = null
+     },
+      setEmail(email) {
+      this.email = email;
+    },
 
     
   },

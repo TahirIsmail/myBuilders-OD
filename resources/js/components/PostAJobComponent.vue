@@ -144,6 +144,7 @@ watch(selectedCategory, (newCategory, oldCategory) => {
   // Check if the category has actually changed
   if (newCategory && (!oldCategory || newCategory.id !== oldCategory.id)) {
     // Reset the questions array and fetch the initial question for the new category
+    store.resetState()
     store.setSelectedCategory(newCategory)
     questions.value = []; // Clear the previous questions
     

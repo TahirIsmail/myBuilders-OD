@@ -10,6 +10,7 @@ use App\Models\ChatThread;
 use App\Models\UserProfile;
 use App\Models\ProjectCategory as Categories;
 use App\Models\ProjectCategory;
+use App\Notifications\SendMagicLinkNotification;
 use Carbon;
 use Illuminate\Support\Str;
 use Spatie\Permission\Models\Permission;
@@ -189,6 +190,39 @@ class HomeController extends Controller
         return view('frontend.default.post_projects',$data);
     }
 
+    public function checkuser(Request $request){
+        
+        $email = $request->input('email');
+        $jobInformation = $request->input('jobInformation');
+        if (userExistsWithEmail($email)) {
+            // User with the specified email exists
+            // Add your authentication logic here
+            $user = User::where('email', $email)->first();
+
+            if ($user) {
+                $user->notify(new SendMagicLinkNotification($jobInformation));
+            }
+    
+           
+            return response()->json(['msg' => "User Already Exists",'code' => 200,'user' => $user]);
+        } else {
+            // User does not exist
+            // Handle accordingly
+            return response()->json(['msg' => "User Does not Exists",'code' => 404]);
+
+        }
+    }
+    public function post_job_magic(Request $request){
+      $jobInformation = $request->input('jobinformation');
+      $jobdata = json_decode($jobInformation,true);
+      
+      return view('frontend.default.magic-job-post', $jobdata);
+      
+    }
+
+    public function storemagicjobpost(Request $request){
+        dd($request->all());
+    }
     function clearCache(Request $request)
     {
         Artisan::call('cache:clear');
