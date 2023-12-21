@@ -13,7 +13,6 @@
         
 
     
-    
 @endsection
 
 @section('script')

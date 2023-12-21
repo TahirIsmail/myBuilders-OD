@@ -1543,52 +1543,23 @@
 
 
 
-            <div class="row">
-                <div class="custom-slider col-md-12">
-                    <div class="custom-slide">
-                        <img src="{{ asset('public\assets\frontend\default\img\slider_img\global 2.jpg') }}" />
+        <div class="row">
+            <div class="custom-slider col-md-12">
+                <div class="custom-slide">
+                    <img src="{{ asset('public\assets\frontend\default\img\slider_img\global 2.jpg') }}" />
 
-                        <div class="custom-content">
-                            <div class="custom-content-inner">
+                    <div class="custom-content">
+                        <div class="custom-content-inner">
 
-                                <h1>We are Everywhere</h1>
-                                <h5>Builder’s Valley offers a complete solution if you're looking for a new project or
-                                    searching
+                            <h1>We are Everywhere</h1>
+                            <h5>Builder’s Valley offers a complete solution if you're looking for a new project or
+                                searching
 
-                                    <div class=" lp-header__content">
-                                        <a title="Post a job today and we'll alert the relevant tradespeople."
-                                            href="{{ route('register') }}" class="btn--lp">Post a job</a>
-                                        <a title="Start winning more work" href="{{ route('register') }}"
-                                            class="btn--hollow">Trade sign
-                                            up</a>
-
-                                        <a title="Start winning more work" href="{{ route('register') }}"
-                                            class="btn--hollow">
-                                            Trade Career</a>
-
-                                        <a title="Start winning more work" href="{{ route('register') }}"
-                                            class="btn--hollow">Employee Trade Worker</a>
-
-                                    </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="custom-slide">
-                        <img src="{{ asset('public\assets\frontend\default\img\slider_img\slider2.jpg') }}" />
-                        <div class="custom-content">
-                            <div class="custom-content-inner">
-                                <h1>We are all here.</h1>
-                                <h5>Now you don't need your neighbor's recommendations. We're providing the complete
-                                    solution.
-                                </h5>
-                                <div class="lp-header__content">
+                                <div class=" lp-header__content">
                                     <a title="Post a job today and we'll alert the relevant tradespeople."
-                                        href="{{ route('register') }}" class="btn--lp">Post a job</a>
+                                        href="{{ route('post_project') }}" class="btn--lp">Post a job</a>
                                     <a title="Start winning more work" href="{{ route('register') }}"
-                                        class="btn--hollow">Trade
-                                        sign
+                                        class="btn--hollow">Trade sign
                                         up</a>
 
                                     <a title="Start winning more work" href="{{ route('register') }}" class="btn--hollow">
@@ -1598,55 +1569,80 @@
                                         class="btn--hollow">Employee Trade Worker</a>
 
                                 </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="custom-slide">
+                    <img src="{{ asset('public\assets\frontend\default\img\slider_img\slider2.jpg') }}" />
+                    <div class="custom-content">
+                        <div class="custom-content-inner">
+                            <h1>We are all here.</h1>
+                            <h5>Now you don't need your neighbor's recommendations. We're providing the complete
+                                solution.
+                            </h5>
+                            <div class="lp-header__content">
+                                <a title="Post a job today and we'll alert the relevant tradespeople."
+                                    href="{{ route('post_project') }}" class="btn--lp">Post a job</a>
+                                <a title="Start winning more work" href="{{ route('register') }}" class="btn--hollow">Trade
+                                    sign
+                                    up</a>
+
+                                <a title="Start winning more work" href="{{ route('register') }}" class="btn--hollow">
+                                    Trade Career</a>
+
+                                <a title="Start winning more work" href="{{ route('register') }}"
+                                    class="btn--hollow">Employee Trade Worker</a>
+
                             </div>
                         </div>
                     </div>
-                    <div class="custom-slide">
-                        <img src="{{ asset('public\assets\frontend\default\img\slider_img\slider3.jpg') }}" />
-                        <div class="custom-content">
-                            <div class="custom-content-inner">
-                                <h1>Join today and become a proud member of the Builder's Valley community.</h1>
-                                <h5>If you are recruiting people across the country , internationally
-                                    or you are looking for a new career, join today.</h5>
+                </div>
+                <div class="custom-slide">
+                    <img src="{{ asset('public\assets\frontend\default\img\slider_img\slider3.jpg') }}" />
+                    <div class="custom-content">
+                        <div class="custom-content-inner">
+                            <h1>Join today and become a proud member of the Builder's Valley community.</h1>
+                            <h5>If you are recruiting people across the country , internationally
+                                or you are looking for a new career, join today.</h5>
 
-                                <div class="lp-header__content">
-                                    <a title="Post a job today and we'll alert the relevant tradespeople."
-                                        href="{{ route('register') }}" class="btn--lp">Post a job</a>
-                                    <a title="Start winning more work" href="{{ route('register') }}"
-                                        class="btn--hollow">Trade
-                                        sign
-                                        up</a>
+                            <div class="lp-header__content">
+                                <a title="Post a job today and we'll alert the relevant tradespeople."
+                                    href="{{ route('post_project') }}" class="btn--lp">Post a job</a>
+                                <a title="Start winning more work" href="{{ route('register') }}" class="btn--hollow">Trade
+                                    sign
+                                    up</a>
 
-                                    <a title="Start winning more work" href="{{ route('register') }}" class="btn--hollow">
-                                        Trade Career</a>
+                                <a title="Start winning more work" href="{{ route('register') }}" class="btn--hollow">
+                                    Trade Career</a>
 
-                                    <a title="Start winning more work" href="{{ route('register') }}"
-                                        class="btn--hollow">Employee Trade Worker</a>
+                                <a title="Start winning more work" href="{{ route('register') }}"
+                                    class="btn--hollow">Employee Trade Worker</a>
 
-                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="custom-slide">
-                        <img src="{{ asset('public\assets\frontend\default\img\slider_img\slider4.jpg') }}" />
-                        <div class="custom-content">
-                            <div class="custom-content-inner">
-                                <h1>Builder's Valley now makes it easier for you to find a local professional trade worker
-                                    in
-                                    your area</h1>
-                                <div class="lp-header__content">
-                                    <a title="Post a job today and we'll alert the relevant tradespeople."
-                                        href="{{ route('register') }}" class="btn--lp">Post a job</a>
-                                    <a title="Start winning more work" href="{{ route('register') }}"
-                                        class="btn--hollow">Trade
-                                        sign
-                                        up</a>
+                </div>
+                <div class="custom-slide">
+                    <img src="{{ asset('public\assets\frontend\default\img\slider_img\slider4.jpg') }}" />
+                    <div class="custom-content">
+                        <div class="custom-content-inner">
+                            <h1>Builder's Valley now makes it easier for you to find a local professional trade worker
+                                in
+                                your area</h1>
+                            <div class="lp-header__content">
+                                <a title="Post a job today and we'll alert the relevant tradespeople."
+                                    href="{{ route('post_project') }}" class="btn--lp">Post a job</a>
+                                <a title="Start winning more work" href="{{ route('register') }}" class="btn--hollow">Trade
+                                    sign
+                                    up</a>
 
-                                    <a title="Start winning more work" href="{{ route('register') }}" class="btn--hollow">
-                                        Trade Career</a>
+                                <a title="Start winning more work" href="{{ route('register') }}" class="btn--hollow">
+                                    Trade Career</a>
 
-                                    <a title="Start winning more work" href="{{ route('register') }}"
-                                        class="btn--hollow">Employee Trade Worker</a>
+                                <a title="Start winning more work" href="{{ route('register') }}"
+                                    class="btn--hollow">Employee Trade Worker</a>
 
                                 </div>
                             </div>
@@ -1711,62 +1707,64 @@
 
 
 
-                <div class="container" style="height: auto ;">
-                    <div class="py-3">
+        <div class="container" style="height: auto ;">
+            <div class="py-3">
 
-                        <div class="row justify-content-center">
-                            <div class="col-xl-4 col-md-6 " style="margin-bottom: 10px;position: relative;">
-                                <div class="px-xl-5 px-md-3 mb-4 text-center rounded"
-                                    style="height: 100%; display: flex; flex-direction: column;">
+                <div class="row justify-content-center">
+                    <div class="col-xl-4 col-md-6 " style="margin-bottom: 10px;position: relative;">
+                        <div class="px-xl-5 px-md-3 mb-4 text-center rounded"
+                            style="height: 100%; display: flex; flex-direction: column;">
 
-                                    <div class="p-4" style="height: 70%;">
-                                        <h2>Post your job</h2>
-                                        <p>Sign up to our online platform to start posting your home improvement projects
-                                            and connect with trustworthy tradespeople.</p>
-                                    </div>
-
-                                    <div style="text-align: center;">
-                                        <a title="Post a job today and we'll alert the relevant tradespeople."
-                                            href="http://localhost/mybuilder/register" class="btn--lp">Post a job</a>
-                                    </div>
-                                </div>
+                            <div class="p-4" style="height: 70%;">
+                                <h2>Post your job</h2>
+                                <p>
+                                    Sign up to our online platform to start posting your home improvement projects and connect with trustworthy tradespeople.
+                                </p>
+                                
                             </div>
 
-                            <div class="col-xl-4 col-md-6" style="margin-bottom: 10px;position: relative;">
-                                <div class="px-xl-5 px-md-3 mb-4 text-center rounded"
-                                    style="height: 100%; display: flex; flex-direction: column;">
+                            <div style="text-align: center;">
+                                <a title="Post a job today and we'll alert the relevant tradespeople."
+                                    href="http://localhost/mybuilder/register" class="btn--lp">Post a job</a>
+                            </div>
+                        </div>
+                    </div>
 
-                                    <div class="p-4" style="height: 70%;">
-                                        <h2>Trade sign up</h2>
-                                        <p>Once your business is registered, you can choose from the many jobs available
-                                            across the country.</p>
-                                    </div>
+                    <div class="col-xl-4 col-md-6" style="margin-bottom: 10px;position: relative;">
+                        <div class="px-xl-5 px-md-3 mb-4 text-center rounded"
+                            style="height: 100%; display: flex; flex-direction: column;">
 
-                                    <div style="text-align: center;">
-                                        <a title="Post a job today and we'll alert the relevant tradespeople."
-                                            href="http://localhost/mybuilder/register" class="btn--lp1 ">Join Our Site</a>
-                                    </div>
-                                </div>
+                            <div class="p-4" style="height: 70%;">
+                                <h2>Trade sign up</h2>
+                                <p>Once your business is registered, you can choose from the many jobs available
+                                    across the country.</p>
                             </div>
 
-
-                            <div class="col-xl-4 col-md-6" style="margin-bottom: 10px;position: relative;">
-                                <div class="px-xl-5 px-md-3 mb-4 text-center rounded"
-                                    style="height: 100%; display: flex; flex-direction: column; ;">
-
-                                    <div class="p-4" style="height: 70%;">
-                                        <h2>Find Employment</h2>
-                                        <p>Businesses across the country & internationally are searching for skilled people
-                                            to join their team. Find your next role here.</p>
-                                    </div>
-
-                                    <div style="text-align: center;">
-                                        <a title="Post a job today and we'll alert the relevant tradespeople."
-                                            href="http://localhost/mybuilder/register" class="btn--lp2">Career
-                                            Opportunities</a>
-                                    </div>
-                                </div>
+                            <div style="text-align: center;">
+                                <a title="Post a job today and we'll alert the relevant tradespeople."
+                                    href="http://localhost/mybuilder/register" class="btn--lp1 ">Join Our Site</a>
                             </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-xl-4 col-md-6" style="margin-bottom: 10px;position: relative;">
+                        <div class="px-xl-5 px-md-3 mb-4 text-center rounded"
+                            style="height: 100%; display: flex; flex-direction: column; ;">
+
+                            <div class="p-4" style="height: 70%;">
+                                <h2>Find Employment</h2>
+                                <p>Businesses across the country & internationally are searching for skilled people
+                                    to join their team. Find your next role here.</p>
+                            </div>
+
+                            <div style="text-align: center;">
+                                <a title="Post a job today and we'll alert the relevant tradespeople."
+                                    href="http://localhost/mybuilder/register" class="btn--lp2">Career
+                                    Opportunities</a>
+                            </div>
+                        </div>
+                    </div>
 
 
                         </div>
@@ -1793,45 +1791,45 @@
 
 
 
-                <div class="container" style="height: auto ; ">
-                    <div class="py-3">
+        <div class="container" style="height: auto ; ">
+            <div class="py-3">
 
-                        <div class="row justify-content-center">
-                            <div class="col-xl-12 col-md-6 " style="margin-bottom: 10px;position: relative;">
-                                <div class="px-xl-5 px-md-3 mb-4 text-center "
-                                    style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="row justify-content-center">
+                    <div class="col-xl-12 col-md-6 " style="margin-bottom: 10px;position: relative;">
+                        <div class="px-xl-5 px-md-3 mb-4 text-center "
+                            style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
 
-                                    <div class="p-4 text-center">
-                                        <h2 style="color: green !important">Find the right tradespeople for your job!</h2>
-                                        <p>Builder’s valley understands that finding tradespeople you can trust is a
-                                            challenge.</p>
-                                        <div class="col-md-7 mx-auto">
-                                            <p>Our site is an online platform for a variety of tradespeople. You can post
-                                                your job, tradespeople will respond, and then you can review each business
-                                                and choose the right one for you!</p>
-                                        </div>
-                                    </div>
-
-
-                                    <div style="text-align: center;margin-bottom: 15px !important;">
-                                        <a title="Post a job today and we'll alert the relevant tradespeople."
-                                            href="http://localhost/mybuilder/register" class="btn--hollow">CONTACT US </a>
-                                    </div>
+                            <div class="p-4 text-center">
+                                <h2 style="color: green !important">Find the right tradespeople for your job!</h2>
+                                <p>Builder’s valley understands that finding tradespeople you can trust is a
+                                    challenge.</p>
+                                <div class="col-md-7 mx-auto">
+                                    <p>Our site is an online platform for a variety of tradespeople. You can post
+                                        your job, tradespeople will respond, and then you can review each business
+                                        and choose the right one for you!</p>
                                 </div>
                             </div>
 
+
+                            <div style="text-align: center;margin-bottom: 15px !important;">
+                                <a title="Post a job today and we'll alert the relevant tradespeople."
+                                    href="http://localhost/mybuilder/register" class="btn--hollow">CONTACT US </a>
+                            </div>
                         </div>
                     </div>
+
                 </div>
+            </div>
+        </div>
 
 
-                <div class="col-md-12 bg_content">
+        <div class="col-md-12 bg_content">
 
 
-                    <div class="container bg_content" style="padding:0px">
-                        <div class="py-3 bg_content">
-                            <div class="w-xl-50 w-lg-75 mx-auto my-5 text-center">
-                                <h2 class="fw-700 fs-30">How it Works</h2>
+            <div class="container bg_content" style="padding:0px">
+                <div class="py-3 bg_content">
+                    <div class="w-xl-50 w-lg-75 mx-auto my-5 text-center">
+                        <h2 class="fw-700 fs-30">How it Works</h2>
 
                             </div>
                             <div class="row justify-content-center">
@@ -1842,53 +1840,53 @@
 
                                         </div>
 
-                                        <div class="p-4" style="height: 250px !important;">
-                                            <h2><span style="color: green;">1</span> Sign up</h2>
-                                            <p>Joining as a homeowner/customer is a competitively priced way for you to
-                                                access skilled tradespeople across the country.</p>
-                                            <p>Only approved members can post in our forums.</p>
-                                        </div>
-                                    </div>
+                                <div class="p-4" style="height: 250px !important;">
+                                    <h2><span style="color: green;">1</span> Sign up</h2>
+                                    <p>Joining as a homeowner/customer is a competitively priced way for you to
+                                        access skilled tradespeople across the country.</p>
+                                    <p>Only approved members can post in our forums.</p>
                                 </div>
-
-
-
-                                <div class="col-xl-4 col-md-6">
-                                    <div class="col-md-12"
-                                        style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                                        <div class="postjob_backcover ">
-
-                                        </div>
-
-                                        <div class="p-4" style="height:250px !important ;">
-                                            <h2><span style="color: green;">2</span> Post a job </h2>
-                                            <p>Once you’ve joined our site, you’ll be able to post the details for the
-                                                project you need to hire a tradesperson for remember to include your
-                                                location, photos and if you have one a budget.</p>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-
-
-                                <div class="col-xl-4 col-md-6">
-                                    <div class="col-md-12"
-                                        style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                                        <div class="respond_backcover ">
-
-                                        </div>
-
-                                        <div class="p-4">
-                                            <h2><span style="color: green;">3</span> Respond to messages </h2>
-                                            <p>Companies that have joined our site will be able to see your job postings.
-                                                You can then contact them directly to arrange a quote.</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-
                             </div>
+                        </div>
+
+
+
+                        <div class="col-xl-4 col-md-6">
+                            <div class="col-md-12"
+                                style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                                <div class="postjob_backcover ">
+
+                                </div>
+
+                                <div class="p-4" style="height:250px !important ;">
+                                    <h2><span style="color: green;">2</span> Post a job </h2>
+                                    <p>Once you’ve joined our site, you’ll be able to post the details for the
+                                        project you need to hire a tradesperson for remember to include your
+                                        location, photos and if you have one a budget.</p>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="col-xl-4 col-md-6">
+                            <div class="col-md-12"
+                                style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                                <div class="respond_backcover ">
+
+                                </div>
+
+                                <div class="p-4">
+                                    <h2><span style="color: green;">3</span> Respond to messages </h2>
+                                    <p>Companies that have joined our site will be able to see your job postings.
+                                        You can then contact them directly to arrange a quote.</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
 
 
 
@@ -2524,15 +2522,14 @@
             </section>
         @endif
 
-        @if (get_setting('featured_category_show') == 'on')
-            <section class="bg-white pt-5 pb-4">
-                <div class="container">
-                    <div class="bg-primary py-7 px-6 rounded-2">
-                        <div class="lh-1-8 mx-auto mb-5">
-                            <h2 class="fw-700 fs-40 text-white">{{ get_setting('featured_category_title') }}</h2>
-                            <p class="fs-17 text-white">{{ get_setting('featured_category_subtitle') }}</p>
-                        </div>
-                        <div class="row gutters-10">
+    <section class="bg-white pt-5 pb-4">
+        <div class="container">
+            <div class="bg-primary py-7 px-6 rounded-2">
+                <div class="lh-1-8 mx-auto mb-5">
+                    <h2 class="fw-700 fs-40 text-white">{{ get_setting('featured_category_title') }}</h2>
+                    <p class="fs-17 text-white">{{ get_setting('featured_category_subtitle') }}</p>
+                </div>
+                <div class="row gutters-10">
 
                             @if (get_setting('featured_category_list') != null)
                                 @foreach (json_decode(get_setting('featured_category_list'), true) as $key => $category_id)
@@ -2555,215 +2552,205 @@
                             <a href="{{ route('search') }}?category="
                                 class="btn bg-white
                                 text-primary rounded-1">{{ translate('Browse More Categories') }}</a>
-                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{{-- 
+    <section class="pt-8 pb-2 bg-white">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-xl-6 col-md-8 mx-auto">
+                    <div class="text-center">
+                        <h2 class="fw-700 fs-40">{{ get_setting('service_section_title') }}</h2>
+                        <p class="fs-17 text-secondary">{{ get_setting('service_section_subtitle') }}</p>
                     </div>
                 </div>
-            </section>
-        @endif
+            </div>
+            @php
+                $user_ids = \App\Models\UserPackage::where('package_invalid_at', '!=', null)
+                    ->where('package_invalid_at', '>', Carbon\Carbon::now()->format('Y-m-d'))
+                    ->pluck('user_id');
 
-        @if (get_setting('service_section_show') == 'on')
-            <section class="pt-8 pb-2 bg-white">
-                <div class="container">
-                    <div class="row mb-5">
-                        <div class="col-xl-6 col-md-8 mx-auto">
-                            <div class="text-center">
-                                <h2 class="fw-700 fs-40">{{ get_setting('service_section_title') }}</h2>
-                                <p class="fs-17 text-secondary">{{ get_setting('service_section_subtitle') }}</p>
+                $services = \App\Models\Service::inRandomOrder()
+                    ->whereIn('user_id', $user_ids)
+                    ->take(get_setting('max_service_show_homepage'))
+                    ->get();
+            @endphp
+            <div class="row">
+                <div class="aiz-carousel gutters-15 w-100" data-items="4" data-xl-items="3" data-md-items="2"
+                    data-sm-items="1" data-arrows='true'>
+                    @foreach ($services as $service)
+                        <div class="caorusel-box">
+                            <div class="card bg-transparent rounded-2 border-gray-light hov-box overflow-hidden">
+                                <a href="{{ route('service.show', $service->slug) }}">
+                                    @if ($service->image != null)
+                                        <img src="{{ custom_asset($service->image) }}" class="card-img-top img-fit"
+                                            alt="service_image" height="212">
+                                    @else
+                                        <img src="{{ my_asset('assets/frontend/default/img/placeholder-service.jpg') }}"
+                                            class="card-img-top img-fit" alt="{{ translate('Service Image') }}"
+                                            height="212">
+                                    @endif
+                                </a>
+                                <div class="card-body hov-box-body">
+                                    <div class="d-flex mb-2">
+                                        <span class="mr-2">
+                                            @if ($service->user->photo != null)
+                                                <img src="{{ custom_asset($service->user->photo) }}"
+                                                    alt="{{ translate('image') }}" height="35" width="35"
+                                                    class="rounded-circle">
+                                            @else
+                                                <img src="{{ my_asset('assets/frontend/default/img/avatar-place.png') }}"
+                                                    alt="{{ translate('image') }}" height="35" width="35"
+                                                    class="rounded-circle">
+                                            @endif
+                                        </span>
+                                        <span class="d-flex flex-column justify-content-center">
+                                            <a href="{{ route('freelancer.details', $service->user->user_name) }}"
+                                                class="text-secondary fs-14"><span
+                                                    class="font-weight-bold">{{ $service->user->name }}</span></a>
+                                        </span>
+                                    </div>
+
+                                    <a href="{{ route('service.show', $service->slug) }}" class="text-dark"
+                                        title="{{ $service->title }}">
+                                        <h5 class="card-title fs-16 fw-700 h-40px">
+                                            {{ \Illuminate\Support\Str::limit($service->title, 45, $end = '...') }}
+                                        </h5>
+                                    </a>
+                                    <div class="text-warning">
+                                        <span class="rating rating-lg rating-mr-1">
+                                            {{ renderStarRating(getAverageRating($service->user->id)) }}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+            </div>
+            <div class="pt-5 text-center">
+                <a href="{{ route('search') }}?keyword=&type=service"
+                    class="btn btn-primary rounded-1">{{ translate('Explore More Services') }}</a>
+            </div>
+        </div>
+    </section> --}}
+
+    <section class="cta_section py-8 bg-white">
+        <div class="container">
+            <div class="bg-white">
+                <div class="row mx-0 sm-no-gutters rounded-2 overflow-hidden">
+                    <div class="col-lg-6 px-0">
+                        <img src="{{ get_setting('cta_section_banner') ? custom_asset(get_setting('cta_section_banner')) : my_asset('assets/placeholder.jpg') }}"
+                            alt="" class="w-100 h-100">
+                    </div>
+                    <div class="col-lg-6 px-0">
+                        <div class="bg-primary py-6 px-4 h-100">
+                            <nav class="nav mb-3">
+                                <a class="nav-link text-white opacity-50 active" href="#nav-client"
+                                    data-toggle="tab">{{ translate('Client') }}</a>
+                                <a class="nav-link text-white opacity-50" href="#nav-freelancer"
+                                    data-toggle="tab">{{ translate('Freelancer') }}</a>
+                            </nav>
+                            <div class="tab-content">
+                                <div class="tab-pane fade show active " id="nav-client">
+                                    <div class="lh-1-8 mx-auto mb-5">
+                                        <h2 class="fw-700 fs-40 text-white">
+                                            {{ get_setting('cta_section_title_client') }}</h2>
+                                        <p class="fs-16 text-white mt-3">{!! get_setting('cta_section_subtitle_client') !!}</p>
+                                    </div>
+                                    <div>
+                                        <div><a href="{{ route('login') }}"
+                                                class="text-white hov-text-light">{{ translate('Already a Client') }},
+                                                <strong>{{ translate('Login to Get Started') }} <i
+                                                        class="las la-long-arrow-alt-right"></i></strong></a></div>
+                                        <a href="{{ route('register') }}?type=2"
+                                            class="btn bg-white text-primary hov-text-soft-primary rounded-1 mt-3">{{ translate('Or, Create an Account to Get Started') }}</a>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade " id="nav-freelancer">
+                                    <div class="lh-1-8 mx-auto mb-5">
+                                        <h2 class="fw-700 fs-40 text-white">
+                                            {{ get_setting('cta_section_title_freelancer') }}</h2>
+                                        <p class="fs-16 text-white mt-3">{!! get_setting('cta_section_subtitle_freelancer') !!}</p>
+                                    </div>
+                                    <div>
+                                        <div><a href="{{ route('login') }}"
+                                                class="text-white hov-text-light">{{ translate('Already a Freelancer') }},
+                                                <strong>{{ translate('Login to Get Started') }} <i
+                                                        class="las la-long-arrow-alt-right"></i></strong></a></div>
+                                        <a href="{{ route('register') }}?type=1"
+                                            class="btn bg-white text-primary rounded-1 mt-3">{{ translate('Or, Create an Account to Get Started') }}</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    @php
-                        $user_ids = \App\Models\UserPackage::where('package_invalid_at', '!=', null)
-                            ->where('package_invalid_at', '>', Carbon\Carbon::now()->format('Y-m-d'))
-                            ->pluck('user_id');
+                </div>
+            </div>
+        </div>
+    </section>
 
-                        $services = \App\Models\Service::inRandomOrder()
-                            ->whereIn('user_id', $user_ids)
-                            ->take(get_setting('max_service_show_homepage'))
+    <section class="bg-white pt-4 pb-7 text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-xl-8 col-xxl-6 mx-auto">
+                    <div class="section-title mb-5 text-center">
+                        <h2 class="fw-700 fs-40 text-dark">{{ get_setting('blog_section_title') }}</h2>
+                        <p class="fs-17 text-secondary">{{ get_setting('blog_section_subtitle') }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="aiz-carousel gutters-15 w-100" data-items="4" data-xl-items="3" data-md-items="2"
+                    data-sm-items="1" data-arrows='true'>
+                    @php
+                        $blogs = \App\Models\Blog::where('status', 1)
+                            ->latest()
+                            ->limit(get_setting('max_blog_show_homepage'))
                             ->get();
                     @endphp
-                    <div class="row">
-                        <div class="aiz-carousel gutters-15 w-100" data-items="4" data-xl-items="3" data-md-items="2"
-                            data-sm-items="1" data-arrows='true'>
-                            @foreach ($services as $service)
-                                <div class="caorusel-box">
-                                    <div class="card bg-transparent rounded-2 border-gray-light hov-box overflow-hidden">
-                                        <a href="{{ route('service.show', $service->slug) }}">
-                                            @if ($service->image != null)
-                                                <img src="{{ custom_asset($service->image) }}"
-                                                    class="card-img-top img-fit" alt="service_image" height="212">
-                                            @else
-                                                <img src="{{ my_asset('assets/frontend/default/img/placeholder-service.jpg') }}"
-                                                    class="card-img-top img-fit" alt="{{ translate('Service Image') }}"
-                                                    height="212">
-                                            @endif
+                    @foreach ($blogs as $key => $blog)
+                        <div class="caorusel-box">
+                            <div class="card text-dark mb-3 overflow-hidden rounded-2 border-gray-light hov-box">
+                                <a href="{{ route('blog.details', $blog->slug) }}" class="text-reset d-block">
+                                    <img src="{{ custom_asset($blog->banner) }}" alt="{{ $blog->title }}"
+                                        class="card-img-top img-fit" height="212">
+                                </a>
+                                <div class="p-4">
+                                    <h2 class="fs-18 fw-600 mb-1 h-45px">
+                                        <a href="{{ route('blog.details', $blog->slug) }}" class="text-dark fs-16 fw-700"
+                                            title="{{ $blog->title }}">
+                                            {{ \Illuminate\Support\Str::limit($blog->title, 45, $end = '...') }}
                                         </a>
-                                        <div class="card-body hov-box-body">
-                                            <div class="d-flex mb-2">
-                                                <span class="mr-2">
-                                                    @if ($service->user->photo != null)
-                                                        <img src="{{ custom_asset($service->user->photo) }}"
-                                                            alt="{{ translate('image') }}" height="35" width="35"
-                                                            class="rounded-circle">
-                                                    @else
-                                                        <img src="{{ my_asset('assets/frontend/default/img/avatar-place.png') }}"
-                                                            alt="{{ translate('image') }}" height="35" width="35"
-                                                            class="rounded-circle">
-                                                    @endif
-                                                </span>
-                                                <span class="d-flex flex-column justify-content-center">
-                                                    <a href="{{ route('freelancer.details', $service->user->user_name) }}"
-                                                        class="text-secondary fs-14"><span
-                                                            class="font-weight-bold">{{ $service->user->name }}</span></a>
-                                                </span>
-                                            </div>
-
-                                            <a href="{{ route('service.show', $service->slug) }}" class="text-dark"
-                                                title="{{ $service->title }}">
-                                                <h5 class="card-title fs-16 fw-700 h-40px">
-                                                    {{ \Illuminate\Support\Str::limit($service->title, 45, $end = '...') }}
-                                                </h5>
-                                            </a>
-                                            <div class="text-warning">
-                                                <span class="rating rating-lg rating-mr-1">
-                                                    {{ renderStarRating(getAverageRating($service->user->id)) }}
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-
-                    </div>
-                    <div class="pt-5 text-center">
-                        <a href="{{ route('search') }}?keyword=&type=service"
-                            class="btn btn-primary rounded-1">{{ translate('Explore More Services') }}</a>
-                    </div>
-                </div>
-            </section>
-        @endif
-
-
-        @if (get_setting('cta_section_show') == 'on')
-            <section class="cta_section py-8 bg-white">
-                <div class="container">
-                    <div class="bg-white">
-                        <div class="row mx-0 sm-no-gutters rounded-2 overflow-hidden">
-                            <div class="col-lg-6 px-0">
-                                <img src="{{ get_setting('cta_section_banner') ? custom_asset(get_setting('cta_section_banner')) : my_asset('assets/placeholder.jpg') }}"
-                                    alt="" class="w-100 h-100">
-                            </div>
-                            <div class="col-lg-6 px-0">
-                                <div class="bg-primary py-6 px-4 h-100">
-                                    <nav class="nav mb-3">
-                                        <a class="nav-link text-white opacity-50 active" href="#nav-client"
-                                            data-toggle="tab">{{ translate('Client') }}</a>
-                                        <a class="nav-link text-white opacity-50" href="#nav-freelancer"
-                                            data-toggle="tab">{{ translate('Freelancer') }}</a>
-                                    </nav>
-                                    <div class="tab-content">
-                                        <div class="tab-pane fade show active " id="nav-client">
-                                            <div class="lh-1-8 mx-auto mb-5">
-                                                <h2 class="fw-700 fs-40 text-white">
-                                                    {{ get_setting('cta_section_title_client') }}</h2>
-                                                <p class="fs-16 text-white mt-3">{!! get_setting('cta_section_subtitle_client') !!}</p>
-                                            </div>
-                                            <div>
-                                                <div><a href="{{ route('login') }}"
-                                                        class="text-white hov-text-light">{{ translate('Already a Client') }},
-                                                        <strong>{{ translate('Login to Get Started') }} <i
-                                                                class="las la-long-arrow-alt-right"></i></strong></a></div>
-                                                <a href="{{ route('register') }}?type=2"
-                                                    class="btn bg-white text-primary hov-text-soft-primary rounded-1 mt-3">{{ translate('Or, Create an Account to Get Started') }}</a>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade " id="nav-freelancer">
-                                            <div class="lh-1-8 mx-auto mb-5">
-                                                <h2 class="fw-700 fs-40 text-white">
-                                                    {{ get_setting('cta_section_title_freelancer') }}</h2>
-                                                <p class="fs-16 text-white mt-3">{!! get_setting('cta_section_subtitle_freelancer') !!}</p>
-                                            </div>
-                                            <div>
-                                                <div><a href="{{ route('login') }}"
-                                                        class="text-white hov-text-light">{{ translate('Already a Freelancer') }},
-                                                        <strong>{{ translate('Login to Get Started') }} <i
-                                                                class="las la-long-arrow-alt-right"></i></strong></a></div>
-                                                <a href="{{ route('register') }}?type=1"
-                                                    class="btn bg-white text-primary rounded-1 mt-3">{{ translate('Or, Create an Account to Get Started') }}</a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    </h2>
+                                    @if ($blog->category != null)
+                                        <p class="mt-3 mb-0 text-primary fs-14 fw-700">
+                                            {{ $blog->category->category_name }}</p>
+                                    @endif
+                                    <p class="mb-4 fs-14 text-secondary opacity-70">
+                                        {{ $blog->created_at ? date('d.m.Y', strtotime($blog->created_at)) : '' }}
+                                    </p>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
-            </section>
-        @endif
+            </div>
+            <div class="mt-4 text-center">
+                <a href="{{ route('blog') }}" class="btn btn-primary rounded-1">{{ translate('View More') }}</a>
+            </div>
+        </div>
+    </section>
 
-        @if (get_setting('blog_section_show') == 'on')
-            <section class="bg-white pt-4 pb-7 text-white">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-10 col-xl-8 col-xxl-6 mx-auto">
-                            <div class="section-title mb-5 text-center">
-                                <h2 class="fw-700 fs-40 text-dark">{{ get_setting('blog_section_title') }}</h2>
-                                <p class="fs-17 text-secondary">{{ get_setting('blog_section_subtitle') }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="aiz-carousel gutters-15 w-100" data-items="4" data-xl-items="3" data-md-items="2"
-                            data-sm-items="1" data-arrows='true'>
-                            @php
-                                $blogs = \App\Models\Blog::where('status', 1)
-                                    ->latest()
-                                    ->limit(get_setting('max_blog_show_homepage'))
-                                    ->get();
-                            @endphp
-                            @foreach ($blogs as $key => $blog)
-                                <div class="caorusel-box">
-                                    <div class="card text-dark mb-3 overflow-hidden rounded-2 border-gray-light hov-box">
-                                        <a href="{{ route('blog.details', $blog->slug) }}" class="text-reset d-block">
-                                            <img src="{{ custom_asset($blog->banner) }}" alt="{{ $blog->title }}"
-                                                class="card-img-top img-fit" height="212">
-                                        </a>
-                                        <div class="p-4">
-                                            <h2 class="fs-18 fw-600 mb-1 h-45px">
-                                                <a href="{{ route('blog.details', $blog->slug) }}"
-                                                    class="text-dark fs-16 fw-700" title="{{ $blog->title }}">
-                                                    {{ \Illuminate\Support\Str::limit($blog->title, 45, $end = '...') }}
-                                                </a>
-                                            </h2>
-                                            @if ($blog->category != null)
-                                                <p class="mt-3 mb-0 text-primary fs-14 fw-700">
-                                                    {{ $blog->category->category_name }}</p>
-                                            @endif
-                                            <p class="mb-4 fs-14 text-secondary opacity-70">
-                                                {{ $blog->created_at ? date('d.m.Y', strtotime($blog->created_at)) : '' }}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                    <div class="mt-4 text-center">
-                        <a href="{{ route('blog') }}" class="btn btn-primary rounded-1">{{ translate('View More') }}</a>
-                    </div>
-                </div>
-            </section>
-        @endif
-    @endsection
+@endsection
 
 
 
-
-    @section('modal')
-        @if (
-            (Session::has('new_user') && Session::get('new_user') == true) ||
-                (auth()->check() && auth()->user()->user_type == null))
+ @section('modal')
+        @if ((Session::has('new_user') && Session::get('new_user') == true) || (auth()->check() && auth()->user()->user_type == null))
             <div class="modal fade" id="show_new_user_modal">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
@@ -2792,7 +2779,7 @@
                 </div>
             </div>
         @endif
-    @endsection
+    @endsection  
 
 
 
@@ -5811,23 +5798,23 @@
 
 
 
-        <script>
-            $(document).ready(function() {
-                let currentIndex = 0;
-                const slides = $(".custom-slider .custom-slide");
-                const numSlides = slides.length;
+    <script>
+        $(document).ready(function() {
+            let currentIndex = 0;
+            const slides = $(".custom-slider .custom-slide");
+            const numSlides = slides.length;
 
-                function showSlide(index) {
-                    slides.removeClass('active');
-                    slides.eq(index).addClass('active');
-                }
+            function showSlide(index) {
+                slides.removeClass('active');
+                slides.eq(index).addClass('active');
+            }
 
-                function nextSlide() {
-                    currentIndex = (currentIndex + 1) % numSlides;
-                    showSlide(currentIndex);
-                }
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % numSlides;
+                showSlide(currentIndex);
+            }
 
-                setInterval(nextSlide, 5000); // Change slide every 5 seconds
+            setInterval(nextSlide, 500000); // Change slide every 5 seconds
 
                 showSlide(currentIndex);
             });

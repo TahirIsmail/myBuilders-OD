@@ -1,10 +1,10 @@
 
 <template>
     <div class="container" style="padding: 30px">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
+        <div class="row justify-content-center " >
+            <div class="col-md-10">
                 <!-- <h2 class="form-heading">Give your job a headline</h2> -->
-                <form @submit.prevent="submitForm" class="account-form">
+                <form @submit.prevent="submitForm" >
                     <!-- Job Headline Input -->
                     <div class="form-group position-relative">
                         <label for="jobHeadline">Give your job a headline</label>
@@ -159,6 +159,7 @@ const postjob = async () => {
 }
 
 .btn {
+    margin-top: 50px !important ;
     width: 500px !important;
     display: inline-block !important;
     font-weight: 400 !important;
@@ -176,6 +177,7 @@ const postjob = async () => {
 }
 
 .btn-primary:hover {
+   
     color: #fff;
     background-color: rgb(101, 217, 145) !important;
 }

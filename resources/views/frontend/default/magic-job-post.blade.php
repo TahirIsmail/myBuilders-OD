@@ -6,6 +6,11 @@
             @method('post')
             @csrf
 
+    <div>
+        <form class="setmargin">
+            @method('post')
+            @csrf
+
             <div class="row">
                 <div class="col-sm-12 col-md-7 mx-auto form-section">
                     <div class="center-content">
@@ -63,6 +68,10 @@
                             </div>
                         </div>
                     @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
 
                     <div class="container">
                         <div class="row">
@@ -85,10 +94,88 @@
                 </div>
             </div>
     </div>
+    </div>
     </form>
+    </div>
     </div>
 @endsection
 
+
+<style>
+    .h-style {
+        font-family: sofia_probold, "Trebuchet MS", Helvetica, Arial, sans-serif;
+        line-height: 1.333em;
+        color: rgb(52, 57, 68);
+        font-weight: normal;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: rgb(176, 192, 211);
+        margin-bottom: 1em;
+        font-size: 1.625em;
+
+
+
+    }
+
+    p {
+        font-size: 18px;
+    }
+
+    label {
+        font-size: 18px;
+    }
+
+    .set {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+
+    .setmargin {
+        margin-bottom: 0px !important;
+    }
+
+
+
+    /* Add your custom styles here */
+
+    body {
+        background-color: #f8f9fa;
+        /* Set a light background color */
+    }
+
+    .custom-container {
+        margin-top: 20px;
+    }
+
+    .form-section {
+
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .center-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .form-label {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 15px;
+        border: 1px solid #ced4da;
+        /* Add a subtle border */
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+</style>
 
 <style>
     .h-style {
@@ -171,6 +258,7 @@
 
             $('form').submit(function(e) {
                 e.preventDefault(); // Prevent the default form submission
+
 
                 // Serialize the form data
                 var formData = $(this).serialize();

@@ -1,57 +1,66 @@
-
 <template>
-    <div class="container">
-        <form @submit.prevent="submitForm" class="account-form">
-
-                        <div  class="form-group">
-                            <label for="email">Email address</label>
-                            <input type="email" class="form-control" id="email" placeholder="Enter email"
-                                v-model="form.email" />
-                            <small class="form-text text-muted">
-                                We value your privacy and won't share your email
-                                with anybody else.
-                            </small>
-
-                        </div>
-                        <div class="form-group button-container">
-                            <button type="submit" class="btn btn-primary">
-                                Continue
-                            </button>
-                        </div>
-
-
-        </form>
+    <div class="container" style="padding: 30px">
+        <div class="row justify-content-center">
+            <div class="col-md-11">
+                <form @submit.prevent="submitForm" >
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input
+                            type="email"
+                            class="form-control"
+                            id="email"
+                            placeholder="Enter email"
+                            v-model="form.email"
+                        />
+                        <small class="form-text text-muted">
+                            We value your privacy and won't share your email
+                            with anybody else.
+                        </small>
                     </div>
+                    <div class="form-group button-container">
+                        <button type="submit" class="btn btn-primary">
+                            Continue
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </template>
 <script setup>
-import { reactive,onMounted,watch, ref, inject } from 'vue';
+import { reactive, onMounted, watch, ref, inject } from "vue";
 
-import { useQuestionnaireStore } from '../store/questionnaireStore';
+import { useQuestionnaireStore } from "../store/questionnaireStore";
 const form = reactive({
-    email:''
+    email: "",
 });
 
 const store = useQuestionnaireStore();
 const getEmail = () => form.email;
-watch(getEmail,(newEmail) => {
+watch(getEmail, (newEmail) => {
     store.setEmail(newEmail);
-})
+});
 onMounted(() => {
-    console.log("Email component Mounted")
-    
-})
-const emit = defineEmits(['toggleCurrent']);
+    console.log("Email component Mounted");
+});
+const emit = defineEmits(["toggleCurrent"]);
 const submitForm = async () => {
-    try{
-        const response = await axios.post('/checkuser',{
-          ...form,
-          jobInformation: store.jobInformation
-        },{
-          headers: {
-        'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content,
-    },
-        })
-        if(response.data.code == 200){
+    try {
+        const response = await axios.post(
+            "/checkuser",
+            {
+                ...form,
+                jobInformation: store.jobInformation,
+            },
+            {
+                headers: {
+                    "X-CSRF-TOKEN": document.head.querySelector(
+                        'meta[name="csrf-token"]'
+                    ).content,
+                },
+            }
+        );
+        if (response.data.code == 200) {
             Swal.fire({
             title: 'Job Info has been sent to your email',
             text: 'You have already signed up',
@@ -99,7 +108,7 @@ const submitForm = async () => {
     line-height: 1.5 !important;
     border-radius: 0.25rem !important;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .btn-primary:hover {

@@ -1257,7 +1257,7 @@ class QuestionTableSeeder extends Seeder
                     'question' => $item['question'],
                     'slug' => $item['slug'],
                 ]);
-                if(isset($item['answers'])){
+                if (isset($item['answers'])) {
                     foreach ($item['answers'] as $answer) {
                         Answer::create([
                             'question_id' => $question->id,
@@ -1265,11 +1265,9 @@ class QuestionTableSeeder extends Seeder
                             'slug' => $answer['slug']
                         ]);
                     }
-                }
-                else {
+                } else {
                     continue;
                 }
-                
             }
         });
     }
