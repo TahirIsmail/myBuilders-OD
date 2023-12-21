@@ -1557,7 +1557,7 @@
 
                                 <div class=" lp-header__content">
                                     <a title="Post a job today and we'll alert the relevant tradespeople."
-                                        href="{{ route('post_projects') }}" class="btn--lp">Post a job</a>
+                                        href="{{ route('post_project') }}" class="btn--lp">Post a job</a>
                                     <a title="Start winning more work" href="{{ route('register') }}"
                                         class="btn--hollow">Trade sign
                                         up</a>
@@ -1584,7 +1584,7 @@
                             </h5>
                             <div class="lp-header__content">
                                 <a title="Post a job today and we'll alert the relevant tradespeople."
-                                    href="{{ route('post_projects') }}" class="btn--lp">Post a job</a>
+                                    href="{{ route('post_project') }}" class="btn--lp">Post a job</a>
                                 <a title="Start winning more work" href="{{ route('register') }}" class="btn--hollow">Trade
                                     sign
                                     up</a>
@@ -1609,7 +1609,7 @@
 
                             <div class="lp-header__content">
                                 <a title="Post a job today and we'll alert the relevant tradespeople."
-                                    href="{{ route('post_projects') }}" class="btn--lp">Post a job</a>
+                                    href="{{ route('post_project') }}" class="btn--lp">Post a job</a>
                                 <a title="Start winning more work" href="{{ route('register') }}" class="btn--hollow">Trade
                                     sign
                                     up</a>
@@ -1633,7 +1633,7 @@
                                 your area</h1>
                             <div class="lp-header__content">
                                 <a title="Post a job today and we'll alert the relevant tradespeople."
-                                    href="{{ route('post_projects') }}" class="btn--lp">Post a job</a>
+                                    href="{{ route('post_project') }}" class="btn--lp">Post a job</a>
                                 <a title="Start winning more work" href="{{ route('register') }}" class="btn--hollow">Trade
                                     sign
                                     up</a>

@@ -1,6 +1,6 @@
 <template>
     <div class="col-md-12 mx-auto row justify-content-md-center">
-        <div class="col-md-10 question_div">
+        <div class="col-md-10 question_div ">
             <p class="left-align" v-html="question.question"></p>
             <div v-if="question.answers.length > 0">
                 <div class="answer-outer">

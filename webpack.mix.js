@@ -36,7 +36,7 @@ mix.webpackConfig({
                 'public/js/**/*.js',
                 'public/css/**/*.css',
             ],
-            open: true, // Set to false to prevent the browser from opening automatically
+            open: false, // Set to false to prevent the browser from opening automatically
         })
     ]
 });
