@@ -26027,8 +26027,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               response = _context.sent;
               if (response.data.code == 200) {
                 Swal.fire({
-                  title: 'Job Info has been to your email address',
-                  text: 'You are have already signed up',
+                  title: 'Job Info has been sent to your email',
+                  text: 'You have already signed up',
                   icon: 'success'
                 });
                 window.location.href = '/';
@@ -26036,7 +26036,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 Swal.fire({
                   title: 'You need to sign up',
                   text: 'To complete job posting',
-                  icon: 'success'
+                  icon: 'question'
                 });
                 emit('toggleCurrent', true);
               }
@@ -26273,7 +26273,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
     });
     var selectedCategory = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
     var questions = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(new Set()); // Now a list of question data
-
+    var questionComponents = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]);
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.onBeforeMount)( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
@@ -26384,6 +26384,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
       jobCategories: jobCategories,
       selectedCategory: selectedCategory,
       questions: questions,
+      questionComponents: questionComponents,
       fetchInitialQuestion: fetchInitialQuestion,
       handleLast: handleLast,
       handleAnswerSelected: handleAnswerSelected,
@@ -26451,6 +26452,7 @@ var maxWordCount = 3000;
     var emit = __emit;
     var selectedAnswer = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
     var index = props.index;
+    var scrollToRef = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
     var isLast = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(function () {
       return props.question.answers.length === 0 ? true : false;
     });
@@ -26467,6 +26469,9 @@ var maxWordCount = 3000;
     };
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(function () {
       isLastCheck();
+      scrollToRef.value.scrollIntoView({
+        behavior: 'smooth'
+      });
     });
     var text = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(initialText);
     var characterCount = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(0);
@@ -26502,6 +26507,7 @@ var maxWordCount = 3000;
       emit: emit,
       selectedAnswer: selectedAnswer,
       index: index,
+      scrollToRef: scrollToRef,
       isLast: isLast,
       isLastCheck: isLastCheck,
       goToNextStep: goToNextStep,
@@ -26698,7 +26704,7 @@ var _hoisted_2 = {
   "class": "row justify-content-center"
 };
 var _hoisted_3 = {
-  "class": "col-md-6"
+  "class": "col-md-8"
 };
 var _hoisted_4 = {
   "class": "form-group position-relative"
@@ -26847,14 +26853,12 @@ var _hoisted_7 = /*#__PURE__*/_withScopeId(function () {
   }, " What would you like to have done? ", -1 /* HOISTED */);
 });
 var _hoisted_8 = {
+  key: 0,
   "class": "container mt-4 mb-4"
 };
 var _hoisted_9 = {
-  key: 0,
+  key: 1,
   "class": "container mt-5"
-};
-var _hoisted_10 = {
-  "class": "form-group button-container"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_v_select = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-select");
@@ -26867,19 +26871,30 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     label: "name",
     "class": "mb-3",
     placeholder: "Select a category"
-  }, null, 8 /* PROPS */, ["modelValue", "options"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Form Steps ")])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [$setup.selectedCategory ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-    key: 0
-  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.questions, function (question, index) {
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["QuestionComponent"], {
-      ref_for: true,
-      ref: "questionComponent-".concat(index),
-      question: question,
-      index: index,
-      key: question.id,
-      onAnswerSelected: $setup.handleAnswerSelected,
-      onIsLast: $setup.handleLast
-    }, null, 8 /* PROPS */, ["question", "index"]);
-  }), 128 /* KEYED_FRAGMENT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), $setup.isLastComponent && $setup.selectedCategory ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["JobHeadline"])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])], 64 /* STABLE_FRAGMENT */);
+  }, null, 8 /* PROPS */, ["modelValue", "options"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Form Steps ")])]), $setup.selectedCategory ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(vue__WEBPACK_IMPORTED_MODULE_0__.TransitionGroup, {
+    name: "list",
+    tag: "QuestionComponent"
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.questions, function (question, index) {
+        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["QuestionComponent"], {
+          ref_for: true,
+          ref: "questionComponent-".concat(index),
+          question: question,
+          index: index,
+          key: question.id,
+          onAnswerSelected: $setup.handleAnswerSelected,
+          onIsLast: $setup.handleLast
+        }, null, 8 /* PROPS */, ["question", "index"]);
+      }), 128 /* KEYED_FRAGMENT */))];
+    }),
+    _: 1 /* STABLE */
+  })])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.isLastComponent && $setup.selectedCategory ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(vue__WEBPACK_IMPORTED_MODULE_0__.Transition, null, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["JobHeadline"])];
+    }),
+    _: 1 /* STABLE */
+  })])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),
@@ -26901,6 +26916,7 @@ var _withScopeId = function _withScopeId(n) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.pushScopeId)("data-v-5d3ef256"), n = n(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.popScopeId)(), n;
 };
 var _hoisted_1 = {
+  ref: "scrollToRef",
   "class": "col-md-12 mx-auto row justify-content-md-center"
 };
 var _hoisted_2 = {
@@ -26963,7 +26979,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["character-count", {
       exceeded: $setup.isLimitExceeded
     }])
-  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.characterCount) + "/3000", 3 /* TEXT, CLASS */)])]))])]);
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.characterCount) + "/3000", 3 /* TEXT, CLASS */)])]))])], 512 /* NEED_PATCH */);
 }
 
 /***/ }),
@@ -27365,10 +27381,16 @@ var useQuestionnaireStore = (0,pinia__WEBPACK_IMPORTED_MODULE_2__.defineStore)('
                 console.log(response.data);
                 if (response.headers['x-redirect']) {
                   // Handle the redirect on the client side
-                  alert(response.headers['x-redirect']);
+
                   window.location.href = response.headers['x-redirect'];
                 } else {
                   // Handle other successful responses as needed
+                  Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Something went wrong!",
+                    footer: '<a href="#">Why do I have this issue?</a>'
+                  });
                   window.location.href = response.headers['x-redirect'];
                 }
               }
@@ -32219,7 +32241,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_select_dist_vue_select_css__WEBPACK_IMPORTED_MODULE_1__["default"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.container[data-v-06285eb4] {\r\n  max-width: 800px !important;\r\n  margin: 20px auto !important;\n}\n.form-header[data-v-06285eb4] {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  height: 100%;\r\n  padding-top: 10px;\n}\n.text-center[data-v-06285eb4] {\r\n  text-align: center !important;\n}\n.faded-category[data-v-06285eb4] {\r\n  color: #999 !important;\r\n  font-size: 1.5em !important;\r\n  margin-bottom: 15px !important;\n}\r\n\r\n/* Style for form elements and the container */\n.mx-auto[data-v-06285eb4] {\r\n  margin-right: auto !important;\r\n  margin-left: auto !important;\n}\n.row[data-v-06285eb4] {\r\n  display: flex !important;\r\n  justify-content: center !important;\n}\n.button-container[data-v-06285eb4] {\r\n  display: flex;\r\n  justify-content: center;\n}\n.col-lg-8[data-v-06285eb4] {\r\n  width: 100% !important;\r\n  max-width: 800px !important;\r\n  /* Adjust as needed */\n}\n.form-control-lg[data-v-06285eb4] {\r\n  height: calc(1.5em + 1rem + 2px) !important;\r\n  padding: 0.5rem 1rem !important;\r\n  font-size: 1.25rem !important;\r\n  line-height: 1.5 !important;\n}\r\n\r\n/* Style for vue-select */\n.vue-select[data-v-06285eb4] {\r\n  width: 100% !important;\r\n  margin-bottom: 1rem !important;\n}\r\n\r\n/* Button styling */\n.btn-primary[data-v-06285eb4] {\r\n  color: #fff !important;\r\n  background-color: rgb(81, 197, 125) !important;\n}\r\n\r\n\r\n\r\n\r\n/* Additional styles for responsiveness and spacing */\n@media (max-width: 768px) {\n.col-lg-8[data-v-06285eb4] {\r\n    max-width: 100%;\n}\n}\n.mb-3[data-v-06285eb4] {\r\n  margin-bottom: 1rem;\n}\n.v-select .vs__dropdown-toggle[data-v-06285eb4] {\r\n  border: none !important;\r\n  /* Removes border */\n}\n.left-align[data-v-06285eb4] {\r\n  text-align: left;\r\n  display: flex;\r\n  align-items: center;\r\n  padding: 10px;\r\n\r\n\r\n\r\n\r\n  font-size: 1.5em;\r\n  letter-spacing: 0px;\r\n  margin-bottom: 0.5em;\r\n  color: rgb(52, 57, 68);\r\n  font-weight: bold;\r\n  -webkit-font-smoothing: antialiased;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.container[data-v-06285eb4] {\r\n  max-width: 800px !important;\r\n  margin: 20px auto !important;\n}\n.form-header[data-v-06285eb4] {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  height: 100%;\r\n  padding-top: 10px;\n}\n.text-center[data-v-06285eb4] {\r\n  text-align: center !important;\n}\n.faded-category[data-v-06285eb4] {\r\n  color: #999 !important;\r\n  font-size: 1.5em !important;\r\n  margin-bottom: 15px !important;\n}\r\n\r\n/* Style for form elements and the container */\n.mx-auto[data-v-06285eb4] {\r\n  margin-right: auto !important;\r\n  margin-left: auto !important;\n}\n.row[data-v-06285eb4] {\r\n  display: flex !important;\r\n  justify-content: center !important;\n}\n.button-container[data-v-06285eb4] {\r\n  display: flex;\r\n  justify-content: center;\n}\n.col-lg-8[data-v-06285eb4] {\r\n  width: 100% !important;\r\n  max-width: 800px !important;\r\n  /* Adjust as needed */\n}\n.form-control-lg[data-v-06285eb4] {\r\n  height: calc(1.5em + 1rem + 2px) !important;\r\n  padding: 0.5rem 1rem !important;\r\n  font-size: 1.25rem !important;\r\n  line-height: 1.5 !important;\n}\r\n\r\n/* Style for vue-select */\n.vue-select[data-v-06285eb4] {\r\n  width: 100% !important;\r\n  margin-bottom: 1rem !important;\n}\r\n\r\n/* Button styling */\n.btn-primary[data-v-06285eb4] {\r\n  color: #fff !important;\r\n  background-color: rgb(81, 197, 125) !important;\n}\r\n\r\n\r\n\r\n\r\n/* Additional styles for responsiveness and spacing */\n@media (max-width: 768px) {\n.col-lg-8[data-v-06285eb4] {\r\n    max-width: 100%;\n}\n}\n.mb-3[data-v-06285eb4] {\r\n  margin-bottom: 1rem;\n}\n.v-select .vs__dropdown-toggle[data-v-06285eb4] {\r\n  border: none !important;\r\n  /* Removes border */\n}\n.left-align[data-v-06285eb4] {\r\n  text-align: left;\r\n  display: flex;\r\n  align-items: center;\r\n  padding: 10px;\r\n\r\n\r\n\r\n\r\n  font-size: 1.5em;\r\n  letter-spacing: 0px;\r\n  margin-bottom: 0.5em;\r\n  color: rgb(52, 57, 68);\r\n  font-weight: bold;\r\n  -webkit-font-smoothing: antialiased;\n}\n.list-enter-active[data-v-06285eb4],\r\n.list-leave-active[data-v-06285eb4] {\r\n  transition: all 0.5s ease;\n}\n.list-enter-from[data-v-06285eb4],\r\n.list-leave-to[data-v-06285eb4] {\r\n  opacity: 0;\r\n  transform: translateX(30px);\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

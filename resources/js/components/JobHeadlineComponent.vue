@@ -2,7 +2,7 @@
 <template>
     <div class="container" style="padding: 30px">
         <div class="row justify-content-center">
-            <div class="col-md-6">
+            <div class="col-md-8">
                 <!-- <h2 class="form-heading">Give your job a headline</h2> -->
                 <form @submit.prevent="submitForm" class="account-form">
                     <!-- Job Headline Input -->

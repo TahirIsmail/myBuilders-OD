@@ -1,7 +1,7 @@
 <template>
   <div class="form-header container">
     <!-- Header content... -->
-    
+
   </div>
   <div style="background-color: #f9f9f9">
     <div class="container mt-4 mb-4">
@@ -23,31 +23,25 @@
       </div>
 
     </div>
-    <div class="container mt-4 mb-4">
-      <QuestionComponent 
-      v-if="selectedCategory"
-      :ref="`questionComponent-${index}`" 
-      v-for="(question, index) in questions" :question="question"
-      :index="index"
-      :key="question.id" 
-      @answer-selected="handleAnswerSelected" 
-      @is-last="handleLast"
-      
-      />
-
+    <div class="container mt-4 mb-4" v-if="selectedCategory">
+      <TransitionGroup name="list" tag="QuestionComponent">
+        <QuestionComponent  :ref="`questionComponent-${index}`"
+          v-for="(question, index) in questions" :question="question" :index="index" :key="question.id"
+          @answer-selected="handleAnswerSelected" @is-last="handleLast" />
+      </TransitionGroup>
     </div>
 
     <div v-if="isLastComponent && selectedCategory" class="container mt-5">
-      <div class="form-group button-container">
+      <Transition>
         <JobHeadline />
-      </div>
+      </Transition>
     </div>
 
-    
+
   </div>
 </template>
 <script setup>
-import { ref, computed, watch, onBeforeMount,provide } from "vue";
+import { ref, computed, watch, onBeforeMount, provide } from "vue";
 
 import JobHeadline from './JobHeadlineComponent.vue'// Make sure you import your dynamic question component
 import axios from 'axios';
@@ -57,9 +51,9 @@ import QuestionComponent from './QuestionWithOptionsComponent.vue';
 import { useQuestionnaireStore } from "../store/questionnaireStore"
 const store = useQuestionnaireStore();
 const props = defineProps({
-  user:Object
+  user: Object
 })
-provide("user",props.user)
+provide("user", props.user)
 const isLastComponent = ref(false);
 const jobCategories = computed(() => {
   return store.jobCategories.map((category) => ({
@@ -71,7 +65,7 @@ const jobCategories = computed(() => {
 const selectedCategory = ref(null);
 
 const questions = ref(new Set()); // Now a list of question data
-
+const questionComponents = ref([]);
 onBeforeMount(async () => {
   await store.loadJobCategories();
 });
@@ -88,13 +82,13 @@ const fetchInitialQuestion = async () => {
 function handleLast(isLast) {
   isLastComponent.value = isLast.value
 
-  
+
 
 }
 // Event handler for when an answer is selected
 function handleAnswerSelected(index, selectedAnswer) {
   store.setAnswerForQuestion(index, selectedAnswer);
-  
+
   fetchNextQuestion(index, selectedAnswer);
 }
 
@@ -123,6 +117,7 @@ const fetchNextQuestion = async (index, selectedAnswer) => {
 
       // Insert the new question after the current question
       questions.value.push(newQuestion);
+      
     }
 
 
@@ -138,7 +133,7 @@ const fetchNextQuestion = async (index, selectedAnswer) => {
 };
 
 const moveToSignUp = () => {
-  
+
 }
 watch(selectedCategory, (newCategory, oldCategory) => {
   // Check if the category has actually changed
@@ -147,7 +142,7 @@ watch(selectedCategory, (newCategory, oldCategory) => {
     store.resetState()
     store.setSelectedCategory(newCategory)
     questions.value = []; // Clear the previous questions
-    
+
     fetchInitialQuestion(); // Fetch the initial question for the new category
   }
 }, { immediate: true });
@@ -259,5 +254,16 @@ watch(selectedCategory, (newCategory, oldCategory) => {
   font-weight: bold;
   -webkit-font-smoothing: antialiased;
 
+}
+
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
 }
 </style>

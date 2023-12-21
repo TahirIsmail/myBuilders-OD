@@ -167,6 +167,8 @@
     </section>
 @endsection
 @section('script')
+<script src="{{ my_asset('assets/common/js/app.js') }}"></script>
+    
     <script>
         const map = new mapboxgl.Map({
             container: 'map',

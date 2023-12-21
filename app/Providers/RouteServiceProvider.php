@@ -43,7 +43,7 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
-        $this->mapOfflinePaymentRoutes();
+        // $this->mapOfflinePaymentRoutes();
 
         // $this->mapInstallRoutes();
 

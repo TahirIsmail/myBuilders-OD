@@ -151,7 +151,7 @@ Route::group(['middleware' => ['user','auth']], function(){
 });
 
 // Client middleware
-Route::group(['middleware' => ['auth']], function(){
+Route::group(['middleware' => ['auth','phoneverified']], function(){
 	Route::resource('/projects', 'ProjectController');
 	Route::post('/jobinfo','ProjectController@storejobpost');
 	Route::get('/my-open-projects', 'ProjectController@my_open_project')->name('projects.my_open_project');
@@ -188,7 +188,7 @@ Route::post('/service/package-purchase','ServiceController@purchase_service_pack
 
 
 // Freelancer middleware
-Route::group(['middleware' => ['auth']], function(){
+Route::group(['middleware' => ['auth','phoneverified']], function(){
     Route::post('/bids/store', 'BiddingController@store')->name('bids.store');
 
 

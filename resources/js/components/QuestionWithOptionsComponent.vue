@@ -1,5 +1,5 @@
 <template>
-  <div class="col-md-12 mx-auto row justify-content-md-center">
+  <div ref="scrollToRef" class="col-md-12 mx-auto row justify-content-md-center">
       <div class="col-md-6 question_div">
           <p class="left-align">{{ question.question }}</p>
           <div v-if="question.answers.length > 0">
@@ -67,6 +67,8 @@ const emit = defineEmits(["answer-selected","is-last"]);
 
 const selectedAnswer = ref(null);
 const index = props.index;
+const scrollToRef = ref(null);
+
 const isLast  = computed(() => (props.question.answers.length === 0 ? true : false)) 
 watch(selectedAnswer, (newOption, oldOption) => {
   if (newOption != oldOption) {
@@ -83,6 +85,7 @@ const goToNextStep = (answer) => {
 };
 onMounted(() => {
 isLastCheck();
+scrollToRef.value.scrollIntoView({ behavior: 'smooth' });
 
 })
 

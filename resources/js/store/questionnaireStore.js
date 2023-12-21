@@ -72,10 +72,16 @@ export const useQuestionnaireStore = defineStore('questionnaire', {
             console.log(response.data);
           if (response.headers['x-redirect']) {
             // Handle the redirect on the client side
-            alert(response.headers['x-redirect']);
+            
             window.location.href = response.headers['x-redirect'];
           } else {
             // Handle other successful responses as needed
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "Something went wrong!",
+              footer: '<a href="#">Why do I have this issue?</a>'
+            });
             window.location.href = response.headers['x-redirect'];
 
           }

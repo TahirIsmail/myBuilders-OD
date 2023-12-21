@@ -53,8 +53,8 @@ const submitForm = async () => {
         })
         if(response.data.code == 200){
             Swal.fire({
-            title: 'Job Info has been to your email address',
-            text: 'You are have already signed up',
+            title: 'Job Info has been sent to your email',
+            text: 'You have already signed up',
             icon: 'success',
             })
             window.location.href = '/'
@@ -62,7 +62,7 @@ const submitForm = async () => {
         Swal.fire({
             title: 'You need to sign up',
             text: 'To complete job posting',
-            icon: 'success',
+            icon: 'question',
             })
         
         emit('toggleCurrent',true);

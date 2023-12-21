@@ -25,7 +25,7 @@ class JobPostRequest extends FormRequest
     {
         return ['job_information.jobHeadline' => 'required|string|max:255',
         'job_information.postcode' => 'required|string|max:255',
-        'email' => 'required|email|max:255',
+        'email' => 'required|email|max:255|unique:users,email',
         'job_information.JobQuestionAnswer' => 'required|array|min:1',
         'job_information.JobQuestionAnswer.*.id' => 'required|integer',
         'job_information.JobQuestionAnswer.*.question_id' => 'required|integer',
@@ -39,7 +39,7 @@ class JobPostRequest extends FormRequest
         'job_information.JobDescription' => 'required|string',
         'user_type' => 'required|string',
         'fullName' => 'required|string|max:255',
-        'phone' => 'required|string|max:255',
+        'phone' => 'required|string|max:15|unique:addresses,phone',
         'username' => 'required|string|max:255',
         'newsletter' => 'required|boolean',
         'terms' => 'required|boolean',
