@@ -7,7 +7,7 @@
             <form class="" id="sort_freelancers" action="" method="GET">
                 <div class="card-header row gutters-5">
                     <div class="col text-center text-md-left">
-                        <h5 class="mb-md-0 h6">{{translate('Freelancer Lists')}}</h5>
+                        <h5 class="mb-md-0 h6">{{translate('Tradesman Lists')}}</h5>
                     </div>
                     <div class="col-md-3 ml-auto">
                         <select class="form-control aiz-selectpicker mb-2 mb-md-0" name="type" id="type" onchange="sort_freelancers()">

@@ -24,7 +24,7 @@
                     <div class="px-3 pt-3">
                         <div class="opacity-50">
                             <span class="fs-12 d-block">{{ translate('Total Earnings From') }}</span>
-                            {{ translate('Freelancer Subscription') }}
+                            {{ translate('Tradesman Subscription') }}
                         </div>
                         <div class="h3 fw-700 mb-3">{{ single_price(\App\Models\PackagePayment::freelancer()->sum('amount')) }}</div>
                     </div>
@@ -78,7 +78,7 @@
             <div class="col-6">
                 <div class="card">
                     <div class="card-header">
-                        <h6 class="mb-0 fs-14">{{ translate('Top Freelancer Packages') }}</h6>
+                        <h6 class="mb-0 fs-14">{{ translate('Top Tradesman Packages') }}</h6>
                     </div>
                     <div class="card-body">
                         <canvas id="pie-2" class="w-100" height="280"></canvas>
@@ -111,7 +111,7 @@
                         <h5 class="h1 fw-700">{{ count(\App\Models\User::where('user_type', 'client')->where('created_at', '>', Carbon\Carbon::now()->subDays(30))->get()) }}</h5>
                     </div>
                     <div class="col-6 pt-3 mb-3">
-                        <span class="mb-2 d-block fs-13 opacity-60">{{ translate('New Freelancers') }}</span>
+                        <span class="mb-2 d-block fs-13 opacity-60">{{ translate('New Tradesman') }}</span>
                         <h5 class="h1 fw-700">{{ count(\App\Models\User::where('user_type', 'freelancer')->where('created_at', '>', Carbon\Carbon::now()->subDays(30))->get()) }}</h5>
                     </div>
                     <div class="col-6 pt-3 mb-3">
@@ -288,7 +288,7 @@
                 {
                     fill: false,
                     borderColor: '#377dff',
-                    label: '{{translate('Freelancer Package')}}',
+                    label: '{{translate('Tradesman Package')}}',
                     data: [
                         {{ \App\Models\PackagePayment::where('package_type', 'freelancer')->whereMonth('created_at', '=', '01')->whereYear('created_at', '=', date('Y'))->sum('amount') }},
                         {{ \App\Models\PackagePayment::where('package_type', 'freelancer')->whereMonth('created_at', '=', '02')->whereYear('created_at', '=', date('Y'))->sum('amount') }},

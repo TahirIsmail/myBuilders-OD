@@ -8,7 +8,7 @@
                 <form class="" id="sort_freelancer_payment_list" action="" method="GET">
                     <div class="card-header row gutters-5">
                         <div class="col text-center text-md-left">
-                            <h1 class="mb-0 h6">{{translate('Freelnacer Payments')}}</h1>
+                            <h1 class="mb-0 h6">{{translate('Tradesman Payments')}}</h1>
                         </div>
                         <div class="col-md-3">
                             <div class="input-group">

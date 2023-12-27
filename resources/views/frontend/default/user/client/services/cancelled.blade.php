@@ -28,7 +28,7 @@
                                     <tr>
                                         <th data-breakpoints="">#</th>
                                         <th data-breakpoints="">{{ translate('Service Title') }}</th>
-                                        <th data-breakpoints="md">{{ translate('Freelancer') }}</th>
+                                        <th data-breakpoints="md">{{ translate('Tradesman') }}</th>
                                         <th data-breakpoints="">{{ translate('Service Type') }}</th>
                                         <th data-breakpoints="md">{{ translate('Bought At') }}</th>
                                         <th data-breakpoints="md">{{ translate('Refunded') }}</th>

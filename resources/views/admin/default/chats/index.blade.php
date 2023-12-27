@@ -27,7 +27,7 @@
                         <tr>
                             <th>#</th>
                             <th>{{translate('Client')}}</th>
-                            <th>{{translate('Freelancer')}}</th>
+                            <th>{{translate('Tradesman')}}</th>
                             <!-- <th data-breakpoints="md">{{translate('Chat Status')}}</th> -->
                             <!-- <th data-breakpoints="md">{{translate('Blocked by')}}</th> -->
                             <th data-breakpoints="md">{{translate('Chat Started')}}</th>

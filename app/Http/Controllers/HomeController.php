@@ -8,7 +8,10 @@ use App\Models\User;
 use App\Models\Project;
 use App\Models\ChatThread;
 use App\Models\UserProfile;
+use App\Utility\EmailUtility;
+use App\Utility\NotificationUtility;
 use App\Models\ProjectCategory as Categories;
+use App\Models\Skill;
 use App\Models\ProjectCategory;
 use App\Notifications\SendMagicLinkNotification;
 use Carbon;
@@ -194,6 +197,7 @@ class HomeController extends Controller
         
         $email = $request->input('email');
         $jobInformation = $request->input('jobInformation');
+        
         if (userExistsWithEmail($email)) {
             // User with the specified email exists
             // Add your authentication logic here
@@ -216,12 +220,46 @@ class HomeController extends Controller
       $jobInformation = $request->input('jobinformation');
       $jobdata = json_decode($jobInformation,true);
       
-      return view('frontend.default.magic-job-post', $jobdata);
+      return view('frontend.default.magic-job-post', $jobdata,['jobInformation' => $jobdata]);
       
     }
 
     public function storemagicjobpost(Request $request){
-        dd($request->all());
+        
+        
+        $project = new Project;
+        $project->name =  $request->jobHeadline;
+        $project->jobquestionsarray = json_encode($request->JobQuestionAnswer);
+        $project->job_postal_code = $request->postcode;
+        $project->isValidPostalCode = isset($request->isValidPostalCode) ? 1 : 0;
+        $project->project_category_id = $request->SelectedCategory['id'];
+        $project->description = $request->JobDescription;
+        $project->excerpt = $request->JobDescription;
+        $project->skills =  json_encode(Skill::where('name', 'LIKE', '%' . substr($request->SelectedCategory['name'], 0, 6) . '%')->pluck('id'));
+        $project->client_user_id = Auth()->user()->id;
+        $project->slug = Str::slug($request->jobHeadline, '-') . date('Ymd-his');
+        $project->save();
+
+
+        NotificationUtility::set_notification(
+            "A_new_Job_has_been_created_by_client",
+            translate('A new Job has been created by'),
+            route('project.details', ['slug' => $project->slug], false),
+            0,
+            Auth()->user()->id,
+            'admin'
+        );
+        EmailUtility::send_email(
+            translate('A new Job has been created'),
+            translate('A new Job has been created by') . Auth()->user()->name,
+            system_email(),
+            route('project.details', ['slug' => $project->slug])
+        );
+
+       
+
+    // Redirect to the specified route
+        return response()->json(['message' => 'Job posted successfully','code' => 200]);
     }
     function clearCache(Request $request)
     {

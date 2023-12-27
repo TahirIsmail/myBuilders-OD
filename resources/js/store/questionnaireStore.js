@@ -91,34 +91,71 @@ export const useQuestionnaireStore = defineStore('questionnaire', {
         console.error("Error Sending data to the server")
       }
      },
-     async sendUserinfoWithJobInfo(){
-      try{
-        const response = await axios.post('/register',{
+     async sendUserinfoWithJobInfo() {
+      try {
+        const response = await axios.post('/register', {
           job_information: this.jobInformation,
-          ...this.userInformation
-        },{
+          ...this.userInformation,
+        }, {
           headers: {
-        'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content,
-    },
-        })
+            'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content,
+          },
+        });
+        
         if (response.status === 200) {
           // Check if there is a redirect in the response headers
-            console.log(response.data);
           if (response.headers['x-redirect']) {
             // Handle the redirect on the client side
-            alert(response.headers['x-redirect']);
+            await Swal.fire({
+              title: 'The Job will be posted after verification',
+              text: 'You have successfully signed up. Proceed to verify your phone number',
+              icon: 'success',
+              showConfirmButton: true,
+            });
+    
+            // Redirect after the Swal confirmation
             window.location.href = response.headers['x-redirect'];
-          } else {
-            // Handle other successful responses as needed
-            window.location.href = response.headers['x-redirect'];
-
           }
+        } 
+        
+      } catch (e) {
+        if (e.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.error(e.response);
+          console.error('Response data:', e.response.data); // This will contain the validation errors
+          console.error('Response status:', e.response.status);
+          console.error('Response headers:', e.response.headers);
+          
+          // You can use the error response data to display specific error messages
+          // to the user using Swal or any other alert mechanism.
+          const message = e.response.data.message;
+          if (typeof message === "object") {
+            await Swal.fire({
+              title: 'Verification Error',
+              text: e.response.data.message.verification[0],
+              icon: 'error',
+              showConfirmButton: true,
+            });
+          }
+          else{
+            await Swal.fire({
+              title: 'Validation Error',
+              text: e.response.data.message,
+              icon: 'error',
+              showConfirmButton: true,
+            });
+          }
+          
+        } else if (e.request) {
+          // The request was made but no response was received
+          console.error('No response received from the server');
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.error('Error during request setup', e.message);
         }
       }
-      catch(e){
-        console.error("Error Sending data to the server")
-      }
-     },
+    },
      resetState(){
       this.jobInformation = null,
       this.userInformation = null,

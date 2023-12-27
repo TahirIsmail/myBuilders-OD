@@ -3,7 +3,7 @@
     <!-- Header content... -->
 
   </div>
-  <div style="background-color: #f9f9f9">
+  <div ref='scrollToJobCategory' style="background-color: #f9f9f9">
     <div class="container mt-4 mb-4">
       <div class="text-center" style="width: 800px; padding: 10px; margin: 0 auto">
         <!-- Display the selected category but faded -->
@@ -41,7 +41,7 @@
   </div>
 </template>
 <script setup>
-import { ref, computed, watch, onBeforeMount, provide } from "vue";
+import { ref, computed,onMounted, watch, onBeforeMount, provide } from "vue";
 
 
 import JobHeadline from "./JobHeadlineComponent.vue"; // Make sure you import your dynamic question component
@@ -55,8 +55,10 @@ const props = defineProps({
 })
 provide("user", props.user)
 const isLastComponent = ref(false);
+const scrollToJobCategory = ref(null);
 const jobCategories = computed(() => {
     return store.jobCategories.map((category) => ({
+
         ...category,
         name: category.name,
     }));
@@ -70,6 +72,9 @@ onBeforeMount(async () => {
     await store.loadJobCategories();
 });
 
+onMounted(() => {
+  scrollToJobCategory.value.scrollIntoView({ behavior: 'smooth'});
+});
 // Fetch initial question based on selected category
 const fetchInitialQuestion = async () => {
     if (selectedCategory.value && selectedCategory.value.firstquestion) {
@@ -262,7 +267,7 @@ watch(selectedCategory, (newCategory, oldCategory) => {
 
 .list-enter-active,
 .list-leave-active {
-  transition: all 0.5s ease;
+  transition: all 1.0s ease;
 }
 
 .list-enter-from,

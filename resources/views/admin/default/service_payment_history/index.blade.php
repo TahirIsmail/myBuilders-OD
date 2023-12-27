@@ -30,10 +30,10 @@
                             <th>{{ translate('Service') }}</th>
                             <th data-breakpoints="sm">{{ translate('Service Type') }}</th>
                             <th data-breakpoints="md">{{ translate('Client') }}</th>
-                            <th data-breakpoints="md">{{ translate('Freelancer') }}</th>
+                            <th data-breakpoints="md">{{ translate('Tradesman') }}</th>
                             <th>{{ translate('Amount') }}</th>
                             <th data-breakpoints="sm">{{ translate('My Earnings') }}</th>
-                            <th data-breakpoints="sm">{{ translate('Freelancer Earnings') }}</th>
+                            <th data-breakpoints="sm">{{ translate('Tradesman Earnings') }}</th>
                             <th>{{ translate('Payment Method') }}</th>
                             @if (\App\Models\Addon::where('unique_identifier', 'offline_payment')->first() != null && \App\Models\Addon::where('unique_identifier', 'offline_payment')->first()->activated)
                               <th data-breakpoints="">{{ translate('Payment Type')}}</th>

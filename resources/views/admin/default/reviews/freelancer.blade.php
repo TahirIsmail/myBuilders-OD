@@ -7,7 +7,7 @@
             <form class="" id="sort_clients" action="" method="GET">
                 <div class="card-header row gutters-5">
                     <div class="col text-center text-md-left">
-                        <h5 class="mb-md-0 h6">{{translate('Freelancer Reviews by Clients')}}</h5>
+                        <h5 class="mb-md-0 h6">{{translate('Tradesman Reviews by Clients')}}</h5>
                     </div>
                 </div>
             </form>
@@ -16,7 +16,7 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>{{translate('Freelancer')}}</th>
+                            <th>{{translate('Tradesman')}}</th>
                             <th>{{translate('Client')}}</th>
                             <th>{{translate('Project')}}</th>
                             <th>{{translate('Rating')}}</th>

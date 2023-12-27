@@ -191,7 +191,7 @@
 	            	<div class="col-md-6">
 	            		<div class="card rounded-2 border-gray-light">
 	            			<div class="card-header border-0">
-	            				<h6 class="mb-0 fs-16 fw-700">{{ translate('Suggested Freelancers') }}</h6>
+	            				<h6 class="mb-0 fs-16 fw-700">{{ translate('Suggested Tradesman') }}</h6>
 	            			</div>
 	            			<div class="card-body px-0 pt-0">
 	            				<div class="aiz-auto-scroll c-scrollbar-light px-4" style="height: 340px; overflow-y: scroll;">
@@ -288,7 +288,7 @@
                                                 <i class="las la-times text-white"></i>
                                             </span>
                                         @endif
-                                        <span>{{ translate('Freelancer Bookmark option') }}</span>
+                                        <span>{{ translate('Tradesman Bookmark option') }}</span>
                                     </li>
             					</ul>
             				</div> --}}

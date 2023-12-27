@@ -141,14 +141,14 @@
                     <li class="aiz-side-nav-item">
                         <a href="#" class="aiz-side-nav-link">
                             <i class="las la-user-circle aiz-side-nav-icon"></i>
-                            <span class="aiz-side-nav-text">{{translate('Freelancers')}}</span>
+                            <span class="aiz-side-nav-text">{{translate('Tradesman')}}</span>
                             <span class="aiz-side-nav-arrow"></span>
                         </a>
                         <ul class="aiz-side-nav-list level-2">
                             @can('show all freelancers')
                             <li class="aiz-side-nav-item">
                                 <a href="{{ route('all_freelancers') }}" class="aiz-side-nav-link {{ areActiveRoutes(['all_freelancers', 'freelancer_info_show'])}}">
-                                    <span class="aiz-side-nav-text">{{translate('All Freelancers')}}</span>
+                                    <span class="aiz-side-nav-text">{{translate('All Tradesman')}}</span>
                                 </a>
                             </li>
                             @endcan
@@ -156,7 +156,7 @@
                             @can('show freelancer packages')
                             <li class="aiz-side-nav-item">
                                 <a href="{{ route('freelancer_package.index', 'freelancer') }}" class="aiz-side-nav-link {{ areActiveRoutes(['freelancer_package.index', 'freelancer_package.create', 'freelancer_package.edit'])}}">
-                                    <span class="aiz-side-nav-text">{{translate('Freelancer Packages')}}</span>
+                                    <span class="aiz-side-nav-text">{{translate('Tradesman Packages')}}</span>
                                 </a>
                             </li>
                             @endcan
@@ -164,7 +164,7 @@
                             @can('show freelancer skills')
                             <li class="aiz-side-nav-item">
                                 <a href="{{ route('skills.index') }}" class="aiz-side-nav-link {{ areActiveRoutes(['skills.index', 'skills.edit'])}}">
-                                    <span class="aiz-side-nav-text">{{translate('Freelancer Skills')}}</span>
+                                    <span class="aiz-side-nav-text">{{translate('Tradesman Skills')}}</span>
                                 </a>
                             </li>
                             @endcan
@@ -172,7 +172,7 @@
                             @can('show freelancer badges')
                             <li class="aiz-side-nav-item">
                                 <a href="{{ route('badges.index') }}" class="aiz-side-nav-link {{ areActiveRoutes(['badges.index', 'badges.create', 'badges.edit'])}}">
-                                    <span class="aiz-side-nav-text">{{translate('Freelancer Badges')}}</span>
+                                    <span class="aiz-side-nav-text">{{translate('Tradesman Badges')}}</span>
                                 </a>
                             </li>
                             @endcan
@@ -225,7 +225,7 @@
                             @can('show freelancers reviews')
                             <li class="aiz-side-nav-item">
                                 <a href="{{ route('reviews.freelancer') }}" class="aiz-side-nav-link {{ areActiveRoutes(['reviews.freelancer', 'freelancer_review_details'])}}">
-                                    <span class="aiz-side-nav-text">{{translate('Freelancers Reviews')}}</span>
+                                    <span class="aiz-side-nav-text">{{translate('Tradesman Reviews')}}</span>
                                 </a>
                             </li>
                             @endcan
@@ -345,7 +345,7 @@
                             @can('show freelancer withdraw requests')
                             <li class="aiz-side-nav-item">
                                 <a href="{{ route('withdraw_request.index') }}" class="aiz-side-nav-link {{ areActiveRoutes(['pay_to_freelancer'])}}">
-                                    <span class="aiz-side-nav-text">{{translate('Freelancer Withdraw Requests')}}</span>
+                                    <span class="aiz-side-nav-text">{{translate('Tradesman Withdraw Requests')}}</span>
                                 </a>
                             </li>
                             @endcan
@@ -353,7 +353,7 @@
                             @can('show freelancer payouts')
                             <li class="aiz-side-nav-item">
                                 <a href="{{route('freelancer_payment.index')}}" class="aiz-side-nav-link">
-                                    <span class="aiz-side-nav-text">{{translate('Freelancer Payouts')}}</span>
+                                    <span class="aiz-side-nav-text">{{translate('Tradesman Payouts')}}</span>
                                 </a>
                             </li>
                             @endcan
@@ -564,7 +564,7 @@
                         @can('show freelancer payment')
                         <li class="aiz-side-nav-item">
                             <a href="{{ route('freelancer_payment_settings') }}" class="aiz-side-nav-link">
-                                <span class="aiz-side-nav-text">{{translate('Freelancer Payment')}}</span>
+                                <span class="aiz-side-nav-text">{{translate('Tradesman Payment')}}</span>
                             </a>
                         </li>
                         @endcan
@@ -657,7 +657,8 @@
                 </li>
                 @endcan
 
-                @if(auth()->user()->can('system update') 
+                
+                {{-- @if(auth()->user()->can('system update') 
                         || auth()->user()->can('show server status'))
                     <li class="aiz-side-nav-item">
                         <a href="#" class="aiz-side-nav-link">
@@ -682,16 +683,16 @@
                             @endcan
                         </ul>
                     </li>
-                @endif
+                @endif --}}
 
-                @can('show addon manager')
+                {{-- @can('show addon manager')
                 <li class="aiz-side-nav-item">
                     <a href="{{ route('addons.index') }}" class="aiz-side-nav-link {{ areActiveRoutes(['addons.create'])}}">
                         <i class="las la-cubes aiz-side-nav-icon"></i>
                         <span class="aiz-side-nav-text">{{translate('Addon Manager')}}</span>
                     </a>
                 </li>
-                @endcan
+                @endcan --}}
             </ul><!-- .aiz-side-nav -->
         </div><!-- .aiz-side-nav-wrap -->
     </div><!-- .aiz-sidebar -->

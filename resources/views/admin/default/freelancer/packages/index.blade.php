@@ -4,7 +4,7 @@
 <div class="aiz-titlebar mt-2 mb-3">
 	<div class="row align-items-center">
 		<div class="col-md-6">
-			<h1 class="h3">{{translate('Freelnacer Packages')}}</h1>
+			<h1 class="h3">{{translate('Tradesman Packages')}}</h1>
 		</div>
 		<div class="col-md-6 text-md-right">
             @can('create new freelancer package')

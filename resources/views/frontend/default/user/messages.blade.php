@@ -17,7 +17,7 @@
                                     <div class="overlay dark c-pointer" data-toggle="class-toggle" data-target=".chat-user-list-wrap" data-same=".aiz-all-chat-toggler"></div>
                                     <div class="chat-user-list-header d-flex justify-content-between align-items-center bg-white border-bottom border-right h6 mb-0">
                                         @if (isClient())
-                                            <span class="p-2 m-1">{{translate('Freelancers')}}</span>
+                                            <span class="p-2 m-1">{{translate('Tradesman')}}</span>
                                         @else
                                             <span class="p-2 m-1">{{translate('Clients')}}</span>
                                         @endif
@@ -116,7 +116,7 @@
                                     </div>
                                     <div class="px-3 py-5 text-center">
                                         <i class="las la-user la-6x text-primary mb-4"></i>
-                                        <h5>{{ translate('Select a') }} @if (isClient()) {{ translate('Freelancer') }} @else {{ translate('Client') }} @endif {{ translate('to view chats') }}</h5>
+                                        <h5>{{ translate('Select a') }} @if (isClient()) {{ translate('Tradesman') }} @else {{ translate('Client') }} @endif {{ translate('to view chats') }}</h5>
                                     </div>
                                 </div>
                             </div>

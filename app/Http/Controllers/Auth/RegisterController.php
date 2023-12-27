@@ -173,8 +173,14 @@ class RegisterController extends Controller
     {
         $verification = $this->verify->startVerification($user->address->phone, $request->post('channel', 'sms'));
         if (!$verification->isValid()) {
-            $user->delete();
-
+            
+            $this->deleteUserProject($user);
+            $user->profile()->forceDelete();
+            $user->address()->forceDelete();
+            
+            $user->forceDelete();
+            
+           
             $errors = new MessageBag();
             foreach($verification->getErrors() as $error) {
                 $errors->add('verification', $error);
@@ -188,6 +194,10 @@ class RegisterController extends Controller
 
         //return redirect('/verify')->with('messages', $messages);
         return response()->json(['message' => $messages], 200)->header('X-Redirect', '/verify');
+    }
+
+    function deleteUserProject($user){
+        return Project::where('client_user_id', $user->id)->forceDelete();
     }
 
 }

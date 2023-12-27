@@ -36,6 +36,7 @@
                         placeholder="Include any details you think the tradesperson should know (approx. extension dimensions, timeframe, etc.)"
                         name="basicOutlineExtensionDescription"
                         class="custom-textarea custom-textarea1"
+                        required
                     ></textarea>
                     <span
                         class="character-count"
@@ -103,8 +104,11 @@ const isLimitExceeded = ref(false);
 watch(text, (newText) => {
     characterCount.value = newText.length;
     isLimitExceeded.value = characterCount.value > maxWordCount;
-
+    
     store.setJobDescription(newText);
+    // Update store or perform other actions
+   
+   
 });
 
 const updateCharacterCount = () => {
