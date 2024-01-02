@@ -53,9 +53,9 @@
 <script setup>
 import { ref, computed, watch, onBeforeMount, provide } from "vue";
 
-import JobHeadline from "./JobHeadlineComponent.vue"; // Make sure you import your dynamic question component
+import JobHeadline from "./JobHeadlineComponent"; // Make sure you import your dynamic question component
 import axios from "axios";
-import QuestionComponent from "./QuestionWithOptionsComponent.vue";
+import QuestionComponent from "./QuestionWithOptionsComponent";
 
 import { useQuestionnaireStore } from "../store/questionnaireStore";
 const store = useQuestionnaireStore();

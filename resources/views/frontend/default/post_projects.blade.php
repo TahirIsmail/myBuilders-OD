@@ -35,7 +35,7 @@
     </div>
     <div id="app">
 
-        <post-a-job :user="{{ json_encode($user) }}" />
+        <post-a-job :user="{{ json_encode($user) }}" ></post-a-job>
 
     </div>
 @endsection
