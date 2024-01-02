@@ -11,7 +11,7 @@
                 >
                     <!-- Display the selected category but faded -->
                     <div class="mx-auto row justify-content-md-center">
-                        <div class="col-lg-8">
+                        <div class="col-lg-10">
                             <p class="left-align">
                                 What would you like to have done?
                             </p>
