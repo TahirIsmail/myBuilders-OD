@@ -1,10 +1,10 @@
 
 <template>
     <div class="container" style="padding: 30px">
-        <div class="row justify-content-center ">
+        <div class="row justify-content-center " >
             <div class="col-md-10">
                 <!-- <h2 class="form-heading">Give your job a headline</h2> -->
-                <form @submit.prevent="submitForm">
+                <form @submit.prevent="submitForm" >
                     <!-- Job Headline Input -->
                     <div class="form-group position-relative">
                         <label for="jobHeadline">Give your job a headline</label>
@@ -104,68 +104,36 @@ const postalCodeValidation = () => {
 
 const submitForm = () => {
     // Handle the form submission
+
+
+
     if (user !== null && user !== undefined) {
         // Object exists and is not null or undefined
-        if (validation()) {
-            store.setjobInformation({
-                ...form,
-                JobQuestionAnswer: store.getAllSelectedAnswers,
-                SelectedCategory: store.selectedCategory,
-                JobDescription: store.getJobDescription
-            })
-            const response = store.sendJobinformation();
-            console.log(response)
-        }
-        
-
+        store.setjobInformation({
+            ...form,
+            JobQuestionAnswer: store.getAllSelectedAnswers,
+            SelectedCategory: store.selectedCategory,
+            JobDescription: store.getJobDescription
+        })
+        const response  =  store.sendJobinformation();
+        console.log(response)
     } else {
         // Object is null or undefined
-        if(validation()){
-            store.setjobInformation({
+
+        store.setjobInformation({
             ...user,
             ...form,
             JobQuestionAnswer: store.getAllSelectedAnswers,
             SelectedCategory: store.selectedCategory,
             JobDescription: store.getJobDescription
         })
-
-        }
-        
     }
 
 
 };
 
-const validation = () => {
-    if (store.getJobDescription == '' || store.getJobDescription.length <= 20) {
-        Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Job Description is empty or less than 20 characters",
-            footer: '<a href="#">Why do I have this issue?</a>'
-        });
-        return false
-    }
-    else if(!(form.isValidPostalCode)){
-        Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Please give valid postal code",
-            footer: '<a href="#">Why do I have this issue?</a>'
-        });
-        return false
-    }
-    else if(form.jobHeadline == ''){
-        Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Fill the job headline",
-            footer: '<a href="#">Why do I have this issue?</a>'
-        });
-        return false
-    }
-    // console.log(store.getJobDescription.length <= 20)
-    return true;
+const postjob = async () => {
+    await store.sendJobinformation()
 }
 
 </script>
@@ -191,7 +159,7 @@ const validation = () => {
 }
 
 .btn {
-    margin-top: 50px !important;
+    margin-top: 50px !important ;
     width: 500px !important;
     display: inline-block !important;
     font-weight: 400 !important;
@@ -209,7 +177,7 @@ const validation = () => {
 }
 
 .btn-primary:hover {
-
+   
     color: #fff;
     background-color: rgb(101, 217, 145) !important;
 }
@@ -217,7 +185,7 @@ const validation = () => {
 /* we will explain what these classes do next! */
 .v-enter-active,
 .v-leave-active {
-    transition: opacity 1.0s ease;
+    transition: opacity 1.5s ease;
 }
 
 .v-enter-from,

@@ -27,7 +27,7 @@
         </div>
         <div class="form-check">
             <input type="checkbox" class="form-check-input" id="newsletter" v-model="form.newsletter" />
-            <label class="form-check-label" for="newsletter">I'd like to receive MyBuilder News, Advice and
+            <label class="form-check-label" for="newsletter">I'd like to receive Builders'Valley News, Advice and
                 Tips</label>
         </div>
         <div class="form-check mb-3">
@@ -46,7 +46,7 @@
     </form>
 </template>
 
-<script setup>
+<script setup> 
 import { reactive, watch, ref, onMounted } from 'vue';
 import { useQuestionnaireStore } from '../store/questionnaireStore';
 import { VueTelInput } from 'vue-tel-input';

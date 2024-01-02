@@ -1,31 +1,25 @@
 <template>
-    <div class="container" style="padding: 30px">
-
-        <div class="row justify-content-center">
-            
-                
-            <div class="col-md-11">
-                <form @submit.prevent="submitForm">
-                    <div class="form-group">
-                        <label for="email">Email address</label>
-                        <input type="email" class="form-control" id="email" placeholder="Enter email"
-                            v-model="form.email" />
-                        <small class="form-text text-muted">
-                            We value your privacy and won't share your email
-                            with anybody else.
-                        </small>
-                    </div>
-                    <div class="form-group button-container">
-                        <button type="submit" class="btn btn-primary" :disabled="isButtonDisabled">
-                            Continue
-                        </button>
-                        <grid-loader v-if="loading" :loading="loading" :color="'#51c57d'" :size="'100'"></grid-loader>
-            
-                    </div>
-
-                </form>
+    <div class="container">
+        <form @submit.prevent="submitForm">
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    placeholder="Enter email"
+                    v-model="form.email"
+                />
+                <small class="form-text text-muted">
+                    We value your privacy and won't share your email with
+                    anybody else.
+                </small>
             </div>
-        </div>
+            <div class="form-group button-container">
+                <button type="submit" class="btn btn-primary">Continue</button>
+            </div>
+           
+        </form>
     </div>
 </template>
 <script setup>
@@ -38,8 +32,6 @@ const form = reactive({
 
 const store = useQuestionnaireStore();
 const getEmail = () => form.email;
-const isButtonDisabled = ref(false);
-const loading = ref(false);
 watch(getEmail, (newEmail) => {
     store.setEmail(newEmail);
 });
@@ -49,8 +41,6 @@ onMounted(() => {
 const emit = defineEmits(["toggleCurrent"]);
 const submitForm = async () => {
     try {
-        loading.value = true;
-        isButtonDisabled.value = true;
         const response = await axios.post(
             "/checkuser",
             {
@@ -67,40 +57,24 @@ const submitForm = async () => {
         );
         if (response.data.code == 200) {
             Swal.fire({
-                title: 'Job Info has been sent to your email',
-                text: 'You have already signed up',
-                icon: 'success',
-                showConfirmButton: true, // Display confirm button
-                preConfirm: () => {
-                    // Code to run on confirmation
-                    loading.value = false;
-                    isButtonDisabled.value = true;
-                    window.location.href = '/';
-                    // You can put your custom code or function call here
-                },
+                title: "Job Info has been to your email address",
+                text: "You are have already signed up",
+                icon: "success",
             });
+            window.location.href = "/";
         } else if (response.data.code == 404) {
-            isButtonDisabled.value = false;
             Swal.fire({
-                title: 'You need to sign up',
-                text: 'To complete job posting',
-                icon: 'question',
-            })
+                title: "You need to sign up",
+                text: "To complete job posting",
+                icon: "success",
+            });
 
-            emit('toggleCurrent', true);
+            emit("toggleCurrent", true);
         }
-       
-        
+    } catch (e) {
+        console.error("Error Sending data to the server");
     }
-    catch (e) {
-        console.error("Error Sending data to the server")
-    }
-    finally {
-        loading.value = false; // Set loading to false regardless of success or error
-        isButtonDisabled.value = true;
-    }
-}
-
+};
 </script>
 <style scoped>
 .btn-primary {

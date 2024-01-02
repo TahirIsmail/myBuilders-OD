@@ -1,5 +1,5 @@
 <template>
-    <div ref="scrollToRef" class="col-md-12 mx-auto row justify-content-md-center">
+    <div class="col-md-12 mx-auto row justify-content-md-center">
         <div class="col-md-10 question_div ">
             <p class="left-align" v-html="question.question"></p>
             <div v-if="question.answers.length > 0">
@@ -36,7 +36,6 @@
                         placeholder="Include any details you think the tradesperson should know (approx. extension dimensions, timeframe, etc.)"
                         name="basicOutlineExtensionDescription"
                         class="custom-textarea custom-textarea1"
-                        required
                     ></textarea>
                     <span
                         class="character-count"
@@ -67,9 +66,9 @@ const emit = defineEmits(["answer-selected", "is-last"]);
 
 const selectedAnswer = ref(null);
 const index = props.index;
-const scrollToRef = ref(null);
-
-const isLast  = computed(() => (props.question.answers.length === 0 ? true : false)) 
+const isLast = computed(() =>
+    props.question.answers.length === 0 ? true : false
+);
 watch(selectedAnswer, (newOption, oldOption) => {
     if (newOption != oldOption) {
     }
@@ -83,16 +82,8 @@ const goToNextStep = (answer) => {
     emit("answer-selected", index, answer);
 };
 onMounted(() => {
-isLastCheck();
-scrollToRef.value.scrollIntoView({ behavior: 'smooth' });
-
-})
-
-
-
-
-
-
+    isLastCheck();
+});
 
 const initialText = ""; // Set your initial text here
 const text = ref(initialText);
@@ -104,11 +95,8 @@ const isLimitExceeded = ref(false);
 watch(text, (newText) => {
     characterCount.value = newText.length;
     isLimitExceeded.value = characterCount.value > maxWordCount;
-    
+
     store.setJobDescription(newText);
-    // Update store or perform other actions
-   
-   
 });
 
 const updateCharacterCount = () => {
@@ -138,7 +126,11 @@ const focusTextarea = () => {
 .custom-textarea-container {
     position: relative;
 }
-
+@media only screen and (min-width: 370px) and (max-width: 600px) {
+    .left-align {
+        font-size: 1.06rem !important;
+    }
+}
 .character-count {
     position: absolute !important;
     bottom: 5px !important;

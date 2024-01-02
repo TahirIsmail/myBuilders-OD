@@ -1,64 +1,71 @@
 <template>
-  <div class="form-header container">
-    <!-- Header content... -->
+    <div class="form-header container">
+        <!-- Header content... -->
+    </div>
+    <div style="background-color: #f9f9f9">
+        <div class="container" style="padding: 30px">
+            <div class="row justify-content-center">
+                <div
+                    class="text-center"
+                    style="width: 800px; padding: 10px; margin: 0 auto"
+                >
+                    <!-- Display the selected category but faded -->
+                    <div class="mx-auto row justify-content-md-center">
+                        <div class="col-lg-10">
+                            <p class="left-align">
+                                What would you like to have done?
+                            </p>
+                            <v-select
+                                v-model="selectedCategory"
+                                :options="jobCategories"
+                                label="name"
+                                class="mb-3"
+                                placeholder="Select a category"
+                            ></v-select>
+                        </div>
+                    </div>
 
-  </div>
-  <div ref='scrollToJobCategory' style="background-color: #f9f9f9">
-    <div class="container mt-4 mb-4">
-      <div class="text-center" style="width: 800px; padding: 10px; margin: 0 auto">
-        <!-- Display the selected category but faded -->
-        <div class="mx-auto row justify-content-md-center">
-          <div class="col-lg-8">
-            <p class="left-align">
-              What would you like to have done?
-            </p>
-            <v-select v-model="selectedCategory" :options="jobCategories" label="name" class="mb-3"
-              placeholder="Select a category"></v-select>
-          </div>
+                    <!-- Form Steps -->
+                </div>
+            </div>
+        </div>
+        <div class="container mt-4 mb-4" v-if="selectedCategory">
+            <TransitionGroup name="list" tag="QuestionComponent">
+                <QuestionComponent
+                    :ref="`questionComponent-${index}`"
+                    v-for="(question, index) in questions"
+                    :question="question"
+                    :index="index"
+                    :key="question.id"
+                    @answer-selected="handleAnswerSelected"
+                    @is-last="handleLast"
+                />
+            </TransitionGroup>
         </div>
 
-        <!-- Form Steps -->
-
-
-      </div>
-
+        <div v-if="isLastComponent && selectedCategory" class="container mt-5">
+            <div class="form-group button-container">
+                <JobHeadline />
+            </div>
+        </div>
     </div>
-    <div class="container mt-4 mb-4" v-if="selectedCategory">
-      <TransitionGroup name="list" tag="QuestionComponent">
-        <QuestionComponent  :ref="`questionComponent-${index}`"
-          v-for="(question, index) in questions" :question="question" :index="index" :key="question.id"
-          @answer-selected="handleAnswerSelected" @is-last="handleLast" />
-      </TransitionGroup>
-    </div>
-
-    <div v-if="isLastComponent && selectedCategory" class="container mt-5">
-      <Transition>
-        <JobHeadline />
-      </Transition>
-    </div>
-
-
-  </div>
 </template>
 <script setup>
-import { ref, computed,onMounted, watch, onBeforeMount, provide } from "vue";
+import { ref, computed, watch, onBeforeMount, provide } from "vue";
 
-
-import JobHeadline from "./JobHeadlineComponent.vue"; // Make sure you import your dynamic question component
+import JobHeadline from "./JobHeadlineComponent"; // Make sure you import your dynamic question component
 import axios from "axios";
-import QuestionComponent from "./QuestionWithOptionsComponent.vue";
+import QuestionComponent from "./QuestionWithOptionsComponent";
 
 import { useQuestionnaireStore } from "../store/questionnaireStore";
 const store = useQuestionnaireStore();
 const props = defineProps({
-  user: Object
-})
-provide("user", props.user)
+    user: Object,
+});
+provide("user", props.user);
 const isLastComponent = ref(false);
-const scrollToJobCategory = ref(null);
 const jobCategories = computed(() => {
     return store.jobCategories.map((category) => ({
-
         ...category,
         name: category.name,
     }));
@@ -67,14 +74,11 @@ const jobCategories = computed(() => {
 const selectedCategory = ref(null);
 
 const questions = ref(new Set()); // Now a list of question data
-const questionComponents = ref([]);
+
 onBeforeMount(async () => {
     await store.loadJobCategories();
 });
 
-onMounted(() => {
-  scrollToJobCategory.value.scrollIntoView({ behavior: 'smooth'});
-});
 // Fetch initial question based on selected category
 const fetchInitialQuestion = async () => {
     if (selectedCategory.value && selectedCategory.value.firstquestion) {
@@ -83,16 +87,13 @@ const fetchInitialQuestion = async () => {
 };
 //
 function handleLast(isLast) {
-  isLastComponent.value = isLast.value
-
-
-
+    isLastComponent.value = isLast.value;
 }
 // Event handler for when an answer is selected
 function handleAnswerSelected(index, selectedAnswer) {
-  store.setAnswerForQuestion(index, selectedAnswer);
+    store.setAnswerForQuestion(index, selectedAnswer);
 
-  fetchNextQuestion(index, selectedAnswer);
+    fetchNextQuestion(index, selectedAnswer);
 }
 
 // API call to get the next question based on answer
@@ -123,40 +124,33 @@ const fetchNextQuestion = async (index, selectedAnswer) => {
                 questions.value.length - index - 1
             );
 
-      // Insert the new question after the current question
-      questions.value.push(newQuestion);
-      
+            // Insert the new question after the current question
+            questions.value.push(newQuestion);
+        }
+    } catch (error) {
+        console.error("Error fetching next question:", error);
     }
-
-
-
-
-
-
-
-
-  } catch (error) {
-    console.error('Error fetching next question:', error);
-  }
 };
 
-const moveToSignUp = () => {
+const moveToSignUp = () => {};
+watch(
+    selectedCategory,
+    (newCategory, oldCategory) => {
+        // Check if the category has actually changed
+        if (
+            newCategory &&
+            (!oldCategory || newCategory.id !== oldCategory.id)
+        ) {
+            // Reset the questions array and fetch the initial question for the new category
+            store.resetState();
+            store.setSelectedCategory(newCategory);
+            questions.value = []; // Clear the previous questions
 
-}
-watch(selectedCategory, (newCategory, oldCategory) => {
-  // Check if the category has actually changed
-  if (newCategory && (!oldCategory || newCategory.id !== oldCategory.id)) {
-    // Reset the questions array and fetch the initial question for the new category
-    store.resetState()
-    store.setSelectedCategory(newCategory)
-    questions.value = []; // Clear the previous questions
-
-    fetchInitialQuestion(); // Fetch the initial question for the new category
-  }
-}, { immediate: true });
-
-
-
+            fetchInitialQuestion(); // Fetch the initial question for the new category
+        }
+    },
+    { immediate: true }
+);
 </script>
 
 <style scoped>
@@ -240,7 +234,11 @@ watch(selectedCategory, (newCategory, oldCategory) => {
         max-width: 100%;
     }
 }
-
+@media only screen and (min-width: 370px) and (max-width: 600px) {
+    .left-align {
+        font-size: 1.1rem !important;
+    }
+}
 .mb-3 {
     margin-bottom: 1rem;
 }
@@ -256,23 +254,11 @@ watch(selectedCategory, (newCategory, oldCategory) => {
     align-items: center;
     padding: 10px;
 
-  font-size: 1.5em;
-  letter-spacing: 0px;
-  margin-bottom: 0.5em;
-  color: rgb(52, 57, 68);
-  font-weight: bold;
-  -webkit-font-smoothing: antialiased;
-
-}
-
-.list-enter-active,
-.list-leave-active {
-  transition: all 1.0s ease;
-}
-
-.list-enter-from,
-.list-leave-to {
-  opacity: 0;
-  transform: translateX(30px);
+    font-size: 1.5em;
+    letter-spacing: 0px;
+    margin-bottom: 0.5em;
+    color: rgb(52, 57, 68);
+    font-weight: bold;
+    -webkit-font-smoothing: antialiased;
 }
 </style>
