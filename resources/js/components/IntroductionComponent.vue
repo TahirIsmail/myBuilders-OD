@@ -18,17 +18,19 @@
                             <div style="margin-bottom:10px">
                                 
 
-                                <input type="text" class="form-control form_input" style="height: 120px;">
+                                <input type="text" class="form-control form_input" v-model="introduction_workaddress" style="height: 120px;">
                             </div>
                           
 
 
-                            <div class=" lp-header__content">
-                                <a title="Start winning more work" href="{{ route('register') }}"
-                                    class="btn--Tradeb">Back</a>
-                                <a title="Post a job today and we'll alert the relevant tradespeople."
-                                    href="{{ route('post_project') }}" class="btn--Tradec" style="margin-left: 2%;" >Continue</a>
-                            </div>
+                            <div class="lp-header__content">
+                                            <button type="submit" class="btn--Tradeb" @click.prevent="back">
+                                                Back
+                                            </button>
+                                            <button type="submit" class="btn--Tradec" @click.prevent="submit">
+                                                Continue
+                                            </button>
+                                        </div>
                         </div>
                     </div>
 
@@ -38,4 +40,24 @@
         </div>
     </div> 
   </template>
+  <script setup>
+import {reactive,onMounted,ref} from 'vue'
+const introduction_workaddress = ref('')
+onMounted(() => {
+    console.log("Introduction component mounted")
+})
+const props =  defineProps(['navigationMethods'])
+const submit = () => {
+    console.log(introduction_workaddress)
+    if (props.navigationMethods && typeof props.navigationMethods.nextStep === 'function') {
+                props.navigationMethods.nextStep();
+    }
+}
+const back = () => {
+    if (props.navigationMethods && typeof props.navigationMethods.prevStep === 'function') {
+                props.navigationMethods.prevStep();
+            }
+}
+
+</script>
   

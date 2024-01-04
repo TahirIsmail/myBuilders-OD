@@ -50,6 +50,7 @@ Route::get('/post-job', 'HomeController@post_job')->name('post_project');
 Route::get('/post_job_magic', 'HomeController@post_job_magic');
 Route::post('/magic-job-post', 'HomeController@storemagicjobpost');
 Route::post('/checkuser','HomeController@checkuser')->name('check_user_exist');
+Route::get('/getskills','HomeController@getSkills');
 // Subscribe
 
 Route::resource('subscribers', 'SubscriberController');

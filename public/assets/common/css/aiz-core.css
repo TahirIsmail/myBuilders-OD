@@ -7308,6 +7308,7 @@ p {
     color: #333;
     margin-bottom: 20px;
 }
+
 .btn--Tradeb{
     width: 30% !important;
     font-weight: normal;
@@ -7316,7 +7317,7 @@ p {
     font-family: "sofia_probold", "Trebuchet MS", "Segoe UI", Candara,
         "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", Verdana,
         "Verdana Ref", sans-serif;
-    padding: 0.6em 1.25em 0.7em;
+    padding: 0.6em 0.25em 0.7em;
     -webkit-border-radius: 0.25em;
     -moz-border-radius: 0.25em;
     border-radius: 0.25em;
@@ -7327,6 +7328,7 @@ p {
     display: inline-block;
     transition: color ease 100ms, border-color ease 100ms;
     margin-left: 10px;
+    text-decoration: none !important;
 }
 
 .btn--Tradeb:hover {
@@ -7336,28 +7338,30 @@ p {
     
 }
 
-.btn--Tradec {
-  width: 65% !important;
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 1em;
-    font-family: "sofia_probold", "Trebuchet MS", "Segoe UI", Candara,
-        "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", Verdana,
-        "Verdana Ref", sans-serif;
-    padding: 0.6em 1.25em 0.7em;
-    -webkit-border-radius: 0.25em;
-    -moz-border-radius: 0.25em;
-    border-radius: 0.25em;
-    background-color: #51c57d;
-    color: #fff;
-    display: inline-block;
-    border: 2px solid #51c57d;
-    transition: color ease 100ms, border-color ease 100ms;
-}
 
-.btn--Tradec:hover {
-    background-color: #F0AE55 !important;
-    color: white !important;
-    text-decoration: none !important;
-    border-color: #F0AE55 !important;
-}
+.btn--Tradec {
+    width: 60% !important;
+      font-weight: normal;
+      font-size: 20px;
+      line-height: 1em;
+      font-family: "sofia_probold", "Trebuchet MS", "Segoe UI", Candara,
+          "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", Verdana,
+          "Verdana Ref", sans-serif;
+      padding: 0.6em 0.25em 0.7em;
+      -webkit-border-radius: 0.25em;
+      -moz-border-radius: 0.25em;
+      border-radius: 0.25em;
+      background-color: #51c57d;
+      color: #fff;
+      display: inline-block;
+      border: 2px solid #51c57d;
+      transition: color ease 100ms, border-color ease 100ms;
+      text-decoration: none !important;
+  }
+  
+  .btn--Tradec:hover {
+      background-color: #F0AE55 !important;
+      color: white !important;
+      text-decoration: none !important;
+      border-color: #F0AE55 !important;
+  }

@@ -33,7 +33,7 @@
 
 
     <div id="app">
-  
+        
         <multi-step></multi-step>
         {{-- <trade-form></trade-form> --}}
     </div>
