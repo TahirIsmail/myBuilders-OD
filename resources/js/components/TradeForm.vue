@@ -3,8 +3,8 @@
         <div class="py-4 py-lg-5">
             <div class="container">
                 <div class="row">
-                    <div class="col-xxl-4 col-xl-6 col-md-7 mx-auto form">
-                        <h1><strong>About you</strong></h1>
+                    <div class="col-xxl-4 col-xl-6 col-md-7 mx-auto formpadding bg-white">
+                        <h1 class="h3 mb-0" style="color: #55b97b"><strong>About you</strong></h1>
                         <p><strong>You operate as a:</strong></p>
                         <div class="col-xxl-12 col-xl-12 col-md-12 mx-auto form">
                             <!-- Radio buttons -->
@@ -118,11 +118,13 @@
   </div> -->
 </template>
 <script>
+import { useTrademensStore } from '../store/trademensStore';
+
 export default {
     props: ['navigationMethods'],
     created() {
         console.log(this.navigationMethods)
-        
+
     },
     data() {
         return {
@@ -172,12 +174,18 @@ export default {
     },
     methods: {
         submit() {
-            console.log({ ...this.getComputedFormData }, this.selectedOption)
+
+            const store = useTrademensStore()
+            store.setTradingInformation({
+                ...this.getComputedFormData,
+                operating_as: this.selectedOption
+            })
+            // console.log(store.getTradingInformation)
             if (this.navigationMethods && typeof this.navigationMethods.nextStep === 'function') {
                 this.navigationMethods.nextStep();
             }
         },
-        back(){
+        back() {
             if (this.navigationMethods && typeof this.navigationMethods.prevStep === 'function') {
                 this.navigationMethods.prevStep();
             }
@@ -240,6 +248,12 @@ export default {
     border-radius: 4px;
 }
 
+.formpadding {
+    padding: 30px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
 .form_input {
     border: 2px solid #b0c0d3;
     border-radius: 4px;
@@ -249,60 +263,6 @@ export default {
     margin-top: 5% !important;
 }
 
-.btn--Tradeb {
-    width: 30% !important;
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 1em;
-    font-family: "sofia_probold", "Trebuchet MS", "Segoe UI", Candara,
-        "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", Verdana,
-        "Verdana Ref", sans-serif;
-    padding: 0.6em 0.25em 0.7em;
-    -webkit-border-radius: 0.25em;
-    -moz-border-radius: 0.25em;
-    border-radius: 0.25em;
-    background: white;
-    opacity: 0.9;
-    border: 2px solid #51c57d;
-    color: #51c57d;
-    display: inline-block;
-    transition: color ease 100ms, border-color ease 100ms;
-    margin-left: 10px;
-    text-decoration: none !important;
-}
-
-.btn--Tradeb:hover {
-    border: 2px solid #f0ae55 !important;
-    color: #f0ae55 !important;
-    text-decoration: none !important;
-}
-
-.btn--Tradec {
-    width: 60% !important;
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 1em;
-    font-family: "sofia_probold", "Trebuchet MS", "Segoe UI", Candara,
-        "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", Verdana,
-        "Verdana Ref", sans-serif;
-    padding: 0.6em 0.25em 0.7em;
-    -webkit-border-radius: 0.25em;
-    -moz-border-radius: 0.25em;
-    border-radius: 0.25em;
-    background-color: #51c57d;
-    color: #fff;
-    display: inline-block;
-    border: 2px solid #51c57d;
-    transition: color ease 100ms, border-color ease 100ms;
-    text-decoration: none !important;
-}
-
-.btn--Tradec:hover {
-    background-color: #f0ae55 !important;
-    color: white !important;
-    text-decoration: none !important;
-    border-color: #f0ae55 !important;
-}
 
 .form-check {
     border-bottom: 2px solid #b0c0d3;

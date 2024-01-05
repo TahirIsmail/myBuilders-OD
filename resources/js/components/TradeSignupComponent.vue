@@ -5,16 +5,16 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-xxl-7 col-xl-7 col-md-7 mx-auto">
-                            <div class="card rounded-2 border-gray-light">
+                            <div class="card rounded-2 border-gray-light bg-white">
                                 <div class="card-body">
                                     <div
-                                        class="mb-5 text-center col-xxl-12 col-xl-12 col-md-12"
+                                        class="mb-5  col-xxl-12 col-xl-12 col-md-12"
                                     >
                                         <h1
                                             class="h3 mb-0"
                                             style="color: #55b97b"
                                         >
-                                            Sign up to be a trade member
+                                           <strong> Sign up to be a trade member</strong>
                                         </h1>
 
                                         <p
@@ -237,7 +237,7 @@
 <script setup>
 import { ref, reactive,defineProps,defineEmits } from 'vue'
 import { Form, Field, ErrorMessage } from 'vee-validate'
-
+import { useTrademensStore } from '../store/trademensStore';
 import * as yup from 'yup';
 
 const props = defineProps(['navigationMethods'])
@@ -257,10 +257,10 @@ const schema = yup.object().shape({
     condition: yup.string().required()
 });
 
-
+const store  = useTrademensStore();
 const submitForm = (values) => {
-
-    console.log({ ...values })
+    store.setUserInformation(values)
+    // console.log(store.getUserInfo)
     if (props.navigationMethods && typeof props.navigationMethods.nextStep === 'function') {
     props.navigationMethods.nextStep();
   }

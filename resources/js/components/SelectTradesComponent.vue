@@ -1,51 +1,68 @@
 <template>
     <div class="py-4 py-lg-5">
-        <div class="container">
+        <div class="container ">
             <div class="row">
-                <div class="col-xxl-12 col-xl-12 col-md-12 mx-auto form">
-                    <h1 class="heading">
+                <div class="col-xxl-6 col-xl-6 col-md-6 mx-auto form bg-white">
+                    <h1 class="h3 mb-0" style="color: #55b97b">
                         <strong> Select up to 5 trades </strong>
                     </h1>
-                    <p>
+                    <p class="p_size" style="margin-left: 20px">
                         Select trades to suit your business. Once your
                         application has been approved you can go for more.
                     </p>
 
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xxl-12 col-xl-12 col-md-12 mx-auto">
-                        <div class="mt-3">
-                            <div class="form-group has-search">
-                                <span class="fa fa-search form-control-feedback"></span>
-                                <input type="text" class="form-control" placeholder="Search" v-model="search" />
-                            </div>
-
-                            <div class="border-style row">
-                                
-                                
-                                    <ul class="col-md-6" v-for="trade in filteredTrades" :key="trade.id">
-                                            <li>
-                                                <input type="checkbox" :value="trade.id" :disabled="isCheckboxDisabled(trade.id)"  :id="'item' + trade.id" :name="'item' + trade.id"
-                                                     v-model="selectedCheckboxes" />
-                                                <label :for="'item' + trade.id">{{ trade.name }}</label>
-                                            </li>
-                                        </ul>
-                                    
-                               
-                            </div>
-
-
-
-                            <div class="lp-header__content">
-                                <button type="submit" class="btn--Tradeb" @click.prevent="back">
-                                    Back
-                                </button>
-                                <button type="submit" class="btn--Tradec" @click.prevent="submit">
-                                    Continue
-                                </button>
-                            </div>
+                    <div class="mt-3">
+                        <div class="form-group has-search">
+                            <span
+                                class="fa fa-search form-control-feedback"
+                            ></span>
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Search"
+                                v-model="search"
+                            />
                         </div>
+
+                        <div class="border-style row">
+                            <ul
+                                class="col-md-6"
+                                v-for="trade in filteredTrades"
+                                :key="trade.id"
+                            >
+                                <li>
+                                    <input
+                                        type="checkbox"
+                                        :value="trade.id"
+                                        :disabled="isCheckboxDisabled(trade.id)"
+                                        :id="'item' + trade.id"
+                                        :name="'item' + trade.id"
+                                        v-model="selectedCheckboxes"
+                                    />
+                                    <label :for="'item' + trade.id">{{
+                                        trade.name
+                                    }}</label>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="lp-header__content">
+                            <button
+                                type="submit"
+                                class="btn--Tradeb"
+                                @click.prevent="back"
+                            >
+                                Back
+                            </button>
+                            <button
+                                type="submit"
+                                class="btn--Tradec"
+                                @click.prevent="submit"
+                            >
+                                Continue
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -53,11 +70,13 @@
 </template>
 <script setup>
 import { ref, onMounted, computed, reactive } from 'vue';
+import { useTrademensStore} from '../store/trademensStore'
 import axios from 'axios'
 const trades = ref([])
 
 const search = ref("");
 const selectedCheckboxes = ref([]);
+const store = useTrademensStore();
 const props = defineProps(['navigationMethods'])
 const filteredTrades = computed(() => {
     return trades.value.filter(p => {
@@ -79,13 +98,12 @@ onMounted(async () => {
     
 })
 const submit = () => {
-        // console.log(trades.value)
-        // console.log(selectedCheckboxes.value)
+       
         const filterSelectedValue  = trades.value.filter(item => selectedCheckboxes.value.includes(item.id))
-        console.log(filterSelectedValue)
-//     if (props.navigationMethods && typeof props.navigationMethods.nextStep === 'function') {
-//     props.navigationMethods.nextStep();
-//   }
+        store.setStrongestTrades(filterSelectedValue)
+        if (props.navigationMethods && typeof props.navigationMethods.nextStep === 'function') {
+        props.navigationMethods.nextStep();
+    }
 }
 
 const back = () => {
@@ -95,6 +113,13 @@ const back = () => {
 }
 </script>
 <style scoped>
+
+.form {
+    border: 2px solid #eff2f6;
+    padding: 30px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
 .has-search .form-control {
     padding-left: 2.375rem;
 }

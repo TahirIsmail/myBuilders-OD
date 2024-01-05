@@ -2,11 +2,11 @@
     <div class="py-4 py-lg-5">
         <div class="container">
             <div class="row">
-                <div class="col-xxl-4 col-xl-6 col-md-7 mx-auto form">
-                    <h1 class="heading">
-                        <strong> Select your strongest trade</strong>
+                <div class="col-xxl-4 col-xl-6 col-md-7 mx-auto form bg-white">
+                    <h1 class="h3 mb-0" style="color: #55b97b">
+                        <strong>  Select your strongest trade</strong>
                     </h1>
-                    <p style="margin-left: 20px">
+                    <p class="p_size" style="margin-left: 20px">
                         Pass trade evaluations to unlock leads in your areas of
                         expertise.
                     </p>
@@ -107,6 +107,12 @@
     text-align: center;
     pointer-events: none;
     color: #aaa;
+}
+.form {
+    border: 2px solid #eff2f6;
+    padding: 30px;
+    margin-bottom: 10px;
+    border-radius: 4px;
 }
 .border-style {
     border-bottom: 2px solid #b0c0d3;
