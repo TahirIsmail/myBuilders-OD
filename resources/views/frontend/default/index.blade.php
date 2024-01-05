@@ -556,8 +556,10 @@
         width: 100%;
         background-color: #ffffff;
         border-radius: 10px;
-        padding: 20px;
-        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+        padding: 20px; 
+        -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.3);
+
+        /* box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2); */
         margin-bottom: 20px;
         transition: transform 0.3s ease-in-out;
     }
@@ -1222,7 +1224,7 @@
         height: 300px font-size: 18px;
         line-height: 1.612;
         border-radius: 4px;
-        box-shadow: 0 10px 30px -8px rgba(0, 0, 0, .5);
+        -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.3);
 
         display: none;
         vertical-align: top;
@@ -1515,18 +1517,59 @@
     .slick-prev, .slick-next {
     display: none !important; /* Force hiding the arrows */
 }
+
+
+
+
+
+.card2 {
+  display: block;
+  top: 0px;
+  position: relative;
+  
+  background-color: #f2f8f9;
+  border-radius: 4px;
+  padding: 32px 24px;
+  margin: 12px;
+  text-decoration: none;
+  z-index: 0;
+  overflow: hidden;
+  border: 1px solid #f2f8f9;
+  -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.3);
+
+  &:hover {
+    transition: all 0.2s ease-out;
+    box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
+    top: -4px;
+    border: 1px solid #cccccc;
+    background-color: white;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+
+ 
+}
+
+
+
+.hh3 {
+  color: #262626;
+  font-size: 17px;
+  line-height: 24px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.p11 {
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #666666;
+
+  &.small {
+    font-size: 14px;
+  }
+}
 </style>
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1704,7 +1747,7 @@
         @if (get_setting('client_logo_show') == 'on')
             <section class="bg-white py-4 ">
 
-
+        
 
 
         <div class="container" style="height: auto ;">
@@ -1712,12 +1755,12 @@
 
                 <div class="row justify-content-center">
                     <div class="col-xl-4 col-md-6 " style="margin-bottom: 10px;position: relative;">
-                        <div class="px-xl-5 px-md-3 mb-4 text-center rounded"
+                        <div class="card2"
                             style="height: 100%; display: flex; flex-direction: column;">
 
                             <div class="p-4" style="height: 70%;">
-                                <h2>Post your job</h2>
-                                <p>
+                                <h2 class="hh3">Post your job</h2>
+                                <p class="p11 small ">
                                     Sign up to our online platform to start posting your home improvement projects and connect with trustworthy tradespeople.
                                 </p>
                                 
@@ -1731,12 +1774,12 @@
                     </div>
 
                     <div class="col-xl-4 col-md-6" style="margin-bottom: 10px;position: relative;">
-                        <div class="px-xl-5 px-md-3 mb-4 text-center rounded"
+                        <div class="card2 "
                             style="height: 100%; display: flex; flex-direction: column;">
 
                             <div class="p-4" style="height: 70%;">
-                                <h2>Trade sign up</h2>
-                                <p>Once your business is registered, you can choose from the many jobs available
+                                <h2 class="hh3">Trade sign up</h2>
+                                <p class="p11">Once your business is registered, you can choose from the many jobs available
                                     across the country.</p>
                             </div>
 
@@ -1749,12 +1792,12 @@
 
 
                     <div class="col-xl-4 col-md-6" style="margin-bottom: 10px;position: relative;">
-                        <div class="px-xl-5 px-md-3 mb-4 text-center rounded"
+                        <div class="card2"
                             style="height: 100%; display: flex; flex-direction: column; ;">
 
                             <div class="p-4" style="height: 70%;">
-                                <h2>Find Employment</h2>
-                                <p>Businesses across the country & internationally are searching for skilled people
+                                <h2 class="hh3">Find Employment</h2>
+                                <p class="p11">Businesses across the country & internationally are searching for skilled people
                                     to join their team. Find your next role here.</p>
                             </div>
 
@@ -2413,7 +2456,7 @@
                 </div>
             </section>
         @endif
-        @if (get_setting('latest_project_show') == 'on')
+        @if (get_setting('latest_project_show') == 'off')
             <section class="bg-white py-7">
                 <div class="container">
                     <div class="w-lg-75 w-xl-50 lh-1-8 mx-auto mb-5 text-center">
@@ -5872,6 +5915,41 @@
                 }, options.speed);
             }, true);
         </script>
+        <script>
+
+            // Optional: You can customize the scrolling speed by adjusting the 'scrollSpeed' variable.
+const scrollSpeed = 40;
+
+document.addEventListener("DOMContentLoaded", function () {
+  let isScrolling = false;
+
+  document.addEventListener("wheel", function (event) {
+    if (!isScrolling) {
+      isScrolling = true;
+
+      setTimeout(function () {
+        isScrolling = false;
+      }, 1000);
+
+      if (event.deltaY < 0) {
+        scrollSmoothly(-scrollSpeed);
+      } else {
+        scrollSmoothly(scrollSpeed);
+      }
+    }
+
+    event.preventDefault();
+  });
+
+  function scrollSmoothly(scrollAmount) {
+    window.scrollBy({
+      top: scrollAmount,
+      behavior: "smooth",
+    });
+  }
+});
+
+            </script>
     @endsection
 
     {{-- 

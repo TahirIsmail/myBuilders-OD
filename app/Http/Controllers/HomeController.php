@@ -269,4 +269,7 @@ class HomeController extends Controller
         return back();
     }
 
+    function getSkills(){
+        return response()->json(Skill::all());
+    }
 }

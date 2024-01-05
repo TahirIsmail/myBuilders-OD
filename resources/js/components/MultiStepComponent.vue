@@ -12,15 +12,17 @@
   <script setup>
   import TradeSignupComponent from './TradeSignupComponent';
   import TradeForm from './TradeForm';
+  import WorkAddressesComponent from './WorkAddressComponent';
   import IntroductionComponent from './IntroductionComponent';
   import SelectTradesComponent from './SelectTradesComponent';
   import StrongestTradeComponent from './StrongestTradeComponent';
+
   import {computed, ref, KeepAlive } from 'vue';
   
   const currentStep = ref(1);
-  const totalSteps = 5;
+  const totalSteps = 6;
   
-  const prevStep = () => {
+  const prevStep = () => { 
     if (currentStep.value > 1) {
       currentStep.value--;
     }
@@ -36,9 +38,10 @@
     const componentMapping = {
       1: TradeSignupComponent,
       2: TradeForm,
-      3: IntroductionComponent,
-      4:SelectTradesComponent,
-      5:StrongestTradeComponent,
+      3: WorkAddressesComponent,
+      4: IntroductionComponent,
+      5:SelectTradesComponent,
+      6:StrongestTradeComponent,
     };
     const component = componentMapping[currentStep.value];
     if (!component) {

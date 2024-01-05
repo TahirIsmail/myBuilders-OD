@@ -4,8 +4,8 @@
             <div class="row">
                 <div class="col-xxl-4 col-xl-6 col-md-7 mx-auto form ">
 
-                    <h1 class="heading"><strong> Introduce yourself to customers </strong></h1>
-                    <p style="margin-left: 20px;"> Introduce your business by describing the work you normally undertake and what makes you stand out from other tradespeople. You can always edit this later.</p>
+                    <h1 class="h3 mb-0" style="color: #55b97b" ><strong> Introduce yourself to customers </strong></h1>
+                    <p class="p_size" style="margin-left: 20px;"> Introduce your business by describing the work you normally undertake and what makes you stand out from other tradespeople. You can always edit this later.</p>
 
                   
                     <div class="col-xxl-12 col-xl-12 col-md-12 mx-auto ">
@@ -38,4 +38,28 @@
         </div>
     </div> 
   </template>
-  
+  <style scoped>
+  @media only screen and (min-width: 320px) and (max-width: 600px) {
+    .btn--Tradeb{
+        font-size:12px !important;
+    }
+}
+
+
+@media only screen and (min-width: 320px) and (max-width: 600px) {
+    .btn--Tradec{
+        font-size:12px !important;
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 600px) {
+    .h1 {
+        font-size:0.94rem !important;
+    }
+}
+@media only screen and (min-width: 320px) and (max-width: 600px) {
+    .p_size {
+        font-size:0.8rem !important;
+    }
+}
+</style>

@@ -2,19 +2,19 @@
 @section('style')
 <link rel="stylesheet" href="{{ my_asset('assets/common/css/app.css') }}">
 <style>
-@media only screen and (min-width: 376px) and (max-width: 600px) {
+@media only screen and (min-width: 320px) and (max-width: 600px) {
     .btn {
         width: 300px !important;
     }
 }
-@media only screen and (min-width: 376px) and (max-width: 600px) {
+@media only screen and (min-width: 320px) and (max-width: 600px) {
     .h3 {
-        font-size:1.24rem !important;
+        font-size:0.94rem !important;
     }
 }
-@media only screen and (min-width: 376px) and (max-width: 600px) {
+@media only screen and (min-width: 320px) and (max-width: 600px) {
     .p_size {
-        font-size:1rem !important;
+        font-size:0.8rem !important;
     }
 }
 </style>
@@ -32,7 +32,7 @@
     </style>
 
 
-    <div id="app">
+    <div id="app" style="background-color: #eff2f6">
   
         <multi-step></multi-step>
         {{-- <trade-form></trade-form> --}}

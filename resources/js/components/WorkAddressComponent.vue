@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-xxl-4 col-xl-6 col-md-7 mx-auto form">
 
-                    <h1 class="heading"><strong> What's your work address? </strong></h1>
+                    <h1 class="h3 mb-0" style="color: #55b97b" ><strong> What's your work address? </strong></h1>
 
                   
                     <div class="col-xxl-12 col-xl-12 col-md-12 mx-auto ">

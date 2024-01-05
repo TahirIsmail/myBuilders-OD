@@ -3,10 +3,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-xxl-4 col-xl-6 col-md-7 mx-auto form">
-                    <h1 class="heading">
+                    <h1 class="h3 mb-0" style="color: #55b97b" >
                         <strong> Select your strongest trade</strong>
                     </h1>
-                    <p style="margin-left: 20px">
+
+                    <p class="p_size" style="margin-left: 20px">
                         Pass trade evaluations to unlock leads in your areas of
                         expertise.
                     </p>
@@ -93,6 +94,11 @@
     align-items: center;
     cursor: pointer;
 }
+@media only screen and (min-width: 320px) and (max-width: 600px) {
+    .jSiDrI {
+        font-size:0.7rem !important;
+    }
+}
 .has-search .form-control {
     padding-left: 2.375rem;
 }
@@ -133,5 +139,30 @@
 .border-style label {
     display: inline-block; /* Align labels in a row */
     font-weight: bold; /* Make labels bold, adjust as needed */
+}
+
+
+@media only screen and (min-width: 320px) and (max-width: 600px) {
+    .btn--Tradeb{
+        font-size:12px !important;
+    }
+}
+
+
+@media only screen and (min-width: 320px) and (max-width: 600px) {
+    .btn--Tradec{
+        font-size:12px !important;
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 600px) {
+    .h1 {
+        font-size:0.94rem !important;
+    }
+}
+@media only screen and (min-width: 320px) and (max-width: 600px) {
+    .p_size {
+        font-size:0.8rem !important;
+    }
 }
 </style>
