@@ -3,54 +3,25 @@
         <div class="py-4 py-lg-5">
             <div class="container">
                 <div class="row">
-                    <div class="col-xxl-4 col-xl-6 col-md-7 mx-auto form">
-                        <h1><strong>About you</strong></h1>
+                    <div class="col-xxl-4 col-xl-6 col-md-7 mx-auto formpadding bg-white">
+                        <h1 class="h3 mb-0" style="color: #55b97b"><strong>About you</strong></h1>
                         <p><strong>You operate as a:</strong></p>
-                        <div
-                            class="col-xxl-12 col-xl-12 col-md-12 mx-auto form"
-                        >
+                        <div class="col-xxl-12 col-xl-12 col-md-12 mx-auto form">
                             <!-- Radio buttons -->
-                            <div
-                                v-for="(option, index) in options"
-                                :key="index"
-                                class="form-check"
-                            >
-                                <input
-                                    v-model="selectedOption"
-                                    :value="option.value"
-                                    class="form-check-input"
-                                    type="radio"
-                                    :id="option.id"
-                                />
-                                <label :for="option.id" class="form-check-label"
-                                    ><strong>{{ option.label }}</strong></label
-                                >
+                            <div v-for="(option, index) in options" :key="index" class="form-check">
+                                <input v-model="selectedOption" :value="option.value" class="form-check-input" type="radio"
+                                    :id="option.id" />
+                                <label :for="option.id" class="form-check-label"><strong>{{ option.label }}</strong></label>
                             </div>
 
-                            <transition
-                                name="slide-fade"
-                                v-for="(option, index) in options"
-                                :key="index"
-                            >
+                            <transition name="slide-fade" v-for="(option, index) in options" :key="index">
                                 <div v-if="selectedOption === option.value">
                                     <div class="container mt-2">
                                         <div class="mt-3">
-                                            <label
-                                                :for="option.textInputId"
-                                                class="form-label"
-                                                ><strong
-                                                    >Trading name</strong
-                                                ></label
-                                            >
-                                            <input
-                                                v-model="
-                                                    formData[option.textInputId]
-                                                "
-                                                type="text"
-                                                class="form-control form_input"
-                                                id="trade_id"
-                                                name="Trading_name"
-                                            />
+                                            <label :for="option.textInputId" class="form-label"><strong>Trading
+                                                    name</strong></label>
+                                            <input v-model="formData.Trading_name" type="text"
+                                                class="form-control form_input" id="trade_id" name="Trading_name" />
                                         </div>
                                     </div>
                                 </div>
@@ -62,145 +33,75 @@
                                 <!-- Additional content for radio A -->
 
                                 <Transition name="slide-fade">
-                                    <div
-                                        v-if="selectedOption == 'selfEmployed'"
-                                    ></div>
+                                    <div v-if="selectedOption == 'selfEmployed'"></div>
                                 </Transition>
                                 <!-- Additional content for radio B -->
 
                                 <!-- Additional content for radio B -->
                                 <Transition name="slide-fade">
-                                    <div
-                                        v-if="
-                                            selectedOption === 'limitedCompany'
-                                        "
-                                    >
+                                    <div v-if="selectedOption === 'limitedCompany'
+                                        ">
                                         <div class="mt-3">
-                                            <label
-                                                for="textB"
-                                                class="form-label"
-                                                ><strong
-                                                    >Registered company
-                                                    name</strong
-                                                ></label
-                                            >
-                                            <input
-                                                type="text"
-                                                class="form-control form_input"
-                                                id="textB"
-                                                name="Registered_company"
-                                            />
+                                            <label for="textB" class="form-label"><strong>Registered company
+                                                    name</strong></label>
+                                            <input type="text" class="form-control form_input" id="textB"
+                                                v-model="formData.registered_company" name="Registered_company" />
                                         </div>
                                         <div class="mt-3">
-                                            <label
-                                                for="textB"
-                                                class="form-label"
-                                                ><strong
-                                                    >Company registration
-                                                    number</strong
-                                                ></label
-                                            >
-                                            <input
-                                                type="text"
-                                                class="form-control form_input"
-                                                id="textB"
-                                                name="Company_registration"
-                                            />
+                                            <label for="textB" class="form-label"><strong>Company registration
+                                                    number</strong></label>
+                                            <input type="text" class="form-control form_input" id="textB"
+                                                name="Company_registration" v-model="formData.company_registration" />
                                         </div>
                                     </div>
                                 </Transition>
                                 <!-- Additional content for radio C -->
                                 <Transition name="slide-fade">
-                                    <div
-                                        v-if="
-                                            selectedOption ===
-                                            'ordinaryPartnership'
-                                        "
-                                    >
+                                    <div v-if="selectedOption ===
+                                        'ordinaryPartnership'
+                                        ">
                                         <div class="mt-3">
-                                            <label
-                                                for="textC"
-                                                class="form-label"
-                                                ><strong
-                                                    >Full names of all
-                                                    partners</strong
-                                                ></label
-                                            >
+                                            <label for="textC" class="form-label"><strong>Full names of all
+                                                    partners</strong></label>
                                             <br />
-                                            <label
-                                                for="textC"
-                                                class="form-label"
-                                                >Comma-separated list of all
+                                            <label for="textC" class="form-label">Comma-separated list of all
                                                 names on the partnership
                                                 agreement, including yourself
                                                 (e.g. John Smith, Jane
-                                                Doe)</label
-                                            >
-                                            <input
-                                                type="text"
-                                                class="form-control form_input"
-                                                id="textC"
-                                                name="partners_name"
-                                            />
+                                                Doe)</label>
+                                            <input type="text" class="form-control form_input" id="textC"
+                                                name="partners_name" v-model="formData.partners_name" />
                                         </div>
                                     </div>
                                 </Transition>
                                 <!-- Additional content for radio D -->
                                 <Transition name="slide-fade">
-                                    <div
-                                        v-if="
-                                            selectedOption ===
-                                            'limitedPartnership'
-                                        "
-                                    >
+                                    <div v-if="selectedOption ===
+                                        'limitedPartnership'
+                                        ">
                                         <div class="mt-3">
-                                            <label
-                                                for="textD"
-                                                class="form-label"
-                                                ><strong
-                                                    >Registered company
-                                                    name</strong
-                                                ></label
-                                            >
-                                            <input
-                                                type="text"
-                                                class="form-control form_input"
-                                                id="textD"
-                                                name="limited_Registered_company
-                                                 "
-                                            />
+                                            <label for="textD" class="form-label"><strong>Registered company
+                                                    name</strong></label>
+                                            <input type="text" class="form-control form_input" id="textD"
+                                                name="limited_Registered_company"
+                                                v-model="formData.limited_registered_company" />
                                         </div>
                                         <div class="mt-3">
-                                            <label
-                                                for="textD"
-                                                class="form-label"
-                                                ><strong
-                                                    >Company registration
-                                                    number</strong
-                                                ></label
-                                            >
-                                            <input
-                                                type="text"
-                                                class="form-control form_input"
-                                                id="textD"
+                                            <label for="textD" class="form-label"><strong>Company registration
+                                                    number</strong></label>
+                                            <input type="text" class="form-control form_input" id="textD"
                                                 name="limited_registration_number"
-                                            />
+                                                v-model="formData.limited_registration_number" />
                                         </div>
                                     </div>
                                 </Transition>
                                 <Transition>
                                     <div v-show="selectedOption">
                                         <div class="lp-header__content">
-                                            <button
-                                                type="submit"
-                                                class="btn--Tradeb"
-                                            >
+                                            <button type="submit" class="btn--Tradeb" @click.prevent="back">
                                                 Back
                                             </button>
-                                            <button
-                                                type="submit"
-                                                class="btn--Tradec"
-                                            >
+                                            <button type="submit" class="btn--Tradec" @click.prevent="submit">
                                                 Continue
                                             </button>
                                         </div>
@@ -217,17 +118,24 @@
   </div> -->
 </template>
 <script>
+import { useTrademensStore } from '../store/trademensStore';
+
 export default {
+    props: ['navigationMethods'],
+    created() {
+        console.log(this.navigationMethods)
+
+    },
     data() {
         return {
             selectedOption: "",
             formData: {
-                Trading_name: "",
-                Registered_company: "",
-                Company_registration: "",
+                trading_name: "",
+                registered_company: "",
+                company_registration: "",
                 partners_name: "",
-                limited_Registered_company:"",
-                limited_registration_number:"",
+                limited_registered_company: "",
+                limited_registration_number: "",
             },
             options: [
                 {
@@ -257,6 +165,32 @@ export default {
             ],
         };
     },
+    computed: {
+        getComputedFormData() {
+            return Object.fromEntries(
+                Object.entries(this.formData).filter(([key, value]) => value !== "")
+            );
+        }
+    },
+    methods: {
+        submit() {
+
+            const store = useTrademensStore()
+            store.setTradingInformation({
+                ...this.getComputedFormData,
+                operating_as: this.selectedOption
+            })
+            // console.log(store.getTradingInformation)
+            if (this.navigationMethods && typeof this.navigationMethods.nextStep === 'function') {
+                this.navigationMethods.nextStep();
+            }
+        },
+        back() {
+            if (this.navigationMethods && typeof this.navigationMethods.prevStep === 'function') {
+                this.navigationMethods.prevStep();
+            }
+        }
+    }
 };
 </script>
 <style type="text/css" scoped>
@@ -271,6 +205,7 @@ export default {
         font-size: 12px !important;
     }
 }
+
 /*
   Enter and leave animations can use different
   durations and timing functions.
@@ -300,6 +235,7 @@ export default {
     transform: translateX(20px);
     opacity: 0;
 }
+
 .iti {
     position: relative;
     display: block !important;
@@ -312,73 +248,28 @@ export default {
     border-radius: 4px;
 }
 
+.formpadding {
+    padding: 30px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
 .form_input {
     border: 2px solid #b0c0d3;
     border-radius: 4px;
 }
+
 .lp-header__content {
     margin-top: 5% !important;
 }
-.btn--Tradeb {
-    width: 30% !important;
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 1em;
-    font-family: "sofia_probold", "Trebuchet MS", "Segoe UI", Candara,
-        "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", Verdana,
-        "Verdana Ref", sans-serif;
-    padding: 0.6em 0.25em 0.7em;
-    -webkit-border-radius: 0.25em;
-    -moz-border-radius: 0.25em;
-    border-radius: 0.25em;
-    background: white;
-    opacity: 0.9;
-    border: 2px solid #51c57d;
-    color: #51c57d;
-    display: inline-block;
-    transition: color ease 100ms, border-color ease 100ms;
-    margin-left: 10px;
-    text-decoration: none !important;
-}
 
-.btn--Tradeb:hover {
-    border: 2px solid #f0ae55 !important;
-    color: #f0ae55 !important;
-    text-decoration: none !important;
-}
-
-.btn--Tradec {
-    width: 60% !important;
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 1em;
-    font-family: "sofia_probold", "Trebuchet MS", "Segoe UI", Candara,
-        "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", Verdana,
-        "Verdana Ref", sans-serif;
-    padding: 0.6em 0.25em 0.7em;
-    -webkit-border-radius: 0.25em;
-    -moz-border-radius: 0.25em;
-    border-radius: 0.25em;
-    background-color: #51c57d;
-    color: #fff;
-    display: inline-block;
-    border: 2px solid #51c57d;
-    transition: color ease 100ms, border-color ease 100ms;
-    text-decoration: none !important;
-}
-
-.btn--Tradec:hover {
-    background-color: #f0ae55 !important;
-    color: white !important;
-    text-decoration: none !important;
-    border-color: #f0ae55 !important;
-}
 
 .form-check {
     border-bottom: 2px solid #b0c0d3;
     padding: 5px;
     margin-bottom: 10px;
 }
+
 .btn--Tradeb {
     margin-right: 10px;
 }

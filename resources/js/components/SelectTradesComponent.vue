@@ -69,57 +69,57 @@
     </div>
 </template>
 <script setup>
-import { ref, onMounted, computed, reactive } from "vue";
-import axios from "axios";
-const trades = ref([]);
+import { ref, onMounted, computed, reactive } from 'vue';
+import { useTrademensStore} from '../store/trademensStore'
+import axios from 'axios'
+const trades = ref([])
 
 const search = ref("");
 const selectedCheckboxes = ref([]);
-const props = defineProps(["navigationMethods"]);
+const store = useTrademensStore();
+const props = defineProps(['navigationMethods'])
 const filteredTrades = computed(() => {
-    return trades.value.filter((p) => {
-        return (
-            p.name.toLowerCase().includes(search.value.toLowerCase()) ||
-            p.name.toLowerCase().includes(search.value.toLowerCase())
-        );
+    return trades.value.filter(p => {
+        return (p.name.toLowerCase().includes(search.value.toLowerCase()) || p.name.toLowerCase().includes(search.value.toLowerCase()));
     });
 });
 const isCheckboxDisabled = (tradeId) => {
-    const isChecked = selectedCheckboxes.value.includes(tradeId);
+  const isChecked = selectedCheckboxes.value.includes(tradeId);
 
-    if (selectedCheckboxes.value.length >= 5 && !isChecked) {
-        return true; // Disable unchecked checkboxes if more than 5 checkboxes are selected
-    }
+  if (selectedCheckboxes.value.length >= 5 && !isChecked) {
+    return true; // Disable unchecked checkboxes if more than 5 checkboxes are selected
+  }
 
-    return false;
+  return false;
 };
 onMounted(async () => {
-    const response = await axios.get("/getskills");
-    trades.value = response.data;
-});
+    const response = await axios.get('/getskills')
+    trades.value = response.data
+    
+})
 const submit = () => {
-    const filterSelectedValue = trades.value.filter((item) =>
-        selectedCheckboxes.value.includes(item.id)
-    );
-    console.log(filterSelectedValue);
-    if (
-        props.navigationMethods &&
-        typeof props.navigationMethods.nextStep === "function"
-    ) {
+       
+        const filterSelectedValue  = trades.value.filter(item => selectedCheckboxes.value.includes(item.id))
+        store.setStrongestTrades(filterSelectedValue)
+        if (props.navigationMethods && typeof props.navigationMethods.nextStep === 'function') {
         props.navigationMethods.nextStep();
     }
-};
+}
 
 const back = () => {
-    if (
-        props.navigationMethods &&
-        typeof props.navigationMethods.prevStep === "function"
-    ) {
-        props.navigationMethods.prevStep();
-    }
-};
+    if (props.navigationMethods && typeof props.navigationMethods.prevStep === 'function') {
+    props.navigationMethods.prevStep();
+  } 
+}
 </script>
 <style scoped>
+
+.form {
+    border: 2px solid #eff2f6;
+    padding: 30px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
 .has-search .form-control {
     padding-left: 2.375rem;
 }
@@ -143,11 +143,15 @@ const back = () => {
     margin-bottom: 10px;
 }
 
+
+
+
 .border-style ul {
     list-style-type: none;
     /* Remove bullets from the list */
     padding: 0;
     /* Remove default padding */
+
 }
 
 .border-style li {
@@ -167,35 +171,5 @@ const back = () => {
     /* Align labels in a row */
     font-weight: bold;
     /* Make labels bold, adjust as needed */
-}
-
-@media only screen and (min-width: 320px) and (max-width: 600px) {
-    .btn--Tradeb {
-        font-size: 12px !important;
-    }
-}
-
-@media only screen and (min-width: 320px) and (max-width: 600px) {
-    .btn--Tradec {
-        font-size: 12px !important;
-    }
-}
-
-@media only screen and (min-width: 320px) and (max-width: 600px) {
-    .h1 {
-        font-size: 0.94rem !important;
-    }
-}
-@media only screen and (min-width: 320px) and (max-width: 600px) {
-    .p_size {
-        font-size: 0.8rem !important;
-    }
-}
-
-.form {
-    border: 2px solid #eff2f6;
-    padding: 30px;
-    margin-bottom: 10px;
-    border-radius: 4px;
 }
 </style>

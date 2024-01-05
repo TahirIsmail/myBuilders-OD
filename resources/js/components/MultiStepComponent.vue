@@ -1,7 +1,7 @@
 <template>
     <div>
       <KeepAlive>
-          <component :is="currentStepComponent" :key="currentStep" />
+          <component :is="currentStepComponent" :key="currentStep" :navigationMethods="{prevStep,nextStep}" />
 
       </KeepAlive>
       <button @click="prevStep" :disabled="currentStep === 1">Previous</button>
@@ -12,17 +12,16 @@
   <script setup>
   import TradeSignupComponent from './TradeSignupComponent';
   import TradeForm from './TradeForm';
-  import WorkAddressesComponent from './WorkAddressComponent';
   import IntroductionComponent from './IntroductionComponent';
   import SelectTradesComponent from './SelectTradesComponent';
   import StrongestTradeComponent from './StrongestTradeComponent';
-
-  import {computed, ref, KeepAlive } from 'vue';
+  import WorkAddressComponent from './WorkAddressComponent.vue';
+  import {computed, ref, KeepAlive} from 'vue';
   
   const currentStep = ref(1);
   const totalSteps = 6;
   
-  const prevStep = () => { 
+  const prevStep = () => {
     if (currentStep.value > 1) {
       currentStep.value--;
     }
@@ -36,10 +35,10 @@
   
   const currentStepComponent = computed(() => {
     const componentMapping = {
-      1: TradeSignupComponent,
-      2: TradeForm,
-      3: WorkAddressesComponent,
-      4: IntroductionComponent,
+      1:TradeSignupComponent,
+      2:TradeForm,
+      3:WorkAddressComponent,
+      4:IntroductionComponent,
       5:SelectTradesComponent,
       6:StrongestTradeComponent,
     };

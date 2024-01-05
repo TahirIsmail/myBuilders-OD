@@ -261,6 +261,10 @@ class HomeController extends Controller
     // Redirect to the specified route
         return response()->json(['message' => 'Job posted successfully','code' => 200]);
     }
+
+    function getSkills(){
+        return response()->json(Skill::all());
+    }
     function clearCache(Request $request)
     {
         Artisan::call('cache:clear');
@@ -269,7 +273,5 @@ class HomeController extends Controller
         return back();
     }
 
-    function getSkills(){
-        return response()->json(Skill::all());
-    }
+    
 }

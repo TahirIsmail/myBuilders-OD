@@ -65743,7 +65743,7 @@ module.exports = Suggestions;
 /***/ (function(module) {
 
 /*!
-* sweetalert2 v11.10.1
+* sweetalert2 v11.10.2
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -65777,6 +65777,20 @@ module.exports = Suggestions;
       }
       return a;
     }
+  }
+  function _toPrimitive(t, r) {
+    if ("object" != typeof t || !t) return t;
+    var e = t[Symbol.toPrimitive];
+    if (void 0 !== e) {
+      var i = e.call(t, r || "default");
+      if ("object" != typeof i) return i;
+      throw new TypeError("@@toPrimitive must return a primitive value.");
+    }
+    return ("string" === r ? String : Number)(t);
+  }
+  function _toPropertyKey(t) {
+    var i = _toPrimitive(t, "string");
+    return "symbol" == typeof i ? i : String(i);
   }
   function _typeof(o) {
     "@babel/helpers - typeof";
@@ -65948,20 +65962,6 @@ module.exports = Suggestions;
   }
   function _nonIterableRest() {
     throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-  }
-  function _toPrimitive(input, hint) {
-    if (typeof input !== "object" || input === null) return input;
-    var prim = input[Symbol.toPrimitive];
-    if (prim !== undefined) {
-      var res = prim.call(input, hint || "default");
-      if (typeof res !== "object") return res;
-      throw new TypeError("@@toPrimitive must return a primitive value.");
-    }
-    return (hint === "string" ? String : Number)(input);
-  }
-  function _toPropertyKey(arg) {
-    var key = _toPrimitive(arg, "string");
-    return typeof key === "symbol" ? key : String(key);
   }
   function _classPrivateFieldGet(receiver, privateMap) {
     var descriptor = _classExtractFieldDescriptor(receiver, privateMap, "get");
@@ -66316,24 +66316,21 @@ module.exports = Suggestions;
    * @returns {HTMLButtonElement | null}
    */
   var getConfirmButton = function getConfirmButton() {
-    return (/** @type {HTMLButtonElement} */elementBySelector(".".concat(swalClasses.actions, " .").concat(swalClasses.confirm))
-    );
+    return /** @type {HTMLButtonElement} */elementBySelector(".".concat(swalClasses.actions, " .").concat(swalClasses.confirm));
   };
 
   /**
    * @returns {HTMLButtonElement | null}
    */
   var getCancelButton = function getCancelButton() {
-    return (/** @type {HTMLButtonElement} */elementBySelector(".".concat(swalClasses.actions, " .").concat(swalClasses.cancel))
-    );
+    return /** @type {HTMLButtonElement} */elementBySelector(".".concat(swalClasses.actions, " .").concat(swalClasses.cancel));
   };
 
   /**
    * @returns {HTMLButtonElement | null}
    */
   var getDenyButton = function getDenyButton() {
-    return (/** @type {HTMLButtonElement} */elementBySelector(".".concat(swalClasses.actions, " .").concat(swalClasses.deny))
-    );
+    return /** @type {HTMLButtonElement} */elementBySelector(".".concat(swalClasses.actions, " .").concat(swalClasses.deny));
   };
 
   /**
@@ -66621,7 +66618,7 @@ module.exports = Suggestions;
       value = parseInt(value);
     }
     if (value || parseInt(value) === 0) {
-      elem.style[property] = typeof value === 'number' ? "".concat(value, "px") : value;
+      elem.style.setProperty(property, typeof value === 'number' ? "".concat(value, "px") : value);
     } else {
       elem.style.removeProperty(property);
     }
@@ -66667,10 +66664,10 @@ module.exports = Suggestions;
    * @param {string} value
    */
   var setStyle = function setStyle(parent, selector, property, value) {
-    /** @type {HTMLElement} */
+    /** @type {HTMLElement | null} */
     var el = parent.querySelector(selector);
     if (el) {
-      el.style[property] = value;
+      el.style.setProperty(property, value);
     }
   };
 
@@ -67939,7 +67936,6 @@ module.exports = Suggestions;
       if (['textarea', 'file'].includes(innerParams.input)) {
         return; // do not submit
       }
-
       clickConfirm();
       event.preventDefault();
     }
@@ -68397,7 +68393,6 @@ module.exports = Suggestions;
     if (!popup) {
       new Swal(); // eslint-disable-line no-new
     }
-
     popup = getPopup();
     if (!popup) {
       return;
@@ -70392,7 +70387,7 @@ module.exports = Suggestions;
     };
   });
   SweetAlert.DismissReason = DismissReason;
-  SweetAlert.version = '11.10.1';
+  SweetAlert.version = '11.10.2';
 
   var Swal = SweetAlert;
   // @ts-ignore

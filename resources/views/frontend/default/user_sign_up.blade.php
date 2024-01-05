@@ -31,9 +31,8 @@
         }
     </style>
 
-
-    <div id="app" style="background-color: #eff2f6">
-  
+<div id="app" style="background-color: #eff2f6">
+        
         <multi-step></multi-step>
         {{-- <trade-form></trade-form> --}}
     </div>

@@ -5,16 +5,16 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-xxl-7 col-xl-7 col-md-7 mx-auto">
-                            <div class="card rounded-2 border-gray-light">
+                            <div class="card rounded-2 border-gray-light bg-white">
                                 <div class="card-body">
                                     <div
-                                        class="mb-5 text-center col-xxl-12 col-xl-12 col-md-12"
+                                        class="mb-5  col-xxl-12 col-xl-12 col-md-12"
                                     >
                                         <h1
                                             class="h3 mb-0"
                                             style="color: #55b97b"
                                         >
-                                            Sign up to be a trade member
+                                           <strong> Sign up to be a trade member</strong>
                                         </h1>
 
                                         <p
@@ -235,26 +235,37 @@
 </template>
 
 <script setup>
-import { ref, reactive } from "vue";
-import { Form, Field, ErrorMessage } from "vee-validate";
+import { ref, reactive,defineProps,defineEmits } from 'vue'
+import { Form, Field, ErrorMessage } from 'vee-validate'
+import { useTrademensStore } from '../store/trademensStore';
+import * as yup from 'yup';
 
-import * as yup from "yup";
+const props = defineProps(['navigationMethods'])
+
+
 
 const schema = yup.object().shape({
+
     email: yup.string().email().required(),
     password: yup.string().min(8).required(),
     password_confirmation: yup
         .string()
         .required()
-        .oneOf([yup.ref("password")], "Passwords do not match"),
-    phone: yup.string().min(11).required(),
+        .oneOf([yup.ref('password')], 'Passwords do not match'),
+    phone: yup.string().required().matches(/^((\+[1-9]{1,4}[ \-]*)|(\([0-9]{2,3}\)[ \-]*)|([0-9]{2,4})[ \-]*)*?[0-9]{3,4}?[ \-]*[0-9]{3,4}?$/, 'Phone number is not valid'),
     term_conditions: yup.string().required(),
-    condition: yup.string().required(),
+    condition: yup.string().required()
 });
 
+const store  = useTrademensStore();
 const submitForm = (values) => {
-    console.log({ ...values });
+    store.setUserInformation(values)
+    // console.log(store.getUserInfo)
+    if (props.navigationMethods && typeof props.navigationMethods.nextStep === 'function') {
+    props.navigationMethods.nextStep();
+  }
 };
+
 </script>
 
 <style scoped>
@@ -306,5 +317,6 @@ const submitForm = (values) => {
     }
 }
 </style>
+
 
 <!-- Add Bootstrap CSS in your project for this to work -->
