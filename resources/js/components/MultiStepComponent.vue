@@ -16,10 +16,11 @@
   import SelectTradesComponent from './SelectTradesComponent';
   import StrongestTradeComponent from './StrongestTradeComponent';
   import WorkAddressComponent from './WorkAddressComponent.vue';
+  import TradeAssessment from './TradeAssessment.vue';
   import {computed, ref, KeepAlive} from 'vue';
   
   const currentStep = ref(1);
-  const totalSteps = 6;
+  const totalSteps = 7;
   
   const prevStep = () => {
     if (currentStep.value > 1) {
@@ -41,6 +42,7 @@
       4:IntroductionComponent,
       5:SelectTradesComponent,
       6:StrongestTradeComponent,
+      7:TradeAssessment
     };
     const component = componentMapping[currentStep.value];
     if (!component) {

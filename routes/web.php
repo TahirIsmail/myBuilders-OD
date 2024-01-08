@@ -13,6 +13,8 @@ use App\Http\Controllers\Payment\FlutterwaveController;
 use App\Http\Controllers\Payment\MercadopagoController;
 use App\Http\Controllers\Payment\StripeController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\HomeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -51,6 +53,7 @@ Route::get('/post_job_magic', 'HomeController@post_job_magic');
 Route::post('/magic-job-post', 'HomeController@storemagicjobpost');
 Route::post('/checkuser','HomeController@checkuser')->name('check_user_exist');
 Route::get('/getskills','HomeController@getSkills');
+Route::post('/getAssessment','HomeController@getAssessment');
 // Subscribe
 
 Route::resource('subscribers', 'SubscriberController');
@@ -82,7 +85,6 @@ Route::post('/user-name-check', 'HomeController@user_name_check')->name('user_na
 Route::post('/cities/get_city_by_country', 'CityController@get_city_by_country')->name('cities.get_city_by_country');
 
 Route::post('/user-account-type', 'UserController@set_account_type')->name('user.account.type');
-
 //Blog Section
 Route::get('/blog', 'BlogController@all_blog')->name('blog');
 Route::get('/blog/{slug}', 'BlogController@blog_details')->name('blog.details');

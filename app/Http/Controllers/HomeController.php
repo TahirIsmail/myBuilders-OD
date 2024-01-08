@@ -13,9 +13,12 @@ use App\Utility\NotificationUtility;
 use App\Models\ProjectCategory as Categories;
 use App\Models\Skill;
 use App\Models\ProjectCategory;
+use App\Models\AssessmentQuestion;
+use App\Models\AssessmentAnswer;
 use App\Notifications\SendMagicLinkNotification;
 use Carbon;
 use Illuminate\Support\Str;
+
 use Spatie\Permission\Models\Permission;
 use Artisan;
 
@@ -263,7 +266,11 @@ class HomeController extends Controller
     }
 
     function getSkills(){
-        return response()->json(Skill::all());
+        return response()->json(ProjectCategory::take(46)->get());
+    }
+    function getAssessment(Request $request){
+        $assessment = AssessmentQuestion::with('answers')->where('job_category_id',$request->id)->get();
+        return response()->json($assessment);
     }
     function clearCache(Request $request)
     {
