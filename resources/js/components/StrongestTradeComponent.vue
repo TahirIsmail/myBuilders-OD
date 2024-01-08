@@ -85,6 +85,24 @@ const back = () => {
 }
 </script>
 <style scoped>
+@media only screen and (min-width: 320px) and (max-width: 600px) {
+    .jSiDrI {
+        font-size:0.8rem !important;
+        padding:0.5 rem !important;
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 600px) {
+    .btn--Tradeb {
+        font-size: 12px !important;
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 600px) {
+    .btn--Tradec {
+        font-size: 12px !important;
+    }
+}
 
 .active{
     background-color: rgba(74, 144, 226, 0.1);
