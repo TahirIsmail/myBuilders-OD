@@ -33,7 +33,7 @@
             </div>
         </div>
     </div>
-    <div id="app">
+    <div id="app" >
 
         <post-a-job :user="{{ json_encode($user) }}" ></post-a-job>
 

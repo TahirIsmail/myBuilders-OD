@@ -1,74 +1,72 @@
 
 <template>
-    <div class="container" style="padding: 30px">
-        <div class="row justify-content-center " >
-            <div class="col-md-10">
-                <!-- <h2 class="form-heading">Give your job a headline</h2> -->
-                <form @submit.prevent="submitForm" >
-                    <!-- Job Headline Input -->
-                    <div class="form-group position-relative">
-                        <label for="jobHeadline">Give your job a headline</label>
-                        <input type="text" class="form-control" id="jobHeadline" placeholder="Enter job headline"
-                            v-model="form.jobHeadline" @input="updateCounter" maxlength="55" />
-                        <small class="form-text text-muted">
-                            More tradespeople express interest in jobs that have
-                            a descriptive name.
-                        </small>
-                        <div class="position-absolute" style="top: 0; right: 10px">
-                            {{ form.jobHeadline.length }}/55
+    <div class="col-md-12 mx-auto row justify-content-md-center">
+        <div class="col-md-10 bg-white" style="padding-top:10px;">
+            <!-- <h2 class="form-heading">Give your job a headline</h2> -->
+            <form ref="jobheadlineref" @submit.prevent="submitForm">
+                <!-- Job Headline Input -->
+                <div class="form-group position-relative">
+                    <label for="jobHeadline">Give your job a headline</label>
+                    <input type="text" class="form-control" id="jobHeadline" placeholder="Enter job headline"
+                        v-model="form.jobHeadline" @input="updateCounter" maxlength="55" />
+                    <small class="form-text text-muted">
+                        More tradespeople express interest in jobs that have
+                        a descriptive name.
+                    </small>
+                    <div class="position-absolute" style="top: 0; right: 10px">
+                        {{ form.jobHeadline.length }}/55
+                    </div>
+                </div>
+
+                <!-- Postcode Input with Inner Div -->
+                <div class="form-group">
+                    <label for="postcode">Postcode for the job</label>
+                    <div class="input-group">
+                        <div class="input-group-append">
+                            <span class="input-group-text">UK Postcode</span>
                         </div>
+                        <input type="text" class="form-control" id="postcode" v-model="form.postcode"
+                            @input="postalCodeValidation" />
+                    </div>
+                    <div v-if="!form.isValidPostalCode && form.postcode.trim() !== ''" class="alert">
+                        <p>Invalid postal code! Please enter a valid postal code.</p>
+                    </div>
+                </div>
+
+                <!-- Email Address Input -->
+
+                <div v-if="!store.jobInformation || user">
+                    <div class="form-group button-container">
+                        <button type="submit" class="btn btn-primary">
+                            Continue
+                        </button>
                     </div>
 
-                    <!-- Postcode Input with Inner Div -->
-                    <div class="form-group">
-                        <label for="postcode">Postcode for the job</label>
-                        <div class="input-group">
-                            <div class="input-group-append">
-                                <span class="input-group-text">UK Postcode</span>
-                            </div>
-                            <input type="text" class="form-control" id="postcode" v-model="form.postcode"
-                                @input="postalCodeValidation" />
-                        </div>
-                        <div v-if="!form.isValidPostalCode && form.postcode.trim() !== ''" class="alert">
-                            <p>Invalid postal code! Please enter a valid postal code.</p>
-                        </div>
-                    </div>
-
-                    <!-- Email Address Input -->
-
-                    <div v-if="!store.jobInformation || user">
-                        <div class="form-group button-container">
-                            <button type="submit" class="btn btn-primary">
-                                Continue
-                            </button>
-                        </div>
-
-                    </div>
+                </div>
 
 
 
-                </form>
-            </div>
+            </form>
+        </div>
 
-            <div v-if="!user">
-                <KeepAlive>
-                    <Transition>
-                        <component :is="currentComponent " v-if="store.jobInformation"
-                            @toggleCurrent="handleComponentChange"></component>
-                    </Transition>
-                </KeepAlive>
-            </div>
-
+        <div class="col-md-10 bg-white" v-if="!user">
+            <KeepAlive>
+                <Transition>
+                    <component :is="currentComponent " v-if="store.jobInformation" @toggleCurrent="handleComponentChange">
+                    </component>
+                </Transition>
+            </KeepAlive>
         </div>
     </div>
 </template>
 
 <script setup>
-import { reactive, computed, ref, shallowRef, inject } from 'vue';
+import { reactive,onMounted, computed, ref, shallowRef, inject } from 'vue';
 import { useQuestionnaireStore } from '../store/questionnaireStore';
 import SignUp from '../components/SignUpComponent.vue';
 import EmailInput from '../components/EmailInputComponent.vue'
 import axios from 'axios';
+const  jobheadlineref =  ref('');
 const showSecondComponent = ref(false);
 
 const handleComponentChange = (value) => {
@@ -115,7 +113,7 @@ const submitForm = () => {
             SelectedCategory: store.selectedCategory,
             JobDescription: store.getJobDescription
         })
-        const response  =  store.sendJobinformation();
+        const response = store.sendJobinformation();
         console.log(response)
     } else {
         // Object is null or undefined
@@ -131,7 +129,9 @@ const submitForm = () => {
 
 
 };
-
+onMounted(() => {
+    jobheadlineref.value.scrollIntoView({behavior:"smooth"})
+})
 const postjob = async () => {
     await store.sendJobinformation()
 }
@@ -159,7 +159,7 @@ const postjob = async () => {
 }
 
 .btn {
-    margin-top: 50px !important ;
+    margin-top: 50px !important;
     width: 500px !important;
     display: inline-block !important;
     font-weight: 400 !important;
@@ -177,7 +177,7 @@ const postjob = async () => {
 }
 
 .btn-primary:hover {
-   
+
     color: #fff;
     background-color: rgb(101, 217, 145) !important;
 }

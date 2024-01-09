@@ -26150,8 +26150,12 @@ __webpack_require__.r(__webpack_exports__);
     var __expose = _ref.expose;
     __expose();
     var store = (0,_store_trademensStore__WEBPACK_IMPORTED_MODULE_1__.useTrademensStore)();
+    var refIntro = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
     var introduction = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)('');
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(function () {
+      refIntro.value.scrollIntoView({
+        behavious: "smooth"
+      });
       console.log("Introduction component mounted");
     });
     var props = __props;
@@ -26168,6 +26172,7 @@ __webpack_require__.r(__webpack_exports__);
     };
     var __returned__ = {
       store: store,
+      refIntro: refIntro,
       introduction: introduction,
       props: props,
       submit: submit,
@@ -26315,6 +26320,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     var __expose = _ref.expose;
     __expose();
     var trades = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]);
+    var selectTradesRef = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
     var search = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)("");
     var selectedCheckboxes = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]);
     var store = (0,_store_trademensStore__WEBPACK_IMPORTED_MODULE_1__.useTrademensStore)();
@@ -26341,7 +26347,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           case 2:
             response = _context.sent;
             trades.value = response.data;
-          case 4:
+            selectTradesRef.value.scrollIntoView({
+              behavior: "smooth"
+            });
+          case 5:
           case "end":
             return _context.stop();
         }
@@ -26363,6 +26372,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
     var __returned__ = {
       trades: trades,
+      selectTradesRef: selectTradesRef,
       search: search,
       selectedCheckboxes: selectedCheckboxes,
       store: store,
@@ -26414,6 +26424,7 @@ __webpack_require__.r(__webpack_exports__);
     var __expose = _ref.expose;
     __expose();
     var store = (0,_store_trademensStore__WEBPACK_IMPORTED_MODULE_1__.useTrademensStore)();
+    var strongestTradeRef = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
     var isActive = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
     var props = __props;
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.onBeforeMount)(function () {
@@ -26434,6 +26445,11 @@ __webpack_require__.r(__webpack_exports__);
         });
       }
     });
+    (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(function () {
+      strongestTradeRef.value.scrollIntoView({
+        behavior: "smooth"
+      });
+    });
     var setTradeEvaluation = function setTradeEvaluation(trade) {
       isActive.value = isActive.value === trade ? null : trade;
     };
@@ -26451,12 +26467,14 @@ __webpack_require__.r(__webpack_exports__);
     };
     var __returned__ = {
       store: store,
+      strongestTradeRef: strongestTradeRef,
       isActive: isActive,
       props: props,
       setTradeEvaluation: setTradeEvaluation,
       submit: submit,
       back: back,
       reactive: vue__WEBPACK_IMPORTED_MODULE_0__.reactive,
+      onMounted: vue__WEBPACK_IMPORTED_MODULE_0__.onMounted,
       onBeforeMount: vue__WEBPACK_IMPORTED_MODULE_0__.onBeforeMount,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
       shallowReadonly: vue__WEBPACK_IMPORTED_MODULE_0__.shallowReadonly,
@@ -26517,17 +26535,28 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
   methods: {
     nextQuestion: function nextQuestion(selectedAnswer) {
       var store = (0,_store_trademensStore__WEBPACK_IMPORTED_MODULE_1__.useTrademensStore)();
-      store.setSelectedAnswers(selectedAnswer.id, selectedAnswer.answer);
+      store.setSelectedAnswer(selectedAnswer);
       // console.log('Selected Answer:', selectedAnswer);
       this.currentQuestionIndex++;
       if (this.currentQuestionIndex >= this.questions.length) {
-        console.log('Evaluation completed!');
+        Swal.fire({
+          title: 'Evaluation',
+          text: 'Completed!',
+          icon: 'success',
+          showCancelButton: false,
+          confirmButtonColor: '#51C57D',
+          confirmButtonText: 'Yes!'
+        }).then(function (result) {
+          if (result.isConfirmed) {
+            window.location.href = './';
+          }
+        });
         console.log({
           user_info: store.userInformation,
           trading_info: store.getTradingInformation,
           work_details: store.getWorkAddressDetails,
           customerintroduction: store.getIntroduction,
-          selected_answers: store.getSelectedAnswers
+          selected_answers: store.getSelectedAnswer
         });
       }
     }
@@ -26626,6 +26655,12 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         this.navigationMethods.prevStep();
       }
     }
+  },
+  mounted: function mounted() {
+    var tradeInfoRef = this.$refs.tradeInfoRef;
+    tradeInfoRef.scrollIntoView({
+      behavior: "smooth"
+    });
   }
 });
 
@@ -26642,6 +26677,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _store_trademensStore__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../store/trademensStore */ "./resources/js/store/trademensStore.js");
+/* harmony import */ var pinia__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! pinia */ "./node_modules/pinia/dist/pinia.mjs");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     question: Object
@@ -26651,9 +26696,12 @@ __webpack_require__.r(__webpack_exports__);
       selectedAnswer: {}
     };
   },
+  computed: _objectSpread({}, (0,pinia__WEBPACK_IMPORTED_MODULE_1__.mapState)(_store_trademensStore__WEBPACK_IMPORTED_MODULE_0__.useTrademensStore, {
+    evaluation_trade: 'evaluationTrade'
+  })),
   methods: {
     nextQuestion: function nextQuestion() {
-      this.$emit('next', this.selectedAnswer);
+      this.$emit("next", this.selectedAnswer);
     }
   }
 });
@@ -26686,6 +26734,12 @@ __webpack_require__.r(__webpack_exports__);
     var __expose = _ref.expose;
     __expose();
     var props = __props;
+    var tradeSignUpRef = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
+    (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(function () {
+      tradeSignUpRef.value.scrollIntoView({
+        behavior: "smooth"
+      });
+    });
     var schema = yup__WEBPACK_IMPORTED_MODULE_2__.object().shape({
       email: yup__WEBPACK_IMPORTED_MODULE_2__.string().email().required(),
       password: yup__WEBPACK_IMPORTED_MODULE_2__.string().min(8).required(),
@@ -26704,10 +26758,12 @@ __webpack_require__.r(__webpack_exports__);
     };
     var __returned__ = {
       props: props,
+      tradeSignUpRef: tradeSignUpRef,
       schema: schema,
       store: store,
       submitForm: submitForm,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
+      onMounted: vue__WEBPACK_IMPORTED_MODULE_0__.onMounted,
       reactive: vue__WEBPACK_IMPORTED_MODULE_0__.reactive,
       get Form() {
         return vee_validate__WEBPACK_IMPORTED_MODULE_3__.Form;
@@ -26766,6 +26822,7 @@ __webpack_require__.r(__webpack_exports__);
     var work_address = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)('');
     var distance = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)('');
     var editedItem = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({});
+    var workDetailref = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
     // mapbox options as per https://docs.mapbox.com/api/search/geocoding
     var mapboxOptions = {
       access_token: 'pk.eyJ1IjoidGFoaXItdGVzdDEyIiwiYSI6ImNsb2g1ZDlhczEzYnQybXFlcTB1ajlwNjEifQ.c8bkCwEOW_EWwaP23Mor9A',
@@ -26798,6 +26855,11 @@ __webpack_require__.r(__webpack_exports__);
         props.navigationMethods.prevStep();
       }
     }
+    (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(function () {
+      workDetailref.value.scrollIntoView({
+        behavior: "smooth"
+      });
+    });
     var __returned__ = {
       postcode: postcode,
       town: town,
@@ -26805,12 +26867,14 @@ __webpack_require__.r(__webpack_exports__);
       work_address: work_address,
       distance: distance,
       editedItem: editedItem,
+      workDetailref: workDetailref,
       mapboxOptions: mapboxOptions,
       props: props,
       store: store,
       getAddress: getAddress,
       submit: submit,
       back: back,
+      onMounted: vue__WEBPACK_IMPORTED_MODULE_0__.onMounted,
       reactive: vue__WEBPACK_IMPORTED_MODULE_0__.reactive,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
       get useTrademensStore() {
@@ -26853,6 +26917,7 @@ var _hoisted_2 = {
   "class": "container"
 };
 var _hoisted_3 = {
+  ref: "refIntro",
   "class": "row"
 };
 var _hoisted_4 = {
@@ -26906,7 +26971,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     type: "submit",
     "class": "btn--Tradec",
     onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)($setup.submit, ["prevent"])
-  }, " Continue ")])])])])])])]);
+  }, " Continue ")])])])])], 512 /* NEED_PATCH */)])]);
 }
 
 /***/ }),
@@ -26964,6 +27029,7 @@ var _hoisted_1 = {
   "class": "py-4 py-lg-5"
 };
 var _hoisted_2 = {
+  ref: "selectTradesRef",
   "class": "container"
 };
 var _hoisted_3 = {
@@ -27039,7 +27105,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     type: "submit",
     "class": "btn--Tradec",
     onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)($setup.submit, ["prevent"])
-  }, " Continue ")])])])])])]);
+  }, " Continue ")])])])])], 512 /* NEED_PATCH */)]);
 }
 
 /***/ }),
@@ -27070,6 +27136,7 @@ var _hoisted_3 = {
   "class": "row"
 };
 var _hoisted_4 = {
+  ref: "strongestTradeRef",
   "class": "col-xxl-6 col-xl-6 col-md-7 mx-auto form bg-white"
 };
 var _hoisted_5 = /*#__PURE__*/_withScopeId(function () {
@@ -27117,7 +27184,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     type: "submit",
     "class": "btn--Tradec",
     onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)($setup.submit, ["prevent"])
-  }, " Continue ")])])])])])])]);
+  }, " Continue ")])])])], 512 /* NEED_PATCH */)])])]);
 }
 
 /***/ }),
@@ -27135,18 +27202,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var _hoisted_1 = {
-  key: 1
-};
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", null, "Evaluation Completed!", -1 /* HOISTED */);
-var _hoisted_3 = [_hoisted_2];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_trade_questionare = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("trade-questionare");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [$options.currentQuestion ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_trade_questionare, {
     key: 0,
     question: $options.currentQuestion,
     onNext: $options.nextQuestion
-  }, null, 8 /* PROPS */, ["question", "onNext"])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [].concat(_hoisted_3)))]);
+  }, null, 8 /* PROPS */, ["question", "onNext"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div v-else>\r\n        <h2>Evaluation Completed!</h2>\r\n      </div> ")]);
 }
 
 /***/ }),
@@ -27177,6 +27239,7 @@ var _hoisted_3 = {
   "class": "row"
 };
 var _hoisted_4 = {
+  ref: "tradeInfoRef",
   "class": "col-xxl-6 col-xl-6 col-md-7 mx-auto formpadding bg-white"
 };
 var _hoisted_5 = /*#__PURE__*/_withScopeId(function () {
@@ -27406,15 +27469,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, " Continue ")])], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.selectedOption]])];
     }),
     _: 1 /* STABLE */
-  })])])])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" </div>\r\n  </div> ")], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */);
+  })])])], 512 /* NEED_PATCH */)])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" </div>\r\n  </div> ")], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */);
 }
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/TradeQuestionare.vue?vue&type=template&id=6969ca15":
-/*!**************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/TradeQuestionare.vue?vue&type=template&id=6969ca15 ***!
-  \**************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/TradeQuestionare.vue?vue&type=template&id=6969ca15&scoped=true":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/TradeQuestionare.vue?vue&type=template&id=6969ca15&scoped=true ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -27424,23 +27487,62 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var _hoisted_1 = ["value"];
+var _withScopeId = function _withScopeId(n) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.pushScopeId)("data-v-6969ca15"), n = n(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.popScopeId)(), n;
+};
+var _hoisted_1 = {
+  "class": "py-4 py-lg-5"
+};
+var _hoisted_2 = {
+  "class": "container"
+};
+var _hoisted_3 = {
+  "class": "row"
+};
+var _hoisted_4 = {
+  "class": "col-xxl-6 col-xl-6 col-md-7 mx-auto formpadding bg-white"
+};
+var _hoisted_5 = {
+  "class": "h3 mb-0 heading-large",
+  style: {
+    "color": "#55b97b"
+  }
+};
+var _hoisted_6 = {
+  "class": "control-label trade-question"
+};
+var _hoisted_7 = {
+  "class": "answer-list"
+};
+var _hoisted_8 = {
+  "class": "answer-label"
+};
+var _hoisted_9 = ["value"];
+var _hoisted_10 = {
+  "class": "mb-5 d-flex justify-content-center mt-20px",
+  style: {
+    "margin-top": "30px",
+    "margin-bottom": "2rem"
+  }
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.question.question), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.question.answers, function (answer) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.evaluation_trade.name), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.question.question), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_7, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.question.answers, function (answer) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", {
       key: answer.id
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
       type: "radio",
       value: answer,
       "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
         return $data.selectedAnswer = $event;
-      })
-    }, null, 8 /* PROPS */, _hoisted_1), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.selectedAnswer]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(answer.answer), 1 /* TEXT */)])]);
-  }), 128 /* KEYED_FRAGMENT */))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+      }),
+      "class": "fqFfVE"
+    }, null, 8 /* PROPS */, _hoisted_9), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.selectedAnswer]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(answer.answer), 1 /* TEXT */)])]);
+  }), 128 /* KEYED_FRAGMENT */))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[1] || (_cache[1] = function () {
       return $options.nextQuestion && $options.nextQuestion.apply($options, arguments);
-    })
-  }, "Continue")]);
+    }),
+    "class": "btn--Tradec"
+  }, " Continue ")])])])])])]);
 }
 
 /***/ }),
@@ -27480,6 +27582,7 @@ var _hoisted_5 = {
   "class": "row"
 };
 var _hoisted_6 = {
+  ref: "tradeSignUpRef",
   "class": "col-xxl-7 col-xl-7 col-md-7 mx-auto"
 };
 var _hoisted_7 = {
@@ -27705,7 +27808,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       })])])]), _hoisted_33, _hoisted_34];
     }),
     _: 1 /* STABLE */
-  }, 8 /* PROPS */, ["validation-schema"])])])])])])])])]);
+  }, 8 /* PROPS */, ["validation-schema"])])])], 512 /* NEED_PATCH */)])])])])]);
 }
 
 /***/ }),
@@ -27741,6 +27844,7 @@ var _hoisted_4 = {
   "class": "row"
 };
 var _hoisted_5 = {
+  ref: "workDetailref",
   "class": "col-xxl-6 col-xl-6 col-md-7 mx-auto form bg-white"
 };
 var _hoisted_6 = /*#__PURE__*/_withScopeId(function () {
@@ -27933,7 +28037,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     type: "submit",
     "class": "btn--Tradec",
     onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)($setup.submit, ["prevent"])
-  }, " Continue ")])])])])])])])], 64 /* STABLE_FRAGMENT */);
+  }, " Continue ")])])])], 512 /* NEED_PATCH */)])])])], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),
@@ -28051,7 +28155,7 @@ var useTrademensStore = (0,pinia__WEBPACK_IMPORTED_MODULE_2__.defineStore)('trad
       strongestTrades: {},
       evaluationTrade: {},
       assessmentQuestions: {},
-      selectedAnswers: (0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)({})
+      selectedAnswers: []
     };
   },
   getters: {
@@ -28070,11 +28174,11 @@ var useTrademensStore = (0,pinia__WEBPACK_IMPORTED_MODULE_2__.defineStore)('trad
     getEvaluationTrade: function getEvaluationTrade(state) {
       return state.evaluationTrade;
     },
-    getSelectedAnswers: function getSelectedAnswers(state) {
-      return state.selectedAnswers;
-    },
     getIntroduction: function getIntroduction(state) {
       return state.introductionToCustomer;
+    },
+    getSelectedAnswer: function getSelectedAnswer(state) {
+      return state.selectedAnswers;
     }
   },
   actions: {
@@ -28082,7 +28186,7 @@ var useTrademensStore = (0,pinia__WEBPACK_IMPORTED_MODULE_2__.defineStore)('trad
       this.userInformation = userInformation;
     },
     setUserIntroduction: function setUserIntroduction(userIntro) {
-      this.introductionToCustomer = userIntro;
+      this.introductionToCustomer = userIntro.value;
     },
     setTradingInformation: function setTradingInformation(tradingInformation) {
       this.tradingInformation = tradingInformation;
@@ -28093,14 +28197,11 @@ var useTrademensStore = (0,pinia__WEBPACK_IMPORTED_MODULE_2__.defineStore)('trad
     setStrongestTrades: function setStrongestTrades(strongestTrades) {
       this.strongestTrades = strongestTrades;
     },
+    setSelectedAnswer: function setSelectedAnswer(selectedAnswer) {
+      this.selectedAnswers.push(selectedAnswer);
+    },
     setEvaluationTrade: function setEvaluationTrade(active) {
       this.evaluationTrade = active;
-    },
-    setSelectedAnswers: function setSelectedAnswers(index, selectedAnswer) {
-      this.selectedAnswers = {
-        question_id: index,
-        selectedAnswer: selectedAnswer
-      };
     },
     setAssessment: function setAssessment() {
       var _this = this;
@@ -32833,7 +32934,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.form[data-v-5a36b992] {\r\n    border: 2px solid #eff2f6;\r\n    padding: 30px;\r\n    margin-bottom: 10px;\r\n    border-radius: 4px;\n}\n.has-search .form-control[data-v-5a36b992] {\r\n    padding-left: 2.375rem;\n}\n.has-search .form-control-feedback[data-v-5a36b992] {\r\n    position: absolute;\r\n    z-index: 2;\r\n    display: block;\r\n    width: 2.375rem;\r\n    height: 2.375rem;\r\n    line-height: 2.375rem;\r\n    text-align: center;\r\n    pointer-events: none;\r\n    color: #aaa;\n}\n.border-style[data-v-5a36b992] {\r\n    border-bottom: 2px solid #b0c0d3;\r\n    border-top: 2px solid #b0c0d3;\r\n    padding: 5px;\r\n    margin-bottom: 10px;\n}\n.border-style ul[data-v-5a36b992] {\r\n    list-style-type: none;\r\n    /* Remove bullets from the list */\r\n    padding: 0;\r\n    /* Remove default padding */\n}\n.border-style li[data-v-5a36b992] {\r\n    margin-bottom: 10px;\r\n    /* Add some spacing between list items */\r\n    font-size: 16px;\n}\r\n\r\n/* Style checkboxes and labels */\n.border-style input[type=\"checkbox\"][data-v-5a36b992] {\r\n    margin-right: 10px;\r\n    /* Add some spacing between checkbox and label */\n}\n.border-style label[data-v-5a36b992] {\r\n    display: inline-block;\r\n    /* Align labels in a row */\r\n    font-weight: bold;\r\n    /* Make labels bold, adjust as needed */\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.form[data-v-5a36b992] {\r\n    border: 2px solid #eff2f6;\r\n    padding: 30px;\r\n    margin-bottom: 10px;\r\n    border-radius: 4px;\n}\n.has-search .form-control[data-v-5a36b992] {\r\n    padding-left: 2.375rem;\n}\n.has-search .form-control-feedback[data-v-5a36b992] {\r\n    position: absolute;\r\n    z-index: 2;\r\n    display: block;\r\n    width: 2.375rem;\r\n    height: 2.375rem;\r\n    line-height: 2.375rem;\r\n    text-align: center;\r\n    pointer-events: none;\r\n    color: #aaa;\n}\n.border-style[data-v-5a36b992] {\r\n    border-bottom: 2px solid #b0c0d3;\r\n    border-top: 2px solid #b0c0d3;\r\n    padding: 5px;\r\n    margin-bottom: 10px;\n}\n.border-style ul[data-v-5a36b992] {\r\n    list-style-type: none;\r\n    /* Remove bullets from the list */\r\n    padding: 0;\r\n    /* Remove default padding */\n}\n.border-style li[data-v-5a36b992] {\r\n    margin-bottom: 10px;\r\n    /* Add some spacing between list items */\r\n    font-size: 14px;\n}\r\n\r\n/* Style checkboxes and labels */\n.border-style input[type=\"checkbox\"][data-v-5a36b992] {\r\n    margin-right: 10px;\r\n    /* Add some spacing between checkbox and label */\n}\n.border-style label[data-v-5a36b992] {\r\n    display: inline-block;\r\n    /* Align labels in a row */\r\n    font-weight: bold;\r\n    /* Make labels bold, adjust as needed */\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -32857,7 +32958,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.active[data-v-7f9d74cd]{\r\n    background-color: rgba(74, 144, 226, 0.1);\r\n    border: 1px solid rgb(74, 144, 226);\r\n    box-shadow: rgb(74, 144, 226) 0px 0px 0px 1px inset;\r\n    color: rgb(52, 57, 68);\n}\n.jSiDrI[data-v-7f9d74cd] {\r\n    -webkit-appearance: none;\r\n       -moz-appearance: none;\r\n            appearance: none;\r\n    width: 100%;\r\n    background-color: rgb(255, 255, 255);\r\n    font-family: inherit;\r\n    margin: 0.75rem 0px;\r\n    border-radius: 6px;\r\n    font-size: 1rem;\r\n    font-weight: bold;\r\n    border: 1px solid rgb(223, 229, 237);\r\n    color: rgb(70, 76, 92);\r\n    padding: 1em;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    cursor: pointer;\n}\n.has-search .form-control[data-v-7f9d74cd] {\r\n    padding-left: 2.375rem;\n}\n.has-search .form-control-feedback[data-v-7f9d74cd] {\r\n    position: absolute;\r\n    z-index: 2;\r\n    display: block;\r\n    width: 2.375rem;\r\n    height: 2.375rem;\r\n    line-height: 2.375rem;\r\n    text-align: center;\r\n    pointer-events: none;\r\n    color: #aaa;\n}\n.form[data-v-7f9d74cd] {\r\n    border: 2px solid #eff2f6;\r\n    padding: 30px;\r\n    margin-bottom: 10px;\r\n    border-radius: 4px;\n}\n.border-style[data-v-7f9d74cd] {\r\n    border-bottom: 2px solid #b0c0d3;\r\n    border-top: 2px solid #b0c0d3;\r\n    padding: 5px;\r\n    margin-bottom: 10px;\n}\n.border-style ul[data-v-7f9d74cd] {\r\n    list-style-type: none;\r\n    /* Remove bullets from the list */\r\n    padding: 0;\r\n    /* Remove default padding */\n}\n.border-style li[data-v-7f9d74cd] {\r\n    margin-bottom: 10px;\r\n    /* Add some spacing between list items */\r\n    font-size: 16px;\n}\r\n\r\n/* Style checkboxes and labels */\n.border-style input[type=\"checkbox\"][data-v-7f9d74cd] {\r\n    margin-right: 10px;\r\n    /* Add some spacing between checkbox and label */\n}\n.border-style label[data-v-7f9d74cd] {\r\n    display: inline-block;\r\n    /* Align labels in a row */\r\n    font-weight: bold;\r\n    /* Make labels bold, adjust as needed */\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n@media only screen and (min-width: 320px) and (max-width: 600px) {\n.jSiDrI[data-v-7f9d74cd] {\r\n        font-size:0.8rem !important;\r\n        padding:0.5 rem !important;\n}\n}\n@media only screen and (min-width: 320px) and (max-width: 600px) {\n.btn--Tradeb[data-v-7f9d74cd] {\r\n        font-size: 12px !important;\n}\n}\n@media only screen and (min-width: 320px) and (max-width: 600px) {\n.btn--Tradec[data-v-7f9d74cd] {\r\n        font-size: 12px !important;\n}\n}\n.active[data-v-7f9d74cd]{\r\n    background-color: rgba(74, 144, 226, 0.1);\r\n    border: 1px solid rgb(74, 144, 226);\r\n    box-shadow: rgb(74, 144, 226) 0px 0px 0px 1px inset;\r\n    color: rgb(52, 57, 68);\n}\n.jSiDrI[data-v-7f9d74cd] {\r\n    -webkit-appearance: none;\r\n       -moz-appearance: none;\r\n            appearance: none;\r\n    width: 100%;\r\n    background-color: rgb(255, 255, 255);\r\n    font-family: inherit;\r\n    margin: 0.75rem 0px;\r\n    border-radius: 6px;\r\n    font-size: 1rem;\r\n    font-weight: bold;\r\n    border: 1px solid rgb(223, 229, 237);\r\n    color: rgb(70, 76, 92);\r\n    padding: 1em;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    cursor: pointer;\n}\n.has-search .form-control[data-v-7f9d74cd] {\r\n    padding-left: 2.375rem;\n}\n.has-search .form-control-feedback[data-v-7f9d74cd] {\r\n    position: absolute;\r\n    z-index: 2;\r\n    display: block;\r\n    width: 2.375rem;\r\n    height: 2.375rem;\r\n    line-height: 2.375rem;\r\n    text-align: center;\r\n    pointer-events: none;\r\n    color: #aaa;\n}\n.form[data-v-7f9d74cd] {\r\n    border: 2px solid #eff2f6;\r\n    padding: 30px;\r\n    margin-bottom: 10px;\r\n    border-radius: 4px;\n}\n.border-style[data-v-7f9d74cd] {\r\n    border-bottom: 2px solid #b0c0d3;\r\n    border-top: 2px solid #b0c0d3;\r\n    padding: 5px;\r\n    margin-bottom: 10px;\n}\n.border-style ul[data-v-7f9d74cd] {\r\n    list-style-type: none;\r\n    /* Remove bullets from the list */\r\n    padding: 0;\r\n    /* Remove default padding */\n}\n.border-style li[data-v-7f9d74cd] {\r\n    margin-bottom: 10px;\r\n    /* Add some spacing between list items */\r\n    font-size: 16px;\n}\r\n\r\n/* Style checkboxes and labels */\n.border-style input[type=\"checkbox\"][data-v-7f9d74cd] {\r\n    margin-right: 10px;\r\n    /* Add some spacing between checkbox and label */\n}\n.border-style label[data-v-7f9d74cd] {\r\n    display: inline-block;\r\n    /* Align labels in a row */\r\n    font-weight: bold;\r\n    /* Make labels bold, adjust as needed */\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -32882,6 +32983,30 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, "\n@media only screen and (min-width: 320px) and (max-width: 600px) {\n.btn--Tradeb[data-v-24a3666d] {\r\n        font-size: 12px !important;\n}\n}\n@media only screen and (min-width: 320px) and (max-width: 600px) {\n.btn--Tradec[data-v-24a3666d] {\r\n        font-size: 12px !important;\n}\n}\r\n\r\n/*\r\n  Enter and leave animations can use different\r\n  durations and timing functions.\r\n  */\r\n\r\n/* we will explain what these classes do next! */\n.v-enter-active[data-v-24a3666d],\r\n.v-leave-active[data-v-24a3666d] {\r\n    transition: opacity 0.5s ease;\n}\n.v-enter-from[data-v-24a3666d],\r\n.v-leave-to[data-v-24a3666d] {\r\n    opacity: 0;\n}\n.slide-fade-enter-active[data-v-24a3666d] {\r\n    transition: all 0.2s ease-out;\n}\n.slide-fade-leave-active[data-v-24a3666d] {\r\n    transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);\n}\n.slide-fade-enter-from[data-v-24a3666d],\r\n.slide-fade-leave-to[data-v-24a3666d] {\r\n    transform: translateX(20px);\r\n    opacity: 0;\n}\n.iti[data-v-24a3666d] {\r\n    position: relative;\r\n    display: block !important;\n}\n.form[data-v-24a3666d] {\r\n    border: 2px solid #b0c0d3;\r\n    padding: 30px;\r\n    margin-bottom: 10px;\r\n    border-radius: 4px;\n}\n.formpadding[data-v-24a3666d] {\r\n    padding: 30px;\r\n    margin-bottom: 10px;\r\n    border-radius: 4px;\n}\n.form_input[data-v-24a3666d] {\r\n    border: 2px solid #b0c0d3;\r\n    border-radius: 4px;\n}\n.lp-header__content[data-v-24a3666d] {\r\n    margin-top: 5% !important;\n}\n.form-check[data-v-24a3666d] {\r\n    border-bottom: 2px solid #b0c0d3;\r\n    padding: 5px;\r\n    margin-bottom: 10px;\n}\n.btn--Tradeb[data-v-24a3666d] {\r\n    margin-right: 10px;\n}\r\n", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/laravel-mix/node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/TradeQuestionare.vue?vue&type=style&index=0&id=6969ca15&scoped=true&lang=css":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/laravel-mix/node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/TradeQuestionare.vue?vue&type=style&index=0&id=6969ca15&scoped=true&lang=css ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "\n.heading-large[data-v-6969ca15] {\r\n\r\n  font-size: 30px;\r\n  margin: 35px 16px 0px;\n}\n.trade-question[data-v-6969ca15] {\r\n  padding: 20px 0px 0px 15px;\r\n\r\n  color: #343944;\r\n  margin-bottom: 1em;\r\n  position: relative;\r\n  line-height: 1.5em;\n}\n.trade-question p[data-v-6969ca15] {\r\n  font-size: 1.2rem;\r\n  color: #343944;\r\n  margin-bottom: 1rem;\r\n  line-height: 1.5em;\r\n  font-weight: normal;\n}\n.answer-list[data-v-6969ca15] {\r\n  list-style-type: none;\r\n  padding: 0;\n}\n.answer-label[data-v-6969ca15] {\r\n  border: 2px solid rgb(239, 242, 246) !important;\r\n  position: relative;\r\n  display: flex;\r\n  flex-flow: row;\r\n  align-items: center;\r\n  margin-bottom: 0px;\r\n  font-weight: normal;\r\n  color: rgb(74, 144, 226);\r\n  padding: 15px 15px 15px 50px;\r\n  font-size: 1.1rem;\n}\n.fqFfVE[data-v-6969ca15] {\r\n  margin-right: 0.5em;\r\n  box-sizing: border-box;\r\n  height: 22px;\r\n  width: 22px;\r\n  line-height: 22px;\r\n  display: block;\r\n  border: 2px solid rgb(176, 192, 211);\r\n  border-radius: 50%;\r\n  color: rgb(255, 255, 255);\r\n  background-color: rgb(255, 255, 255);\r\n  text-align: center;\r\n  position: absolute;\r\n  top: 50%;\r\n  left: 15px;\r\n  margin-top: -11px;\n}\n@media only screen and (min-width: 320px) and (max-width: 600px) {\n.answer-label[data-v-6969ca15] {\r\n      font-size: 0.8rem !important;\n}\n}\n@media only screen and (min-width: 320px) and (max-width: 600px) {\n.fqFfVE[data-v-6969ca15] {\r\n      width:15px !important;\r\n      height:15px !important;\n}\n}\n@media only screen and (min-width: 320px) and (max-width: 600px) {\n.trade-question p[data-v-6969ca15]{\r\n      font-size: 0.9rem !important;\n}\n}\n@media only screen and (min-width: 320px) and (max-width: 600px) {\n.btn--Tradeb[data-v-6969ca15] {\r\n      font-size: 12px !important;\n}\n}\n@media only screen and (min-width: 320px) and (max-width: 600px) {\n.btn--Tradec[data-v-6969ca15] {\r\n      font-size: 12px !important;\n}\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -65566,6 +65691,36 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/laravel-mix/node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/TradeQuestionare.vue?vue&type=style&index=0&id=6969ca15&scoped=true&lang=css":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/laravel-mix/node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/TradeQuestionare.vue?vue&type=style&index=0&id=6969ca15&scoped=true&lang=css ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_laravel_mix_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TradeQuestionare_vue_vue_type_style_index_0_id_6969ca15_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../node_modules/laravel-mix/node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./TradeQuestionare.vue?vue&type=style&index=0&id=6969ca15&scoped=true&lang=css */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/laravel-mix/node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/TradeQuestionare.vue?vue&type=style&index=0&id=6969ca15&scoped=true&lang=css");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_laravel_mix_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TradeQuestionare_vue_vue_type_style_index_0_id_6969ca15_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_laravel_mix_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TradeQuestionare_vue_vue_type_style_index_0_id_6969ca15_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/laravel-mix/node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/TradeSignupComponent.vue?vue&type=style&index=0&id=2179012c&scoped=true&lang=css":
 /*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/laravel-mix/node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/TradeSignupComponent.vue?vue&type=style&index=0&id=2179012c&scoped=true&lang=css ***!
@@ -75382,15 +75537,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _TradeQuestionare_vue_vue_type_template_id_6969ca15__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TradeQuestionare.vue?vue&type=template&id=6969ca15 */ "./resources/js/components/TradeQuestionare.vue?vue&type=template&id=6969ca15");
+/* harmony import */ var _TradeQuestionare_vue_vue_type_template_id_6969ca15_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TradeQuestionare.vue?vue&type=template&id=6969ca15&scoped=true */ "./resources/js/components/TradeQuestionare.vue?vue&type=template&id=6969ca15&scoped=true");
 /* harmony import */ var _TradeQuestionare_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TradeQuestionare.vue?vue&type=script&lang=js */ "./resources/js/components/TradeQuestionare.vue?vue&type=script&lang=js");
-/* harmony import */ var C_laragon_www_buildervalley_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _TradeQuestionare_vue_vue_type_style_index_0_id_6969ca15_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TradeQuestionare.vue?vue&type=style&index=0&id=6969ca15&scoped=true&lang=css */ "./resources/js/components/TradeQuestionare.vue?vue&type=style&index=0&id=6969ca15&scoped=true&lang=css");
+/* harmony import */ var C_laragon_www_buildervalley_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_laragon_www_buildervalley_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_TradeQuestionare_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_TradeQuestionare_vue_vue_type_template_id_6969ca15__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/TradeQuestionare.vue"]])
+
+
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_buildervalley_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_TradeQuestionare_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_TradeQuestionare_vue_vue_type_template_id_6969ca15_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-6969ca15"],['__file',"resources/js/components/TradeQuestionare.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -75701,18 +75859,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/TradeQuestionare.vue?vue&type=template&id=6969ca15":
-/*!************************************************************************************!*\
-  !*** ./resources/js/components/TradeQuestionare.vue?vue&type=template&id=6969ca15 ***!
-  \************************************************************************************/
+/***/ "./resources/js/components/TradeQuestionare.vue?vue&type=template&id=6969ca15&scoped=true":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/components/TradeQuestionare.vue?vue&type=template&id=6969ca15&scoped=true ***!
+  \************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   render: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TradeQuestionare_vue_vue_type_template_id_6969ca15__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */   render: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TradeQuestionare_vue_vue_type_template_id_6969ca15_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TradeQuestionare_vue_vue_type_template_id_6969ca15__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./TradeQuestionare.vue?vue&type=template&id=6969ca15 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/TradeQuestionare.vue?vue&type=template&id=6969ca15");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TradeQuestionare_vue_vue_type_template_id_6969ca15_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./TradeQuestionare.vue?vue&type=template&id=6969ca15&scoped=true */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/TradeQuestionare.vue?vue&type=template&id=6969ca15&scoped=true");
 
 
 /***/ }),
@@ -75797,6 +75955,19 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_laravel_mix_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TradeForm_vue_vue_type_style_index_0_id_24a3666d_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader/dist/cjs.js!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../node_modules/laravel-mix/node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./TradeForm.vue?vue&type=style&index=0&id=24a3666d&scoped=true&lang=css */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/laravel-mix/node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/TradeForm.vue?vue&type=style&index=0&id=24a3666d&scoped=true&lang=css");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/TradeQuestionare.vue?vue&type=style&index=0&id=6969ca15&scoped=true&lang=css":
+/*!**************************************************************************************************************!*\
+  !*** ./resources/js/components/TradeQuestionare.vue?vue&type=style&index=0&id=6969ca15&scoped=true&lang=css ***!
+  \**************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_laravel_mix_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TradeQuestionare_vue_vue_type_style_index_0_id_6969ca15_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader/dist/cjs.js!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../node_modules/laravel-mix/node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./TradeQuestionare.vue?vue&type=style&index=0&id=6969ca15&scoped=true&lang=css */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/laravel-mix/node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/TradeQuestionare.vue?vue&type=style&index=0&id=6969ca15&scoped=true&lang=css");
 
 
 /***/ }),

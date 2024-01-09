@@ -1,6 +1,6 @@
 <template>
-    <div class="col-md-12 mx-auto row justify-content-md-center">
-        <div class="col-md-10 question_div ">
+    <div ref="questionref"  class="col-md-12 mx-auto row justify-content-md-center">
+        <div class="col-md-10 question_div "  >
             <p class="left-align" v-html="question.question"></p>
             <div v-if="question.answers.length > 0">
                 <div class="answer-outer">
@@ -63,7 +63,7 @@ const props = defineProps({
 });
 
 const emit = defineEmits(["answer-selected", "is-last"]);
-
+const questionref = ref(null)
 const selectedAnswer = ref(null);
 const index = props.index;
 const isLast = computed(() =>
@@ -82,6 +82,7 @@ const goToNextStep = (answer) => {
     emit("answer-selected", index, answer);
 };
 onMounted(() => {
+    questionref.value.scrollIntoView({behavior:"smooth"})
     isLastCheck();
 });
 
@@ -131,6 +132,8 @@ const focusTextarea = () => {
         font-size: 1.06rem !important;
     }
 }
+
+
 .character-count {
     position: absolute !important;
     bottom: 5px !important;
@@ -138,17 +141,30 @@ const focusTextarea = () => {
     color: #555 !important;
     font-size: 12px !important;
 }
-F .question_div {
-    margin: 15px;
-    margin-top: 40px;
+.question_div {
+    padding: 20px 0px 0px 10px;
+    color: #343944;
+    margin-bottom: 1em;
+    position: relative;
+    line-height: 1.5em;
     background-color: #f9f9f9;
+    margin-top:5px;
+ 
+    border-radius: 5px;
 }
-
+.question_div p {
+    font-size: 1.2rem;
+    color: #343944;
+    margin-bottom: 1rem;
+    line-height: 1.5em;
+    font-weight: bold;
+}
 .answer-outer {
     background-color: white;
     border: 2px solid rgb(223, 229, 237);
     border-radius: 5px;
-    margin-bottom: 50px;
+     margin-bottom: 10px; 
+     margin-right: 10px; 
 }
 
 .form-step {
@@ -230,6 +246,8 @@ F .question_div {
     display: flex;
     flex-flow: wrap;
     overflow: hidden;
+    margin-right: 10px;
+    margin-bottom: 10px;
 }
 
 .custom-textarea {

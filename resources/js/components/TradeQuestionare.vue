@@ -4,11 +4,11 @@
       <div class="py-4 py-lg-5">
           <div class="container">
               <div class="row">
-                  <div
+                  <div 
                       class="col-xxl-6 col-xl-6 col-md-7 mx-auto formpadding bg-white"
                   >
                   <h1 class="h3 mb-0 heading-large" style="color: #55b97b">
-                      <strong>Carpentry </strong></h1>
+                      <strong>{{ evaluation_trade.name }} </strong></h1>
                       <label class="control-label trade-question">
                           <p>{{ question.question }}</p>
                       </label>
@@ -39,7 +39,31 @@
       </div>
   </div>
 </template>
-
+<script>
+import {useTrademensStore} from '../store/trademensStore'
+import { mapState } from 'pinia';
+export default {
+  props: {
+      question: Object,
+  },
+  data() {
+      return {
+          selectedAnswer: {},
+      };
+  },
+  computed:{
+    ...mapState(useTrademensStore,{
+        evaluation_trade: 'evaluationTrade',
+      }),
+  },
+  methods: {
+      nextQuestion() {
+          this.$emit("next", this.selectedAnswer);
+      },
+  },
+  
+};
+</script>
 <style scoped>
 .heading-large {
 
@@ -130,20 +154,4 @@
 }
 </style>
 
-<script>
-export default {
-  props: {
-      question: Object,
-  },
-  data() {
-      return {
-          selectedAnswer: {},
-      };
-  },
-  methods: {
-      nextQuestion() {
-          this.$emit("next", this.selectedAnswer);
-      },
-  },
-};
-</script>
+

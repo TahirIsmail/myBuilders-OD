@@ -1,7 +1,7 @@
 <template>
     <div class="py-4 py-lg-5">
         <div class="container">
-            <div class="row">
+            <div ref="refIntro" class="row">
                 <div class="col-xxl-6 col-xl-6 col-md-7 mx-auto form bg-white ">
 
                     <h1 class="h3 mb-0" style="color: #55b97b">
@@ -47,9 +47,12 @@
 <script setup>
 import { reactive, onMounted, ref } from 'vue'
 import { useTrademensStore } from '../store/trademensStore';
+
 const store = useTrademensStore();
+const refIntro = ref(null)
 const introduction = ref('')
 onMounted(() => {
+    refIntro.value.scrollIntoView({behavious:"smooth"})
     console.log("Introduction component mounted")
 })
 const props = defineProps(['navigationMethods'])

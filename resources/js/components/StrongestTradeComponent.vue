@@ -2,7 +2,7 @@
     <div class="py-4 py-lg-5">
         <div class="container">
             <div class="row">
-                <div class="col-xxl-6 col-xl-6 col-md-7 mx-auto form bg-white">
+                <div ref="strongestTradeRef" class="col-xxl-6 col-xl-6 col-md-7 mx-auto form bg-white">
                     <h1 class="h3 mb-0" style="color: #55b97b">
                         <strong> Select your strongest trade</strong>
                     </h1>
@@ -37,10 +37,10 @@
     </div>
 </template>
 <script setup>
-import { reactive, onBeforeMount, ref, shallowReadonly } from 'vue'
+import { reactive,onMounted, onBeforeMount, ref, shallowReadonly } from 'vue'
 import { useTrademensStore } from '../store/trademensStore';
 const store = useTrademensStore();
-
+const strongestTradeRef =  ref(null)
 const isActive = ref(null)
 const props = defineProps(['navigationMethods'])
 onBeforeMount(() => {
@@ -64,6 +64,9 @@ onBeforeMount(() => {
 
 })
 
+onMounted(() => {
+    strongestTradeRef.value.scrollIntoView({behavior:"smooth"})
+})
 const setTradeEvaluation = (trade) => {
     
     isActive.value = isActive.value === trade ? null : trade;

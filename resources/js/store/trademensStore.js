@@ -19,6 +19,7 @@ getters:{
     getStrongestTrade:(state) => state.strongestTrades,
     getEvaluationTrade:(state) => state.evaluationTrade,
     getIntroduction:(state) => state.introductionToCustomer,
+    getSelectedAnswer:(state) => state.selectedAnswers
 },
 actions:{
     setUserInformation(userInformation){
@@ -35,6 +36,9 @@ actions:{
     },
     setStrongestTrades(strongestTrades){
         this.strongestTrades = strongestTrades
+    },
+    setSelectedAnswer(selectedAnswer){
+        this.selectedAnswers.push(selectedAnswer)
     },
     setEvaluationTrade(active){
         this.evaluationTrade = active
