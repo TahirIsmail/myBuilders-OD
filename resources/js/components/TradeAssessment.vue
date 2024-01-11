@@ -6,9 +6,9 @@
         :question="currentQuestion"
         @next="nextQuestion"
       ></trade-questionare>
-      <div v-else>
+      <!-- <div v-else>
         <h2>Evaluation Completed!</h2>
-      </div>
+      </div> -->
     </div>
   </template>
   
@@ -38,20 +38,34 @@
     methods: {
       nextQuestion(selectedAnswer) {
         const store = useTrademensStore()
-        store.setSelectedAnswers(selectedAnswer)
+        store.setSelectedAnswer(selectedAnswer)
         // console.log('Selected Answer:', selectedAnswer);
         this.currentQuestionIndex++;
   
      
         if (this.currentQuestionIndex >= this.questions.length) {
           
-          console.log('Evaluation completed!');
+          Swal.fire({
+            title: 'Evaluation',
+            text: 'Completed!',
+            icon: 'success',
+            showCancelButton: false,
+            confirmButtonColor: '#51C57D',
+            
+            confirmButtonText: 'Yes!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                window.location.href='./'
+            }
+        });
           console.log({
             user_info:store.userInformation,
             trading_info:store.getTradingInformation,
             work_details:store.getWorkAddressDetails,
             customerintroduction:store.getIntroduction,
-            selected_answers:store.getSelectedAnswers,
+            strongesttrade:store.getEvaluationTrade,
+            selected_answers:store.getSelectedAnswer,
             
 
 
@@ -59,15 +73,7 @@
         }
       },
     },
-    mounted(){
-      const scrollComponent = document.querySelector('div');
-
-    // Check if the element is found before scrolling
-    if (scrollComponent) {
-      // Use scrollIntoView to scroll to the element
-      scrollComponent.scrollIntoView({ behavior: 'smooth' });
-    }
-    }
+   
   };
   </script>
   

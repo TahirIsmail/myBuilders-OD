@@ -1,31 +1,26 @@
 <template>
-    <div id="emailinput" class="container">
-        <form @submit.prevent="submitForm">
-            <div class="form-group">
-                <label for="email">Email address</label>
-                <input
-                    type="email"
-                    class="form-control"
-                    id="email"
-                    placeholder="Enter email"
-                    v-model="form.email"
-                />
-                <small class="form-text text-muted">
-                    We value your privacy and won't share your email with
-                    anybody else.
-                </small>
-            </div>
-            <div class="form-group button-container">
-                <button type="submit" class="btn btn-primary">Continue</button>
-            </div>
-           
-        </form>
-    </div>
+   
+            <form ref="emailInputref" @submit.prevent="submitForm">
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter email" v-model="form.email" />
+                    <small class="form-text text-muted">
+                        We value your privacy and won't share your email with
+                        anybody else.
+                    </small>
+                </div>
+                <div class="form-group button-container">
+                    <button type="submit" class="btn btn-primary">Continue</button>
+                </div>
+
+            </form>
+    
 </template>
 <script setup>
 import { reactive, onMounted, watch, ref, inject } from "vue";
 
 import { useQuestionnaireStore } from "../store/questionnaireStore";
+const emailInputref = ref(null)
 const form = reactive({
     email: "",
 });
@@ -36,13 +31,7 @@ watch(getEmail, (newEmail) => {
     store.setEmail(newEmail);
 });
 onMounted(() => {
-    const scrollComponent = document.getElementById('emailinput');
-
-    // Check if the element is found before scrolling
-    if (scrollComponent) {
-      // Use scrollIntoView to scroll to the element
-      scrollComponent.scrollIntoView({ behavior: 'smooth' });
-    }
+    emailInputref.value.scrollIntoView({behaviour:'smooth'})
     console.log("Email component Mounted");
 });
 const emit = defineEmits(["toggleCurrent"]);

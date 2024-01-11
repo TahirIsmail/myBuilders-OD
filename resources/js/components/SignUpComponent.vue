@@ -1,109 +1,66 @@
 <template>
-    <div class="col-md-10">
-        <form @submit.prevent="submitForm">
+   
+        <form ref="signUpRef" @submit.prevent="submitForm">
+           
             <div class="form-group">
                 <label for="email">Email address</label>
-                <input
-                    type="email"
-                    class="form-control"
-                    id="sign-up-email"
-                    placeholder="Enter email"
-                    @input="generateUsername"
-                    v-model="form.email"
-                />
+                <input type="email" class="form-control" id="sign-up-email" placeholder="Enter email"
+                    @input="generateUsername" v-model="form.email" />
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input
-                    type="password"
-                    class="form-control"
-                    id="password"
-                    placeholder="********"
-                    v-model="form.password"
-                />
+                <input type="password" class="form-control" id="password" placeholder="********" v-model="form.password" />
             </div>
             <div class="form-group">
                 <label for="fullName">Full name</label>
-                <input
-                    type="text"
-                    class="form-control"
-                    id="fullName"
-                    placeholder="Full name"
-                    v-model="form.fullName"
-                />
+                <input type="text" class="form-control" id="fullName" placeholder="Full name" v-model="form.fullName" />
             </div>
 
             <div class="form-group">
                 <label for="phone">Phone number</label>
-                <vue-tel-input
-                    v-model="form.phone"
-                    mode="international"
-                ></vue-tel-input>
-                <small class="form-text text-muted"
-                    >We will only share your phone number with tradespeople you
-                    choose to talk to.</small
-                >
+                <vue-tel-input v-model="form.phone" mode="international"></vue-tel-input>
+                <small class="form-text text-muted">We will only share your phone number with
+                    tradespeople you choose to talk to.</small>
             </div>
             <div class="form-group">
                 <label for="username">Public username</label>
-                <input
-                    type="text"
-                    class="form-control"
-                    id="username"
-                    placeholder="Public username"
-                    v-model="form.username"
-                />
+                <input type="text" class="form-control" id="username" placeholder="Public username"
+                    v-model="form.username" />
             </div>
             <div class="form-check">
-                <input
-                    type="checkbox"
-                    class="form-check-input"
-                    id="newsletter"
-                    v-model="form.newsletter"
-                />
-                <label class="form-check-label" for="newsletter"
-                    >I'd like to receive Builders'Valley News, Advice and
-                    Tips</label
-                >
+                <input type="checkbox" class="form-check-input" id="newsletter" v-model="form.newsletter" />
+                <label class="form-check-label" for="newsletter">I'd like to receive Builders'Valley News, Advice and
+                    Tips</label>
             </div>
             <div class="form-check mb-3">
-                <input
-                    type="checkbox"
-                    class="form-check-input"
-                    id="terms"
-                    v-model="form.terms"
-                />
-                <label class="form-check-label" for="terms"
-                    >I agree to the <a href="#"> terms & conditions</a></label
-                >
+                <input type="checkbox" class="form-check-input" id="terms" v-model="form.terms" />
+                <label class="form-check-label" for="terms">I agree to the <a href="#"> terms & conditions</a></label>
             </div>
             <div class="form-group button-container">
-                <button type="submit" class="btn btn-primary">Continue</button>
+                <button type="submit" class="btn btn-primary">
+                    Continue
+                </button>
             </div>
             <p class="mt-3 alternative-option">
                 I already have an account,
                 <a href="#">use a different email address</a>
             </p>
+
         </form>
-    </div>
+  
 </template>
 
 <script setup>
-import { reactive, watch, ref, onMounted } from "vue";
-import { useQuestionnaireStore } from "../store/questionnaireStore";
-import { VueTelInput } from "vue-tel-input";
-import "vue-tel-input/vue-tel-input.css";
+import { reactive, watch, ref, onMounted } from 'vue';
+import { useQuestionnaireStore } from '../store/questionnaireStore';
+import { VueTelInput } from 'vue-tel-input';
+import 'vue-tel-input/vue-tel-input.css';
 
-onMounted(() => {
-    const scrollComponent = document.querySelector('div');
-
-    // Check if the element is found before scrolling
-    if (scrollComponent) {
-      // Use scrollIntoView to scroll to the element
-      scrollComponent.scrollIntoView({ behavior: 'smooth' });
-    }
-})
 const questionnaireStore = useQuestionnaireStore();
+
+const signUpRef = ref(null)
+
+
 
 const form = reactive({
     email: questionnaireStore.email,
@@ -135,6 +92,10 @@ const submitForm = () => {
     console.log(response);
     // You would typically send this data to a server or perform some action with it here
 };
+
+onMounted(() => {
+    signUpRef.value.scrollIntoView({behavior:"smooth"})
+})
 </script>
 
 

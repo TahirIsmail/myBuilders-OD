@@ -5,7 +5,7 @@
     <div class="py-4 py-lg-5">
         <div class="container">
             <div class="row">
-                <div class="col-xxl-6 col-xl-6 col-md-7 mx-auto form bg-white  ">
+                <div ref="workDetailref" class="col-xxl-6 col-xl-6 col-md-7 mx-auto form bg-white  ">
             
                     <h1 class="h3 mb-0" style="color: #55b97b">
                         <strong>What's your work address? </strong>
@@ -92,7 +92,7 @@
     </div>
 </template>
 <script setup>
-import { defineProps,onMounted, reactive, ref } from 'vue'
+import { onMounted, reactive, ref } from 'vue'
 // import AddressInput from './components/AddressInput.vue'
 // import AddressInput from './components/AddressInput.js'
 import { useTrademensStore } from '../store/trademensStore'
@@ -105,6 +105,7 @@ const street = ref('')
 const work_address = ref('')
 const distance = ref('')
 const editedItem = reactive({})
+const workDetailref = ref(null)
 // mapbox options as per https://docs.mapbox.com/api/search/geocoding
 
 onMounted(() => {
@@ -152,6 +153,9 @@ function back() {
         props.navigationMethods.prevStep();
     }
 }
+onMounted(() => {
+    workDetailref.value.scrollIntoView({behavior:"smooth"})
+})
 
 </script>
 <style type="text/css" scoped>

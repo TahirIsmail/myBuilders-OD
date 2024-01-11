@@ -2,8 +2,8 @@
     <div class="form-header container">
         <!-- Header content... -->
     </div>
-    <div style="background-color: #f9f9f9">
-        <div class="container" style="padding: 30px">
+    <div  ref="postajobref"  style="background-color: #f9f9f9" >
+        <div class="container" style="padding: 30px;margin-bottom:-20px !important;">
             <div class="row justify-content-center">
                 <div
                     class="text-center"
@@ -11,7 +11,7 @@
                 >
                     <!-- Display the selected category but faded -->
                     <div class="mx-auto row justify-content-md-center">
-                        <div class="col-lg-10">
+                        <div class="col-lg-10 bg-white" style="border-radius: 5px;">
                             <p class="left-align">
                                 What would you like to have done?
                             </p>
@@ -51,13 +51,14 @@
     </div>
 </template>
 <script setup>
-import { ref, computed, watch, onBeforeMount, provide } from "vue";
+import { ref, computed,onMounted, watch, onBeforeMount, provide } from "vue";
 
 import JobHeadline from "./JobHeadlineComponent"; // Make sure you import your dynamic question component
 import axios from "axios";
 import QuestionComponent from "./QuestionWithOptionsComponent";
 
 import { useQuestionnaireStore } from "../store/questionnaireStore";
+const postajobref  = ref(null)
 const store = useQuestionnaireStore();
 const props = defineProps({
     user: Object,
@@ -76,17 +77,13 @@ const selectedCategory = ref(null);
 const questions = ref(new Set()); // Now a list of question data
 
 onBeforeMount(async () => {
-    const scrollComponent = document.querySelector('div');
-
-    // Check if the element is found before scrolling
-    if (scrollComponent) {
-      // Use scrollIntoView to scroll to the element
-      scrollComponent.scrollIntoView({ behavior: 'smooth' });
-    }
+    
     await store.loadJobCategories();
 
 });
-
+onMounted(() => {
+    postajobref.value.scrollIntoView({behavior:"smooth"})
+})
 // Fetch initial question based on selected category
 const fetchInitialQuestion = async () => {
     if (selectedCategory.value && selectedCategory.value.firstquestion) {

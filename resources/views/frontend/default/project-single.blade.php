@@ -3,7 +3,7 @@
 @section('content')
 
     <section class="py-4 py-lg-5">
-
+        
         <div class="container">
             @if (session('message'))
                 <div class="alert alert-success">
@@ -142,7 +142,44 @@
                                     @endif
                                 @endforeach
                             </div>
+
+
                         </div>
+                    </div>
+                    <div class="card rounded-2 border-gray-light">
+                        <div class="card-body">
+                            <h6 class="text-left mb-3"><span
+                                    class="bg-white pr-3 fs-14 fw-700">{{ translate('Job Location') }}</span></h6>
+                            <div id="map" class="box" style='width: 650px; height: 300px;'>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card rounded-2 border-gray-light">
+                        <div class="card-body">
+                            <h6 class="text-left mb-3"><span
+                                    class="bg-white pr-3 fs-14 fw-700">{{ translate('Job Details') }}</span></h6>
+                            <div class="box">
+                                @foreach ($questionare as $item)
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                {!! $item['question'] !!}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <p>{!! $item['answer'] !!}
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+
                     </div>
                     <!-- Bidded Freelancer -->
                     <div class="card mb-lg-0 rounded-2 border-gray-light">
@@ -154,7 +191,7 @@
                                     {{ translate('Tradesmen are bidding for this job') }} ({{ translate('Average') }}:
                                     {{ single_price($project->projectBids->sum('amount') / count($project->projectBids)) }})
                                 @else
-                                    {{ translate("Tradesmen bids") }}
+                                    {{ translate('Tradesmen bids') }}
                                 @endif
 
                             </h5>
@@ -196,6 +233,10 @@
                         </div>
                     </div>
                 </div>
+
+
+
+
 
                 <div class="col-xxl-3 col-xl-4 col-lg-5">
                     <div class="sticky-top z-3">
@@ -373,6 +414,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-12">
                     <h5 class="mb-4 fs-16 fw-700">{{ translate('Similar Projects') }}</h5>
@@ -497,22 +539,48 @@
             })
         }
     </script>
+            <script>
+                mapboxgl.accessToken =
+                    'pk.eyJ1IjoidGFoaXItdGVzdDEyIiwiYSI6ImNsb2g1ZDlhczEzYnQybXFlcTB1ajlwNjEifQ.c8bkCwEOW_EWwaP23Mor9A';
+                const map = new mapboxgl.Map({
+                    container: 'map', // container ID
+                    style: 'mapbox://styles/mapbox/streets-v12', // style URL
+                    center: [-74.5, 40], // starting position [lng, lat]
+                    zoom: 9, // starting zoom
+                });
+                var postalCode = "{{ $project->job_postal_code }}";
+                fetch(
+                        `https://api.mapbox.com/geocoding/v5/mapbox.places/${postalCode}.json?access_token=${mapboxgl.accessToken}`
+                    )
+                    .then((response) => response.json())
+                    .then((data) => {
+                        var coordinates = data.features[0].center;
+
+                        // Set map center to the coordinates
+                        map.setCenter(coordinates);
+
+                        // Add a marker at the coordinates
+                        new mapboxgl.Marker().setLngLat(coordinates).addTo(map);
+                    });
+            </script>
 @endsection
 @section('modal')
     <div class="modal fade" id="bid_for_project" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">{{ translate('Bid For Project') }}</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    </button>
-                </div>
-                <div class="modal-body" id="bid_for_modal_body">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">{{ translate('Bid For Project') }}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            </button>
+                        </div>
+                        <div class="modal-body" id="bid_for_modal_body">
 
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-    @include('frontend.default.partials.bookmark_remove_modal')
+            @include('frontend.default.partials.bookmark_remove_modal')
 @endsection
+
+
 )

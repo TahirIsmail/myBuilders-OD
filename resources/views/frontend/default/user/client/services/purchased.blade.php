@@ -19,7 +19,7 @@
                 <div class="row gutters-10">
                     <div class="card w-100 rounded-2 border-gray-light">
                         <div class="card-header">
-                            <h5 class="mb-0 h6">{{ translate('List of srevices purchased') }}</h5>
+                            <h5 class="mb-0 h6">{{ translate('List of Services Purchased') }}</h5>
                         </div>
                         <div class="card-body">
 

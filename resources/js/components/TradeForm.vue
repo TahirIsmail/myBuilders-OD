@@ -3,7 +3,7 @@
         <div class="py-4 py-lg-5">
             <div class="container">
                 <div class="row">
-                    <div class="col-xxl-6 col-xl-6 col-md-7 mx-auto formpadding bg-white">
+                    <div ref="tradeInfoRef" class="col-xxl-6 col-xl-6 col-md-7 mx-auto formpadding bg-white">
                         <h1 class="h3 mb-0" style="color: #55b97b"><strong>About you</strong></h1>
                         <p><strong>You operate as a:</strong></p>
                         <div class="col-xxl-12 col-xl-12 col-md-12 mx-auto form">
@@ -191,14 +191,10 @@ export default {
             }
         }
     },
-    mounted(){
-        const scrollComponent = document.querySelector('div');
-
-    // Check if the element is found before scrolling
-    if (scrollComponent) {
-      // Use scrollIntoView to scroll to the element
-      scrollComponent.scrollIntoView({ behavior: 'smooth' });
-    }
+    mounted()
+    {
+        const tradeInfoRef = this.$refs.tradeInfoRef;
+        tradeInfoRef.scrollIntoView({behavior:"smooth"})
     }
 };
 </script>

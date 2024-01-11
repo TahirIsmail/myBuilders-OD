@@ -77,10 +77,7 @@
     @yield('style')
    
     
-    <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"
-    />
+    
     @if (get_setting('running_project_chat_activation_checkbox') == 1)
     <!-- firebase -->
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
@@ -130,7 +127,7 @@
             files: '{{ translate('Files') }}',
         }
 	</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.js'></script>
 
     <style type="text/css">
         body{
@@ -265,7 +262,7 @@
     <script src="{{ my_asset('assets/common/js/vendors.js') }}"></script>
     <script src="{{ my_asset('assets/common/js/jssocials.min.js') }}" ></script>
     <script src="{{ my_asset('assets/common/js/aiz-core.js?v=') }}{{ rand(1000,9999) }}"></script>
-   
+    
     <script type="text/javascript">
         @foreach (session('flash_notification', collect())->toArray() as $message)
             AIZ.plugins.notify('{{ $message['level'] }}', '{{ $message['message'] }}');

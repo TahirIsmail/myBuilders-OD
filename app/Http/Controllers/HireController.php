@@ -28,8 +28,8 @@ class HireController extends Controller
     {
         $freelancer = User::where('user_name', $username)->first();
         $categories = ProjectCategory::all();
-        $client_package = Auth::user()->userPackage;
-        return view('frontend.default.user.freelancer_hire_invitation.create', compact('freelancer', 'categories', 'client_package'));
+        // $client_package = Auth::user()->userPackage;
+        return view('frontend.default.user.freelancer_hire_invitation.create', compact('freelancer', 'categories'));
     }
 
     //Store sent info for hiring freelancers

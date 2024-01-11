@@ -1,6 +1,6 @@
 <template>
     <div class="py-4 py-lg-5">
-        <div class="container ">
+        <div ref="selectTradesRef" class="container ">
             <div class="row">
                 <div class="col-xxl-6 col-xl-6 col-md-6 mx-auto form bg-white">
                     <h1 class="h3 mb-0" style="color: #55b97b">
@@ -73,7 +73,7 @@ import { ref, onMounted, computed, reactive } from 'vue';
 import { useTrademensStore} from '../store/trademensStore'
 import axios from 'axios'
 const trades = ref([])
-
+const selectTradesRef = ref(null)
 const search = ref("");
 const selectedCheckboxes = ref([]);
 const store = useTrademensStore();
@@ -102,6 +102,7 @@ onMounted(async () => {
     }
     const response = await axios.get('/getskills')
     trades.value = response.data
+    selectTradesRef.value.scrollIntoView({behavior:"smooth"})
     
 })
 const submit = () => {
@@ -164,7 +165,7 @@ const back = () => {
 .border-style li {
     margin-bottom: 10px;
     /* Add some spacing between list items */
-    font-size: 16px;
+    font-size: 14px;
 }
 
 /* Style checkboxes and labels */

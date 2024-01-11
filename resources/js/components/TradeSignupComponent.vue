@@ -4,7 +4,7 @@
             <div class="py-4 py-lg-5">
                 <div class="container">
                     <div class="row">
-                        <div class="col-xxl-7 col-xl-7 col-md-7 mx-auto">
+                        <div ref="tradeSignUpRef" class="col-xxl-7 col-xl-7 col-md-7 mx-auto">
                             <div class="card rounded-2 border-gray-light bg-white">
                                 <div class="card-body">
                                     <div
@@ -235,23 +235,17 @@
 </template>
 
 <script setup>
-import { ref,onMounted, reactive,defineProps,defineEmits } from 'vue'
+import { ref,onMounted ,reactive,defineEmits } from 'vue'
 import { Form, Field, ErrorMessage } from 'vee-validate'
 import { useTrademensStore } from '../store/trademensStore';
 import * as yup from 'yup';
 
 const props = defineProps(['navigationMethods'])
+const tradeSignUpRef = ref(null)
 
 onMounted(() => {
-    const scrollComponent = document.querySelector('div');
-
-// Check if the element is found before scrolling
-if (scrollComponent) {
-  // Use scrollIntoView to scroll to the element
-  scrollComponent.scrollIntoView({ behavior: 'smooth' });
-}
+    tradeSignUpRef.value.scrollIntoView({behavior:"smooth"})
 })
-
 const schema = yup.object().shape({
 
     email: yup.string().email().required(),
@@ -275,8 +269,8 @@ const submitForm = (values) => {
 };
 
 </script>
-<style scoped>
 
+<style scoped>
 .iti {
     position: relative;
     display: block !important;
