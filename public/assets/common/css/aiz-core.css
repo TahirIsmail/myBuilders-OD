@@ -6321,6 +6321,11 @@ ul.apps a:hover i {
     padding-left: 40px;
     min-width: 0;
 }
+.aiz-user-panel-fix {
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    min-width: 0;
+}
 [dir="rtl"] .aiz-user-panel {
     padding-right: 40px;
     padding-left: 0;
@@ -7372,7 +7377,7 @@ p {
 }
 
 .btn--Tradeb{
-    width: 30% !important;
+    width: 25% !important;
     font-weight: normal;
     font-size: 20px;
     line-height: 1em;
@@ -7403,7 +7408,7 @@ p {
 
 .btn--Tradec {
     margin-left: 10px;
-    width: 60% !important;
+    width: 50% !important;
       font-weight: normal;
       font-size: 20px;
       line-height: 1em;
@@ -7427,4 +7432,8 @@ p {
       color: white !important;
       text-decoration: none !important;
       border-color: #F0AE55 !important;
+  }
+  .card_border{
+    border: 1px solid #f2f8f9;
+  -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.3);
   }

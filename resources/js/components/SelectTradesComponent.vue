@@ -93,6 +93,13 @@ const isCheckboxDisabled = (tradeId) => {
   return false;
 };
 onMounted(async () => {
+    const scrollComponent = document.querySelector('div');
+
+    // Check if the element is found before scrolling
+    if (scrollComponent) {
+      // Use scrollIntoView to scroll to the element
+      scrollComponent.scrollIntoView({ behavior: 'smooth' });
+    }
     const response = await axios.get('/getskills')
     trades.value = response.data
     

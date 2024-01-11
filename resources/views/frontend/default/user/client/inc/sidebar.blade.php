@@ -1,4 +1,4 @@
-<div class="aiz-user-sidenav-wrap pt-4 sticky-top c-scrollbar-light position-relative z-1 rounded-2 border-gray-light">
+<div class="aiz-user-sidenav-wrap pt-4 sticky-top c-scrollbar-light position-relative z-1 rounded-2 border-gray-light" >
     <div class="absolute-top-left d-xl-none">
         <button class="btn btn-sm p-2" data-toggle="class-toggle" data-target=".aiz-mobile-side-nav" data-same=".mobile-side-nav-thumb">
             <i class="las la-times la-2x"></i>
@@ -58,10 +58,36 @@
                         <span class="aiz-side-nav-text ml-2">{{ translate('Dashboard') }}</span>
                     </a>
                 </li>
-
                 <li class="aiz-side-nav-item">
                     <a href="javascript:void(0);" class="aiz-side-nav-link d-flex align-items-center">
                         {{-- <i class="las la-file-alt aiz-side-nav-icon"></i> --}}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="11.998" height="12" viewBox="0 0 11.998 12">
+                            <path id="Subtraction_161" data-name="Subtraction 161" d="M3640.751,9220h-7.5a2.251,2.251,0,0,1-2.249-2.249v-7.5a2.251,2.251,0,0,1,2.249-2.249h7.5a2.25,2.25,0,0,1,2.247,2.249v7.5A2.25,2.25,0,0,1,3640.751,9220Zm-3-3.751a.751.751,0,0,0,0,1.5h3a.751.751,0,0,0,0-1.5Zm1.5-3.748a1.5,1.5,0,1,0,1.5,1.5A1.5,1.5,0,0,0,3639.25,9212.5Zm-6-3.6a1.351,1.351,0,0,0-1.351,1.349v.711h10.2v-.711a1.331,1.331,0,0,0-.4-.953,1.352,1.352,0,0,0-.953-.4Z" transform="translate(-3631 -9207.999)" fill="#989ea8"/>
+                        </svg>
+                        <span class="aiz-side-nav-text ml-2">{{ translate('Leads') }}</span>
+                        <span class="aiz-side-nav-arrow"></span>
+                    </a>
+                    <ul class="aiz-side-nav-list level-2">
+                        <li class="aiz-side-nav-item">
+                            <a href="{{ route('interested.leads') }}" class="aiz-side-nav-link {{ areActiveRoutes(['interested.leads']) }}">
+                                <span class="aiz-side-nav-text">{{ translate('Interested') }}</span>
+                            </a>
+                        </li>
+                        <li class="aiz-side-nav-item">
+                            <a href="{{ route('client.services.cancelled') }}" class="aiz-side-nav-link {{ areActiveRoutes(['client.services.cancelled'])}}">
+                                <span class="aiz-side-nav-text">{{ translate('Shortlisted') }}</span>
+                            </a>
+                        </li>
+                        <li class="aiz-side-nav-item">
+                            <a href="{{ route('client.services.cancel.requests') }}" class="aiz-side-nav-link {{ areActiveRoutes(['client.services.cancel.requests'])}}">
+                                <span class="aiz-side-nav-text">{{ translate('Jobs won') }}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                 <li class="aiz-side-nav-item">
+                    <a href="javascript:void(0);" class="aiz-side-nav-link d-flex align-items-center">
+                      
                         <svg xmlns="http://www.w3.org/2000/svg" width="11.998" height="12" viewBox="0 0 11.998 12">
                             <path id="Subtraction_161" data-name="Subtraction 161" d="M3640.751,9220h-7.5a2.251,2.251,0,0,1-2.249-2.249v-7.5a2.251,2.251,0,0,1,2.249-2.249h7.5a2.25,2.25,0,0,1,2.247,2.249v7.5A2.25,2.25,0,0,1,3640.751,9220Zm-3-3.751a.751.751,0,0,0,0,1.5h3a.751.751,0,0,0,0-1.5Zm1.5-3.748a1.5,1.5,0,1,0,1.5,1.5A1.5,1.5,0,0,0,3639.25,9212.5Zm-6-3.6a1.351,1.351,0,0,0-1.351,1.349v.711h10.2v-.711a1.331,1.331,0,0,0-.4-.953,1.352,1.352,0,0,0-.953-.4Z" transform="translate(-3631 -9207.999)" fill="#989ea8"/>
                         </svg>
@@ -82,10 +108,10 @@
                         <li class="aiz-side-nav-item">
                             <a href="{{ route('client.services.cancel.requests') }}" class="aiz-side-nav-link {{ areActiveRoutes(['client.services.cancel.requests'])}}">
                                 <span class="aiz-side-nav-text">{{ translate('Service Cancel Requests') }}</span>
-                            </a>
+                            </a> 
                         </li>
                     </ul>
-                </li>
+                </li> 
 
                 <li class="aiz-side-nav-item">
                     <a href="javascript:void(0);" class="aiz-side-nav-link d-flex align-items-center">

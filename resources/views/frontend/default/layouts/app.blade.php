@@ -189,7 +189,7 @@
 
         <!-- ========== MAIN CONTENT ========== -->
 
-        <div class="p-0 m-0 bg-white">
+        <div class="p-0 m-0 " style="background-color: #f9f9f9">
             
             @yield('content')
         </div>

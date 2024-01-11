@@ -64,11 +64,20 @@
 </template>
 
 <script setup>
-import { reactive, computed, ref, shallowRef, inject } from 'vue';
+import { reactive,onMounted, computed, ref, shallowRef, inject } from 'vue';
 import { useQuestionnaireStore } from '../store/questionnaireStore';
 import SignUp from '../components/SignUpComponent.vue';
 import EmailInput from '../components/EmailInputComponent.vue'
 import axios from 'axios';
+onMounted(() => {
+    const scrollComponent = document.querySelector('div');
+
+    // Check if the element is found before scrolling
+    if (scrollComponent) {
+      // Use scrollIntoView to scroll to the element
+      scrollComponent.scrollIntoView({ behavior: 'smooth' });
+    }
+})
 const showSecondComponent = ref(false);
 
 const handleComponentChange = (value) => {
@@ -132,9 +141,7 @@ const submitForm = () => {
 
 };
 
-const postjob = async () => {
-    await store.sendJobinformation()
-}
+
 
 </script>
 

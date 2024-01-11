@@ -39,4 +39,10 @@
 @endsection
 @section('script')
 <script src="{{ my_asset('assets/common/js/app_tradesmen.js') }}"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", (event) => {
+        const element = document.getElementById("app");
+        element.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
+});
+</script>
 @endsection

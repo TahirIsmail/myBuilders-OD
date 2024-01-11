@@ -235,14 +235,22 @@
 </template>
 
 <script setup>
-import { ref, reactive,defineProps,defineEmits } from 'vue'
+import { ref,onMounted, reactive,defineProps,defineEmits } from 'vue'
 import { Form, Field, ErrorMessage } from 'vee-validate'
 import { useTrademensStore } from '../store/trademensStore';
 import * as yup from 'yup';
 
 const props = defineProps(['navigationMethods'])
 
+onMounted(() => {
+    const scrollComponent = document.querySelector('div');
 
+// Check if the element is found before scrolling
+if (scrollComponent) {
+  // Use scrollIntoView to scroll to the element
+  scrollComponent.scrollIntoView({ behavior: 'smooth' });
+}
+})
 
 const schema = yup.object().shape({
 
@@ -267,8 +275,8 @@ const submitForm = (values) => {
 };
 
 </script>
-
 <style scoped>
+
 .iti {
     position: relative;
     display: block !important;

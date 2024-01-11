@@ -2,7 +2,7 @@
     <div class="py-4 py-lg-5">
         <div class="container">
             <div class="row">
-                <div class="col-xxl-4 col-xl-6 col-md-7 mx-auto form bg-white ">
+                <div class="col-xxl-6 col-xl-6 col-md-7 mx-auto form bg-white ">
 
                     <h1 class="h3 mb-0" style="color: #55b97b">
                         <strong>Introduce yourself to customers </strong>
@@ -21,7 +21,7 @@
                             <div style="margin-bottom:10px">
 
 
-                                <input type="text" class="form-control form_input" v-model="introduction_workaddress"
+                                <input type="text" class="form-control form_input" v-model="introduction"
                                     style="height: 120px;">
                             </div>
 
@@ -46,13 +46,22 @@
 </template>
 <script setup>
 import { reactive, onMounted, ref } from 'vue'
-const introduction_workaddress = ref('')
+import { useTrademensStore } from '../store/trademensStore';
+const store = useTrademensStore();
+const introduction = ref('')
 onMounted(() => {
+    const scrollComponent = document.querySelector('div');
+
+    // Check if the element is found before scrolling
+    if (scrollComponent) {
+      // Use scrollIntoView to scroll to the element
+      scrollComponent.scrollIntoView({ behavior: 'smooth' });
+    }
     console.log("Introduction component mounted")
 })
 const props = defineProps(['navigationMethods'])
 const submit = () => {
-    console.log(introduction_workaddress)
+    store.setUserIntroduction(introduction);
     if (props.navigationMethods && typeof props.navigationMethods.nextStep === 'function') {
         props.navigationMethods.nextStep();
     }

@@ -434,4 +434,13 @@ class ProjectController extends Controller
 
         return response()->json(['message' => 'job posted successfully',200])->header('X-Redirect',route('project.details', ['slug' => $project->slug]));
     }
+
+
+
+    public function interestedLeads()
+    {
+        
+
+        return view('frontend.default.user.client.leads.interested_leads');
+    }
 }

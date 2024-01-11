@@ -186,7 +186,7 @@
 <header class="aiz-header">
 
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="    background: linear-gradient(to right,#ffffff,#C0C0C0);">
         <a href="{{ route('home') }}">
             <img src="{{ asset('public\assets\frontend\default\img\logo\builder_valley_logo.png') }}"
                 alt="MyBuilder - A new way to find and hire tradespeople" width="150" height="50"

@@ -82,6 +82,13 @@ const goToNextStep = (answer) => {
     emit("answer-selected", index, answer);
 };
 onMounted(() => {
+    const scrollComponent = document.querySelector('div');
+
+    // Check if the element is found before scrolling
+    if (scrollComponent) {
+      // Use scrollIntoView to scroll to the element
+      scrollComponent.scrollIntoView({ behavior: 'smooth' });
+    }
     isLastCheck();
 });
 

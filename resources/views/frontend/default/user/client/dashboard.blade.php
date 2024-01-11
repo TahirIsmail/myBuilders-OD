@@ -25,7 +25,7 @@
 					</div>
 				@endif --}}
 				<div class="">
-					<div class="card p-4 rounded-2 bg-hov-soft-primary border-1 border-gray-light">
+					<div class="card card_border p-4 rounded-2 bg-hov-soft-primary border-1 border-gray-light">
 						<div class="row gutters-15">
 							<div class="col-md-4">
 								<div class="rounded-1 p-4 mb-4 d-flex flex-column justify-content-center" style="min-height: 116px;background: #bf1932;">
@@ -47,7 +47,7 @@
 				</div>
             	<div class="row gutters-15">
             		<div class="col-md-4 d-flex">
-            			<div class="card w-100 rounded-2 bg-hov-soft-primary border-1 border-gray-light">
+            			<div class="card card_border w-100 rounded-2 bg-hov-soft-primary border-1 border-gray-light">
             				<div class="card-body mt-3">
             					<a href="{{ route('post_project') }}" class="btn btn-primary btn-block rounded-1 py-3 mb-3">
 									<i class="las la-plus fs-40"></i>
@@ -72,7 +72,7 @@
             			</div>
             		</div>
 					<div class="col-md-4 d-flex">
-            			<div class="card w-100 rounded-2 border-gray-light">
+            			<div class="card card_border w-100 rounded-2 border-gray-light">
             				<div class="card-body mt-3">
             					<div class="mb-4">
 									<div class="row">
@@ -151,8 +151,8 @@
             			</div>
             		</div>
             		<div class="col-md-4 d-flex">
-            			<div class="card w-100 px-4 rounded-2 border-gray-light">
-            				<div class="card-body">
+            			<div class="card card_border w-100 px-4 rounded-2 border-gray-light">
+            				<div class="card-body ">
             					<canvas id="pie-1" class="w-100" height="250"></canvas>
             				</div>
             			</div>
@@ -160,7 +160,7 @@
             	</div>
             	<div class="row gutters-15">
 	            	<div class="col-md-6">
-	            		<div class="card rounded-2 border-gray-light">
+	            		<div class="card card_border rounded-2 border-gray-light">
 	            			<div class="card-header border-0">
 	            				<h6 class="mb-0 fs-16 fw-700">{{ translate('Running Projects') }}</h6>
 	            			</div>
@@ -189,7 +189,7 @@
 	            		</div>
 	            	</div>
 	            	<div class="col-md-6">
-	            		<div class="card rounded-2 border-gray-light">
+	            		<div class="card card_border rounded-2 border-gray-light">
 	            			<div class="card-header border-0">
 	            				<h6 class="mb-0 fs-16 fw-700">{{ translate('Suggested Tradesman') }}</h6>
 	            			</div>
@@ -222,7 +222,7 @@
 	            </div>
             	<div class="row gutters-15">
             		<div class="col-md-4 d-flex">
-            			<div class="card rounded-2 border-gray-light w-100">
+            			<div class="card card_border rounded-2 border-gray-light w-100">
                             <div class="card-header border-0">
                                 <h6 class="mb-0 fs-16 fw-700">{{ translate('Current Package') }}</h6>
                             </div>
@@ -236,7 +236,7 @@
             			</div>
             		</div>
             		<div class="col-md-4 d-flex">
-            			<div class="card rounded-2 border-gray-light w-100">
+            			<div class="card card_border rounded-2 border-gray-light w-100">
                             <div class="card-header border-0">
                                 <h6 class="mb-0 fs-16 fw-700">{{ translate('Current Package Summary') }}</h6>
                             </div>

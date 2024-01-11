@@ -76,7 +76,15 @@ const selectedCategory = ref(null);
 const questions = ref(new Set()); // Now a list of question data
 
 onBeforeMount(async () => {
+    const scrollComponent = document.querySelector('div');
+
+    // Check if the element is found before scrolling
+    if (scrollComponent) {
+      // Use scrollIntoView to scroll to the element
+      scrollComponent.scrollIntoView({ behavior: 'smooth' });
+    }
     await store.loadJobCategories();
+
 });
 
 // Fetch initial question based on selected category

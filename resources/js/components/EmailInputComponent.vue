@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div id="emailinput" class="container">
         <form @submit.prevent="submitForm">
             <div class="form-group">
                 <label for="email">Email address</label>
@@ -36,6 +36,13 @@ watch(getEmail, (newEmail) => {
     store.setEmail(newEmail);
 });
 onMounted(() => {
+    const scrollComponent = document.getElementById('emailinput');
+
+    // Check if the element is found before scrolling
+    if (scrollComponent) {
+      // Use scrollIntoView to scroll to the element
+      scrollComponent.scrollIntoView({ behavior: 'smooth' });
+    }
     console.log("Email component Mounted");
 });
 const emit = defineEmits(["toggleCurrent"]);
