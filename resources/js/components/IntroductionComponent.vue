@@ -21,8 +21,8 @@
                             <div style="margin-bottom:10px">
 
 
-                                <input type="text" class="form-control form_input" v-model="introduction"
-                                    style="height: 120px;">
+                                <textarea type="text" class="form-control form_input" v-model="introduction"
+                                    style="height: 120px;"></textarea>
                             </div>
 
 

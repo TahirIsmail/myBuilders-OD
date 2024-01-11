@@ -64,6 +64,7 @@
             trading_info:store.getTradingInformation,
             work_details:store.getWorkAddressDetails,
             customerintroduction:store.getIntroduction,
+            strongesttrade:store.getEvaluationTrade,
             selected_answers:store.getSelectedAnswer,
             
 

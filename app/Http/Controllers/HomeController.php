@@ -15,6 +15,7 @@ use App\Models\Skill;
 use App\Models\ProjectCategory;
 use App\Models\AssessmentQuestion;
 use App\Models\AssessmentAnswer;
+use App\Models\Question;
 use App\Notifications\SendMagicLinkNotification;
 use Carbon;
 use Illuminate\Support\Str;
@@ -91,7 +92,19 @@ class HomeController extends Controller
     public function project_details($slug)
     {
         $project = Project::where('slug', $slug)->first();
-        return view('frontend.default.project-single', compact('project'));
+        $project_questionare = collect(json_decode($project->jobquestionsarray));
+        
+        $questionare =  $project_questionare->map(function($item ,$key){
+            return [
+                "question" => Question::where('id',$item->question_id)->select('question')->value('question'),
+                // "question" => $item->question_id,
+                
+                "answer" => $item->answer
+            ];
+        });
+        
+       
+        return view('frontend.default.project-single', compact('project','questionare'));
     }
 
     //Show details info of specific project

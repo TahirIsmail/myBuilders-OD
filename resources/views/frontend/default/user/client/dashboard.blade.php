@@ -197,6 +197,7 @@
 	            				<div class="aiz-auto-scroll c-scrollbar-light px-4" style="height: 340px; overflow-y: scroll;">
 		            				<ul class="list-group list-group-flush">
 		            					@foreach (\App\Models\User::where('user_type', 'freelancer')->inRandomOrder()->limit(10)->get(); as $key => $user)
+										
 											<li class="list-group-item border-0 px-0">
 												<a href="{{ route('freelancer.details', $user->user_name) }}" class="text-inherit d-flex align-items-center">
 													<span class="avatar avatar-sm flex-shrink-0 bg-soft-primary mr-3">
