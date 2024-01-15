@@ -422,8 +422,8 @@
                         data-md-items="2" data-sm-items="1" data-arrows='true'>
 
                         @foreach ($similar_types = \App\Models\Project::where('type', $project->type)->where('id', '!=', $project->id)->where('closed', '!=', 1)->limit(4)->get() as $similar_type_project)
-@if (count($similar_types) > 0)
-<div class="caorusel-box">
+            @if (count($similar_types) > 0)
+               <div class="caorusel-box">
         							<div class="card rounded-2 border-gray-light hov-box">
         								<div class="card-header border-bottom-0 pt-4 pb-0 align-items-start minw-0">
         									<h5 class="h6 fs-16 fw-700 lh-1-5 text-truncate-2 h-45px">
@@ -583,4 +583,3 @@
 @endsection
 
 
-)
