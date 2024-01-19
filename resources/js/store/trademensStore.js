@@ -46,6 +46,9 @@ actions:{
     setSelectedAnswers(selectedAnswer){
         this.selectedAnswers.push(selectedAnswer)
     },
+    resetSelectedAnswers(){
+        this.selectedAnswers = []
+    },
     async setAssessment(){
         const response =  await axios.post('/getAssessment',{
             id:this.evaluationTrade.id

@@ -57,14 +57,16 @@ if (token) {
 
 import mapboxgl from 'mapbox-gl';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
+
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+import 'sweetalert2/src/sweetalert2.scss';
 mapboxgl.accessToken = 'pk.eyJ1IjoidGFoaXItdGVzdDEyIiwiYSI6ImNsb2g1ZDlhczEzYnQybXFlcTB1ajlwNjEifQ.c8bkCwEOW_EWwaP23Mor9A';
 
-// Attach mapboxgl to the window object
+// Attach  to the window object
 window.mapboxgl = mapboxgl;
 window.MapboxGeocoder = MapboxGeocoder;
 
 
-import Swal from 'sweetalert2/dist/sweetalert2.js';
-import 'sweetalert2/src/sweetalert2.scss';
+
 
 window.Swal = Swal;

@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Project extends Model
 {
     use SoftDeletes;
+    public function address()
+    {
+        return $this->morphOne(Address::class, 'addressable');
+    }
     public function project_category()
     {
         return $this->belongsTo(ProjectCategory::class);

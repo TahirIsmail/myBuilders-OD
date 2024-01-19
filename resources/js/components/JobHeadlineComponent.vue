@@ -17,25 +17,45 @@
                         {{ form.jobHeadline.length }}/55
                     </div>
                 </div>
+                <div class="form-group">
 
+                    <label for="country">Country</label>
+                    <div class="input-group">
+                        <div class="input-group-append">
+                            <span class="input-group-text">Country</span>
+                        </div>
+                        <country-select class="form-control" v-model="form.country" :country="form.country"
+                            :removePlaceholder=true :autocomplete=false topCountry="GB" />
+
+                    </div>
+                </div>
+
+                <!-- Region of the post-->
+                <div class="form-group">
+                    <label for="region">Region</label>
+                    <div class="input-group">
+                        <div class="input-group-append">
+                            <span class="input-group-text">Region</span>
+                        </div>
+                        <region-select class="form-control" v-model="form.region" :country="form.country"
+                            :region="form.region" :removePlaceholder=true :autocomplete=false />
+                    </div>
+                </div>
                 <!-- Postcode Input with Inner Div -->
                 <div class="form-group">
                     <label for="postcode">Postcode for the job</label>
                     <div class="input-group">
                         <div class="input-group-append">
-                            <span class="input-group-text">UK Postcode</span>
+                            <span class="input-group-text">Postcode</span>
                         </div>
-                        <input type="text" class="form-control" id="postcode" v-model="form.postcode"
-                            @input="postalCodeValidation" />
+                        <input type="text" class="form-control" id="postcode" v-model="form.postcode" />
                     </div>
-                    <div v-if="!form.isValidPostalCode && form.postcode.trim() !== ''" class="alert">
-                        <p>Invalid postal code! Please enter a valid postal code.</p>
-                    </div>
+
                 </div>
 
                 <!-- Email Address Input -->
-
-                <div v-if="!store.jobInformation || user">
+                
+                <div v-if="(!store.jobInformation || user )">
                     <div class="form-group button-container">
                         <button type="submit" class="btn btn-primary">
                             Continue
@@ -61,12 +81,18 @@
 </template>
 
 <script setup>
-import { reactive,onMounted, computed, ref, shallowRef, inject } from 'vue';
+import { reactive, onMounted, computed, ref, shallowRef, inject } from 'vue';
 import { useQuestionnaireStore } from '../store/questionnaireStore';
 import SignUp from '../components/SignUpComponent.vue';
 import EmailInput from '../components/EmailInputComponent.vue'
+import * as Yup from 'yup';
 import axios from 'axios';
-const  jobheadlineref =  ref('');
+import { postcodeValidator, postcodeValidatorExistsForCountry } from 'postcode-validator';
+
+
+
+
+const jobheadlineref = ref('');
 const showSecondComponent = ref(false);
 
 const handleComponentChange = (value) => {
@@ -78,63 +104,114 @@ const currentComponent = computed(() => {
 });
 const user = inject("user")
 const form = reactive({
+    country: '',
+    region: '',
     jobHeadline: '',
     postcode: '',
-    isValidPostalCode: false,
+
+});
+const validationSchema = computed(() => {
+    // Define your Yup validation schema here
+    return Yup.object().shape({
+        country: Yup.string().required('Country is required'),
+        region: Yup.string().required('Region is required'),
+        jobHeadline: Yup.string()
+            .min(20, 'Job Headline must be more than 10 characters')
+            .required('Job Headline is required'),
+
+        postcode: Yup.string()
+            .nullable()
+            .test('valid-postal-code', 'Invalid Postal Code', (value) => isValidPostalCode(value)),
+        // Add more validation rules for other fields as needed
+
+    });
 });
 const store = useQuestionnaireStore()
-const validateUKPostalCode = (postalCode) => {
-    const pattern = /^[A-Z]{1,2}\d[A-Z\d]? \d[A-Z]{2}$/;
-    return pattern.test(postalCode);
-};
 
-const validateEuropeanPostalCode = (postalCode) => {
-    const pattern = /^[A-Z\d]{3,10}$/;
-    return pattern.test(postalCode);
-};
-const postalCodeValidation = () => {
-    const ukValidation = validateUKPostalCode(form.postcode);
-    const europeanValidation = validateEuropeanPostalCode(form.postcode);
+const isValidPostalCode = (value) => {
 
-    form.isValidPostalCode = ukValidation || europeanValidation;
+    const validation = postcodeValidator(value, form.country);
+    return validation
 }
 
 
-const submitForm = () => {
-    // Handle the form submission
+
+const submitForm = async () => {
+    try {
+        // Validate the form using Yup schema
+        await validationSchema.value.validate(form, { abortEarly: false });
+
+        // If validation succeeds, show SweetAlert2 success message
+        if (user !== null && user !== undefined) {
+            // Object exists and is not null or undefined
+            store.setjobInformation({
+                ...user,
+                ...form,
+                JobQuestionAnswer: store.getAllSelectedAnswers,
+                SelectedCategory: store.selectedCategory,
+                JobDescription: store.getJobDescription
+            })
+            
+           
+            Swal.fire({
+                icon: 'success',
+                title: `The Job Information has been for ${user.name},\nDo you want to save it!`,
+                showConfirmButton: true,
+                timer: 1500,
+                confirmButtonText: "Save",
+                denyButtonText: `Don't save`
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                
+                if (result.isConfirmed) {
+                    store.sendJobinformation();
+                    Swal.fire("Saved!", "", "success");
+                } else if (result.isDenied) {
+                    Swal.fire("Changes are not saved", "", "info");
+                }});
+
+            } else {
+                // Object is null or undefined
 
 
 
-    if (user !== null && user !== undefined) {
-        // Object exists and is not null or undefined
-        store.setjobInformation({
-            ...form,
-            JobQuestionAnswer: store.getAllSelectedAnswers,
-            SelectedCategory: store.selectedCategory,
-            JobDescription: store.getJobDescription
-        })
-        const response = store.sendJobinformation();
-        console.log(response)
-    } else {
-        // Object is null or undefined
 
-        store.setjobInformation({
-            ...user,
-            ...form,
-            JobQuestionAnswer: store.getAllSelectedAnswers,
-            SelectedCategory: store.selectedCategory,
-            JobDescription: store.getJobDescription
-        })
+                store.setjobInformation({
+                    ...form,
+                    JobQuestionAnswer: store.getAllSelectedAnswers,
+                    SelectedCategory: store.selectedCategory,
+                    JobDescription: store.getJobDescription
+                })
+
+            Swal.fire({
+                    icon: 'success',
+                    title: 'The Job Information has been set!',
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
+            }
+
+
+        // You can also submit the form data to your server here if needed
+        // For example: this.$axios.post('/submit', form);
+    } catch (error) {
+            // If validation fails, show SweetAlert2 error message with validation errors
+            console.log(error)
+            const validationErrors = error.inner.map((err) => err.message);
+            Swal.fire({
+                icon: 'error',
+                title: 'Invalid Job Information!',
+                html: `<ul>${validationErrors.map((err) => `<li>${err}</li>`).join('')}</ul>`,
+            });
+        }
+    };
+    onMounted(() => {
+        jobheadlineref.value.scrollIntoView({ behavior: "smooth" })
+        
+    })
+    const postjob = async () => {
+        await store.sendJobinformation()
     }
-
-
-};
-onMounted(() => {
-    jobheadlineref.value.scrollIntoView({behavior:"smooth"})
-})
-const postjob = async () => {
-    await store.sendJobinformation()
-}
 
 </script>
 

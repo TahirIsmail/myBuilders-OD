@@ -29,7 +29,7 @@ mix.webpackConfig({
         new BrowserSyncPlugin({
             host: 'localhost',
             port: 3000,  // You can change the port if needed
-            proxy: 'http://buildervalley.test', // Your Laravel development server URL
+            proxy: 'https://buildervalley.test', // Your Laravel development server URL
             files: [
                 'app/**/*.php',
                 'resources/views/**/*.php',
