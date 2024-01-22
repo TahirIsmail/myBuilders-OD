@@ -10,7 +10,7 @@
     <section class="py-3">
         <div class="container">
             <div class="d-flex align-items-start">
-                @include('frontend.default.user.client.inc.sidebar')
+                @include('frontend.default.user.freelancer.inc.sidebar')
 
                 <div class="aiz-user-panel-fix d-flex">
                     <div class="col-md-12">
@@ -195,6 +195,46 @@
                                                     <span class="job-description__meta">No other tradespeople have
                                                         expressed interest in this lead yet.</span>
                                                 </div>
+
+
+
+
+
+
+                                                <div
+                                                    class="lead-details__tradesman-interested lead-details__tradesman-interested--desktop">
+                                                    <ul class="tradesman-interested__list">
+                                                        <li class="tradesman-interested__item card_shadow"><a
+                                                                href="">Atkinson
+                                                                developments</a><span class="tradesman-details">
+                                                                <div><strong>18 feedback, <span
+                                                                            class="feedback-score feedback-score--high">100%
+                                                                            positive</span></strong></div>
+                                                            </span></li>
+                                                        <li class="tradesman-interested__item card_shadow"><a
+                                                                href="">Transform
+                                                                Project</a><span class="tradesman-details">
+                                                                <div><strong>13 feedback, <span
+                                                                            class="feedback-score feedback-score--high">100%
+                                                                            positive</span></strong></div>
+                                                            </span></li>
+                                                        <li class="tradesman-interested__item card_shadow"><a
+                                                                href="">Concept
+                                                                design and build</a><span class="tradesman-details">No
+                                                                feedback yet</span></li>
+                                                    </ul>
+                                                </div>
+
+
+
+
+
+
+
+
+
+
+
                                             </div>
 
                                         </div>

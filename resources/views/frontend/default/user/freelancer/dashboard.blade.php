@@ -25,8 +25,8 @@
 					</div>
 				@endif
             	<div class="row gutters-15">
-					<div class="col-md-4">
-            			<div class="bg-primary text-white mb-4 overflow-hidden rounded-2 d-flex flex-column justify-content-between">
+					<div class="col-md-4 ">
+            			<div class="bg-primary card_shadow text-white mb-4 overflow-hidden rounded-2 d-flex flex-column justify-content-between">
             				<div class="px-4 pt-4">
 	        					<div class="fs-14">{{ translate('Balance') }}</div>
 	        					<div class="h3 fw-700">{{ single_price(Auth::user()->profile->balance) }}</div>
@@ -43,7 +43,7 @@
             			</div>
             		</div>
             		<div class="col-md-4 d-flex flex-column justify-content-between">
-						<div class="bg-transparent mb-4 overflow-hidden rounded-2" style="border: 2px solid #45b5aa; min-height:130px;">
+						<div class=" card_shadow bg-transparent mb-4 overflow-hidden rounded-2" style="border: 2px solid #45b5aa; min-height:130px;">
 							<div class="px-4 pt-4">
 								<div class="row">
 									<div class="col-7">
@@ -71,7 +71,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="bg-transparent mb-4 overflow-hidden rounded-2" style="border: 2px solid #e2583e; min-height:130px;">
+						<div class="card_shadow bg-transparent mb-4 overflow-hidden rounded-2" style="border: 2px solid #e2583e; min-height:130px;">
 							<div class="px-4 pt-4">
 								<div class="row">
 									<div class="col-7">
@@ -104,7 +104,7 @@
 						</div>
 					</div>
             		<div class="col-md-4">
-            			<div class="card rounded-2 border-gray-light">
+            			<div class="card_shadow card rounded-2 border-gray-light">
             				<div class="card-body">
             					<canvas id="pie-1" class="w-100" height="250"></canvas>
             				</div>
@@ -112,14 +112,14 @@
             		</div>
             	</div>
 				<div class="">
-					<div class="card p-4 rounded-2 bg-hov-soft-primary border-1 border-gray-light">
+					<div class=" card_shadow card p-4 rounded-2 bg-hov-soft-primary border-1 border-gray-light">
 						<div class="row gutters-15">
 							<div class="col-md-4">
-								<div class="rounded-1 p-4 mb-4 d-flex flex-column justify-content-center" style="min-height: 116px;background: #45b5aa;">
+								<div class="card_shadow rounded-1 p-4 mb-4 d-flex flex-column justify-content-center" style="min-height: 116px;background: #45b5aa;">
 									<div class="text-white">{{ translate('This Month Earnings') }}</div>
 									<div class="h4 fw-700 text-white">{{ single_price(\App\Models\MilestonePayment::where('paid_status', 1)->where('freelancer_user_id', Auth::user()->id)->whereBetween('updated_at', [Carbon::now()->startOfMonth(), Carbon::now()->endOfMonth()])->sum('freelancer_profit')) }}</div>
 								</div>
-								<div class="rounded-1 p-4 bg-dark d-flex flex-column justify-content-center" style="min-height: 116px;background: #45b5aa;">
+								<div class="card_shadow rounded-1 p-4 bg-dark d-flex flex-column justify-content-center" style="min-height: 116px;background: #45b5aa;">
 									<div class="text-white">{{ translate('Total Earnings') }}</div>
 									<div class="h4 fw-700 text-white">{{ single_price(\App\Models\MilestonePayment::where('paid_status', 1)->where('freelancer_user_id', Auth::user()->id)->sum('freelancer_profit')) }}</div>
 								</div>
@@ -145,11 +145,11 @@
             	</div>
             	<div class="row gutters-15">
 	            	<div class="col-md-6">
-	            		<div class="card rounded-2 border-gray-light">
+	            		<div class="card_shadow card rounded-2 border-gray-light">
 	            			<div class="card-header border-0">
 	            				<h6 class="mb-0 fs-16 fw-700">{{ translate('Running Projects') }}</h6>
 	            			</div>
-							<div class="card-body px-0 pt-0">
+							<div class=" card-body px-0 pt-0">
 								<div class="aiz-auto-scroll c-scrollbar-light px-4" style="height: 340px; overflow-y: scroll;">
 									<ul class="list-group list-group-flush">
 										@foreach (Auth::user()->projectUsers as $key => $projectUser)
@@ -174,8 +174,8 @@
 	            		</div>
 	            	</div>
 	            	<div class="col-md-6">
-	            		<div class="card rounded-2 border-gray-light">
-	            			<div class="card-header border-0">
+	            		<div class=" card_shadow card rounded-2 border-gray-light">
+	            			<div class=" card-header border-0">
 	            				<h6 class="mb-0 fs-16 fw-700">{{ translate('Suggested Projects') }}</h6>
 	            			</div>
 	            			<div class="card-body px-0 pt-0">
@@ -207,8 +207,8 @@
 	            </div>
             	<div class="row gutters-15">
             		<div class="col-md-4 d-flex">
-            			<div class="card rounded-2 border-gray-light w-100">
-							<div class="card-header border-0">
+            			<div class=" card_shadow card rounded-2 border-gray-light w-100">
+							<div class=" card-header border-0">
 								<h6 class="mb-0 fs-16 fw-700">{{ translate('Current Package') }}</h6>
 							</div>
             				<div class="card-body pt-3">
@@ -217,12 +217,15 @@
             					<p class="mb-1 fs-13 pb-2">{{ translate('Remaining Fixed Projects bids') }} - <strong>{{ Auth::user()->userPackage->fixed_limit }}</strong></p>
                                 <p class="mb-1 fs-13 pb-2">{{ translate('Remaining Long Term Projects bids') }} - <strong>{{ Auth::user()->userPackage->long_term_limit }}</strong></p>
             					<p class="mb-4 fs-13">{{ translate('Remaining Service') }} - <strong>{{ Auth::user()->userPackage->service_limit }}</strong></p>
-            					<a href="{{ route('select_package') }}" class="btn btn-block btn-primary d-inline-block py-3 rounded-1">{{ translate('Upgrade/ Extend') }}</a>
+            					
+								<div class=" d-flex  justify-content-center align-items-center">
+								    <a href="{{ route('select_package') }}" class="btn--Tradec  ">{{ translate('Upgrade/ Extend') }}</a>
+								</div>
             				</div>
             			</div>
             		</div>
-            		<div class="col-md-4 d-flex">
-            			<div class="card rounded-2 border-gray-light w-100">
+            		<div class=" col-md-4 d-flex">
+            			<div class="card_shadow card rounded-2 border-gray-light w-100">
 							<div class="card-header border-0">
 								<h6 class="mb-0 fs-16 fw-700">{{ translate('Current Package Summary') }}</h6>
 							</div>
@@ -340,8 +343,8 @@
             				</div>
             			</div>
             		</div>
-                    <div class="col-md-4 d-flex">
-                        <div class="card overflow-hidden rounded-2 border-gray-light w-100">
+                    <div class=" col-md-4 d-flex">
+                        <div class=" card_shadow card overflow-hidden rounded-2 border-gray-light w-100">
                             <div class="card-header border-0">
                                 <h6 class="mb-0 fs-16 fw-700">{{ translate('Suggested Package') }}</h6>
                             </div>
@@ -376,7 +379,7 @@
     	type: 'doughnut',
         data: {
             labels: [
-				"{{ translate('Bidded Project') }}",
+				"{{ translate('Qouted Project') }}",
 				"{{ translate('Completed Project') }}",
 				"{{ translate('Running Project') }}",
             ],

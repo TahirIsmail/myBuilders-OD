@@ -162,7 +162,7 @@ Route::group(['middleware' => ['auth','phoneverified']], function(){
 	Route::get('/invition-for-hire-freelancer/{username}', 'HireController@freelancer_invition')->name('invition_for_hire_freelancer');
 	Route::post('/invition-for-hire-freelancer/store', 'HireController@store')->name('invition_for_hire_freelancer_sent');
 	
-	Route::get('/leads', 'ProjectController@Leads')->name('leads');
+
 
 	//Milestone payment
 	Route::get('/recieved-milestone-requests', 'MilestonePaymentController@recieved_milestone_request_index')->name('milestone-requests.all');
@@ -217,6 +217,14 @@ Route::group(['middleware' => ['auth','phoneverified']], function(){
 	Route::post('/freelancer-account-info/store', 'FreelancerAccountController@store')->name('freelancer_account.store');
 
 	Route::get('/bidded-projects', 'ProjectController@bidded_projects')->name('bidded_projects');
+
+
+
+	Route::get('/leads', 'ProjectController@Leads')->name('leads');
+	Route::get('/interested_leads', 'ProjectController@Interested_leads')->name('interested_leads');
+	Route::get('/shortlisted_leads', 'ProjectController@Shortlisted_leads')->name('shortlisted_leads');
+
+
 
 	//Route::get('/services', 'ServiceController@index')->name('service.index');
 	Route::get('/service/create', 'ServiceController@create')->name('service.create');

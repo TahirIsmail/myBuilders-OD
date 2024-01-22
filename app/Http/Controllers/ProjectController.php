@@ -444,4 +444,20 @@ class ProjectController extends Controller
 
         return view('frontend.default.user.client.leads.index',compact('projects'));
     }
+
+
+    public function Interested_leads()
+    {
+        $projects = Project::with('project_category')->get();
+        
+
+        return view('frontend.default.user.client.leads.interestedleads',compact('projects'));
+    }
+    public function Shortlisted_leads()
+    {
+        $projects = Project::with('project_category')->get();
+        
+
+        return view('frontend.default.user.client.leads.shortlistedleads',compact('projects'));
+    }
 }

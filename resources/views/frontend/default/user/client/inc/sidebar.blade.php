@@ -75,12 +75,12 @@
                         </li>
 
                         <li class="aiz-side-nav-item">
-                            <a href="{{ route('leads') }}" class="aiz-side-nav-link {{ areActiveRoutes(['leads']) }}">
+                            <a href="{{ route('interested_leads') }}" class="aiz-side-nav-link {{ areActiveRoutes(['interested_leads']) }}">
                                 <span class="aiz-side-nav-text">{{ translate('Intersted leads') }}</span>
                             </a>
                         </li>
                         <li class="aiz-side-nav-item">
-                            <a href="{{ route('client.services.cancelled') }}" class="aiz-side-nav-link {{ areActiveRoutes(['client.services.cancelled'])}}">
+                            <a href="{{ route('shortlisted_leads') }}" class="aiz-side-nav-link {{ areActiveRoutes(['shortlisted_leads'])}}">
                                 <span class="aiz-side-nav-text">{{ translate('Shortlisted') }}</span>
                             </a>
                         </li>
