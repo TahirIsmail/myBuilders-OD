@@ -437,10 +437,11 @@ class ProjectController extends Controller
 
 
 
-    public function interestedLeads()
+    public function Leads()
     {
+        $projects = Project::with('project_category')->get();
         
 
-        return view('frontend.default.user.client.leads.interested_leads');
+        return view('frontend.default.user.client.leads.index',compact('projects'));
     }
 }

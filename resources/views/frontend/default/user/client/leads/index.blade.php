@@ -1,11 +1,7 @@
 @extends('frontend.default.layouts.app')
 
 @section('content')
-    {{-- {{ dd() }} --}}
-    {{-- @foreach ($projects as $project)
-    <p>{{ ($project->name) }}</p>
-@endforeach
-{{ dd("projects") }} --}}
+ 
 
     <section class="py-3">
         <div class="container">
@@ -44,22 +40,17 @@
 
                             </div>
 
-
-                            <div class="col-md-8">
-
-
-
-
-
-
-
-                            </div>
+                           
+                                <div class="col-md-8">
+                                    
+                                    <x-user.freelancer.single-lead-component />
+                                </div>
+                            
                         </div>
                     </div>
-                </div>
 
+                </div>
             </div>
-        </div>
     </section>
 @endsection
 
@@ -86,12 +77,12 @@
     .lead_content {
         height: 440px;
     }
-
-
-    @media only screen and (min-width: 601px) and (max-width: 1024px) {
-        .lead_content {
-            height: 900px !important;
-
-        }
-    }
 </style>
+@section('script')
+    <script>
+        $.when($.ready).then(function() {
+            // Document is ready.
+            alert("its loaded");
+        });
+    </script>
+@endsection

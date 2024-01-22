@@ -161,7 +161,8 @@ Route::group(['middleware' => ['auth','phoneverified']], function(){
 	Route::get('/project-bids/{slug}', 'ProjectController@project_bids')->name('project.bids');
 	Route::get('/invition-for-hire-freelancer/{username}', 'HireController@freelancer_invition')->name('invition_for_hire_freelancer');
 	Route::post('/invition-for-hire-freelancer/store', 'HireController@store')->name('invition_for_hire_freelancer_sent');
-	Route::get('/interested-leads', 'ProjectController@interestedLeads')->name('interested.leads');
+	
+	Route::get('/leads', 'ProjectController@Leads')->name('leads');
 
 	//Milestone payment
 	Route::get('/recieved-milestone-requests', 'MilestonePaymentController@recieved_milestone_request_index')->name('milestone-requests.all');

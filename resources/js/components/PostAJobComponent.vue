@@ -43,7 +43,7 @@
             </TransitionGroup>
         </div>
 
-        <div v-if="isLastComponent && selectedCategory" class="container mt-5">
+        <div v-if="isLastComponent && selectedCategory  " class="container mt-5">
             <div class="form-group button-container">
                 <JobHeadline />
             </div>
