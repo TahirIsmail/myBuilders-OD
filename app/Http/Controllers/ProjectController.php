@@ -437,27 +437,51 @@ class ProjectController extends Controller
 
 
 
-    public function Leads()
+    // public function Leads()
+    // {
+    //     $projects = Project::with('project_category')->get();
+        
+
+    //     return view('frontend.default.user.client.leads.index',compact('projects'));
+    // }
+
+
+    // public function Interested_leads()
+    // {
+    //     $projects = Project::with('project_category')->get();
+        
+
+    //     return view('frontend.default.user.client.leads.interestedleads',compact('projects'));
+    // }
+    // public function Shortlisted_leads()
+    // {
+    //     $projects = Project::with('project_category')->get();
+        
+
+    //     return view('frontend.default.user.client.leads.shortlistedleads',compact('projects'));
+    // }
+
+    public function freelancer_Leads()
     {
         $projects = Project::with('project_category')->get();
         
 
-        return view('frontend.default.user.client.leads.index',compact('projects'));
+        return view('frontend.default.user.freelancer.leads.index',compact('projects'));
     }
 
 
-    public function Interested_leads()
+    public function freelancer_Interested_leads()
     {
         $projects = Project::with('project_category')->get();
         
 
-        return view('frontend.default.user.client.leads.interestedleads',compact('projects'));
+        return view('frontend.default.user.freelancer.leads.interestedleads',compact('projects'));
     }
-    public function Shortlisted_leads()
+    public function freelancer_Shortlisted_leads()
     {
         $projects = Project::with('project_category')->get();
         
 
-        return view('frontend.default.user.client.leads.shortlistedleads',compact('projects'));
+        return view('frontend.default.user.freelancer.leads.shortlistedleads',compact('projects'));
     }
 }

@@ -84,7 +84,7 @@
                     <ul class="aiz-side-nav-list level-2">
                         <li class="aiz-side-nav-item">
                             
-                            <a href="{{ route('leads') }}" class="aiz-side-nav-link {{ areActiveRoutes(['leads']) }}">
+                            <a href="{{ route('freelancer_Leads') }}" class="aiz-side-nav-link {{ areActiveRoutes(['freelancer_Leads']) }}">
                                 <i class="fas fa-caret-right mt-auto mb-auto" style="color: #65cb75;"></i>
                                 <span class="aiz-side-nav-text ml-2">{{ translate('New leads') }}</span>
                             </a>
@@ -94,27 +94,27 @@
 
 
 
-                            <a href="{{ route('interested_leads') }}"
-                                class="aiz-side-nav-link {{ areActiveRoutes(['interested_leads']) }}">
+                            <a href="{{ route('freelancer_Interested_leads') }}"
+                                class="aiz-side-nav-link {{ areActiveRoutes(['freelancer_Interested_leads']) }}">
                                 <i class="fas fa-caret-right mt-auto mb-auto" style="color: #65cb75;"></i>
                                 <span class="aiz-side-nav-text ml-2">{{ translate('Interested leads') }} </span>
                             </a>
 
                         </li>
                         <li class="aiz-side-nav-item">
-                            <a href="{{ route('shortlisted_leads') }}"
-                                class="aiz-side-nav-link {{ areActiveRoutes(['shortlisted_leads']) }}">
+                            <a href="{{ route('freelancer_Shortlisted_leads') }}"
+                                class="aiz-side-nav-link {{ areActiveRoutes(['freelancer_Shortlisted_leads']) }}">
                                 <i class="fas fa-caret-right mt-auto mb-auto" style="color: #65cb75;"></i>
                                 <span class="aiz-side-nav-text ml-2">{{ translate('Shortlisted') }}</span>
                             </a>
                         </li>
-                        <li class="aiz-side-nav-item">
+                        {{-- <li class="aiz-side-nav-item">
                             <a href="{{ route('client.services.cancel.requests') }}"
                                 class="aiz-side-nav-link {{ areActiveRoutes(['client.services.cancel.requests']) }}">
                                 <i class="fas fa-caret-right mt-auto mb-auto" style="color: #65cb75;"></i>
                                 <span class="aiz-side-nav-text ml-2">{{ translate('Jobs won') }}</span>
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </li>
 
