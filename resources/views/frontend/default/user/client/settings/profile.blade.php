@@ -15,7 +15,7 @@
                         </div>
                     </div>
                     @if ($verification == null)
-                        <div class="card rounded-2 border-gray-light">
+                        <div class="card card_shadow rounded-2 border-gray-light">
                             <div class="card-header">
                                 <h4 class="h6 font-weight-medium mb-0">{{ translate('Identity Verification') }}</h4>
                             </div>
@@ -49,7 +49,7 @@
                             </div>
                         </div>
                     @elseif ($verification != null && $verification->verified == 0)
-                        <div class="card rounded-2 border-gray-light">
+                        <div class="card_shadow card card_shadow rounded-2 border-gray-light">
                             <div class="card-header">
                                 <h4 class="h6 font-weight-medium mb-0">{{ translate('Identity Verification') }}</h4>
                             </div>
@@ -60,7 +60,7 @@
                             </div>
                         </div>
                     @else
-                        <div class="card rounded-2 border-gray-light">
+                        <div class="card card_shadow rounded-2 border-gray-light">
                             <div class="card-header">
                                 <h4 class="h6 font-weight-medium mb-0">{{ translate('Identity Verification') }}</h4>
                             </div>
@@ -71,7 +71,7 @@
                             </div>
                         </div>
                     @endif
-                    <div class="card rounded-2 border-gray-light">
+                    <div class=" card_shadow card rounded-2 border-gray-light">
                         <div class="card-header">
                             <h4 class="h6 font-weight-medium mb-0">{{ translate('Account Info') }}</h4>
                         </div>
@@ -167,7 +167,7 @@
                         </div>
                     </div>
 
-                    <div class="card rounded-2 border-gray-light">
+                    <div class="card  card_shadow rounded-2 border-gray-light">
                         <div class="card-header">
                             <h4 class="h6 font-weight-medium mb-0">{{ translate('Basic Info') }}</h4>
                         </div>
@@ -301,7 +301,7 @@
                         </div>
                     </div>
 
-                    <div class="card rounded-2 border-gray-light">
+                    <div class="card card_shadow rounded-2 border-gray-light">
                         <div class="card-header">
                             <h4 class="h6 font-weight-medium mb-0">{{ translate('Profile Images') }}</h4>
                         </div>

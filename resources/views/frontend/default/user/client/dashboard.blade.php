@@ -62,7 +62,7 @@
 									<span>Services</span>
 								</a>
 								<div class="mb-1">
-									<small class="fs-12 text-secondary">{{ translate('Find & Build your project with') }}</small>
+									<small class="fs-12 text-secondary">{{ translate('Find & Build your job with') }}</small>
 								</div>
 								<a href="{{ route('search') }}?type=freelancer" class="text-primary fs-14 fw-700 d-flex align-items-center mb-1">
 									<i class="la la-search fs-20 fw-900 mr-2" style="transform-origin: 0 50%; transform: rotate(-90deg) translate(-50%, 50%);"></i>
@@ -77,7 +77,7 @@
             					<div class="mb-4">
 									<div class="row">
 										<div class="col-8">
-											<div class="fs-14">{{ translate('Total Projects') }}</div>
+											<div class="fs-14">{{ translate('Total Job') }}</div>
 											<div class="h3 fs-24 fw-700">{{ count(Auth::user()->number_of_projects) }}</div>
 										</div>
 										<div class="col-4 d-flex justify-content-end align-items-center">
@@ -95,7 +95,7 @@
 								<div class="mb-4">
 									<div class="row">
 										<div class="col-8">
-											<div class="fs-14">{{ translate('Completed Project') }}</div>
+											<div class="fs-14">{{ translate('Completed Job') }}</div>
 											@php
 												$completedProjects = 0;
 												foreach (Auth::user()->number_of_projects as $key => $project) {
@@ -121,7 +121,7 @@
 								<div class="">
 									<div class="row">
 										<div class="col-8">
-											<div class="fs-14">{{ translate('Running Project') }}</div>
+											<div class="fs-14">{{ translate('Running Job') }}</div>
 											@php
 												$onGoingProjects = 0;
 												foreach (Auth::user()->number_of_projects as $key => $project) {
@@ -162,7 +162,7 @@
 	            	<div class="col-md-6">
 	            		<div class="card card_shadow card_border rounded-2 border-gray-light">
 	            			<div class="card-header border-0">
-	            				<h6 class="mb-0 fs-16 fw-700">{{ translate('Running Projects') }}</h6>
+	            				<h6 class="mb-0 fs-16 fw-700">{{ translate('Running Job') }}</h6>
 	            			</div>
 	            			<div class="card-body px-0 pt-0">
 								<div class="aiz-auto-scroll c-scrollbar-light px-4" style="height: 340px; overflow-y: scroll;">
@@ -331,9 +331,9 @@
     	type: 'doughnut',
         data: {
             labels: [
-				"{{ translate('Total Project') }}",
-				"{{ translate('Completed Project') }}",
-				"{{ translate('Running Project') }}",
+				"{{ translate('Total Job') }}",
+				"{{ translate('Completed Job') }}",
+				"{{ translate('Running Job') }}",
             ],
             datasets: [
                 {

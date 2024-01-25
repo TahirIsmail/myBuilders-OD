@@ -17,7 +17,7 @@
         </div>
     @endif
     @if ($chat->attachment != null)
-        <div class="chat-coversation">
+        <div class=" chat-coversation">
             <div class="media">
                 <span class="avatar avatar-xs flex-shrink-0">
                     <img @if ($chat->sender->photo != null) src="{{ custom_asset(($chat->sender->photo))}}" @endif>

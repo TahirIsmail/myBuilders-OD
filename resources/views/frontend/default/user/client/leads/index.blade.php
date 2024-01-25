@@ -43,7 +43,7 @@
                            
                                 <div class="col-md-8">
                                     
-                                    <x-user.freelancer.single-lead-component />
+                                    @include('frontend.default.user.client.leads.partials.single-lead')
                                 </div>
                             
                         </div>

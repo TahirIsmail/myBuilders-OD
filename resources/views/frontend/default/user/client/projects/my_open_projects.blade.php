@@ -11,13 +11,13 @@
                     <div class="aiz-titlebar mb-4">
                         <div class="row align-items-center">
                             <div class="col-md-6">
-                                <h1 class="fs-16 fw-700">{{ translate('Open Projects') }}</h1>
+                                <h1 class="fs-16 fw-700">{{ translate('Open Job') }}</h1>
                             </div>
                         </div>
                     </div>
                     <div class="">
                         @forelse ($projects as $key => $project)
-							<div class="card project-card rounded-2 border-gray-light">
+							<div class="card card_shadow project-card rounded-2 border-gray-light">
 								<div class="card-header border-bottom-0">
 									<div>
 										<span class="badge badge-primary badge-inline badge-md">{{ single_price($project->price) }}</span>
@@ -30,23 +30,29 @@
 										@endif
 									</div>
 								</div>
-								<div class="card-body pt-1">
+								<div class=" card-body pt-1">
 									<h5 class="h6 fw-600 lh-1-5">
 										<a href="{{ route('project.details', $project->slug) }}" class="text-inherit" target="_blank">{{ $project->name }}</a>
 									</h5>
 									<ul class="list-inline opacity-70 fs-12">
 										<li class="list-inline-item">
-											<i class="las la-clock opacity-40"></i>
+											{{-- <i class="las la-clock opacity-40"></i> --}}
+											<img src="{{ asset('public\assets\frontend\default\img\icons\timer.png') }}"
+											style="margin-right:5px" />
 											<span>{{ Carbon\Carbon::parse($project->created_at)->diffForHumans() }}</span>
 										</li>
 										<li class="list-inline-item">
 											<a href="" target="_blank" class="text-inherit">
-												<i class="las la-stream opacity-40"></i>
+												{{-- <i class="las la-stream opacity-40"></i> --}}
+												<img src="{{ asset('public\assets\frontend\default\img\icons\tag.png') }}"
+												style="margin-right:5px" />
 												<span>@if ($project->project_category != null) {{ $project->project_category->name }} @else {{ translate('Removed Category') }} @endif</span>
 											</a>
 										</li>
 										<li class="list-inline-item">
-											<i class="las la-handshake"></i>
+											{{-- <i class="las la-handshake"></i> --}}
+											<img src="{{ asset('public\assets\frontend\default\img\icons\relationships.png') }}"
+											style="margin-right:5px" />
 											<span>{{ translate($project->type) }}</span>
 										</li>
 									</ul>
