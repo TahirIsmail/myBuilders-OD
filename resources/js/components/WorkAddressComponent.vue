@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row">
                 <div ref="workDetailref" class="col-xxl-6 col-xl-6 col-md-7 mx-auto form bg-white  ">
-            
+
                     <h1 class="h3 mb-0" style="color: #55b97b">
                         <strong>What's your work address? </strong>
                     </h1>
@@ -21,13 +21,12 @@
                                         address</strong></label><br>
 
                                 <div class="input-group">
-                                    <AddressInput @addressSelect="getAddress" :mapboxOptions="mapboxOptions"></AddressInput>
-                                    <span class="input-group-text">
-                                        <i class="fas fa-search"></i>
-                                        <!-- Assuming you are using Font Awesome for the search icon -->
+                                    <AutoComplete placeholder="Choose the Address" @placeChanged="handlePlaceChanged"
+                                        class="form-control" />
 
-                                    </span>
                                 </div>
+
+
                             </div>
 
 
@@ -96,8 +95,8 @@ import { onMounted, reactive, ref } from 'vue'
 // import AddressInput from './components/AddressInput.vue'
 // import AddressInput from './components/AddressInput.js'
 import { useTrademensStore } from '../store/trademensStore'
-import AddressInput from '@samhess/vue-address-input'
 
+import AutoComplete from '../components/AutoCompleteAddressComponent'
 
 const postcode = ref('')
 const town = ref('')
@@ -106,39 +105,19 @@ const work_address = ref('')
 const distance = ref('')
 const editedItem = reactive({})
 const workDetailref = ref(null)
+const searchText = ref(null)
+
 // mapbox options as per https://docs.mapbox.com/api/search/geocoding
 
-onMounted(() => {
-    const scrollComponent = document.querySelector('div');
 
-    // Check if the element is found before scrolling
-    if (scrollComponent) {
-      // Use scrollIntoView to scroll to the element
-      scrollComponent.scrollIntoView({ behavior: 'smooth' });
-    }
-})
-const mapboxOptions = {
-    access_token: 'pk.eyJ1IjoidGFoaXItdGVzdDEyIiwiYSI6ImNsb2g1ZDlhczEzYnQybXFlcTB1ajlwNjEifQ.c8bkCwEOW_EWwaP23Mor9A',
-    limit: 5,
 
-}
 const props = defineProps(['navigationMethods'])
 const store = useTrademensStore();
-function getAddress(address) {
-    Object.assign(editedItem, address)
-    //let post_code = address.label.split(',')
-    work_address.value = address.label
 
-    postcode.value = address.postcode
-    street.value = address.street
-    town.value = address.city
-
-
-}
 function submit() {
-
+    
     store.setWorkingDetails({
-        work_address: work_address.value,
+
         postcode: postcode.value,
         street: street.value,
         town: town.value,
@@ -148,24 +127,45 @@ function submit() {
         props.navigationMethods.nextStep();
     }
 }
+function handlePlaceChanged(place,address) {
+   
+      work_address.value = place.formatted_address
+      postcode.value = address.postal_code
+      street.value = address.street
+      town.value = address.city    
+
+}
+
+
+   
 function back() {
     if (props.navigationMethods && typeof props.navigationMethods.prevStep === 'function') {
         props.navigationMethods.prevStep();
     }
 }
 onMounted(() => {
-    workDetailref.value.scrollIntoView({behavior:"smooth"})
+    workDetailref.value.scrollIntoView({ behavior: "smooth" })
 })
 
 </script>
 <style type="text/css" scoped>
+#mapContainer {
+    width: 200px;
+    height: 350px;
+}
+
 .form {
     border: 2px solid #eff2f6;
     padding: 30px;
     margin-bottom: 10px;
     border-radius: 4px;
 }
+
 .lp-header__content {
     margin-top: 5% !important;
+}
+
+.map-container {
+    flex: 1;
 }
 </style>

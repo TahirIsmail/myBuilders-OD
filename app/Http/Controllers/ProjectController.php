@@ -464,6 +464,7 @@ class ProjectController extends Controller
     public function freelancer_Leads()
     {
         $projects = Project::with('project_category')->get();
+        $projects = Project::with('project_category')->get();
         
 
         return view('frontend.default.user.freelancer.leads.index',compact('projects'));

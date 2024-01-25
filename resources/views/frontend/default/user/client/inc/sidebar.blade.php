@@ -75,7 +75,7 @@
                         </li>
 
                         <li class="aiz-side-nav-item">
-                            <a href="{{ route('interested_leads') }}" class="aiz-side-nav-link {{ areActiveRoutes(['interested_leads']) }}">
+                            <a href="{{ route('leads') }}" class="aiz-side-nav-link {{ areActiveRoutes(['leads']) }}">
                                 <span class="aiz-side-nav-text">{{ translate('Intersted leads') }}</span>
                             </a>
                         </li>
@@ -89,8 +89,7 @@
                                 <span class="aiz-side-nav-text">{{ translate('Jobs won') }}</span>
                             </a>
                         </li>
-                    </ul>
-                </li>
+                    </ul>                </li>
                  <li class="aiz-side-nav-item">
                     <a href="javascript:void(0);" class="aiz-side-nav-link d-flex align-items-center">
                       
