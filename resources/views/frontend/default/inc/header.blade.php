@@ -127,10 +127,13 @@
     }
 
     .btn-primary {
-        background-color: #545454 !important;
-        border-color: #333333 !important;
+        background-color: #51c57d !important;
+        border-color: #51c57d !important;
     }
-
+    .btn-primary:hover {
+    background-color: rgb(98, 208, 142) !important;
+    color: white !important;
+}
     .navbar-collapse {
         margin-left: 10%;
     }

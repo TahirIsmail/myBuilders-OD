@@ -14,7 +14,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card rounded-2 border-gray-light">
+                    <div class="card_shadow  card rounded-2 border-gray-light">
                         <div class="card-header">
                             <h4 class="h6 font-weight-medium mb-0">{{ translate('Bank Info') }}</h4>
                         </div>
@@ -113,7 +113,7 @@
                             @endif
                         </div>
                     </div>
-                    <div class="card rounded-2 border-gray-light">
+                    <div class="card_shadow  card rounded-2 border-gray-light">
                         <div class="card-header">
                             <h4 class="h6 font-weight-medium mb-0">{{ translate('Paypal Info') }}</h4>
                         </div>

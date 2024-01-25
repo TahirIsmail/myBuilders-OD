@@ -3794,7 +3794,7 @@ input[type="number"] {
     padding-left: 68px;
 }
 
-.aiz-side-nav-list .level-2 .aiz-side-nav-link:after {
+/* .aiz-side-nav-list .level-2 .aiz-side-nav-link:after {
     position: absolute;
     content: "";
     height: 6px;
@@ -3805,7 +3805,7 @@ input[type="number"] {
     left: 40px;
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
-}
+} */
 .aiz-side-nav-list .level-3 .aiz-side-nav-link:after {
     left: 54px;
 }
@@ -6348,7 +6348,7 @@ ul.apps a:hover i {
 .aiz-user-sidenav .aiz-side-nav-link.level-2-active,
 .aiz-user-sidenav .aiz-side-nav-link.level-3-active {
     background-color: transparent;
-    color: var(--primary);
+    color: var(--green);
 }
 .aiz-user-sidenav .level-2-active .aiz-side-nav-icon,
 .aiz-user-sidenav .level-3-active .aiz-side-nav-icon {
@@ -6356,10 +6356,10 @@ ul.apps a:hover i {
 }
 .aiz-user-sidenav .aiz-side-nav-link.active,
 .aiz-user-sidenav .aiz-side-nav-link:hover {
-    background-color: var(--soft-primary);
+    background-color: var(--soft-success);
     /* border-left-color: var(--primary); */
     border-radius: 8px;
-    color: var(--primary);
+    color: var(--green);
 }
 .aiz-user-sidenav .aiz-side-nav-link.active > svg *,
 .aiz-user-sidenav .aiz-side-nav-link:hover > svg *,
@@ -7383,12 +7383,12 @@ p {
 .btn--Tradeb {
     width: 25% !important;
     font-weight: normal;
-    font-size: 20px;
+    font-size: 15px;
     line-height: 1em;
     font-family: "sofia_probold", "Trebuchet MS", "Segoe UI", Candara,
         "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", Verdana,
         "Verdana Ref", sans-serif;
-    padding: 0.6em 0.25em 0.7em;
+        padding: 0.6em 0.4em 0.6em;
     -webkit-border-radius: 0.25em;
     -moz-border-radius: 0.25em;
     border-radius: 0.25em;
@@ -7412,12 +7412,12 @@ p {
     margin-left: 10px;
     width: 50% !important;
     font-weight: normal;
-    font-size: 20px;
+    font-size: 15px;
     line-height: 1em;
     font-family: "sofia_probold", "Trebuchet MS", "Segoe UI", Candara,
         "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", Verdana,
         "Verdana Ref", sans-serif;
-    padding: 0.6em 0.25em 0.7em;
+        padding: 0.6em 0.4em 0.6em;
     -webkit-border-radius: 0.25em;
     -moz-border-radius: 0.25em;
     border-radius: 0.25em;
@@ -7438,11 +7438,13 @@ p {
 @media only screen and (min-width: 320px) and (max-width: 600px) {
     .btn--Tradeb {
         font-size: 12px !important;
+        text-align: center;
     }
 }
 @media only screen and (min-width: 320px) and (max-width: 600px) {
     .btn--Tradec {
         font-size: 12px !important;
+        text-align: center;
     }
 }
 .icon-color{
