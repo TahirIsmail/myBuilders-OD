@@ -79,7 +79,7 @@ const questions = ref(new Set()); // Now a list of question data
 onBeforeMount(async () => {
     
     await store.loadJobCategories();
-
+    
 });
 onMounted(() => {
     postajobref.value.scrollIntoView({behavior:"smooth"})
@@ -137,7 +137,7 @@ const fetchNextQuestion = async (index, selectedAnswer) => {
     }
 };
 
-const moveToSignUp = () => {};
+
 watch(
     selectedCategory,
     (newCategory, oldCategory) => {

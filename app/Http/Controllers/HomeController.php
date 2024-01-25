@@ -9,6 +9,7 @@ use App\Models\Project;
 use App\Models\ChatThread;
 use App\Models\UserProfile;
 use App\Utility\EmailUtility;
+use App\Models\Country;
 use App\Utility\NotificationUtility;
 use App\Models\ProjectCategory as Categories;
 use App\Models\Skill;
@@ -19,7 +20,7 @@ use App\Models\Question;
 use App\Notifications\SendMagicLinkNotification;
 use Carbon;
 use Illuminate\Support\Str;
-
+use App\Models\Address;
 use Spatie\Permission\Models\Permission;
 use Artisan;
 
@@ -91,7 +92,7 @@ class HomeController extends Controller
     //Show details info of specific project
     public function project_details($slug)
     {
-        $project = Project::where('slug', $slug)->first();
+        $project = Project::where('slug', $slug)->with('address')->first();
         $project_questionare = collect(json_decode($project->jobquestionsarray));
         
         $questionare =  $project_questionare->map(function($item ,$key){
@@ -204,7 +205,7 @@ class HomeController extends Controller
     }
     public function post_job(){
        $data['user'] = auth()->user();
-        
+      
         // Return or process $projectCategories as needed
         return view('frontend.default.post_projects',$data);
     }
@@ -255,7 +256,17 @@ class HomeController extends Controller
         $project->client_user_id = Auth()->user()->id;
         $project->slug = Str::slug($request->jobHeadline, '-') . date('Ymd-his');
         $project->save();
-
+        $jobaddress = new Address(
+            ['country' => $request->country,
+             'region' => $request->region,
+             'latitude' => $request->latitude,
+             'longitude' => $request->longitude,
+             'postal_code' => $request->postcode,
+             'street' => $request->street,
+             'city' => $request->city,
+            ]
+        );
+        $project->address()->save($jobaddress);
 
         NotificationUtility::set_notification(
             "A_new_Job_has_been_created_by_client",

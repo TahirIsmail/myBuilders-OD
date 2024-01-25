@@ -5,7 +5,7 @@
         <form id="jobForm" class="setmargin">
             @method('post')
             @csrf
-
+            
             <div class="row">
                 <div class="col-sm-12 col-md-7 mx-auto form-section">
                     <div class="center-content">
@@ -35,11 +35,14 @@
                                 <p>{{ $jobHeadline }}</p>
                             </div>
                             <div class="col-sm">
-                                <label for="postcode" class="form-label"><strong>Postcode</strong></label>
+                                <label for="postcode" class="form-label"><strong>Postcode/Address</strong></label>
 
 
                                 <p>{{ $postcode }}</p>
+                               
+                                
                             </div>
+                            
                             <div class="col-sm">
                                 <label for="JobDescription" class="form-label"><strong>Customer description</strong></label>
                                 <p>{{ $JobDescription }}</p>
@@ -78,7 +81,13 @@
                         </div>
                     </div>
                 </div>
-
+                <div class="container-fluid">
+                    <label for="mapLocation" class="form-label"> <strong>Location</strong> </label>
+                    <div class="container">
+                    
+                        <img src="https://maps.googleapis.com/maps/api/staticmap?center={{$latitude}},{{$longitude}}&zoom=16&size=400x400&key=AIzaSyCC6BbwI05bsqkWZCStzkLIMquD8WL_wqU&markers=color:red|label:J|{{$latitude}},{{$longitude}}" alt="address_map" />
+                    </div>
+                </div>
 
                 <div class="row text-center">
                     <div class="col-sm-12 mx-auto">

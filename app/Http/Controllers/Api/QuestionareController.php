@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Country;
 use Illuminate\Http\Request;
 use App\Models\Question;
 use App\Models\ProjectCategory;
@@ -107,6 +108,8 @@ class QuestionareController extends Controller
     {
         //
     }
-
+    public function countries(){
+        return response()->json(Country::all());
+    }
     
 }

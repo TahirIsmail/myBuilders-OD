@@ -18,3 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::post('/nextquestion', [QuestionareController::class, 'nextQuestion']);
 Route::get('/job-categories',[QuestionareController::class,'jobCategories']);
+Route::get('/getCountries',[QuestionareController::class,'countries']);

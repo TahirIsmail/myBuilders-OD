@@ -3,7 +3,7 @@
 @section('content')
 
     <section class="py-4 py-lg-5">
-        
+
         <div class="container">
             @if (session('message'))
                 <div class="alert alert-success">
@@ -151,7 +151,26 @@
                             <h6 class="text-left mb-3"><span
                                     class="bg-white pr-3 fs-14 fw-700">{{ translate('Job Location') }}</span></h6>
                             <div id="map" class="box" style='width: 650px; height: 300px;'>
+                                <img src="https://maps.googleapis.com/maps/api/staticmap?center={{ $project->address->latitude }},{{ $project->address->longitude }}&zoom=16&size=400x300&key=AIzaSyCC6BbwI05bsqkWZCStzkLIMquD8WL_wqU&markers=color:red|label:J|{{ $project->address->latitude }},{{ $project->address->longitude }}"
+                                    alt="address_map" />
 
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                    <div class="card rounded-2 border-gray-light">
+                        <div class="card-body">
+                            <h6 class="text-left mb-3"><span
+                                    class="bg-white pr-3 fs-14 fw-700">{{ translate('Job Address') }}</span></h6>
+                            <div class="container">
+                                <div class="row">
+                                    <span>{{ $project->address->street ?? '' }}</span>,
+                                    <span>{{ $project->address->city ?? '' }}</span>,
+                                    <span>{{ $project->address->country ?? '' }}<span>
+                                            <span>{{ $project->address->postal_code ?? '' }}</span>,
+                                            <span>{{ $project->address->region ?? '' }}</span>
+                                </div>
                             </div>
                         </div>
 
@@ -422,8 +441,8 @@
                         data-md-items="2" data-sm-items="1" data-arrows='true'>
 
                         @foreach ($similar_types = \App\Models\Project::where('type', $project->type)->where('id', '!=', $project->id)->where('closed', '!=', 1)->limit(4)->get() as $similar_type_project)
-            @if (count($similar_types) > 0)
-               <div class="caorusel-box">
+@if (count($similar_types) > 0)
+<div class="caorusel-box">
         							<div class="card rounded-2 border-gray-light hov-box">
         								<div class="card-header border-bottom-0 pt-4 pb-0 align-items-start minw-0">
         									<h5 class="h6 fs-16 fw-700 lh-1-5 text-truncate-2 h-45px">
@@ -539,48 +558,25 @@
             })
         }
     </script>
-            <script>
-                mapboxgl.accessToken =
-                    'pk.eyJ1IjoidGFoaXItdGVzdDEyIiwiYSI6ImNsb2g1ZDlhczEzYnQybXFlcTB1ajlwNjEifQ.c8bkCwEOW_EWwaP23Mor9A';
-                const map = new mapboxgl.Map({
-                    container: 'map', // container ID
-                    style: 'mapbox://styles/mapbox/streets-v12', // style URL
-                    center: [-74.5, 40], // starting position [lng, lat]
-                    zoom: 9, // starting zoom
-                    interactive:false
-                });
-                var postalCode = "{{ $project->job_postal_code }}";
-                fetch(
-                        `https://api.mapbox.com/geocoding/v5/mapbox.places/${postalCode}.json?access_token=${mapboxgl.accessToken}`
-                    )
-                    .then((response) => response.json())
-                    .then((data) => {
-                        var coordinates = data.features[0].center;
-
-                        // Set map center to the coordinates
-                        map.setCenter(coordinates);
-
-                        // Add a marker at the coordinates
-                        new mapboxgl.Marker().setLngLat(coordinates).addTo(map);
-                    });
-            </script>
+            
 @endsection
 @section('modal')
     <div class="modal fade" id="bid_for_project" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">{{ translate('Bid For Project') }}</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            </button>
-                        </div>
-                        <div class="modal-body" id="bid_for_modal_body">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">{{ translate('Bid For Project') }}</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        </button>
+                                    </div>
+                                    <div class="modal-body" id="bid_for_modal_body">
 
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            @include('frontend.default.partials.bookmark_remove_modal')
+                        @include('frontend.default.partials.bookmark_remove_modal')
 @endsection
+
 
 

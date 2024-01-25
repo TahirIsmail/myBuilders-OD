@@ -83,7 +83,7 @@ class VerificationController extends Controller
     {
         return $request->user()->hasVerifiedPhone()
             ? redirect($this->redirectPath())
-            : view('auth.phone.verify');
+            : view('auth.phone.verify')->with('user',$request->user());
     }
 
     /**
@@ -98,8 +98,12 @@ class VerificationController extends Controller
         if ($request->user()->hasVerifiedPhone()) {
             return redirect($this->redirectPath());
         }
+        $validatedData = $request->validate([
+            'code' => 'required|string|min:6|max:20', // Adjust the validation rules accordingly
+        ]);
 
-        $code = $request->post('code');
+        // Access the validated 'code' parameter
+        $code = $validatedData['code'];
         $phone = $request->user()->address->phone;
 
         $verification = $this->verify->checkVerification($phone, $code);
@@ -128,8 +132,16 @@ class VerificationController extends Controller
         if ($request->user()->hasVerifiedPhone()) {
             return redirect($this->redirectPath());
         }
+       
+        $validatedData = $request->validate([
+            'phone_number' => 'required|string', // Add more specific validation if needed
+        ]);
 
-        $phone = $request->user()->phone_number;
+        
+        $phoneNumber = $validatedData['phone_number'];
+
+        
+        $phone = preg_replace('/\s+/', '', $phoneNumber);
         $channel = $request->post('channel', 'sms');
         $verification = $this->verify->startVerification($phone, $channel);
 

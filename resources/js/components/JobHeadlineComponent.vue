@@ -1,8 +1,10 @@
 
 <template>
     <div class="col-md-12 mx-auto row justify-content-md-center">
+
         <div class="col-md-10 bg-white" style="padding-top:10px;">
             <!-- <h2 class="form-heading">Give your job a headline</h2> -->
+
             <form ref="jobheadlineref" @submit.prevent="submitForm">
                 <!-- Job Headline Input -->
                 <div class="form-group position-relative">
@@ -17,45 +19,51 @@
                         {{ form.jobHeadline.length }}/55
                     </div>
                 </div>
-                <div class="form-group">
 
-                    <label for="country">Country</label>
-                    <div class="input-group">
-                        <div class="input-group-append">
-                            <span class="input-group-text">Country</span>
-                        </div>
-                        <country-select class="form-control" v-model="form.country" :country="form.country"
-                            :removePlaceholder=true :autocomplete=false topCountry="GB" />
-
-                    </div>
+                <div class="form-group position-relative">
+                    <label for="jobHeadline">Point the Job Location on Map</label>
+                    <MapWithSearchBox @markerSet="handleMarker" />
                 </div>
+                <Transition>
+                <div class="container" v-if="showAddressForm">
 
-                <!-- Region of the post-->
-                <div class="form-group">
-                    <label for="region">Region</label>
-                    <div class="input-group">
-                        <div class="input-group-append">
-                            <span class="input-group-text">Region</span>
-                        </div>
-                        <region-select class="form-control" v-model="form.region" :country="form.country"
-                            :region="form.region" :removePlaceholder=true :autocomplete=false />
-                    </div>
-                </div>
-                <!-- Postcode Input with Inner Div -->
-                <div class="form-group">
-                    <label for="postcode">Postcode for the job</label>
-                    <div class="input-group">
-                        <div class="input-group-append">
-                            <span class="input-group-text">Postcode</span>
-                        </div>
-                        <input type="text" class="form-control" id="postcode" v-model="form.postcode" />
+                   
+                    
+                   
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Country</span>
+                        <input type="text" class="form-control" v-model="form.country" placeholder="Country"
+                            aria-label="Country" aria-describedby="basic-addon1">
                     </div>
 
-                </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Region</span>
+                        <input type="text" class="form-control" v-model="form.region" placeholder="Enter Region"
+                            aria-label="region" aria-describedby="basic-addon1">
+                    </div>
 
-                <!-- Email Address Input -->
-                
-                <div v-if="(!store.jobInformation || user )">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">PostCode</span>
+                        <input type="text" class="form-control" v-model="form.postcode" placeholder="Enter Postal Code"
+                            aria-label="postalcode" aria-describedby="basic-addon1">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Street</span>
+                        <input type="text" class="form-control" v-model="form.street" placeholder="Street"
+                            aria-label="street" aria-describedby="basic-addon1">
+                    </div>
+
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">City</span>
+                        <input type="text" class="form-control" v-model="form.city" placeholder="Enter City"
+                            aria-label="postalcode" aria-describedby="basic-addon1">
+                    </div>
+               
+                </div>
+            </Transition>
+                <div v-if="(!store.jobInformation || user)">
                     <div class="form-group button-container">
                         <button type="submit" class="btn btn-primary">
                             Continue
@@ -81,20 +89,20 @@
 </template>
 
 <script setup>
-import { reactive, onMounted, computed, ref, shallowRef, inject } from 'vue';
+import { reactive, onBeforeMount, onMounted, computed, ref, shallowRef, inject } from 'vue';
 import { useQuestionnaireStore } from '../store/questionnaireStore';
 import SignUp from '../components/SignUpComponent.vue';
 import EmailInput from '../components/EmailInputComponent.vue'
 import * as Yup from 'yup';
 import axios from 'axios';
+import MapWithSearchBox from './MapWithSearchBoxComponent.vue'
 import { postcodeValidator, postcodeValidatorExistsForCountry } from 'postcode-validator';
-
 
 
 
 const jobheadlineref = ref('');
 const showSecondComponent = ref(false);
-
+const showAddressForm =  ref(false);
 const handleComponentChange = (value) => {
     // Update the state based on the emitted value
     showSecondComponent.value = value;
@@ -108,8 +116,25 @@ const form = reactive({
     region: '',
     jobHeadline: '',
     postcode: '',
+    latitude: '',
+    longitude: '',
+    street: '',
+    city: '',
 
 });
+const handleMarker = (position, address) => {
+    let pos = position.toJSON()
+    form.country = address.country
+    form.postcode = address.postal_code
+    form.region = address.region
+    form.city = address.city
+    form.street = address.street
+    form.latitude = pos.lat
+    form.longitude = pos.lng
+    // console.log(position.toJSON(),address)
+    showAddressForm.value = true
+    // console.log(form)
+}
 const validationSchema = computed(() => {
     // Define your Yup validation schema here
     return Yup.object().shape({
@@ -121,18 +146,14 @@ const validationSchema = computed(() => {
 
         postcode: Yup.string()
             .nullable()
-            .test('valid-postal-code', 'Invalid Postal Code', (value) => isValidPostalCode(value)),
+            
         // Add more validation rules for other fields as needed
 
     });
 });
 const store = useQuestionnaireStore()
 
-const isValidPostalCode = (value) => {
 
-    const validation = postcodeValidator(value, form.country);
-    return validation
-}
 
 
 
@@ -151,8 +172,8 @@ const submitForm = async () => {
                 SelectedCategory: store.selectedCategory,
                 JobDescription: store.getJobDescription
             })
-            
-           
+
+
             Swal.fire({
                 icon: 'success',
                 title: `The Job Information has been for ${user.name},\nDo you want to save it!`,
@@ -162,56 +183,59 @@ const submitForm = async () => {
                 denyButtonText: `Don't save`
             }).then((result) => {
                 /* Read more about isConfirmed, isDenied below */
-                
+
                 if (result.isConfirmed) {
                     store.sendJobinformation();
                     Swal.fire("Saved!", "", "success");
                 } else if (result.isDenied) {
                     Swal.fire("Changes are not saved", "", "info");
-                }});
+                }
+            });
 
-            } else {
-                // Object is null or undefined
+        } else {
+            // Object is null or undefined
 
 
 
 
-                store.setjobInformation({
-                    ...form,
-                    JobQuestionAnswer: store.getAllSelectedAnswers,
-                    SelectedCategory: store.selectedCategory,
-                    JobDescription: store.getJobDescription
-                })
+            store.setjobInformation({
+                ...form,
+                JobQuestionAnswer: store.getAllSelectedAnswers,
+                SelectedCategory: store.selectedCategory,
+                JobDescription: store.getJobDescription
+            })
 
             Swal.fire({
-                    icon: 'success',
-                    title: 'The Job Information has been set!',
-                    showConfirmButton: false,
-                    timer: 1500,
-                });
-            }
+                icon: 'success',
+                title: 'The Job Information has been set!',
+                showConfirmButton: false,
+                timer: 1500,
+            });
+        }
 
 
         // You can also submit the form data to your server here if needed
         // For example: this.$axios.post('/submit', form);
     } catch (error) {
-            // If validation fails, show SweetAlert2 error message with validation errors
-            console.log(error)
-            const validationErrors = error.inner.map((err) => err.message);
-            Swal.fire({
-                icon: 'error',
-                title: 'Invalid Job Information!',
-                html: `<ul>${validationErrors.map((err) => `<li>${err}</li>`).join('')}</ul>`,
-            });
-        }
-    };
-    onMounted(() => {
-        jobheadlineref.value.scrollIntoView({ behavior: "smooth" })
-        
-    })
-    const postjob = async () => {
-        await store.sendJobinformation()
+        // If validation fails, show SweetAlert2 error message with validation errors
+        console.log(error)
+        const validationErrors = error.inner.map((err) => err.message);
+        Swal.fire({
+            icon: 'error',
+            title: 'Invalid Job Information!',
+            html: `<ul>${validationErrors.map((err) => `<li>${err}</li>`).join('')}</ul>`,
+        });
     }
+};
+
+onMounted(async () => {
+
+
+
+    jobheadlineref.value.scrollIntoView({ behavior: "smooth" })
+})
+
+
 
 </script>
 

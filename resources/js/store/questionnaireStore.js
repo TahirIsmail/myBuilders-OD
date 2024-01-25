@@ -11,6 +11,7 @@ export const useQuestionnaireStore = defineStore('questionnaire', {
     jobDescription: '',
     selectedCategory: null,
     email: '',
+    countries:[],
   }),
   getters: {
     getAllSelectedAnswers: (state) => {
@@ -27,7 +28,8 @@ export const useQuestionnaireStore = defineStore('questionnaire', {
     },
     getUserInformation:(state) => {
       return state.userInformation;
-    }
+    },
+    
 
   },
   actions: {
@@ -41,6 +43,8 @@ export const useQuestionnaireStore = defineStore('questionnaire', {
           console.error('Failed to load job categories:', error);
         }
       },
+      
+  
       setAnswerForQuestion(index, selectedAnswer) {
         // Store the selected answer for a specific question
         this.selectedAnswers[index] = selectedAnswer;
@@ -156,6 +160,7 @@ export const useQuestionnaireStore = defineStore('questionnaire', {
         }
       }
     },
+    
      resetState(){
       this.jobInformation = null,
       this.userInformation = null,
@@ -167,7 +172,7 @@ export const useQuestionnaireStore = defineStore('questionnaire', {
       setEmail(email) {
       this.email = email;
     },
-
+    
     
   },
 });

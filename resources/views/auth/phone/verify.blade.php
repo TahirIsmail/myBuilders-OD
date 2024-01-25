@@ -7,6 +7,7 @@
 @section('content')
     <div class="py-4 py-lg-5 d-flex justify-content-center align-items-center">
         <div class="container">
+            
             <div class="row">
                 <div class="col-xxl-4 col-xl-5 col-md-7  mx-auto">
                     <div class="card rounded-2 border-gray-light">
@@ -38,10 +39,8 @@
                                             <input type="radio" name="channel" value="sms" checked />
                                             SMS
                                         </label>
-                                        <label>
-                                            <input type="radio" name="channel" value="call" />
-                                            Call
-                                        </label>
+
+                                        <input type="hidden" name="phone_number" value="{{ $user->address->phone }}">
                                     </div>
                                 </div>
                                 <div class="row">

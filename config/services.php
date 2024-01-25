@@ -82,5 +82,8 @@ return [
         'phone_number' => env('TWILLIO_PHONE_NUMBER'),
         'service_id' => env('TWILLIO_SERVICE_SID'),
     ],
+    'googlemaps' => [
+        'api-key' => env('GOOGLE_MAP_KEY')
+    ]
 
 ];
