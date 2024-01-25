@@ -438,22 +438,22 @@ class ProjectController extends Controller
 
 
 
-    // public function Leads()
-    // {
-    //     $projects = Project::with('project_category')->get();
+    public function client_leads()
+    {
+        $projects = Project::with('project_category')->get();
         
 
-    //     return view('frontend.default.user.client.leads.index',compact('projects'));
-    // }
+        return view('frontend.default.user.client.leads.index',compact('projects'));
+    }
 
 
-    // public function Interested_leads()
-    // {
-    //     $projects = Project::with('project_category')->get();
+    public function client_interested_leads()
+    {
+        $projects = Project::with('project_category')->get();
         
 
-    //     return view('frontend.default.user.client.leads.interestedleads',compact('projects'));
-    // }
+        return view('frontend.default.user.client.leads.interestedleads',compact('projects'));
+    }
     // public function Shortlisted_leads()
     // {
     //     $projects = Project::with('project_category')->get();
@@ -464,7 +464,7 @@ class ProjectController extends Controller
 
     public function freelancer_Leads()
     {
-        $projects = Project::with('project_category')->get();
+       
         $projects = Project::with('project_category')->get();
         
 

@@ -69,18 +69,18 @@
                     </a>
                     <ul class="aiz-side-nav-list level-2">
                         <li class="aiz-side-nav-item">
-                            <a href="{{ route('leads') }}" class="aiz-side-nav-link {{ areActiveRoutes(['leads']) }}">
+                            <a href="{{ route('client_leads') }}" class="aiz-side-nav-link {{ areActiveRoutes(['client_leads']) }}">
                                 <span class="aiz-side-nav-text">{{ translate('New leads') }}</span>
                             </a>
                         </li>
 
                         <li class="aiz-side-nav-item">
-                            <a href="{{ route('leads') }}" class="aiz-side-nav-link {{ areActiveRoutes(['leads']) }}">
-                                <span class="aiz-side-nav-text">{{ translate('Intersted leads') }}</span>
+                            <a href="{{ route('client_interested_leads') }}" class="aiz-side-nav-link {{ areActiveRoutes(['client_interested_leads']) }}">
+                                <span class="aiz-side-nav-text">{{ translate('Interested leads') }}</span>
                             </a>
                         </li>
                         <li class="aiz-side-nav-item">
-                            <a href="{{ route('shortlisted_leads') }}" class="aiz-side-nav-link {{ areActiveRoutes(['shortlisted_leads'])}}">
+                            <a href="{{ route('client_shortlisted_leads') }}" class="aiz-side-nav-link {{ areActiveRoutes(['client_shortlisted_leads'])}}">
                                 <span class="aiz-side-nav-text">{{ translate('Shortlisted') }}</span>
                             </a>
                         </li>

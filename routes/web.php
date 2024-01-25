@@ -220,9 +220,9 @@ Route::group(['middleware' => ['auth','phoneverified']], function(){
 
 
 
-	// Route::get('/leads', 'ProjectController@Leads')->name('leads');
-	// Route::get('/interested_leads', 'ProjectController@Interested_leads')->name('interested_leads');
-	// Route::get('/shortlisted_leads', 'ProjectController@Shortlisted_leads')->name('shortlisted_leads');
+	Route::get('/client_leads', 'ProjectController@client_leads')->name('client_leads');
+	Route::get('/client_interested_leads', 'ProjectController@client_interested_leads')->name('client_interested_leads');
+	Route::get('/client_shortlisted_leads', 'ProjectController@client_shortlisted_leads')->name('client_shortlisted_leads');
 
 	Route::get('/freelancer_Leads', 'ProjectController@freelancer_Leads')->name('freelancer_Leads');
 	Route::get('/freelancer_Interested_leads', 'ProjectController@freelancer_Interested_leads')->name('freelancer_Interested_leads');
