@@ -445,6 +445,7 @@ class ProjectController extends Controller
 
         return view('frontend.default.user.client.leads.index',compact('projects'));
     }
+      
 
 
     public function client_interested_leads()
@@ -459,8 +460,18 @@ class ProjectController extends Controller
     //     $projects = Project::with('project_category')->get();
         
 
-    //     return view('frontend.default.user.client.leads.shortlistedleads',compact('projects'));
-    // }
+    public function showLead($id){
+        $lead = Project::where('id', $id)->with('address')->first();
+
+        if (!$lead) {
+            return response()->json(['error' => 'Lead not found'], 404);
+        }
+    
+        // Assuming you have a Blade view named 'leads.show' to display the lead details
+        $view = view('frontend.default.user.client.leads.partials.single-lead', compact('lead'))->render();
+    
+        return response()->json(['html' => $view]);
+    }
 
     public function freelancer_Leads()
     {

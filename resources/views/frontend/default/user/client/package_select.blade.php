@@ -1,7 +1,7 @@
 @extends('frontend.default.layouts.app')
 
 @section('content')
-<section class="py-8 bg-primary text-white">
+<section class="py-8 bg-#eff2f6 text-black ">
     <div class="container">
         <div class="row">
             <div class="col-xl-8 mx-auto text-center">
@@ -17,7 +17,7 @@
         <div class="row row-cols-xxl-4 row-cols-lg-3 row-cols-md-2 row-cols-1 gutters-10 justify-content-center">
             @foreach ($packages as $key => $package)
                 <div class="col">
-                    <div class="card overflow-hidden rounded-2 border-gray-light">
+                    <div class="card card_shadow overflow-hidden rounded-2 border-gray-light">
                         <div class="card-body">
                             @if ($package->recommended != 0)
                             <span class="absolute-top-right recommended-ribbon bg-success">{{ translate('Recommended') }}</span>

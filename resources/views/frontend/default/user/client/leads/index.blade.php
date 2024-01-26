@@ -17,7 +17,7 @@
                                     <div class="card card_shadow w-100 border-gray-light">
                                         <div class="card-body">
                                             <ul class="list-unstyled">
-                                                <li class="text-primary">
+                                                <li onclick="show_lead({{$project->id}})"   class="text-primary" style="cursor: pointer">
                                                     {{ $project->name }}
                                                 </li>
                                                 <li>
@@ -41,9 +41,9 @@
                             </div>
 
                            
-                                <div class="col-md-8">
+                                <div class="col-md-8" id="single-lead">
                                     
-
+                                    {{-- @include('frontend.default.user.client.leads.partials.single-lead') --}}
                                 </div>
                             
                         </div>
@@ -80,9 +80,24 @@
 </style>
 @section('script')
     <script>
-        $.when($.ready).then(function() {
-            // Document is ready.
-            alert("its loaded");
+
+        function show_lead(slug){
+            
+            $.ajax({
+            url: '/show-lead/' + slug,
+            method: 'GET',
+            success: function(response) {
+                if (response.html) {
+                    $('#single-lead').html(response.html);
+                } else {
+                    console.error('Failed to fetch lead details');
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('AJAX request failed:', status, error);
+            }
         });
+        
+            }
     </script>
 @endsection

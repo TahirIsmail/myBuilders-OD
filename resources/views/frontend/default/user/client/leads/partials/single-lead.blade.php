@@ -2,11 +2,10 @@
     <!-- It is quality rather than quantity that matters. - Lucius Annaeus Seneca -->
     
 
-
+        
         <div class="card card_shadow w-100 border-gray-light ">
             <div class="card-body custom_Card_padding">
-                <h2 class="h2_custom"> Bricklayer for garage conversion project,work to
-                    follow</h2>
+                <h2 class="h2_custom">{{ $lead->name}}</h2>
                 <div class="lead-details__flag-wrap"></div>
 
                 <div class="lead-details__actions-layout">
@@ -15,7 +14,7 @@
                             <i
                                 class="fas fa-map-marker-alt mb-map no-space lead-details__meta-icon"></i>
 
-                            <span class="lead-details__meta-title">Manchester</span><span
+                            <span class="lead-details__meta-title">{{$lead->country}}</span><span
                                 class="lead-details__meta-detail">6.9 miles away</span></a>
                         <div class="lead-details__meta mt-1">
                             <span class="lead-details__status">New lead</span>
@@ -67,7 +66,7 @@
 
                 <div class="lead-details__panel lead-details__job-description">
                     <h3 class="h2_custom">Job description</h3>
-                    <h4 class="h1_custom">Restoration &amp; Refurbishment</h4>
+                    <h4 class="h1_custom">{{$lead->project_category->name}}</h4>
                     <div class="job-description__body">
                         <div class="markdown-description">
                             <ul>
@@ -75,9 +74,7 @@
                                 <li>Small refurb</li>
                             </ul>
                             <p class="h1_custom">Customer description</p>
-                            <p>Take down existing ceiling, reabod and skin, also replace existing
-                                wastewater
-                                pipes, upstairs bathroom. Pints and finish existing matching,</p>
+                            <p>{{$lead->description}}</p>
                         </div>
                     </div>
                     <p class="job-description__meta">Fri 12th Jan 2024 00:42</p>
@@ -85,7 +82,7 @@
 
                     <div class=" d-flex">
                         <div class="col-md-8 pl-0 ">
-                            Posted by<strong class="pl-1">mashuk66576</strong>
+                            Posted by<strong class="pl-1">{{$lead->client->name}}</strong>
                         </div>
 
                         <div class="col-md-4  text-right ">

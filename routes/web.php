@@ -218,7 +218,7 @@ Route::group(['middleware' => ['auth','phoneverified']], function(){
 
 	Route::get('/bidded-projects', 'ProjectController@bidded_projects')->name('bidded_projects');
 
-
+	Route::get('/show-lead/{id}', 'ProjectController@showLead')->name('show-lead');
 
 	Route::get('/client_leads', 'ProjectController@client_leads')->name('client_leads');
 	Route::get('/client_interested_leads', 'ProjectController@client_interested_leads')->name('client_interested_leads');
