@@ -145,8 +145,8 @@
                                 <div class="form-group">
                                     <label>{{ translate('Skill') }} <span class="text-danger">*</span>
                                         ({{ translate('Max') }}
-                                        {{ $user_profile->user->userPackage->skill_add_limit }})</label>
-                                    <select class="form-control aiz-selectpicker" multiple name="skills[]"
+                                        {{-- {{ $user_profile->user->userPackage->skill_add_limit }})</label> --}}
+                                    {{-- <select class="form-control aiz-selectpicker" multiple name="skills[]"
                                         data-live-search="true" data-selected-text-format="count"
                                         data-max-options="{{ $user_profile->user->userPackage->skill_add_limit }}">
                                         @if ($user_profile->skills != null)
@@ -160,7 +160,7 @@
                                                 <option value="{{ $skill->id }}">{{ $skill->name }}</option>
                                             @endforeach
                                         @endif
-                                    </select>
+                                    </select> --}}
                                 </div>
 
                                 <hr class="mb-3 mt-4">
@@ -429,7 +429,7 @@
                                     </div>
                                 </div>
                             @endif
-                            @if ($user_profile->user->userPackage->portfolio_add_limit > count($user_profile->user->userPortfolios))
+                            {{-- @if ($user_profile->user->userPackage->portfolio_add_limit > count($user_profile->user->userPortfolios))
                                 <form action="{{ route('user_profile.portfolio_add') }}" method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
@@ -482,7 +482,7 @@
                                 <div class="alert alert-info" role="alert">
                                     {{ translate('You have added maximum number of portfolio according to your package.') }}
                                 </div>
-                            @endif
+                            @endif --}}
                         </div>
                     </div>
 
@@ -539,7 +539,7 @@
                                     </div>
                                 </div>
                             @endif
-                            @if ($user_profile->user->userPackage->job_exp_limit > count($user_profile->user->workExperiences))
+                            {{-- @if ($user_profile->user->userPackage->job_exp_limit > count($user_profile->user->workExperiences))
                                 <form action="{{ route('user_profile.work_experience_add') }}" method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
@@ -602,7 +602,7 @@
                                 <div class="alert alert-info" role="alert">
                                     {{ translate('You have added maximum number of work experience according to your package.') }}
                                 </div>
-                            @endif
+                            @endif --}}
                         </div>
                     </div>
 

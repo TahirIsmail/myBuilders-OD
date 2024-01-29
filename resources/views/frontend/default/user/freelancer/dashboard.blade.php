@@ -19,11 +19,11 @@
 						{{ translate('Please verify your Email') }}. <a href="{{ route('user.profile') }}" class="alert-link">{{ translate('Verify Now') }}</a>
 					</div>
 				@endif
-				@if(Auth::user()->userPackage->package_invalid_at != null && Carbon\Carbon::now()->diffInDays(Carbon\Carbon::parse(Auth::user()->userPackage->package_invalid_at), false) < 8)
+				{{-- @if(Auth::user()->userPackage->package_invalid_at != null && Carbon\Carbon::now()->diffInDays(Carbon\Carbon::parse(Auth::user()->userPackage->package_invalid_at), false) < 8)
 					<div class="alert alert-danger mb-3">
 						{{ translate('Please renew/upgrade your package. Your current package will expire soon') }}. <a href="{{ route('select_package') }}" class="alert-link">{{ translate('Upgrade Now') }}</a>
 					</div>
-				@endif
+				@endif --}}
             	<div class="row gutters-15">
 					<div class="col-md-4 ">
             			<div class="bg-primary card_shadow text-white mb-4 overflow-hidden rounded-2 d-flex flex-column justify-content-between">
@@ -212,7 +212,7 @@
 								<h6 class="mb-0 fs-16 fw-700">{{ translate('Current Package') }}</h6>
 							</div>
             				<div class="card-body pt-3">
-            					<img src="{{ custom_asset(Auth::user()->userPackage->package->badge) }}" class="img-fluid mb-4 h-70px">
+            					{{-- <img src="{{ custom_asset(Auth::user()->userPackage->package->badge) }}" class="img-fluid mb-4 h-70px">
             					<h4 class="fw-700 mb-3 text-primary fs-21">{{ Auth::user()->userPackage->package->name }}</h4>
             					<p class="mb-1 fs-13 pb-2">{{ translate('Remaining Fixed Projects bids') }} - <strong>{{ Auth::user()->userPackage->fixed_limit }}</strong></p>
                                 <p class="mb-1 fs-13 pb-2">{{ translate('Remaining Long Term Projects bids') }} - <strong>{{ Auth::user()->userPackage->long_term_limit }}</strong></p>
@@ -220,7 +220,7 @@
             					
 								<div class=" d-flex  justify-content-center align-items-center">
 								    <a href="{{ route('select_package') }}" class="btn--Tradec  ">{{ translate('Upgrade/ Extend') }}</a>
-								</div>
+								</div> --}}
             				</div>
             			</div>
             		</div>
@@ -232,7 +232,7 @@
             				<div class="card-body pt-0">
             					<ul class="list-unstyled mb-0">
             						<li class=" py-2">
-                                      @if(Auth::user()->userPackage->package->fixed_limit > 0)
+                                      {{-- @if(Auth::user()->userPackage->package->fixed_limit > 0)
                                           <span class="mr-2 badge badge-circle badge-success badge-sm align-middle">
                 								<i class="las la-check text-white"></i>
                 							</span>
@@ -241,10 +241,10 @@
                                                   <i class="las la-times text-white"></i>
                                               </span>
                                           @endif
-            							<span>{{ translate('Fixed Projects bids') }} - <span class="fw-700">{{ Auth::user()->userPackage->package->fixed_limit }}</span></span>
+            							<span>{{ translate('Fixed Projects bids') }} - <span class="fw-700">{{ Auth::user()->userPackage->package->fixed_limit }}</span></span> --}}
             						</li>
             						<li class=" py-2">
-                                      @if(Auth::user()->userPackage->package->long_term_limit > 0)
+                                      {{-- @if(Auth::user()->userPackage->package->long_term_limit > 0)
                                           <span class="mr-2 badge badge-circle badge-success badge-sm align-middle">
                 								<i class="las la-check text-white"></i>
             							  </span>
@@ -253,10 +253,10 @@
                                               <i class="las la-times text-white"></i>
                                           </span>
                                       @endif
-				                       <span>{{ translate('Long Term Projects bids') }} - <span class="fw-700">{{ Auth::user()->userPackage->package->long_term_limit }}</span></span>
+				                       <span>{{ translate('Long Term Projects bids') }} - <span class="fw-700">{{ Auth::user()->userPackage->package->long_term_limit }}</span></span> --}}
             						</li>
             						<li class=" py-2">
-                                          @if(Auth::user()->userPackage->package->skill_add_limit > 0)
+                                          {{-- @if(Auth::user()->userPackage->package->skill_add_limit > 0)
                                               <span class="mr-2 badge badge-circle badge-success badge-sm align-middle">
                     								<i class="las la-check text-white"></i>
     				                          </span>
@@ -264,11 +264,11 @@
                                               <span class="mr-2 badge badge-circle badge-danger badge-sm align-middle">
                                                   <i class="las la-times text-white"></i>
                                               </span>
-                                          @endif
-            							<span>{{ translate('Skill Adding Limit') }} - <span class="fw-700">{{ Auth::user()->userPackage->package->skill_add_limit }}</span></span>
+                                          @endif --}}
+            							{{-- <span>{{ translate('Skill Adding Limit') }} - <span class="fw-700">{{ Auth::user()->userPackage->package->skill_add_limit }}</span></span> --}}
             						</li>
             						<li class=" py-2">
-                                          @if(Auth::user()->userPackage->package->portfolio_add_limit > 0)
+                                          {{-- @if(Auth::user()->userPackage->package->portfolio_add_limit > 0)
                                               <span class="mr-2 badge badge-circle badge-success badge-sm align-middle">
                     								<i class="las la-check text-white"></i>
     					                      </span>
@@ -276,11 +276,11 @@
                                               <span class="mr-2 badge badge-circle badge-danger badge-sm align-middle">
                                                   <i class="las la-times text-white"></i>
                                               </span>
-                                          @endif
-            							<span>{{ translate('Portfolio Adding Limit') }} - <span class="fw-700">{{ Auth::user()->userPackage->package->portfolio_add_limit }}</span></span>
+                                          @endif --}}
+            							{{-- <span>{{ translate('Portfolio Adding Limit') }} - <span class="fw-700">{{ Auth::user()->userPackage->package->portfolio_add_limit }}</span></span> --}}
             						</li>
             						<li class=" py-2">
-                                          @if(Auth::user()->userPackage->package->bookmark_project_limit > 0)
+                                          {{-- @if(Auth::user()->userPackage->package->bookmark_project_limit > 0)
                                           <span class="mr-2 badge badge-circle badge-success badge-sm align-middle">
                 								<i class="las la-check text-white"></i>
                 						  </span>
@@ -288,11 +288,11 @@
                                               <span class="mr-2 badge badge-circle badge-danger badge-sm align-middle">
                                                   <i class="las la-times text-white"></i>
                                               </span>
-                                          @endif
-            							<span>{{ translate('Project Bookmark Limit') }} - <span class="fw-700">{{ Auth::user()->userPackage->package->bookmark_project_limit }}</span></span>
+                                          @endif --}}
+            							{{-- <span>{{ translate('Project Bookmark Limit') }} - <span class="fw-700">{{ Auth::user()->userPackage->package->bookmark_project_limit }}</span></span> --}}
             						</li>
             						<li class=" py-2">
-                                      @if(Auth::user()->userPackage->package->job_exp_limit > 0)
+                                      {{-- @if(Auth::user()->userPackage->package->job_exp_limit > 0)
                                           <span class="mr-2 badge badge-circle badge-success badge-sm align-middle">
             								<i class="las la-check text-white"></i>
 					                      </span>
@@ -301,10 +301,10 @@
                                               <i class="las la-times text-white"></i>
                                           </span>
                                       @endif
-            					      <span>{{ translate('Job Experience Add Limit') }} - <span class="fw-700">{{ Auth::user()->userPackage->package->job_exp_limit }}</span></span>
+            					      <span>{{ translate('Job Experience Add Limit') }} - <span class="fw-700">{{ Auth::user()->userPackage->package->job_exp_limit }}</span></span> --}}
             						</li>
                                     <li class=" py-2">
-                                        @if(Auth::user()->userPackage->package->bio_text_limit > 0)
+                                        {{-- @if(Auth::user()->userPackage->package->bio_text_limit > 0)
                                             <span class="mr-2 badge badge-circle badge-success badge-sm align-middle">
                                                 <i class="las la-check text-white"></i>
                                             </span>
@@ -313,10 +313,10 @@
                                                 <i class="las la-times text-white"></i>
                                             </span>
                                         @endif
-                                        <span>{{ translate('Bio Word Limit') }} - <span class="fw-700">{{ Auth::user()->userPackage->package->bio_text_limit }}</span></span>
+                                        <span>{{ translate('Bio Word Limit') }} - <span class="fw-700">{{ Auth::user()->userPackage->package->bio_text_limit }}</span></span> --}}
                                     </li>
                                     <li class=" py-2">
-                                        @if(Auth::user()->userPackage->package->service_limit > 0)
+                                        {{-- @if(Auth::user()->userPackage->package->service_limit > 0)
                                             <span class="mr-2 badge badge-circle badge-success badge-sm align-middle">
                                                 <i class="las la-check text-white"></i>
                                             </span>
@@ -325,10 +325,10 @@
                                                 <i class="las la-times text-white"></i>
                                             </span>
                                         @endif
-                                        <span>{{ translate('Service Limit') }} - <span class="fw-700">{{ Auth::user()->userPackage->package->service_limit }}</span></span>
+                                        <span>{{ translate('Service Limit') }} - <span class="fw-700">{{ Auth::user()->userPackage->package->service_limit }}</span></span> --}}
                                     </li>
             						<li class=" py-2">
-							            @if (Auth::user()->userPackage->package->following_status)
+							            {{-- @if (Auth::user()->userPackage->package->following_status)
                                             <span class="mr-2 badge badge-circle badge-success badge-sm align-middle">
                   								<i class="las la-check text-white"></i>
                   							</span>
@@ -336,8 +336,8 @@
                                             <span class="mr-2 badge badge-circle badge-danger badge-sm align-middle">
                                                 <i class="las la-times text-white"></i>
                                             </span>
-                                        @endif
-	                                    <span>{{ translate('Client Following option') }}</span>
+                                        @endif --}}
+	                                    {{-- <span>{{ translate('Client Following option') }}</span> --}}
             						</li>
             					</ul>
             				</div>
@@ -350,7 +350,7 @@
                             </div>
                             <div class="card-body c-scrollbar-light pt-3" style="max-height: 320px;overflow-y: scroll;">
                                 <ul class="list-group">
-                                    @foreach (\App\Models\Package::freelancer()->active()->get()->except(Auth::user()->profile->package_id) as $key => $package)
+                                    {{-- @foreach (\App\Models\Package::freelancer()->active()->get()->except(Auth::user()->profile->package_id) as $key => $package)
                                         <li class="list-group-item mb-3 rounded-1 bg-hov-soft-primary">
                                             <a href="{{ route('select_package') }}" class="d-flex align-items-center text-inherit">
                                                 <img src="{{ custom_asset($package->badge) }}" class="img-fluid mr-4 h-60px">
@@ -361,7 +361,7 @@
                                                 </span>
                                             </a>
                                         </li>
-                                    @endforeach
+                                    @endforeach --}}
                                 </ul>
                             </div>
                         </div>
