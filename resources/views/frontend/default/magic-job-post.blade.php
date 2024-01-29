@@ -1,128 +1,174 @@
 @extends('frontend.default.layouts.app')
 
 @section('content')
-    <div>
-        <form id="jobForm" class="setmargin">
-            @method('post')
-            @csrf
-            
-            <div class="row">
-                <div class="col-sm-12 col-md-7 mx-auto form-section">
-                    <div class="center-content">
-                        <h2><strong>Looks like you’re using a different browser...</strong></h2>
-                        <p style="font-size: medium !important">We noticed that you are using a different browser from where
-                            you started your job. No problem, you can easily post this job by clicking the button below. No
-                            typing required.</p>
-                    </div>
-                </div>
-            </div>
+    <div class="row">
+        <div class="container">
+            <div class="col-md-12">
+                <form id="jobForm" class="setmargin">
+                    @method('post')
+                    @csrf
 
-            <div class="set" style="background: #eff2f6; width">
-
-                <input type="hidden" name="jobinformation" id="jobInformationInput"
-                    value="{{ json_encode($jobInformation) }}">
-                <div class="col-sm-12 form-section">
-                    <!-- Your form fields and inputs go here -->
-
-                    <div class="container  ">
-                        <h2 class="h-style">MY JOB DETAILS</h2>
-                        <div class="row">
-
-                            <div class="col-sm ">
-
-                                <label for="jobHeadline" class="form-label"><strong> Job Headline</strong></label>
-
-                                <p>{{ $jobHeadline }}</p>
-                            </div>
-                            <div class="col-sm">
-                                <label for="postcode" class="form-label"><strong>Postcode/Address</strong></label>
-
-
-                                <p>{{ $postcode }}</p>
-                               
-                                
-                            </div>
-                            
-                            <div class="col-sm">
-                                <label for="JobDescription" class="form-label"><strong>Customer description</strong></label>
-                                <p>{{ $JobDescription }}</p>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-7 mx-auto " style="padding: 20px;margin-bottom: 20px;margin-top:20px">
+                            <div class="center-content">
+                                <h2><strong>Looks like you’re using a different browser...</strong></h2>
+                                <p style="font-size: medium !important">We noticed that you are using a different browser
+                                    from where
+                                    you started your job. No problem, you can easily post this job by clicking the
+                                    button below. No
+                                    typing required.</p>
                             </div>
                         </div>
                     </div>
 
-                    @foreach ($JobQuestionAnswer as $answer)
+                    <div class="set">
                         <div class="container">
-                            <div class="row">
-                                <div class="col-sm">
+                            <input type="hidden" name="jobinformation" id="jobInformationInput"
+                                value="{{ json_encode($jobInformation) }}">
+                            <div class="col-sm-12 form-section">
+                                <!-- Your form fields and inputs go here -->
 
-                                    {{-- <input type="text" id="answer{{ $loop->index }}" name="answers[]"
-                                            value="{{ $answer['answer'] }}" readonly class="form-input">
-                                        <input type="hidden" id="answer{{ $loop->index }}" name="questions[]"
-                                            value="{{ $answer['question_id'] }}" readonly> --}}
+                                <div class="container  ">
+                                    <h2 class="h-style">MY JOB DETAILS</h2>
+                                    <div class="row">
 
-                                    <p>{!! $answer['answer'] !!}</p>
+                                        <div class="col-sm-4">
+
+                                            <label for="jobHeadline" class="form-label"><strong> Job
+                                                    Headline</strong></label>
+
+                                            <p>{{ $jobHeadline }}</p>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label for="postcode"
+                                                class="form-label"><strong>Postcode/Address</strong></label>
+
+
+                                            <p>{{ $postcode }}</p>
+
+
+                                        </div>
+
+                                        <div class="col-sm-4">
+                                            <label for="JobDescription" class="form-label"><strong>Customer
+                                                    description</strong></label>
+                                            <p>{{ $JobDescription }}</p>
+                                        </div>
 
 
 
+                                        @foreach ($JobQuestionAnswer as $answer)
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+
+                                                        {{-- <input type="text" id="answer{{ $loop->index }}" name="answers[]"
+                                                value="{{ $answer['answer'] }}" readonly class="form-input">
+                                            <input type="hidden" id="answer{{ $loop->index }}" name="questions[]"
+                                                value="{{ $answer['question_id'] }}" readonly> --}}
+
+                                                        <p>{!! $answer['answer'] !!}</p>
+
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
+
+                                        <div class="col-sm-4">
+                                            <label for="selectedCategory" class="form-label"><strong>Selected
+                                                    Category</strong></label>
+
+
+                                            <p>{{ $SelectedCategory['name'] }}</p>
+                                        </div>
+
+
+
+
+                                        <div class="col-sm-4">
+                                            <label for="mapLocation" class="form-label"> <strong>Location</strong> </label>
+
+
+                                            <img style="height: 72% !important" src="https://maps.googleapis.com/maps/api/staticmap?center={{ $latitude }},{{ $longitude }}&zoom=16&size=400x400&key=AIzaSyCC6BbwI05bsqkWZCStzkLIMquD8WL_wqU&markers=color:red|label:J|{{ $latitude }},{{ $longitude }}"
+                                                alt="address_map" />
+                                        </div>
+
+                                    </div>
                                 </div>
+
+                                <div class="row text-center" style="margin-top: 20px">
+                                    <div class="col-sm-12 mx-auto">
+                                        <button type="button" id="submitBtn"
+                                            class="btn btn--lp">{{ translate('Submit the job') }}</button>
+                                    </div>
+                                </div>
+
+
                             </div>
-                        </div>
-                    @endforeach
 
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm">
-                                <label for="selectedCategory" class="form-label"><strong>Selected Category</strong></label>
-                                {{-- <input type="text" id="selectedCategory" name="selectedCategory"
-                                    value="{{ $SelectedCategory['name'] }}" readonly class="form-input"> --}}
 
-                                <p>{{ $SelectedCategory['name'] }}</p>
-                            </div>
+
                         </div>
                     </div>
-                </div>
-                <div class="container-fluid">
-                    <label for="mapLocation" class="form-label"> <strong>Location</strong> </label>
-                    <div class="container">
-                    
-                        <img src="https://maps.googleapis.com/maps/api/staticmap?center={{$latitude}},{{$longitude}}&zoom=16&size=400x400&key=AIzaSyCC6BbwI05bsqkWZCStzkLIMquD8WL_wqU&markers=color:red|label:J|{{$latitude}},{{$longitude}}" alt="address_map" />
-                    </div>
-                </div>
-
-                <div class="row text-center">
-                    <div class="col-sm-12 mx-auto">
-                        <button type="button" id="submitBtn" class="btn btn--lp">{{ translate('Submit the job') }}</button>
-                    </div>
-                </div>
+                </form>
             </div>
-    </div>
-    </form>
+        </div>
     </div>
 @endsection
 
 
 <style>
-    .h-style {
-        font-family: sofia_probold, "Trebuchet MS", Helvetica, Arial, sans-serif;
+    body {
+        background-color: #f8f9fa;
+        /* Set a light background color */
+        font-family: 'Arial', sans-serif;
+        /* Use a common font style */
+    }
+
+    .custom-container {
+        margin-top: 20px;
+    }
+
+    .form-section {
+        padding: 20px;
+        margin-bottom: 20px;
+        background-color: #ffffff;
+        /* Set a white background for form sections */
+        border: 1px solid #ced4da;
+        /* Add a subtle border */
+        border-radius: 8px;
+        /* Round the corners */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        /* Add a subtle shadow */
+    }
+
+    .center-content {
+        text-align: center;
+    }
+
+    h2 {
+        font-family: 'sofia_probold', "Trebuchet MS", Helvetica, Arial, sans-serif;
         line-height: 1.333em;
-        color: rgb(52, 57, 68);
+        color: #344344;
         font-weight: normal;
         text-transform: uppercase;
         letter-spacing: 1px;
-        color: rgb(176, 192, 211);
         margin-bottom: 1em;
-        font-size: 1.625em;
-
-
-
+        font-size: 1.25em;
     }
 
     p {
         font-size: 18px;
+        color: #555555;
     }
 
     label {
         font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #555555;
     }
 
     .set {
@@ -131,34 +177,11 @@
     }
 
     .setmargin {
-        margin-bottom: 0px !important;
+        margin-bottom: 20px !important;
     }
 
-
-
-    /* Add your custom styles here */
-
-    body {
-        background-color: #f8f9fa;
-        /* Set a light background color */
-    }
-
-    .custom-container {
-        margin-top: 20px;
-    }
-
-    .form-section {
-
-        padding: 20px;
-        margin-bottom: 20px;
-    }
-
-    .center-content {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
+    .h-style {
+        color: #b0c0d3;
     }
 
     .form-label {
@@ -171,9 +194,23 @@
         padding: 8px;
         margin-bottom: 15px;
         border: 1px solid #ced4da;
-        /* Add a subtle border */
         border-radius: 4px;
         box-sizing: border-box;
+    }
+
+    .btn--lp {
+        background-color: #007bff;
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn--lp:hover {
+        background-color: #0056b3;
     }
 </style>
 @section('script')
