@@ -146,9 +146,9 @@
                                     <label>{{ translate('Skill') }} <span class="text-danger">*</span>
                                         ({{ translate('Max') }}
                                         {{-- {{ $user_profile->user->userPackage->skill_add_limit }})</label> --}}
-                                    {{-- <select class="form-control aiz-selectpicker" multiple name="skills[]"
-                                        data-live-search="true" data-selected-text-format="count"
-                                        data-max-options="{{ $user_profile->user->userPackage->skill_add_limit }}">
+                                        {{-- data-max-options="{{ $user_profile->user->userPackage->skill_add_limit }}" --}}
+                                    <select class="form-control aiz-selectpicker" multiple name="skills[]"
+                                        data-live-search="true" data-selected-text-format="count">
                                         @if ($user_profile->skills != null)
                                             @foreach (\App\Models\Skill::all() as $key => $skill)
                                                 <option value="{{ $skill->id }}"
@@ -160,7 +160,7 @@
                                                 <option value="{{ $skill->id }}">{{ $skill->name }}</option>
                                             @endforeach
                                         @endif
-                                    </select> --}}
+                                    </select>
                                 </div>
 
                                 <hr class="mb-3 mt-4">

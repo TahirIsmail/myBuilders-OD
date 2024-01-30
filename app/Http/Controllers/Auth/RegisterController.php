@@ -16,14 +16,15 @@ use Illuminate\Validation\Rule;
 use App\Http\Requests\UserRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
-
+use App\Rules\UniqueEmailForUserType;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Verify\Service;
 use Illuminate\Support\MessageBag;
-use App\Http\Requests\JobPostRequest;
+// use App\Http\Requests\JobPostRequest;
 use App\Models\Project;
 use App\Models\Skill;
+use App\Models\TradingInfo;
 
 class RegisterController extends Controller
 {
@@ -98,22 +99,60 @@ class RegisterController extends Controller
 
         return $user;
     }
+    protected function createTradesmen(array $data)
+    {
+        $user = new User();
+
+        // 2. Assign values to the user attributes
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+        $user->password = bcrypt($data['password']); // Remember to hash the password
+        $user->user_name = $data['trading_info']['trading_name'];
+        $user->user_type = $data['user_type'];
+
+        // 3. Save the user
+        $user->save();
+
+        // 4. Create and associate trading info
+        $tradingInfo = new TradingInfo();
+        $tradingInfo->partners_name = ($data['trading_info']['partners_name']) ?? NULL;
+        $tradingInfo->trading_name = $data['trading_info']['trading_name'];
+        $tradingInfo->operating_as = ($data['trading_info']['operating_as']) ?? NULL;
+        $tradingInfo->trade_regd_name = ($data['trading_info']['registered_company']) ?? NULL;
+        $tradingInfo->cmp_regd_no = ($data['trading_info']['company_registration']) ?? NULL;
+        // Associate trading info with the user
+        $user->trading_info()->save($tradingInfo);
+
+        // 5. Create and associate work address
+        $workAddress = new Address();
+        $workAddress->postal_code = $data['workaddress']['postcode'];
+        $workAddress->street = $data['workaddress']['street'];
+        $workAddress->city = $data['workaddress']['town'];
+        $workAddress->distance = $data['workaddress']['distance'];
+        $workAddress->country = $data['workaddress']['country'];
+        $workAddress->region = $data['workaddress']['region'];
+        // $workAddress->work_address = $data['workaddress']['work_address'];
+        $workAddress->latitude = $data['workaddress']['location']['lat'];
+        $workAddress->longitude = $data['workaddress']['location']['lng'];
+
+        // Associate work address with the user
+        $user->address()->save($workAddress);
+
+        // 6. Create and associate strongest trades
+        foreach ($data['strongesttrades'] as $tradeData) {
+            
+            $skill = Skill::find($tradeData['skill'][0]['id']);
+
+            
+            $user->skills()->attach($skill);
+        }
+
+        return $user;
+    }
     protected function addUserJob(array $job_info, int $user_id)
     {
 
-        /***
-         * country" => "PK"
-  "region" => "Punjab"
-  "jobHeadline" => "sadsdasdsadadasdassssssssssssssss"
-  "postcode" => "46000"
-  "latitude" => 33.6184282
-  "longitude" => 72.9957282
-  "street" => "Main Road British Homes"
-  "city" => "Rawalpindi"
-         * 
-         * 
-         * 
-         */
+        
 
 
         $project = new Project;
@@ -128,13 +167,14 @@ class RegisterController extends Controller
         $project->slug = Str::slug($job_info['jobHeadline'], '-') . date('Ymd-his');
         $project->save();
         $jobaddress = new Address(
-            ['country' => $job_info['country'],
-             'region' => $job_info['region'],
-             'latitude' => $job_info['latitude'],
-             'longitude' => $job_info['longitude'],
-             'street' => $job_info['street'],
-             'city' => $job_info['city'],
-             'postal_code' => $job_info['postcode']
+            [
+                'country' => $job_info['country'],
+                'region' => $job_info['region'],
+                'latitude' => $job_info['latitude'],
+                'longitude' => $job_info['longitude'],
+                'street' => $job_info['street'],
+                'city' => $job_info['city'],
+                'postal_code' => $job_info['postcode']
             ]
         );
         $project->address()->save($jobaddress);
@@ -155,15 +195,27 @@ class RegisterController extends Controller
         );
     }
 
-    public function register(JobPostRequest $request)
+    public function register(Request $request)
     {
+        $request->validate([
+            'email' => [
+                'required',
+                'email',
+                new UniqueEmailForUserType($request->input('user_type'))
+            ],
+            'user_type' => 'required',
 
-       
-        $user = $this->create($request->validated() + $request->all());
+        ]);
+        if ($request->user_type == 'freelancer') {
 
-        $this->addUserJob($request->job_information, $user->id);
+            $user = $this->createTradesmen($request->all());
+        } else {
+            $user = $this->create($request->validated() + $request->all());
 
+            $this->addUserJob($request->job_information, $user->id);
+        }
         $this->guard()->login($user);
+
 
         if ($user->email != null) {
             if (get_setting('email_verification') != 1) {

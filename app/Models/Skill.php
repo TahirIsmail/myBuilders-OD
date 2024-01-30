@@ -8,5 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Skill extends Model
 {
     use SoftDeletes;
-
+    public function project_category()
+    {
+        return $this->belongsTo(ProjectCategory::class)->withTrashed();
+    }
 }

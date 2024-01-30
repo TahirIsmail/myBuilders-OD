@@ -73,21 +73,8 @@ export default {
         }, 0);
 
         if (correctCount >= 3) {
-          Swal.fire({
-            title: "Evaluation",
-            text: "You Passed the Evaluation",
-            icon: "success",
-            confirmButtonColor: "#3085d6",
-            confirmButtonText: "Ready to be on board after successfull sms verification!"
-          }).then((result) => {
-            if (result.isConfirmed) {
-              Swal.fire({
-                title: "Redirecting you to the dashboard!",
-                text: "Registration Successfull",
-                icon: "info"
-              });
-            }
-          });
+          const response = store.authenticatedUser()
+            console.log(response);
         }
         else {
           

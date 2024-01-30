@@ -291,7 +291,7 @@ class HomeController extends Controller
 
     function getSkills(){
         
-        return response()->json(ProjectCategory::take(44)->get());
+        return response()->json(ProjectCategory::with('skill')->take(44)->get());
     }
     function getAssessment(Request $request){
         $assessment = AssessmentQuestion::with('answers')->where('job_category_id',$request->id)->get();

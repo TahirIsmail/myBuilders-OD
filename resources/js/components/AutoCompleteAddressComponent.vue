@@ -1,24 +1,24 @@
 <template>
-    <GMapAutocomplete @place_changed="setPlace" :placeholder="placeholder" >
-    </GMapAutocomplete>
+  <GMapAutocomplete @place_changed="setPlace" :placeholder="placeholder">
+  </GMapAutocomplete>
 </template>
 <script>
 export default {
-    name: 'AutoComplete',
-    props:{
-        placeholder: String,
+  name: 'AutoComplete',
+  props: {
+    placeholder: String,
+  },
+  data() {
+    return {
+      address: ''
+    }
+  },
+  methods: {
+    setPlace(place) {
+      this.address = this.getAddressObject(place.address_components)
+      this.$emit('placeChanged', place, this.address)
     },
-    data() {
-        return {
-            address:''
-        }
-    },
-    methods: {
-        setPlace(place) {
-            this.address = this.getAddressObject(place.address_components)
-            this.$emit('placeChanged',place,this.address)
-        },
-       getAddressObject(address_components) {
+    getAddressObject(address_components) {
       var ShouldBeComponent = {
         home: ["street_number"],
         postal_code: ["postal_code"],
@@ -62,6 +62,6 @@ export default {
       });
       return address;
     }
-    }
+  }
 }
 </script>

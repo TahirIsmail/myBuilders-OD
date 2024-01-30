@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Service;
-
+use App\Models\Skill;
 class ProjectCategory extends Model
 {
     use SoftDeletes;
@@ -20,6 +20,10 @@ class ProjectCategory extends Model
         return $this->hasMany(Service::class, 'project_cat_id');
     }
     
+    public function skill()
+    {
+        return $this->hasMany(Skill::class, 's_id')->withTrashed();
+    }
     
     public function firstquestion()
     {

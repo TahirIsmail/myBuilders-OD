@@ -82,7 +82,7 @@
                                                 autocomplete="on"
                                             />
 
-                                            <ErrorMessage name="phone" />
+                                            <ErrorMessage class="text-danger" name="phone" />
                                         </div>
                                         <div class="container">
                                             <div
@@ -246,6 +246,18 @@ const tradeSignUpRef = ref(null)
 onMounted(() => {
     tradeSignUpRef.value.scrollIntoView({behavior:"smooth"})
 })
+const phoneSchema = yup.string().test(
+  'is-phone-valid',
+  'Please enter a valid phone number with country code',
+  value => {
+    if (!value) return false; // Return false if value is empty
+    // Regular expression to match international phone numbers with country code
+    const phoneRegex = /^\+\d{1,3}\s?\(\d{1,}\)\s?\d{1,}-\d{1,}$/;
+    const otherRegex = /^\+\d{1,3}\d{6,14}$/;
+    return phoneRegex.test(value) || otherRegex.test(value) ;
+  }
+);
+
 const schema = yup.object().shape({
 
     email: yup.string().email().required(),
@@ -254,7 +266,7 @@ const schema = yup.object().shape({
         .string()
         .required()
         .oneOf([yup.ref('password')], 'Passwords do not match'),
-    phone: yup.string().required().matches(/^((\+[1-9]{1,4}[ \-]*)|(\([0-9]{2,3}\)[ \-]*)|([0-9]{2,4})[ \-]*)*?[0-9]{3,4}?[ \-]*[0-9]{3,4}?$/, 'Phone number is not valid'),
+    phone: phoneSchema.required('Phone number is required'),
     term_conditions: yup.string().required(),
     condition: yup.string().required()
 });

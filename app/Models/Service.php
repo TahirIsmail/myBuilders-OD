@@ -26,4 +26,5 @@ class Service extends Model
     {
         return $this->hasMany(ServicePackage::class)->withTrashed();
     }
+    
 }

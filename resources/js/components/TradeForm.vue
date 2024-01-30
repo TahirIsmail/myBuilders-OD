@@ -20,8 +20,8 @@
                                         <div class="mt-3">
                                             <label :for="option.textInputId" class="form-label"><strong>Trading
                                                     name</strong></label>
-                                            <input v-model="formData.Trading_name" type="text"
-                                                class="form-control form_input" id="trade_id" name="Trading_name" />
+                                            <input v-model="formData.trading_name" type="text"
+                                                class="form-control form_input" id="trade_id" name="trading_name" />
                                         </div>
                                     </div>
                                 </div>

@@ -106,6 +106,9 @@ const distance = ref('')
 const editedItem = reactive({})
 const workDetailref = ref(null)
 const searchText = ref(null)
+const location = ref({});
+const country = ref('');
+const region = ref('');
 
 // mapbox options as per https://docs.mapbox.com/api/search/geocoding
 
@@ -115,29 +118,36 @@ const props = defineProps(['navigationMethods'])
 const store = useTrademensStore();
 
 function submit() {
-    
+
     store.setWorkingDetails({
 
         postcode: postcode.value,
         street: street.value,
         town: town.value,
-        distance: distance.value
+        distance: distance.value,
+        work_address: work_address.value,
+        location: location.value,
+        country: country.value,
+        region: region.value,
     })
     if (props.navigationMethods && typeof props.navigationMethods.nextStep === 'function') {
         props.navigationMethods.nextStep();
     }
 }
-function handlePlaceChanged(place,address) {
+function handlePlaceChanged(place, address) {
    
-      work_address.value = place.formatted_address
-      postcode.value = address.postal_code
-      street.value = address.street
-      town.value = address.city    
+    work_address.value = place.formatted_address
+    postcode.value = address.postal_code
+    street.value = address.street
+    town.value = address.city
+    location.value = place.geometry.location.toJSON()
+    country.value = address.country
+    region.value = address.region
 
 }
 
 
-   
+
 function back() {
     if (props.navigationMethods && typeof props.navigationMethods.prevStep === 'function') {
         props.navigationMethods.prevStep();
