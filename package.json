@@ -37,6 +37,7 @@
         "@babel/preset-env": "^7.14.7",
         "@fawmi/vue-google-maps": "^0.9.79",
         "@fortawesome/fontawesome-free": "5.*",
+        "@googlemaps/google-maps-services-js": "^3.3.42",
         "@googlemaps/js-api-loader": "^1.16.2",
         "@inertiajs/inertia": "^0.11.1",
         "@inertiajs/vue3": "^1.0.14",

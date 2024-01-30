@@ -18,6 +18,7 @@ use App\Models\Verification;
 use App\Models\WorkExperience;
 use App\Models\EducationDetail;
 use App\Models\Service;
+use App\Models\TradingInfo;
 use App\Models\ServicePackagePayment;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -147,6 +148,6 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     public function trading_info(){
-        return $this->hasOne(TradingInfo::class,'user_id');
+        return $this->hasOne(TradingInfo::class);
     }
 }

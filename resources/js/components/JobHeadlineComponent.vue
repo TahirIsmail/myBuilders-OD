@@ -1,4 +1,4 @@
-<template>
+j<template>
     <div class="col-md-12 mx-auto row justify-content-md-center">
         <div class="col-md-10 bg-white" style="padding-top: 10px">
             <!-- <h2 class="form-heading">Give your job a headline</h2> -->
@@ -191,7 +191,7 @@ const validationSchema = computed(() => {
         country: Yup.string().required("Country is required"),
         region: Yup.string().required("Region is required"),
         jobHeadline: Yup.string()
-            .min(20, "Job Headline must be more than 10 characters")
+            .min(10, "Job Headline must be more than 10 characters")
             .required("Job Headline is required"),
 
         postcode: Yup.string().nullable(),

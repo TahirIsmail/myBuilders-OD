@@ -1,4 +1,15 @@
 <div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC6BbwI05bsqkWZCStzkLIMquD8WL_wqU&callback=initMap"
+            async defer></script>
+    <style>
+        #map {
+            height: 50%;
+        }
+    
+        
+    
+       
+    </style>
     <!-- It is quality rather than quantity that matters. - Lucius Annaeus Seneca -->
     
 
@@ -50,7 +61,8 @@
         <div class="card card_shadow w-100 border-gray-light">
             <div class="card-body d-flex">
                 <div class="col-md-8 shortlist-fees__shortlist ">
-                    Shortlist fee
+           
+                   
                 </div>
 
                 <div class="col-md-4  text-right shortlist-fees__shortlist">
@@ -95,7 +107,7 @@
                     <div class="underline">
                         <div
                             class="col-md-12 shortlist-fees__shortlist h-200px bg-black p-0  color-white ">
-                            Shortlist fee
+                            <div id="map" style="width:400px;height:300px;"></div>
                         </div>
                         <div class="underline">
                             <h3 class="h2_custom">Shortlist activity</h3>
@@ -149,11 +161,59 @@
                     </div>
 
                 </div>
+                
             </div>
 
         </div>
 
 
-
     
 </div>
+
+        <script>
+            let map;
+            let circle;
+            // let streetViewPanorama;
+
+
+            function initMap() {
+                map = new google.maps.Map(document.getElementById("map"), {
+                    center: { lat: -33.8688, lng: 151.2093 },
+                    zoom: 15,
+                });
+                
+    
+                circle = new google.maps.Circle({
+                    strokeColor: "#0000FF",
+                    strokeOpacity: 0.8,
+                    strokeWeight: 2,
+                    fillColor: "#0000FF",
+                    fillOpacity: 0.35,
+                    map: map,
+                    center: { lat: -33.8688, lng: 151.2093 },
+                    radius: 500,
+                });
+                console.log(circle);
+    
+                streetViewPanorama = new google.maps.StreetViewPanorama(document.getElementById("streetView"), {
+                    position: { lat: -33.8688, lng: 151.2093 },
+                    pov: { heading: 34, pitch: 10 },
+                    zoom: 1,
+                });
+    
+                // streetViewButton = document.getElementById("streetViewButton");
+                // streetViewButton.addEventListener("click", toggleStreetView);
+    
+                // map.controls[google.maps.ControlPosition.TOP_CENTER].push(streetViewButton);
+            }
+    
+            // function toggleStreetView() {
+            //     if (streetViewPanorama.getVisible()) {
+            //         streetViewPanorama.setVisible(false);
+            //         streetViewButton.textContent = "Show Street View";
+            //     } else {
+            //         streetViewPanorama.setVisible(true);
+            //         streetViewButton.textContent = "Hide Street View";
+            //     }
+            // }
+        </script>

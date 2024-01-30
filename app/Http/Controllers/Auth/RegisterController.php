@@ -101,58 +101,73 @@ class RegisterController extends Controller
     }
     protected function createTradesmen(array $data)
     {
-        $user = new User();
-
+        
+        // dd($data);
         // 2. Assign values to the user attributes
-        $user->name = $data['name'];
-        $user->email = $data['email'];
-        $user->password = bcrypt($data['password']); 
-        $user->user_name = $data['trading_info']['trading_name'];
-        $user->user_type = $data['user_type'];
-
+        
+        $skill=collect($data['strongesttrades'])->map(function($item ,$key) {
+            return collect($item['skill'])->pluck('name');
+             
+        })->toJson();
+        
+        $userData = [
+            'name' => $data['name'] ?? null,
+            'email' => $data['email'] ?? null,
+            'password' => isset($data['password']) ? Hash::make($data['password']) : null,
+            'user_name' => $data['trading_info']['trading_name'] ?? null,
+            'user_type' => $data['user_type'] ?? null,
+        ];
+        $user = User::create($userData);
         // 3. Save the user
-        $user->save();
+        $user_profile = new UserProfile;
+        $user_profile->bio = $data['bio'];
+        $user_profile->user_id = $user->id;
+       
+        
+        $user_profile->skills = json_encode($skill);
+        $user_profile->save();
+        $tradingInfo=[
+            'partnersname' => $data['trading_info']['partners_name'] ?? '',
+            'trade_name' => $data['trading_info']['trading_name'] ?? '',
+            'operating_as' => $data['trading_info']['operating_as'] ?? '',
+            'trade_regd_name' => $data['trading_info']['registered_company'] ?? '',
+            'cmp_regd_no' => $data['trading_info']['company_registration'] ?? '',
+            'user_id' => $user->id
+        ];
 
+        TradingInfo::create($tradingInfo);
+        
         // 4. Create and associate trading info
-        $tradingInfo = new TradingInfo();
-        $tradingInfo->partners_name = ($data['trading_info']['partners_name']) ?? NULL;
-        $tradingInfo->trading_name = $data['trading_info']['trading_name'];
-        $tradingInfo->operating_as = ($data['trading_info']['operating_as']) ?? NULL;
-        $tradingInfo->trade_regd_name = ($data['trading_info']['registered_company']) ?? NULL;
-        $tradingInfo->cmp_regd_no = ($data['trading_info']['company_registration']) ?? NULL;
-        // Associate trading info with the user
-        $user->trading_info()->save($tradingInfo);
+        
+        
 
         // 5. Create and associate work address
-        $workAddress = new Address();
-        $workAddress->postal_code = $data['workaddress']['postcode'];
-        $workAddress->street = $data['workaddress']['street'];
-        $workAddress->city = $data['workaddress']['town'];
-        $workAddress->distance = $data['workaddress']['distance'];
-        $workAddress->country = $data['workaddress']['country'];
-        $workAddress->region = $data['workaddress']['region'];
-        // $workAddress->work_address = $data['workaddress']['work_address'];
-        $workAddress->latitude = $data['workaddress']['location']['lat'];
-        $workAddress->longitude = $data['workaddress']['location']['lng'];
+        $workAddress = new Address([
+            'postal_code' => $data['workaddress']['postcode'],
+            'street' => $data['workaddress']['street'],
+            'city' => $data['workaddress']['town'],
+            'distance' => $data['workaddress']['distance'],
+            'country' => $data['workaddress']['country'],
+            'region' => $data['workaddress']['region'],
+            'phone' => $data['phone'],
+            // 'work_address' => $data['workaddress']['work_address'], // Remove or handle separately
+            'latitude' => $data['workaddress']['location']['lat'],
+            'longitude' => $data['workaddress']['location']['lng'],
+        ]);
+        
 
         // Associate work address with the user
         $user->address()->save($workAddress);
 
         // 6. Create and associate strongest trades
-        foreach ($data['strongesttrades'] as $tradeData) {
-            
-            $skill = Skill::find($tradeData['skill'][0]['id']);
-
-            
-            $user->skills()->attach($skill);
-        }
+        
 
         return $user;
     }
     protected function addUserJob(array $job_info, int $user_id)
     {
 
-        
+
 
 
         $project = new Project;
@@ -210,7 +225,7 @@ class RegisterController extends Controller
 
             $user = $this->createTradesmen($request->all());
         } else {
-            $user = $this->create($request->validated() + $request->all());
+            $user = $this->create($request->all());
 
             $this->addUserJob($request->job_information, $user->id);
         }
@@ -254,11 +269,11 @@ class RegisterController extends Controller
                 $errors->add('verification', $error);
             }
 
-            return response()->json(['message' => $errors], 422)->header('X-Redirect', '/post-job');
+            return response()->json(['message' => $errors], 422)->header('X-Redirect', '/');
         }
 
         $messages = new MessageBag();
-        $messages->add('verification', "Code sent to {$request->user()->phone_number}");
+        $messages->add('verification', "Code sent to {$request->user()->address()->phone}");
 
         //return redirect('/verify')->with('messages', $messages);
         return response()->json(['message' => $messages], 200)->header('X-Redirect', '/verify');
