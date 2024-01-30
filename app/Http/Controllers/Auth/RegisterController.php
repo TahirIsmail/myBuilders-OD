@@ -121,6 +121,7 @@ class RegisterController extends Controller
         // 3. Save the user
         $user_profile = new UserProfile;
         $user_profile->bio = $data['bio'];
+        $user_profile->distance =$data['workaddress']['distance'];
         $user_profile->user_id = $user->id;
        
         
@@ -146,7 +147,6 @@ class RegisterController extends Controller
             'postal_code' => $data['workaddress']['postcode'],
             'street' => $data['workaddress']['street'],
             'city' => $data['workaddress']['town'],
-            'distance' => $data['workaddress']['distance'],
             'country' => $data['workaddress']['country'],
             'region' => $data['workaddress']['region'],
             'phone' => $data['phone'],
