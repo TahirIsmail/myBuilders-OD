@@ -106,7 +106,7 @@ class RegisterController extends Controller
         // 2. Assign values to the user attributes
         $user->name = $data['name'];
         $user->email = $data['email'];
-        $user->password = bcrypt($data['password']); // Remember to hash the password
+        $user->password = bcrypt($data['password']); 
         $user->user_name = $data['trading_info']['trading_name'];
         $user->user_type = $data['user_type'];
 
