@@ -106,9 +106,10 @@ class RegisterController extends Controller
         // 2. Assign values to the user attributes
         
         $skill=collect($data['strongesttrades'])->map(function($item ,$key) {
-            return collect($item['skill'])->pluck('name');
+            return collect($item['skill'])->pluck('id');
              
-        })->toJson();
+        })->flatten()->toJson();
+        
         
         $userData = [
             'name' => $data['name'] ?? null,
@@ -125,7 +126,7 @@ class RegisterController extends Controller
         $user_profile->user_id = $user->id;
        
         
-        $user_profile->skills = json_encode($skill);
+        $user_profile->skills = $skill;
         $user_profile->save();
         $tradingInfo=[
             'partnersname' => $data['trading_info']['partners_name'] ?? '',
@@ -273,7 +274,7 @@ class RegisterController extends Controller
         }
 
         $messages = new MessageBag();
-        $messages->add('verification', "Code sent to {$request->user()->address()->phone}");
+        $messages->add('verification', "Code sent to {$request->user()->phone_number}");
 
         //return redirect('/verify')->with('messages', $messages);
         return response()->json(['message' => $messages], 200)->header('X-Redirect', '/verify');

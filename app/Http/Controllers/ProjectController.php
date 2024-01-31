@@ -16,6 +16,7 @@ use App\Models\ProjectCategory;
 use App\Models\MilestonePayment;
 use App\Models\Badge;
 use App\Models\UserBadge;
+use App\Models\Address;
 use Response;
 use Illuminate\Support\Str;
 use DB;
@@ -416,7 +417,17 @@ class ProjectController extends Controller
         $project->client_user_id = Auth()->user()->id;
         $project->slug = Str::slug($request->jobHeadline, '-') . date('Ymd-his');
         $project->save();
-
+        $jobaddress = new Address(
+            ['country' => $request->country,
+             'region' => $request->region,
+             'latitude' => $request->latitude,
+             'longitude' => $request->longitude,
+             'postal_code' => $request->postcode,
+             'street' => $request->street,
+             'city' => $request->city,
+            ]
+        );
+        $project->address()->save($jobaddress);
 
         NotificationUtility::set_notification(
             "A_new_Job_has_been_created_by_client",
@@ -476,9 +487,9 @@ class ProjectController extends Controller
     public function freelancer_Leads()
     {
        
-        $projects = Project::with('project_category')->get();
+        $projects = Project::with('project_category','address')->get();
         
-
+        
         return view('frontend.default.user.freelancer.leads.index',compact('projects'));
     }
 

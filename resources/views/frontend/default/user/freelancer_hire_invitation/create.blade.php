@@ -47,7 +47,7 @@
                                 <div>
                                     <i class="las la-map-marker opacity-50"></i>
                                       @if($freelancer->address != null && $freelancer->address->city != null && $freelancer->address->country != null)
-                                          <span>{{ $freelancer->address->city->name }}, {{ $freelancer->address->country->name }}</span>
+                                          <span>{{ $freelancer->address->city }}, {{ $freelancer->address->country }}</span>
                                       @endif
                                 </div>
                             </div>

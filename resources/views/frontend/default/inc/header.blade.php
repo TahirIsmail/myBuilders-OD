@@ -20,7 +20,7 @@
 
     .btn-post:hover {
         background-color: white !important;
-        color: #4a90e2;
+        color: #37a002;
     }
 
     #navbarSupportedContent>div.menu>nav>ul>li.nav-item.ml-xl-3 {
@@ -28,10 +28,13 @@
     }
 
     .aiz-header {
-        background-color: #4a90e2 !important;
+
         height: 5% !important;
     }
 
+    .aiz-header {
+        border-bottom: 0px !important;
+    }
 
     .menu-div {
         width: 38%;
@@ -55,19 +58,24 @@
         text-decoration: none;
         display: block;
         border-top: 2px solid #f2f2f2;
-        color: #545454;
+        color: black !important;
         text-decoration: none;
     }
 
 
     .dropdown-menu .dropdown-item:hover {
         background-color: #ececec;
-        color: #4990e2 !important;
+        color: #37a002 !important;
+    }
+
+    .navbar-light .navbar-nav .nav-link {
+
+        color: white !important;
     }
 
     .nav-link.dropdown-toggle {
-        background-color: ##FAF9F6 !important;
-        color: #092540;
+
+        color: white;
         border: 0;
         font-weight: bold;
         padding: 0.8rem 1rem;
@@ -126,14 +134,8 @@
 
     }
 
-    .btn-primary {
-        background-color: #51c57d !important;
-        border-color: #51c57d !important;
-    }
-    .btn-primary:hover {
-    background-color: rgb(98, 208, 142) !important;
-    color: white !important;
-}
+
+
     .navbar-collapse {
         margin-left: 10%;
     }
@@ -187,12 +189,13 @@
 
 
 <header class="aiz-header">
+    {{-- background: linear-gradient(to right,#ffffff,#C0C0C0); --}}
 
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="    background: linear-gradient(to right,#ffffff,#C0C0C0);">
+    <nav class="navbar navbar-expand-lg navbar-light "
+        style=" background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(232,229,229,1) 6%, rgba(163,214,171,1) 17%, rgba(100,201,118,1) 28%, rgba(100,201,118,1) 100%) !important  ">
         <a href="{{ route('home') }}">
             <img src="{{ asset('public\assets\frontend\default\img\logo\builder_valley_logo.png') }}"
-                alt="MyBuilder - A new way to find and hire tradespeople" width="150" height="50"
+                alt="MyBuilder - A new way to find and hire tradespeople" width="150" height="60"
                 style="margin-left:10%">
         </a>
 
@@ -249,7 +252,7 @@
                 </li>
             </ul>
             <div class="flex-container">
-                <div class="container-login " style="display: flex;width: 400px;margin-top: 1%;">
+                {{-- <div class="container-login " style="display: flex;width: 400px;margin-top: 1%;">
                     <form action="{{ route('search') }}" method="GET" class="flex-grow-1" style="width:200px">
                         <div class="input-group">
                             <a class="text-reset bg-soft-secondary fs-12 rounded-left d-lg-none p-2"
@@ -284,7 +287,7 @@
                             </div>
                         </div>
                     </form>
-                </div>
+                </div> --}}
 
 
 
@@ -293,7 +296,7 @@
 
 
 
-                <div class="menu">
+                <div class="menu ml-auto " style="    margin-right: 50px;">
                     <nav class="navbar-expand">
                         <ul class="navbar-nav ml-auto align-items-center">
                             <li class="nav-item d-lg-none">
@@ -327,9 +330,9 @@
                                                 transform="translate(-3 -292.65)">
                                                 <path id="Path_25812" data-name="Path 25812"
                                                     d="M12,292.65a7.273,7.273,0,0,0-7.223,7.311v3.5A2.66,2.66,0,0,0,3,305.848a2.806,2.806,0,0,0,2.777,2.8H18.223a2.806,2.806,0,0,0,2.777-2.8,2.658,2.658,0,0,0-1.777-2.383v-3.5A7.273,7.273,0,0,0,12,292.651Zm5.223,7.311c0,1.328,0,2.728-.008,4.031a.99.99,0,0,0,.937,1.051.787.787,0,0,1,.848.8.767.767,0,0,1-.777.8H5.777a.767.767,0,0,1-.777-.8.787.787,0,0,1,.848-.8.99.99,0,0,0,.938-1.049c-.021-1.323-.008-2.692-.008-4.033a5.223,5.223,0,1,1,10.445,0Z"
-                                                    fill="#5a6780" />
+                                                    fill="white" />
                                                 <path id="Path_25813" data-name="Path 25813"
-                                                    d="M10,310.65a1,1,0,0,0,0,2h4a1,1,0,0,0,0-2Z" fill="#5a6780" />
+                                                    d="M10,310.65a1,1,0,0,0,0,2h4a1,1,0,0,0,0-2Z" fill="white" />
                                             </g>
                                         </svg>
 
@@ -407,13 +410,13 @@
                                                 <g id="message-square">
                                                     <path id="Path_25814" data-name="Path 25814"
                                                         d="M17,3H5A3,3,0,0,0,2,6V21a1,1,0,0,0,1.51.86L8,19.14A1,1,0,0,1,8.55,19H17a3,3,0,0,0,3-3V6A3,3,0,0,0,17,3Zm1,13a1,1,0,0,1-1,1H8.55A3,3,0,0,0,7,17.43l-3,1.8V6A1,1,0,0,1,5,5H17a1,1,0,0,1,1,1Z"
-                                                        fill="#5a6780" />
+                                                        fill="white" />
                                                     <rect id="Rectangle_16201" data-name="Rectangle 16201"
                                                         width="10" height="2" rx="1"
-                                                        transform="translate(6 8)" fill="#5a6780" />
+                                                        transform="translate(6 8)" fill="white" />
                                                     <rect id="Rectangle_16202" data-name="Rectangle 16202"
                                                         width="10" height="2" rx="1"
-                                                        transform="translate(6 12)" fill="#5a6780" />
+                                                        transform="translate(6 12)" fill="white" />
                                                 </g>
                                             </g>
                                         </svg>
@@ -521,27 +524,27 @@
                                                     src="{{ my_asset('assets/frontend/default/img/avatar-place.png') }}">
                                             @endif
                                         </span>
-                                        <span class="ml-2 text-left d-none d-xl-inline-block">
-                                            <span class="h6 d-block mb-0">{{ Auth::user()->name }}</span>
+                                        <span class="ml-2 text-left d-none d-xl-inline-block text-white">
+                                            <span class="h6 d-block mb-0 text-white">{{ Auth::user()->name }}</span>
                                             @if (Auth::check() && isFreelancer())
                                                 <span
-                                                    class="small fw-500 text-muted">{{ single_price(Auth::user()->profile->balance) }}</span>
+                                                    class="small fw-500  text-white">{{ single_price(Auth::user()->profile->balance) }}</span>
                                             @endif
                                         </span>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-animated dropdown-menu-right"
                                         aria-labelledby="dropdownMenuButton">
                                         <div class="px-3 py-2">
-                                            <span class="h6 d-block mb-0">{{ Auth::user()->name }}</span>
+                                            <span class="h6 d-block mb-0 text-black">{{ Auth::user()->name }}</span>
                                             <span
-                                                class="small text-muted d-block text-truncate">{{ Auth::user()->email }}</span>
+                                                class="small  d-block text-truncate text-black">{{ Auth::user()->email }}</span>
                                         </div>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="{{ route('dashboard') }}">
+                                        <a class="dropdown-item text-black" href="{{ route('dashboard') }}">
                                             <i class="las la-tachometer-alt"></i>
                                             {{ translate('Dashboard') }}
                                         </a>
-                                        <a class="dropdown-item" href="{{ route('logout') }}">
+                                        <a class="dropdown-item text-black" href="{{ route('logout') }}">
                                             <i class="las la-sign-out-alt"></i>
                                             {{ translate('Log Out') }}
                                         </a>
@@ -563,14 +566,14 @@
             </div>
             <div class="col-sm-11 announcement-bar">
                 <div class="col-sm-12 scrolling-text">
-                    <p>This is a sample announcement. </p>
+                    <p style="color:white !important">This is a sample announcement. </p>
                 </div>
-              
+
             </div>
             <div class="col-sm-1 ">
-                <button class="close-button">×</button> 
+                <button class="close-button">×</button>
             </div>
-           
+
         </div>
 
 </header>

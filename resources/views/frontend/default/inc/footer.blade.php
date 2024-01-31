@@ -52,11 +52,11 @@
                     <img src="{{ asset('public\assets\frontend\default\img\logo\builder_valley_logo.png') }}"
                     alt="MyBuilder - A new way to find and hire tradespeople"  height="40" class="mb-4">
                  
-                    <div class="fs-14 text-soft-info-light">
+                    {{-- <div class="fs-14 text-soft-info-light">
                         @php
                             echo get_setting('about_description_footer');
                         @endphp
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="row">
                     <div class="col-xl-3 col-sm-6 data1">

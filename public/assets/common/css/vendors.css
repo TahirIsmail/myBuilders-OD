@@ -2452,35 +2452,26 @@ a.btn.disabled,
 fieldset:disabled a.btn {
     pointer-events: none;
 }
-.btn-primary {
-    color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
-}
-.btn-primary:hover {
-    color: #fff;
-    background-color: #0069d9;
-    border-color: #0062cc;
-}
+
 .btn-primary.focus,
 .btn-primary:focus {
     color: #fff;
     background-color: #0069d9;
-    border-color: #0062cc;
+   
     box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
 }
 .btn-primary.disabled,
 .btn-primary:disabled {
     color: #fff;
     background-color: #007bff;
-    border-color: #007bff;
+ 
 }
 .btn-primary:not(:disabled):not(.disabled).active,
 .btn-primary:not(:disabled):not(.disabled):active,
 .show > .btn-primary.dropdown-toggle {
     color: #fff;
     background-color: #0062cc;
-    border-color: #005cbf;
+   
 }
 .btn-primary:not(:disabled):not(.disabled).active:focus,
 .btn-primary:not(:disabled):not(.disabled):active:focus,
@@ -16299,6 +16290,7 @@ select.selectpicker {
 .bootstrap-select > .dropdown-toggle.bs-placeholder.btn-success:focus,
 .bootstrap-select > .dropdown-toggle.bs-placeholder.btn-success:hover {
     color: rgba(255, 255, 255, 0.5);
+    background-color: #43864f !important;
 }
 .bootstrap-select > select {
     position: absolute !important;

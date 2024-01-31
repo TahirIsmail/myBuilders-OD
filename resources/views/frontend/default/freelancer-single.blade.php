@@ -2,6 +2,8 @@
 
 @section('content')
 <div class="h-250px">
+    
+   
     @if ($freelancer->cover_photo != null)
         <img src="{{ custom_asset($freelancer->cover_photo) }}" alt="{{ $freelancer->name }}"class="img-fit h-250px">
     @else
@@ -63,7 +65,7 @@
                                     </svg>
                                     @if ($freelancer->address != null && $freelancer->address->city != null && $freelancer->address->country != null)
                                         @if ($freelancer->address != null && $freelancer->address->city != null && $freelancer->address->country != null)
-                                            <span class="ml-1">{{ $freelancer->address->city->name }}, {{ $freelancer->address->country->name }}</span>
+                                            <span class="ml-1">{{ $freelancer->address->city }}, {{ $freelancer->address->country }}</span>
                                         @endif
                                     @endif
                                 </div>

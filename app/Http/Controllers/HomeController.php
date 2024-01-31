@@ -143,7 +143,8 @@ class HomeController extends Controller
     //Show specific client details to user
     public function client_details($username)
     {
-        $client = User::where('user_name', $username)->first();
+        $client = User::with('profile')->where('user_name', $username)->first();
+       
         $open_projects = Project::where('client_user_id', $client->id)->biddable()->open()->notcancel()->latest()->get();
         return view('frontend.default.client-single', compact('client', 'open_projects'));
     }

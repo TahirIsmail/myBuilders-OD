@@ -207,10 +207,10 @@
                             <h5 class="my-3 lh-1-5 fs-16 fw-700">
                                 @if (count($project->projectBids) > 0)
                                     {{ count($project->projectBids) }}
-                                    {{ translate('Tradesmen are bidding for this job') }} ({{ translate('Average') }}:
+                                    {{ translate('Tradesmen are showing interest for this job') }} ({{ translate('Average') }}:
                                     {{ single_price($project->projectBids->sum('amount') / count($project->projectBids)) }})
                                 @else
-                                    {{ translate('Tradesmen bids') }}
+                                    {{ translate('Tradesmen Shown Interest') }}
                                 @endif
 
                             </h5>
@@ -237,8 +237,8 @@
                                                 ({{ getNumberOfReview($projectBid->freelancer->id) }}
                                                 {{ translate('Reviews') }})
                                             </span>
-                                            <span class="fs-15 fw-700">{{ translate('Bidded Price') }}:
-                                                {{ single_price($projectBid->amount) }}</span>
+                                            {{-- <span class="fs-15 fw-700">{{ translate('Bidded Price') }}:
+                                                {{ single_price($projectBid->amount) }}</span> --}}
                                         </span>
                                     </div>
                                     <p>{{ $projectBid->message }}</p>
@@ -247,7 +247,7 @@
                                     @endif
                                 @endforeach
                             @else
-                                {{ translate('No Tradesmen bidded yet') }}
+                                {{ translate('No Tradesmen Shown Interest yet') }}
                             @endif
                         </div>
                     </div>
@@ -262,15 +262,15 @@
                         <div class="card project-card bg-hov-soft-primary border-1 border-gray-light rounded-2">
                             <div class="card-body p-4">
                                 <div class="mb-4">
-                                    <p class="fs-12 mb-2">{{ translate('Budget') }}</p>
-                                    <h4 class="mb-0 fw-900 mb-2">{{ single_price($project->price) }}</h4>
+                                    {{-- <p class="fs-12 mb-2">{{ translate('Budget') }}</p> --}}
+                                    {{-- <h4 class="mb-0 fw-900 mb-2">{{ single_price($project->price) }}</h4> --}}
                                     <p class="fs-12 fw-700"><strong>{{ count($project->projectBids) }} &nbsp;&nbsp;
-                                            {{ translate('Bids') }}</strong></p>
+                                            {{ translate('Show Interests') }}</strong></p>
                                 </div>
                                 <div class="mb-3">
                                     <p class="text-primary fs-14 fw-700 d-flex align-items-center mb-0">
                                         <i class="las la-share-alt fs-18 fw-700"></i>
-                                        <span class="ml-2">{{ translate('Share Project') }}</span>
+                                        <span class="ml-2">{{ translate('Share Job') }}</span>
                                     </p>
                                     <div class="aiz-share"></div>
                                 </div>
@@ -309,7 +309,7 @@
                                         @endphp
                                         @if ($allow_for_bid == null)
                                             <a href="javascript:void(0)" class="btn btn-primary btn-block rounded-1"
-                                                onclick="bid_modal({{ $project->id }})">{{ translate('Place Bid') }}</a>
+                                                onclick="bid_modal({{ $project->id }})">{{ translate('Show Interest') }}</a>
                                         @else
                                             <div class="alert alert-info rounded-1" role="alert">
                                                 {{ translate('You have already submitted bid for this project.') }}
@@ -383,8 +383,8 @@
                                                         $project->client->address->city != null &&
                                                         $project->client->address->country != null)
                                                     <span
-                                                        class="d-block fs-12 font-weight-medium">{{ $project->client->address->city->name }},
-                                                        {{ $project->client->address->country->name }}</span>
+                                                        class="d-block fs-12 font-weight-medium">{{ $project->client->address->city }},
+                                                        {{ $project->client->address->country}}</span>
                                                 @endif
                                             </div>
                                         </div>
@@ -401,7 +401,7 @@
                                             <div class="media-body pt-1">
                                                 <span
                                                     class="d-block fs-12 font-weight-medium">{{ count($project->client->number_of_projects) }}
-                                                    {{ translate('jobs posted') }}</span>
+                                                    {{ translate('Jobs posted') }}</span>
                                             </div>
                                         </div>
                                         <div class="media">
@@ -493,10 +493,10 @@
         									<div class="text-muted lh-1-8">
         										<p class="text-truncate-2 h-50px mb-0 fs-14 text-dark">{{ $similar_type_project->excerpt }}</p>
         									</div>
-                                            <div class="mt-2">
+                                            {{-- <div class="mt-2">
                                                 <span class="small fs-14 text-secondary">{{ translate('Budget') }}</span>
                                                 <h4 class="mb-0 fs-24 fw-700">{{ single_price($similar_type_project->price) }}</h4>
-                                            </div>
+                                            </div> --}}
         								</div>
         								<div class="card-footer border-top-0">
         									<div class="d-flex align-items-center">
@@ -565,7 +565,7 @@
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">{{ translate('Bid For Project') }}</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">{{ translate('Show interest For the Job') }}</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         </button>
                                     </div>
