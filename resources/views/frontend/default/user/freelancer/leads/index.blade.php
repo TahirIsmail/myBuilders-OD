@@ -25,7 +25,7 @@
                                                         class="fas fa-tools mr-2 fa-lg icon-color"></i>{{ $project->project_category->name }}
                                                 </li>
                                                 <li>
-                                                    <i class="fas fa-map-marker-alt  mr-2 fa-lg icon-color"></i> Stockport 8
+                                                    <i class="fas fa-map-marker-alt  mr-2 fa-lg icon-color"></i> {{$project->distance_from_user}} 
                                                     miles
                                                 </li>
                                                 <li>

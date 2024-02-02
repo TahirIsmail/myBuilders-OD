@@ -8,6 +8,7 @@
         "php": "^8.0.2",
         "aiz-packages/color-code-converter": "dev-main",
         "anandsiddharth/laravel-paytm-wallet": "^2.0.0",
+        "ballen/distical": "^3.1",
         "barryvdh/laravel-ide-helper": "^2.13",
         "code-lts/laravel-fcm": "^1.8",
         "grosv/laravel-passwordless-login": "^1.9",

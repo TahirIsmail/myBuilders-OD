@@ -15,7 +15,7 @@
                             <i class="fas fa-map-marker-alt mb-map no-space lead-details__meta-icon"></i>
 
                             <span class="lead-details__meta-title">{{ $lead->country }}</span><span
-                                class="lead-details__meta-detail">6.9 miles away</span></a>
+                                class="lead-details__meta-detail">{{$distance}} miles away</span></a>
                         <div class="lead-details__meta mt-1">
                             <span class="lead-details__status">New lead</span>
                             <span class="lead-details__meta-detail">Lead sent 18 hours ago</span>

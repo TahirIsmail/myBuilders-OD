@@ -60,10 +60,10 @@
                                         </div>
                                     </div>
                                     <!-- Strating Price -->
-                                    <input type="hidden" name="min_price" value="">
+                                    {{-- <input type="hidden" name="min_price" value="">
                                     <input type="hidden" name="max_price" value="">
                                     <h6 class="text-left pt-3 mb-3 fs-14 fw-700">
-                                        <span class="bg-white pr-3">{{ translate('Strating Price') }}</span>
+                                        <span class="bg-white pr-3">{{ translate('Startting Price') }}</span>
                                     </h6>
                                     <div class="aiz-range-slider mb-5 px-3" >
                                         <div
@@ -86,7 +86,7 @@
                                                 ></span>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                             <div class="overlay overlay-fixed dark c-pointer" data-toggle="class-toggle" data-target=".aiz-filter-sidebar" data-same=".filter-sidebar-thumb"></div>

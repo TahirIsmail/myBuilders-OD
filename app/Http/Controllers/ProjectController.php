@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Ballen\Distical\Calculator as DistanceCalculator;
+use Ballen\Distical\Entities\LatLong;
 use App\Utility\EmailUtility;
 use App\Utility\NotificationUtility;
 use Illuminate\Http\Request;
@@ -473,13 +474,18 @@ class ProjectController extends Controller
 
     public function showLead($id){
         $lead = Project::where('id', $id)->with('address')->first();
-
+        $user  = auth()->user();
+        $userCord = new LatLong($user->address->latitude,$user->address->longitude);
+        $projectCord = new LatLong($lead->address->latitude, $lead->address->longitude);
+        $temp = new DistanceCalculator($userCord, $projectCord);
+        $distance= round($temp->get()->asMiles(),2);
+        
         if (!$lead) {
             return response()->json(['error' => 'Lead not found'], 404);
         }
     
         // Assuming you have a Blade view named 'leads.show' to display the lead details
-        $view = view('frontend.default.user.client.leads.partials.single-lead', compact('lead'))->render();
+        $view = view('frontend.default.user.client.leads.partials.single-lead', compact('lead','distance'))->render();
     
         return response()->json(['html' => $view]);
     }
@@ -489,6 +495,14 @@ class ProjectController extends Controller
        
         $projects = Project::with('project_category','address')->get();
         
+        $user  = auth()->user();
+        $userCord = new LatLong($user->address->latitude,$user->address->longitude);
+        $projects->transform(function ($project) use ($userCord) {
+            $projectCord = new LatLong($project->address->latitude, $project->address->longitude);
+            $distance = new DistanceCalculator($userCord, $projectCord ); // Assuming you have a method to calculate distance in your LatLong class
+            $project->distance_from_user =  round($distance->get()->asMiles(),2); // Adding distance to the project object
+            return $project;
+        });
         
         return view('frontend.default.user.freelancer.leads.index',compact('projects'));
     }

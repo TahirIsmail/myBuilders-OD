@@ -118,6 +118,7 @@ Route::group(['middleware' => ['user','auth']], function(){
 	Route::post('cancel-project-request/store', 'CancelProjectController@store')->name('cancel-project-request.store');
 
 	Route::get('/profile-settings', 'ProfileController@user_profile')->name('user.profile');
+	
 	Route::post('/profile-settings/basic-info-update', 'ProfileController@basic_info_update')->name('user_profile.basic_info_update');
 	Route::post('/profile-settings/photo-update', 'ProfileController@photo_update')->name('user_profile.photo_update');
 	Route::post('/profile-settings/bio-update', 'ProfileController@bio_update')->name('user_profile.bio_update');
@@ -198,7 +199,8 @@ Route::group(['middleware' => ['auth','phoneverified']], function(){
 
 
 	Route::get('/account-settings', 'ProfileController@user_account')->name('user.account');
-
+	Route::get('/working-area','ProfileController@working_area')->name('user.workingarea');
+	Route::post('/save-working-area','ProfileController@save_working_area')->name('user.saveworkingarea');
 	Route::post('/profile-settings/portfolio-add', 'PortfolioController@store')->name('user_profile.portfolio_add');
 	Route::get('/profile-settings/portfolio-edit/{id}', 'PortfolioController@edit')->name('user_profile.portfolio_edit');
 	Route::post('/profile-settings/portfolio-update/{id}', 'PortfolioController@update')->name('user_profile.portfolio_update');
@@ -267,7 +269,7 @@ Route::group(['middleware' => ['auth','phoneverified']], function(){
 Route::get('/search', 'SearchController@index')->name('search');
 Route::get('/search?category={slug}', 'SearchController@index')->name('projects.category');
 Route::get('/skills/{skill}/{type}', 'SearchController@searchBySkill')->name('search.skill');
-Route::get('/search?category={category_slug}&type=service', 'SearchController@index')->name('services.category');
+Route::get('/search?category={category_slug}', 'SearchController@index')->name('services.category');
 
 Route::get('/project/{slug}', 'HomeController@project_details')->name('project.details');
 Route::get('/private-project-details/{slug}', 'HomeController@private_project_details')->name('private_project.details');

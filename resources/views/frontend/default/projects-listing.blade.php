@@ -69,7 +69,7 @@
                                             <label class="aiz-radio">
                                                 <input type="radio" name="bids" value="" onchange="applyFilter()" @if ($bids == "")
                                                     checked
-                                                @endif> {{ translate('Any Number of bids') }}
+                                                @endif> {{ translate('Any Number of  Interest Shown') }}
                                                 <span class="aiz-rounded-check"></span>
                                                 <span class="float-right text-secondary fs-12"></span>
                                             </label>
@@ -113,9 +113,9 @@
                                     <!-- Price -->
                                     <input type="hidden" name="min_price" value="">
                                     <input type="hidden" name="max_price" value="">
-                                    <h6 class="text-left mb-3 fs-14 fw-700">
+                                    {{-- <h6 class="text-left mb-3 fs-14 fw-700">
                                         <span class="bg-white pr-3">{{ translate('Price') }}</span>
-                                    </h6>
+                                    </h6> --}}
                                     <div class="aiz-range-slider mb-5 px-3" >
                                         <div
                                             id="input-slider-range"
@@ -260,15 +260,15 @@
                                         </div>
                                         <div class="border-lg-left border-gray-light flex-shrink-0 pt-4 pt-xl-0 pl-xl-4 d-flex flex-row-reverse flex-xl-column justify-content-between align-items-center align-items-xl-start minw-130px">
                                             <div class="text-right text-lg-left mb-lg-3">
-                                                <span class="small text-secondary">{{ translate('Budget') }}</span>
-                                                <h4 class="mb-0 fw-700">{{ single_price($project->price) }}</h4>
+                                                {{-- <span class="small text-secondary">{{ translate('Budget') }}</span> --}}
+                                                {{-- <h4 class="mb-0 fw-700">{{ single_price($project->price) }}</h4> --}}
                                                 <div class="mt-xl-2 small text-secondary">
                                                     @if ($project->bids > 0)
                                                         <span class="text-body mr-1">{{ $project->bids }}+</span>
                                                     @else
                                                         <span class="text-body mr-1">{{ $project->bids }}</span>
                                                     @endif
-                                                    <span>Bids</span>
+                                                    <span>Interest Shown</span>
                                                 </div>
                                             </div>
                                             <div>
