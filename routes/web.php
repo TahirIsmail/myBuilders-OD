@@ -122,6 +122,9 @@ Route::group(['middleware' => ['user','auth']], function(){
 	Route::post('/profile-settings/photo-update', 'ProfileController@photo_update')->name('user_profile.photo_update');
 	Route::post('/profile-settings/bio-update', 'ProfileController@bio_update')->name('user_profile.bio_update');
 	Route::post('/profile-settings/verification-update', 'VerificationController@verification_store')->name('user_profile.verification_store');
+	Route::get('/freelancer_working_Area', 'ProfileController@freelancer_working_Area')->name('freelancer_working_Area');
+
+
 
 	Route::post('/interview-chat', 'ChatController@index')->name('call_for_interview');
 	Route::post('/chat-reply', 'ChatController@chat_reply')->name('chat.reply');

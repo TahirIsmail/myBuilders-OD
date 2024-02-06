@@ -2,7 +2,7 @@
     <div class="form-header container">
         <!-- Header content... -->
     </div>
-    <div  ref="postajobref"  style="background-color: #f9f9f9" >
+    <div  ref="postajobref"  style="background-color: rgb(249, 249, 249) !important;" >
         <div class="container" style="padding: 30px;margin-bottom:-20px !important;">
             <div class="row justify-content-center">
                 <div
@@ -11,7 +11,7 @@
                 >
                     <!-- Display the selected category but faded -->
                     <div class="mx-auto row justify-content-md-center">
-                        <div class="col-lg-10 bg-white" style="border-radius: 5px;">
+                        <div class="col-lg-10 " style="border-radius: 5px;">
                             <p class="left-align">
                                 What would you like to have done?
                             </p>

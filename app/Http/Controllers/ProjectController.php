@@ -490,11 +490,5 @@ class ProjectController extends Controller
 
         return view('frontend.default.user.freelancer.leads.interestedleads',compact('projects'));
     }
-    public function freelancer_Shortlisted_leads()
-    {
-        $projects = Project::with('project_category')->get();
-        
-
-        return view('frontend.default.user.freelancer.leads.shortlistedleads',compact('projects'));
-    }
+   
 }

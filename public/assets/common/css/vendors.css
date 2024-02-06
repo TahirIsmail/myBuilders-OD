@@ -2452,35 +2452,26 @@ a.btn.disabled,
 fieldset:disabled a.btn {
     pointer-events: none;
 }
-.btn-primary {
-    color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
-}
-.btn-primary:hover {
-    color: #fff;
-    background-color: #0069d9;
-    border-color: #0062cc;
-}
+
 .btn-primary.focus,
 .btn-primary:focus {
     color: #fff;
     background-color: #0069d9;
-    border-color: #0062cc;
+   
     box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
 }
 .btn-primary.disabled,
 .btn-primary:disabled {
     color: #fff;
     background-color: #007bff;
-    border-color: #007bff;
+ 
 }
 .btn-primary:not(:disabled):not(.disabled).active,
 .btn-primary:not(:disabled):not(.disabled):active,
 .show > .btn-primary.dropdown-toggle {
     color: #fff;
     background-color: #0062cc;
-    border-color: #005cbf;
+   
 }
 .btn-primary:not(:disabled):not(.disabled).active:focus,
 .btn-primary:not(:disabled):not(.disabled):active:focus,
@@ -3238,7 +3229,7 @@ input[type="submit"].btn-block {
 .dropdown-item:active {
     color: #fff;
     text-decoration: none;
-    background-color: #007bff;
+    background-color: #64c9760f;
 }
 .dropdown-item.disabled,
 .dropdown-item:disabled {
@@ -7604,7 +7595,7 @@ button.bg-dark:hover {
 }
 .mr-5,
 .mx-5 {
-    margin-right: 3rem !important;
+    margin-right: 3rem ;
 }
 .mb-5,
 .my-5 {
@@ -9331,11 +9322,11 @@ button.bg-dark:hover {
     color: #fff !important;
 }
 .text-primary {
-    color: #007bff !important;
+    color: rgb(85, 185, 123) !important;
 }
 a.text-primary:focus,
 a.text-primary:hover {
-    color: #0056b3 !important;
+    color: rgb(64 154 98) !important;
 }
 .text-secondary {
     color: #6c757d !important;
@@ -16299,6 +16290,7 @@ select.selectpicker {
 .bootstrap-select > .dropdown-toggle.bs-placeholder.btn-success:focus,
 .bootstrap-select > .dropdown-toggle.bs-placeholder.btn-success:hover {
     color: rgba(255, 255, 255, 0.5);
+    background-color: #43864f !important;
 }
 .bootstrap-select > select {
     position: absolute !important;

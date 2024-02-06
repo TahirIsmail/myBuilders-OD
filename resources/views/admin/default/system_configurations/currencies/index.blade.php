@@ -16,7 +16,7 @@
 </div>
 <div class="row">
 	<div class="col-md-5">
-		<div class="card">
+		<div class="card card_shadow">
 			<div class="card-header">
 				<h5 class="h6 mb-0">{{translate('System Default Currency')}}</h5>
 			</div>
@@ -43,7 +43,7 @@
 		</div>
 	</div>
     <div class="col-md-7">
-        <div class="card">
+        <div class="card card_shadow">
             <div class="card-header">
                 <h5 class="h6 mb-0">{{translate('Currency Formats')}}</h5>
             </div>
@@ -78,7 +78,7 @@
         </div>
     </div>
     <div class="col-12">
-        <div class="card">
+        <div class="card card_shadow">
             <div class="card-header">
                 <h5 class="h6 mb-0">{{translate('All Currencies')}}</h5>
             </div>

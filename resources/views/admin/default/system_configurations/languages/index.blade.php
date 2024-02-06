@@ -11,7 +11,7 @@
     </div>
         <div class="row">
             <div class="col-lg-7">
-                <div class="card">
+                <div class="card card_shadow">
                     <div class="card-header">
                         <h5 class="mb-0 h6">{{translate('All Languages')}}</h5>
                     </div>
@@ -70,7 +70,7 @@
                 </div>
             </div>
             <div class="col-lg-5">
-                    <div class="card">
+                    <div class="card card_shadow">
                         <div class="card-header">
                             <h5 class="mb-0 h6">{{translate("Create New Language")}}</h5>
                         </div>
@@ -110,7 +110,7 @@
                         </div> <!-- end card-body -->
                     </div>
 
-                    <div class="card">
+                    <div class="card card_shadow">
                         <div class="card-header">
                             <h5 class="mb-0 h6">{{translate('Set Default Language for System')}}</h5>
                         </div>

@@ -19,7 +19,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card rounded-2 border-gray-light">
+                    <div class="card card_shadow rounded-2 border-gray-light">
                             <div class="card-header">
                                 <h5 class="mb-0 h6">{{ translate('Reviews') }}:</h5>
                             </div>

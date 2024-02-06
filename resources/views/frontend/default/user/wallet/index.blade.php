@@ -21,7 +21,7 @@
 
                 <div class="row gutters-10">
                   <div class="col-md-4 mx-auto mb-3" >
-                      <div class="bg-grad-3 text-white rounded-lg overflow-hidden rounded-2">
+                      <div class="bg-grade-5 text-white rounded-lg overflow-hidden rounded-2">
                         <span class="size-30px rounded-circle mx-auto bg-soft-primary d-flex align-items-center justify-content-center mt-3">
                             <i class="las la-dollar-sign la-2x text-white"></i>
                         </span>
@@ -41,7 +41,7 @@
                   </div>
                 </div>
 
-                <div class="card rounded-2 border-gray-light">
+                <div class="card card_shadow rounded-2 border-gray-light">
                     <div class="card-header">
                         <h5 class="mb-0 h6">{{ translate('My Wallet') }}</h5>
                     </div>

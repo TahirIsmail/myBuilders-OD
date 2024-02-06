@@ -4,7 +4,7 @@
 
     <div class="row">
         <div class="col-lg-8 mx-auto">
-            <div class="card">
+            <div class="card card_shadow">
                 <div class="card-header">
                     <h1 class="mb-0 h6">{{translate('General Settings')}}</h1>
                 </div>

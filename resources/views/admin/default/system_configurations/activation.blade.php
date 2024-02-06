@@ -11,7 +11,7 @@
     </div>
     <div class="row">
         <div class="col-lg-4">
-            <div class="card">
+            <div class="card card_shadow">
                 <div class="card-header">
                     <h6 class="mb-0">{{ translate('Project Approval') }}</h6>
                 </div>
@@ -33,7 +33,7 @@
         </div>
 
         <div class="col-lg-4">
-            <div class="card">
+            <div class="card card_shadow">
                 <div class="card-header">
                     <h6 class="mb-0">{{ translate('Force HTTPS') }}</h6>
                 </div>
@@ -55,7 +55,7 @@
         </div>
 
          <div class="col-lg-4">
-            <div class="card">
+            <div class="card card_shadow">
                 <div class="card-header">
                     <h6 class="mb-0">{{ translate('Email Verification') }}</h6>
                 </div>
@@ -77,7 +77,7 @@
         </div> 
 
         <div class="col-lg-4">
-            <div class="card">
+            <div class="card card_shadow">
                 <div class="card-header">
                     <h3 class="mb-0 h6 text-center">{{translate('Maintenance Mode Activation')}}</h3>
                 </div>
@@ -91,7 +91,7 @@
         </div>
         
         <div class="col-lg-4">
-            <div class="card">
+            <div class="card card_shadow">
                 <div class="card-header">
                     <h3 class="mb-0 h6 text-center">{{translate('Disable image encoding?')}}</h3>
                 </div>

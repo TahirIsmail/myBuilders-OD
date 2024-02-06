@@ -261,9 +261,25 @@
 
                                 </div>
                                 <div id="tab-2" class="tab-content">
-                                    <textarea placeholder="Type your message here..."></textarea>
+                                    <div class="col-lg-12 card_shadow" id="single_chat">
+                                        <div class="chat-box-wrap ">
+                                            <div class="attached-top bg-white border-bottom chat-header d-flex justify-content-between align-items-center p-3 shadow-sm">
+                                                <div class="media">
+                                                    {{-- <h6 class="mb-0">{{ translate('Chats')}}</h6> --}}
+                                                </div>
+                                                <button class="aiz-mobile-toggler d-lg-none aiz-all-chat-toggler mr-2" data-toggle="class-toggle" data-target=".chat-user-list-wrap">
+                                                    <span></span>
+                                                </button>
+                                            </div>
+                                            <div class="px-3 py-5 text-center">
+                                                <i class="las la-user la-6x text-primary mb-4"></i>
+                                                {{-- <h5>{{ translate('Select a') }} @if (isClient()) {{ translate('Tradesman') }} @else {{ translate('Client') }} @endif {{ translate('to view chats') }}</h5> --}}
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
-                                <div id="tab-3" class="tab-content">tab content3</div>
+
 
 
 
@@ -318,15 +334,6 @@
 
 
 <style>
-
-
-
-
-
-
-
-
-
     .interested_lead {
         color: #4990e2 !important;
     }

@@ -1,6 +1,6 @@
 <!-- Instamojo -->
 <div class="col-lg-6">
-    <div class="card">
+    <div class="card card_shadow">
         <div class="card-header">
             <h5 class="mb-0 h6">{{translate("Instamojo Configuration")}}</h5>
         </div>

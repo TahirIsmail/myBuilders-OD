@@ -11,8 +11,10 @@
                 <li class="aiz-side-nav-item">
                     {{-- @can('show dashboard') --}}
                     <a href="{{ route('admin.dashboard') }}" class="aiz-side-nav-link">
-                        <i class="las la-home aiz-side-nav-icon"></i>
-                        <span class="aiz-side-nav-text">{{translate('Dashboard')}}</span>
+                        {{-- <i class="las la-home aiz-side-nav-icon"></i> --}}
+                        <img src="{{ asset('public\assets\frontend\default\img\icons\dashboard.png') }}"
+                        style="width:20px" ;height="20px" />
+                        <span class="aiz-side-nav-text ml-2">{{translate('Dashboard')}}</span>
                     </a>
                     {{-- @endcan --}}
                 </li>
@@ -24,8 +26,12 @@
                                         || auth()->user()->can('show project category'))
                     <li class="aiz-side-nav-item">
                         <a href="#" class="aiz-side-nav-link">
-                            <i class="las la-tasks aiz-side-nav-icon"></i>
-                            <span class="aiz-side-nav-text">{{translate('Projects')}}</span>
+                            {{-- <i class="las la-tasks aiz-side-nav-icon"></i> --}}
+
+
+                            <img src="{{ asset('public\assets\frontend\default\img\icons\file.png') }}"
+                       />
+                            <span class="aiz-side-nav-text ml-2">{{translate('Projects')}}</span>
                             <span class="aiz-side-nav-arrow"></span>
                         </a>
                         <ul class="aiz-side-nav-list level-2">
@@ -83,7 +89,7 @@
                 @if(auth()->user()->can('show all services')
                         || auth()->user()->can('show cancelled services')
                             || auth()->user()->can('show service cancel requests'))
-                    <li class="aiz-side-nav-item">
+                    {{-- <li class="aiz-side-nav-item">
                         <a href="#" class="aiz-side-nav-link">
                             <i class="las la-tasks aiz-side-nav-icon"></i>
                             <span class="aiz-side-nav-text">{{translate('Services')}}</span>
@@ -93,7 +99,7 @@
                             @can('show all services')
                             <li class="aiz-side-nav-item">
                                 <a href="{{ route('all_services_admin') }}" class="aiz-side-nav-link">
-                                    <span class="aiz-side-nav-text">{{translate('All Services')}}</span>
+                                    <span class="aiz-side-nav-text ">{{translate('All Services')}}</span>
                                 </a>
                             </li>
                             @endcan
@@ -114,14 +120,15 @@
                             </li>
                             @endcan
                         </ul>
-                    </li>
+                    </li> --}}
                 @endif
 
                 @can('show verification requests')
                 <li class="aiz-side-nav-item">
                     <a href="{{ route('verification_requests') }}" class="aiz-side-nav-link {{ areActiveRoutes(['verification_requests', 'verification_request_details'])}}">
-                        <i class="las la-user-check aiz-side-nav-icon"></i>
-                        <span class="aiz-side-nav-text">{{translate('Verification Requests')}}</span>
+                        {{-- <i class="las la-user-check aiz-side-nav-icon"></i> --}}
+                        <img src="{{ asset('public\assets\frontend\default\img\icons\approve.png') }}" />
+                        <span class="aiz-side-nav-text ml-2">{{translate('Verification Requests')}}</span>
                     </a>
                 </li>
                 @endcan
@@ -129,8 +136,9 @@
                 @can('show user chats')
                 <li class="aiz-side-nav-item">
                     <a href="{{ route('chat.admin.all') }}" class="aiz-side-nav-link {{ areActiveRoutes(['chat.admin.all', 'chat_details_for_admin'])}}">
-                        <i class="las la-sms aiz-side-nav-icon"></i>
-                        <span class="aiz-side-nav-text">{{translate('Users Chats')}}</span>
+                        {{-- <i class="las la-sms aiz-side-nav-icon"></i> --}}
+                        <img src="{{ asset('public\assets\frontend\default\img\icons\chat.png') }}" />
+                        <span class="aiz-side-nav-text ml-2">{{translate('Users Chats')}}</span>
                     </a>
                 </li>
                 @endcan
@@ -140,8 +148,9 @@
                                 || auth()->user()->can('show freelancer badges'))
                     <li class="aiz-side-nav-item">
                         <a href="#" class="aiz-side-nav-link">
-                            <i class="las la-user-circle aiz-side-nav-icon"></i>
-                            <span class="aiz-side-nav-text">{{translate('Tradesman')}}</span>
+                            {{-- <i class="las la-user-circle aiz-side-nav-icon"></i> --}}
+                            <img src="{{ asset('public\assets\frontend\default\img\icons\patient.png') }}" />
+                            <span class="aiz-side-nav-text ml-2">{{translate('Tradesman')}}</span>
                             <span class="aiz-side-nav-arrow"></span>
                         </a>
                         <ul class="aiz-side-nav-list level-2">
@@ -183,8 +192,9 @@
                 @if(auth()->user()->can('show all clients') || auth()->user()->can('show client packages') || auth()->user()->can('show client badges'))
                     <li class="aiz-side-nav-item">
                         <a href="#" class="aiz-side-nav-link">
-                            <i class="las la-user-tie aiz-side-nav-icon"></i>
-                            <span class="aiz-side-nav-text">{{translate('Clients')}}</span>
+                            {{-- <i class="las la-user-tie aiz-side-nav-icon"></i> --}}
+                            <img src="{{ asset('public\assets\frontend\default\img\icons\badge.png') }}" />
+                            <span class="aiz-side-nav-text ml-2">{{translate('Clients')}}</span>
                             <span class="aiz-side-nav-arrow"></span>
                         </a>
                         <ul class="aiz-side-nav-list level-2">
@@ -217,8 +227,10 @@
                 @if(auth()->user()->can('show freelancers reviews') || auth()->user()->can('show client reviews'))
                     <li class="aiz-side-nav-item">
                         <a href="#" class="aiz-side-nav-link">
-                            <i class="las la-star-half-alt aiz-side-nav-icon"></i>
-                            <span class="aiz-side-nav-text">{{translate('Reviews')}}</span>
+                            {{-- <i class="las la-star-half-alt aiz-side-nav-icon"></i> --}}
+
+                            <img src="{{ asset('public\assets\frontend\default\img\icons\review.png') }}" />
+                            <span class="aiz-side-nav-text ml-2">{{translate('Reviews')}}</span>
                             <span class="aiz-side-nav-arrow"></span>
                         </a>
                         <ul class="aiz-side-nav-list level-2">
@@ -313,8 +325,9 @@
                                     || auth()->user()->can('show wallet history'))
                     <li class="aiz-side-nav-item">
                         <a href="#" class="aiz-side-nav-link">
-                            <i class="las la-chart-bar aiz-side-nav-icon"></i>
-                            <span class="aiz-side-nav-text">{{translate('Accountings')}}</span>
+                            {{-- <i class="las la-chart-bar aiz-side-nav-icon"></i> --}}
+                            <img src="{{ asset('public\assets\frontend\default\img\icons\bars.png') }}" />
+                            <span class="aiz-side-nav-text ml-2">{{translate('Accountings')}}</span>
                             <span class="aiz-side-nav-arrow"></span>
                         </a>
                         <ul class="aiz-side-nav-list level-2">
@@ -370,7 +383,7 @@
                 @endif
                 
                 @if(auth()->user()->can('show all blogs') || auth()->user()->can('show blog category'))
-                    <li class="aiz-side-nav-item">
+                    {{-- <li class="aiz-side-nav-item">
                         <a href="#" class="aiz-side-nav-link">
                             <i class="las la-blog aiz-side-nav-icon"></i>
                             <span class="aiz-side-nav-text">{{ translate('Blog System') }}</span>
@@ -392,11 +405,11 @@
                             </li>
                         @endcan
                         </ul>
-                    </li>
+                    </li> --}}
                 @endif
 
                 @if(auth()->user()->can('show all subscribers') || auth()->user()->can('show all newsletters'))
-                    <li class="aiz-side-nav-item">
+                    {{-- <li class="aiz-side-nav-item">
                         <a href="#" class="aiz-side-nav-link">
                             <i class="las la-bullhorn aiz-side-nav-icon"></i>
                             <span class="aiz-side-nav-text">{{ translate('Marketing') }}</span>
@@ -418,11 +431,11 @@
                                 </li>
                             @endcan
                         </ul>
-                    </li>
+                    </li> --}}
                 @endif
                 
                 @if(auth()->user()->can('show header') || auth()->user()->can('show footer') || auth()->user()->can('show pages') || auth()->user()->can('show apperance'))
-                    <li class="aiz-side-nav-item">
+                    {{-- <li class="aiz-side-nav-item">
                         <a href="#" class="aiz-side-nav-link">
                             <i class="las la-hourglass-half aiz-side-nav-icon"></i>
                             <span class="aiz-side-nav-text">{{translate('Website')}}</span>
@@ -461,13 +474,14 @@
                             </li>
                             @endcan
                         </ul>
-                    </li>
+                    </li> --}}
                 @endif
                 @if(auth()->user()->can('show all staffs') || auth()->user()->can('show employee roles'))
                     <li class="aiz-side-nav-item">
                         <a href="#" class="aiz-side-nav-link">
-                            <i class="las la-user aiz-side-nav-icon"></i>
-                            <span class="aiz-side-nav-text">{{translate('Employee')}}</span>
+                            {{-- <i class="las la-user aiz-side-nav-icon"></i> --}}
+                            <img src="{{ asset('public\assets\frontend\default\img\icons\employee.png') }}" />
+                            <span class="aiz-side-nav-text ml-2">{{translate('Employee')}}</span>
                             <span class="aiz-side-nav-arrow"></span>
                         </a>
                         <ul class="aiz-side-nav-list level-2">
@@ -500,8 +514,10 @@
                                                     || auth()->user()->can('show refund setting'))
                 <li class="aiz-side-nav-item">
                     <a href="#" class="aiz-side-nav-link">
-                        <i class="las la-cog aiz-side-nav-icon"></i>
-                        <span class="aiz-side-nav-text">{{translate('Setting')}}</span>
+                        {{-- <i class="las la-cog aiz-side-nav-icon"></i> --}}
+
+                        <img src="{{ asset('public\assets\frontend\default\img\icons\settings.png') }}" />
+                        <span class="aiz-side-nav-text ml-2">{{translate('Setting')}}</span>
                         <span class="aiz-side-nav-arrow"></span>
                     </a>
                     <ul class="aiz-side-nav-list level-2">
@@ -651,8 +667,9 @@
                 @can('manage file upload')
                 <li class="aiz-side-nav-item">
                     <a href="{{ route('uploaded-files.index') }}" class="aiz-side-nav-link {{ areActiveRoutes(['uploaded-files.create'])}}">
-                        <i class="las la-folder-open aiz-side-nav-icon"></i>
-                        <span class="aiz-side-nav-text">{{ translate('Uploaded Files') }}</span>
+                        {{-- <i class="las la-folder-open aiz-side-nav-icon"></i> --}}
+                        <img src="{{ asset('public\assets\frontend\default\img\icons\file.png') }}" />
+                        <span class="aiz-side-nav-text ml-2">{{ translate('Uploaded Files') }}</span>
                     </a>
                 </li>
                 @endcan
