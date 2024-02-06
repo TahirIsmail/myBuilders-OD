@@ -41,7 +41,19 @@
     .index-card:hover {
         background-color: #005599;
     }
-  
+
+
+
+    @media (min-width: 1200px) {
+
+        .container,
+        .container-lg,
+        .container-md,
+        .container-sm,
+        .container-xl {
+            max-width: 90% !important;
+        }
+    }
 </style>
 <footer class="aiz-footer " style="background: #343944">
     <div class="footer-content rounded-2" style="background: #343944">
@@ -50,8 +62,8 @@
                 <div class="aiz-front-widget mb-5">
 
                     <img src="{{ asset('public\assets\frontend\default\img\logo\builder_valley_logo.png') }}"
-                    alt="MyBuilder - A new way to find and hire tradespeople"  height="40" class="mb-4">
-                 
+                        alt="MyBuilder - A new way to find and hire tradespeople" height="40" class="mb-4">
+
                     {{-- <div class="fs-14 text-soft-info-light">
                         @php
                             echo get_setting('about_description_footer');
@@ -129,7 +141,7 @@
 
                         <div class="row-fluid">
                             <div class="row">
-                                
+
                                 @isset($categories)
                                     @php
                                         $categoriesCount = count($categories);

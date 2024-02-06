@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col-lg-12">
-        <div class="card">
+        <div class="card card_shadow">
             <form class="" id="package_payments_history" action="" method="GET">
                 <div class="card-header row gutters-5">
                     <div class="col text-center text-md-left">

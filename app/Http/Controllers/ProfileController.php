@@ -1,6 +1,8 @@
 <?php
 
+
 namespace App\Http\Controllers;
+
 
 use Illuminate\Http\Request;
 use Session;
@@ -12,6 +14,8 @@ use App\Models\UserProfile;
 use App\Models\Verification;
 use App\Models\FreelancerAccount;
 use Illuminate\Support\Str;
+use App\Models\Project;
+use Symfony\Component\HttpKernel\Profiler\Profile;
 
 class ProfileController extends Controller
 {
@@ -25,18 +29,22 @@ class ProfileController extends Controller
     public function update_admin_profile(Request $request)
     {
         if (env("DEMO_MODE") == "On") {
+        if (env("DEMO_MODE") == "On") {
             flash(translate('This action is blocked in demo version!'))->error();
             return back();
         }
+        if (!User::where('email', $request->email)->where('id', '!=', auth()->user()->id)->first()) {
         if (!User::where('email', $request->email)->where('id', '!=', auth()->user()->id)->first()) {
             $user = User::findOrFail(auth()->user()->id);
             $user->name = $request->name;
             $user->email = $request->email;
             if ($request->new_password != null && ($request->new_password == $request->confirm_password)) {
+            if ($request->new_password != null && ($request->new_password == $request->confirm_password)) {
                 $user->password = Hash::make($request->new_password);
             }
             $user->photo = $request->profile_photo;
 
+            if ($user->save()) {
             if ($user->save()) {
                 flash(translate('Your Profile has been updated successfully!'))->success();
                 return back();
@@ -59,6 +67,9 @@ class ProfileController extends Controller
         } elseif (isFreelancer()) {
             return view('frontend.default.user.freelancer.setting.profile', compact('user_profile', 'verification'));
         } else {
+        } elseif (isFreelancer()) {
+            return view('frontend.default.user.freelancer.setting.profile', compact('user_profile', 'verification'));
+        } else {
             flash(translate('Sorry! Something went wrong.'))->error();
             return back();
         }
@@ -73,11 +84,13 @@ class ProfileController extends Controller
     public function basic_info_update(Request $request)
     {
         if (env("DEMO_MODE") == "On") {
+        if (env("DEMO_MODE") == "On") {
             flash(translate('This action is blocked in demo version!'))->error();
             return back();
         }
 
         $user = User::findOrFail(Auth::user()->id);
+        if ($request->new_password != null && ($request->new_password == $request->confirm_password)) {
         if ($request->new_password != null && ($request->new_password == $request->confirm_password)) {
             $user->password = Hash::make($request->new_password);
         }
@@ -101,13 +114,16 @@ class ProfileController extends Controller
                     flash(translate('Your Info has been updated successfully'))->success();
                     return redirect()->route('user.profile');
                 } else {
+                } else {
                     flash(translate('Sorry! Something went wrong.'))->error();
                     return back();
                 }
             } else {
+            } else {
                 flash(translate('Sorry! Something went wrong.'))->error();
                 return back();
             }
+        } else {
         } else {
             flash(translate('Sorry! Something went wrong.'))->error();
             return back();
@@ -123,12 +139,14 @@ class ProfileController extends Controller
             flash(translate('Your Picture has been updated successfully'))->success();
             return redirect()->route('user.profile');
         } else {
+        } else {
             flash(translate('Sorry! Something went wrong.'))->error();
             return back();
         }
     }
     public function bio_update(Request $request)
     {
+        if (env("DEMO_MODE") == "On") {
         if (env("DEMO_MODE") == "On") {
             flash(translate('This action is blocked in demo version!'))->error();
             return back();
@@ -138,6 +156,7 @@ class ProfileController extends Controller
         $username_availability = User::where('user_name', '=', Str::slug($request->username, '-'))->first();
         if ($username_availability == null) {
             $user->user_name = Str::slug($request->username, '-');
+            if ($request->new_password != null && ($request->new_password == $request->confirm_password)) {
             if ($request->new_password != null && ($request->new_password == $request->confirm_password)) {
                 $user->password = Hash::make($request->new_password);
             }
@@ -151,6 +170,8 @@ class ProfileController extends Controller
                 flash(translate('Your info has been updated successfully'))->success();
                 return redirect()->route('user.profile');
             }
+        } else {
+            if ($request->new_password != null && ($request->new_password == $request->confirm_password)) {
         } else {
             if ($request->new_password != null && ($request->new_password == $request->confirm_password)) {
                 $user->password = Hash::make($request->new_password);

@@ -13,7 +13,7 @@
     <div class="row">
         <!-- Facebook Login -->
         <div class="col-lg-4">
-            <div class="card">
+            <div class="card card_shadow">
                 <div class="card-header">
                     <h5 class="mb-0 h6">{{translate("Facebook Login")}}</h5>
                 </div>
@@ -59,7 +59,7 @@
 
         <!-- Google Login -->
         <div class="col-lg-4">
-            <div class="card">
+            <div class="card card_shadow">
                 <div class="card-header">
                     <h5 class="mb-0 h6">{{translate("Google Login")}}</h5>
                 </div>
@@ -105,7 +105,7 @@
 
         <!-- Twitter Login -->
         <div class="col-lg-4">
-            <div class="card">
+            <div class="card card_shadow">
                 <div class="card-header">
                     <h5 class="mb-0 h6">{{translate("Twitter Login")}}</h5>
                 </div>
@@ -151,7 +151,7 @@
 
         <!-- LinkedIn Login -->
         <div class="col-lg-4">
-            <div class="card">
+            <div class="card card_shadow">
                 <div class="card-header">
                     <h5 class="mb-0 h6">{{translate("LinkedIn Login")}}</h5>
                 </div>
@@ -197,7 +197,7 @@
 
         <!-- Google Analytics -->
         <div class="col-lg-4">
-            <div class="card">
+            <div class="card card_shadow">
                 <div class="card-header">
                     <h5 class="mb-0 h6">{{translate("Google Analytics")}}</h5>
                 </div>
@@ -237,7 +237,7 @@
 
         <!-- Google reCAPTCHA -->
         <div class="col-lg-4">
-            <div class="card">
+            <div class="card card_shadow">
                 <div class="card-header">
                     <h5 class="mb-0 h6">{{translate("Google reCAPTCHA")}}</h5>
                 </div>
@@ -281,7 +281,7 @@
 
         <!-- facebook Chat -->
         <div class="col-lg-12">
-          <div class="card">
+          <div class="card card_shadow">
           	<div class="card-header">
           		<h6 class="fw-600 mb-0">{{ translate('Facebook Chat') }}</h6>
           	</div>
@@ -349,7 +349,7 @@
 
         <!-- facebook Pixel -->
         <div class="col-lg-12">
-          <div class="card">
+          <div class="card card_shadow">
           	<div class="card-header">
           		<h6 class="fw-600 mb-0">{{ translate('Facebook Pixel') }}</h6>
           	</div>
@@ -414,7 +414,7 @@
 
         <!-- facebook Comment -->
         <div class="col-lg-12">
-          <div class="card">
+          <div class="card card_shadow">
           	<div class="card-header">
           		<h6 class="fw-600 mb-0">{{ translate('Facebook Comment') }}</h6>
           	</div>
@@ -488,7 +488,7 @@
 
         <!-- Running Project Chat -->
         <div class="col-lg-12">
-          <div class="card">
+          <div class="card card_shadow">
           	<div class="card-header">
           		<h6 class="fw-600 mb-0">{{ translate('Running Project Chat') }}</h6>
           	</div>

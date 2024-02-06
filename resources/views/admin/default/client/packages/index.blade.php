@@ -17,7 +17,7 @@
 </div>
 <div class="row">
     <div class="col-lg-12">
-        <div class="card">
+        <div class="card card_shadow">
             <div class="card-header">
                 <h1 class="mb-0 h6">{{translate('All Packages')}}</h1>
             </div>

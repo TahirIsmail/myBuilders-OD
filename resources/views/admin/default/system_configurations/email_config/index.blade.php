@@ -4,7 +4,7 @@
 
     <div class="row">
         <div class="col-md-6">
-            <div class="card">
+            <div class="card card_shadow">
                 <div class="card-header">
                     <h1 class="mb-0 h6">{{translate("SMTP Configuration")}}</h1>
                 </div>
@@ -80,7 +80,7 @@
         </div>
 
         <div class="col-md-6">
-            <div class="card">
+            <div class="card card_shadow">
                 <div class="card-header">
                     <h5 class="mb-0 h6">{{translate('Test SMTP configuration')}}</h5>
                 </div>
@@ -98,7 +98,7 @@
                     </form>
                 </div>
             </div>
-            <div class="card">
+            <div class="card card_shadow">
                 <div class="card-header">
                     <h5 class="mb-0 h6">{{translate('Instruction')}}</h5>
                 </div>

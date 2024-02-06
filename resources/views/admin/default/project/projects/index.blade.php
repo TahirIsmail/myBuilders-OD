@@ -11,7 +11,7 @@
 </div>
 <div class="row">
     <div class="col-lg-12">
-        <div class="card">
+        <div class="card card_shadow">
             <form class="" id="sort_projects" action="" method="GET">
                 <div class="card-header row gutters-5">
                     <div class="col text-center text-md-left">

@@ -1587,7 +1587,7 @@
 
 
     @if (get_setting('slider_section_show') == 'on')
-        <section class="position-relative ">
+        <section class="position-relative bg-white">
 
 
 
@@ -1958,7 +1958,7 @@
         </section>
 
 
-        <div class="col-md-12" style="background:white ;margin-top:70px;margin-bottom:70px">
+        <div class="col-md-12" style="background:white ;padding-top:70px;">
             <div class="container" style ="padding: 0px">
                 <div class="col-md-12 d-flex justify-content-center align-items-center" style="background: white ">
                     <section class="hp-trades">

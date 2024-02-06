@@ -156,6 +156,8 @@
         cursor: pointer;
         padding: 5px;
     }
+
+    
 </style>
 
 {{-- {{-- <script>
@@ -191,12 +193,11 @@
 <header class="aiz-header">
     {{-- background: linear-gradient(to right,#ffffff,#C0C0C0); --}}
 
-    <nav class="navbar navbar-expand-lg navbar-light "
-        style=" background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(232,229,229,1) 6%, rgba(163,214,171,1) 17%, rgba(100,201,118,1) 28%, rgba(100,201,118,1) 100%) !important  ">
+    <nav class="navbar navbar-expand-lg navbar-light header_bg">
         <a href="{{ route('home') }}">
             <img src="{{ asset('public\assets\frontend\default\img\logo\builder_valley_logo.png') }}"
                 alt="MyBuilder - A new way to find and hire tradespeople" width="150" height="60"
-                style="margin-left:10%">
+                style="margin-left:22%;padding:3%">
         </a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -204,7 +205,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 15%;">
             {{-- <button class="btn-post">Post a job</button> --}}
             <ul class="navbar-nav ">
                 <li class="nav-item dropdown">

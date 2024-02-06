@@ -140,20 +140,20 @@
                     $unseen_chat_thread_count = count($unseen_chat_threads);
                 @endphp
                 <!-- Message -->
-                <li class="aiz-side-nav-item">
+                {{-- <li class="aiz-side-nav-item">
                     <a href="{{ route('all.messages') }}"
-                        class="aiz-side-nav-link d-flex align-items-center {{ areActiveRoutes(['all.messages', 'chat_view']) }}">
+                        class="aiz-side-nav-link d-flex align-items-center {{ areActiveRoutes(['all.messages', 'chat_view']) }}"> --}}
                         {{-- <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
                         <g id="Layer_2" data-name="Layer 2" transform="translate(-2 -3)">
                           <path id="message-square" d="M12.2,3H3.8A1.8,1.8,0,0,0,2,4.8v9.6a.6.6,0,0,0,.906.516L5.6,12.684a.6.6,0,0,1,.33-.084H12.2A1.8,1.8,0,0,0,14,10.8v-6A1.8,1.8,0,0,0,12.2,3ZM5.6,8.4a.6.6,0,1,1,.6-.6A.6.6,0,0,1,5.6,8.4ZM8,8.4a.6.6,0,1,1,.6-.6A.6.6,0,0,1,8,8.4Zm2.4,0a.6.6,0,1,1,.6-.6A.6.6,0,0,1,10.4,8.4Z" fill="#989ea8"/>
                         </g>
                     </svg> --}}
-                        <img src="{{ asset('public\assets\frontend\default\img\icons\chat.png') }}" style="width:25px"
+                        {{-- <img src="{{ asset('public\assets\frontend\default\img\icons\chat.png') }}" style="width:25px"
                             ;height="25px" />
                         <span class="aiz-side-nav-text ml-2">{{ translate('Message') }}</span>
                         <span class="badge badge-primary badge-circle">{{ $unseen_chat_thread_count }}</span>
                     </a>
-                </li>
+                </li> --}}
                 <!-- Services -->
                 {{-- <li class="aiz-side-nav-item">
                     <a href="javascript:void(0);" class="aiz-side-nav-link d-flex align-items-center">
@@ -305,7 +305,15 @@
                         </li>
                     </ul>
                 </li>
+                <li class="aiz-side-nav-item">
+                    <a href="{{ route('freelancer_working_Area') }}"
+                        class="aiz-side-nav-link {{ areActiveRoutes(['freelancer_working_Area']) }}">
+                        <img src="{{ asset('public\assets\frontend\default\img\icons\badge.png') }}"
+                            style="width:25px" ;height="25px" />
 
+                        <span class="aiz-side-nav-text ml-2">{{ translate('Working Area') }}</span>
+                    </a>
+                </li>
 
                 <li class="aiz-side-nav-item">
                     <a href="{{ route('user.account') }}"

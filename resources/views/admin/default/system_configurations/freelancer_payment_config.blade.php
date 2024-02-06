@@ -4,7 +4,7 @@
 
     <div class="row">
         <div class="col-lg-6 mx-auto">
-            <div class="card">
+            <div class="card card_shadow">
                 <div class="card-header">
                     <h5 class="mb-0 h6">{{translate("Minimum Amount For Withdraw Request")}}</h5>
                 </div>

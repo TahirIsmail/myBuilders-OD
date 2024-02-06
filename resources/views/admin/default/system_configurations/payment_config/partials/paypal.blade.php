@@ -1,10 +1,10 @@
 <!-- Paypal -->
 <div class="col-lg-6">
-    <div class="card">
+    <div class="card card_shadow">
         <div class="card-header">
             <h5 class="mb-0 h6">{{translate("Paypal Configuration")}}</h5>
         </div>
-        <div class="card-body">
+        <div class="card-body ">
             <form class="form-horizontal" action="{{ route('payment-config.store') }}" method="POST"
                   enctype="multipart/form-data">
                 @csrf

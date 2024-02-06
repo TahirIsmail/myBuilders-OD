@@ -192,10 +192,10 @@
                                                         @endif
     		                                        </span>
     			            						<span class="flex-grow-1 text-truncate-2">{{ $project->name }}</span>
-    			            						<span class="flex-shrink-0 ml-3">
+    			            						{{-- <span class="flex-shrink-0 ml-3">
     			            							<span class="d-block opacity-50 fs-10">{{ translate('Budget') }}</span>
     			            							<span class="fs-15">{{ single_price($project->price) }}</span>
-    			            						</span>
+    			            						</span> --}}
     			            					</a>
     		            					</li>
                                         @endforeach

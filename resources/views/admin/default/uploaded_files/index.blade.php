@@ -13,7 +13,7 @@
 	</div>
 </div>
 
-<div class="card">
+<div class="card card_shadow">
     <form id="sort_uploads" action="">
         <div class="card-header row gutters-5">
             <div class="col-md-3">

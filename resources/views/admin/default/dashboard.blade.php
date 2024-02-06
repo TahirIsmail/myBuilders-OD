@@ -6,7 +6,7 @@
     <div class="col-lg-6">
         <div class="row gutters-10">
             <div class="col-6">
-                <div class="bg-grad-1 text-white rounded-lg mb-4 overflow-hidden">
+                <div class="bg-grad-1 text-white rounded-lg mb-4 overflow-hidden card_shadow">
                     <div class="px-3 pt-3">
                         <div class="opacity-50">
                             <span class="fs-12 d-block">{{ translate('Total Earnings From') }}</span>
@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div class="col-6">
-                <div class="bg-grad-2 text-white rounded-lg mb-4 overflow-hidden">
+                <div class="bg-grad-2 text-white rounded-lg mb-4 overflow-hidden card_shadow">
                     <div class="px-3 pt-3">
                         <div class="opacity-50">
                             <span class="fs-12 d-block">{{ translate('Total Earnings From') }}</span>
@@ -34,7 +34,7 @@
                 </div>
             </div>
             <div class="col-6">
-                <div class="bg-grad-3 text-white rounded-lg mb-4 overflow-hidden">
+                <div class="bg-grad-3 text-white rounded-lg mb-4 overflow-hidden card_shadow">
                     <div class="px-3 pt-3">
                         <div class="opacity-50">
                             <span class="fs-12 d-block">{{ translate('Total Earnings From') }}</span>
@@ -48,7 +48,7 @@
                 </div>
             </div>
             <div class="col-6">
-                <div class="bg-grad-4 text-white rounded-lg mb-4 overflow-hidden">
+                <div class="bg-grad-4 text-white rounded-lg mb-4 overflow-hidden card_shadow">
                     <div class="px-3 pt-3">
                         <div class="opacity-50">
                             <span class="fs-12 d-block">{{ translate('Total Earnings of') }}</span>
@@ -66,7 +66,7 @@
     <div class="col-lg-6">
         <div class="row gutters-10">
             <div class="col-6">
-                <div class="card">
+                <div class="card card_shadow">
                     <div class="card-header">
                         <h6 class="mb-0 fs-14">{{ translate('Top Client Packages') }}</h6>
                     </div>
@@ -76,7 +76,7 @@
                 </div>
             </div>
             <div class="col-6">
-                <div class="card">
+                <div class="card card_shadow">
                     <div class="card-header">
                         <h6 class="mb-0 fs-14">{{ translate('Top Tradesman Packages') }}</h6>
                     </div>
@@ -90,7 +90,7 @@
 </div>
 <div class="row gutters-10">
     <div class="col-md-8">
-        <div class="card">
+        <div class="card card_shadow">
             <div class="card-header">
                 <h6 class="mb-0 fs-14">{{ translate('Last Year Earnings') }}</h6>
             </div>
@@ -100,7 +100,7 @@
         </div>
     </div>
     <div class="col-md-4">
-        <div class="card bg-primary text-white">
+        <div class="card bg-primary text-white card_shadow">
             <div class="card-header border-soft-dark">
                 <h6 class="mb-0">{{ translate('Last 30 Days Stat') }}</h6>
             </div>
@@ -127,7 +127,7 @@
         </div>
     </div>
 </div>
-<div class="card">
+<div class="card card_shadow">
     <div class="card-header">
         <h6 class="mb-0">{{ translate('Top running Projects') }}</h6>
         <a href="{{ route('running_projects') }}">{{ translate('View All') }}</a>

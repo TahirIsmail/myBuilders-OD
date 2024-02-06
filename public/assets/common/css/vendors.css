@@ -3229,7 +3229,7 @@ input[type="submit"].btn-block {
 .dropdown-item:active {
     color: #fff;
     text-decoration: none;
-    background-color: #007bff;
+    background-color: #64c9760f;
 }
 .dropdown-item.disabled,
 .dropdown-item:disabled {
@@ -7595,7 +7595,7 @@ button.bg-dark:hover {
 }
 .mr-5,
 .mx-5 {
-    margin-right: 3rem !important;
+    margin-right: 3rem ;
 }
 .mb-5,
 .my-5 {
@@ -9322,11 +9322,11 @@ button.bg-dark:hover {
     color: #fff !important;
 }
 .text-primary {
-    color: #007bff !important;
+    color: rgb(85, 185, 123) !important;
 }
 a.text-primary:focus,
 a.text-primary:hover {
-    color: #0056b3 !important;
+    color: rgb(64 154 98) !important;
 }
 .text-secondary {
     color: #6c757d !important;
