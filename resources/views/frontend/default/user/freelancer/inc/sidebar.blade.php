@@ -295,19 +295,11 @@
 
                         <span class="aiz-side-nav-text ml-2">{{ translate('Business Profile') }}</span>
                     </a>
-                    <ul class="aiz-side-nav-list level-2">
-                        <li class="aiz-side-nav-item">
-                            <a href="{{ route('user.workingarea') }}"
-                                class="aiz-side-nav-link {{ areActiveRoutes(['freelance.workingarea']) }}"> 
-                                <i class="fas fa-caret-right mt-auto mb-auto" style="color: #65cb75;"></i>
-                                <span class="aiz-side-nav-text ml-2">{{ translate('Working Area') }}</span>
-                            </a>
-                        </li>
-                    </ul>
+                    
                 </li>
                 <li class="aiz-side-nav-item">
-                    <a href="{{ route('freelancer_working_Area') }}"
-                        class="aiz-side-nav-link {{ areActiveRoutes(['freelancer_working_Area']) }}">
+                    <a href="{{ route('user.workingarea') }}"
+                        class="aiz-side-nav-link {{ areActiveRoutes(['freelance.workingarea']) }}">
                         <img src="{{ asset('public\assets\frontend\default\img\icons\badge.png') }}"
                             style="width:25px" ;height="25px" />
 

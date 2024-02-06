@@ -1,6 +1,8 @@
 <div>
     <!-- It is quality rather than quantity that matters. - Lucius Annaeus Seneca -->
-    {{dd('hello')}}
+    @php
+        $CategoryAnswers = json_decode($lead->jobquestionsarray);
+    @endphp
 
     <div class="card card_shadow w-100 border-gray-light ">
         <div class="card-body custom_Card_padding">
@@ -13,7 +15,7 @@
                             <i class="fas fa-map-marker-alt mb-map no-space lead-details__meta-icon"></i>
 
                             <span class="lead-details__meta-title">{{ $lead->country }}</span><span
-                                class="lead-details__meta-detail"> miles away</span></a>
+                                class="lead-details__meta-detail">{{$distance}} miles away</span></a>
                         <div class="lead-details__meta mt-1">
                             <span class="lead-details__status">New lead</span>
                             <span class="lead-details__meta-detail">Lead sent 18 hours ago</span>
@@ -86,7 +88,7 @@
                     </div>
 
                     <div class="col-md-4  text-right ">
-                        <a href="#" class="job-poster"><span class="job-poster__link">View
+                        <a href="{{ route('client_details',['user_name' => $lead->client->user_name])}}" class="job-poster"><span class="job-poster__link">View
                                 profile</span> </a>
                     </div>
 
@@ -94,7 +96,7 @@
 
                 <div class="underline">
                     <div class="col-md-12 shortlist-fees__shortlist h-200px bg-black p-0 color-white">
-                        <div id="map" style="width: 600px; height:200px;"></div>
+                        <div id="map" style=" height:200px;"></div>
                     </div>
                     <div class="underline">
                         <h3 class="h2_custom">Shortlist activity</h3>
