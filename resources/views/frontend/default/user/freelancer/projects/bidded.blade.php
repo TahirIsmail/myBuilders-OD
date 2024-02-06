@@ -11,7 +11,7 @@
                 <div class="aiz-titlebar mb-4">
                     <div class="row align-items-center">
                         <div class="col-md-6">
-                            <h1 class="fs-16 fw-700">{{ translate('Bidded Projects') }}</h1>
+                            <h1 class="fs-16 fw-700">{{ translate('Interested Job') }}</h1>
                         </div>
                     </div>
                 </div>
@@ -21,15 +21,15 @@
                             <div class="card project-card overflow-hidden rounded-2 border-gray-light">
                                 <div class="card-header border-bottom-0">
                                     <div>
-                                        <span class="badge badge-primary badge-inline badge-md">{{ single_price($bidded_project->project->price) }}</span>
+                                        {{-- <span class="badge badge-primary badge-inline badge-md">{{ single_price($bidded_project->project->price) }}</span> --}}
                                     </div>
                                     <div>
                                         @if (\App\Models\ProjectUser::where('project_id', $bidded_project->project_id)->where('user_id', Auth::user()->id)->first() != null)
-                                            <span class="badge badge-success badge-inline badge-md">{{ translate('Hired You') }}</span>
+                                            <span class="badge badge-success badge-inline badge-md">{{ translate('Shortlisted You') }}</span>
                                         @elseif(\App\Models\ProjectUser::where('project_id', $bidded_project->project_id)->first() != null)
-                                            <span class="badge badge-secondary badge-inline badge-md">{{ translate('Someone Else Hired') }}</span>
+                                            <span class="badge badge-secondary badge-inline badge-md">{{ translate('Someone Else Shortlisted') }}</span>
                                         @else
-                                            <span class="badge badge-secondary badge-inline badge-md">{{ translate('Not Hired Yet') }}</span>
+                                            <span class="badge badge-secondary badge-inline badge-md">{{ translate('Not Shortlisted Yet') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -90,13 +90,13 @@
     								<div>
                                         <ul class="d-flex list-inline mb-0">
                                             <li class="border-right mr-2 pr-2">
-                                                <span class="small text-secondary">{{ translate('Total bids') }}</span>
+                                                <span class="small text-secondary">{{ translate('Total Interests') }}</span>
                                                 <h4 class="mb-0 h6 fs-13">{{ $bidded_project->project->bids }}</h4>
                                             </li>
-                                            <li>
-                                                <span class="small text-secondary">{{ translate('My bid') }}</span>
+                                            {{-- <li>
+                                                <span class="small text-secondary">{{ translate('My Interest') }}</span>
                                                 <h4 class="mb-0 h6 fs-13">{{ single_price($bidded_project->amount) }}</h4>
-                                            </li>
+                                            </li> --}}
                                         </ul>
     								</div>
                                 </div>

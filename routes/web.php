@@ -13,6 +13,7 @@ use App\Http\Controllers\Payment\FlutterwaveController;
 use App\Http\Controllers\Payment\MercadopagoController;
 use App\Http\Controllers\Payment\StripeController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\BiddingController;
 use App\Http\Controllers\HomeController;
 
 /*
@@ -199,7 +200,7 @@ Route::post('/service/package-purchase','ServiceController@purchase_service_pack
 // Freelancer middleware
 Route::group(['middleware' => ['auth','phoneverified']], function(){
     Route::post('/bids/store', 'BiddingController@store')->name('bids.store');
-
+	Route::post('/bids/save_interest','BiddingController@save_interest')->name('bids.save_interest');
 
 	Route::get('/account-settings', 'ProfileController@user_account')->name('user.account');
 	Route::get('/working-area','ProfileController@working_area')->name('user.workingarea');

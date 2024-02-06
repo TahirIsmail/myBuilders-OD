@@ -288,14 +288,14 @@
                                         <a class="btn btn-block btn-outline-primary d-flex align-items-center justify-content-center fs-14 fw-700 rounded-1"
                                             href="{{ route('bookmarked-projects.store', encrypt($project->id)) }}">
                                             <i class="las la-bookmark fs-16 fw-700"></i>
-                                            <span class="ml-2">{{ translate('Bookmark Project') }}</span>
+                                            <span class="ml-2">{{ translate('Bookmark Jobs') }}</span>
                                         </a>
                                     @endif
                                 </div>
                                 <div class="mb-4">
                                     @if (!Auth::check())
                                         <div class="alert alert-info rounded-1" role="alert">
-                                            {{ translate('You need to login as a freelancer to bid the project.') }}
+                                            {{ translate('You need to login as a tradesmen to bid the project.') }}
                                         </div>
                                     @elseif (Auth::check() && auth()->user()->user_type == 'admin')
                                         <div class="alert alert-info rounded-1" role="alert">
@@ -309,10 +309,10 @@
                                         @endphp
                                         @if ($allow_for_bid == null)
                                             <a href="javascript:void(0)" class="btn btn-primary btn-block rounded-1"
-                                                onclick="bid_modal({{ $project->id }})">{{ translate('Show Interest') }}</a>
+                                                onclick="show_interest({{ $project->id }})">{{ translate('Show Interest') }}</a>
                                         @else
                                             <div class="alert alert-info rounded-1" role="alert">
-                                                {{ translate('You have already submitted bid for this project.') }}
+                                                {{ translate('You have already showed interest for this Job.') }}
                                             </div>
                                         @endif
                                     @endif
@@ -548,15 +548,23 @@
 @endsection
 @section('script')
     <script type="text/javascript">
-        function bid_modal(id) {
-            $.post('{{ route('get_bid_for_project_modal') }}', {
+        // function bid_modal(id) {
+        //     $.post('{{ route('get_bid_for_project_modal') }}', {
+        //         _token: '{{ csrf_token() }}',
+        //         id: id
+        //     }, function(data) {
+        //         $('#bid_for_project').modal('show');
+        //         $('#bid_for_modal_body').html(data);
+        //     })
+        // }
+            function show_interest(id){
+                $.post('{{ route('bids.save_interest') }}', {
                 _token: '{{ csrf_token() }}',
                 id: id
             }, function(data) {
-                $('#bid_for_project').modal('show');
-                $('#bid_for_modal_body').html(data);
+                    window.location.href('{{ route('bidded_projects') }}')
             })
-        }
+            }
     </script>
             
 @endsection
@@ -577,6 +585,6 @@
                         </div>
                         @include('frontend.default.partials.bookmark_remove_modal')
 @endsection
-
-
-
+@section('script')
+<script src="{{ my_asset('assets/common/js/app.js') }}"></script>
+@endsection

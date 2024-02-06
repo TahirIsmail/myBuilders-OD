@@ -47,7 +47,7 @@ class NotificationUtility
         if (isClient()) {
             $panel = 'client';
         } else if (isFreelancer()) {
-            $panel = 'freelancer';
+            $panel = 'tradesmen';
         } else if (!isClient() && !isFreelancer()) {
             $panel = 'admin';
         }
@@ -95,7 +95,7 @@ class NotificationUtility
             if (isClient()) {
                 $panel = 'client';
             } else if (isFreelancer()) {
-                $panel = 'freelancer';
+                $panel = 'tradesmen';
             } else if (!isClient() && !isFreelancer()) {
                 $panel = 'admin';
             }
