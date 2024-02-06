@@ -64,6 +64,7 @@
                         <span class="aiz-side-nav-text ml-2">{{ translate('Dashboard') }}</span>
                     </a>
                 </li>
+                <!-- 
                 <li class="aiz-side-nav-item">
                     <a href="javascript:void(0);" class="aiz-side-nav-link d-flex align-items-center">
                         {{-- <i class="las la-file-alt aiz-side-nav-icon"></i> --}}
@@ -107,7 +108,7 @@
                         </li>
                     </ul>
                 </li>
-
+                -->
 
 
                 @php

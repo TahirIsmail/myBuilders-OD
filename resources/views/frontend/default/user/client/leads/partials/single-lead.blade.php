@@ -88,7 +88,7 @@
                     </div>
 
                     <div class="col-md-4  text-right ">
-                        <a href="#" class="job-poster"><span class="job-poster__link">View
+                        <a href="{{ route('client.details',['user_name' => $lead->client->user_name])}}" class="job-poster"><span class="job-poster__link">View
                                 profile</span> </a>
                     </div>
 

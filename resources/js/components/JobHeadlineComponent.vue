@@ -221,11 +221,11 @@ const submitForm = async () => {
                 icon: "success",
                 title: `The Job Information has been for ${user.name},\nDo you want to save it!`,
                 showConfirmButton: true,
-                timer: 1500,
+                // timer: 1500,
                 confirmButtonText: "Save",
                 denyButtonText: `Don't save`,
             }).then((result) => {
-                /* Read more about isConfirmed, isDenied below */
+               
 
                 if (result.isConfirmed) {
                     store.sendJobinformation();

@@ -52,7 +52,7 @@
                                         <path id="Path_25847" data-name="Path 25847" d="M8.8,2A4.806,4.806,0,0,0,4,6.8c0,1.953,1.418,3.575,2.92,5.292.475.544.967,1.106,1.405,1.675a.6.6,0,0,0,.95,0c.438-.569.93-1.131,1.405-1.675,1.5-1.717,2.92-3.338,2.92-5.292A4.806,4.806,0,0,0,8.8,2Zm0,6.6a1.8,1.8,0,1,1,1.8-1.8A1.8,1.8,0,0,1,8.8,8.6Z" transform="translate(-4 -2)" fill="#989ea8"/>
                                     </svg>
                                     @if ($client->address != null && $client->address->city != null && $client->address->country != null)
-                                        <span class="ml-1">{{ $client->address->city->name }}, {{ $client->address->city->country->name }}</span>
+                                        <span class="ml-1">{{ $client->address->city }}, {{ $client->address->country }}</span>
                                     @endif
                                 </div>
                             </div>

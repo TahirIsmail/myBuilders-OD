@@ -526,9 +526,9 @@
         										<ul class="d-flex list-inline mb-0">
         											<li>
                                                         @if ($similar_type_project->bids > 0)
-<h4 class="mb-0 h6 fs-12 fw-700">{{ $similar_type_project->bids }} + <span class="small ml-2">{{ translate('Bids') }}</span></h4>
+<h4 class="mb-0 h6 fs-12 fw-700">{{ $similar_type_project->bids }} + <span class="small ml-2">{{ translate('Interests') }}</span></h4>
 @else
-<h4 class="mb-0 h6 fs-12 fw-700">{{ $similar_type_project->bids }} <span class="small ml-3">{{ translate('Bids') }}</span></h4>
+<h4 class="mb-0 h6 fs-12 fw-700">{{ $similar_type_project->bids }} <span class="small ml-3">{{ translate('Interests') }}</span></h4>
 @endif
         											</li>
         										</ul>

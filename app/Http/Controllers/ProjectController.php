@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Ballen\Distical\Calculator as DistanceCalculator;
 use Ballen\Distical\Entities\LatLong;
 use App\Utility\EmailUtility;
@@ -419,13 +420,14 @@ class ProjectController extends Controller
         $project->slug = Str::slug($request->jobHeadline, '-') . date('Ymd-his');
         $project->save();
         $jobaddress = new Address(
-            ['country' => $request->country,
-             'region' => $request->region,
-             'latitude' => $request->latitude,
-             'longitude' => $request->longitude,
-             'postal_code' => $request->postcode,
-             'street' => $request->street,
-             'city' => $request->city,
+            [
+                'country' => $request->country,
+                'region' => $request->region,
+                'latitude' => $request->latitude,
+                'longitude' => $request->longitude,
+                'postal_code' => $request->postcode,
+                'street' => $request->street,
+                'city' => $request->city,
             ]
         );
         $project->address()->save($jobaddress);
@@ -445,7 +447,7 @@ class ProjectController extends Controller
             route('project.details', ['slug' => $project->slug])
         );
 
-        return response()->json(['message' => 'job posted successfully',200])->header('X-Redirect',route('project.details', ['slug' => $project->slug]));
+        return response()->json(['message' => 'job posted successfully', 200])->header('X-Redirect', route('project.details', ['slug' => $project->slug]));
     }
 
 
@@ -453,73 +455,79 @@ class ProjectController extends Controller
     public function client_leads()
     {
         $projects = Project::with('project_category')->get();
-        
 
-        return view('frontend.default.user.client.leads.index',compact('projects'));
+
+        return view('frontend.default.user.client.leads.index', compact('projects'));
     }
-      
+
 
 
     public function client_interested_leads()
     {
         $projects = Project::with('project_category')->get();
-        
 
-        return view('frontend.default.user.client.leads.interestedleads',compact('projects'));
+
+        return view('frontend.default.user.client.leads.interestedleads', compact('projects'));
     }
     // public function Shortlisted_leads()
     // {
     //     $projects = Project::with('project_category')->get();
-        
 
-    public function showLead($id){
+
+    public function showLead($id)
+    {
         $lead = Project::where('id', $id)->with('address')->first();
         $user  = auth()->user();
-        $userCord = new LatLong($user->address->latitude,$user->address->longitude);
+        $userCord = new LatLong($user->address->latitude, $user->address->longitude);
         $projectCord = new LatLong($lead->address->latitude, $lead->address->longitude);
         $temp = new DistanceCalculator($userCord, $projectCord);
-        $distance= round($temp->get()->asMiles(),2);
-        
+        $distance = round($temp->get()->asMiles(), 2);
+
         if (!$lead) {
             return response()->json(['error' => 'Lead not found'], 404);
         }
-    
+
         // Assuming you have a Blade view named 'leads.show' to display the lead details
-        $view = view('frontend.default.user.client.leads.partials.single-lead', compact('lead','distance'))->render();
-    
+        $view = view('frontend.default.user.client.leads.partials.single-lead', compact('lead', 'distance'))->render();
+
         return response()->json(['html' => $view]);
     }
 
     public function freelancer_Leads()
     {
-       
-        $projects = Project::with('project_category','address')->get();
-        
+
+        $projects = Project::with('project_category', 'address')->get();
+
         $user  = auth()->user();
-        $userCord = new LatLong($user->address->latitude,$user->address->longitude);
+        $userCord = new LatLong($user->address->latitude, $user->address->longitude);
         $projects->transform(function ($project) use ($userCord) {
             $projectCord = new LatLong($project->address->latitude, $project->address->longitude);
-            $distance = new DistanceCalculator($userCord, $projectCord ); // Assuming you have a method to calculate distance in your LatLong class
-            $project->distance_from_user =  round($distance->get()->asMiles(),2); // Adding distance to the project object
+            $distance = new DistanceCalculator($userCord, $projectCord); // Assuming you have a method to calculate distance in your LatLong class
+            $project->distance_from_user =  round($distance->get()->asMiles(), 2); // Adding distance to the project object
             return $project;
         });
+        $radius = $user->profile->distance;
+       
+        $projectsInWorkingArea = $projects->filter(function ($project) use ($radius) {
+            return $project->distance_from_user <= $radius;
+        });
         
-        return view('frontend.default.user.freelancer.leads.index',compact('projects'));
+        return view('frontend.default.user.freelancer.leads.index')->with(['projects' => $projectsInWorkingArea]);
     }
 
 
     public function freelancer_Interested_leads()
     {
         $projects = Project::with('project_category')->get();
-        
 
-        return view('frontend.default.user.freelancer.leads.interestedleads',compact('projects'));
+
+        return view('frontend.default.user.freelancer.leads.interestedleads', compact('projects'));
     }
     public function freelancer_Shortlisted_leads()
     {
         $projects = Project::with('project_category')->get();
-        
 
-        return view('frontend.default.user.freelancer.leads.shortlistedleads',compact('projects'));
+
+        return view('frontend.default.user.freelancer.leads.shortlistedleads', compact('projects'));
     }
 }
