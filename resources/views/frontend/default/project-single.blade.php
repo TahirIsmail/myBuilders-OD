@@ -207,8 +207,9 @@
                             <h5 class="my-3 lh-1-5 fs-16 fw-700">
                                 @if (count($project->projectBids) > 0)
                                     {{ count($project->projectBids) }}
-                                    {{ translate('Tradesmen are showing interest for this job') }} ({{ translate('Average') }}:
-                                    {{ single_price($project->projectBids->sum('amount') / count($project->projectBids)) }})
+                                    {{ translate('Tradesmen are showing interest for this job') }} 
+                                    {{-- ({{ translate('Average') }}:
+                                    {{ single_price($project->projectBids->sum('amount') / count($project->projectBids)) }}) --}}
                                 @else
                                     {{ translate('Tradesmen Shown Interest') }}
                                 @endif
@@ -404,7 +405,7 @@
                                                     {{ translate('Jobs posted') }}</span>
                                             </div>
                                         </div>
-                                        <div class="media">
+                                        <!--<div class="media">
                                             <div class="text-center text-secondary mt-1 mr-3">
                                                 {{-- <i class="las la-money-check-alt fs-16"></i> --}}
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
@@ -425,7 +426,7 @@
                                                     class="d-block fs-12 font-weight-medium">{{ single_price(\App\Models\MilestonePayment::where('client_user_id', $project->client_user_id)->where('paid_status', 1)->sum('amount')) }}
                                                     {{ translate('total spent') }}</span>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>
@@ -436,7 +437,7 @@
 
             <div class="row">
                 <div class="col-12">
-                    <h5 class="mb-4 fs-16 fw-700">{{ translate('Similar Projects') }}</h5>
+                    <h5 class="mb-4 fs-16 fw-700">{{ translate('Similar Jobs') }}</h5>
                     <div class="aiz-carousel gutters-10 half-outside-arrow" data-items="3" data-xl-items="3"
                         data-md-items="2" data-sm-items="1" data-arrows='true'>
 
@@ -562,7 +563,7 @@
                 _token: '{{ csrf_token() }}',
                 id: id
             }, function(data) {
-                    window.location.href('{{ route('bidded_projects') }}')
+                location.reload();
             })
             }
     </script>

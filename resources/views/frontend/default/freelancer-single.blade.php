@@ -85,10 +85,10 @@
 
                             <div class="text-lg-right d-flex justify-content-between align-items-end d-lg-block">
                                 <div class="mb-lg-4">
-                                    <h4 class="mb-0 fw-900">{{ single_price($freelancer->profile->hourly_rate) }}</h4>
-                                    <div class="small text-secondary">
+                                    {{-- <h4 class="mb-0 fw-900">{{ single_price($freelancer->profile->hourly_rate) }}</h4> --}}
+                                    {{-- <div class="small text-secondary">
                                         <span>{{ translate('per Hour') }}</span>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <a class="btn btn-primary rounded-1"
                                     href="{{ route('invition_for_hire_freelancer', $freelancer->user_name) }}">{{ translate('Hire Me') }}</a>

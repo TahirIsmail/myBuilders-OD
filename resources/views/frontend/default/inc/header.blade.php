@@ -528,8 +528,8 @@
                                         <span class="ml-2 text-left d-none d-xl-inline-block text-white">
                                             <span class="h6 d-block mb-0 text-white">{{ Auth::user()->name }}</span>
                                             @if (Auth::check() && isFreelancer())
-                                                <span
-                                                    class="small fw-500  text-white">{{ single_price(Auth::user()->profile->balance) }}</span>
+                                                {{-- <span
+                                                    class="small fw-500  text-white">{{ single_price(Auth::user()->profile->balance) }}</span> --}}
                                             @endif
                                         </span>
                                     </button>

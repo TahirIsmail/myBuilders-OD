@@ -25,9 +25,9 @@
                         @forelse ($projects as $key => $project)
 							<div class="card card_shadow project-card rounded-2 border-gray-light">
 								<div class="card-header border-bottom-0">
-									<div>
+									{{-- <div>
 										<span class="badge badge-primary badge-inline badge-md">{{ single_price($project->price) }}</span>
-									</div>
+									</div> --}}
 									<div>
 										@if ($project->cancel_status == 1)
 											<span class="badge badge-danger badge-inline badge-md">{{ translate('Cancelled') }}</span>
@@ -226,7 +226,7 @@
 										<div class="text-right">
 											<a href="javascript:void(0)" class="btn btn-secondary btn-sm fw-500 confirm-cancel rounded-1 mb-1 mb-mb-0" data-href="{{route('projects.cancel', $project->id)}}">{{ translate('Cancel') }}</a>
 	                                        <a href="{{ route('projects.edit',encrypt($project->id)) }}" class="btn btn-secondary btn-sm fw-500 rounded-1 mb-1 mb-mb-0">{{ translate('Edit') }}</a>
-	                                        <a href="{{ route('project.bids', $project->slug) }}" class="btn btn-primary btn-sm fw-500 rounded-1 mb-1 mb-mb-0">{{translate('See All Bidders')}}</a>
+	                                        <a href="{{ route('project.bids', $project->slug) }}" class="btn btn-primary btn-sm fw-500 rounded-1 mb-1 mb-mb-0">{{translate('See All Who Shown Interest')}}</a>
 										</div>
 									@endif
 								</div>

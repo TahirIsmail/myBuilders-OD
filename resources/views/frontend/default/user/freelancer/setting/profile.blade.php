@@ -277,7 +277,7 @@
                                         </select>
                                     </div>
                                    <div class="col-lg-4">
-                                            <label for="country" class="form-label">{{ translate('City') }}</label>
+                                            <label for="country" class="form-label">{{ translate('City/State') }}</label>
                                             <select class="form-control aiz-selectpicker" name="city_id" id="city_id"
                                                  data-msg="Please select your city." data-live-search="true">
 
@@ -291,7 +291,7 @@
                                             required placeholder="{{ translate('Eg. 1203') }}" class="form-control">
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label id="nameLabel" class="form-label">
                                         {{ translate('Address') }}
                                         <span class="text-danger">*</span>
@@ -300,7 +300,7 @@
                                         @if (optional($user_profile->user->address)->street != null) value="{{ $user_profile->user->address->street }}" @endif
                                         placeholder="{{ translate('Enter your street address') }}" required
                                         aria-describedby="nameLabel">
-                                </div>
+                                </div> --}}
                                 <div class="form-group row">
                                     {{-- <div class="col-md-6">
                                         <label id="nameLabel" class="form-label">
@@ -429,7 +429,7 @@
                                     </div>
                                 </div>
                             @endif
-                            {{-- @if ($user_profile->user->userPackage->portfolio_add_limit > count($user_profile->user->userPortfolios))
+                            {{-- @if ($user_profile->user->userPackage->portfolio_add_limit > count($user_profile->user->userPortfolios)) --}}
                                 <form action="{{ route('user_profile.portfolio_add') }}" method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
@@ -478,11 +478,11 @@
                                         </div>
                                     </div>
                                 </form>
-                            @else
-                                <div class="alert alert-info" role="alert">
+                           {{--  @else --}}
+                               <!-- <div class="alert alert-info" role="alert">
                                     {{ translate('You have added maximum number of portfolio according to your package.') }}
-                                </div>
-                            @endif --}}
+                                </div> -->
+                            {{-- @endif --}}
                         </div>
                     </div>
 
@@ -539,7 +539,7 @@
                                     </div>
                                 </div>
                             @endif
-                            {{-- @if ($user_profile->user->userPackage->job_exp_limit > count($user_profile->user->workExperiences))
+                            {{-- @if ($user_profile->user->userPackage->job_exp_limit > count($user_profile->user->workExperiences)) --}}
                                 <form action="{{ route('user_profile.work_experience_add') }}" method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
@@ -598,11 +598,11 @@
                                         <!-- End Buttons -->
                                     </div>
                                 </form>
-                            @else
-                                <div class="alert alert-info" role="alert">
+                            {{-- @else --}}
+                                <!--<div class="alert alert-info" role="alert">
                                     {{ translate('You have added maximum number of work experience according to your package.') }}
-                                </div>
-                            @endif --}}
+                                </div> -->
+                            {{-- @endif --}}
                         </div>
                     </div>
 

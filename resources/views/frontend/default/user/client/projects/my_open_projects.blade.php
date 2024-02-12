@@ -19,9 +19,9 @@
                         @forelse ($projects as $key => $project)
 							<div class="card card_shadow project-card rounded-2 border-gray-light">
 								<div class="card-header border-bottom-0">
-									<div>
+									{{-- <div>
 										<span class="badge badge-primary badge-inline badge-md">{{ single_price($project->price) }}</span>
-									</div>
+									</div> --}}
 									<div>
 										@if($project->private == 1)
 											<span class="badge badge-warning badge-inline badge-md">{{ translate('Private') }}</span>
@@ -74,7 +74,7 @@
 									<div class="d-flex align-items-center">
 										<ul class="d-flex list-inline mb-0">
 											<li>
-				                                <span class="small text-secondary">{{ translate('Total Bids') }}</span>
+				                                <span class="small text-secondary">{{ translate('Total Interests') }}</span>
                                                 @if ($project->bids > 0)
                                                     <h4 class="mb-0 h6 fs-13">{{ $project->bids }} +</h4>
                                                 @else
@@ -87,7 +87,7 @@
                                         <a href="javascript:void(0)" class="btn btn-secondary btn-sm fw-500 confirm-cancel rounded-1" data-href="{{route('projects.cancel', $project->id)}}">{{ translate('Cancel Project') }}</a>
 
                                         @if($project->private != 1)
-                                        	<a href="{{ route('project.bids', $project->slug) }}" class="btn btn-primary btn-sm fw-500 rounded-1">{{translate('See All Bidders')}}</a>
+                                        	<a href="{{ route('project.bids', $project->slug) }}" class="btn btn-primary btn-sm fw-500 rounded-1">{{translate('See All Who Shown Interest')}}</a>
                                         @endif
 									</div>
 								</div>

@@ -92,8 +92,8 @@
                         <strong>{{ translate('Location') }} :</strong>
                         <span class="ml-2">
                             @if ($user->address->street != null) {{ $user->address->street }} @endif
-                            @if ($user->address->city != null) {{ $user->address->city->name }} @endif
-                            @if ($user->address->country != null) {{ $user->address->country->name }} @endif
+                            @if ($user->address->city != null) {{ $user->address->city }} @endif
+                            @if ($user->address->country != null) {{ $user->address->country }} @endif
                         </span>
                     </p>
                     <p class="text-muted">

@@ -47,7 +47,7 @@
 							<div class="px-4 pt-4">
 								<div class="row">
 									<div class="col-7">
-										<div class="fs-14">{{ translate('Completed Projects') }}</div>
+										<div class="fs-14">{{ translate('Jobs Won') }}</div>
 										@php
 											$completedProjects = 0;
 											foreach (Auth::user()->bids as $key => $projectUser) {
@@ -75,7 +75,7 @@
 							<div class="px-4 pt-4">
 								<div class="row">
 									<div class="col-7">
-										<div class="fs-14">{{ translate('Running Projects') }}</div>
+										<div class="fs-14">{{ translate('Shortlisted in Jobs') }}</div>
 										@php
 											$onGoingProjects = 0;
 											foreach (Auth::user()->projectUsers as $key => $projectUser) {
@@ -147,7 +147,7 @@
 	            	<div class="col-md-6">
 	            		<div class="card_shadow card rounded-2 border-gray-light">
 	            			<div class="card-header border-0">
-	            				<h6 class="mb-0 fs-16 fw-700">{{ translate('Running Projects') }}</h6>
+	            				<h6 class="mb-0 fs-16 fw-700">{{ translate('Shortlisted in Jobs') }}</h6>
 	            			</div>
 							<div class=" card-body px-0 pt-0">
 								<div class="aiz-auto-scroll c-scrollbar-light px-4" style="height: 340px; overflow-y: scroll;">
@@ -176,7 +176,7 @@
 	            	<div class="col-md-6">
 	            		<div class=" card_shadow card rounded-2 border-gray-light">
 	            			<div class=" card-header border-0">
-	            				<h6 class="mb-0 fs-16 fw-700">{{ translate('Suggested Projects') }}</h6>
+	            				<h6 class="mb-0 fs-16 fw-700">{{ translate('Suggested Jobs') }}</h6>
 	            			</div>
 	            			<div class="card-body px-0 pt-0">
 	            				<div class="aiz-auto-scroll c-scrollbar-light px-4" style="height: 340px;overflow-y: scroll;">
@@ -205,7 +205,7 @@
 	            		</div>
 	            	</div>
 	            </div>
-            	<div class="row gutters-15">
+            	<!-- <div class="row gutters-15">
             		<div class="col-md-4 d-flex">
             			<div class=" card_shadow card rounded-2 border-gray-light w-100">
 							<div class=" card-header border-0">
@@ -366,7 +366,7 @@
                             </div>
                         </div>
                     </div>
-            	</div>
+            	</div> -->
             </div>
         </div>
     </div>
@@ -379,9 +379,9 @@
     	type: 'doughnut',
         data: {
             labels: [
-				"{{ translate('Qouted Project') }}",
-				"{{ translate('Completed Project') }}",
-				"{{ translate('Running Project') }}",
+				"{{ translate('Showed Interest in Jobs') }}",
+				"{{ translate('Jobs Won') }}",
+				"{{ translate('Shortlisted in Jobs') }}",
             ],
             datasets: [
                 {

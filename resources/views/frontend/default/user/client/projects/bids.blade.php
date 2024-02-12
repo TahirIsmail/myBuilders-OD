@@ -10,7 +10,7 @@
                 <div class="aiz-titlebar mb-4">
                     <div class="row align-items-center">
                         <div class="col">
-                            <h1 class="fs-16 fw-700">{{ translate('Bids for') }} {{ $project->name }}</h1>
+                            <h1 class="fs-16 fw-700">{{ translate('Interest Shown for :') }} {{ $project->name }}</h1>
                         </div>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
                                                 <div>
                                                     <i class="las la-map-marker opacity-50"></i>
                                                         @if ($bid_user->freelancer->address != null && $bid_user->freelancer->address->city != null && $bid_user->freelancer->address->country != null)
-                                                            <span>{{ $bid_user->freelancer->address->city->name }}, {{ $bid_user->freelancer->address->country->name }}</span>
+                                                            <span>{{ $bid_user->freelancer->address->city }}, {{ $bid_user->freelancer->address->country }}</span>
                                                         @endif
                                                 </div>
                                             </div>
@@ -60,15 +60,15 @@
                                     </div>
                                 </div>
                                 <div class="flex-shrink-0 pt-4 pt-xl-0 pl-xl-5 d-flex flex-row flex-xl-column justify-content-between">
-                                    <div class="text-right">
+                                    {{-- <div class="text-right">
                                         <h4 class="mb-0">{{ single_price($bid_user->amount) }}</h4>
                                         <div class="mt-xl-2 small text-secondary">
                                             <span>{{ translate('Bidded Amount') }}</span>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div>
                                         @if ($project->biddable == 1)
-                                            <button onclick="hiring_modal({{ $project->id }}, {{ $bid_user->bid_by_user_id }})" type="button" class="btn btn-outline-secondary btn-sm btn-block">Hire now</button>
+                                            <button onclick="hiring_modal({{ $project->id }}, {{ $bid_user->bid_by_user_id }})" type="button" class="btn btn-outline-secondary btn-sm btn-block">Shortlist now</button>
                                             <form class="mt-2" action="{{ route('call_for_interview') }}" method="post">
                                                 @csrf
                                                 <input type="hidden" id="project_id" name="project_id" value="{{ $project->id }}">
@@ -76,7 +76,7 @@
                                                 <button type="submit" class="btn btn-primary btn-sm btn-block rounded-1">{{ translate('Call for Interview') }}</button>
                                             </form>
                                         @elseif($project->project_user != null && $project->project_user->user_id == $bid_user->bid_by_user_id)
-                                            <button type="button" class="btn btn-primary btn-sm btn-block rounded-1">{{ translate('Hired') }}</a>
+                                            <button type="button" class="btn btn-primary btn-sm btn-block rounded-1">{{ translate('Shortlisted') }}</a>
                                         @endif
                                     </div>
                                 </div>
@@ -117,7 +117,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">{{ translate('Confirm Hiring') }}</h5>
+                <h5 class="modal-title" id="exampleModalLabel">{{ translate('Confirm Shortlisting') }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 </button>
             </div>
@@ -130,14 +130,14 @@
 
                     <div class="form-group">
                         <label class="form-label">
-                            {{translate('Project')}}
+                            {{translate('Job')}}
                             <span class="text-danger">*</span>
                         </label>
                         <div class="form-group">
                             <input type="text" class="form-control form-control-sm" name="project_name" value="{{ $project->name }}" disabled>
                         </div>
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label class="form-label">
                             {{translate('Amount')}}
                             <span class="text-danger">*</span>
@@ -145,9 +145,9 @@
                         <div class="form-group">
                             <input type="number" class="form-control form-control-sm" name="amount" value="" min="1" step="0.01" required>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="form-group text-right">
-                        <button type="submit" class="btn btn-sm btn-primary transition-3d-hover mr-1 rounded-1">{{ translate('Hire Now') }}</button>
+                        <button type="submit" class="btn btn-sm btn-primary transition-3d-hover mr-1 rounded-1">{{ translate('Shortlist Now') }}</button>
                     </div>
                 </form>
             </div>

@@ -108,7 +108,7 @@ Route::group(['middleware' => ['user']], function(){
 	Route::post('/view-messages','FCMController@view_messages')->name('project_chat_view');
 });
 
-Route::group(['middleware' => ['user','auth']], function(){
+Route::group(['middleware' => ['user','auth','phoneverified']], function(){
 	Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
 
 	Route::get('/projects/running-project', 'ProjectController@my_running_project')->name('projects.my_running_project');
@@ -167,7 +167,10 @@ Route::group(['middleware' => ['auth','phoneverified']], function(){
 	Route::get('/invition-for-hire-freelancer/{username}', 'HireController@freelancer_invition')->name('invition_for_hire_freelancer');
 	Route::post('/invition-for-hire-freelancer/store', 'HireController@store')->name('invition_for_hire_freelancer_sent');
 	
-
+    //Leads 
+	Route::get('/client_leads', 'ProjectController@client_leads')->name('client_leads');
+	Route::get('/client_interested_leads', 'ProjectController@client_interested_leads')->name('client_interested_leads');
+	Route::get('/client_shortlisted_leads', 'ProjectController@client_shortlisted_leads')->name('client_shortlisted_leads');
 
 	//Milestone payment
 	Route::get('/recieved-milestone-requests', 'MilestonePaymentController@recieved_milestone_request_index')->name('milestone-requests.all');
@@ -225,10 +228,8 @@ Route::group(['middleware' => ['auth','phoneverified']], function(){
 	Route::get('/bidded-projects', 'ProjectController@bidded_projects')->name('bidded_projects');
 
 	Route::get('/show-lead/{id}', 'ProjectController@showLead')->name('show-lead');
-
-	Route::get('/client_leads', 'ProjectController@client_leads')->name('client_leads');
-	Route::get('/client_interested_leads', 'ProjectController@client_interested_leads')->name('client_interested_leads');
-	Route::get('/client_shortlisted_leads', 'ProjectController@client_shortlisted_leads')->name('client_shortlisted_leads');
+	Route::get('/show-interested-lead/{id}','ProjectController@showInterestedLead')->name('show-interested-lead');
+	
 
 	Route::get('/freelancer_Leads', 'ProjectController@freelancer_Leads')->name('freelancer_Leads');
 	Route::get('/freelancer_Interested_leads', 'ProjectController@freelancer_Interested_leads')->name('freelancer_Interested_leads');

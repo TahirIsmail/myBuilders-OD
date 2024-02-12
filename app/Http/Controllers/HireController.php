@@ -94,14 +94,14 @@ class HireController extends Controller
     public function hire(Request $request)
     {
         $project = Project::find($request->project_id);
-        $project->biddable = 0;
-        $project->save();
+        // $project->biddable = 0;
+        // $project->save();
 
         if($project->project_user == null){
             $project_user = new ProjectUser;
             $project_user->project_id = $request->project_id;
             $project_user->user_id = $request->user_id;
-            $project_user->hired_at = $request->amount;
+            $project_user->hired_at = 0.0;
             $project_user->save();
         }
 
@@ -113,21 +113,21 @@ class HireController extends Controller
 
         //from freelancer to client
         NotificationUtility::set_notification(
-            "freelancer_hired_for_project",
-            translate('You have been hired for a project by'),
+            "tradesmen_shortlisted_for_project",
+            translate('You have been Shortlisted for a Job by'),
             route('project.details',['slug'=>$project->slug],false),
             $request->user_id,
             Auth::user()->id,
-            'freelancer'
+            'tradesmen'
         );
         EmailUtility::send_email(
-            translate('You have been hired for project -').$project->name,
-            translate('You have been hired for a project by '). $project->client->name,
+            translate('You have been shortlisted for the job -').$project->name,
+            translate('You have been shortlisted for a project by '). $project->client->name,
             get_email_by_user_id($request->user_id),
             route('project.details',['slug'=>$project->slug])
         );
 
-        flash(translate('You have hired successfully.'))->success();
+        flash(translate('You have Shortlisted successfully.'))->success();
 
         return back();
     }

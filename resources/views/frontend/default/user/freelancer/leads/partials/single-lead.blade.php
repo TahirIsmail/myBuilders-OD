@@ -18,13 +18,26 @@
                                 class="lead-details__meta-detail">{{$distance}} miles away</span></a>
                         <div class="lead-details__meta mt-1">
                             <span class="lead-details__status">New lead</span>
-                            <span class="lead-details__meta-detail">Lead sent 18 hours ago</span>
+                            <span class="lead-details__meta-detail">sent {{ \Carbon\Carbon::parse($lead->created_at)->diffForHumans() }}</span>
                         </div>
                     </div>
                     <div class="col-md-5 custom_padding">
-                        <div class="actions custom_padding"><a href="#" class="btn--Tradec"
+                        <div class="actions custom_padding">
+                            @php
+                            $allow_for_bid = \App\Models\ProjectBid::where('project_id', $lead->id)
+                                ->where('bid_by_user_id', Auth::user()->id)
+                                ->first();
+                        @endphp
+                        @if ($allow_for_bid == null)
+                            <a  onclick="show_interest({{ $lead->id }})" class="btn--Tradec"
                                 style="width:auto !important;padding: 0.6em 0.25em 0.7em !important;font-size:15px ">
-                                Express interest&nbsp;</a>
+                                {{ translate('Express Interest') }}&nbsp;
+                            </a>
+                            @else
+                            <div class="alert alert-info rounded-1" style="width:auto !important;padding: 0.6em 0.25em 0.7em !important;font-size: 1rem;" role="alert">
+                                {{ translate('You have already showed interest for this Job.') }}
+                            </div>
+                            @endif
                             <a href="#"class=" btn-danger btn--trash " aria-label="Delete">
                                 <i class="fas fa-trash-alt no-space"></i>
                             </a>
@@ -78,7 +91,7 @@
                     </div>
                 </div>
                 <p class="job-description__meta">
-                    {{ \Carbon\Carbon::parse($item->created_at)->diffForHumans() }}
+                    {{ \Carbon\Carbon::parse($lead->created_at)->format('D jS M Y H:i') }}
                     </p>
 
 
@@ -88,8 +101,8 @@
                     </div>
 
                     <div class="col-md-4  text-right ">
-                        <a href="{{ route('client_details',['user_name' => $lead->client->user_name])}}" class="job-poster"><span class="job-poster__link">View
-                                profile</span> </a>
+                        <a href="{{ route('client.details',['user_name' => $lead->client->user_name])}}" class="job-poster"><span class="job-poster__link">View
+                            profile</span> </a>
                     </div>
 
                 </div>
@@ -212,3 +225,18 @@
     </script>
 
 </div>
+
+
+    <script>
+        function show_interest(id){
+            
+                $.post('{{ route('bids.save_interest') }}', {
+                _token: '{{ csrf_token() }}',
+                id: id
+            }, function(data) {
+                location.reload();
+            })
+            }
+
+
+    </script>

@@ -135,9 +135,7 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div class="col-4 text-right">
-                                            <span class="h5">{{ single_price($open_project->price) }}</span>
-                                        </div>
+                                        
                                     </div>
                                 </li>
                                 @endforeach
