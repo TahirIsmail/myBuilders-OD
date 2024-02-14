@@ -93,64 +93,53 @@ class MilestonePaymentController extends Controller
             return back();
         }
     }
+    
 
     public function milestone_payment_done($payment_data, $payment)
     {
         $milestone_req = MilestonePayment::findOrFail($payment_data['milestone_request_id']);
         $project = ProjectUser::where('project_id', $milestone_req->project_id)->where('user_id', $milestone_req->freelancer_user_id)->first();
         $userProfile = UserProfile::where('user_id', $milestone_req->freelancer_user_id)->first();
-        $package = Package::findOrFail($userProfile->user->userPackage->package_id);
+        // $package = Package::findOrFail($userProfile->user->userPackage->package_id);
         if ($milestone_req != null) {
             $milestone_req->payment_details = $payment;
             $milestone_req->payment_method = $payment_data['payment_method'];
-            if ($package->commission_type == 'percent') {
-                $milestone_req->admin_profit = ($payment_data['amount'] * $package->commission)/100;
-            }
-            else {
-                $milestone_req->admin_profit = $package->commission;
-            }
-            $milestone_req->freelancer_profit = $payment_data['amount'] - $milestone_req->admin_profit;
+            // if ($package->commission_type == 'percent') {
+            //     $milestone_req->admin_profit = ($payment_data['amount'] * $package->commission)/100;
+            // }
+            // else {
+            //     $milestone_req->admin_profit = $package->commission;
+            // }
+            // $milestone_req->freelancer_profit = $payment_data['amount'] - $milestone_req->admin_profit;
             $milestone_req->paid_status = 1;
             $milestone_req->save();
 
-            $userProfile->balance += $milestone_req->freelancer_profit;
-            $userProfile->save();
+            // $userProfile->balance += $milestone_req->freelancer_profit;
+            // $userProfile->save();
 
-            try {
-                $this->check_for_earning_badge($milestone_req->freelancer_user_id);
-                $this->check_for_spent_badge($milestone_req->client_user_id);
-            } catch (\Exception $e) {
+            // try {
+            //     $this->check_for_earning_badge($milestone_req->freelancer_user_id);
+            //     $this->check_for_spent_badge($milestone_req->client_user_id);
+            // } catch (\Exception $e) {
 
-            }
+            // }
             //from admin to freelancer
             NotificationUtility::set_notification(
-                "milestone_payments_done_to_freelancer",
-                translate('Your milestone payment request has been accepted by'),
+                "shortlist_payments_done_by_tradesmen",
+                translate('The shortlist payment has been done by'),
                 route('sent-milestone-requests.all',[],false),
-                $milestone_req->freelancer_user_id,
+                1,
                 Auth::user()->id,
-                'freelancer'
+                'Tradesmen'
             );
             EmailUtility::send_email(
-                translate('Your milestone payment request has been accepted'),
-                translate('Your milestone payment request has been accepted by '). Auth::user()->name,
+                translate('The shortlist payment request has been accepted'),
+                translate('The shortlist payment request has been accepted by '). Auth::user()->name,
                 get_email_by_user_id($milestone_req->freelancer_user_id)
             );
 
-            //from client to admin
-            NotificationUtility::set_notification(
-                "milestone_payments_done_to_admin",
-                translate('A milestone payment request has been accepted by'),
-                route('payment_history_for_admin',[],false),
-                0,
-                Auth::user()->id,
-                'admin'
-            );
-            EmailUtility::send_email(
-                translate('A milestone payment request has been accepted'),
-                translate('A milestone payment request has been accepted by '). Auth::user()->name,
-                system_email()
-            );
+            
+            
 
             Session::forget('payment_data');
             flash(translate('Payment has been done successfully'))->success();
@@ -291,6 +280,11 @@ class MilestonePaymentController extends Controller
     {
         $milestones = MilestonePayment::where('freelancer_user_id', Auth::user()->id)->where('paid_status', 1)->orderBy('created_at', 'desc')->paginate(12);
         return view('frontend.default.user.freelancer.earnings.history', compact('milestones'));
+    }
+
+    public function recieved_shortlist_payment_index(){
+        $milestones = MilestonePayment::where('freelancer_user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(12);
+        return view('frontend.default.user.freelancer.milestone_payments.shortlist', compact('milestones'));
     }
 
     // public function all_milestone_request_index(Request $request)

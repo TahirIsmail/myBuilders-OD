@@ -234,7 +234,8 @@
                 _token: '{{ csrf_token() }}',
                 id: id
             }, function(data) {
-                location.reload();
+                const routeName = "{{ route('freelancer_Interested_leads') }}";
+                window.location.href = routeName;
             })
             }
 

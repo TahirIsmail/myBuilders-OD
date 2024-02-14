@@ -305,6 +305,12 @@ class HomeController extends Controller
         flash(translate('Cache cleared successfully'))->success();
         return back();
     }
+    function trade_sign_content(){
+        return view('frontend.default.content.trade_sign_up');
+    }
 
+    function  job_sign_content(){
+        return view('frontend.default.content.post_sign_up');
+    }
     
 }

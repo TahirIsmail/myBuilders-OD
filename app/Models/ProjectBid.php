@@ -17,4 +17,6 @@ class ProjectBid extends Model
     {
         return $this->belongsTo(User::class, 'bid_by_user_id');
     }
+
+    
 }

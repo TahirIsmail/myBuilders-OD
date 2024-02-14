@@ -159,7 +159,7 @@ Route::group(['middleware' => ['user','auth','phoneverified']], function(){
 });
 
 // Client middleware
-Route::group(['middleware' => ['auth','phoneverified']], function(){
+Route::group(['middleware' => ['auth','client','phoneverified']], function(){
 	Route::resource('/projects', 'ProjectController');
 	Route::post('/jobinfo','ProjectController@storejobpost');
 	Route::get('/my-openPurchased Services-projects', 'ProjectController@my_open_project')->name('projects.my_open_project');
@@ -201,7 +201,7 @@ Route::post('/service/package-purchase','ServiceController@purchase_service_pack
 
 
 // Freelancer middleware
-Route::group(['middleware' => ['auth','phoneverified']], function(){
+Route::group(['middleware' => ['auth','freelancer','phoneverified']], function(){
     Route::post('/bids/store', 'BiddingController@store')->name('bids.store');
 	Route::post('/bids/save_interest','BiddingController@save_interest')->name('bids.save_interest');
 
@@ -251,8 +251,9 @@ Route::group(['middleware' => ['auth','phoneverified']], function(){
 	Route::post('/partial-payment-request-store', 'MilestonePaymentController@request_store')->name('partial_payment_request');
 	Route::get('/sent-milestone-requests', 'MilestonePaymentController@sent_milestone_request_index')->name('sent-milestone-requests.all');
 	Route::get('/recieved-milestone-payment', 'MilestonePaymentController@recieved_milestone_payment_index')->name('recieved_milestone_payment_index');
-
-
+	Route::get('/recieved-shortlist-payment','MilestonePaymentController@recieved_shortlist_payment_index')->name('recieved_shortlist_payment_index');
+	Route::post('/milestone-payment-select-modal', 'MilestonePaymentController@show_payment_select_modal')->name('show_payment_select_modal');
+	Route::post('/milestone-payment', 'MilestonePaymentController@index')->name('milestone.pay_to_admin');
 	//payment history
 	Route::get('/send-withdrawal-request', 'PaytoFreelancerController@send_withdrawal_request_index')->name('send_withdrawal_request_to_admin');
 	Route::get('/withdrawal-history', 'PaytoFreelancerController@withdrawal_history_index')->name('withdrawal_history_index');
@@ -280,6 +281,8 @@ Route::get('/project/{slug}', 'HomeController@project_details')->name('project.d
 Route::get('/private-project-details/{slug}', 'HomeController@private_project_details')->name('private_project.details');
 
 Route::get('/project-lists', 'HomeController@all_projects')->name('projects.list');
+Route::get('/trade-signup-up','HomeController@trade_sign_content')->name('trade_signup');
+Route::get('/job-signup-up','HomeController@job_sign_content')->name('post_signup');
 
 Route::get('/client/{user_name}', 'HomeController@client_details')->name('client.details');
 Route::get('/client-lists', 'HomeController@client_list')->name('client.lists');

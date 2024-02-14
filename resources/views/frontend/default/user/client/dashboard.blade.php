@@ -208,10 +208,10 @@
 														@endif
 													</span>
 													<span class="flex-grow-1 text-truncate-2">{{ $user->name }}</span>
-													<span class="flex-shrink-0 ml-3">
+													{{-- <span class="flex-shrink-0 ml-3">
 														<span class="d-block opacity-50 fs-10">{{ translate('Hourly Rate') }}</span>
 														<span class="fs-15">{{ single_price($user->profile->hourly_rate) }}</span>
-													</span>
+													</span> --}}
 												</a>
 											</li>
                                         @endforeach
@@ -221,7 +221,7 @@
 	            		</div>
 	            	</div>
 	            </div>
-            	<div class="row gutters-15">
+            	<!-- <div class="row gutters-15">
             		<div class="col-md-4 d-flex">
             			<div class="card card_shadow card_border rounded-2 border-gray-light w-100">
                             <div class="card-header border-0">
@@ -318,7 +318,7 @@
                             </div>
                         </div>
                     </div> --}}
-            	</div>
+            	</div> -->
             </div>
         </div>
     </div>

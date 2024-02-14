@@ -435,7 +435,7 @@
                 @endif
                 
                 @if(auth()->user()->can('show header') || auth()->user()->can('show footer') || auth()->user()->can('show pages') || auth()->user()->can('show apperance'))
-                    {{-- <li class="aiz-side-nav-item">
+                    <li class="aiz-side-nav-item">
                         <a href="#" class="aiz-side-nav-link">
                             <i class="las la-hourglass-half aiz-side-nav-icon"></i>
                             <span class="aiz-side-nav-text">{{translate('Website')}}</span>
@@ -474,7 +474,7 @@
                             </li>
                             @endcan
                         </ul>
-                    </li> --}}
+                    </li>
                 @endif
                 @if(auth()->user()->can('show all staffs') || auth()->user()->can('show employee roles'))
                     <li class="aiz-side-nav-item">

@@ -76,6 +76,7 @@ class BiddingController extends Controller
                 $bid = new ProjectBid;
                 $bid->project_id = $request->id;
                 $bid->bid_by_user_id = Auth::user()->id;
+                $bid->amount = 0.0;
                 $bid->status = 1;
                 $bid->save();
     

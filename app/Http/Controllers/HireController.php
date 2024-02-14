@@ -12,6 +12,7 @@ use App\Models\ProjectUser;
 use App\Models\ChatThread;
 use App\Models\Project;
 use App\Models\User;
+use App\Models\MilestonePayment;
 use Auth;
 
 class HireController extends Controller
@@ -93,10 +94,11 @@ class HireController extends Controller
     //after taking interview client hires freelancer
     public function hire(Request $request)
     {
+        
         $project = Project::find($request->project_id);
         // $project->biddable = 0;
         // $project->save();
-
+       
         if($project->project_user == null){
             $project_user = new ProjectUser;
             $project_user->project_id = $request->project_id;
@@ -110,10 +112,16 @@ class HireController extends Controller
             $invited_project->status = 'accepted';
             $invited_project->save();
         }
-
+        $requestSent =$this->sending_shortlist_fee_invoice($project_user);
         //from freelancer to client
+
+        if(!$requestSent){
+            flash(translate('Shortlist ivoice request  failed.'))->error();
+            $project_user->forceDelete();
+            return back();
+        }
         NotificationUtility::set_notification(
-            "tradesmen_shortlisted_for_project",
+            "tradesmen_shortlisted_for_job",
             translate('You have been Shortlisted for a Job by'),
             route('project.details',['slug'=>$project->slug],false),
             $request->user_id,
@@ -146,5 +154,57 @@ class HireController extends Controller
 
         flash(translate('You have rejected the private project offer'))->success();
         return back();
+    }
+
+    public function sending_shortlist_fee_invoice($project_user)
+    {
+        $milestone = new MilestonePayment;
+        $milestone->client_user_id = Auth::user()->id;
+        $milestone->project_id = $project_user->project_id;
+        $milestone->freelancer_user_id = $project_user->user_id;
+        $milestone->amount = 5;
+        $milestone->message = "Shorlist Fees for". $project_user->project->name;
+        $milestone->admin_profit = 5;
+        if ($milestone->save()) {
+
+            //from freelancer to client
+            NotificationUtility::set_notification(
+                "A Shortlist fee payment has been requested",
+                translate('A Shortlist fee payment has been requested'),
+                route('milestone-requests.all',[],false),
+                $project_user->user_id,
+                Auth::user()->id,
+                'client'
+            );
+            EmailUtility::send_email(
+                translate('A Shortlist fee payment has been requested'),
+                translate('A Shortlist fee payment has been requested by Admin after got shortlisted by'). 'Admin',
+                get_email_by_user_id($project_user->user_id),
+                route('milestone-requests.all')
+            );
+
+            //from freelancer to admin
+            // NotificationUtility::set_notification(
+            //     "milestone_payment_request_to_admin",
+            //     translate('A milestone payment has been requested by'),
+            //     route('payment_history_for_admin',[],false),
+            //     0,
+            //     Auth::user()->id,
+            //     'admin'
+            // );
+            EmailUtility::send_email(
+                translate('A  Shortlist fee payment has been requested'),
+                translate('A  Shortlist fee payment has been requested by '). 'Admin',
+                system_email(),
+                route('payment_history_for_admin')
+            );
+
+            flash(translate(' Shortlist fee payment request has been sent successfully'))->success();
+           return true;
+        }
+        else {
+            flash(translate(' Shortlist fee payment request has been failed'))->error();
+           return false;
+        }
     }
 }

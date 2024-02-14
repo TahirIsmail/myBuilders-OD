@@ -157,7 +157,14 @@
         padding: 5px;
     }
 
-    
+    @media only screen and (min-width: 300px) and (max-width: 1000px) {
+        .navbar-light .navbar-nav .nav-link {
+            color: #0e0d0d !important;
+        }
+        .mg-bottom{
+            margin-bottom: 20px;
+        }
+    }
 </style>
 
 {{-- {{-- <script>
@@ -252,7 +259,7 @@
                         business</a>
                 </li>
             </ul>
-            <div class="flex-container">
+            <div class="flex-container mg-bottom">
                 {{-- <div class="container-login " style="display: flex;width: 400px;margin-top: 1%;">
                     <form action="{{ route('search') }}" method="GET" class="flex-grow-1" style="width:200px">
                         <div class="input-group">
@@ -435,9 +442,7 @@
                                         <div class="c-scrollbar-light" style="overflow-y:auto;max-height:300px;">
                                             @forelse ($unseen_chat_threads as $key => $chat_thread_id)
                                                 @php
-                                                    $chat = \App\Models\Chat::where('chat_thread_id', $chat_thread_id)
-                                                        ->latest()
-                                                        ->first();
+                                                    $chat = \App\Models\Chat::where('chat_thread_id', $chat_thread_id)->latest()->first();
                                                 @endphp
                                                 @if ($chat != null)
                                                     <a href="{{ route('all.messages') }}"

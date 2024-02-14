@@ -19,6 +19,7 @@ use App\Models\MilestonePayment;
 use App\Models\Badge;
 use App\Models\UserBadge;
 use App\Models\Address;
+use App\Models\MilestonePayPayment;
 use App\Models\User;
 use Response;
 use Illuminate\Support\Str;
@@ -103,7 +104,22 @@ class ProjectController extends Controller
         $project = Project::where('slug', $slug)->first();
         $project_bids = $project->bids;
         $bid_users = ProjectBid::where('project_id', $project->id)->latest()->paginate(10);
-        return view('frontend.default.user.client.projects.bids', compact('project', 'project_bids', 'bid_users'));
+        $shortlist_request = MilestonePayment::where(function($query) use ($project){
+            $query->where('project_id', $project->id)
+                  ->where('client_user_id', auth()->user()->id);
+        })->get(); 
+
+        $shortlisted_users = $shortlist_request->filter(function ($payment) use ($bid_users) {
+            
+            foreach ($bid_users as $bid_user) {
+                if ($payment->freelancer_user_id === $bid_user->freelancer->id && $payment->paid_status == 1) {
+                    return true; // Include this payment as shortlisted
+                }
+            }
+            return false; // Exclude this payment as it doesn't match any bid user's user_id
+        });
+        
+        return view('frontend.default.user.client.projects.bids', compact('project', 'project_bids', 'bid_users','shortlisted_users'));
     }
 
     /**
@@ -517,9 +533,14 @@ class ProjectController extends Controller
     public function freelancer_Leads()
     {
 
-        $projects = Project::with('project_category', 'address')->get();
+        
 
-        $user  = auth()->user();
+       
+        $userId  = auth()->user()->id;
+        $user = auth()->user();
+        $projects = Project::whereDoesntHave('projectBids', function ($query) use ($userId) {
+            $query->where('bid_by_user_id', $userId);
+        })->with(['project_category', 'address'])->get();
         $userCord = new LatLong($user->address->latitude, $user->address->longitude);
         $projects->transform(function ($project) use ($userCord) {
             $projectCord = new LatLong($project->address->latitude, $project->address->longitude);

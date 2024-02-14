@@ -60,7 +60,7 @@
 
     <ul class="tabs">
         <li class="tab tab-link current" data-tab="tab-1">Details</li>
-        <li class="tab tab-link" data-tab="tab-2">Message</li>
+        {{-- <li class="tab tab-link" data-tab="tab-2">Message</li> --}}
 
     </ul>
 

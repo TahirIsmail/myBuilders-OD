@@ -299,7 +299,7 @@
                 </li>
                 <li class="aiz-side-nav-item">
                     <a href="{{ route('user.workingarea') }}"
-                        class="aiz-side-nav-link {{ areActiveRoutes(['freelance.workingarea']) }}">
+                        class="aiz-side-nav-link {{ areActiveRoutes(['user.workingarea']) }}">
                         <img src="{{ asset('public\assets\frontend\default\img\icons\badge.png') }}"
                             style="width:25px" ;height="25px" />
 
@@ -316,7 +316,14 @@
                     </a>
                 </li>
 
-
+                <li class="aiz-side-nav-item">
+                    <a href="{{ route('recieved_shortlist_payment_index') }}"
+                        class="aiz-side-nav-link {{ areActiveRoutes(['recieved_shortlist_payment_index']) }}">
+                        <img src="{{ asset('public\assets\frontend\default\img\icons\user-gear.png') }}"
+                            style="width:25px" ;height="25px" />
+                        <span class="aiz-side-nav-text ml-2">{{ translate('Invoices') }}</span>
+                    </a>
+                </li>
                 <!-- Reviews -->
                 {{-- <li class="aiz-side-nav-item">
                     <a href="{{ route('user_review', 'freelancer') }}"
