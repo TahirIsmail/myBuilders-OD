@@ -7,7 +7,7 @@
             <div class="card card_shadow">
                 <div class="card-header row gutters-5">
                     <div class="col text-center text-md-left">
-                        <h5 class="mb-md-0 h6">{{translate('Cancellation Request Projects')}}</h5>
+                        <h5 class="mb-md-0 h6">{{translate('Cancellation Request Jobs')}}</h5>
                     </div>
                 </div>
                 <div class="card-body">
@@ -15,7 +15,7 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>{{translate('Project')}}</th>
+                                <th>{{translate('Job')}}</th>
                                 <th data-breakpoints="md">{{translate('Type')}}</th>
                                 <th data-breakpoints="md">{{translate('Price')}}</th>
                                 <th>{{translate('Request Sent By')}}</th>

@@ -5,7 +5,7 @@
     <div class="aiz-titlebar mt-2 mb-3">
 		<div class="row align-items-center">
 			<div class="col-md-6">
-				<h1 class="h3">{{translate('Running Projects')}}</h1>
+				<h1 class="h3">{{translate('Running Jobs')}}</h1>
 			</div>
 		</div>
 	</div>
@@ -15,7 +15,7 @@
                 <form class="" id="sort_projects" action="" method="GET">
                     <div class="card-header row gutters-5">
     					<div class="col text-center text-md-left">
-    						<h5 class="mb-md-0 h6">{{translate('Running Projects')}}</h5>
+    						<h5 class="mb-md-0 h6">{{translate('Running Jobs')}}</h5>
     					</div>
                         <div class="col-md-3 ml-auto">
     						<select class="form-control aiz-selectpicker mb-2 mb-md-0" name="user_id" id="user_id" data-live-search="true" onchange="sort_projects()">
@@ -45,7 +45,7 @@
                             <tr>
                                 <th>#</th>
                                 <th width="20%">{{translate('Title')}}</th>
-                                <th>{{translate('Project Category')}}</th>
+                                <th>{{translate('Job Category')}}</th>
                                 <th>{{translate('Type')}}</th>
                                 <th>{{translate('Client')}}</th>
                                 <th>{{translate('Freelancer')}}</th>

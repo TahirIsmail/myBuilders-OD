@@ -61,7 +61,7 @@
             <div class="container"style="background:#343944 !important">
                 <div class="aiz-front-widget mb-5">
 
-                    <img src="{{ asset('public\assets\frontend\default\img\logo\builder_valley_logo.png') }}"
+                    <img src="{{ asset('public\assets\frontend\default\img\logo\builder_valley_footer.png') }}"
                         alt="MyBuilder - A new way to find and hire tradespeople" height="40" class="mb-4">
 
                     {{-- <div class="fs-14 text-soft-info-light">

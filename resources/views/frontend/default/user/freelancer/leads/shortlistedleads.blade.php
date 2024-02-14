@@ -119,7 +119,7 @@
                                 <ul class="tabs">
                                     <li class="tab tab-link current" data-tab="tab-1">Details</li>
                                     <li class="tab tab-link" data-tab="tab-2">Message</li>
-                                    <li class="tab tab-link" data-tab="tab-3">Quates</li>
+                                    <li class="tab tab-link" data-tab="tab-3">Quotes</li>
                                 </ul>
 
                                 <div id="tab-1" class="tab-content current">

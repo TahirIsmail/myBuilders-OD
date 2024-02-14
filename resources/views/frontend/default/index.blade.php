@@ -2,12 +2,12 @@
 
 
 <style>
-    .site-header {
+    /* .site-header {
         font-size: 16px;
         background-color: black;
         border-bottom: 3px solid #3483de;
         height: 50%;
-    }
+    } */
 
 
 
@@ -17,40 +17,40 @@
 
 
 
-    .backcover {
+    /* .backcover {
         background-image: url('https://www.mybuilder.com/assets/bdabfd5/bundles/mybuilderhomepage/images/top-spot/bricklayer.jpg');
         background-size: cover;
         background-position: center;
         height: 90vh;
-    }
+    } */
 
-    .rating-box {
+    /* .rating-box {
         background-color: #ffffff;
     }
+ */
 
 
-
-    .star-rating {
+    /* .star-rating {
         height: 180px;
 
         display: flex;
         align-items: center;
-    }
+    } */
 
 
-    .Start-your {
+    /* .Start-your {
         height: 180px;
 
         display: flex;
         align-items: center;
-    }
+    } */
 
-    .rated-icon {
+    /* .rated-icon {
         height: 180px;
         display: flex;
         align-items: center;
 
-    }
+    } */
 
     .heading.heading-hero,
     .heading.heading-x-large,
@@ -65,24 +65,24 @@
     }
 
 
-    .hire-exc-content {
+    /* .hire-exc-content {
         display: flex;
         justify-content: center;
         align-items: center;
         background: #eef2f6;
-    }
+    } */
 
 
 
-    .inner-div {
+    /* .inner-div {
         background-color: #eef2f6;
         height: 60px;
         justify-content: center;
-    }
+    } */
 
 
 
-
+/* 
     .hp-how-it-works {
         background-color: #eef2f6;
         padding: 40px 0;
@@ -129,11 +129,11 @@
         font-size: 16px;
         margin-bottom: 20px;
     }
+ */
 
 
 
-
-    .custom-carousel-control {
+    /* .custom-carousel-control {
         background-color: black;
         border-radius: 50%;
         width: 80px !important;
@@ -154,12 +154,12 @@
         color: white;
         font-size: 24px;
 
-    }
+    } */
 
 
 
 
-
+/* 
 
 
 
@@ -237,9 +237,9 @@
     .feedback-item__posted {
         color: #b0c0d3;
         font-size: revert;
-    }
+    } */
 
-    .slider {
+    /* .slider {
         display: flex !important;
         justify-content: center !important;
         align-items: center !important;
@@ -260,14 +260,14 @@
         transform: scale(1.02);
         box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
     }
+ */
 
 
 
 
 
 
-
-
+/* 
     .slider-container {
         display: flex;
         align-items: center;
@@ -281,8 +281,8 @@
         overflow-y: visible;
         background: " #eef2f6";
 
-    }
-
+    } */
+/* 
     .slide {
         background-size: cover;
         background-repeat: no-repeat;
@@ -344,9 +344,9 @@
         left: 78.5% !important;
         z-index: 1;
         opacity: 1;
-    }
+    } */
 
-    h2 {
+    /* h2 {
         margin: -40px 0 0;
     }
 
@@ -387,11 +387,11 @@
         align-items: center;
         justify-content: center;
         text-align: center;
-    }
+    } */
 
     .hp-trades {
         background-color: white;
-        /* padding: 50px; */
+        padding: 50px;
         text-align: center;
     }
 
@@ -448,7 +448,7 @@
         font-size: 15px !important;
         line-height: 1.5 !important;
         text-align: center !important;
-        color: #333 ;
+        color: #333;
     }
 
 
@@ -651,7 +651,7 @@
 
 
 
-
+/* 
     .cascade-slider_container {
         position: relative;
         max-width: 1000px;
@@ -863,16 +863,16 @@
 
     .cascade-slider_arrow i {
         color: red;
-        /* Change 'red' to your desired arrow color */
+        /* Change 'red' to your desired arrow color
     }
 
-
+ */
 
 
     /* //////bottom/.//////////////// */
 
 
-    .bottom-box {
+    /* .bottom-box {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -892,7 +892,7 @@
 
     .background-element {
         background: url(../bundles/mybuilderhomepage/images/trade-footer.jpg);
-        /* Additional background properties, e.g., background-size, background-position, etc. */
+      
     }
 
     .aiz-main-wrapper {
@@ -900,7 +900,7 @@
     }
 
 
-
+ */
 
 
 
@@ -1574,6 +1574,115 @@
             font-size: 14px;
         }
     }
+
+
+
+
+
+
+
+
+    .card5 {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        /* 56 * 4 */
+        height: 288px;
+        /* 72 * 4 */
+        border-radius: 15px;
+        /* 72 * 0.5 */
+        overflow: hidden;
+        cursor: pointer;
+        transition-duration: 0.5s;
+    }
+
+    .card5:hover {
+        transition-duration: 0.7s;
+    }
+
+    .card-content5 {
+        width: 100%;
+        height: 100%;
+        background-color: #84cc5d;
+        /* Lime-400 */
+        color: #4b5563;
+        /* Gray-800 */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card-content5 img {
+        width: 100%;
+        /* Ensure image doesn't exceed container width */
+        height: 100%;
+        /* Ensure image doesn't exceed container height */
+    }
+
+    .icon-container5 {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .icon5 {
+        width: 64px;
+        /* 8 * 8 */
+        height: 64px;
+        /* 8 * 8 */
+        padding: 8px;
+        margin: 8px;
+        border-radius: 50%;
+        fill: #4b5563;
+        /* Gray-800 */
+        stroke: none;
+        transition-duration: 0.5s;
+    }
+
+    .icon5:hover {
+        background-color: #e6f7ec;
+        /* Lime-200 */
+    }
+
+    .card-description5 {
+        position: absolute;
+        bottom: -31px;
+        /* -24 * 4 */
+        width: 100%;
+        background-color: #64c976c2;
+        /* Gray-50 */
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        transition-duration: 0.5s;
+    }
+
+    .card5:hover .card-description5 {
+        bottom: 0;
+        transition-duration: 0.6s;
+    }
+
+    .category5 {
+        color: white;
+        /* Lime-400 */
+        font-weight: bold;
+        font-size: 20px;
+        text-align: center
+    }
+
+    .title5 {
+        margin-top: 15px;
+        color: white;
+        /* Gray-800 */
+        font-weight: bold;
+        font-size: 24px;
+        text-align: center
+    }
+
+    .text5 {
+        color: #4b5563;
+        /* Gray-800 */
+    }
 </style>
 
 
@@ -1709,7 +1818,7 @@
                 <div class="rbd-core-ui">
                     <div class="rbd-review-slider">
                         <div class="rbd-review-container">
-                            <div class="rbd-review review1.1 rbd-curr">
+                            <div class="rbd-review review1.1review1.1 rbd-curr">
                                 <h3 class="rbd-heading">Extremely Professional</h3>
                                 <i class="renderSVG" data-icon="star" data-repeat="5"></i>
                                 <div class="rbd-content"><img class="rbd-gravatar"
@@ -1754,6 +1863,11 @@
 
 
         </section>
+
+
+
+
+        
     @endif
     @if (get_setting('client_logo_show') == 'on')
         <section class="bg-white ">
@@ -1761,12 +1875,10 @@
 
 
 
-            <div class="container" style="height: auto ;">
-                <div class="py-3">
 
-                    <div class="row justify-content-center">
-                        <div class="col-xl-4 col-md-6 " style="margin-bottom: 10px;position: relative;">
-                            <div class="card2" style="height: 100%; display: flex; flex-direction: column;">
+
+
+            {{-- <div class="card2" style="height: 100%; display: flex; flex-direction: column;">
 
                                 <div class="p-4" style="height: 70%;">
                                     <h2 class="hh3">Post your job</h2>
@@ -1781,10 +1893,10 @@
                                     <a title="Post a job today and we'll alert the relevant tradespeople."
                                         href="http://localhost/mybuilder/register" class="btn--lp">Post a job</a>
                                 </div>
-                            </div>
-                        </div>
+                            </div> --}}
 
-                        <div class="col-xl-4 col-md-6" style="margin-bottom: 10px;position: relative;">
+
+            {{-- <div class="col-xl-4 col-md-6" style="margin-bottom: 10px;position: relative;">
                             <div class="card2 " style="height: 100%; display: flex; flex-direction: column;">
 
                                 <div class="p-4" style="height: 70%;">
@@ -1818,16 +1930,9 @@
                                         Opportunities</a>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
 
-                    </div>
-                </div>
-
-
-
-
-            </div>
 
 
 
@@ -1853,15 +1958,17 @@
                             <div class="px-xl-5 px-md-3 mb-4 text-center "
                                 style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
 
-                                <div class="p-4 text-center">
-                                    <h2 style="color: green !important">Find the right tradespeople for your job! 
-                                    
-                                    <p>Builder’s valley understands that finding tradespeople you can trust is a
-                                        challenge.</p>
-                                    <div class="col-md-7 mx-auto">
-                                        <p>Our site is an online platform for a variety of tradespeople. You can post
-                                            your job, tradespeople will respond, and then you can review each business
-                                            and choose the right one for you!</p>
+                                <div class=" text-center">
+                                    <h2 class="fw-700 fs-30 " style="color: green !important;margin-bottom:30px">
+                                        Find the right tradespeople for your job!</h2>
+                                    <div class=" p-4">
+                                        <p>Builder’s valley understands that finding tradespeople you can trust is a
+                                            challenge.</p>
+                                        <div class="col-md-7 mx-auto">
+                                            <p>Our site is an online platform for a variety of tradespeople. You can post
+                                                your job, tradespeople will respond, and then you can review each business
+                                                and choose the right one for you!</p>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -1951,6 +2058,10 @@
 
                     </div>
                 </div>
+
+
+
+
             </div>
 
 
@@ -1958,14 +2069,16 @@
         </section>
 
 
-        <div class="col-md-12" style="background:white ;padding-top:70px;">
+        <div class="col-md-12" style="background:white ;padding-top:50px;padding-bottom:50px">
             <div class="container" style ="padding: 0px">
                 <div class="col-md-12 d-flex justify-content-center align-items-center" style="background: white ">
                     <section class="hp-trades">
                         <h2 class="fw-700 fs-30" style="color:#37a002;margin-bottom:30px"> Our line directory is the
-                            perfect place to find 
+                            perfect place to find
                             <img src="{{ asset('public\assets\frontend\default\img\icons\magnifying-glass (1).png') }}"
-                                        style="width:32px" ;height="32px" /></h2></h2>
+                                style="width:32px" ;height="32px" />
+                        </h2>
+                        </h2>
 
                         <div class="row-fluid">
                             <div class="row">
@@ -2259,9 +2372,72 @@
             </div> --}}
 
         <section style="  background-color: #eef2f6">
+
+
+            <div class="container bg_content" style="height: auto ;background-color: #eef2f6 !important;">
+                <div class="py-3"style="padding-top:50px !important;">
+
+
+                    <div class="bottom-slider-heading col-md-8  col-lg-8 pt-2 text-center mb-5">
+                        <h2 class="fw-700 fs-30 " style="color: #37a002; ">
+                            Sign up today!</h2>
+
+                            <div class=" p-4 ">
+                        <p>
+                            Once you join as a member you can post and respond in
+                            our exclusive forums. Builders’ Valley is a leading site for people looking for
+                            reliable tradespeople and companies who are serious about their reputation and
+                            providing a great service.</p>
+                    </div>
+                </div>
+                    <div class="row justify-content-center">
+                        <div class="col-xl-4 col-xxl-3 col-md-4 " style="margin-bottom: 10px;position: relative;">
+                            <div class="card5">
+                                <div class="card-content5">
+                                    <div class="icon-container5">
+                                        <img
+                                            src="{{ asset('public\assets\frontend\default\img\slider_img\con1.png') }}" />
+                                    </div>
+                                </div>
+                                <div class="card-description5">
+                                    <span class="category5">SIGN UP AS A TRADER</span>
+                                    <span class="title5"><i class="fa fa-arrow-circle-right fa-lg" aria-hidden="true"
+                                            style="color: white;"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-4  col-xxl-3  col-md-4 " style="margin-bottom: 10px;position: relative;">
+                            <div class="card5">
+                                <div class="card-content5">
+
+
+                                    <img src="{{ asset('public\assets\frontend\default\img\slider_img\con3.png') }}" />
+
+                                </div>
+                                <div class="card-description5">
+                                    <span class="category5">SIGN UP TO FIND TRADESPEOPLE</span>
+                                    <span class="title5"><i class="fa fa-arrow-circle-right fa-lg" aria-hidden="true"
+                                            style="color: white;"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
             <div class="container" style="padding-bottom: 60px;padding-top: 60px;background-color: #eef2f6 !important;">
                 <div class="bottom-slider-heading col-md-4  col-lg-5 pt-2 text-center">
-                    <h2 class="fw-700 fs-30" style="color: #37a002;margin-bottom:30px ">Our customers
+                    <h2 class="fw-700 fs-30" style="color: #37a002;margin-bottom:50px ">Our customers
                         love&nbsp;us</h2>
                 </div>
                 <div class=" col-md-12 slider review-slider" style="margin-bottom: 0px !important">
@@ -2429,7 +2605,6 @@
 
 
 
-            
         </section>
     @endif
     @if (get_setting('how_it_works_show') == 'on')
@@ -2490,22 +2665,11 @@
                     <div class="col-xl-10 mx-auto">
                         @if (\App\Models\SystemConfiguration::where('type', 'project_approval')->first()->value == 1)
                             @php
-                                $projects = \App\Models\Project::biddable()
-                                    ->notcancel()
-                                    ->open()
-                                    ->where('project_approval', 1)
-                                    ->latest()
-                                    ->get()
-                                    ->take(3);
+                                $projects = \App\Models\Project::biddable()->notcancel()->open()->where('project_approval', 1)->latest()->get()->take(3);
                             @endphp
                         @else
                             @php
-                                $projects = \App\Models\Project::biddable()
-                                    ->notcancel()
-                                    ->open()
-                                    ->latest()
-                                    ->get()
-                                    ->take(3);
+                                $projects = \App\Models\Project::biddable()->notcancel()->open()->latest()->get()->take(3);
                             @endphp
                         @endif
                         @foreach ($projects as $key => $project)
@@ -2853,11 +3017,8 @@
 
 
 @section('script')
-
-
-{{-- ////last --}}
+    {{-- ////last --}}
     <script>
-
         // last slider
         $(document).ready(function() {
 
@@ -2913,7 +3074,7 @@
 
 
         });
-    
+
         (function(factory) {
             'use strict';
             if (typeof define === 'function' && define.amd) {
@@ -5865,10 +6026,10 @@
                 next = next.next();
             }
         });
-    </script> --}}
+    </script> 
 
 
-{{-- 
+    {{-- 
 /////main slider --}}
 
     <script>
@@ -5892,56 +6053,56 @@
             showSlide(currentIndex);
         });
     </script>
-<script>
-    // add slider
-    let options = {
-        'speed': 3000,
-        'pause': true,
-        'visibleSlides': 3  // Number of visible slides at a time
-    }
-
-    window.addEventListener('DOMContentLoaded', function () {
-        let slider = document.querySelector('.rbd-review-slider');
-        let slides = slider.querySelectorAll('.rbd-review');
-        let total = slides.length;
-        let pause = false;
-
-        function pauseSlide() {
-            slider.onmouseleave = function () {
-                pause = false;
-            };
-            slider.onmouseenter = function () {
-                pause = true;
-            };
-            return pause;
+    <script>
+        // adver slider
+        let options = {
+            'speed': 3000,
+            'pause': true,
+        
         }
 
-        function slide() {
-            if (options.pause && pauseSlide()) return;
+        window.addEventListener('DOMContentLoaded', function() {
+            let slider = document.querySelector('.rbd-review-slider');
+            let slides = slider.querySelectorAll('.rbd-review');
+            let total = slides.length;
+            let pause = false;
 
-            let activeSlide = document.querySelector('.rbd-review-slider .rbd-review.rbd-curr');
-            let currIndex = Array.from(slides).indexOf(activeSlide);
+            function pauseSlide() {
+                slider.onmouseleave = function() {
+                    pause = false;
+                };
+                slider.onmouseenter = function() {
+                    pause = true;
+                };
+                return pause;
+            }
 
-            for (let i = 0; i < total; i++) {
-                let slideIndex = (currIndex + i) % total;
-                let currentSlide = slides[slideIndex];
-                currentSlide.classList.remove('rbd-prev', 'rbd-curr', 'rbd-next');
+            function slide() {
+                if (options.pause && pauseSlide()) return;
 
-                if (i === 0) {
-                    currentSlide.classList.add('rbd-curr');
-                } else if (i === 1) {
-                    currentSlide.classList.add('rbd-prev');
-                } else if (i === 2) {
-                    currentSlide.classList.add('rbd-next');
+                let activeSlide = document.querySelector('.rbd-review-slider .rbd-review.rbd-curr');
+                let currIndex = Array.from(slides).indexOf(activeSlide);
+
+                for (let i = 0; i < total; i++) {
+                    let slideIndex = (currIndex + i) % total;
+                    let currentSlide = slides[slideIndex];
+                    currentSlide.classList.remove('rbd-prev', 'rbd-curr', 'rbd-next');
+
+                    if (i === 0) {
+                        currentSlide.classList.add('rbd-curr');
+                    } else if (i === 1) {
+                        currentSlide.classList.add('rbd-prev');
+                    } else if (i === 2) {
+                        currentSlide.classList.add('rbd-next');
+                    }
                 }
             }
-        }
 
-        let slideTimer = setInterval(function () {
-            slide();
-        }, options.speed);
-    }, true);
-</script>
+            let slideTimer = setInterval(function() {
+                slide();
+            }, options.speed);
+        }, true);
+    </script>
 
 
     <script>

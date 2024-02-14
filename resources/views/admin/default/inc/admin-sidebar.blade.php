@@ -31,14 +31,14 @@
 
                             <img src="{{ asset('public\assets\frontend\default\img\icons\file.png') }}"
                        />
-                            <span class="aiz-side-nav-text ml-2">{{translate('Projects')}}</span>
+                            <span class="aiz-side-nav-text ml-2">{{translate('Jobs')}}</span>
                             <span class="aiz-side-nav-arrow"></span>
                         </a>
                         <ul class="aiz-side-nav-list level-2">
                             @can('show all projects')
                             <li class="aiz-side-nav-item">
                                 <a href="{{ route('all_projects') }}" class="aiz-side-nav-link">
-                                    <span class="aiz-side-nav-text">{{translate('All Projects')}}</span>
+                                    <span class="aiz-side-nav-text">{{translate('All Jobs')}}</span>
                                 </a>
                             </li>
                             @endcan
@@ -46,7 +46,7 @@
                             @can('show running projects')
                             <li class="aiz-side-nav-item">
                                 <a href="{{ route('running_projects') }}" class="aiz-side-nav-link">
-                                    <span class="aiz-side-nav-text">{{translate('Running Project')}}</span>
+                                    <span class="aiz-side-nav-text">{{translate('Running Jobs')}}</span>
                                 </a>
                             </li>
                             @endcan
@@ -54,7 +54,7 @@
                             @can('show open projects')
                             <li class="aiz-side-nav-item">
                                 <a href="{{ route('open_projects') }}" class="aiz-side-nav-link">
-                                    <span class="aiz-side-nav-text">{{translate('Open Project')}}</span>
+                                    <span class="aiz-side-nav-text">{{translate('Open Jobs')}}</span>
                                 </a>
                             </li>
                             @endcan
@@ -62,7 +62,7 @@
                             @can('show cancelled projects')
                             <li class="aiz-side-nav-item">
                                 <a href="{{ route('cancelled_projects') }}" class="aiz-side-nav-link">
-                                    <span class="aiz-side-nav-text">{{translate('Cancelled Project')}}</span>
+                                    <span class="aiz-side-nav-text">{{translate('Cancelled Jobs')}}</span>
                                 </a>
                             </li>
                             @endcan
@@ -70,7 +70,7 @@
                             @can('show project cancel requests')
                             <li class="aiz-side-nav-item">
                                 <a href="{{ route('cancel-project-request.index') }}" class="aiz-side-nav-link">
-                                    <span class="aiz-side-nav-text">{{translate('Project Cancel Request')}}</span>
+                                    <span class="aiz-side-nav-text">{{translate('Jobs Cancel Request')}}</span>
                                 </a>
                             </li>
                             @endcan
@@ -78,7 +78,7 @@
                             @can('show project category')
                             <li class="aiz-side-nav-item">
                                 <a href="{{ route('project-categories.index') }}" class="aiz-side-nav-link {{ areActiveRoutes(['project-categories.index', 'project-categories.edit', 'project-categories.destroy'])}}">
-                                    <span class="aiz-side-nav-text">{{translate('Project Category')}}</span>
+                                    <span class="aiz-side-nav-text">{{translate('Jobs Category')}}</span>
                                 </a>
                             </li>
                             @endcan
