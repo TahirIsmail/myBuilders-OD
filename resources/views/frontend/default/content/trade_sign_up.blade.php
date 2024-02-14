@@ -130,7 +130,7 @@
                 customers across the country. Sign up now for better business
                 opportunities.
               </p>
-              <a class='btn--lp'href="" >Trade Signup</a>
+              <a class='btn--lp'href={{route('register')}} >Trade Signup</a>
             </div>
             <!--/.header-text-->
           </div>
