@@ -75,10 +75,12 @@ class HomeController extends Controller
     //Redirect user-based dashboard
     public function dashboard()
     {
-        $user_profile = UserProfile::where('user_id', Auth::user()->id)->first();
-
+        // $user_profile = UserProfile::where('user_id', Auth::user()->id)->first();
+       
+        
 
         if(isFreelancer()){
+            
             return view('frontend.default.user.freelancer.dashboard');
         }
         elseif(isClient()){

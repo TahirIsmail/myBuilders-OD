@@ -79,7 +79,7 @@
 										@php
 											$onGoingProjects = 0;
 											foreach (Auth::user()->projectUsers as $key => $projectUser) {
-												if($projectUser->project != null && !$projectUser->project->closed){
+												if($projectUser != null && !$projectUser->closed){
 													$onGoingProjects++;
 												}
 											}
@@ -153,17 +153,17 @@
 								<div class="aiz-auto-scroll c-scrollbar-light px-4" style="height: 340px; overflow-y: scroll;">
 									<ul class="list-group list-group-flush">
 										@foreach (Auth::user()->projectUsers as $key => $projectUser)
-											@if($projectUser->project != null && !$projectUser->project->closed)
+											@if($projectUser != null && !$projectUser->closed)
 												<li class="list-group-item border-0 px-0">
-													<a href="{{ route('project.details', $projectUser->project->slug) }}" class="text-inherit d-flex align-items-center">
+													<a href="{{ route('project.details', $projectUser->slug) }}" class="text-inherit d-flex align-items-center">
 														<span class="avatar avatar-sm flex-shrink-0 bg-soft-primary mr-3">
-															@if($projectUser->project->client->photo != null)
-																<img src="{{ custom_asset($projectUser->project->client->photo) }}">
+															@if($projectUser->client->photo != null)
+																<img src="{{ custom_asset($projectUser->client->photo) }}">
 															@else
 																<img src="{{ my_asset('assets/frontend/default/img/avatar-place.png') }}">
 															@endif
 														</span>
-														<span class="flex-grow-1 text-truncate-2">{{ $projectUser->project->name }}</span>
+														<span class="flex-grow-1 text-truncate-2">{{ $projectUser->name }}</span>
 													</a>
 												</li>
 											@endif

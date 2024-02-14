@@ -278,7 +278,7 @@ if (!function_exists('get_email_by_user_id')) {
 if (!function_exists('email_footer_text')) {
     function email_footer_text()
     {
-        return env('APP_NAME')." © 2020 All rights reserved";
+        return env('APP_NAME')." © 2024 All rights reserved";
     }
 }
 

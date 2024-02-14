@@ -106,7 +106,8 @@ class HireController extends Controller
             $project_user->hired_at = 0.0;
             $project_user->save();
         }
-
+        
+       
         $invited_project = HireInvitation::where('project_id', $project->id)->first();
         if($invited_project != null){
             $invited_project->status = 'accepted';
