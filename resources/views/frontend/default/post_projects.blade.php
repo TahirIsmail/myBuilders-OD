@@ -27,7 +27,7 @@
                 </h1>
                 <h1 class="jvVCtT"></h1>
                 <p style="margin-top: 10px">
-                    <strong> Get responses from MyBuilder's screened and reviewed tradespeople near you
+                    <strong> Get responses from Builder's Valley screened and reviewed tradespeople near you
                     </strong>
                 </p>
             </div>
