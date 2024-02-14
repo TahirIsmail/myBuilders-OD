@@ -909,10 +909,24 @@
 
 
 
+ @media only screen and (min-width: 300px) and (max-width: 600px) {
+        .hp-trades {
+            padding: 17px;
+        }
+    }
 
 
+    @media only screen and (min-width: 300px) and (max-width: 600px) {
+        .hp-trades .hp-trades__trade a  {
+            font-size: 10px !important;
+        }
+    }
 
-
+    @media only screen and (min-width: 300px) and (max-width: 600px) {
+        .font_ss  {
+            font-size: 10px !important;
+        }
+    }
 
     .custom-slider {
         position: relative;
@@ -923,7 +937,7 @@
 
     }
 
-    @media only screen and (min-width: 376px) and (max-width: 600px) {
+    @media only screen and (min-width: 300px) and (max-width: 600px) {
         .custom-slider {
             height: 500px;
         }
@@ -1577,112 +1591,6 @@
 
 
 
-
-
-
-
-
-    .card5 {
-        position: relative;
-        display: inline-block;
-        width: 100%;
-        /* 56 * 4 */
-        height: 288px;
-        /* 72 * 4 */
-        border-radius: 15px;
-        /* 72 * 0.5 */
-        overflow: hidden;
-        cursor: pointer;
-        transition-duration: 0.5s;
-    }
-
-    .card5:hover {
-        transition-duration: 0.7s;
-    }
-
-    .card-content5 {
-        width: 100%;
-        height: 100%;
-        background-color: #84cc5d;
-        /* Lime-400 */
-        color: #4b5563;
-        /* Gray-800 */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .card-content5 img {
-        width: 100%;
-        /* Ensure image doesn't exceed container width */
-        height: 100%;
-        /* Ensure image doesn't exceed container height */
-    }
-
-    .icon-container5 {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .icon5 {
-        width: 64px;
-        /* 8 * 8 */
-        height: 64px;
-        /* 8 * 8 */
-        padding: 8px;
-        margin: 8px;
-        border-radius: 50%;
-        fill: #4b5563;
-        /* Gray-800 */
-        stroke: none;
-        transition-duration: 0.5s;
-    }
-
-    .icon5:hover {
-        background-color: #e6f7ec;
-        /* Lime-200 */
-    }
-
-    .card-description5 {
-        position: absolute;
-        bottom: -31px;
-        /* -24 * 4 */
-        width: 100%;
-        background-color: #64c976c2;
-        /* Gray-50 */
-        padding: 12px;
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-        transition-duration: 0.5s;
-    }
-
-    .card5:hover .card-description5 {
-        bottom: 0;
-        transition-duration: 0.6s;
-    }
-
-    .category5 {
-        color: white;
-        /* Lime-400 */
-        font-weight: bold;
-        font-size: 20px;
-        text-align: center
-    }
-
-    .title5 {
-        margin-top: 15px;
-        color: white;
-        /* Gray-800 */
-        font-weight: bold;
-        font-size: 24px;
-        text-align: center
-    }
-
-    .text5 {
-        color: #4b5563;
-        /* Gray-800 */
-    }
 </style>
 
 
@@ -1700,7 +1608,7 @@
 
 
 
-            <div class="row">
+            <div class="row"> 
                 <div class="custom-slider col-md-12">
                     <div class="custom-slide">
                         <img src="{{ asset('public\assets\frontend\default\img\slider_img\global2.jpg') }}" />
@@ -2073,7 +1981,7 @@
             <div class="container" style ="padding: 0px">
                 <div class="col-md-12 d-flex justify-content-center align-items-center" style="background: white ">
                     <section class="hp-trades">
-                        <h2 class="fw-700 fs-30" style="color:#37a002;margin-bottom:30px"> Our line directory is the
+                        <h2 class="fw-700 fs-30 font_ss" style="color:#37a002;margin-bottom:30px"> Our line directory is the
                             perfect place to find
                             <img src="{{ asset('public\assets\frontend\default\img\icons\magnifying-glass (1).png') }}"
                                 style="width:32px" ;height="32px" />

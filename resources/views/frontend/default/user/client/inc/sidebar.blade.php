@@ -181,8 +181,8 @@
                 </li>
 
                 {{-- subscription     --}}
-                <li class="aiz-side-nav-item">
-                    <a href="javascript:void(0);" class="aiz-side-nav-link d-flex align-items-center">
+                {{-- <li class="aiz-side-nav-item">
+                    <a href="javascript:void(0);" class="aiz-side-nav-link d-flex align-items-center"> --}}
                         {{-- <i class="las la-tachometer-alt aiz-side-nav-icon"></i> --}}
                         {{-- <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11.998"
                             viewBox="0 0 12 11.998">
@@ -191,7 +191,7 @@
                                 transform="translate(-3631 -9208.002)" fill="#989ea8" />
                         </svg> --}}
 
-                        <img src="{{ asset('public\assets\frontend\default\img\icons\renew.png') }}"
+                        {{-- <img src="{{ asset('public\assets\frontend\default\img\icons\renew.png') }}"
                             style="width:25px" ;height="20px" />
                         <span class="aiz-side-nav-text ml-2">{{ translate('Subscription') }}</span>
                         <span class="aiz-side-nav-arrow"></span>
@@ -212,7 +212,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
                 <li class="aiz-side-nav-item">
                     <a href="{{ route('user.profile') }}"
                         class="aiz-side-nav-link d-flex align-items-center {{ areActiveRoutes(['user.profile']) }}">
