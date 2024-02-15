@@ -115,10 +115,11 @@ class HireController extends Controller
         //from freelancer to client
 
         if(!$requestSent){
-            flash(translate('Shortlist ivoice request  failed.'))->error();
+            flash(translate('Shortlist invoice request  failed.'))->error();
             $project->project_user()->detach($request->user_id);
             return back();
         }
+        // set_notification($type, $message = '', $link = '/', $receiver = 0, $sender = false, $showing_panel = null)
         NotificationUtility::set_notification(
             "tradesmen_shortlisted_for_job",
             translate('You have been Shortlisted for a Job by'),
@@ -129,12 +130,12 @@ class HireController extends Controller
         );
         EmailUtility::send_email(
             translate('You have been shortlisted for the job -').$project->name,
-            translate('You have been shortlisted for a project by '). $project->client->name,
+            translate('You have been shortlisted for a Job by '). $project->client->name,
             get_email_by_user_id($request->user_id),
             route('project.details',['slug'=>$project->slug])
         );
 
-        flash(translate('You have Shortlisted successfully.'))->success();
+        flash(translate('You have Shortlisted '.$attachedUser->name.'  successfully.'))->success();
 
         return back();
     }
@@ -165,21 +166,22 @@ class HireController extends Controller
         $milestone->message = "Shortlist Fees for ---->". $project->name;
         $milestone->admin_profit = 5;
         if ($milestone->save()) {
-
-            //from freelancer to client
+    //  set_notification($type, $message = '', $link = '/', $receiver = 0, $sender = false, $showing_panel = null)
+           
+            //from client to  Tradesmen
             NotificationUtility::set_notification(
                 "A Shortlist fee payment has been requested",
-                translate('A Shortlist fee payment has been requested'),
-                route('milestone-requests.all',[],false),
+                translate('A Shortlist fee payment has been requested by Admin after you got shortlisted by'),
+                route('recieved_shortlist_payment_index',[],false),
                 $project_user->user_id,
-                Auth::user()->id,
-                'client'
+                auth()->user()->id,
+                'tradesmen'
             );
             EmailUtility::send_email(
                 translate('A Shortlist fee payment has been requested'),
-                translate('A Shortlist fee payment has been requested by Admin after got shortlisted by'). 'Admin',
+                translate('A Shortlist fee payment has been requested by Admin after got shortlisted by').auth()->user()->name,
                 get_email_by_user_id($project_user->user_id),
-                route('milestone-requests.all')
+                route('recieved_shortlist_payment_index')
             );
 
             //from freelancer to admin
