@@ -163,7 +163,7 @@
                                     Builders’ Valley helps people across the country for their home improvement projects and
                                     find tradesmen they can trust.
                                 </p>
-                                <a class='btn--lp'href={{ route('register') }}> POST A JOB NOW</a>
+                                <a class='btn--lp'href={{ route('post_project') }}> POST A JOB NOW</a>
                             </div>
 
                         </div>

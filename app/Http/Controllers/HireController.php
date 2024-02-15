@@ -99,26 +99,24 @@ class HireController extends Controller
         // $project->biddable = 0;
         // $project->save();
        
-        if($project->project_user == null){
-            $project_user = new ProjectUser;
-            $project_user->project_id = $request->project_id;
-            $project_user->user_id = $request->user_id;
-            $project_user->hired_at = 0.0;
-            $project_user->save();
+        if ($project->project_user()->where('user_id', $request->user_id)->doesntExist()) {
+            $project->project_user()->attach($request->user_id,['hired_at' => 0.0]);
         }
         
+        $attachedUser = $project->project_user()->where('user_id', $request->user_id)->first();
        
         $invited_project = HireInvitation::where('project_id', $project->id)->first();
         if($invited_project != null){
             $invited_project->status = 'accepted';
             $invited_project->save();
         }
-        $requestSent =$this->sending_shortlist_fee_invoice($project_user);
+       
+        $requestSent =$this->sending_shortlist_fee_invoice($attachedUser->shortlisting,$project);
         //from freelancer to client
 
         if(!$requestSent){
             flash(translate('Shortlist ivoice request  failed.'))->error();
-            $project_user->forceDelete();
+            $project->project_user()->detach($request->user_id);
             return back();
         }
         NotificationUtility::set_notification(
@@ -157,14 +155,14 @@ class HireController extends Controller
         return back();
     }
 
-    public function sending_shortlist_fee_invoice($project_user)
+    public function sending_shortlist_fee_invoice($project_user,$project)
     {
         $milestone = new MilestonePayment;
         $milestone->client_user_id = Auth::user()->id;
         $milestone->project_id = $project_user->project_id;
         $milestone->freelancer_user_id = $project_user->user_id;
         $milestone->amount = 5;
-        $milestone->message = "Shorlist Fees for". $project_user->project->name;
+        $milestone->message = "Shortlist Fees for ---->". $project->name;
         $milestone->admin_profit = 5;
         if ($milestone->save()) {
 

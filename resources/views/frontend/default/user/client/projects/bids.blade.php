@@ -3,7 +3,7 @@
 @section('content')
 
     <section class="py-5">
-        
+
         <div class="container">
             <div class="d-flex align-items-start">
                 @include('frontend.default.user.client.inc.sidebar')
@@ -79,32 +79,31 @@
                                     </div> --}}
                                         <div>
                                             @if ($project->biddable == 1)
-                                                
-                                                @if(!$shortlisted_users->isEmpty())
-                                                    @if ($shortlisted_users[0]->freelancer_user_id == $bid_user->freelancer->id)
-                                                        <button type="button"
+                                                @if (!$shortlisted_users->isEmpty() && $shortlisted_users->contains('freelancer_user_id', $bid_user->freelancer->id))
+                                                    <button type="button"
                                                         class="btn btn-primary btn-sm btn-block rounded-1">{{ translate('Shortlisted') }}</button>
-                                                        <form class="mt-2" action="{{ route('call_for_interview') }}"
-                                                            method="post">
-                                                            @csrf
-                                                            <input type="hidden" id="project_id" name="project_id"
-                                                                value="{{ $project->id }}">
-                                                            <input type="hidden" id="user_name" name="user_name"
-                                                                value="{{ $bid_user->freelancer->user_name }}">
-                                                            <button type="submit"
-                                                                class="btn btn-primary btn-sm btn-block rounded-1">{{ translate('Call for Interview') }}</button>
-                                                        </form>
-                                                    @endif
-                                                @elseif ($project->project_user != null && $project->project_user->user_id == $bid_user->bid_by_user_id)
+                                                    <form class="mt-2" action="{{ route('call_for_interview') }}"
+                                                        method="post">
+                                                        @csrf
+                                                        <input type="hidden" id="project_id" name="project_id"
+                                                            value="{{ $project->id }}">
+                                                        <input type="hidden" id="user_name" name="user_name"
+                                                            value="{{ $bid_user->freelancer->user_name }}">
+                                                        <button type="submit"
+                                                            class="btn btn-primary btn-sm btn-block rounded-1">{{ translate('Call for Interview') }}</button>
+                                                    </form>
+                                                @elseif (
+                                                    !$project->project_user->isEmpty() &&
+                                                        $project->project_user->contains('shortlisting.user_id', $bid_user->bid_by_user_id))
                                                     <div class="alert alert-info" role="alert">
-                                                       Pending Shortlist Fee
-                                                     </div>
+                                                        Pending Shortlist Fee
+                                                    </div>
                                                 @else
-                                                       <button
-                                                           onclick="hiring_modal({{ $project->id }}, {{ $bid_user->bid_by_user_id }})"
-                                                           type="button"
-                                                           class="btn btn-outline-secondary btn-sm btn-block">Shortlist
-                                                           now</button>
+                                                    <button
+                                                        onclick="hiring_modal({{ $project->id }}, {{ $bid_user->bid_by_user_id }})"
+                                                        type="button"
+                                                        class="btn btn-outline-secondary btn-sm btn-block">Shortlist
+                                                        now</button>
                                                 @endif
                                             @endif
 

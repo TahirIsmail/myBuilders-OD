@@ -49,7 +49,7 @@ class Project extends Model
 
     public function project_user()
     {
-        return $this->belongsToMany(User::class,'project_users','project_id','project_id')->using(ProjectUser::class)->withTimestamps();
+        return $this->belongsToMany(User::class,'project_users','project_id','user_id')->using(ProjectUser::class)->as('shortlisting')->withTimestamps();
     }
 
     public function cancel_project()

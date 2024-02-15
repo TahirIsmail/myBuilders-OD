@@ -104,6 +104,7 @@ class ProjectController extends Controller
         $project = Project::where('slug', $slug)->first();
         $project_bids = $project->bids;
         $bid_users = ProjectBid::where('project_id', $project->id)->latest()->paginate(10);
+        
         $shortlist_request = MilestonePayment::where(function($query) use ($project){
             $query->where('project_id', $project->id)
                   ->where('client_user_id', auth()->user()->id);
@@ -121,6 +122,8 @@ class ProjectController extends Controller
         
         return view('frontend.default.user.client.projects.bids', compact('project', 'project_bids', 'bid_users','shortlisted_users'));
     }
+
+    
 
     /**
      * Show the form for creating a new resource.

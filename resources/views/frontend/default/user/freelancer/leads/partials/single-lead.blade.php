@@ -83,7 +83,7 @@
                     <div class="markdown-description">
                         <ul>
                             @foreach ($CategoryAnswers as $item)
-                                <li>{{!! $item->answer !!}}</li>
+                                <li>{!! $item->answer !!}</li>
                             @endforeach
                         </ul>
                         <p class="h1_custom">Customer description</p>
