@@ -20,6 +20,8 @@ use App\Models\EducationDetail;
 use App\Models\Service;
 use App\Models\TradingInfo;
 use App\Models\ServicePackagePayment;
+use App\Models\UserCreditCard;
+
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Notifications\EmailVerificationNotification;
@@ -150,4 +152,15 @@ class User extends Authenticatable implements MustVerifyEmail
     public function trading_info(){
         return $this->hasOne(TradingInfo::class);
     }
+    public function cardDetails()
+    {
+        return $this->hasOne(UserCreditCard::class);
+    }
+
+   
+    public function hasStoredCardDetails()
+    {
+        return $this->cardDetails()->exists();
+    }
+
 }

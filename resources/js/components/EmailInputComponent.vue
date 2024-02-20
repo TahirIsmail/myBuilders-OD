@@ -10,7 +10,10 @@
                     </small>
                 </div>
                 <div class="form-group button-container">
-                    <button type="submit" class="btn btn-primary">Continue</button>
+                    <button type="submit" class="btn btn-primary" v-bind:disabled="processing == true" >Continue
+
+                        <i class='fa fa-circle-notch fa-spin' v-if="processing == true"></i>
+                    </button>
                 </div>
 
             </form>
@@ -21,6 +24,7 @@ import { reactive, onMounted, watch, ref, inject } from "vue";
 
 import { useQuestionnaireStore } from "../store/questionnaireStore";
 const emailInputref = ref(null)
+const processing = ref(false)
 const form = reactive({
     email: "",
 });
@@ -37,6 +41,7 @@ onMounted(() => {
 const emit = defineEmits(["toggleCurrent"]);
 const submitForm = async () => {
     try {
+        processing.value = true;
         const response = await axios.post(
             "/checkuser",
             {
@@ -57,6 +62,7 @@ const submitForm = async () => {
                 text: "You are have already signed up",
                 icon: "success",
             });
+            processing.value = false
             window.location.href = "/";
         } else if (response.data.code == 404) {
             Swal.fire({
@@ -64,7 +70,7 @@ const submitForm = async () => {
                 text: "To complete job posting",
                 icon: "success",
             });
-
+            processing.value = false
             emit("toggleCurrent", true);
         }
     } catch (e) {

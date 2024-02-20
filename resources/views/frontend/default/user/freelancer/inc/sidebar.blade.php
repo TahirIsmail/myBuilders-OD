@@ -83,8 +83,9 @@
                     </a>
                     <ul class="aiz-side-nav-list level-2">
                         <li class="aiz-side-nav-item">
-                            
-                            <a href="{{ route('freelancer_Leads') }}" class="aiz-side-nav-link {{ areActiveRoutes(['freelancer_Leads']) }}">
+
+                            <a href="{{ route('freelancer_Leads') }}"
+                                class="aiz-side-nav-link {{ areActiveRoutes(['freelancer_Leads']) }}">
                                 <i class="fas fa-caret-right mt-auto mb-auto" style="color: #65cb75;"></i>
                                 <span class="aiz-side-nav-text ml-2">{{ translate('New leads') }}</span>
                             </a>
@@ -143,12 +144,12 @@
                 {{-- <li class="aiz-side-nav-item">
                     <a href="{{ route('all.messages') }}"
                         class="aiz-side-nav-link d-flex align-items-center {{ areActiveRoutes(['all.messages', 'chat_view']) }}"> --}}
-                        {{-- <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
+                {{-- <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
                         <g id="Layer_2" data-name="Layer 2" transform="translate(-2 -3)">
                           <path id="message-square" d="M12.2,3H3.8A1.8,1.8,0,0,0,2,4.8v9.6a.6.6,0,0,0,.906.516L5.6,12.684a.6.6,0,0,1,.33-.084H12.2A1.8,1.8,0,0,0,14,10.8v-6A1.8,1.8,0,0,0,12.2,3ZM5.6,8.4a.6.6,0,1,1,.6-.6A.6.6,0,0,1,5.6,8.4ZM8,8.4a.6.6,0,1,1,.6-.6A.6.6,0,0,1,8,8.4Zm2.4,0a.6.6,0,1,1,.6-.6A.6.6,0,0,1,10.4,8.4Z" fill="#989ea8"/>
                         </g>
                     </svg> --}}
-                        {{-- <img src="{{ asset('public\assets\frontend\default\img\icons\chat.png') }}" style="width:25px"
+                {{-- <img src="{{ asset('public\assets\frontend\default\img\icons\chat.png') }}" style="width:25px"
                             ;height="25px" />
                         <span class="aiz-side-nav-text ml-2">{{ translate('Message') }}</span>
                         <span class="badge badge-primary badge-circle">{{ $unseen_chat_thread_count }}</span>
@@ -237,13 +238,21 @@
                         </svg> --}}
                         <img src="{{ asset('public\assets\frontend\default\img\icons\dollar-symbol.png') }}"
                             style="width:24px" ;height="24px" />
-                           
+
 
                         <span class="aiz-side-nav-text ml-2">{{ translate('Payment Details') }}</span>
                         <span class="aiz-side-nav-arrow"></span>
                     </a>
                     <ul class="aiz-side-nav-list level-2">
                         <li class="aiz-side-nav-item">
+                            <a href="{{ route('recieved_shortlist_payment_index') }}"
+                                class="aiz-side-nav-link {{ areActiveRoutes(['recieved_shortlist_payment_index']) }}">
+                                <i class="fas fa-caret-right mt-auto mb-auto" style="color: #65cb75;"></i>
+                                <span class="aiz-side-nav-text ml-2">{{ translate('Invoices') }}</span>
+                            </a>
+                        </li>
+
+                        {{-- <li class="aiz-side-nav-item">
                             <a href="{{ route('recieved_milestone_payment_index') }}"
                                 class="aiz-side-nav-link {{ areActiveRoutes(['recieved_milestone_payment_index']) }}">
                                 <i class="fas fa-caret-right mt-auto mb-auto" style="color: #65cb75;"></i>
@@ -270,7 +279,7 @@
                                 <i class="fas fa-caret-right mt-auto mb-auto" style="color: #65cb75;"></i>
                                 <span class="aiz-side-nav-text ml-2">{{ translate('Milestone Requests') }}</span>
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </li>
                 <!-- Bookmarked Projects -->
@@ -290,18 +299,18 @@
                 <li class="aiz-side-nav-item">
                     <a href="{{ route('user.profile') }}"
                         class="aiz-side-nav-link {{ areActiveRoutes(['user.profile']) }}">
-                        <img src="{{ asset('public\assets\frontend\default\img\icons\badge.png') }}"
-                            style="width:25px" ;height="25px" />
+                        <img src="{{ asset('public\assets\frontend\default\img\icons\badge.png') }}" style="width:25px"
+                            ;height="25px" />
 
                         <span class="aiz-side-nav-text ml-2">{{ translate('Business Profile') }}</span>
                     </a>
-                    
+
                 </li>
                 <li class="aiz-side-nav-item">
                     <a href="{{ route('user.workingarea') }}"
                         class="aiz-side-nav-link {{ areActiveRoutes(['user.workingarea']) }}">
-                        <img src="{{ asset('public\assets\frontend\default\img\icons\badge.png') }}"
-                            style="width:25px" ;height="25px" />
+                        <img src="{{ asset('public\assets\frontend\default\img\icons\badge.png') }}" style="width:25px"
+                            ;height="25px" />
 
                         <span class="aiz-side-nav-text ml-2">{{ translate('Working Area') }}</span>
                     </a>
@@ -316,14 +325,14 @@
                     </a>
                 </li>
 
-                <li class="aiz-side-nav-item">
+                {{-- <li class="aiz-side-nav-item">
                     <a href="{{ route('recieved_shortlist_payment_index') }}"
                         class="aiz-side-nav-link {{ areActiveRoutes(['recieved_shortlist_payment_index']) }}">
                         <img src="{{ asset('public\assets\frontend\default\img\icons\user-gear.png') }}"
                             style="width:25px" ;height="25px" />
                         <span class="aiz-side-nav-text ml-2">{{ translate('Invoices') }}</span>
                     </a>
-                </li>
+                </li> --}}
                 <!-- Reviews -->
                 {{-- <li class="aiz-side-nav-item">
                     <a href="{{ route('user_review', 'freelancer') }}"
@@ -363,9 +372,7 @@
                         </li>
                     </ul>
                 </li>
-                @if (
-                    \App\Models\Addon::where('unique_identifier', 'support_tickets')->first() != null &&
-                        \App\Models\Addon::where('unique_identifier', 'support_tickets')->first()->activated == 1)
+                @if (\App\Models\Addon::where('unique_identifier', 'support_tickets')->first() != null && \App\Models\Addon::where('unique_identifier', 'support_tickets')->first()->activated == 1)
                     <!-- Support Ticket -->
                     <li class="aiz-side-nav-item">
                         <a href="{{ route('support-tickets.user_index') }}"
@@ -429,7 +436,7 @@
     </div>
 </div>
 <style scoped>
-ul.a {
-  list-style-type: none !important;
-}
-    </style>
+    ul.a {
+        list-style-type: none !important;
+    }
+</style>

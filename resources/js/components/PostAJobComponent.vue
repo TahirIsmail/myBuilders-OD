@@ -1,8 +1,11 @@
 <template>
     <div class="form-header container">
         <!-- Header content... -->
+        <pulse-loader :loading="loading" color="#0056b3" :size="{ width: '2rem', height: '2rem' }"></pulse-loader>
+
     </div>
     <div  ref="postajobref"  style="background-color: rgb(249, 249, 249) !important;" >
+        
         <div class="container" style="padding: 30px;margin-bottom:-20px !important;">
             <div class="row justify-content-center">
                 <div
@@ -26,8 +29,10 @@
                     </div>
 
                     <!-- Form Steps -->
+
                 </div>
             </div>
+           
         </div>
         <div class="container mt-4 mb-4" v-if="selectedCategory">
             <TransitionGroup name="list" tag="QuestionComponent">
@@ -59,6 +64,8 @@ import QuestionComponent from "./QuestionWithOptionsComponent";
 
 import { useQuestionnaireStore } from "../store/questionnaireStore";
 const postajobref  = ref(null)
+const loading = ref(false);
+
 const store = useQuestionnaireStore();
 const props = defineProps({
     user: Object,
@@ -77,17 +84,24 @@ const selectedCategory = ref(null);
 const questions = ref(new Set()); // Now a list of question data
 
 onBeforeMount(async () => {
-    
+    loading.value = true;
     await store.loadJobCategories();
+    loading.value = false;
     
 });
 onMounted(() => {
     postajobref.value.scrollIntoView({behavior:"smooth"})
+    
 })
 // Fetch initial question based on selected category
 const fetchInitialQuestion = async () => {
     if (selectedCategory.value && selectedCategory.value.firstquestion) {
+       loading.value = true;
+
         questions.value.push(selectedCategory.value.firstquestion);
+
+        
+    
     }
 };
 //

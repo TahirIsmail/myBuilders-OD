@@ -9,11 +9,13 @@ import 'vue-select/dist/vue-select.css';
 
 
 import PostAJob from './components/PostAJobComponent.vue';
-import GridLoader from 'vue-spinner/src/GridLoader.vue';
+
+
 const app = createApp({});
 const pinia = createPinia();
 
 app.use(pinia);
+
 app.use(VueGoogleMaps, {
     load: {
       key: 'AIzaSyCC6BbwI05bsqkWZCStzkLIMquD8WL_wqU',
@@ -22,9 +24,9 @@ app.use(VueGoogleMaps, {
     },
   })
 app.component('PostAJob', PostAJob);
-app.component('GridLoader', GridLoader);
+
 
 app.component('v-select', vSelect)
-
+app.component('pulse-loader', require('vue-spinner/src/PulseLoader.vue'));
 app.mount('#app');
 

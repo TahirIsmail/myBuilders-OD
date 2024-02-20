@@ -129,49 +129,58 @@
 </div>
 <div class="card card_shadow">
     <div class="card-header">
-        <h6 class="mb-0">{{ translate('Top running Projects') }}</h6>
+        <h6 class="mb-0">{{ translate('Top Running Projects') }}</h6>
         <a href="{{ route('running_projects') }}">{{ translate('View All') }}</a>
     </div>
     <div class="card-body">
         <div class="aiz-carousel gutters-10 half-outside-arrow" data-items="4" data-xl-items="3" data-md-items="2" data-sm-items="1" data-arrows='true'>
-            @foreach (\App\Models\ProjectUser::latest()->limit(10)->get() as $key => $project_user)
+            @foreach (\App\Models\Project::with(['project_user'])->latest()->limit(10)->get() as $key => $project)
                 <div class="caorusel-box">
-                    <a class="card text-inherit" href="{{ route('project.details', $project_user->project->slug) }}" target="_blank">
+                    <a class="card text-inherit" href="{{ route('project.details', $project->slug) }}" target="_blank">
                         <div class="card-body">
                             <div class="d-flex justify-content-between mb-3">
+                                @foreach($project->project_user as $project_user)
                                 <div class="d-flex mr-3 align-items-center text-inherit">
                                     <span class="avatar avatar-sm">
-                                        @if($project_user->user->photo != null)
-                                            <img class="img-fluid rounded-circle" src="{{ custom_asset($project_user->user->photo) }}">
-                                        @else
+                                        
+                                        @if ($project_user->shortlisting)
+                                             @if($project_user->photo != null)
+                                            <img class="img-fluid rounded-circle" src="{{ custom_asset($project->user->photo) }}">
+                                            @else
                                             <img class="img-fluid rounded-circle" src="{{ my_asset('assets/backend/default/img/avatar-place.png') }}">
-                                        @endif
+                                            @endif
+                                        
+                                       
+                                       
                                     </span>
                                     <div class="pl-2">
-                                        <h4 class="fs-14 mb-1">{{ $project_user->user->name }}</h4>
+                                        <h4 class="fs-14 mb-1">{{ $project_user->name }}</h4>
                                         <div class="text-secondary fs-10">
                                             <span class="bg-rating rounded text-white px-1 mr-1 fs-10">
-                                                {{ formatRating(getAverageRating($project_user->user_id)) }}
+                                                {{ formatRating(getAverageRating($project_user->shortlisting->user_id)) }}
                                             </span>
                                             <span>
-                                                ({{ getNumberOfReview($project_user->user_id) }} {{ translate('Reviews') }})
+                                                ({{ getNumberOfReview($project_user->shortlisting->user_id) }} {{ translate('Reviews') }})
                                             </span>
                                         </div>
                                     </div>
+                                    @endif
                                 </div>
-                                <div class="text-right flex-shrink-0 pl-3">
+                                @endforeach
+                                {{-- <div class="text-right flex-shrink-0 pl-3">
                                     <span class="small">Hired at</span>
-                                    <h4 class="mb-0">{{ single_price($project_user->hired_at) }}</h4>
-                                </div>
+                                    <h4 class="mb-0">{{ single_price($project->hired_at) }}</h4>
+                                </div> --}}
                             </div>
                             <h5 class="fs-14 fw-600 lh-1-5 text-truncate-2">
-                                {{ $project_user->project->excerpt }}
+                                {{ $project->excerpt }}
                             </h5>
                         </div>
                     </a>
                 </div>
             @endforeach
         </div>
+        
     </div>
 </div>
 

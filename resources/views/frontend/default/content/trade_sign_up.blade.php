@@ -16,31 +16,42 @@
         font-weight: 700;
         line-height: 1;
     }
-    @media only screen and (min-width: 800px) and (max-width: 2400px) {
-        .background-image  {
-          height: 100vh !important;
-        }
-    }
-    @media only screen and (min-width: 300px) and (max-width: 600px) {
-        .header-text h2 {
-        
-            font-size: 1.5rem;
-        }
-    }
+
+
+
 
     @media only screen and (min-width: 300px) and (max-width: 600px) {
+        .header-text h2 {
+
+            font-size: 1.2rem;
+        }
+
         .content {
             top: 70% !important;
         }
-    }
 
-    @media only screen and (min-width: 300px) and (max-width: 600px) {
+        .our_cont {
+            display: block !important;
+
+        }
+
+        .single-about-img img {
+            max-width: 500px !important;
+            height: 80px !important;
+        }
+
+        .lable_fee {
+            padding: 1em 1em 1em !important;
+            margin-left: 0px !important;
+            margin-top: 20px
+        }
+
         .header-text p {
-            margin: 10px 0px 20px !important;
+            margin: 8px 0px 8px !important;
+            font-size: 10px !important;
+            font-weight: 400 !important;
         }
     }
-
-
 
     .header-text h2 span {
         color: #64c976;
@@ -111,56 +122,127 @@
     }
 
     .background-image:before {
-      position: absolute;
-      content: " ";
-      top: 0;
-      left: 0;
-      background: rgb(80 94 79 / 42%);
-      width: 100%;
-      height: 100%;
+        position: absolute;
+        content: " ";
+        top: 0;
+        left: 0;
+        background: rgb(80 94 79 / 42%);
+        width: 100%;
+        height: 100%;
     }
 
 
     .background-image {
-        background: url('/public/assets/frontend/default/img/slider_img/c1.jpg') no-repeat;
+        width: 100%;
+        height: 100%;
+
+        /* padding-top: 53.25%;
+        position: relative;
+        background-size: cover; */
+        /* width: 100%;
+        height: 0;
+        padding-top: 56.25%;
+        position: relative;
+        background-size: cover; */
+        /* background-position: center; */
+        /* background-image: url('/public/assets/frontend/default/img/slider_img/c15.png'); */
+
+    }
+
+
+    .background-image img {
+   
         background-size: cover;
         background-position: center;
-        position: relative;
-        height: 400px;
-        /* Set the height of your background image */
+    }
+
+    /* @media only screen and (min-width: 300px) and (max-width: 600px) {
+        .background-image {
+            padding-top: 90.65% !important;
+        }
+
+    } */
+
+    .background-image:before {
+        position: absolute;
+        content: " ";
+        top: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.5);
+        width: 100%;
+        height: 100%;
     }
 
     .content {
-        width: 100%;
+
         position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
-        color: white;
+        z-index: 1;
+        bottom: 0;
+        left: 0;
+        width: 100%;
         padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .custom-slider {
+        position: relative;
+
+        /* Change this height as needed */
+        overflow: hidden;
+        height: 600px;
+
+    }
+
+
+    @media only screen and (min-width: 300px) and (max-width: 600px) {
+        .custom-slider {
+            height: 500px;
+        }
+
+        .custom-content-inner h1 {
+            width: 100% !important;
+        }
+
+        .custom-content-inner h5 {
+            width: 100% !important;
+        }
+
+        .stretch-img {
+            width: 100% !important;
+            height: 100% !important;
+        }
+    }
+
+    .stretch-img {
+        width: 100% ;
+        height: auto;
     }
 </style>
 @section('content')
     <section id="welcome-hero" class="welcome-hero">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12 p-0">
+                <div class="col-md-12 p-0 custom-slider">
                     <div class="background-image">
-                        <div class="content text-center">
+                        <img src="{{ asset('public\assets\frontend\default\img\slider_img\c15.png') }}" class="stretch-img"
+                            alt="Responsive image" />
+                        <div class="custom-content">
 
-                            <div class="header-text">
-                                <h2>
+                            <div class="custom-content-inner">
+                                <h1>
                                     Sign Up <span>,</span> as a
                                     tradesperson for free <span>.</span>
-                                </h2>
-                                <p>
+                                </h1>
+                                <h5>
                                     A trade membership with Builders’ Valley means you can contact
-                                    potential <br />
+                                    potential
                                     customers across the country. Sign up now for better business
                                     opportunities.
-                                </p>
-                                <a class='btn--lp'href={{ route('register') }}>Trade Signup</a>
+                                </h5>
+                                <div class="lp-header__content">
+                                    <a class='btn--lp'href={{ route('register') }}>Trade Signup</a>
+
+                                </div>
                             </div>
 
                         </div>
@@ -198,14 +280,15 @@
                     </div>
 
                     <div class="row  justify-content-center">
-                        <div class="col-sm-12 text-center about-content d-flex justify-content-center">
-                            <div class="col-sm-4 text-center lable_price">
+                        <div class="col-sm-12 text-center about-content  justify-content-center our_cont"
+                            style="display:flex">
+                            <div class=" col-sm-12 col-md-6 col-xxl-4 text-center lable_price">
                                 Our best fixed price in the market
                             </div>
-
-                            <div class="col-sm-3 text-center lable_fee" style=" margin-left: 10px;">
+                            {{-- 
+                            <div class=" col-sm-12 col-md-5 col-xl-3 text-center lable_fee" style=" margin-left: 10px;">
                                 Short-listed fee: £10
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="about-content">
 

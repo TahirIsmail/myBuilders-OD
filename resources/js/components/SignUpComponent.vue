@@ -1,7 +1,7 @@
 <template>
    
         <form ref="signUpRef" @submit.prevent="submitForm">
-           
+            
             <div class="form-group">
                 <label for="email">Email address</label>
                 <input type="email" class="form-control" id="sign-up-email" placeholder="Enter email"
@@ -37,9 +37,11 @@
                 <label class="form-check-label" for="terms">I agree to the <a href="#"> terms & conditions</a></label>
             </div>
             <div class="form-group button-container">
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn btn-primary" v-bind:disabled="isLoading == true">
+                    <i class='fa fa-circle-notch fa-spin' v-if="isLoading == true"></i>
                     Continue
                 </button>
+               
             </div>
             <p class="mt-3 alternative-option">
                 I already have an account,
@@ -54,12 +56,13 @@
 import { reactive, watch, ref, onMounted } from 'vue';
 import { useQuestionnaireStore } from '../store/questionnaireStore';
 import { VueTelInput } from 'vue-tel-input';
+import { PulseLoader } from 'vue-spinner/dist/vue-spinner.min.js'
 import 'vue-tel-input/vue-tel-input.css';
 
 const questionnaireStore = useQuestionnaireStore();
 
 const signUpRef = ref(null)
-
+const isLoading = ref(false);
 
 
 const form = reactive({
@@ -85,16 +88,27 @@ const generateUsername = () => {
 };
 const submitForm = () => {
     // Handle the form submission
+    
+    isLoading.value = true;
     questionnaireStore.setUserInformation({
         ...form,
     });
-    const response = questionnaireStore.sendUserinfoWithJobInfo();
-    console.log(response);
+    questionnaireStore.sendUserinfoWithJobInfo()
+        .then((response) => {
+            console.log(response);
+        })
+        .catch((error) => {
+            console.error(error);
+        })
+        .finally(() => {
+            isLoading.value = false;
+        });
     // You would typically send this data to a server or perform some action with it here
 };
 
 onMounted(() => {
     signUpRef.value.scrollIntoView({behavior:"smooth"})
+   
 })
 </script>
 
@@ -125,7 +139,7 @@ onMounted(() => {
     line-height: 1.5 !important;
     border-radius: 0.25rem !important;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-        border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .btn-primary:hover {

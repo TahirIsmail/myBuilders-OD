@@ -76,7 +76,11 @@
     <link rel="stylesheet" href="{{ my_asset('assets/common/css/jssocials-theme-flat.css') }}">
     @yield('style')
    
-    
+    <script>
+        window.addEventListener("load", function() {
+            $(".loader").css('display', "none");
+        })
+    </script>
     
     @if (get_setting('running_project_chat_activation_checkbox') == 1)
     <!-- firebase -->
@@ -181,7 +185,7 @@
 <body class="text-left position-relative">
 
     <div class="aiz-main-wrapper d-flex flex-column">
-
+        
         @include('frontend/default.inc.header')
 
         <!-- ========== MAIN CONTENT ========== -->
@@ -258,7 +262,7 @@
           page_id="{{ env('FACEBOOK_PAGE_ID') }}">
         </div>
     @endif
-
+   
     <script src="{{ my_asset('assets/common/js/vendors.js') }}"></script>
     <script src="{{ my_asset('assets/common/js/jssocials.min.js') }}" ></script>
     <script src="{{ my_asset('assets/common/js/aiz-core.js?v=') }}{{ rand(1000,9999) }}"></script>

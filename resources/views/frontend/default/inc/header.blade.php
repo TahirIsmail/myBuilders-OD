@@ -199,7 +199,9 @@
 
 <header class="aiz-header">
     {{-- background: linear-gradient(to right,#ffffff,#C0C0C0); --}}
-
+    <div class="loader">
+        <div class="spinner"></div>
+    </div>
     <nav class="navbar navbar-expand-lg navbar-light header_bg">
         <a href="{{ route('home') }}">
             <img src="{{ asset('public\assets\frontend\default\img\logo\builder_valley_logo.png') }}"

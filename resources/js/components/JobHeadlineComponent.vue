@@ -1,4 +1,4 @@
-j<template>
+<template>
     <div class="col-md-12 mx-auto row justify-content-md-center">
         <div class="col-md-10 bg-white" style="padding-top: 10px">
             <!-- <h2 class="form-heading">Give your job a headline</h2> -->
@@ -7,15 +7,8 @@ j<template>
                 <!-- Job Headline Input -->
                 <div class="form-group position-relative">
                     <label for="jobHeadline">Give your job a headline</label>
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="jobHeadline"
-                        placeholder="Enter job headline"
-                        v-model="form.jobHeadline"
-                        @input="updateCounter"
-                        maxlength="55"
-                    />
+                    <input type="text" class="form-control" id="jobHeadline" placeholder="Enter job headline"
+                        v-model="form.jobHeadline" @input="updateCounter" maxlength="55" />
                     <small class="form-text text-muted">
                         More tradespeople express interest in jobs that have a
                         descriptive name.
@@ -26,87 +19,46 @@ j<template>
                 </div>
 
                 <div class="form-group position-relative">
-                    <label for="jobHeadline"
-                        >Point the Job Location on Map</label
-                    >
+                    <label for="jobHeadline">Point the Job Location on Map</label>
                     <MapWithSearchBox @markerSet="handleMarker" />
                 </div>
                 <Transition>
                     <div class="container" v-if="showAddressForm">
                         <div class="input-group mb-3 ">
-                            <span class="input-group-text span_width" id="basic-addon1"
-                                >Country</span
-                            >
-                            <input
-                                type="text"
-                                class="form-control"
-                                v-model="form.country"
-                                placeholder="Country"
-                                aria-label="Country"
-                                aria-describedby="basic-addon1"
-                            />
+                            <span class="input-group-text span_width" id="basic-addon1">Country</span>
+                            <input type="text" class="form-control" v-model="form.country" placeholder="Country"
+                                aria-label="Country" aria-describedby="basic-addon1" />
                         </div>
 
                         <div class="input-group mb-3 ">
-                            <span class="input-group-text span_width" id="basic-addon1"
-                                >Region</span
-                            >
-                            <input
-                                type="text"
-                                class="form-control"
-                                v-model="form.region"
-                                placeholder="Enter Region"
-                                aria-label="region"
-                                aria-describedby="basic-addon1"
-                            />
+                            <span class="input-group-text span_width" id="basic-addon1">Region</span>
+                            <input type="text" class="form-control" v-model="form.region" placeholder="Enter Region"
+                                aria-label="region" aria-describedby="basic-addon1" />
                         </div>
 
                         <div class="input-group mb-3 ">
-                            <span class="input-group-text span_width" id="basic-addon1"
-                                >PostCode</span
-                            >
-                            <input
-                                type="text"
-                                class="form-control"
-                                v-model="form.postcode"
-                                placeholder="Enter Postal Code"
-                                aria-label="postalcode"
-                                aria-describedby="basic-addon1"
-                            />
+                            <span class="input-group-text span_width" id="basic-addon1">PostCode</span>
+                            <input type="text" class="form-control" v-model="form.postcode" placeholder="Enter Postal Code"
+                                aria-label="postalcode" aria-describedby="basic-addon1" />
                         </div>
 
                         <div class="input-group mb-3 ">
-                            <span class="input-group-text span_width " id="basic-addon1"
-                                >Street</span
-                            >
-                            <input
-                                type="text"
-                                class="form-control"
-                                v-model="form.street"
-                                placeholder="Street"
-                                aria-label="street"
-                                aria-describedby="basic-addon1"
-                            />
+                            <span class="input-group-text span_width " id="basic-addon1">Street</span>
+                            <input type="text" class="form-control" v-model="form.street" placeholder="Street"
+                                aria-label="street" aria-describedby="basic-addon1" />
                         </div>
 
                         <div class="input-group mb-3 ">
-                            <span class="input-group-text span_width" id="basic-addon1"
-                                >City</span
-                            >
-                            <input
-                                type="text"
-                                class="form-control"
-                                v-model="form.city"
-                                placeholder="Enter City"
-                                aria-label="postalcode"
-                                aria-describedby="basic-addon1"
-                            />
+                            <span class="input-group-text span_width" id="basic-addon1">City</span>
+                            <input type="text" class="form-control" v-model="form.city" placeholder="Enter City"
+                                aria-label="postalcode" aria-describedby="basic-addon1" />
                         </div>
                     </div>
                 </Transition>
                 <div v-if="!store.jobInformation || user">
                     <div class="form-group button-container">
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary" v-bind:disabled="processing == true" >
+                            <i class='fa fa-circle-notch fa-spin' v-if="processing == true"></i>
                             Continue
                         </button>
                     </div>
@@ -117,11 +69,7 @@ j<template>
         <div class="col-md-10 bg-white" v-if="!user">
             <KeepAlive>
                 <Transition>
-                    <component
-                        :is="currentComponent"
-                        v-if="store.jobInformation"
-                        @toggleCurrent="handleComponentChange"
-                    >
+                    <component :is="currentComponent" v-if="store.jobInformation" @toggleCurrent="handleComponentChange">
                     </component>
                 </Transition>
             </KeepAlive>
@@ -161,6 +109,7 @@ const handleComponentChange = (value) => {
 const currentComponent = computed(() => {
     return showSecondComponent.value ? SignUp : EmailInput;
 });
+const processing = ref(false);
 const user = inject("user");
 const form = reactive({
     country: "",
@@ -204,8 +153,9 @@ const store = useQuestionnaireStore();
 const submitForm = async () => {
     try {
         // Validate the form using Yup schema
+        processing.value = true
         await validationSchema.value.validate(form, { abortEarly: false });
-
+        
         // If validation succeeds, show SweetAlert2 success message
         if (user !== null && user !== undefined) {
             // Object exists and is not null or undefined
@@ -225,13 +175,16 @@ const submitForm = async () => {
                 confirmButtonText: "Save",
                 denyButtonText: `Don't save`,
             }).then((result) => {
-               
+
 
                 if (result.isConfirmed) {
                     store.sendJobinformation();
+                    
                     Swal.fire("Saved!", "", "success");
+                    processing.value = false
                 } else if (result.isDenied) {
                     Swal.fire("Changes are not saved", "", "info");
+                    processing.value = false
                 }
             });
         } else {
@@ -265,6 +218,7 @@ const submitForm = async () => {
                 .map((err) => `<li>${err}</li>`)
                 .join("")}</ul>`,
         });
+        processing.value = false
     }
 };
 
@@ -275,9 +229,10 @@ onMounted(async () => {
 
 <!-- Add Bootstrap CSS in your project for this to work -->
 <style scoped>
-.span_width{
+.span_width {
     width: 18% !important;
 }
+
 .btn-primary {
     color: #fff !important;
     background-color: rgb(81, 197, 125) !important;

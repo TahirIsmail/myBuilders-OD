@@ -30,7 +30,7 @@
                         @endphp
                         @if ($allow_for_bid == null)
                             <a  onclick="show_interest({{ $lead->id }})" class="btn--Tradec"
-                                style="width:auto !important;padding: 0.6em 0.25em 0.7em !important;font-size:15px ">
+                                style="width:auto !important;cursor:pointer !important;padding: 0.6em 0.25em 0.7em !important;font-size:15px ">
                                 {{ translate('Express Interest') }}&nbsp;
                             </a>
                             @else

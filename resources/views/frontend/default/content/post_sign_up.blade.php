@@ -2,6 +2,11 @@
 
 
 <style>
+    .education {
+        background: #f9fbfd;
+        padding-top: 50px;
+    }
+
     .custom-content-inner h1 {
         margin: 0;
         color: #ffffff;
@@ -19,32 +24,41 @@
         line-height: 1;
     }
 
-    @media only screen and (min-width: 800px) and (max-width: 2400px) {
-        .background-image {
-            height: 100vh !important;
-        }
-    }
+
+
 
     @media only screen and (min-width: 300px) and (max-width: 600px) {
         .header-text h2 {
 
-            font-size: 1.5rem;
+            font-size: 1.2rem;
         }
-    }
 
-    @media only screen and (min-width: 300px) and (max-width: 600px) {
         .content {
             top: 70% !important;
         }
-    }
 
-    @media only screen and (min-width: 300px) and (max-width: 600px) {
+        .our_cont {
+            display: block !important;
+
+        }
+
+        .single-about-img img {
+            max-width: 500px !important;
+            height: 80px !important;
+        }
+
+        .lable_fee {
+            padding: 1em 1em 1em !important;
+            margin-left: 0px !important;
+            margin-top: 20px
+        }
+
         .header-text p {
-            margin: 10px 0px 20px !important;
+            margin: 8px 0px 8px !important;
+            font-size: 10px !important;
+            font-weight: 400 !important;
         }
     }
-
-
 
     .header-text h2 span {
         color: #64c976;
@@ -52,8 +66,8 @@
 
     .header-text p {
         color: #fff !important;
-        font-size: 20px;
-        font-weight: 700;
+        font-size: 15px;
+        font-weight: 500;
         margin: 30px 0 60px;
         letter-spacing: 0.5px;
     }
@@ -75,7 +89,7 @@
         font-size: 24px;
         font-weight: 600;
 
-        padding-bottom: 50px;
+        padding-bottom: 10px;
         border-bottom: 1px solid #e5ebf2;
         color: #64c976;
     }
@@ -117,13 +131,17 @@
 
 
 
-    .background-image {
-        background: url('/public/assets/frontend/default/img/slider_img/c2.jpg') no-repeat;
-        background-size: cover;
-        background-position: center;
-        position: relative;
-        height: 400px;
-        /* Set the height of your background image */
+
+
+    .content {
+        width: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: white;
+        padding: 20px;
     }
 
     .background-image:before {
@@ -136,34 +154,90 @@
         height: 100%;
     }
 
-    .content {
+
+    .background-image {
         width: 100%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
-        color: white;
-        padding: 20px;
+        height: 100%;
+
+        /* padding-top: 53.25%;
+        position: relative;
+        background-size: cover; */
+        /* width: 100%;
+        height: 0;
+        padding-top: 56.25%;
+        position: relative;
+        background-size: cover; */
+        /* background-position: center; */
+        /* background-image: url('/public/assets/frontend/default/img/slider_img/c15.png'); */
+
+    }
+
+    .background-image img {
+        
+        background-size: cover;
+        background-position: center;
+    }
+
+
+    .custom-slider {
+        position: relative;
+
+        /* Change this height as needed */
+        overflow: hidden;
+        height: 600px;
+
+    }
+
+
+    @media only screen and (min-width: 300px) and (max-width: 600px) {
+        .custom-slider {
+            height: 500px;
+        }
+
+        .custom-content-inner h1 {
+            width: 100% !important;
+        }
+
+        .custom-content-inner h5 {
+            width: 100% !important;
+        }
+
+        .stretch-img {
+            width: 100% !important;
+            height: 100% !important;
+        }
+    }
+
+    .stretch-img {
+        width: 100%;
+        height: auto;
     }
 </style>
 @section('content')
     <section id="welcome-hero" class="welcome-hero">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12 p-0">
+                <div class="col-md-12 p-0 custom-slider">
                     <div class="background-image">
-                        <div class="content text-center">
+                        <img src="{{ asset('public\assets\frontend\default\img\slider_img\con2.jpg') }}" class="stretch-img"
+                            alt="Responsive image" />
+                        <div class="custom-content">
 
-                            <div class="header-text">
-                                <h2>
-                                    Find a tradesman now
-                                </h2>
-                                <p>
-                                    Builders’ Valley helps people across the country for their home improvement projects and
-                                    find tradesmen they can trust.
-                                </p>
-                                <a class='btn--lp'href={{ route('post_project') }}> POST A JOB NOW</a>
+                            <div class="custom-content-inner">
+                                <h1>
+                                    Sign Up <span>,</span> as a
+                                    tradesperson for free <span>.</span>
+                                </h1>
+                                <h5>
+                                    A trade membership with Builders’ Valley means you can contact
+                                    potential
+                                    customers across the country. Sign up now for better business
+                                    opportunities.
+                                </h5>
+                                <div class="lp-header__content">
+                                    <a class='btn--lp'href={{ route('post_project') }}> POST A JOB NOW</a>
+
+                                </div>
                             </div>
 
                         </div>
@@ -245,7 +319,7 @@
 
 
 
-{{-- 
+        {{-- 
         <div class="row justify-content-center about-content">
             <div class="col-xl-4 col-xxl-3 col-md-4 " style="margin-bottom: 10px;position: relative;">
                 <div class="card5">

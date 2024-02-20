@@ -24,27 +24,7 @@
 						{{ translate('Please renew/upgrade your package. Your current package will expire soon') }}. <a href="{{ route('select_package') }}" class="alert-link">{{ translate('Upgrade Now') }}</a>
 					</div>
 				@endif --}}
-				<div class="">
-					<div class="card card_shadow card_border p-4 rounded-2 bg-hov-soft-primary border-1 border-gray-light">
-						<div class="row gutters-15">
-							<div class="col-md-4">
-								<div class="rounded-1 p-4 mb-4 d-flex flex-column justify-content-center" style="min-height: 116px;background: #bf1932;">
-									<div class="text-white">{{ translate('This Month Expense') }}</div>
-									<div class="h4 fw-700 text-white">{{ single_price(\App\Models\MilestonePayment::where('paid_status', 1)->where('client_user_id', Auth::user()->id)->whereBetween('updated_at', [Carbon::now()->startOfMonth(), Carbon::now()->endOfMonth()])->sum('amount')) }}</div>
-								</div>
-								<div class="rounded-1 p-4 bg-dark d-flex flex-column justify-content-center" style="min-height: 116px;background: #45b5aa;">
-									<div class="text-white">{{ translate('Total Expense') }}</div>
-									<div class="h4 fw-700 text-white">{{ single_price(\App\Models\MilestonePayment::where('paid_status', 1)->where('client_user_id', Auth::user()->id)->sum('amount')) }}</div>
-								</div>
-							</div>
-							<div class="col-md-8">
-								<div class="mt-5 mt-md-0 ml-md-3">
-									<canvas id="graph-1" class="w-100" height="250"></canvas>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+				
             	<div class="row gutters-15">
             		<div class="col-md-4 d-flex">
             			<div class="card card_shadow card_border w-100 rounded-2 bg-hov-soft-primary border-1 border-gray-light">

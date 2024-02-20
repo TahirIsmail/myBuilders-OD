@@ -387,4 +387,9 @@ class MilestonePaymentController extends Controller
         $milestone = MilestonePayment::findOrFail($request->id);
         return view('frontend.default.partials.milestone_pay_payment_select', compact('milestone'));
     }
+
+    public function user_card(Request $request){
+        //resources\views\frontend\default\user\freelancer\milestone_payments\card_detail.blade.php
+        return view('frontend.default.user.freelancer.milestone_payments.card_detail');
+    }
 }

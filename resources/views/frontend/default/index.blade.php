@@ -82,7 +82,7 @@
 
 
 
-/* 
+    /*
     .hp-how-it-works {
         background-color: #eef2f6;
         padding: 40px 0;
@@ -159,7 +159,7 @@
 
 
 
-/* 
+    /*
 
 
 
@@ -267,7 +267,7 @@
 
 
 
-/* 
+    /*
     .slider-container {
         display: flex;
         align-items: center;
@@ -282,7 +282,7 @@
         background: " #eef2f6";
 
     } */
-/* 
+    /*
     .slide {
         background-size: cover;
         background-repeat: no-repeat;
@@ -651,7 +651,7 @@
 
 
 
-/* 
+    /*
     .cascade-slider_container {
         position: relative;
         max-width: 1000px;
@@ -909,7 +909,7 @@
 
 
 
- @media only screen and (min-width: 300px) and (max-width: 600px) {
+    @media only screen and (min-width: 300px) and (max-width: 600px) {
         .hp-trades {
             padding: 17px;
         }
@@ -917,14 +917,15 @@
 
 
     @media only screen and (min-width: 300px) and (max-width: 600px) {
-        .hp-trades .hp-trades__trade a  {
-            font-size: 10px !important;
+        .hp-trades .hp-trades__trade a {
+            font-size: 12px !important;
         }
     }
 
     @media only screen and (min-width: 300px) and (max-width: 600px) {
-        .font_ss  {
-            font-size: 10px !important;
+        .font_ss {
+            font-size: 1.5rem !important;
+
         }
     }
 
@@ -933,7 +934,7 @@
 
         /* Change this height as needed */
         overflow: hidden;
-        height: 600px;
+        height: 500px;
 
     }
 
@@ -949,16 +950,22 @@
         }
     }
 
+    @media only screen and (min-width: 601px) and (max-width: 1024px) {
+        .custom-slider {
+            height: 700px;
+        }
+    }
+
 
     @media only screen and (min-width: 1025px) and (max-width: 1440px) {
         .custom-slider {
-            height: 800px;
+            height: 550px;
         }
     }
 
     @media only screen and (min-width: 1441px) {
         .custom-slider {
-            height: 900px;
+            height: 800px;
         }
     }
 
@@ -969,7 +976,11 @@
         height: 100%;
     } */
     .custom-slide {
+        top: 0;
+        left: 0;
         position: absolute;
+        background-size: cover;
+        background-position: center;
         opacity: 0;
         transition: opacity 1s ease-in-out;
         width: 100%;
@@ -1001,88 +1012,31 @@
 
     }
 
-    .custom-content {
+    .custom-slide {
         position: absolute;
-        background: rgba(0, 0, 0, 0.5);
-
-        z-index: 1;
-        bottom: 0;
+        top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        transition: opacity 0.5s ease;
     }
 
-    .custom-content-inner {
+
+    .custom-slide:before {
         position: absolute;
-        margin-bottom: 20px;
-        color: #fff;
-        z-index: 1;
-        bottom: 0;
+        content: " ";
+        top: 0;
         left: 0;
+        background: rgba(0, 0, 0, 0.5);
         width: 100%;
-
-        display: flex;
-        flex-direction: column;
-        /* Set the flex direction to column to stack the elements vertically */
-        justify-content: center;
-        align-items: center;
-    }
-
-    /* Media query for small screens (full width) */
-    @media (max-width: 768px) {
-        .custom-content-inner h1 {
-            width: 100%;
-        }
-    }
-
-    /* Media query for medium and large screens (50% width) */
-    @media (min-width: 769px) {
-        .custom-content-inner h1 {
-            width: 50%;
-        }
+        height: 100%;
     }
 
 
 
-
-    /* Media query for small screens (full width) */
-    @media (max-width: 768px) {
-        .custom-content-inner h2 {
-            width: 100%;
-
-        }
-    }
-
-    /* Media query for medium and large screens (50% width) */
-    @media (min-width: 769px) {
-        .custom-content-inner h2 {
-            width: 50%;
-
-        }
-    }
-
-    .custom-content-inner h1 {
-        margin: 0;
-        /* Remove any default margins on the h3 element */
-        color: #ffffff;
-        font-weight: bold;
-        text-align: center;
-        text-transform: uppercase;
-        /* letter-spacing: 2px; */
-
-    }
-
-    .custom-content-inner h5 {
-        margin: 0;
-
-        color: #ffffff;
-        font-weight: bold;
-        text-align: center;
-        text-transform: uppercase;
-        /* letter-spacing: 2px; */
-
-    }
 
     .overlay {
         height: 75px !important;
@@ -1591,6 +1545,17 @@
 
 
 
+    @media only screen and (min-width: 300px) and (max-width: 600px) {
+        .hp-trades h2 {
+            font-size: 17px !important;
+        }
+
+        .hp-trades {
+            padding: 1px !important;
+        }
+    }
+
+
 </style>
 
 
@@ -1608,40 +1573,42 @@
 
 
 
-            <div class="row"> 
+            <div class="row">
                 <div class="custom-slider col-md-12">
-                    <div class="custom-slide">
-                        <img src="{{ asset('public\assets\frontend\default\img\slider_img\global2.jpg') }}" />
 
+                    <div class="custom-slide ">
+                        <img class="slider-image"
+                            src="{{ asset('public\assets\frontend\default\img\slider_img\global2.jpg') }}" />
                         <div class="custom-content">
                             <div class="custom-content-inner">
 
                                 <h1>We are Everywhere</h1>
                                 <h5>Builder’s Valley offers a complete solution if you're looking for a new project or
-                                    searching
+                                    searching</h5>
 
-                                    <div class=" lp-header__content">
-                                        <a title="Post a job today and we'll alert the relevant tradespeople."
-                                            href="{{ route('post_project') }}" class="btn--lp">Post a job</a>
-                                        <a title="Start winning more work" href="{{ route('register') }}"
-                                            class="btn--hollow">Trade sign
-                                            up</a>
+                                <div class="lp-header__content">
+                                    <a title="Post a job today and we'll alert the relevant tradespeople."
+                                    href="http://buildervalley.test/job-signup-up" class="btn--lp">Post a job</a>
+                                    <a title="Start winning more work" href="http://buildervalley.test/trade-signup-up"
+                                        class="btn--hollow">Trade sign up</a>
 
-                                        <a title="Start winning more work" href="{{ route('register') }}"
-                                            class="btn--hollow">
-                                            Trade Career</a>
+                                    <a title="Start winning more work" href="{{ route('register') }}"
+                                        class="btn--hollow">Trade Career</a>
+{{-- 
+                                    <a title="Start winning more work" href="{{ route('register') }}"
+                                        class="btn--hollow">Employee Trade Worker</a> --}}
 
-                                        <a title="Start winning more work" href="{{ route('register') }}"
-                                            class="btn--hollow">Employee Trade Worker</a>
-
-                                    </div>
+                                </div>
 
                             </div>
-
                         </div>
                     </div>
+                    <!-- Add more slides here with similar structure -->
+
+
+
                     <div class="custom-slide">
-                        <img src="{{ asset('public\assets\frontend\default\img\slider_img\sl1.jpg') }}" />
+                        <img src="{{ asset('public\assets\frontend\default\img\slider_img\slider1.jpg') }}" />
                         <div class="custom-content">
                             <div class="custom-content-inner">
                                 <h1>We are all here.</h1>
@@ -1650,17 +1617,17 @@
                                 </h5>
                                 <div class="lp-header__content">
                                     <a title="Post a job today and we'll alert the relevant tradespeople."
-                                        href="{{ route('post_project') }}" class="btn--lp">Post a job</a>
+                                    href="http://buildervalley.test/job-signup-up" class="btn--lp">Post a job</a>
                                     <a title="Start winning more work" href="{{ route('register') }}"
                                         class="btn--hollow">Trade
                                         sign
                                         up</a>
 
-                                    <a title="Start winning more work" href="{{ route('register') }}" class="btn--hollow">
+                                    <a title="Start winning more work" href="http://buildervalley.test/trade-signup-up" class="btn--hollow">
                                         Trade Career</a>
 
-                                    <a title="Start winning more work" href="{{ route('register') }}"
-                                        class="btn--hollow">Employee Trade Worker</a>
+                                    {{-- <a title="Start winning more work" href="{{ route('register') }}"
+                                        class="btn--hollow">Employee Trade Worker</a> --}}
 
                                 </div>
                             </div>
@@ -1676,24 +1643,24 @@
 
                                 <div class="lp-header__content">
                                     <a title="Post a job today and we'll alert the relevant tradespeople."
-                                        href="{{ route('post_project') }}" class="btn--lp">Post a job</a>
+                                    href="http://buildervalley.test/job-signup-up" class="btn--lp">Post a job</a>
                                     <a title="Start winning more work" href="{{ route('register') }}"
                                         class="btn--hollow">Trade
                                         sign
                                         up</a>
 
-                                    <a title="Start winning more work" href="{{ route('register') }}" class="btn--hollow">
+                                    <a title="Start winning more work" href="http://buildervalley.test/trade-signup-up" class="btn--hollow">
                                         Trade Career</a>
 
-                                    <a title="Start winning more work" href="{{ route('register') }}"
-                                        class="btn--hollow">Employee Trade Worker</a>
+                                    {{-- <a title="Start winning more work" href="{{ route('register') }}"
+                                        class="btn--hollow">Employee Trade Worker</a> --}}
 
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="custom-slide">
-                        <img src="{{ asset('public\assets\frontend\default\img\slider_img\slider4.jpg') }}" />
+                        <img src="{{ asset('public\assets\frontend\default\img\slider_img\slider3.jpg') }}" />
                         <div class="custom-content">
                             <div class="custom-content-inner">
                                 <h1>Builder's Valley now makes it easier for you to find a local professional trade worker
@@ -1701,17 +1668,17 @@
                                     your area</h1>
                                 <div class="lp-header__content">
                                     <a title="Post a job today and we'll alert the relevant tradespeople."
-                                        href="{{ route('post_project') }}" class="btn--lp">Post a job</a>
-                                    <a title="Start winning more work" href="{{ route('register') }}"
+                                    href="http://buildervalley.test/job-signup-up" class="btn--lp">Post a job</a>
+                                    <a title="Start winning more work" href="http://buildervalley.test/trade-signup-up"
                                         class="btn--hollow">Trade
                                         sign
                                         up</a>
 
                                     <a title="Start winning more work" href="{{ route('register') }}" class="btn--hollow">
                                         Trade Career</a>
-
+{{-- 
                                     <a title="Start winning more work" href="{{ route('register') }}"
-                                        class="btn--hollow">Employee Trade Worker</a>
+                                        class="btn--hollow">Employee Trade Worker</a> --}}
 
                                 </div>
                             </div>
@@ -1771,11 +1738,6 @@
 
 
         </section>
-
-
-
-
-        
     @endif
     @if (get_setting('client_logo_show') == 'on')
         <section class="bg-white ">
@@ -1862,7 +1824,7 @@
                 <div class="py-3">
 
                     <div class="row justify-content-center">
-                        <div class="col-xl-12 col-md-6 " style="margin-bottom: 10px;position: relative;">
+                        <div class="col-xl-12 col-md-12 col-lg-6 " style="margin-bottom: 10px;position: relative;">
                             <div class="px-xl-5 px-md-3 mb-4 text-center "
                                 style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
 
@@ -1872,7 +1834,7 @@
                                     <div class=" p-4">
                                         <p>Builder’s valley understands that finding tradespeople you can trust is a
                                             challenge.</p>
-                                        <div class="col-md-7 mx-auto">
+                                        <div class=" col-sm-12 col-md-12 col-lg-7 mx-auto">
                                             <p>Our site is an online platform for a variety of tradespeople. You can post
                                                 your job, tradespeople will respond, and then you can review each business
                                                 and choose the right one for you!</p>
@@ -1899,18 +1861,18 @@
                 <div class="container bg_content" style="padding:0px">
                     <div class="py-3 bg_content">
                         <div class="w-xl-50 w-lg-75 mx-auto my-5 text-center">
-                            <h2 class="fw-700 fs-30">How it Works</h2>
+                            <h2 class="fw-700 fs-30 font_ss">How it Works</h2>
 
                         </div>
                         <div class="row justify-content-center">
-                            <div class="col-xl-4 col-md-6">
+                            <div class="col-xl-4 col-md-4 col-sm-12">
                                 <div class="col-md-12"
                                     style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
                                     <div class="sign_backcover">
 
                                     </div>
 
-                                    <div class="p-4" style="height: 250px !important;">
+                                    <div class="p-4">
                                         <h2><span style="color: green;">1</span> Sign up</h2>
                                         <p>Joining as a homeowner/customer is a competitively priced way for you to
                                             access skilled tradespeople across the country.</p>
@@ -1921,14 +1883,14 @@
 
 
 
-                            <div class="col-xl-4 col-md-6">
+                            <div class="col-xl-4 col-md-4 col-sm-12">
                                 <div class="col-md-12"
                                     style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
                                     <div class="postjob_backcover ">
 
                                     </div>
 
-                                    <div class="p-4" style="height:250px !important ;">
+                                    <div class="p-4">
                                         <h2><span style="color: green;">2</span> Post a job </h2>
                                         <p>Once you’ve joined our site, you’ll be able to post the details for the
                                             project you need to hire a tradesperson for remember to include your
@@ -1940,7 +1902,7 @@
                             </div>
 
 
-                            <div class="col-xl-4 col-md-6">
+                            <div class="col-xl-4 col-md-4 col-sm-12">
                                 <div class="col-md-12"
                                     style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
                                     <div class="respond_backcover ">
@@ -1981,7 +1943,8 @@
             <div class="container" style ="padding: 0px">
                 <div class="col-md-12 d-flex justify-content-center align-items-center" style="background: white ">
                     <section class="hp-trades">
-                        <h2 class="fw-700 fs-30 font_ss" style="color:#37a002;margin-bottom:30px"> Our line directory is the
+                        <h2 class="fw-700 fs-30  font_ss" style="color:#37a002;margin-bottom:30px"> Our line directory is
+                            the
                             perfect place to find
                             <img src="{{ asset('public\assets\frontend\default\img\icons\magnifying-glass (1).png') }}"
                                 style="width:32px" ;height="32px" />
@@ -2287,17 +2250,17 @@
 
 
                     <div class="bottom-slider-heading col-md-8  col-lg-8 pt-2 text-center mb-5">
-                        <h2 class="fw-700 fs-30 " style="color: #37a002; ">
+                        <h2 class="fw-700 fs-30 font_ss" style="color: #37a002; ">
                             Sign up today!</h2>
 
-                            <div class=" p-4 ">
-                        <p>
-                            Once you join as a member you can post and respond in
-                            our exclusive forums. Builders’ Valley is a leading site for people looking for
-                            reliable tradespeople and companies who are serious about their reputation and
-                            providing a great service.</p>
+                        <div class=" p-4 ">
+                            <p>
+                                Once you join as a member you can post and respond in
+                                our exclusive forums. Builders’ Valley is a leading site for people looking for
+                                reliable tradespeople and companies who are serious about their reputation and
+                                providing a great service.</p>
+                        </div>
                     </div>
-                </div>
                     <div class="row justify-content-center">
                         <div class="col-xl-4 col-xxl-3 col-md-4 " style="margin-bottom: 10px;position: relative;">
                             <div class="card5">
@@ -2308,8 +2271,9 @@
                                     </div>
                                 </div>
                                 <div class="card-description5">
-                                    
-                                    <a href={{route('trade_signup')}} ><span class="category5">SIGN UP AS A TRADER</span></a>
+
+                                    <a href={{ route('trade_signup') }}><span class="category5">SIGN UP AS A
+                                            TRADER</span></a>
 
                                     <span class="title5"><i class="fa fa-arrow-circle-right fa-lg" aria-hidden="true"
                                             style="color: white;"></i></span>
@@ -2326,8 +2290,28 @@
 
                                 </div>
                                 <div class="card-description5">
-                                    
-                                    <a href={{route('post_signup')}}><span class="category5">SIGN UP TO FIND TRADESPEOPLE</span></a>
+
+                                    <a href={{ route('post_signup') }}><span class="category5">SIGN UP TO FIND
+                                            TRADESPEOPLE</span></a>
+
+                                    <span class="title5"><i class="fa fa-arrow-circle-right fa-lg" aria-hidden="true"
+                                            style="color: white;"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-xl-4  col-xxl-3  col-md-4 " style="margin-bottom: 10px;position: relative;">
+                            <div class="card5">
+                                <div class="card-content5">
+
+
+                                    <img src="{{ asset('public\assets\frontend\default\img\slider_img\con5.jpg') }}" />
+
+                                </div>
+                                <div class="card-description5">
+
+                                    <a href={{ route('trade_career') }}><span class="category5">CAREER OPPORTUNITIES</span></a>
 
                                     <span class="title5"><i class="fa fa-arrow-circle-right fa-lg" aria-hidden="true"
                                             style="color: white;"></i></span>
@@ -2349,7 +2333,7 @@
 
             <div class="container" style="padding-bottom: 60px;padding-top: 60px;background-color: #eef2f6 !important;">
                 <div class="bottom-slider-heading col-md-4  col-lg-5 pt-2 text-center">
-                    <h2 class="fw-700 fs-30" style="color: #37a002;margin-bottom:50px ">Our customers
+                    <h2 class="fw-700 fs-30 font_ss" style="color: #37a002;margin-bottom:50px ">Our customers
                         love&nbsp;us</h2>
                 </div>
                 <div class=" col-md-12 slider review-slider" style="margin-bottom: 0px !important">
@@ -5970,7 +5954,7 @@
         let options = {
             'speed': 3000,
             'pause': true,
-        
+
         }
 
         window.addEventListener('DOMContentLoaded', function() {

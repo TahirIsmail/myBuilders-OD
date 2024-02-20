@@ -43,15 +43,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data['categories'] = Categories::select('name','slug')->orderBy('name')->get();
-        
-        return view('frontend.default.index',$data);
+        $data['categories'] = Categories::select('name', 'slug')->orderBy('name')->get();
+
+        return view('frontend.default.index', $data);
     }
 
     //Admin login
     public function admin_login()
     {
-        if(Auth::check() && (auth()->user()->user_type == "admin" || auth()->user()->user_type == "staff")){
+        if (Auth::check() && (auth()->user()->user_type == "admin" || auth()->user()->user_type == "staff")) {
             return redirect()->route('home');
         }
         return view('auth.login');
@@ -60,7 +60,7 @@ class HomeController extends Controller
     //User login
     public function login()
     {
-        if(Auth::check()){
+        if (Auth::check()) {
             return redirect()->route('home');
         }
         return view('frontend.default.user_login');
@@ -76,17 +76,15 @@ class HomeController extends Controller
     public function dashboard()
     {
         // $user_profile = UserProfile::where('user_id', Auth::user()->id)->first();
-       
-        
 
-        if(isFreelancer()){
-            
+
+
+        if (isFreelancer()) {
+
             return view('frontend.default.user.freelancer.dashboard');
-        }
-        elseif(isClient()){
+        } elseif (isClient()) {
             return view('frontend.default.user.client.dashboard');
-        }
-        else {
+        } else {
             abort(404);
         }
     }
@@ -96,18 +94,18 @@ class HomeController extends Controller
     {
         $project = Project::where('slug', $slug)->with('address')->first();
         $project_questionare = collect(json_decode($project->jobquestionsarray));
-        
-        $questionare =  $project_questionare->map(function($item ,$key){
+
+        $questionare =  $project_questionare->map(function ($item, $key) {
             return [
-                "question" => Question::where('id',$item->question_id)->select('question')->value('question'),
+                "question" => Question::where('id', $item->question_id)->select('question')->value('question'),
                 // "question" => $item->question_id,
-                
+
                 "answer" => $item->answer
             ];
         });
-        
-       
-        return view('frontend.default.project-single', compact('project','questionare'));
+
+
+        return view('frontend.default.project-single', compact('project', 'questionare'));
     }
 
     //Show details info of specific project
@@ -117,12 +115,12 @@ class HomeController extends Controller
         if ($project != null) {
             $id = $project->id;
             $user = Auth::user()->id;
-            $chat_thread = ChatThread::where(function ($query) use ($id){
-                                $query->where('project_id', '=', $id);
-                            })->where(function ($query) use ($user){
-                                $query->where('sender_user_id', '=', $user)
-                                      ->orWhere('receiver_user_id', '=', $user);
-                            })->first();
+            $chat_thread = ChatThread::where(function ($query) use ($id) {
+                $query->where('project_id', '=', $id);
+            })->where(function ($query) use ($user) {
+                $query->where('sender_user_id', '=', $user)
+                    ->orWhere('receiver_user_id', '=', $user);
+            })->first();
         }
         return view('frontend.default.private_project_single', compact('project', 'chat_thread'));
     }
@@ -146,7 +144,7 @@ class HomeController extends Controller
     public function client_details($username)
     {
         $client = User::with('profile')->where('user_name', $username)->first();
-       
+
         $open_projects = Project::where('client_user_id', $client->id)->biddable()->open()->notcancel()->latest()->get();
         return view('frontend.default.client-single', compact('client', 'open_projects'));
     }
@@ -179,45 +177,47 @@ class HomeController extends Controller
     {
         $user_name = User::where('user_name', '=', Str::slug($request->username, '-'))->first();
         if ($user_name != null) {
-            $response = "<span style='color: red; font-size: 8pt'>".translate('User name already Exist').".</span>";
+            $response = "<span style='color: red; font-size: 8pt'>" . translate('User name already Exist') . ".</span>";
             return $response;
-        }
-        else {
-            $response = "<span style='color: green; font-size: 8pt'>".translate('Available').".</span>";
+        } else {
+            $response = "<span style='color: green; font-size: 8pt'>" . translate('Available') . ".</span>";
             return $response;
         }
     }
 
-    public function send_email_verification_request(Request $request){
+    public function send_email_verification_request(Request $request)
+    {
         return send_email_verification_email();
     }
 
-    public function verification_confirmation($code){
+    public function verification_confirmation($code)
+    {
         $user = User::where('verification_code', $code)->first();
-        if($user != null){
+        if ($user != null) {
             $user->email_verified_at = Carbon::now();
             $user->save();
 
             flash(translate('Your email has been verified successfully'))->success();
-        }
-        else {
+        } else {
             flash(translate('Sorry, we could not verifiy you. Please try again'))->warning();
         }
 
         return redirect()->route('dashboard');
     }
-    public function post_job(){
-       $data['user'] = auth()->user();
-      
+    public function post_job()
+    {
+        $data['user'] = auth()->user();
+
         // Return or process $projectCategories as needed
-        return view('frontend.default.post_projects',$data);
+        return view('frontend.default.post_projects', $data);
     }
 
-    public function checkuser(Request $request){
-        
+    public function checkuser(Request $request)
+    {
+
         $email = $request->input('email');
         $jobInformation = $request->input('jobInformation');
-        
+
         if (userExistsWithEmail($email)) {
             // User with the specified email exists
             // Add your authentication logic here
@@ -226,27 +226,27 @@ class HomeController extends Controller
             if ($user) {
                 $user->notify(new SendMagicLinkNotification($jobInformation));
             }
-    
-           
-            return response()->json(['msg' => "User Already Exists",'code' => 200,'user' => $user]);
+
+
+            return response()->json(['msg' => "User Already Exists", 'code' => 200, 'user' => $user]);
         } else {
             // User does not exist
             // Handle accordingly
-            return response()->json(['msg' => "User Does not Exists",'code' => 404]);
-
+            return response()->json(['msg' => "User Does not Exists", 'code' => 404]);
         }
     }
-    public function post_job_magic(Request $request){
-      $jobInformation = $request->input('jobinformation');
-      $jobdata = json_decode($jobInformation,true);
-      
-      return view('frontend.default.magic-job-post', $jobdata,['jobInformation' => $jobdata]);
-      
+    public function post_job_magic(Request $request)
+    {
+        $jobInformation = $request->input('jobinformation');
+        $jobdata = json_decode($jobInformation, true);
+
+        return view('frontend.default.magic-job-post', $jobdata, ['jobInformation' => $jobdata]);
     }
 
-    public function storemagicjobpost(Request $request){
-        
-        
+    public function storemagicjobpost(Request $request)
+    {
+
+
         $project = new Project;
         $project->name =  $request->jobHeadline;
         $project->jobquestionsarray = json_encode($request->JobQuestionAnswer);
@@ -260,13 +260,14 @@ class HomeController extends Controller
         $project->slug = Str::slug($request->jobHeadline, '-') . date('Ymd-his');
         $project->save();
         $jobaddress = new Address(
-            ['country' => $request->country,
-             'region' => $request->region,
-             'latitude' => $request->latitude,
-             'longitude' => $request->longitude,
-             'postal_code' => $request->postcode,
-             'street' => $request->street,
-             'city' => $request->city,
+            [
+                'country' => $request->country,
+                'region' => $request->region,
+                'latitude' => $request->latitude,
+                'longitude' => $request->longitude,
+                'postal_code' => $request->postcode,
+                'street' => $request->street,
+                'city' => $request->city,
             ]
         );
         $project->address()->save($jobaddress);
@@ -286,18 +287,20 @@ class HomeController extends Controller
             route('project.details', ['slug' => $project->slug])
         );
 
-       
 
-    // Redirect to the specified route
-        return response()->json(['message' => 'Job posted successfully','code' => 200]);
+
+        // Redirect to the specified route
+        return response()->json(['message' => 'Job posted successfully', 'code' => 200]);
     }
 
-    function getSkills(){
-        
+    function getSkills()
+    {
+
         return response()->json(ProjectCategory::with('skill')->take(44)->get());
     }
-    function getAssessment(Request $request){
-        $assessment = AssessmentQuestion::with('answers')->where('job_category_id',$request->id)->get();
+    function getAssessment(Request $request)
+    {
+        $assessment = AssessmentQuestion::with('answers')->where('job_category_id', $request->id)->get();
         return response()->json($assessment);
     }
     function clearCache(Request $request)
@@ -307,12 +310,18 @@ class HomeController extends Controller
         flash(translate('Cache cleared successfully'))->success();
         return back();
     }
-    function trade_sign_content(){
+    function trade_sign_content()
+    {
         return view('frontend.default.content.trade_sign_up');
     }
 
-    function  job_sign_content(){
+    function  job_sign_content()
+    {
         return view('frontend.default.content.post_sign_up');
     }
-    
+
+    function  trade_career_content()
+    {
+        return view('frontend.default.content.trade_career');
+    }
 }
