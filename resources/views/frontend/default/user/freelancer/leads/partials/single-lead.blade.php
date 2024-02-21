@@ -10,7 +10,7 @@
                 <div class="lead-details__flag-wrap"></div>
 
                 <div class="lead-details__actions-layout">
-                    <div class="col-md-7 custom_padding">
+                    <div class="col-md-6 custom_padding">
                         <a href="#" class="lead-details__meta">
                             <i class="fas fa-map-marker-alt mb-map no-space lead-details__meta-icon"></i>
 
@@ -21,7 +21,7 @@
                             <span class="lead-details__meta-detail">sent {{ \Carbon\Carbon::parse($lead->created_at)->diffForHumans() }}</span>
                         </div>
                     </div>
-                    <div class="col-md-5 custom_padding">
+                    <div class="col-md-6 custom_padding">
                         <div class="actions custom_padding">
                             @php
                             $allow_for_bid = \App\Models\ProjectBid::where('project_id', $lead->id)

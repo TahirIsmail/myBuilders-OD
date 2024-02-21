@@ -159,13 +159,15 @@
         color: rgba(255, 255, 255, 0.85);
     }
 
+
     .Visa {
-        margin: 0px 10px -10px;
+        margin: 0px 20px 0px;
         position: absolute;
         bottom: 0;
         right: 0;
-
     }
+
+
 
     .Logo-name {
 
@@ -222,7 +224,7 @@
     .card-details--link :hover {
         color: #64c976 !important;
     }
- 
+
     .card-details--icon {
         color: #007bff;
         /* Primary color (blue) */
@@ -251,7 +253,7 @@
                         </div>
                         <h5 class="mb-0 h6 px-4 py-3">We will use these card details for your invoices.</h5>
                         <div class="card-body">
-                            <div class="class col-sm-12 col-md-5 col-xxl-4">
+                            <div class="col-sm-12 col-md-5 col-lg-6 ">
                                 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
 
                                 <div class="Base">
@@ -293,7 +295,7 @@
                                     Change default card
                                 </a>
                             </div>
-                           
+
                         </div>
                     </div>
 
@@ -330,87 +332,90 @@
                             <h5 class="mb-0 h6 font-weight-bold">{{ translate('All Requests') }}</h5>
                         </div>
                         <div class="card-body">
-                            <table class="table aiz-table mb-0 invoice_table">
-                                <thead class="bg-purple-dark text-white p-3">
-                                    <tr>
-                                        <th data-breakpoints="">#</th>
-                                        <th data-breakpoints="" width="15%">{{ translate('Job') }}</th>
-                                        <th data-breakpoints="md">{{ translate('Client') }}</th>
-                                        <th data-breakpoints="md">{{ translate('Time') }}</th>
-                                        <th data-breakpoints="">{{ translate('Amount') }}</th>
-                                        <th data-breakpoints="">{{ translate('Status') }}</th>
-                                        @if (
-                                            \App\Models\Addon::where('unique_identifier', 'offline_payment')->first() != null &&
-                                                \App\Models\Addon::where('unique_identifier', 'offline_payment')->first()->activated)
-                                            <th data-breakpoints="md">
-                                                {{ translate('Approval') . ' ( ' . translate('For Manual Payment') . ' )' }}
-                                            </th>
-                                        @endif
-                                        <th data-breakpoints="" class="text-right" width="20%">
-                                            {{ translate('Actions') }}
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($milestones as $key => $milestone)
+                            <div class="table-responsive">
+                                <table class="table aiz-table mb-0 invoice_table">
+                                    <thead class="bg-purple-dark text-white p-3">
                                         <tr>
-                                            <td>{{ $key + 1 }}</td>
-                                            <td>{{ $milestone->project->name }}</td>
-                                            <td>
-                                                {{ $milestone->client->name }}
-                                            </td>
-                                            <td>{{ $milestone->created_at }}</td>
-                                            <td style="color:#ef9e01">
-                                                {{ single_price($milestone->amount) }}
-                                            </td>
-                                            <td>
-                                                @if ($milestone->paid_status == 1)
-                                                    <span
-                                                        class="badge badge-inline badge-success">{{ translate('Paid') }}</span>
-                                                @else
-                                                    <span
-                                                        class="badge badge-inline badge-danger">{{ translate('Unpaid') }}</span>
-                                                @endif
-                                            </td>
+                                            <th data-breakpoints="">#</th>
+                                            <th data-breakpoints="" width="15%">{{ translate('Job') }}</th>
+                                            <th data-breakpoints="md">{{ translate('Client') }}</th>
+                                            <th data-breakpoints="md">{{ translate('Time') }}</th>
+                                            <th data-breakpoints="">{{ translate('Amount') }}</th>
+                                            <th data-breakpoints="">{{ translate('Status') }}</th>
                                             @if (
                                                 \App\Models\Addon::where('unique_identifier', 'offline_payment')->first() != null &&
                                                     \App\Models\Addon::where('unique_identifier', 'offline_payment')->first()->activated)
-                                                @if ($milestone->offline_payment == 1)
-                                                    <td>
-                                                        @if ($milestone->approval == 1)
-                                                            <span
-                                                                class="badge badge-inline badge-success">{{ translate('Approved') }}</span>
-                                                        @else
-                                                            <span
-                                                                class="badge badge-inline badge-info">{{ translate('Pending') }}</span>
-                                                        @endif
-                                                    </td>
-                                                @else
-                                                    <td></td>
-                                                @endif
+                                                <th data-breakpoints="md">
+                                                    {{ translate('Approval') . ' ( ' . translate('For Manual Payment') . ' )' }}
+                                                </th>
                                             @endif
-                                            <td class="text-right">
-                                                @if ($milestone->paid_status != 1)
-                                                    <button type="submit" class="btn btn-xs btn-primary mr-2"
-                                                        @if (
-                                                            \App\Models\Addon::where('unique_identifier', 'offline_payment')->first() != null &&
-                                                                \App\Models\Addon::where('unique_identifier', 'offline_payment')->first()->activated) onclick="select_payment_type({{ $milestone->id }})"
+                                            <th data-breakpoints="" class="text-right" width="20%">
+                                                {{ translate('Actions') }}
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($milestones as $key => $milestone)
+                                            <tr>
+                                                <td>{{ $key + 1 }}</td>
+                                                <td>{{ $milestone->project->name }}</td>
+                                                <td>
+                                                    {{ $milestone->client->name }}
+                                                </td>
+                                                <td>{{ $milestone->created_at }}</td>
+                                                <td style="color:#ef9e01">
+                                                    {{ single_price($milestone->amount) }}
+                                                </td>
+                                                <td>
+                                                    @if ($milestone->paid_status == 1)
+                                                        <span
+                                                            class="badge badge-inline badge-success">{{ translate('Paid') }}</span>
+                                                    @else
+                                                        <span
+                                                            class="badge badge-inline badge-danger">{{ translate('Unpaid') }}</span>
+                                                    @endif
+                                                </td>
+                                                @if (
+                                                    \App\Models\Addon::where('unique_identifier', 'offline_payment')->first() != null &&
+                                                        \App\Models\Addon::where('unique_identifier', 'offline_payment')->first()->activated)
+                                                    @if ($milestone->offline_payment == 1)
+                                                        <td>
+                                                            @if ($milestone->approval == 1)
+                                                                <span
+                                                                    class="badge badge-inline badge-success">{{ translate('Approved') }}</span>
+                                                            @else
+                                                                <span
+                                                                    class="badge badge-inline badge-info">{{ translate('Pending') }}</span>
+                                                            @endif
+                                                        </td>
+                                                    @else
+                                                        <td></td>
+                                                    @endif
+                                                @endif
+                                                <td class="text-right">
+                                                    @if ($milestone->paid_status != 1)
+                                                        <button type="submit" class="btn btn-xs btn-primary mr-2"
+                                                            @if (
+                                                                \App\Models\Addon::where('unique_identifier', 'offline_payment')->first() != null &&
+                                                                    \App\Models\Addon::where('unique_identifier', 'offline_payment')->first()->activated) onclick="select_payment_type({{ $milestone->id }})"
                                                         @else
                                                             onclick="show_online_payment_modal('{{ $milestone->id }}')" @endif>
-                                                        {{ translate('Pay now') }}
+                                                            {{ translate('Pay now') }}
+                                                        </button>
+                                                    @endif
+                                                    <button type="submit"
+                                                        class="btn btn-sm btn-icon btn-circle btn-soft-info"
+                                                        onclick="request_message_show_modal('{{ $milestone->id }}')"
+                                                        title="View Message">
+                                                        <i class="las la-eye"></i>
                                                     </button>
-                                                @endif
-                                                <button type="submit" class="btn btn-sm btn-icon btn-circle btn-soft-info"
-                                                    onclick="request_message_show_modal('{{ $milestone->id }}')"
-                                                    title="View Message">
-                                                    <i class="las la-eye"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                            {{ $milestones->links() }}
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                                {{ $milestones->links() }}
+                            </div>
                         </div>
                     </div>
 

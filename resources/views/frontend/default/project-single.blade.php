@@ -150,8 +150,8 @@
                         <div class="card-body">
                             <h6 class="text-left mb-3"><span
                                     class="bg-white pr-3 fs-14 fw-700">{{ translate('Job Location') }}</span></h6>
-                            <div id="map" class="box" style='width: 650px; height: 300px;'>
-                                <img src="https://maps.googleapis.com/maps/api/staticmap?center={{ $project->address->latitude }},{{ $project->address->longitude }}&zoom=16&size=400x300&key=AIzaSyCC6BbwI05bsqkWZCStzkLIMquD8WL_wqU&markers=color:red|label:J|{{ $project->address->latitude }},{{ $project->address->longitude }}"
+                            <div id="map" class="box col-sm-12 col-md-6 col-lg-6">
+                                <img class="img-responsvie" style="max-width: 100%; height: auto;" src="https://maps.googleapis.com/maps/api/staticmap?center={{ $project->address->latitude }},{{ $project->address->longitude }}&zoom=16&size=400x300&key=AIzaSyCC6BbwI05bsqkWZCStzkLIMquD8WL_wqU&markers=color:red|label:J|{{ $project->address->latitude }},{{ $project->address->longitude }}"
                                     alt="address_map" />
 
                             </div>

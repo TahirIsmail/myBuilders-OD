@@ -161,8 +161,22 @@
         .navbar-light .navbar-nav .nav-link {
             color: #0e0d0d !important;
         }
-        .mg-bottom{
+
+        .mg-bottom {
             margin-bottom: 20px;
+        }
+    }
+
+
+
+    @media only screen and (min-width: 300px) and (max-width: 991px) {
+        .disply_btn{
+            display: none;
+        }
+    }
+    @media only screen and (min-width: 992px)  {
+        .disply_btn1{
+            display: none;
         }
     }
 </style>
@@ -195,20 +209,27 @@
         });
     });
 </script>
-
+<script>
+    window.addEventListener("load", function() {
+        $(".loader").css('display', "none");
+    })
+</script>
 
 <header class="aiz-header">
     {{-- background: linear-gradient(to right,#ffffff,#C0C0C0); --}}
     <div class="loader">
         <div class="spinner"></div>
     </div>
+
     <nav class="navbar navbar-expand-lg navbar-light header_bg">
         <a href="{{ route('home') }}">
             <img src="{{ asset('public\assets\frontend\default\img\logo\builder_valley_logo.png') }}"
                 alt="MyBuilder - A new way to find and hire tradespeople" width="150" height="60"
                 style="margin-left:22%;padding:3%">
         </a>
-
+        @if (!Auth::check())
+        <a class="btn--lp disply_btn1" href="{{ route('login') }}" style=" margin-left: auto;margin-right: 15px;">Login</a>
+        @endif
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -317,7 +338,7 @@
                             </li>
                             @if (!Auth::check())
                                 <li class="nav-item ml-xl-3">
-                                    <a class="btn-post" href="{{ route('login') }}">{{ translate('LogIn') }}</a>
+                                    <a class="btn-post disply_btn" href="{{ route('login') }}">{{ translate('Login') }}</a>
                                 </li>
                                 {{-- <li class="nav-item ml-xl-3">
                                 <a class="btn btn-primary rounded-1; width:100px"
