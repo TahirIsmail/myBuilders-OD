@@ -81,15 +81,10 @@
                                                 placeholder="+153234258"
                                                 autocomplete="on"
                                             />
-
+                                            <!-- <span class="alert alert-info rounded-4">Please Add Contact No with Country Code</span> -->
                                             <ErrorMessage class="text-danger" name="phone" />
                                         </div>
-                                        <div class="container">
-                                            <div
-                                                class="alert alert-info"
-                                                style="display: none"
-                                            ></div>
-                                        </div>
+                                        
 
                                         <div class="form-group">
                                             <label

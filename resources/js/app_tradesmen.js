@@ -1,6 +1,9 @@
 require('./bootstrap')
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
+
+import { VueTelInput } from 'vue-tel-input';
+import 'vue-tel-input/vue-tel-input.css';
 import VueGoogleMaps from '@fawmi/vue-google-maps';
 import  VSelect  from "vue-select";
 
@@ -24,6 +27,7 @@ app.use(VueGoogleMaps, {
       libraries: "places"
     },
   })
+app.use(VueTelInput);
 app.component("v-select", VSelect);
 app.component("MultiStep",MultiStepComponent)
 

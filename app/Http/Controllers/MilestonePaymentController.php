@@ -390,6 +390,6 @@ class MilestonePaymentController extends Controller
 
     public function user_card(Request $request){
         //resources\views\frontend\default\user\freelancer\milestone_payments\card_detail.blade.php
-        return view('frontend.default.user.freelancer.milestone_payments.card_detail');
+        return view('frontend.default.user.freelancer.milestone_payments.card_detail_content');
     }
 }

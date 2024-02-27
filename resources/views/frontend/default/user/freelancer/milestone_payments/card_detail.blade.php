@@ -5,7 +5,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-           
+
             <div class="col-md-12 mt-4">
                 <div class="card p-3 d-flex  ">
                     <div class="row">
@@ -16,11 +16,11 @@
                             <div class="text-center">
 
                                 <img src="{{ asset('public\assets\frontend\default\img\icons\Mastercard.png') }}"
-                                    style="width:50px"  />
-                                    <img src="{{ asset('public\assets\frontend\default\img\icons\visa1.png') }}"
-                                    style="width:50px"  />
-                                    <img src="{{ asset('public\assets\frontend\default\img\icons\american.png') }}"
-                                    style="width:50px"  />
+                                    style="width:50px" />
+                                <img src="{{ asset('public\assets\frontend\default\img\icons\visa1.png') }}"
+                                    style="width:50px" />
+                                <img src="{{ asset('public\assets\frontend\default\img\icons\american.png') }}"
+                                    style="width:50px" />
                             </div>
                         </div>
 
@@ -37,10 +37,7 @@
                             <div class="row">
                                 <div class="col-8">
 
-                                    <p class="mb-0"><span class="fw-bold">Product:</span><span class="c-green">: Name of
-                                            product</span></p>
-                                    <p class="mb-0"><span class="fw-bold">Price:</span><span
-                                            class="c-green">:$452.90</span></p>
+
                                     <p class="mb-0">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque
                                         nihil neque
                                         quisquam aut
@@ -59,53 +56,53 @@
                             <div class="row">
                                 <div class="col-lg-5 mb-lg-0 mb-3">
 
-                                    <p class="mb-0"><span class="fw-bold">Product:</span><span class="c-green">: Name of
-                                            product</span>
-                                    </p>
-                                    <p class="mb-0">
-                                        <span class="fw-bold">Price:</span>
-                                        <span class="c-green">:$452.90</span>
-                                    </p>
+
                                     <p class="mb-0">Providing your payment details helps us verify your identity and
                                         simplifies the process of paying future invoices. Payments will be processed from
                                         your card automatically to settle any outstanding invoices.
 
-                                        Change default car</p>
+                                        Change default card</p>
                                 </div>
                                 <div class="col-lg-7">
-                                    <form action="" class="form">
+                                    <form id="payment-form" class="form">
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="form__div">
-                                                    <input type="text" class="form-control" placeholder=" ">
-                                                    <label for="" class="form__label">Card Number</label>
+                                                    <input id="card-number" type="text" class="form-control"
+                                                        placeholder=" ">
+                                                    <label for="card-number" class="form__label">Card Number</label>
                                                 </div>
                                             </div>
 
                                             <div class="col-6">
                                                 <div class="form__div">
-                                                    <input type="text" class="form-control" placeholder=" ">
-                                                    <label for="" class="form__label">MM / yy</label>
+                                                    <input id="card-expiry" type="text" class="form-control"
+                                                        placeholder=" ">
+                                                    <label for="card-expiry" class="form__label">MM / YY</label>
                                                 </div>
                                             </div>
 
                                             <div class="col-6">
                                                 <div class="form__div">
-                                                    <input type="password" class="form-control" placeholder=" ">
-                                                    <label for="" class="form__label">cvv code</label>
+                                                    <input id="card-cvc" type="text" class="form-control"
+                                                        placeholder=" ">
+                                                    <label for="card-cvc" class="form__label">CVV Code</label>
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="form__div">
-                                                    <input type="text" class="form-control" placeholder=" ">
-                                                    <label for="" class="form__label">name on the card</label>
+                                                    <input id="card-holder-name" type="text" class="form-control"
+                                                        placeholder=" ">
+                                                    <label for="card-holder-name" class="form__label">Name on the
+                                                        Card</label>
                                                 </div>
                                             </div>
                                             <div class="col-12">
-                                                <div class="btn--lp">Submit</div>
+                                                <div class="btn--lp" id="submit-button">Submit</div>
                                             </div>
                                         </div>
                                     </form>
+
                                 </div>
                             </div>
                         </div>
@@ -268,3 +265,13 @@
         box-shadow: none;
     }
 </style>
+@section('script')
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-masker"></script>
+    <script>
+        // Apply input masks
+        VMasker(document.getElementById('card-number')).maskPattern('9999 9999 9999 9999');
+        VMasker(document.getElementById('card-expiry')).maskPattern('99 / 99');
+        VMasker(document.getElementById('card-cvc')).maskPattern('999');
+    </script>
+    //Stripe Elements Form for Stripe gateway
+@endsection

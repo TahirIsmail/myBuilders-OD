@@ -228,7 +228,7 @@ Route::group(['middleware' => ['auth', 'freelancer', 'phoneverified']], function
 
 	Route::get('/show-lead/{id}', 'ProjectController@showLead')->name('show-lead');
 	Route::get('/show-interested-lead/{id}', 'ProjectController@showInterestedLead')->name('show-interested-lead');
-
+	Route::get('/show-shortlisted-lead/{id}','ProjectController@showShortlistedLead')->name('show-shortlisted-lead');
 
 	Route::get('/freelancer_Leads', 'ProjectController@freelancer_Leads')->name('freelancer_Leads');
 	Route::get('/freelancer_Interested_leads', 'ProjectController@freelancer_Interested_leads')->name('freelancer_Interested_leads');
@@ -254,6 +254,7 @@ Route::group(['middleware' => ['auth', 'freelancer', 'phoneverified']], function
 	Route::post('/milestone-payment-select-modal', 'MilestonePaymentController@show_payment_select_modal')->name('show_payment_select_modal');
 	Route::post('/milestone-payment', 'MilestonePaymentController@index')->name('milestone.pay_to_admin');
 	Route::get('/credit-card-details', 'MilestonePaymentController@user_card')->name('user.credit_card');
+	
 	//payment history
 	Route::get('/send-withdrawal-request', 'PaytoFreelancerController@send_withdrawal_request_index')->name('send_withdrawal_request_to_admin');
 	Route::get('/withdrawal-history', 'PaytoFreelancerController@withdrawal_history_index')->name('withdrawal_history_index');
@@ -303,6 +304,7 @@ Route::post('/stripe/create-checkout-session', 'App\Http\Controllers\Payment\Str
 Route::any('/stripe/payment/callback', 'App\Http\Controllers\Payment\StripeController@callback')->name('stripe.callback');
 Route::get('/stripe/success', 'App\Http\Controllers\Payment\StripeController@success')->name('stripe.success');
 Route::get('/stripe/cancel', 'App\Http\Controllers\Payment\StripeController@cancel')->name('stripe.cancel');
+Route::post('/stripe/store-user-card','App\Http\Controllers\Payment\StripeController@store_user_card')->name('stripe.store_user_card');
 
 //Paystack
 Route::get('/paystack/payment/callback', 'App\Http\Controllers\Payment\PaystackController@handleGatewayCallback');

@@ -12,6 +12,7 @@ state: () => ({
     assessmentQuestions:{},
     selectedAnswers:[],
     
+    
 }),
 getters:{
     getUserInfo:(state)=> state.userInformation,
@@ -59,6 +60,7 @@ actions:{
     },
     async authenticatedUser(){
         try {
+            
             const response = await axios.post('/register', {
               ...this.userInformation,
               trading_info : this.tradingInformation,
@@ -89,10 +91,13 @@ actions:{
                         text: "Registration Successfull",
                         icon: "info"
                       });
+                      
+                      window.location.href = response.headers['x-redirect'];
                     };
                   });
                 // Redirect after the Swal confirmation
-                window.location.href = response.headers['x-redirect'];
+               
+                
               }
             } 
             
@@ -113,24 +118,27 @@ actions:{
                   title: 'Verification Error',
                   text: e.response.data.message.verification[0],
                   icon: 'error',
-                  showConfirmButton: true,
                 });
+                window.location.href = '/register';
               }
               else{
                 await Swal.fire({
                   title: 'Validation Error',
                   text: e.response.data.message,
                   icon: 'error',
-                  showConfirmButton: true,
+                 
                 });
+                window.location.href = '/register';
               }
               
             } else if (e.request) {
               // The request was made but no response was received
               console.error('No response received from the server');
+              window.location.href = '/register';
             } else {
               // Something happened in setting up the request that triggered an Error
               console.error('Error during request setup', e.message);
+              window.location.href = '/register';
             }
           }
     }

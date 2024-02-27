@@ -11,11 +11,12 @@ class UserCreditCard extends Model
 {
     use HasFactory,SoftDeletes,Notifiable;
     
-    protected $table = "user_credit_cards";
+    protected $table = "customer_payment_methods";
 
     protected $fillable = [
         'user_id',
         'stripe_payment_method_id',
+        'customer_payment_methods',
         'exp_month',
         'exp_year',
         'brand',

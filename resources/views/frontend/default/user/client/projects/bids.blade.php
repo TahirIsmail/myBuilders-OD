@@ -21,7 +21,8 @@
                                 <div class="card-body d-lg-flex">
                                     <div class="flex-grow-1">
                                         <div class="d-flex">
-                                            <a href="" target="_blank" class="avatar flex-shrink-0 mr-4">
+                                            
+                                            <a href="{{ route('freelancer.details', $bid_user->freelancer->user_name) }}"  class="avatar flex-shrink-0 mr-4">
                                                 @if ($bid_user->freelancer->photo != null)
                                                     <img src="{{ custom_asset($bid_user->freelancer->photo) }}">
                                                 @else
@@ -32,7 +33,7 @@
                                                     class="badge badge-dot badge-circle badge-secondary badge-status badge-md"></span>
                                             </a>
                                             <div class="flex-grow-1">
-                                                <h5 class="fw-600 mb-1"><a href="" target="_blank"
+                                                <h5 class="fw-600 mb-1"><a href="{{ route('freelancer.details', $bid_user->freelancer->user_name) }}" target="_blank"
                                                         class="text-inherit">{{ $bid_user->freelancer->name }}</a></h5>
                                                 @if ($bid_user->freelancer->profile->specialist != null)
                                                     <p class="opacity-50 mb-2">

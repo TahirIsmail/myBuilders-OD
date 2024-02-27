@@ -533,6 +533,26 @@ class ProjectController extends Controller
         return response()->json(['html' => $view]);
     }
 
+    public function showShortlistedLead($id){
+       
+        $lead = Project::where('id', $id)->with('address')->first();
+        
+        $user  = auth()->user();
+        $userCord = new LatLong($user->address->latitude, $user->address->longitude);
+        $projectCord = new LatLong($lead->address->latitude, $lead->address->longitude);
+        $temp = new DistanceCalculator($userCord, $projectCord);
+        $distance = round($temp->get()->asMiles(), 2);
+
+        if (!$lead) {
+            return response()->json(['error' => 'Lead not found'], 404);
+        }
+
+        // Assuming you have a Blade view named 'leads.show' to display the lead details
+        $view = view('frontend.default.user.freelancer.leads.partials.single-shortlisted-lead', compact('lead', 'distance'))->render();
+
+        return response()->json(['html' => $view]);
+    }
+
     public function freelancer_Leads()
     {
 
@@ -540,10 +560,14 @@ class ProjectController extends Controller
 
        
         $userId  = auth()->user()->id;
-        $user = auth()->user();
-        $projects = Project::whereDoesntHave('projectBids', function ($query) use ($userId) {
-            $query->where('bid_by_user_id', $userId);
-        })->with(['project_category', 'address'])->get();
+        $user = User::with('profile','address')->where('id',auth()->user()->id)->first();
+        
+        $projects = Project::has('address')
+    ->whereDoesntHave('projectBids', function ($query) use ($userId) {
+        $query->where('bid_by_user_id', $userId);
+    })
+    ->with(['project_category', 'address'])
+    ->get();
         $userCord = new LatLong($user->address->latitude, $user->address->longitude);
         $projects->transform(function ($project) use ($userCord) {
             $projectCord = new LatLong($project->address->latitude, $project->address->longitude);
@@ -579,9 +603,13 @@ class ProjectController extends Controller
     }
     public function freelancer_Shortlisted_leads()
     {
-        $projects = Project::with('project_category')->get();
+        $user = Auth::user();
 
-
+        $projects = Project::with('client')->whereHas('milestones', function ($query) use ($user) {
+            $query->where('freelancer_user_id', $user->id)
+                ->where('paid_status', true);
+        })->get();
+        
         return view('frontend.default.user.freelancer.leads.shortlistedleads', compact('projects'));
     }
 }

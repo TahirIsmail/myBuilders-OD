@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
+use App\Models\MilestonePayment;
 class Project extends Model
 {
     use SoftDeletes;
@@ -34,7 +34,7 @@ class Project extends Model
 
     public function milestones()
     {
-        return $this->hasMany(ProjectMilestone::class);
+        return $this->hasMany(MilestonePayment::class);
     }
 
     public function reviews()

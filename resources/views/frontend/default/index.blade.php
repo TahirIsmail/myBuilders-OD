@@ -1588,12 +1588,12 @@
 
                                 <div class="lp-header__content">
                                     <a title="Post a job today and we'll alert the relevant tradespeople."
-                                    href="http://buildervalley.test/job-signup-up" class="btn--lp">Post a job</a>
-                                    <a title="Start winning more work" href="http://buildervalley.test/trade-signup-up"
+                                    href="{{ route('post_signup')}}" class="btn--lp">Post a job</a>
+                                    <a title="Start winning more work" href="{{ route('trade_signup')}}"
                                         class="btn--hollow">Trade sign up</a>
 
-                                    <a title="Start winning more work" href="{{ route('register') }}"
-                                        class="btn--hollow">Trade Career</a>
+                                    <a title="Start winning more work" href="{{ route('trade_career') }}"
+                                        class="btn--hollow">Trade Careers</a>
 {{-- 
                                     <a title="Start winning more work" href="{{ route('register') }}"
                                         class="btn--hollow">Employee Trade Worker</a> --}}
@@ -5954,7 +5954,6 @@
         let options = {
             'speed': 3000,
             'pause': true,
-
         }
 
         window.addEventListener('DOMContentLoaded', function() {
@@ -5977,21 +5976,26 @@
                 if (options.pause && pauseSlide()) return;
 
                 let activeSlide = document.querySelector('.rbd-review-slider .rbd-review.rbd-curr');
-                let currIndex = Array.from(slides).indexOf(activeSlide);
+                let prev, curr, next, soon;
 
-                for (let i = 0; i < total; i++) {
-                    let slideIndex = (currIndex + i) % total;
-                    let currentSlide = slides[slideIndex];
-                    currentSlide.classList.remove('rbd-prev', 'rbd-curr', 'rbd-next');
+                curr = activeSlide;
+                prev = activeSlide.previousElementSibling;
+                next = activeSlide.nextElementSibling;
 
-                    if (i === 0) {
-                        currentSlide.classList.add('rbd-curr');
-                    } else if (i === 1) {
-                        currentSlide.classList.add('rbd-prev');
-                    } else if (i === 2) {
-                        currentSlide.classList.add('rbd-next');
-                    }
+                if (next != null) {
+                    soon = next.nextElementSibling == null ? slides[0] : next.nextElementSibling;
+                } else {
+                    next = slides[0];
+                    soon = slides[1];
                 }
+
+                if (prev != null) prev.classList.remove('rbd-prev', 'rbd-curr', 'rbd-next');
+                if (curr != null) curr.classList.remove('rbd-prev', 'rbd-curr', 'rbd-next');
+                curr.classList.add('rbd-prev');
+                if (next != null) next.classList.remove('rbd-prev', 'rbd-curr', 'rbd-next');
+                next.classList.add('rbd-curr');
+                if (soon != null) soon.classList.remove('rbd-prev', 'rbd-curr', 'rbd-next');
+                soon.classList.add('rbd-next');
             }
 
             let slideTimer = setInterval(function() {

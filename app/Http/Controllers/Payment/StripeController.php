@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Payment;
 
 use Stripe;
+use Stripe\StripeClient;
 use Session;
+use Stripe\Customer;
+use Stripe\PaymentMethod;
+use DB;
 use App\Models\Currency;
 use Illuminate\Http\Request;
 use App\Models\SystemConfiguration;
@@ -81,5 +85,74 @@ class StripeController extends Controller
     public function cancel(Request $request){
         flash(translate('Payment is cancelled'))->error();
         return redirect()->route('dashboard');
+    }
+
+    public function store_user_card(Request $request){
+        // Validate the incoming request data
+    $validatedData = $request->validate([
+        'card_number' => 'required|string',
+        'card_exp_month' => 'required|integer',
+        'card_exp_year' => 'required|integer',
+        'card_cvc' => 'required|string',
+        'card_holder_name' => 'required|string',
+        'card_holder_address' => 'required|string',
+    ]);
+
+    
+$stripe = new StripeClient(env('STRIPE_SECRET'));
+
+try {
+    // Create a customer in Stripe
+    $customer = $stripe->customers->create([
+        'email' => $request->input('card_holder_email'), // Assuming you have the customer's email
+        'name' => $request->input('card_holder_name'),
+        'address' => [
+            'line1' => $request->input('card_holder_address'),
+        ],
+    ]);
+} catch (\Stripe\Exception\ApiErrorException $e) {
+    // Handle customer creation error
+    dd($e);
+    return response()->json(['error' => $e->getMessage()], 422);
+}
+
+try {
+    // Create a payment method in Stripe
+    $paymentMethod = $stripe->paymentMethods->create([
+        'type' => 'card',
+        'card' => [
+            'number' => $request->input('card_number'),
+            'exp_month' => $request->input('card_exp_month'),
+            'exp_year' => $request->input('card_exp_year'),
+            'cvc' => $request->input('card_cvc'),
+        ],
+    ]);
+} catch (\Stripe\Exception\ApiErrorException $e) {
+    // Handle payment method creation error
+    return response()->json(['error' => $e->getMessage()], 422);
+}
+
+   
+
+    // Store the customer ID and payment method details in your database
+    DB::table('customer_payment_methods')->insert([
+        'user_id' => auth()->id(), // Assuming you are using authentication
+        'stripe_customer_id' => $customer->id,
+        'stripe_payment_method_id' => $paymentMethod->id,
+        'card_holder_name' => $validatedData['card_holder_name'],
+        'cvv' => $validatedData['card_cvc'],
+        'last_four' => substr($validatedData['card_number'], -4),
+        'brand' => $paymentMethod->card->brand,
+        'exp_month' => $paymentMethod->card->exp_month,
+        'exp_year' => $paymentMethod->card->exp_year,
+        'created_at' => now(),
+        'updated_at' => now(),
+    ]);
+
+    // Optionally, you can save the customer ID in your user model
+  
+
+    return response()->json(['message' => 'Customer created successfully'], 201);
+
     }
 }

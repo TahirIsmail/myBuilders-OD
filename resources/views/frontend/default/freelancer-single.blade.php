@@ -90,8 +90,8 @@
                                         <span>{{ translate('per Hour') }}</span>
                                     </div> --}}
                                 </div>
-                                <a class="btn btn-primary rounded-1"
-                                    href="{{ route('invition_for_hire_freelancer', $freelancer->user_name) }}">{{ translate('Hire Me') }}</a>
+                                {{-- <a class="btn btn-primary rounded-1"
+                                    href="{{ route('invition_for_hire_freelancer', $freelancer->user_name) }}">{{ translate('Hire Me') }}</a> --}}
                             </div>
                         </div>
                     </div>

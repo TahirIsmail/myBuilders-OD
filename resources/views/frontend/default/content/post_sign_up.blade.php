@@ -173,7 +173,7 @@
     }
 
     .background-image img {
-        
+
         background-size: cover;
         background-position: center;
     }
@@ -225,14 +225,10 @@
 
                             <div class="custom-content-inner">
                                 <h1>
-                                    Sign Up <span>,</span> as a
-                                    tradesperson for free <span>.</span>
+                                    Find a tradesman now
                                 </h1>
-                                <h5>
-                                    A trade membership with Builders’ Valley means you can contact
-                                    potential
-                                    customers across the country. Sign up now for better business
-                                    opportunities.
+                                <h5>Builders’ Valley helps people across the country for their home improvement projects and
+                                    find tradesmen they can trust.
                                 </h5>
                                 <div class="lp-header__content">
                                     <a class='btn--lp'href={{ route('post_project') }}> POST A JOB NOW</a>
@@ -262,7 +258,8 @@
                     </div>
 
                     <div class="section-heading about-content">
-                        <h2>Reach more customers today</h2>
+                        <h2>
+                            Matching tradespeople and homeowners across the country</h2>
                     </div>
                     <div class="single-about-txt">
                         <h3>
@@ -299,7 +296,7 @@
                     <div class="single-about-txt">
                         <h3>
                             Signing up as a member give you exclusive access to our forums and allows you to start posting
-                            right away. Need any help signing up? Contact our friendly team in Manchester today.
+                            right away. Need any help signing up? Contact our friendly team today.
 
 
                         </h3>

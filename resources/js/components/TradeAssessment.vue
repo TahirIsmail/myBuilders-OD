@@ -1,10 +1,18 @@
 <!-- Quiz.vue -->
 <template>
+  <div v-if="loading" class="loader">
+        <div class="spinner">
+          
+        </div>
   <div>
     <trade-questionare v-if="currentQuestion" :question="currentQuestion" @next="nextQuestion"></trade-questionare>
     <!-- <div v-else>
         <h2>Evaluation Completed!</h2>
       </div> -->
+      
+      
+    </div>
+      
   </div>
 </template>
   
@@ -21,7 +29,8 @@ export default {
     return {// Your array of questions
       currentQuestionIndex: 0,
       assesmentAttempt: 1,
-      totalAttempts: 3
+      totalAttempts: 3,
+      loading:false,
     };
   },
   computed: {
@@ -43,6 +52,8 @@ export default {
 
       if (this.currentQuestionIndex >= this.questions.length) {
         // let correct_answers =store.assessmentQuestions.map((question) => (question.))
+        this.loading = true;
+
         const evaluationResults = [];
 
         // Iterate through assessment questions
@@ -73,10 +84,12 @@ export default {
         }, 0);
 
         if (correctCount >= 3) {
+          
           const response = store.authenticatedUser()
-            console.log(response);
+          this.loading = false;
         }
         else {
+          this.loading = true;
           
           Swal.fire({
             title: "Evaluation Failed",
@@ -114,4 +127,110 @@ export default {
 
 };
 </script>
-  
+<style scoped>
+.loader {
+    width: 100vw;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.705);
+    z-index: 999999999999;
+   
+}
+
+
+
+.spinner {
+--size: 30px;
+--color: #64c976;
+width: 100px;
+height: 100px;
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+}
+
+.spinner::after,
+.spinner::before {
+box-sizing: border-box;
+position: absolute;
+content: "";
+width: var(--size);
+height: var(--size);
+top: 50%;
+left: 50%;
+animation: up 2.4s cubic-bezier(0, 0, 0.24, 1.21) infinite;
+background: var(--color);
+box-shadow: 0 0 calc(var(--size) / 3) rgba(255, 255, 255, 0.733);
+}
+
+.spinner::after {
+top: calc(50% - var(--size));
+left: calc(50% - var(--size));
+animation: down 2.4s cubic-bezier(0, 0, 0.24, 1.21) infinite;
+}
+
+
+.spinner::after,
+.spinner::before {
+    box-sizing: border-box;
+    position: absolute;
+    content: "";
+    width: var(--size);
+    height: var(--size);
+    top: 50%;
+    animation: up 2.4s cubic-bezier(0, 0, 0.24, 1.21) infinite;
+    left: 50%;
+    background: var(--color);
+    box-shadow: 0 0 calc(var(--size) / 3) rgba(0, 0, 0, 0.25);
+}
+
+.spinner::after {
+    background: var(--color);
+    top: calc(50% - var(--size));
+    left: calc(50% - var(--size));
+    animation: down 2.4s cubic-bezier(0, 0, 0.24, 1.21) infinite;
+}
+
+@keyframes down {
+
+    0%,
+    100% {
+        transform: none;
+    }
+
+    25% {
+        transform: translateX(100%);
+    }
+
+    50% {
+        transform: translateX(100%) translateY(100%);
+    }
+
+    75% {
+        transform: translateY(100%);
+    }
+}
+
+@keyframes up {
+
+    0%,
+    100% {
+        transform: none;
+    }
+
+    25% {
+        transform: translateX(-100%);
+    }
+
+    50% {
+        transform: translateX(-100%) translateY(-100%);
+    }
+
+    75% {
+        transform: translateY(-100%);
+    }
+}
+</style> 
