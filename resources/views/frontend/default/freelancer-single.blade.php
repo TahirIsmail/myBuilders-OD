@@ -90,8 +90,8 @@
                                         <span>{{ translate('per Hour') }}</span>
                                     </div> --}}
                                 </div>
-                                {{-- <a class="btn btn-primary rounded-1"
-                                    href="{{ route('invition_for_hire_freelancer', $freelancer->user_name) }}">{{ translate('Hire Me') }}</a> --}}
+                                <a class="btn btn-primary rounded-1"
+                                    href="{{ route('invition_for_hire_freelancer', $freelancer->user_name) }}">{{ translate('Send Job Invitation') }}</a>
                             </div>
                         </div>
                     </div>
@@ -299,7 +299,7 @@
 
                     <div class="card rounded-2 border-gray-light">
                         <div class="card-header">
-                            <h4 class="h6 fw-700 mb-0">{{ $freelancer->name }}'s {{ translate('Education') }}</h4>
+                            <h4 class="h6 fw-700 mb-0">{{ $freelancer->name }}'s {{ translate('Qualification') }}</h4>
                         </div>
                         <div class="card-body">
                             <ul class="list-group list-group-flush">
@@ -432,7 +432,7 @@
                                     <a class="btn btn-block btn-outline-primary rounded-1"
                                         href="{{ route('bookmarked-freelancers.store', encrypt($freelancer->id)) }}">
                                         <i class="las la-bookmark"></i>
-                                        <span>{{ translate('Bookmark Freelancer') }}</span>
+                                        <span>{{ translate('Bookmark Tradesmen') }}</span>
                                     </a>
                                 @endif
                             </div>

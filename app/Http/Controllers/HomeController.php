@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use Ballen\Distical\Calculator as DistanceCalculator;
+use Ballen\Distical\Entities\LatLong;
 use App\Models\User;
 use App\Models\Project;
 use App\Models\ChatThread;
@@ -89,10 +91,33 @@ class HomeController extends Controller
         }
     }
 
+    public function getFreelancers(Request $request) {
+        $latitude = $request->input('latitude');
+$longitude = $request->input('longitude');
+$userCord = new LatLong($latitude, $longitude);
+// Query freelancers within a 50-mile radius
+$freelancers = \App\Models\User::where('user_type', 'freelancer')
+    ->with('address')
+    ->get()
+    ->filter(function($freelancer) use ($userCord) {
+        $freelancerLatLng = new LatLong($freelancer->address->latitude, $freelancer->address->longitude);
+        $temp = new DistanceCalculator($userCord, $freelancerLatLng);
+        $distance = round($temp->get()->asMiles(), 2);
+        return $distance < 50; // adjust the range as needed (in kilometers)
+    });
+    
+        // Return the updated list of freelancers as a JSON response
+        //resources\views\frontend\default\user\freelancer\partials
+        return response()->json(view('frontend.default.user.client.partials.freelancers-list', compact('freelancers'))->render());
+    }
+    
+
+
     //Show details info of specific project
     public function project_details($slug)
     {
         $project = Project::where('slug', $slug)->with('address')->first();
+        
         $project_questionare = collect(json_decode($project->jobquestionsarray));
 
         $questionare =  $project_questionare->map(function ($item, $key) {

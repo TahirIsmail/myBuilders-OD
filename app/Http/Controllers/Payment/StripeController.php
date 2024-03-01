@@ -87,8 +87,9 @@ class StripeController extends Controller
         return redirect()->route('dashboard');
     }
 
-    public function store_user_card(Request $request){
-        // Validate the incoming request data
+    public function store_user_card(Request $request)
+{
+    // Validate the incoming request data
     $validatedData = $request->validate([
         'card_number' => 'required|string',
         'card_exp_month' => 'required|integer',
@@ -98,61 +99,59 @@ class StripeController extends Controller
         'card_holder_address' => 'required|string',
     ]);
 
-    
-$stripe = new StripeClient(env('STRIPE_SECRET'));
+    $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
 
-try {
-    // Create a customer in Stripe
-    $customer = $stripe->customers->create([
-        'email' => $request->input('card_holder_email'), // Assuming you have the customer's email
-        'name' => $request->input('card_holder_name'),
-        'address' => [
-            'line1' => $request->input('card_holder_address'),
-        ],
-    ]);
-} catch (\Stripe\Exception\ApiErrorException $e) {
-    // Handle customer creation error
-    dd($e);
-    return response()->json(['error' => $e->getMessage()], 422);
-}
+    try {
+        // Create a customer in Stripe
+        $customer = $stripe->customers->create([
+            'email' => auth()->user()->email, // Use the authenticated user's email
+            'name' => $validatedData['card_holder_name'],
+            'address' => [
+                'line1' => $validatedData['card_holder_address'],
+            ],
+        ]);
+    } catch (\Stripe\Exception\ApiErrorException $e) {
+        // Handle customer creation error
+        return response()->json(['error' => $e->getMessage()], 422);
+    }
 
-try {
-    // Create a payment method in Stripe
-    $paymentMethod = $stripe->paymentMethods->create([
-        'type' => 'card',
-        'card' => [
-            'number' => $request->input('card_number'),
-            'exp_month' => $request->input('card_exp_month'),
-            'exp_year' => $request->input('card_exp_year'),
-            'cvc' => $request->input('card_cvc'),
-        ],
-    ]);
-} catch (\Stripe\Exception\ApiErrorException $e) {
-    // Handle payment method creation error
-    return response()->json(['error' => $e->getMessage()], 422);
-}
-
-   
+    try {
+        // Create a SetupIntent for the customer
+        $setupIntent = $stripe->setupIntents->create([
+            'customer' => $customer->id,
+            'payment_method_data' => [
+                'type' => 'card',
+                'card' => [
+                    'number' => $validatedData['card_number'],
+                    'exp_month' => $validatedData['card_exp_month'],
+                    'exp_year' => $validatedData['card_exp_year'],
+                    'cvc' => $validatedData['card_cvc'],
+                ],
+            ],
+        ]);
+    } catch (\Stripe\Exception\ApiErrorException $e) {
+        // Handle SetupIntent creation error
+        return response()->json(['error' => $e->getMessage()], 422);
+    }
 
     // Store the customer ID and payment method details in your database
     DB::table('customer_payment_methods')->insert([
-        'user_id' => auth()->id(), // Assuming you are using authentication
+        'user_id' => auth()->id(),
         'stripe_customer_id' => $customer->id,
-        'stripe_payment_method_id' => $paymentMethod->id,
+        'stripe_payment_method_id' => $setupIntent->payment_method,
         'card_holder_name' => $validatedData['card_holder_name'],
         'cvv' => $validatedData['card_cvc'],
         'last_four' => substr($validatedData['card_number'], -4),
-        'brand' => $paymentMethod->card->brand,
-        'exp_month' => $paymentMethod->card->exp_month,
-        'exp_year' => $paymentMethod->card->exp_year,
+        'brand' => $setupIntent->payment_method_details->card->brand,
+        'exp_month' => $setupIntent->payment_method_details->card->exp_month,
+        'exp_year' => $setupIntent->payment_method_details->card->exp_year,
         'created_at' => now(),
         'updated_at' => now(),
     ]);
 
     // Optionally, you can save the customer ID in your user model
-  
 
     return response()->json(['message' => 'Customer created successfully'], 201);
+}
 
-    }
 }

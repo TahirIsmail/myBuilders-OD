@@ -608,7 +608,7 @@
 
                     <div class="card rounded-2 border-gray-light">
                         <div class="card-header">
-                            <h4 class="h6 font-weight-medium mb-0">{{ translate('Education Information') }}</h4>
+                            <h4 class="h6 font-weight-medium mb-0">{{ translate('Trade Qualification') }}</h4>
                         </div>
                         <div class="card-body">
                             @if (count($user_profile->user->education_details) > 0)
@@ -655,16 +655,16 @@
                                 @csrf
                                 <div class="form-group">
                                     <label id="usernameLabel"
-                                        class="form-label">{{ translate('School Name') }}<span
+                                        class="form-label">{{ translate('Institute Name') }}<span
                                             class="text-danger">*</span></label>
                                     <input type="text" class="form-control" name="school_name"
-                                        placeholder="{{ translate('School Name') }}" required>
+                                        placeholder="{{ translate('Institute Name') }}" required>
                                 </div>
                                 <div class="form-group">
-                                    <label id="usernameLabel" class="form-label">{{ translate('Degree') }}<span
+                                    <label id="usernameLabel" class="form-label">{{ translate('Achievement') }}<span
                                             class="text-danger">*</span></label>
                                     <input type="text" class="form-control" name="degree"
-                                        placeholder="{{ translate('Ex. Bachelor of Science') }}" required>
+                                        placeholder="{{ translate('Ex. Achievement') }}" required>
                                 </div>
                                 <div class="form-group">
                                     <label id="usernameLabel"
@@ -688,7 +688,7 @@
                                 <div class="mt-2 text-right">
                                     <!-- Buttons -->
                                     <button type="submit"
-                                        class="btn btn-primary rounded-1">{{ translate('Add Education Information') }}</button>
+                                        class="btn btn-primary rounded-1">{{ translate('Add Qualification Information') }}</button>
                                     <!-- End Buttons -->
                                 </div>
                             </form>

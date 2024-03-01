@@ -13,6 +13,7 @@ import 'vue-select/dist/vue-select.css';
 
 import PostAJob from './components/PostAJobComponent.vue';
 import CardDetails from './components/CardDetailsComponent.vue';
+import StripeCard from './components/StripeCardElement.vue';
 import VueTheMask from 'vue-the-mask'
 
 const app = createApp({});
@@ -30,6 +31,7 @@ app.use(VueGoogleMaps, {
   })
 app.component('PostAJob', PostAJob);
 app.component('CardDetails',CardDetails)
+app.component('StripeCard', StripeCard)
 app.component('v-select', vSelect)
 app.component('pulse-loader', require('vue-spinner/src/PulseLoader.vue'));
 app.mount('#app');
