@@ -48,6 +48,7 @@
         "@vee-validate/rules": "^4.12.4",
         "@vee-validate/yup": "^4.12.4",
         "install": "^0.13.0",
+        "language-list": "^0.0.3",
         "mapbox-gl": "^2.15.0",
         "npm": "^10.3.0",
         "pinia": "^2.1.7",

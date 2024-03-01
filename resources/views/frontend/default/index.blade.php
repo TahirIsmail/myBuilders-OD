@@ -1556,6 +1556,9 @@
     }
 
 
+
+    
+
 </style>
 
 
@@ -1578,7 +1581,7 @@
 
                     <div class="custom-slide ">
                         <img class="slider-image"
-                            src="{{ asset('public\assets\frontend\default\img\slider_img\global2.jpg') }}" />
+                            src="{{ asset('public\assets\frontend\default\img\slider_img\global2new.jpg') }}" />
                         <div class="custom-content">
                             <div class="custom-content-inner">
 
@@ -1594,21 +1597,19 @@
 
                                     <a title="Start winning more work" href="{{ route('trade_career') }}"
                                         class="btn--hollow">Trade Careers</a>
-{{-- 
-                                    <a title="Start winning more work" href="{{ route('register') }}"
-                                        class="btn--hollow">Employee Trade Worker</a> --}}
+
 
                                 </div>
 
                             </div>
                         </div>
                     </div>
-                    <!-- Add more slides here with similar structure -->
+        
 
 
 
                     <div class="custom-slide">
-                        <img src="{{ asset('public\assets\frontend\default\img\slider_img\slider1.jpg') }}" />
+                        <img src="{{ asset('public\assets\frontend\default\img\slider_img\slider1new.jpg') }}" />
                         <div class="custom-content">
                             <div class="custom-content-inner">
                                 <h1>We are all here.</h1>
@@ -1617,24 +1618,22 @@
                                 </h5>
                                 <div class="lp-header__content">
                                     <a title="Post a job today and we'll alert the relevant tradespeople."
-                                    href="http://buildervalley.test/job-signup-up" class="btn--lp">Post a job</a>
+                                    href={{ route('post_signup') }} class="btn--lp">Post a job</a>
                                     <a title="Start winning more work" href="{{ route('register') }}"
                                         class="btn--hollow">Trade
                                         sign
                                         up</a>
 
-                                    <a title="Start winning more work" href="http://buildervalley.test/trade-signup-up" class="btn--hollow">
+                                    <a title="Start winning more work" href="{{ route('trade_signup')}}" class="btn--hollow">
                                         Trade Career</a>
 
-                                    {{-- <a title="Start winning more work" href="{{ route('register') }}"
-                                        class="btn--hollow">Employee Trade Worker</a> --}}
 
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="custom-slide">
-                        <img src="{{ asset('public\assets\frontend\default\img\slider_img\slider2.jpg') }}" />
+                        <img src="{{ asset('public\assets\frontend\default\img\slider_img\slider2-minnew.jpg') }}" />
                         <div class="custom-content">
                             <div class="custom-content-inner">
                                 <h1>Join today and become a proud member of the Builder's Valley community.</h1>
@@ -1643,24 +1642,21 @@
 
                                 <div class="lp-header__content">
                                     <a title="Post a job today and we'll alert the relevant tradespeople."
-                                    href="http://buildervalley.test/job-signup-up" class="btn--lp">Post a job</a>
+                                   href={{ route('post_signup') }} class="btn--lp">Post a job</a>
                                     <a title="Start winning more work" href="{{ route('register') }}"
                                         class="btn--hollow">Trade
                                         sign
                                         up</a>
 
-                                    <a title="Start winning more work" href="http://buildervalley.test/trade-signup-up" class="btn--hollow">
+                                    <a title="Start winning more work" href="{{ route('trade_signup')}}" class="btn--hollow">
                                         Trade Career</a>
-
-                                    {{-- <a title="Start winning more work" href="{{ route('register') }}"
-                                        class="btn--hollow">Employee Trade Worker</a> --}}
 
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="custom-slide">
-                        <img src="{{ asset('public\assets\frontend\default\img\slider_img\slider3.jpg') }}" />
+                        <img src="{{ asset('public\assets\frontend\default\img\slider_img\slider3new.jpg') }}" />
                         <div class="custom-content">
                             <div class="custom-content-inner">
                                 <h1>Builder's Valley now makes it easier for you to find a local professional trade worker
@@ -1668,18 +1664,14 @@
                                     your area</h1>
                                 <div class="lp-header__content">
                                     <a title="Post a job today and we'll alert the relevant tradespeople."
-                                    href="http://buildervalley.test/job-signup-up" class="btn--lp">Post a job</a>
-                                    <a title="Start winning more work" href="http://buildervalley.test/trade-signup-up"
+                                   href={{ route('post_signup') }} class="btn--lp">Post a job</a>
+                                    <a title="Start winning more work" href="{{ route('trade_signup')}}"
                                         class="btn--hollow">Trade
                                         sign
                                         up</a>
 
                                     <a title="Start winning more work" href="{{ route('register') }}" class="btn--hollow">
                                         Trade Career</a>
-{{-- 
-                                    <a title="Start winning more work" href="{{ route('register') }}"
-                                        class="btn--hollow">Employee Trade Worker</a> --}}
-
                                 </div>
                             </div>
                         </div>
@@ -1688,6 +1680,42 @@
                 </div>
             </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
             <div class="container" style="height: 300px ; padding-top:30px">
 
                 <div class="rbd-core-ui">
@@ -1697,7 +1725,7 @@
                                 <h3 class="rbd-heading">Extremely Professional</h3>
                                 <i class="renderSVG" data-icon="star" data-repeat="5"></i>
                                 <div class="rbd-content"><img class="rbd-gravatar"
-                                        src="https://en.gravatar.com/userimage/26363586/56972d52aba494b6f068d289c6d3d63d.jpg">Materials
+                                        src="">Materials
                                     are top notch. People are top notch... they knew exactly how to handle my ignorance
                                     and turn it to a positive working business…</div>
                                 <div class="rbd-footing">
@@ -1709,7 +1737,7 @@
                                 <h3 class="rbd-heading">Test Company Marketing Delivers Such Great Service!</h3>
                                 <i class="renderSVG" data-icon="star" data-repeat="5"></i>
                                 <div class="rbd-content"><img class="rbd-gravatar"
-                                        src="https://www.gravatar.com/avatar/ee304528491d860812f73d7d5cd0dc72?s=256">I'm
+                                        src="">I'm
                                     a big fan of this test company. They really do the best work around, and their
                                     prices just can't be beat! I hear that Alex is a pretty cool guy…</div>
                                 <div class="rbd-footing">
