@@ -55,7 +55,7 @@ Route::post('/magic-job-post', 'HomeController@storemagicjobpost');
 Route::post('/checkuser', 'HomeController@checkuser')->name('check_user_exist');
 Route::get('/getskills', 'HomeController@getSkills');
 Route::post('/getAssessment', 'HomeController@getAssessment');
-Route::post('/getFreelancers','HomeController@getFreelancers')->name('getFreelancers');
+Route::post('/tradesmen-list','HomeController@getFreelancers')->name('tradesmen-list');
 // Subscribe
 
 Route::resource('subscribers', 'SubscriberController');
@@ -166,6 +166,7 @@ Route::group(['middleware' => ['auth', 'client', 'phoneverified']], function () 
 	Route::get('/my-openPurchased Services-projects', 'ProjectController@my_open_project')->name('projects.my_open_project');
 	Route::get('/project-bids/{slug}', 'ProjectController@project_bids')->name('project.bids');
 	Route::get('/invition-for-hire-freelancer/{username}', 'HireController@freelancer_invition')->name('invition_for_hire_freelancer');
+	Route::post('/project-detail-for-invite','HireController@job_details');
 	Route::post('/invition-for-hire-freelancer/store', 'HireController@store')->name('invition_for_hire_freelancer_sent');
 
 	//Leads 

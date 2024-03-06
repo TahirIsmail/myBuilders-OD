@@ -562,7 +562,7 @@ class ProjectController extends Controller
         $userId  = auth()->user()->id;
         $user = User::with('profile','address')->where('id',auth()->user()->id)->first();
         
-        $projects = Project::has('address')
+        $projects = Project::has('address')->notcancel()->biddable()
     ->whereDoesntHave('projectBids', function ($query) use ($userId) {
         $query->where('bid_by_user_id', $userId);
     })

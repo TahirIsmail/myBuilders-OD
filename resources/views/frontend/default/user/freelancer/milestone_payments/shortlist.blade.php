@@ -246,7 +246,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card rounded-2 border-gray-light">
+                    <!--<div class="card rounded-2 border-gray-light">
                         <div class="card-header">
                             <h1 class="mb-0 h6 font-weight-bold ">{{ translate('Card details') }}</h1>
 
@@ -297,7 +297,7 @@
                             </div>
 
                         </div>
-                    </div>
+                    </div> -->
 
 
 

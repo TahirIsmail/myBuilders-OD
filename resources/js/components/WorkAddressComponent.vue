@@ -8,7 +8,7 @@
                 <div ref="workDetailref" class="col-xxl-6 col-xl-6 col-md-7 mx-auto form bg-white  ">
 
                     <h1 class="h3 mb-0" style="color: #55b97b">
-                        <strong>What's your work address? </strong>
+                        <strong>What's your address? </strong>
                     </h1>
 
 
@@ -32,7 +32,7 @@
 
                             <div style="margin-bottom:10px">
 
-                                <label for="textA" class="form-label "><strong>Work address</strong></label><br>
+                                <label for="textA" class="form-label "><strong>Address</strong></label><br>
 
                                 <input type="text" class="form-control form_input" v-model="work_address"
                                     placeholder="House number/name">

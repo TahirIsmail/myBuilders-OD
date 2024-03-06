@@ -17,14 +17,15 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->string('stripe_payment_method_id');
-            $table->string('customer_payment_methods');
-            $table->string('card_holder_name');
-            $table->bigInteger('cvv');
-            $table->bigInteger('last_four');
-            $table->string('brand');
-            $table->integer('exp_month');
-            $table->integer('exp_year');
+            $table->string('stripe_payment_method_id')->nullable();
+            $table->string('customer_payment_methods')->nullable();
+            $table->string('customer_id')->nullable();
+            $table->string('card_holder_name')->nullable();
+            $table->bigInteger('cvv')->nullable();
+            $table->bigInteger('last_four')->nullable();
+            $table->string('brand')->nullable();
+            $table->integer('exp_month')->nullable();
+            $table->integer('exp_year')->nullable();
             $table->timestamps();
         });
     }

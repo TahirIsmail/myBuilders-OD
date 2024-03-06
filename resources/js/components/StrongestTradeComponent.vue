@@ -82,7 +82,8 @@ const setTradeEvaluation = (trade) => {
 const submit = () => {
     store.setEvaluationTrade(isActive)
     store.setAssessment();
-    if (props.navigationMethods && typeof props.navigationMethods.nextStep === 'function') {
+    if (props.navigationMethods &&
+     typeof props.navigationMethods.nextStep === 'function') {
         props.navigationMethods.nextStep();
     }
 

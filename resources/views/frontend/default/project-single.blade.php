@@ -151,11 +151,12 @@
                             <h6 class="text-left mb-3"><span
                                     class="bg-white pr-3 fs-14 fw-700">{{ translate('Job Location') }}</span></h6>
                             <div id="map" class="box col-sm-12 col-md-6 col-lg-6">
-                                <img class="img-responsvie" style="max-width: 100%; height: auto;" src="https://maps.googleapis.com/maps/api/staticmap?center={{ $project->address->latitude }},{{ $project->address->longitude }}&zoom=16&size=400x300&key=AIzaSyCC6BbwI05bsqkWZCStzkLIMquD8WL_wqU&markers=color:red|label:J|{{ $project->address->latitude }},{{ $project->address->longitude }}"
+                                <img class="img-responsvie" style="max-width: 100%; height: auto;"
+                                    src="https://maps.googleapis.com/maps/api/staticmap?center={{ $project->address->latitude }},{{ $project->address->longitude }}&zoom=16&size=400x300&key=AIzaSyCC6BbwI05bsqkWZCStzkLIMquD8WL_wqU&markers=color:red|label:J|{{ $project->address->latitude }},{{ $project->address->longitude }}"
                                     alt="address_map" />
 
                             </div>
-                            
+
                         </div>
 
                     </div>
@@ -207,7 +208,7 @@
                             <h5 class="my-3 lh-1-5 fs-16 fw-700">
                                 @if (count($project->projectBids) > 0)
                                     {{ count($project->projectBids) }}
-                                    {{ translate('Tradesmen are showing interest for this job') }} 
+                                    {{ translate('Tradesmen are showing interest for this job') }}
                                     {{-- ({{ translate('Average') }}:
                                     {{ single_price($project->projectBids->sum('amount') / count($project->projectBids)) }}) --}}
                                 @else
@@ -385,7 +386,7 @@
                                                         $project->client->address->country != null)
                                                     <span
                                                         class="d-block fs-12 font-weight-medium">{{ $project->client->address->city }},
-                                                        {{ $project->client->address->country}}</span>
+                                                        {{ $project->client->address->country }}</span>
                                                 @endif
                                             </div>
                                         </div>
@@ -406,27 +407,27 @@
                                             </div>
                                         </div>
                                         <!--<div class="media">
-                                            <div class="text-center text-secondary mt-1 mr-3">
-                                                {{-- <i class="las la-money-check-alt fs-16"></i> --}}
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
-                                                    viewBox="0 0 12 12">
-                                                    <g id="Group_22188" data-name="Group 22188"
-                                                        transform="translate(-13015 -765)">
-                                                        <circle id="Ellipse_22-2" data-name="Ellipse 22-2" cx="6"
-                                                            cy="6" r="6" transform="translate(13015 765)"
-                                                            fill="#989ea8" />
-                                                        <path id="Path_275" data-name="Path 275"
-                                                            d="M280.67,534.054a8.1,8.1,0,0,0-.822-.372,1.845,1.845,0,0,1-.451-.253.393.393,0,0,1,.1-.7.792.792,0,0,1,.276-.057,2.1,2.1,0,0,1,1.039.206c.164.079.218.054.274-.117s.107-.364.161-.546a.191.191,0,0,0-.124-.254,2.641,2.641,0,0,0-.655-.2c-.3-.046-.3-.047-.3-.346,0-.421,0-.421-.423-.421-.061,0-.122,0-.183,0-.2.006-.23.04-.236.239,0,.089,0,.178,0,.268,0,.264,0,.26-.255.351a1.409,1.409,0,0,0-1.029,1.305,1.338,1.338,0,0,0,.757,1.279,8.365,8.365,0,0,0,.946.425,1.4,1.4,0,0,1,.344.2.472.472,0,0,1-.112.828,1.133,1.133,0,0,1-.607.079,2.707,2.707,0,0,1-.925-.276c-.171-.089-.221-.065-.279.12-.05.16-.094.321-.139.482-.06.217-.038.268.169.369a2.953,2.953,0,0,0,.833.239c.225.036.232.046.235.279,0,.105,0,.212,0,.318a.189.189,0,0,0,.2.214c.156,0,.312,0,.468,0a.178.178,0,0,0,.193-.2c0-.144.007-.29,0-.435a.229.229,0,0,1,.2-.261,1.569,1.569,0,0,0,.818-.525A1.476,1.476,0,0,0,280.67,534.054Z"
-                                                            transform="translate(12741.272 236.649)" fill="#fff" />
-                                                    </g>
-                                                </svg>
-                                            </div>
-                                            <div class="media-body pt-1">
-                                                <span
-                                                    class="d-block fs-12 font-weight-medium">{{ single_price(\App\Models\MilestonePayment::where('client_user_id', $project->client_user_id)->where('paid_status', 1)->sum('amount')) }}
-                                                    {{ translate('total spent') }}</span>
-                                            </div>
-                                        </div> -->
+                                                <div class="text-center text-secondary mt-1 mr-3">
+                                                    {{-- <i class="las la-money-check-alt fs-16"></i> --}}
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                                                        viewBox="0 0 12 12">
+                                                        <g id="Group_22188" data-name="Group 22188"
+                                                            transform="translate(-13015 -765)">
+                                                            <circle id="Ellipse_22-2" data-name="Ellipse 22-2" cx="6"
+                                                                cy="6" r="6" transform="translate(13015 765)"
+                                                                fill="#989ea8" />
+                                                            <path id="Path_275" data-name="Path 275"
+                                                                d="M280.67,534.054a8.1,8.1,0,0,0-.822-.372,1.845,1.845,0,0,1-.451-.253.393.393,0,0,1,.1-.7.792.792,0,0,1,.276-.057,2.1,2.1,0,0,1,1.039.206c.164.079.218.054.274-.117s.107-.364.161-.546a.191.191,0,0,0-.124-.254,2.641,2.641,0,0,0-.655-.2c-.3-.046-.3-.047-.3-.346,0-.421,0-.421-.423-.421-.061,0-.122,0-.183,0-.2.006-.23.04-.236.239,0,.089,0,.178,0,.268,0,.264,0,.26-.255.351a1.409,1.409,0,0,0-1.029,1.305,1.338,1.338,0,0,0,.757,1.279,8.365,8.365,0,0,0,.946.425,1.4,1.4,0,0,1,.344.2.472.472,0,0,1-.112.828,1.133,1.133,0,0,1-.607.079,2.707,2.707,0,0,1-.925-.276c-.171-.089-.221-.065-.279.12-.05.16-.094.321-.139.482-.06.217-.038.268.169.369a2.953,2.953,0,0,0,.833.239c.225.036.232.046.235.279,0,.105,0,.212,0,.318a.189.189,0,0,0,.2.214c.156,0,.312,0,.468,0a.178.178,0,0,0,.193-.2c0-.144.007-.29,0-.435a.229.229,0,0,1,.2-.261,1.569,1.569,0,0,0,.818-.525A1.476,1.476,0,0,0,280.67,534.054Z"
+                                                                transform="translate(12741.272 236.649)" fill="#fff" />
+                                                        </g>
+                                                    </svg>
+                                                </div>
+                                                <div class="media-body pt-1">
+                                                    <span
+                                                        class="d-block fs-12 font-weight-medium">{{ single_price(\App\Models\MilestonePayment::where('client_user_id', $project->client_user_id)->where('paid_status', 1)->sum('amount')) }}
+                                                        {{ translate('total spent') }}</span>
+                                                </div>
+                                            </div> -->
                                     </div>
                                 </div>
                             </div>
@@ -434,7 +435,7 @@
                     </div>
                 </div>
             </div>
-
+            @if(isFreelancer())
             <div class="row">
                 <div class="col-12">
                     <h5 class="mb-4 fs-16 fw-700">{{ translate('Similar Jobs') }}</h5>
@@ -542,6 +543,121 @@
 					</div>
 				</div>
 			</div>
+            @endif
+            @if(isClient())
+            <div class="row">
+                <div class="col-12">
+                    <h5 class="mb-4 fs-16 fw-700">{{ translate('Suggested Tradepersons') }}</h5>
+                    <div class="aiz-carousel gutters-10 half-outside-arrow" data-items="3" data-xl-items="3"
+                        data-md-items="2" data-sm-items="1" data-arrows='true'>
+
+                        @foreach ($similar_types = \App\Models\Project::where('type', $project->type)->where('id', '!=', $project->id)->where('closed', '!=', 1)->limit(4)->get() as $similar_type_project)
+@if (count($similar_types) > 0)
+<div class="caorusel-box">
+        							<div class="card rounded-2 border-gray-light hov-box">
+        								<div class="card-header border-bottom-0 pt-4 pb-0 align-items-start minw-0">
+        									<h5 class="h6 fs-16 fw-700 lh-1-5 text-truncate-2 h-45px">
+        										<a href="{{ route('project.details', $similar_type_project->slug) }}" class="text-inherit" target="_blank">{{ $similar_type_project->name }}</a>
+        									</h5>
+        								</div>
+        								<div class="card-body pt-1 pb-2">
+
+        									<ul class="list-inline opacity-70 fs-12">
+        										<li class="list-inline-item">
+        											{{-- <i class="las la-clock opacity-40"></i> --}}
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
+                                                        <g id="Group_22132" data-name="Group 22132" transform="translate(-365 -1963)">
+                                                          <path id="Subtraction_5" data-name="Subtraction 5" d="M-13,12a6.007,6.007,0,0,1-6-6,6.007,6.007,0,0,1,6-6A6.007,6.007,0,0,1-7,6,6.006,6.006,0,0,1-13,12Zm-.5-9V7h.013l2.109,2.109.707-.706L-12.5,6.572V3Z" transform="translate(384 1963)" fill="#989ea8"/>
+                                                        </g>
+                                                    </svg>
+        											<span class="ml-1">{{ Carbon\Carbon::parse($similar_type_project->created_at)->diffForHumans() }}</span>
+        										</li>
+        										<li class="list-inline-item">
+        											<a href="" target="_blank" class="text-inherit">
+        												{{-- <i class="las la-stream opacity-40"></i> --}}
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 12 11">
+                                                            <g id="Group_23" data-name="Group 23" transform="translate(-498 -1963)">
+                                                            <path id="Subtraction_2" data-name="Subtraction 2" d="M1.5,0h7a1.5,1.5,0,0,1,0,3h-7a1.5,1.5,0,0,1,0-3Z" transform="translate(498 1963)" fill="#989ea8"/>
+                                                            <path id="Subtraction_4" data-name="Subtraction 4" d="M1.5,0h5a1.5,1.5,0,0,1,0,3h-5a1.5,1.5,0,0,1,0-3Z" transform="translate(498 1971)" fill="#989ea8"/>
+                                                            <path id="Subtraction_3" data-name="Subtraction 3" d="M1.5,0h7a1.5,1.5,0,0,1,0,3h-7a1.5,1.5,0,0,1,0-3Z" transform="translate(500 1967)" fill="#989ea8"/>
+                                                            </g>
+                                                        </svg>
+        												<span class="ml-1">
+@if ($similar_type_project->project_category != null)
+{{ $similar_type_project->project_category->name }}
+@endif
+</span>
+        											</a>
+        										</li>
+        										<li class="list-inline-item">
+        											{{-- <i class="las la-handshake"></i> --}}
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="7.643" height="12" viewBox="0 0 7.643 12">
+                                                        <g id="Group_24" data-name="Group 24" transform="translate(-131 -59.8)">
+                                                        <path id="Path_9" data-name="Path 9" d="M136.142,161.028,133.614,161A3.381,3.381,0,0,0,131,164.281v4.708a.92.92,0,0,0,.917.917h5.809a.92.92,0,0,0,.917-.917v-4.708A3.361,3.361,0,0,0,136.142,161.028Zm-1.321,4.488a1.122,1.122,0,0,1,.306,2.2v.248a.306.306,0,0,1-.611,0v-.248a1.123,1.123,0,0,1-.816-1.079.306.306,0,0,1,.611,0,.511.511,0,1,0,.511-.511,1.122,1.122,0,0,1-.306-2.2v-.183a.306.306,0,1,1,.611,0v.183a1.123,1.123,0,0,1,.816,1.079.306.306,0,1,1-.611,0,.511.511,0,1,0-.511.511Z" transform="translate(0 -98.106)" fill="#989ea8"/>
+                                                        <path id="Path_10" data-name="Path 10" d="M219.424,124.641l.15-.52L217.1,124.1l.171.52Z" transform="translate(-83.468 -62.334)" fill="#989ea8"/>
+                                                        <path id="Path_11" data-name="Path 11" d="M199.1,61.179l.4-1.379h-3.7l.449,1.351Z" transform="translate(-62.819)" fill="#989ea8"/>
+                                                        </g>
+                                                    </svg>
+        											<span class="ml-1">{{ $similar_type_project->type }}</span>
+        										</li>
+        									</ul>
+        									<div class="text-muted lh-1-8">
+        										<p class="text-truncate-2 h-50px mb-0 fs-14 text-dark">{{ $similar_type_project->excerpt }}</p>
+        									</div>
+                                            {{-- <div class="mt-2">
+                                                <span class="small fs-14 text-secondary">{{ translate('Budget') }}</span>
+                                                <h4 class="mb-0 fs-24 fw-700">{{ single_price($similar_type_project->price) }}</h4>
+                                            </div> --}}
+        								</div>
+        								<div class="card-footer border-top-0">
+        									<div class="d-flex align-items-center">
+        										<a href="{{ route('client.details', $similar_type_project->client->user_name) }}" target="_blank" class="d-flex mr-3 align-items-center text-inherit">
+        		                                    <span class="avatar avatar-xs">
+                                                        @if ($similar_type_project->client->photo != null)
+<img src="{{ custom_asset($similar_type_project->client->photo) }}">
+@else
+<img src="{{ my_asset('assets/frontend/default/img/avatar-place.png') }}">
+@endif
+        		                                    </span>
+        		                                    <div class="pl-2">
+        		                                    	<h4 class="h6 mb-0 fs-14 fw-700">{{ $similar_type_project->client->name }}</h4>
+        		                                    	<div class="text-secondary fs-12">
+                                                            <i class="las la-star text-rating"></i>
+                                                            <span class="fw-600">
+                                                                {{ formatRating(getAverageRating($project->client->id)) }}
+                                                            </span>
+                                                            <span>
+                                                                ({{ getNumberOfReview($project->client->id) }} {{ translate('Reviews') }})
+</span>
+        												</div>
+        		                                    </div>
+        		                                </a>
+        									</div>
+        									<div>
+        										<ul class="d-flex list-inline mb-0">
+        											<li>
+                                                        @if ($similar_type_project->bids > 0)
+<h4 class="mb-0 h6 fs-12 fw-700">{{ $similar_type_project->bids }} + <span class="small ml-2">{{ translate('Interests') }}</span></h4>
+@else
+<h4 class="mb-0 h6 fs-12 fw-700">{{ $similar_type_project->bids }} <span class="small ml-3">{{ translate('Interests') }}</span></h4>
+@endif
+        											</li>
+        										</ul>
+        									</div>
+        								</div>
+        							</div>
+        						</div>
+@endif
+@endforeach
+					</div>
+				</div>
+			</div>
+            
+
+
+
+
+            @endif
 		</div>
 	</section>
 
@@ -558,34 +674,34 @@
         //         $('#bid_for_modal_body').html(data);
         //     })
         // }
-            function show_interest(id){
-                $.post('{{ route('bids.save_interest') }}', {
+        function show_interest(id) {
+            $.post('{{ route('bids.save_interest') }}', {
                 _token: '{{ csrf_token() }}',
                 id: id
             }, function(data) {
                 location.reload();
             })
-            }
+        }
     </script>
-            
 @endsection
 @section('modal')
     <div class="modal fade" id="bid_for_project" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">{{ translate('Show interest For the Job') }}</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        </button>
-                                    </div>
-                                    <div class="modal-body" id="bid_for_modal_body">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">{{ translate('Show interest For the Job') }}</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            </button>
+                                        </div>
+                                        <div class="modal-body" id="bid_for_modal_body">
 
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        @include('frontend.default.partials.bookmark_remove_modal')
+                            @include('frontend.default.partials.bookmark_remove_modal')
 @endsection
 @section('script')
-<script src="{{ my_asset('assets/common/js/app.js') }}"></script>
+    <script src="{{ my_asset('assets/common/js/app.js') }}"></script>
 @endsection
+)

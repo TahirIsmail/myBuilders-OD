@@ -24,6 +24,7 @@ use Carbon;
 use Illuminate\Support\Str;
 use App\Models\Address;
 use Spatie\Permission\Models\Permission;
+use Illuminate\Database\Eloquent\Builder;
 use Artisan;
 
 class HomeController extends Controller
@@ -82,8 +83,12 @@ class HomeController extends Controller
 
 
         if (isFreelancer()) {
-
-            return view('frontend.default.user.freelancer.dashboard');
+            $user_projects = auth()->user()->projectUsers->map(function ($projectUser) {
+                $projectUser->status = $projectUser->milestones->contains('paid_status', 1) ? 'paid' : 'pending';
+                return $projectUser;
+            });
+            
+            return view('frontend.default.user.freelancer.dashboard',compact('user_projects'));
         } elseif (isClient()) {
             return view('frontend.default.user.client.dashboard');
         } else {
@@ -97,14 +102,17 @@ $longitude = $request->input('longitude');
 $userCord = new LatLong($latitude, $longitude);
 // Query freelancers within a 50-mile radius
 $freelancers = \App\Models\User::where('user_type', 'freelancer')
-    ->with('address')
-    ->get()
-    ->filter(function($freelancer) use ($userCord) {
+->with('address')
+->get()
+->filter(function($freelancer) use ($userCord) {
+    if ($freelancer->address && $freelancer->address->latitude && $freelancer->address->longitude) {
         $freelancerLatLng = new LatLong($freelancer->address->latitude, $freelancer->address->longitude);
         $temp = new DistanceCalculator($userCord, $freelancerLatLng);
         $distance = round($temp->get()->asMiles(), 2);
         return $distance < 50; // adjust the range as needed (in kilometers)
-    });
+    }
+    return false;
+});
     
         // Return the updated list of freelancers as a JSON response
         //resources\views\frontend\default\user\freelancer\partials

@@ -22,7 +22,7 @@ getters:{
     getEvaluationTrade:(state) => state.evaluationTrade,
     getIntroduction:(state) => state.introductionToCustomer,
     getSelectedAnswer:(state) => state.selectedAnswers,
-    // getStrongestTradesId:(state) => state.strongestTrades.forEach(strongestTrade => ((strongestTrade.map((id) => id))))
+    getStrongestTradesId:(state) => state.strongestTrades.forEach(strongestTrade => ((strongestTrade.map((id) => id))))
 },
 actions:{
     setUserInformation(userInformation){

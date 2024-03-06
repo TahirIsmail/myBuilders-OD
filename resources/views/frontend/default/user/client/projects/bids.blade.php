@@ -96,9 +96,14 @@
                                                 @elseif (
                                                     !$project->project_user->isEmpty() &&
                                                         $project->project_user->contains('shortlisting.user_id', $bid_user->bid_by_user_id))
-                                                    <div class="alert alert-info" role="alert">
-                                                        Pending Shortlist Fee
-                                                    </div>
+                                                    
+
+                                                        <button type="button"
+                                                    class="btn btn-primary btn-sm btn-block rounded-1" style=" font-size: 11px; background-color: #343944 !important; color: white !important; border-radius: 30px !important;"><i class="fa fa-info-circle mr-2"></i>Once the shortlist fee is paid by the tradeperson, after that contact details will be exchanged</button>
+                                                <div class="alert alert-info col-md-5 rounded-pill float-right text-center" role="alert" style="margin-top: 5px;" style="margin-top: 5px;font-size: 11px;">
+                                                    Pending Shortlist Fee
+                                                </div>
+                                                  
                                                 @else
                                                     <button
                                                         onclick="hiring_modal({{ $project->id }}, {{ $bid_user->bid_by_user_id }})"
