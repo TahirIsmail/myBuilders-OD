@@ -1,5 +1,88 @@
 @extends('frontend.default.layouts.app')
+@section('style')
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,700");
 
+        .cardnew {
+            background: #fff;
+            border-radius: 4px;
+            box-shadow: 0px 15px 25px rgba(34, 35, 58, 0.5);
+            max-width: 400px;
+            display: flex;
+            flex-direction: row;
+            border-radius: 25px;
+            position: relative;
+        }
+
+        .cardnew h2 {
+            margin: 0;
+            padding: 0 1rem;
+        }
+
+        .cardnew .title {
+            padding: 1rem;
+            text-align: right;
+            color: green;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .cardnew .desc {
+            padding: 0.5rem 1rem;
+            font-size: 12px;
+        }
+
+        .cardnew .actions {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            align-items: center;
+            padding: 0.5rem 1rem;
+        }
+
+        .cardnew svg {
+            width: 85px;
+            height: 85px;
+            margin: 0 auto;
+        }
+
+        .img-avatar1 {
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            border-radius: 50%;
+            border: 6px solid white;
+            background-color: #343944;
+            top: 15px;
+            left: 30px;
+        }
+
+        .card-text {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+        }
+
+        .title-total {
+            padding: 2.5em 1.5em 1.5em 1.5em;
+        }
+
+        
+
+        .img-portada {
+            width: 100%;
+        }
+
+        .portada {
+            width: 50%;
+            height: 100%;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+            background-color: rgb(109, 195, 109);
+        }
+
+
+
+    </style>
+@endsection
 @section('content')
 
     <section class="py-4 py-lg-5">
@@ -550,105 +633,77 @@
                     <h5 class="mb-4 fs-16 fw-700">{{ translate('Suggested Tradepersons') }}</h5>
                     <div class="aiz-carousel gutters-10 half-outside-arrow" data-items="3" data-xl-items="3"
                         data-md-items="2" data-sm-items="1" data-arrows='true'>
-
-                        @foreach ($similar_types = \App\Models\Project::where('type', $project->type)->where('id', '!=', $project->id)->where('closed', '!=', 1)->limit(4)->get() as $similar_type_project)
-@if (count($similar_types) > 0)
-<div class="caorusel-box">
-        							<div class="card rounded-2 border-gray-light hov-box">
-        								<div class="card-header border-bottom-0 pt-4 pb-0 align-items-start minw-0">
-        									<h5 class="h6 fs-16 fw-700 lh-1-5 text-truncate-2 h-45px">
-        										<a href="{{ route('project.details', $similar_type_project->slug) }}" class="text-inherit" target="_blank">{{ $similar_type_project->name }}</a>
-        									</h5>
-        								</div>
-        								<div class="card-body pt-1 pb-2">
-
-        									<ul class="list-inline opacity-70 fs-12">
-        										<li class="list-inline-item">
-        											{{-- <i class="las la-clock opacity-40"></i> --}}
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
-                                                        <g id="Group_22132" data-name="Group 22132" transform="translate(-365 -1963)">
-                                                          <path id="Subtraction_5" data-name="Subtraction 5" d="M-13,12a6.007,6.007,0,0,1-6-6,6.007,6.007,0,0,1,6-6A6.007,6.007,0,0,1-7,6,6.006,6.006,0,0,1-13,12Zm-.5-9V7h.013l2.109,2.109.707-.706L-12.5,6.572V3Z" transform="translate(384 1963)" fill="#989ea8"/>
-                                                        </g>
-                                                    </svg>
-        											<span class="ml-1">{{ Carbon\Carbon::parse($similar_type_project->created_at)->diffForHumans() }}</span>
-        										</li>
-        										<li class="list-inline-item">
-        											<a href="" target="_blank" class="text-inherit">
-        												{{-- <i class="las la-stream opacity-40"></i> --}}
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 12 11">
-                                                            <g id="Group_23" data-name="Group 23" transform="translate(-498 -1963)">
-                                                            <path id="Subtraction_2" data-name="Subtraction 2" d="M1.5,0h7a1.5,1.5,0,0,1,0,3h-7a1.5,1.5,0,0,1,0-3Z" transform="translate(498 1963)" fill="#989ea8"/>
-                                                            <path id="Subtraction_4" data-name="Subtraction 4" d="M1.5,0h5a1.5,1.5,0,0,1,0,3h-5a1.5,1.5,0,0,1,0-3Z" transform="translate(498 1971)" fill="#989ea8"/>
-                                                            <path id="Subtraction_3" data-name="Subtraction 3" d="M1.5,0h7a1.5,1.5,0,0,1,0,3h-7a1.5,1.5,0,0,1,0-3Z" transform="translate(500 1967)" fill="#989ea8"/>
-                                                            </g>
-                                                        </svg>
-        												<span class="ml-1">
-@if ($similar_type_project->project_category != null)
-{{ $similar_type_project->project_category->name }}
-@endif
-</span>
-        											</a>
-        										</li>
-        										<li class="list-inline-item">
-        											{{-- <i class="las la-handshake"></i> --}}
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="7.643" height="12" viewBox="0 0 7.643 12">
-                                                        <g id="Group_24" data-name="Group 24" transform="translate(-131 -59.8)">
-                                                        <path id="Path_9" data-name="Path 9" d="M136.142,161.028,133.614,161A3.381,3.381,0,0,0,131,164.281v4.708a.92.92,0,0,0,.917.917h5.809a.92.92,0,0,0,.917-.917v-4.708A3.361,3.361,0,0,0,136.142,161.028Zm-1.321,4.488a1.122,1.122,0,0,1,.306,2.2v.248a.306.306,0,0,1-.611,0v-.248a1.123,1.123,0,0,1-.816-1.079.306.306,0,0,1,.611,0,.511.511,0,1,0,.511-.511,1.122,1.122,0,0,1-.306-2.2v-.183a.306.306,0,1,1,.611,0v.183a1.123,1.123,0,0,1,.816,1.079.306.306,0,1,1-.611,0,.511.511,0,1,0-.511.511Z" transform="translate(0 -98.106)" fill="#989ea8"/>
-                                                        <path id="Path_10" data-name="Path 10" d="M219.424,124.641l.15-.52L217.1,124.1l.171.52Z" transform="translate(-83.468 -62.334)" fill="#989ea8"/>
-                                                        <path id="Path_11" data-name="Path 11" d="M199.1,61.179l.4-1.379h-3.7l.449,1.351Z" transform="translate(-62.819)" fill="#989ea8"/>
-                                                        </g>
-                                                    </svg>
-        											<span class="ml-1">{{ $similar_type_project->type }}</span>
-        										</li>
-        									</ul>
-        									<div class="text-muted lh-1-8">
-        										<p class="text-truncate-2 h-50px mb-0 fs-14 text-dark">{{ $similar_type_project->excerpt }}</p>
-        									</div>
-                                            {{-- <div class="mt-2">
-                                                <span class="small fs-14 text-secondary">{{ translate('Budget') }}</span>
-                                                <h4 class="mb-0 fs-24 fw-700">{{ single_price($similar_type_project->price) }}</h4>
-                                            </div> --}}
-        								</div>
-        								<div class="card-footer border-top-0">
-        									<div class="d-flex align-items-center">
-        										<a href="{{ route('client.details', $similar_type_project->client->user_name) }}" target="_blank" class="d-flex mr-3 align-items-center text-inherit">
-        		                                    <span class="avatar avatar-xs">
-                                                        @if ($similar_type_project->client->photo != null)
-<img src="{{ custom_asset($similar_type_project->client->photo) }}">
-@else
-<img src="{{ my_asset('assets/frontend/default/img/avatar-place.png') }}">
-@endif
-        		                                    </span>
-        		                                    <div class="pl-2">
-        		                                    	<h4 class="h6 mb-0 fs-14 fw-700">{{ $similar_type_project->client->name }}</h4>
-        		                                    	<div class="text-secondary fs-12">
-                                                            <i class="las la-star text-rating"></i>
-                                                            <span class="fw-600">
-                                                                {{ formatRating(getAverageRating($project->client->id)) }}
-                                                            </span>
-                                                            <span>
-                                                                ({{ getNumberOfReview($project->client->id) }} {{ translate('Reviews') }})
-</span>
-        												</div>
-        		                                    </div>
-        		                                </a>
-        									</div>
-        									<div>
-        										<ul class="d-flex list-inline mb-0">
-        											<li>
-                                                        @if ($similar_type_project->bids > 0)
-<h4 class="mb-0 h6 fs-12 fw-700">{{ $similar_type_project->bids }} + <span class="small ml-2">{{ translate('Interests') }}</span></h4>
-@else
-<h4 class="mb-0 h6 fs-12 fw-700">{{ $similar_type_project->bids }} <span class="small ml-3">{{ translate('Interests') }}</span></h4>
-@endif
-        											</li>
-        										</ul>
-        									</div>
-        								</div>
-        							</div>
-        						</div>
-@endif
-@endforeach
+                        @forelse( $suggested_tradesmen as $trademen)
+                        <div class="caorusel-box">
+                            <div class="cardnew">
+                                <div class="img-avatar1 avatar avatar-xs">
+                                  {{-- <div class="fa fa-user"></div> --}}
+                                        <a href="{{ route('client.details', $trademen->user_name) }}" target="_blank" class="d-flex mr-3 align-items-center text-inherit">
+                                                
+                                                    @if ($trademen->photo != null)
+                                                    <img src="{{ custom_asset($trademen->photo) }}">
+                                                    @else
+                                                    <img src="{{ my_asset('assets/frontend/default/img/avatar-place.png') }}">
+                                                    @endif
+                                                
+                                                
+                                        </a>
+                                </div>
+                                <div class="card-text">
+                                  <div class="portada">
+                                  
+                                  </div>
+                                  <div class="title-total" style="padding-left: 0px;">
+                                    <div class="title">
+                        
+                                        <i class="las la-star text-rating"></i>
+                                        <span class="fw-600">
+                                            {{ formatRating(getAverageRating($trademen->id)) }}
+                                        </span>
+                                        <span>
+                                            ({{ getNumberOfReview($trademen->id) }} {{ translate('Reviews') }})
+                                        </span>
+                                    </div>
+                                    <a href="{{ route('freelancer.details',$trademen->user_name)}}">
+                                    <h2>{{@$trademen->name}}</h2>
+                                    </a>
+                                <div class="desc text-truncate-2 h-50px mb-0 fs-14 text-dark">{{@$trademen->profile->bio}}</div>
+                                <div class="Points">
+                                <div>
+                                    <hr>
+                                </div>
+                                <div>
+                                    <i class="fa fa-map-marker">{{@$trademen->distance}} miles away</i>
+                                </div>
+                                <div>
+                                    <i class="fa fa-flag"></i>
+                                    <div>
+                                        @if ($trademen->profile->skills != null)
+                                            @foreach (json_decode($trademen->profile->skills, true) as $key => $skill_id)
+                                                @php
+                                                    $skill = \App\Models\Skill::find($skill_id);
+                                                @endphp
+                                                @if ($skill)
+                                                    <span
+                                                        class="btn btn-light btn-xs mb-1 ml-1 bg-soft-info-light rounded-2 border-0 text-truncate-2">{{ $skill->name }}</span>
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                </div>
+                                  
+                                  
+                                </div></div>
+                               
+                                </div>
+                                
+                               
+                                
+                              </div>						
+                        </div>
+                        
+                        @endforeach
+                       
 					</div>
 				</div>
 			</div>
@@ -704,4 +759,4 @@
 @section('script')
     <script src="{{ my_asset('assets/common/js/app.js') }}"></script>
 @endsection
-)
+

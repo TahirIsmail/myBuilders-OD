@@ -136,9 +136,31 @@ $freelancers = \App\Models\User::where('user_type', 'freelancer')
                 "answer" => $item->answer
             ];
         });
-
-
-        return view('frontend.default.project-single', compact('project', 'questionare'));
+        
+        $projCord = new LatLong($project->address->latitude, $project->address->longitude);
+        $suggested_tradesmen =\App\Models\User::where('user_type', 'freelancer')
+            ->with('address','profile','trading_info')
+            ->get()
+            ->filter(function($freelancer) use ($projCord,$project) {
+                if ($freelancer->address && $freelancer->address->latitude && $freelancer->address->longitude) {
+                    $freelancerLatLng = new LatLong($freelancer->address->latitude, $freelancer->address->longitude);
+                    $temp = new DistanceCalculator($projCord, $freelancerLatLng);
+                    $distance = round($temp->get()->asMiles(), 2);
+                   
+                    if($distance < 50){
+                        $skills = json_decode($freelancer->profile->skills, true);
+                            if (is_array($skills)) {
+                                $freelancer->distance = $distance;
+                                return (in_array($project->project_category->skill->id, $skills));
+                            }
+                        
+                    } // adjust the range as needed (in kilometers)
+                }
+                return false;
+            });
+    
+            
+        return view('frontend.default.project-single', compact('project', 'questionare','suggested_tradesmen'));
     }
 
     //Show details info of specific project
@@ -154,6 +176,7 @@ $freelancers = \App\Models\User::where('user_type', 'freelancer')
                 $query->where('sender_user_id', '=', $user)
                     ->orWhere('receiver_user_id', '=', $user);
             })->first();
+
         }
         return view('frontend.default.private_project_single', compact('project', 'chat_thread'));
     }
@@ -176,7 +199,9 @@ $freelancers = \App\Models\User::where('user_type', 'freelancer')
     //Show specific client details to user
     public function client_details($username)
     {
-        $client = User::with('profile')->where('user_name', $username)->first();
+        $client = User::with('profile')->where('user_type','client')->where(function($query) use ($username){
+            $query->where('user_name',$username);
+        })->first();
 
         $open_projects = Project::where('client_user_id', $client->id)->biddable()->open()->notcancel()->latest()->get();
         return view('frontend.default.client-single', compact('client', 'open_projects'));
@@ -201,7 +226,9 @@ $freelancers = \App\Models\User::where('user_type', 'freelancer')
     //Show specific freelancer details to user
     public function freelancer_details($username)
     {
-        $freelancer = User::where('user_name', $username)->first();
+        $freelancer = User::where('user_type','freelancer')->where(function($query) use ($username){
+                $query->where('user_name',$username);
+        })->first();
         return view('frontend.default.freelancer-single', compact('freelancer'));
     }
 

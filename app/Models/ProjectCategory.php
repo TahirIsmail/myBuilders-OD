@@ -22,7 +22,7 @@ class ProjectCategory extends Model
     
     public function skill()
     {
-        return $this->hasMany(Skill::class, 's_id')->withTrashed();
+        return $this->hasOne(Skill::class, 's_id')->withTrashed();
     }
     
     public function firstquestion()
