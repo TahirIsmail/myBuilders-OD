@@ -20,7 +20,7 @@
         }
 
         .cardnew .title {
-            padding: 1rem;
+            padding: 0.5rem;
             text-align: right;
             color: green;
             font-weight: bold;
@@ -58,7 +58,7 @@
 
         .card-text {
             display: grid;
-            grid-template-columns: 1fr 2fr;
+            grid-template-columns: 0.8fr 2fr;
         }
 
         .title-total {
@@ -79,7 +79,20 @@
             background-color: rgb(109, 195, 109);
         }
 
+        .card_skill {
+    overflow: hidden;
+    background-color: var(--soft-info-light) !important;
+    border-radius: 0.5rem !important;
+    font-size: 0.75rem;
+    
+    display: inline-block; /* Ensures span is treated as a block element */
+    padding: 5px !important;
+}
 
+.skill-container {
+    display: flex;
+   
+}
 
     </style>
 @endsection
@@ -635,21 +648,25 @@
                         data-md-items="2" data-sm-items="1" data-arrows='true'>
                         @forelse( $suggested_tradesmen as $trademen)
                         <div class="caorusel-box">
-                            <div class="cardnew">
-                                <div class="img-avatar1 avatar avatar-xs">
-                                  {{-- <div class="fa fa-user"></div> --}}
-                                        <a href="{{ route('client.details', $trademen->user_name) }}" target="_blank" class="d-flex mr-3 align-items-center text-inherit">
-                                                
-                                                    @if ($trademen->photo != null)
-                                                    <img src="{{ custom_asset($trademen->photo) }}">
-                                                    @else
-                                                    <img src="{{ my_asset('assets/frontend/default/img/avatar-place.png') }}">
-                                                    @endif
-                                                
-                                                
-                                        </a>
-                                </div>
+                            <div class="cardnew" style="
+                            height: 350px;
+                        ">
+                                
                                 <div class="card-text">
+
+                                    <div class="img-avatar1 avatar avatar-xs">
+                                        {{-- <div class="fa fa-user"></div> --}}
+                                              <a href="{{ route('client.details', $trademen->user_name) }}" target="_blank" class="d-flex  align-items-center text-inherit">
+                                                      
+                                                          @if ($trademen->photo != null)
+                                                          <img src="{{ custom_asset($trademen->photo) }}">
+                                                          @else
+                                                          <img src="{{ my_asset('assets/frontend/default/img/avatar-place.png') }}">
+                                                          @endif
+                                                      
+                                                      
+                                              </a>
+                                      </div>
                                   <div class="portada">
                                   
                                   </div>
@@ -664,32 +681,39 @@
                                             ({{ getNumberOfReview($trademen->id) }} {{ translate('Reviews') }})
                                         </span>
                                     </div>
-                                    <a href="{{ route('freelancer.details',$trademen->user_name)}}">
-                                    <h2>{{@$trademen->name}}</h2>
+                                    <a href="{{ route('freelancer.details', $trademen->user_name) }}">
+                                        <h6 class="ml-3">{{ strlen($trademen->name) > 15 ? substr($trademen->name, 0, 15) . '......' : $trademen->name }}</h6>
                                     </a>
+                                    
                                 <div class="desc text-truncate-2 h-50px mb-0 fs-14 text-dark">{{@$trademen->profile->bio}}</div>
                                 <div class="Points">
                                 <div>
                                     <hr>
                                 </div>
                                 <div>
-                                    <i class="fa fa-map-marker">{{@$trademen->distance}} miles away</i>
+                                    <i class="fa fa-map-marker" style="color: rgb(109, 195, 109); margin-right: 2px;"> </i> {{@$trademen->distance}}miles away
                                 </div>
                                 <div>
-                                    <i class="fa fa-flag"></i>
-                                    <div>
-                                        @if ($trademen->profile->skills != null)
-                                            @foreach (json_decode($trademen->profile->skills, true) as $key => $skill_id)
-                                                @php
-                                                    $skill = \App\Models\Skill::find($skill_id);
-                                                @endphp
-                                                @if ($skill)
-                                                    <span
-                                                        class="btn btn-light btn-xs mb-1 ml-1 bg-soft-info-light rounded-2 border-0 text-truncate-2">{{ $skill->name }}</span>
-                                                @endif
-                                            @endforeach
-                                        @endif
+                                    
+                                   
+
+
+                                    <div class="skill-container">
+                                        <i class="fa fa-flag" style="color: rgb(109, 195, 109); margin-right: 5px;margin-top:7px"></i>
+                                        <div>
+                                            @if ($trademen->profile->skills != null)
+                                                @foreach (json_decode($trademen->profile->skills, true) as $key => $skill_id)
+                                                    @php
+                                                        $skill = \App\Models\Skill::find($skill_id);
+                                                    @endphp
+                                                    @if ($skill)
+                                                    <span class="card_skill" style="padding:5px !important">{{ $skill->name }}</span>
+                                                    @endif
+                                                @endforeach
+                                            @endif
+                                        </div>
                                     </div>
+                                    
                                 </div>
                                   
                                   
