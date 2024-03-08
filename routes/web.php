@@ -55,6 +55,7 @@ Route::post('/magic-job-post', 'HomeController@storemagicjobpost');
 Route::post('/checkuser', 'HomeController@checkuser')->name('check_user_exist');
 Route::get('/getskills', 'HomeController@getSkills');
 Route::post('/getAssessment', 'HomeController@getAssessment');
+Route::post('/getFreelancers','HomeController@getFreelancers')->name('getFreelancers');
 // Subscribe
 
 Route::resource('subscribers', 'SubscriberController');

@@ -4,8 +4,9 @@
 @endsection
 @section('content')
     <div id="app">
-
-        <card-details  :user = "'{{ auth()->user() }}'"><card-details>
+        
+        <card-details :stripe-key="'{{config('services.stripe.key')}}'" :user = "'{{ auth()->user() }}'"><card-details>
+            {{-- <stripe-card :stripe-key="'{{config('services.stripe.key')}}'"></stripe-card> --}}
     </div>
 @endsection
 

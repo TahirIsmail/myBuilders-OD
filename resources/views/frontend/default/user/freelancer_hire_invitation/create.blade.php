@@ -1,6 +1,7 @@
 @extends('frontend.default.layouts.app')
 
 @section('content')
+{{-- {{ dd($user_projects ->name ) }} --}}
 <div class="h-250px">
     @if ($freelancer->cover_photo != null)
         <img src="{{ custom_asset($freelancer->cover_photo) }}" alt="{{ $freelancer->name }}"class="img-fit h-250px">
@@ -53,14 +54,14 @@
                             </div>
                         </div>
 
-                        <div class="text-lg-right d-flex justify-content-between align-items-end d-lg-block">
+                        {{-- <div class="text-lg-right d-flex justify-content-between align-items-end d-lg-block">
                             <div class="mb-lg-4">
                                 <h4 class="mb-0">{{ single_price($freelancer->profile->hourly_rate) }}</h4>
                                 <div class="small text-secondary">
                                     <span>{{ translate('per Hour') }}</span>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
 
@@ -75,50 +76,36 @@
             <div class="col-xl-8 offset-xl-2">
                 <div class="card">
                     <div class="card-header">
-                        <h2 class="text-dark h5 mb-0">{{ translate('Send invitation for a private project') }}</h2>
+                        <h2 class="text-dark h5 mb-0">{{ translate('Send Invitation For a job') }}</h2>
                     </div>
                     <div class="card-body">
                         <form class="form-horizontal" action="{{ route('invition_for_hire_freelancer_sent') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="freelancer_id" value="{{ $freelancer->id }}">
                             <div class="form-group">
-                                <label class="form-label">{{ translate('Project title') }}<span class="text-danger">*</span>
+                                <label>{{ translate('Job Select') }}<span class="text-danger">*</span></label>
+                                <select class="form-control aiz-selectpicker" data-live-search="true" id="category_id" name="category_id" required>
+                                    @foreach ($user_projects as $project)
+                                        <option value="{{ $project->slug }}">{{ $project->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">{{ translate('Job title') }}<span class="text-danger">*</span>
                                 </label>
                                 <div class="form-group">
-                                    <input type="text" class="form-control " name="name" placeholder="{{ translate('Enter project title') }}" required>
+                                    <input type="text" class="form-control " name="name" placeholder="{{ translate('Enter Job title') }}" disabled required>
                                 </div>
                             </div>
+                            
                             <div class="form-group">
-                                <div class="form-label mb-2">{{ translate('Project type') }}<span class="text-danger">*</span></div>
-                                {{-- @if ($client_package->fixed_limit > 0) --}}
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="projectTypeFixed" name="projectType" class="custom-control-input" value="Fixed" checked>
-                                        <label class="custom-control-label" for="projectTypeFixed">{{ translate('Fixed') }}</label>
-                                    </div>
-                                {{-- @else --}}
-                                    {{-- <div class="alert alert-info custom-control-inline mb-0" role="alert">
-                                        {{ translate('Your fixed type project post limit is over.') }}
-                                    </div> --}}
-                                {{-- @endif --}}
-                                {{-- @if ($client_package->long_term_limit > 0) --}}
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="projectTypeLong" name="projectType" class="custom-control-input" value="Long Term">
-                                        <label class="custom-control-label" for="projectTypeLong">{{ translate('Long term') }}</label>
-                                    </div>
-                                {{-- @else --}}
-                                    {{-- <div class="alert alert-info custom-control-inline mb-0" role="alert">
-                                        {{ translate('Your long term project post limit is over.') }}
-                                    </div> --}}
-                                {{-- @endif --}}
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">{{ translate('Project budget offer') }}<span class="text-danger">*</span></label>
+                                <label class="form-label">{{ translate('Job budget offer') }}<span class="text-danger">*</span></label>
                                 <div class="form-group">
                                     <input type="number" min="0" step="0.01" class="form-control " name="price" placeholder="{{ translate('Enter project budget') }}" required>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>{{ translate('Project category') }}<span class="text-danger">*</span></label>
+                                <label>{{ translate('Job category') }}<span class="text-danger">*</span></label>
                                 <select class="form-control aiz-selectpicker" data-live-search="true" id="category_id" name="category_id" required>
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -126,11 +113,11 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>{{ translate('Project summary') }}<span class="text-danger">*</span></label>
+                                <label>{{ translate('Job summary') }}<span class="text-danger">*</span></label>
                                 <textarea class="form-control" rows="3" name="excerpt" required></textarea>
                             </div>
                             <div class="form-group u-summernote-editor">
-                                <label>{{ translate('Project Details') }}<span class="text-danger">*</span></label>
+                                <label>{{ translate('Job Details') }}<span class="text-danger">*</span></label>
                                 <textarea class="form-control aiz-text-editor" data-height="300" rows="3" name="description" required data-toolbar='[
                                     ["style", ["style"]],
                                     ["font", ["bold", "underline", "clear"]],

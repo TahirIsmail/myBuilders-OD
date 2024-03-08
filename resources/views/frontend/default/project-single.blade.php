@@ -1,5 +1,93 @@
 @extends('frontend.default.layouts.app')
+@section('style')
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,700");
 
+        .cardnew {
+            background: #fff;
+            border-radius: 4px;
+            box-shadow: 0px 15px 25px rgba(34, 35, 58, 0.5);
+            max-width: 400px;
+            display: flex;
+            flex-direction: row;
+            border-radius: 25px;
+            position: relative;
+        }
+
+        .card h2 {
+            margin: 0;
+            padding: 0 1rem;
+        }
+
+        .card .title {
+            padding: 1rem;
+            text-align: right;
+            color: green;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .card .desc {
+            padding: 0.5rem 1rem;
+            font-size: 12px;
+        }
+
+        .card .actions {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            align-items: center;
+            padding: 0.5rem 1rem;
+        }
+
+        .card svg {
+            width: 85px;
+            height: 85px;
+            margin: 0 auto;
+        }
+
+        .img-avatar1 {
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            border-radius: 50%;
+            border: 6px solid white;
+            background-color: #343944;
+            top: 15px;
+            left: 30px;
+        }
+
+        .card-text {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+        }
+
+        .title-total {
+            padding: 2.5em 1.5em 1.5em 1.5em;
+        }
+
+        path {
+            fill: white;
+        }
+
+        .img-portada {
+            width: 100%;
+        }
+
+        .portada {
+            width: 50%;
+            height: 100%;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+            background-color: rgb(109, 195, 109);
+        }
+
+
+
+        fa fa-map-marker {
+            background-color: green;
+        }
+    </style>
+@endsection
 @section('content')
 
     <section class="py-4 py-lg-5">
@@ -151,11 +239,12 @@
                             <h6 class="text-left mb-3"><span
                                     class="bg-white pr-3 fs-14 fw-700">{{ translate('Job Location') }}</span></h6>
                             <div id="map" class="box col-sm-12 col-md-6 col-lg-6">
-                                <img class="img-responsvie" style="max-width: 100%; height: auto;" src="https://maps.googleapis.com/maps/api/staticmap?center={{ $project->address->latitude }},{{ $project->address->longitude }}&zoom=16&size=400x300&key=AIzaSyCC6BbwI05bsqkWZCStzkLIMquD8WL_wqU&markers=color:red|label:J|{{ $project->address->latitude }},{{ $project->address->longitude }}"
+                                <img class="img-responsvie" style="max-width: 100%; height: auto;"
+                                    src="https://maps.googleapis.com/maps/api/staticmap?center={{ $project->address->latitude }},{{ $project->address->longitude }}&zoom=16&size=400x300&key=AIzaSyCC6BbwI05bsqkWZCStzkLIMquD8WL_wqU&markers=color:red|label:J|{{ $project->address->latitude }},{{ $project->address->longitude }}"
                                     alt="address_map" />
 
                             </div>
-                            
+
                         </div>
 
                     </div>
@@ -207,7 +296,7 @@
                             <h5 class="my-3 lh-1-5 fs-16 fw-700">
                                 @if (count($project->projectBids) > 0)
                                     {{ count($project->projectBids) }}
-                                    {{ translate('Tradesmen are showing interest for this job') }} 
+                                    {{ translate('Tradesmen are showing interest for this job') }}
                                     {{-- ({{ translate('Average') }}:
                                     {{ single_price($project->projectBids->sum('amount') / count($project->projectBids)) }}) --}}
                                 @else
@@ -385,7 +474,7 @@
                                                         $project->client->address->country != null)
                                                     <span
                                                         class="d-block fs-12 font-weight-medium">{{ $project->client->address->city }},
-                                                        {{ $project->client->address->country}}</span>
+                                                        {{ $project->client->address->country }}</span>
                                                 @endif
                                             </div>
                                         </div>
@@ -406,27 +495,27 @@
                                             </div>
                                         </div>
                                         <!--<div class="media">
-                                            <div class="text-center text-secondary mt-1 mr-3">
-                                                {{-- <i class="las la-money-check-alt fs-16"></i> --}}
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
-                                                    viewBox="0 0 12 12">
-                                                    <g id="Group_22188" data-name="Group 22188"
-                                                        transform="translate(-13015 -765)">
-                                                        <circle id="Ellipse_22-2" data-name="Ellipse 22-2" cx="6"
-                                                            cy="6" r="6" transform="translate(13015 765)"
-                                                            fill="#989ea8" />
-                                                        <path id="Path_275" data-name="Path 275"
-                                                            d="M280.67,534.054a8.1,8.1,0,0,0-.822-.372,1.845,1.845,0,0,1-.451-.253.393.393,0,0,1,.1-.7.792.792,0,0,1,.276-.057,2.1,2.1,0,0,1,1.039.206c.164.079.218.054.274-.117s.107-.364.161-.546a.191.191,0,0,0-.124-.254,2.641,2.641,0,0,0-.655-.2c-.3-.046-.3-.047-.3-.346,0-.421,0-.421-.423-.421-.061,0-.122,0-.183,0-.2.006-.23.04-.236.239,0,.089,0,.178,0,.268,0,.264,0,.26-.255.351a1.409,1.409,0,0,0-1.029,1.305,1.338,1.338,0,0,0,.757,1.279,8.365,8.365,0,0,0,.946.425,1.4,1.4,0,0,1,.344.2.472.472,0,0,1-.112.828,1.133,1.133,0,0,1-.607.079,2.707,2.707,0,0,1-.925-.276c-.171-.089-.221-.065-.279.12-.05.16-.094.321-.139.482-.06.217-.038.268.169.369a2.953,2.953,0,0,0,.833.239c.225.036.232.046.235.279,0,.105,0,.212,0,.318a.189.189,0,0,0,.2.214c.156,0,.312,0,.468,0a.178.178,0,0,0,.193-.2c0-.144.007-.29,0-.435a.229.229,0,0,1,.2-.261,1.569,1.569,0,0,0,.818-.525A1.476,1.476,0,0,0,280.67,534.054Z"
-                                                            transform="translate(12741.272 236.649)" fill="#fff" />
-                                                    </g>
-                                                </svg>
-                                            </div>
-                                            <div class="media-body pt-1">
-                                                <span
-                                                    class="d-block fs-12 font-weight-medium">{{ single_price(\App\Models\MilestonePayment::where('client_user_id', $project->client_user_id)->where('paid_status', 1)->sum('amount')) }}
-                                                    {{ translate('total spent') }}</span>
-                                            </div>
-                                        </div> -->
+                                                <div class="text-center text-secondary mt-1 mr-3">
+                                                    {{-- <i class="las la-money-check-alt fs-16"></i> --}}
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                                                        viewBox="0 0 12 12">
+                                                        <g id="Group_22188" data-name="Group 22188"
+                                                            transform="translate(-13015 -765)">
+                                                            <circle id="Ellipse_22-2" data-name="Ellipse 22-2" cx="6"
+                                                                cy="6" r="6" transform="translate(13015 765)"
+                                                                fill="#989ea8" />
+                                                            <path id="Path_275" data-name="Path 275"
+                                                                d="M280.67,534.054a8.1,8.1,0,0,0-.822-.372,1.845,1.845,0,0,1-.451-.253.393.393,0,0,1,.1-.7.792.792,0,0,1,.276-.057,2.1,2.1,0,0,1,1.039.206c.164.079.218.054.274-.117s.107-.364.161-.546a.191.191,0,0,0-.124-.254,2.641,2.641,0,0,0-.655-.2c-.3-.046-.3-.047-.3-.346,0-.421,0-.421-.423-.421-.061,0-.122,0-.183,0-.2.006-.23.04-.236.239,0,.089,0,.178,0,.268,0,.264,0,.26-.255.351a1.409,1.409,0,0,0-1.029,1.305,1.338,1.338,0,0,0,.757,1.279,8.365,8.365,0,0,0,.946.425,1.4,1.4,0,0,1,.344.2.472.472,0,0,1-.112.828,1.133,1.133,0,0,1-.607.079,2.707,2.707,0,0,1-.925-.276c-.171-.089-.221-.065-.279.12-.05.16-.094.321-.139.482-.06.217-.038.268.169.369a2.953,2.953,0,0,0,.833.239c.225.036.232.046.235.279,0,.105,0,.212,0,.318a.189.189,0,0,0,.2.214c.156,0,.312,0,.468,0a.178.178,0,0,0,.193-.2c0-.144.007-.29,0-.435a.229.229,0,0,1,.2-.261,1.569,1.569,0,0,0,.818-.525A1.476,1.476,0,0,0,280.67,534.054Z"
+                                                                transform="translate(12741.272 236.649)" fill="#fff" />
+                                                        </g>
+                                                    </svg>
+                                                </div>
+                                                <div class="media-body pt-1">
+                                                    <span
+                                                        class="d-block fs-12 font-weight-medium">{{ single_price(\App\Models\MilestonePayment::where('client_user_id', $project->client_user_id)->where('paid_status', 1)->sum('amount')) }}
+                                                        {{ translate('total spent') }}</span>
+                                                </div>
+                                            </div> -->
                                     </div>
                                 </div>
                             </div>
@@ -434,7 +523,7 @@
                     </div>
                 </div>
             </div>
-
+            @if(isFreelancer())
             <div class="row">
                 <div class="col-12">
                     <h5 class="mb-4 fs-16 fw-700">{{ translate('Similar Jobs') }}</h5>
@@ -542,6 +631,93 @@
 					</div>
 				</div>
 			</div>
+            @endif
+            @if(isClient())
+            <div class="row">
+                <div class="col-12">
+                    <h5 class="mb-4 fs-16 fw-700">{{ translate('Suggested Tradepersons') }}</h5>
+                    <div class="aiz-carousel gutters-10 half-outside-arrow" data-items="3" data-xl-items="3"
+                        data-md-items="2" data-sm-items="1" data-arrows='true'>
+                        @forelse( $suggested_tradesmen as $trademen)
+                        <div class="caorusel-box">
+                            <div class="cardnew">
+                                <div class="img-avatar1 avatar avatar-xs">
+                                  {{-- <div class="fa fa-user"></div> --}}
+                                        <a href="{{ route('client.details', $trademen->user_name) }}" target="_blank" class="d-flex mr-3 align-items-center text-inherit">
+                                                
+                                                    @if ($trademen->photo != null)
+                                                    <img src="{{ custom_asset($trademen->photo) }}">
+                                                    @else
+                                                    <img src="{{ my_asset('assets/frontend/default/img/avatar-place.png') }}">
+                                                    @endif
+                                                
+                                                
+                                        </a>
+                                </div>
+                                <div class="card-text">
+                                  <div class="portada">
+                                  
+                                  </div>
+                                  <div class="title-total" style="padding-left: 0px;">
+                                    <div class="title">
+                        
+                                        <i class="las la-star text-rating"></i>
+                                        <span class="fw-600">
+                                            {{ formatRating(getAverageRating($trademen->id)) }}
+                                        </span>
+                                        <span>
+                                            ({{ getNumberOfReview($trademen->id) }} {{ translate('Reviews') }})
+                                        </span>
+                                    </div>
+                                    <a href="{{ route('freelancer.details',$trademen->user_name)}}">
+                                    <h2>{{@$trademen->name}}</h2>
+                                    </a>
+                                <div class="desc text-truncate-2 h-50px mb-0 fs-14 text-dark">{{@$trademen->profile->bio}}</div>
+                                <div class="Points">
+                                <div>
+                                    <hr>
+                                </div>
+                                <div>
+                                    <i class="fa fa-map-marker">{{@$trademen->distance}} miles away</i>
+                                </div>
+                                <div>
+                                    <i class="fa fa-flag"></i>
+                                    <div>
+                                        @if ($trademen->profile->skills != null)
+                                            @foreach (json_decode($trademen->profile->skills, true) as $key => $skill_id)
+                                                @php
+                                                    $skill = \App\Models\Skill::find($skill_id);
+                                                @endphp
+                                                @if ($skill)
+                                                    <span
+                                                        class="btn btn-light btn-xs mb-1 ml-1 bg-soft-info-light rounded-2 border-0 text-truncate-2">{{ $skill->name }}</span>
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                </div>
+                                  
+                                  
+                                </div></div>
+                               
+                                </div>
+                                
+                               
+                                
+                              </div>						
+                        </div>
+                        
+                        @endforeach
+                       
+					</div>
+				</div>
+			</div>
+            
+
+
+
+
+            @endif
 		</div>
 	</section>
 
@@ -558,34 +734,34 @@
         //         $('#bid_for_modal_body').html(data);
         //     })
         // }
-            function show_interest(id){
-                $.post('{{ route('bids.save_interest') }}', {
+        function show_interest(id) {
+            $.post('{{ route('bids.save_interest') }}', {
                 _token: '{{ csrf_token() }}',
                 id: id
             }, function(data) {
                 location.reload();
             })
-            }
+        }
     </script>
-            
 @endsection
 @section('modal')
     <div class="modal fade" id="bid_for_project" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">{{ translate('Show interest For the Job') }}</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        </button>
-                                    </div>
-                                    <div class="modal-body" id="bid_for_modal_body">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">{{ translate('Show interest For the Job') }}</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            </button>
+                                        </div>
+                                        <div class="modal-body" id="bid_for_modal_body">
 
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        @include('frontend.default.partials.bookmark_remove_modal')
+                            @include('frontend.default.partials.bookmark_remove_modal')
 @endsection
 @section('script')
-<script src="{{ my_asset('assets/common/js/app.js') }}"></script>
+    <script src="{{ my_asset('assets/common/js/app.js') }}"></script>
 @endsection
+

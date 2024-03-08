@@ -7150,7 +7150,7 @@ svg {
     -moz-border-radius: 0.25em;
     border-radius: 0.25em;
     background-color: #64c976;
-    color: #fff;
+    color: #fff !important;
     display: inline-block;
     transition: color ease 100ms, border-color ease 100ms;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;

@@ -52,8 +52,11 @@ class AdminProjectController extends Controller
         $sort_search = null;
         $client_id = null;
 
-        $projects = Project::biddisable()->open()->notcancel()->latest();
-
+        // $projects = Project::has('project_user')->get();
+        $projects = Project::with('client','milestones.freelancer')->whereHas('milestones', function ($query) {
+            $query->where('paid_status', true);
+        })->open()->notcancel()->latest();
+        
         if ($request->has('user_id') && $request->user_id != null) {
             $products = $projects->where('client_user_id', $request->user_id);
             $client_id = $request->user_id;
@@ -63,8 +66,8 @@ class AdminProjectController extends Controller
             $sort_search = $request->search;
         }
 
-        $projects = $projects->paginate(12);
-
+        $projects = $projects->paginate(5);
+        
         return view('admin.default.project.projects.running_projects', compact('projects', 'sort_search', 'client_id'));
     }
 

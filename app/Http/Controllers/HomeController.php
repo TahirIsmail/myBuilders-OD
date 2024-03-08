@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use Ballen\Distical\Calculator as DistanceCalculator;
+use Ballen\Distical\Entities\LatLong;
 use App\Models\User;
 use App\Models\Project;
 use App\Models\ChatThread;
@@ -22,6 +24,7 @@ use Carbon;
 use Illuminate\Support\Str;
 use App\Models\Address;
 use Spatie\Permission\Models\Permission;
+use Illuminate\Database\Eloquent\Builder;
 use Artisan;
 
 class HomeController extends Controller
@@ -80,8 +83,12 @@ class HomeController extends Controller
 
 
         if (isFreelancer()) {
-
-            return view('frontend.default.user.freelancer.dashboard');
+            $user_projects = auth()->user()->projectUsers->map(function ($projectUser) {
+                $projectUser->status = $projectUser->milestones->contains('paid_status', 1) ? 'paid' : 'pending';
+                return $projectUser;
+            });
+            
+            return view('frontend.default.user.freelancer.dashboard',compact('user_projects'));
         } elseif (isClient()) {
             return view('frontend.default.user.client.dashboard');
         } else {
@@ -89,10 +96,36 @@ class HomeController extends Controller
         }
     }
 
+    public function getFreelancers(Request $request) {
+        $latitude = $request->input('latitude');
+$longitude = $request->input('longitude');
+$userCord = new LatLong($latitude, $longitude);
+// Query freelancers within a 50-mile radius
+$freelancers = \App\Models\User::where('user_type', 'freelancer')
+->with('address')
+->get()
+->filter(function($freelancer) use ($userCord) {
+    if ($freelancer->address && $freelancer->address->latitude && $freelancer->address->longitude) {
+        $freelancerLatLng = new LatLong($freelancer->address->latitude, $freelancer->address->longitude);
+        $temp = new DistanceCalculator($userCord, $freelancerLatLng);
+        $distance = round($temp->get()->asMiles(), 2);
+        return $distance < 50; // adjust the range as needed (in kilometers)
+    }
+    return false;
+});
+    
+        // Return the updated list of freelancers as a JSON response
+        //resources\views\frontend\default\user\freelancer\partials
+        return response()->json(view('frontend.default.user.client.partials.freelancers-list', compact('freelancers'))->render());
+    }
+    
+
+
     //Show details info of specific project
     public function project_details($slug)
     {
         $project = Project::where('slug', $slug)->with('address')->first();
+        
         $project_questionare = collect(json_decode($project->jobquestionsarray));
 
         $questionare =  $project_questionare->map(function ($item, $key) {
@@ -103,9 +136,31 @@ class HomeController extends Controller
                 "answer" => $item->answer
             ];
         });
-
-
-        return view('frontend.default.project-single', compact('project', 'questionare'));
+        
+        $projCord = new LatLong($project->address->latitude, $project->address->longitude);
+        $suggested_tradesmen =\App\Models\User::where('user_type', 'freelancer')
+            ->with('address','profile','trading_info')
+            ->get()
+            ->filter(function($freelancer) use ($projCord,$project) {
+                if ($freelancer->address && $freelancer->address->latitude && $freelancer->address->longitude) {
+                    $freelancerLatLng = new LatLong($freelancer->address->latitude, $freelancer->address->longitude);
+                    $temp = new DistanceCalculator($projCord, $freelancerLatLng);
+                    $distance = round($temp->get()->asMiles(), 2);
+                   
+                    if($distance < 50){
+                        $skills = json_decode($freelancer->profile->skills, true);
+                            if (is_array($skills)) {
+                                $freelancer->distance = $distance;
+                                return (in_array($project->project_category->skill->id, $skills));
+                            }
+                        
+                    } // adjust the range as needed (in kilometers)
+                }
+                return false;
+            });
+    
+            
+        return view('frontend.default.project-single', compact('project', 'questionare','suggested_tradesmen'));
     }
 
     //Show details info of specific project
@@ -121,6 +176,7 @@ class HomeController extends Controller
                 $query->where('sender_user_id', '=', $user)
                     ->orWhere('receiver_user_id', '=', $user);
             })->first();
+
         }
         return view('frontend.default.private_project_single', compact('project', 'chat_thread'));
     }
@@ -143,7 +199,9 @@ class HomeController extends Controller
     //Show specific client details to user
     public function client_details($username)
     {
-        $client = User::with('profile')->where('user_name', $username)->first();
+        $client = User::with('profile')->where('user_type','client')->where(function($query) use ($username){
+            $query->where('user_name',$username);
+        })->first();
 
         $open_projects = Project::where('client_user_id', $client->id)->biddable()->open()->notcancel()->latest()->get();
         return view('frontend.default.client-single', compact('client', 'open_projects'));
@@ -168,7 +226,9 @@ class HomeController extends Controller
     //Show specific freelancer details to user
     public function freelancer_details($username)
     {
-        $freelancer = User::where('user_name', $username)->first();
+        $freelancer = User::where('user_type','freelancer')->where(function($query) use ($username){
+                $query->where('user_name',$username);
+        })->first();
         return view('frontend.default.freelancer-single', compact('freelancer'));
     }
 

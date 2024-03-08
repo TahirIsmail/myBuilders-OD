@@ -140,7 +140,7 @@
             			<a href="{{ route('user.profile') }}" class="btn btn-block btn-primary rounded-1 py-4">{{ translate('Profile Settings') }}</a>
             		</div>
             		<div class="col-md-4 mb-4">
-            			<a href="{{ route('sent-milestone-requests.all') }}" class="btn btn-block btn-primary rounded-1 py-4">{{ translate('Milestone Requests') }}</a>
+            			<a href="{{ route('sent-milestone-requests.all') }}" class="btn btn-block btn-primary rounded-1 py-4">{{ translate('Shortlist Payments Requests') }}</a>
             		</div>
             	</div>
             	<div class="row gutters-15">

@@ -1,6 +1,7 @@
 <template>
     <div>
         <div class="container">
+            
             <div class="row">
                 <div class="col-md-12 mt-4">
                     <div class="card p-3 d-flex">
@@ -10,18 +11,10 @@
                             </div>
                             <div class="col-md-3 ml-auto">
                                 <div class="text-center">
-                                    <img
-                                        src="/public/assets/frontend/default/img/icons/Mastercard.png"
-                                        style="width: 50px"
-                                    />
-                                    <img
-                                        src="/public/assets/frontend/default/img/icons/visa1.png"
-                                        style="width: 50px"
-                                    />
-                                    <img
-                                        src="/public/assets/frontend/default/img/icons/american.png"
-                                        style="width: 50px"
-                                    />
+                                    <img src="/public/assets/frontend/default/img/icons/Mastercard.png"
+                                        style="width: 50px" />
+                                    <img src="/public/assets/frontend/default/img/icons/visa1.png" style="width: 50px" />
+                                    <img src="/public/assets/frontend/default/img/icons/american.png" style="width: 50px" />
                                 </div>
                             </div>
                         </div>
@@ -52,10 +45,7 @@
                                     Summary
                                 </p>
                             </div>
-                            <div
-                                class="collapse show p-3 pt-5"
-                                id="collapseExample"
-                            >
+                            <div class="collapse show p-3 pt-5" id="collapseExample">
                                 <div class="row">
                                     <div class="col-lg-5 mb-lg-0 mb-3">
                                         <p class="mb-0">
@@ -70,259 +60,121 @@
                                         </p>
                                     </div>
                                     <div class="col-lg-7">
-                                        <form
-                                            id="payment-form"
-                                            class="form"
-                                            ref="form"
-                                        >
+                                        <form id="payment-form" class="form" ref="form">
                                             <div class="row">
                                                 <div class="col-12">
                                                     <div class="form__div">
-                                                        <input
-                                                            id="card-holder-email"
-                                                            v-model="
-                                                                cardHolderEmail
-                                                            "
-                                                            type="email"
-                                                            class="form-control"
-                                                            placeholder=" "
-                                                        />
-                                                        <label
-                                                            for="card-holder-email"
-                                                            class="form__label"
-                                                            >Card Holder
-                                                            Email</label
-                                                        >
+                                                        <input id="card-holder-email" v-model="cardHolderEmail
+                                                            " type="email" class="form-control" placeholder=" " />
+                                                        <label for="card-holder-email" class="form__label">Card Holder
+                                                            Email</label>
                                                     </div>
-                                                    <span
-                                                        class="error my-2 text-danger"
-                                                        >{{
-                                                            errors.cardHolderEmail
-                                                        }}</span
-                                                    >
+                                                    <span class="error my-2 text-danger">{{
+                                                        errors.cardHolderEmail
+                                                    }}</span>
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="form__div">
-                                                        <input
-                                                            id="card-number"
-                                                            v-model="cardNumber"
-                                                            type="tel"
-                                                            v-mask="
-                                                                '#### #### #### ####'
-                                                            "
-                                                            class="form-control"
-                                                            placeholder=" "
-                                                        />
-                                                        <label
-                                                            for="card-number"
-                                                            class="form__label"
-                                                            >Card Number</label
-                                                        >
+                                                        <input id="card-number" v-model="cardNumber" type="tel" v-mask="'#### #### #### ####'
+                                                            " class="form-control" placeholder=" " />
+                                                        <label for="card-number" class="form__label">Card Number</label>
                                                     </div>
-                                                    <span
-                                                        class="error my-2 text-danger"
-                                                        >{{
-                                                            errors.cardNumber
-                                                        }}</span
-                                                    >
+                                                    <span class="error my-2 text-danger">{{
+                                                        errors.cardNumber
+                                                    }}</span>
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="form__div">
-                                                        <input
-                                                            id="card-expiry"
-                                                            v-model="cardExpiry"
-                                                            v-mask="'##/##'"
-                                                            type="tel"
-                                                            class="form-control"
-                                                            placeholder=" "
-                                                        />
-                                                        <label
-                                                            for="card-expiry"
-                                                            class="form__label"
-                                                            >MM / YY</label
-                                                        >
+                                                        <input id="card-expiry" v-model="cardExpiry" v-mask="'##/##'"
+                                                            type="tel" class="form-control" placeholder=" " />
+                                                        <label for="card-expiry" class="form__label">MM / YY</label>
                                                     </div>
-                                                    <span
-                                                        class="error my-2 text-danger"
-                                                        >{{
-                                                            errors.cardExpiry
-                                                        }}</span
-                                                    >
+                                                    <span class="error my-2 text-danger">{{
+                                                        errors.cardExpiry
+                                                    }}</span>
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="form__div">
-                                                        <input
-                                                            id="card-cvc"
-                                                            v-model="cardCvc"
-                                                            type="text"
-                                                            v-mask="'###'"
-                                                            class="form-control"
-                                                            placeholder=" "
-                                                        />
-                                                        <label
-                                                            for="card-cvc"
-                                                            class="form__label"
-                                                            >CVV Code</label
-                                                        >
+                                                        <input id="card-cvc" v-model="cardCvc" type="text" v-mask="'###'"
+                                                            class="form-control" placeholder=" " />
+                                                        <label for="card-cvc" class="form__label">CVV Code</label>
                                                     </div>
-                                                    <span
-                                                        class="error my-2 text-danger"
-                                                        >{{
-                                                            errors.cardCvc
-                                                        }}</span
-                                                    >
+                                                    <span class="error my-2 text-danger">{{
+                                                        errors.cardCvc
+                                                    }}</span>
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="form__div">
-                                                        <input
-                                                            id="card-holder-name"
-                                                            v-model="
-                                                                cardHolderName
-                                                            "
-                                                            type="text"
-                                                            class="form-control"
-                                                            placeholder=" "
-                                                        />
-                                                        <label
-                                                            for="card-holder-name"
-                                                            class="form__label"
-                                                            >Name on the
-                                                            Card</label
-                                                        >
+                                                        <input id="card-holder-name" v-model="cardHolderName
+                                                                " type="text" class="form-control" placeholder=" " />
+                                                        <label for="card-holder-name" class="form__label">Name on the
+                                                            Card</label>
                                                     </div>
-                                                    <span
-                                                        class="error my-2 text-danger"
-                                                        >{{
-                                                            errors.cardHolderName
-                                                        }}</span
-                                                    >
+                                                    <span class="error my-2 text-danger">{{
+                                                        errors.cardHolderName
+                                                    }}</span>
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="form__div">
-                                                        <input
-                                                            id="card-holder-address"
-                                                            v-model="
-                                                                cardHolderAddress
-                                                            "
-                                                            type="text"
-                                                            class="form-control"
-                                                            placeholder=" "
-                                                        />
-                                                        <label
-                                                            for="card-holder-address"
-                                                            class="form__label"
-                                                            >Address</label
-                                                        >
+                                                        <input id="card-holder-address" v-model="cardHolderAddress
+                                                                " type="text" class="form-control" placeholder=" " />
+                                                        <label for="card-holder-address" class="form__label">Address</label>
                                                     </div>
-                                                    <span
-                                                        class="error my-2 text-danger"
-                                                        >{{
-                                                            errors.cardHolderAddress
-                                                        }}</span
-                                                    >
+                                                    <span class="error my-2 text-danger">{{
+                                                        errors.cardHolderAddress
+                                                    }}</span>
                                                 </div>
-                                               
                                             </div>
 
                                             <div class="container mt-5">
                                                 <div class="form-check">
-                                                    <input
-                                                        class="form-check-input"
-                                                        type="checkbox"
-                                                        id="toggleInput"
-                                                        data-bs-toggle="collapse"
-                                                        data-bs-target="#textInput"
-                                                        aria-expanded="false"
-                                                        aria-controls="textInput"
-                                                    />
-                                                    <label
-                                                        class="form-check-label"
-                                                        for="toggleInput"
-                                                        >Billing address is the
-                                                        same</label
-                                                    >
+                                                    <input class="form-check-input" type="checkbox" id="toggleInput"
+                                                        data-bs-toggle="collapse" data-bs-target="#textInput"
+                                                        aria-expanded="false" aria-controls="textInput" />
+                                                    <label class="form-check-label" for="toggleInput">Billing address is the
+                                                        same</label>
                                                 </div>
-                                                <div
-                                                    class="collapse"
-                                                    id="textInput"
-                                                >
+                                                <div class="collapse" id="textInput">
                                                     <div class="col-12 mt-3">
                                                         <div class="form__div">
-                                                            <input
-                                                                id="card-holder-line1"
-                                                                type="text"
-                                                                class="form-control"
-                                                                placeholder=" "
-                                                            />
-                                                            <label
-                                                                for="card-holder-line1"
-                                                                class="form__label"
-                                                                >Address line
-                                                                2</label
-                                                            >
+                                                            <input id="card-holder-line1" type="text" class="form-control"
+                                                                placeholder=" " />
+                                                            <label for="card-holder-line1" class="form__label">Address line
+                                                                2</label>
                                                         </div>
                                                     </div>
 
                                                     <div class="col-12 mt-3">
                                                         <div class="form__div">
-                                                            <input
-                                                                id="card-holder-line2"
-                                                                type="text"
-                                                                class="form-control"
-                                                                placeholder=" "
-                                                            />
-                                                            <label
-                                                                for="card-holder-line2"
-                                                                class="form__label"
-                                                                >Address line
-                                                                1</label
-                                                            >
+                                                            <input id="card-holder-line2" type="text" class="form-control"
+                                                                placeholder=" " />
+                                                            <label for="card-holder-line2" class="form__label">Address line
+                                                                1</label>
                                                         </div>
                                                     </div>
 
                                                     <div class="col-12 mt-3">
                                                         <div class="form__div">
-                                                            <input
-                                                                id="card-holder-town"
-                                                                type="text"
-                                                                class="form-control"
-                                                                placeholder=" "
-                                                            />
-                                                            <label
-                                                                for="card-holder-town"
-                                                                class="form__label"
-                                                                >Town /
-                                                                City</label
-                                                            >
+                                                            <input id="card-holder-town" type="text" class="form-control"
+                                                                placeholder=" " />
+                                                            <label for="card-holder-town" class="form__label">Town /
+                                                                City</label>
                                                         </div>
                                                     </div>
 
                                                     <div class="col-12 mt-3">
                                                         <div class="form__div">
-                                                            <input
-                                                                id="card-holder-Postal"
-                                                                type="text"
-                                                                class="form-control"
-                                                                placeholder=" "
-                                                            />
-                                                            <label
-                                                                for="card-holder-Postal"
-                                                                class="form__label"
-                                                                >Postal
-                                                                Code</label
-                                                            >
+                                                            <input id="card-holder-Postal" type="text" class="form-control"
+                                                                placeholder=" " />
+                                                            <label for="card-holder-Postal" class="form__label">Postal
+                                                                Code</label>
                                                         </div>
                                                     </div>
-
                                                     <div class="col-12">
-                                                    <div
-                                                        class="btn btn-primary"
-                                                        id="submit-button"
-                                                        @click="submitCard"
-                                                    >
-                                                        Submit
+                                                        <div class="btn btn-primary" id="submit-button" @click="submitCard">
+                                                            Submit
+                                                        </div>
                                                     </div>
-                                                </div>
                                                 </div>
                                             </div>
                                         </form>
@@ -350,10 +202,14 @@ export default {
             cardHolderName: "",
             cardHolderAddress: "",
             stripe: null,
-            token: null,
+
         };
     },
-
+    props: {
+        stripeKey: {
+            type: String
+        }
+    },
     methods: {
         async submitCard() {
             if (!this.cardHolderEmail) {
@@ -472,6 +328,10 @@ export default {
             const re = /\S+@\S+\.\S+/;
             return re.test(email);
         },
+    },
+    async mounted() {
+        this.stripe = await loadStripe(this.stripeKey);
+        
     },
 };
 </script>
@@ -603,7 +463,7 @@ body {
     text-transform: uppercase;
 }
 
-.form-control:focus + .form__label {
+.form-control:focus+.form__label {
     top: -8px;
     left: 12px;
     color: #1a73e8;
@@ -612,7 +472,7 @@ body {
     z-index: 10;
 }
 
-.form-control:not(:placeholder-shown).form-control:not(:focus) + .form__label {
+.form-control:not(:placeholder-shown).form-control:not(:focus)+.form__label {
     top: -8px;
     left: 12px;
     font-size: 12px;

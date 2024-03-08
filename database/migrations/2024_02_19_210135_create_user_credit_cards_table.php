@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('stripe_payment_method_id');
-            $table->string('stripe_customer_id');
+            $table->string('customer_payment_methods');
             $table->string('card_holder_name');
             $table->bigInteger('cvv');
             $table->bigInteger('last_four');

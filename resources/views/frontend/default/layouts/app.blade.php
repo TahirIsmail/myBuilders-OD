@@ -272,7 +272,8 @@
             AIZ.plugins.notify('{{ $message['level'] }}', '{{ $message['message'] }}');
         @endforeach
     </script>
-    
+    <script src="https://js.stripe.com/v3/"></script>
+
     @yield('script')
     
 </body>

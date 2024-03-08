@@ -338,7 +338,9 @@
                             </li>
                             @if (!Auth::check())
                                 <li class="nav-item ml-xl-3">
-                                    <a class="btn-post disply_btn" href="{{ route('login') }}">{{ translate('Login') }}</a>
+                                    <a class="btn--lp" href="{{ route('login') }}"style="
+                                    font-size: 15px!important;
+                                ">{{ translate('Login') }} </a>
                                 </li>
                                 {{-- <li class="nav-item ml-xl-3">
                                 <a class="btn btn-primary rounded-1; width:100px"
