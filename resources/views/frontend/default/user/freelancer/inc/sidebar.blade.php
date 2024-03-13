@@ -68,8 +68,11 @@
                         <span class="aiz-side-nav-text ml-2">{{ translate('Dashboard') }}</span>
                     </a>
                 </li>
-
-
+                @php
+					$verification = \App\Models\Verification::where('user_id', Auth::user()->id)->where('type', 'identity_verification')->first();
+				@endphp
+                @if($verification !== null && $verification->verified)
+                    
                 <li class="aiz-side-nav-item">
                     <a href="javascript:void(0);" class="aiz-side-nav-link d-flex align-items-center">
                         {{-- <i class="las la-file-alt aiz-side-nav-icon"></i> --}}
@@ -118,7 +121,7 @@
                         </li> --}}
                     </ul>
                 </li>
-
+                @endif
 
 
                 @if (Auth::user()->userPackage != null && Auth::user()->userPackage->following_status)

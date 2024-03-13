@@ -34,53 +34,104 @@ class HireController extends Controller
         return view('frontend.default.user.freelancer_hire_invitation.create', compact('freelancer', 'categories','user_projects'));
     }
 
+    public function job_details(Request $request){
+        $project = Project::with('address','project_category','documents','client')->where('slug',$request->slug)->first();
+        return response()->json([
+            'project' => $project,
+            'message' => 'Project retrieved successfully',
+            'code' => 200
+        ]);
+    }
     //Store sent info for hiring freelancers
+    // public function store(Request $request)
+    // {
+    //     $project = new Project;
+    //     $project->name = $request->name;
+    //     $project->type = $request->projectType;
+    //     $project->price = $request->price;
+    //     $project->project_category_id = $request->category_id;
+    //     $project->excerpt = $request->excerpt;
+    //     $project->skills = '[]';
+    //     $project->private = '1';
+    //     $project->biddable = '0';
+    //     $project->description = $request->description;
+    //     if ($request->attachments != null) {
+    //         $project->attachment = json_encode(explode(",",$request->attachment));
+    //     }
+    //     $project->client_user_id = Auth::user()->id;
+    //     $project->slug = Str::slug($request->name, '-').date('Ymd-his');
+    //     if ($project->save()) {
+    //         $hire_invitation = new HireInvitation;
+    //         $hire_invitation->project_id = $project->id;
+    //         $hire_invitation->sent_to_user_id = $request->freelancer_id;
+    //         $hire_invitation->sent_by_user_id = Auth::user()->id;
+    //         $hire_invitation->save();
+    //         $existing_chat_thread = ChatThread::where('sender_user_id', Auth::user()->id)->where('receiver_user_id', $request->freelancer_id)->first();
+    //         if ($existing_chat_thread == null) {
+    //             $existing_chat_thread = new ChatThread;
+    //             $existing_chat_thread->thread_code = $request->freelancer_id.date('Ymd').Auth::user()->id;
+    //             $existing_chat_thread->sender_user_id = Auth::user()->id;
+    //             $existing_chat_thread->receiver_user_id = $request->freelancer_id;
+    //             $existing_chat_thread->save();
+    //         }
+
+    //         //from client to freelancer
+    //         NotificationUtility::set_notification(
+    //             "freelancer_proposal_for_project",
+    //             translate('You have recieved a proposal for a project by'),
+    //             route('project.details',['slug'=>$project->slug],false),
+    //             $request->freelancer_id,
+    //             Auth::user()->id,
+    //             'freelancer'
+    //         );
+    //         EmailUtility::send_email(
+    //             translate('You got a new project proposal for project -').$project->name,
+    //             translate('You have recieved a proposal for a project by'). $project->client->name,
+    //             get_email_by_user_id($request->freelancer_id),
+    //             route('project.details',['slug'=>$project->slug])
+    //         );
+
+    //         flash(translate('Invitation has been sent successfully.'))->success();
+    //         return redirect()->route('dashboard');
+    //     }
+    //     else {
+    //         flash(translate('Sorry! Something went wrong.'))->error();
+    //         return back();
+    //     }
+    // }
+
     public function store(Request $request)
     {
-        $project = new Project;
-        $project->name = $request->name;
-        $project->type = $request->projectType;
-        $project->price = $request->price;
-        $project->project_category_id = $request->category_id;
-        $project->excerpt = $request->excerpt;
-        $project->skills = '[]';
-        $project->private = '1';
-        $project->biddable = '0';
-        $project->description = $request->description;
-        if ($request->attachments != null) {
-            $project->attachment = json_encode(explode(",",$request->attachment));
-        }
-        $project->client_user_id = Auth::user()->id;
-        $project->slug = Str::slug($request->name, '-').date('Ymd-his');
-        if ($project->save()) {
+        
+        if ($request->project_slug) {
             $hire_invitation = new HireInvitation;
-            $hire_invitation->project_id = $project->id;
+            $hire_invitation->project_id = $request->project_id;
             $hire_invitation->sent_to_user_id = $request->freelancer_id;
             $hire_invitation->sent_by_user_id = Auth::user()->id;
             $hire_invitation->save();
-            $existing_chat_thread = ChatThread::where('sender_user_id', Auth::user()->id)->where('receiver_user_id', $request->freelancer_id)->first();
-            if ($existing_chat_thread == null) {
-                $existing_chat_thread = new ChatThread;
-                $existing_chat_thread->thread_code = $request->freelancer_id.date('Ymd').Auth::user()->id;
-                $existing_chat_thread->sender_user_id = Auth::user()->id;
-                $existing_chat_thread->receiver_user_id = $request->freelancer_id;
-                $existing_chat_thread->save();
-            }
+            // $existing_chat_thread = ChatThread::where('sender_user_id', Auth::user()->id)->where('receiver_user_id', $request->freelancer_id)->first();
+            // if ($existing_chat_thread == null) {
+            //     $existing_chat_thread = new ChatThread;
+            //     $existing_chat_thread->thread_code = $request->freelancer_id.date('Ymd').Auth::user()->id;
+            //     $existing_chat_thread->sender_user_id = Auth::user()->id;
+            //     $existing_chat_thread->receiver_user_id = $request->freelancer_id;
+            //     $existing_chat_thread->save();
+            // }
 
             //from client to freelancer
             NotificationUtility::set_notification(
-                "freelancer_proposal_for_project",
-                translate('You have recieved a proposal for a project by'),
-                route('project.details',['slug'=>$project->slug],false),
+                "tradesmen_proposal_for_job",
+                translate('You have recieved a proposal for a job by'),
+                route('project.details',['slug'=>$request->project_slug],false),
                 $request->freelancer_id,
                 Auth::user()->id,
-                'freelancer'
+                'trademen'
             );
             EmailUtility::send_email(
-                translate('You got a new project proposal for project -').$project->name,
-                translate('You have recieved a proposal for a project by'). $project->client->name,
+                translate('You got a new job proposal for proposal -').$request->project_name,
+                translate('You have recieved a proposal for a job by'). $request->project_client,
                 get_email_by_user_id($request->freelancer_id),
-                route('project.details',['slug'=>$project->slug])
+                route('project.details',['slug'=>$request->project_slug])
             );
 
             flash(translate('Invitation has been sent successfully.'))->success();

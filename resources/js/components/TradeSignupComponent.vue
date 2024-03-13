@@ -76,12 +76,12 @@
                                             <Field
                                                 id="phone"
                                                 type="tel"
-                                                class="form-control"
+                                                class="form-control mb-2"
                                                 name="phone"
                                                 placeholder="+153234258"
                                                 autocomplete="on"
                                             />
-                                            <!-- <span class="alert alert-info rounded-4">Please Add Contact No with Country Code</span> -->
+                                            <span class="phone-alert alert alert-info rounded-4 mb-2"><i class="fa fa-info-circle mr-2"></i>Please Add Contact Number with Country Code in full International format</span>
                                             <ErrorMessage class="text-danger" name="phone" />
                                         </div>
                                         
@@ -324,6 +324,12 @@ const submitForm = (values) => {
     .p_size {
         font-size:0.75rem !important;
     }
+}
+.phone-alert{
+    color: white;
+    background-color: #2a3d43;
+    padding: 10px;
+    font-size: 8px;
 }
 </style>
 

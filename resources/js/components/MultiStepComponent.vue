@@ -10,11 +10,11 @@
   </template>
   
   <script setup>
-  import TradeSignupComponent from './TradeSignupComponent';
-  import TradeForm from './TradeForm';
-  import IntroductionComponent from './IntroductionComponent';
-  import SelectTradesComponent from './SelectTradesComponent';
-  import StrongestTradeComponent from './StrongestTradeComponent';
+  import TradeSignupComponent from './TradeSignupComponent.vue';
+  import TradeForm from './TradeForm.vue';
+  import IntroductionComponent from './IntroductionComponent.vue';
+  import SelectTradesComponent from './SelectTradesComponent.vue';
+  import StrongestTradeComponent from './StrongestTradeComponent.vue';
   import WorkAddressComponent from './WorkAddressComponent.vue';
   import TradeAssessment from './TradeAssessment.vue';
   import {computed, ref, KeepAlive} from 'vue';

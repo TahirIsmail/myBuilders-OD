@@ -463,7 +463,7 @@
         // Function to update the freelancers list
         function updateFreelancersList(latitude, longitude) {
             $.ajax({
-                url: '{{ route('getFreelancers') }}',
+                url: '{{ route('tradesmen-list') }}',
                 method: 'POST',
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

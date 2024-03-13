@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="container">
-            
+
             <div class="row">
                 <div class="col-md-12 mt-4">
                     <div class="card p-3 d-flex">
@@ -114,7 +114,7 @@
                                                         errors.cardHolderName
                                                     }}</span>
                                                 </div>
-                                                <div class="col-12">
+                                                <!-- <div class="col-12">
                                                     <div class="form__div">
                                                         <input id="card-holder-address" v-model="cardHolderAddress
                                                                 " type="text" class="form-control" placeholder=" " />
@@ -123,39 +123,39 @@
                                                     <span class="error my-2 text-danger">{{
                                                         errors.cardHolderAddress
                                                     }}</span>
-                                                </div>
+                                                </div> -->
                                             </div>
 
                                             <div class="container mt-5">
-                                                <div class="form-check">
+                                                <!-- <div class="form-check">
                                                     <input class="form-check-input" type="checkbox" id="toggleInput"
                                                         data-bs-toggle="collapse" data-bs-target="#textInput"
                                                         aria-expanded="false" aria-controls="textInput" />
-                                                    <label class="form-check-label" for="toggleInput">Billing address is the
+                                                    <label class="form-check-label" for="toggleInput">Billing address is not
                                                         same</label>
-                                                </div>
-                                                <div class="collapse" id="textInput">
+                                                </div> -->
+                                                <div  id="textInput">
                                                     <div class="col-12 mt-3">
                                                         <div class="form__div">
-                                                            <input id="card-holder-line1" type="text" class="form-control"
+                                                            <input id="card-holder-line1" v-model="cardHolderLine1" type="text" class="form-control"
                                                                 placeholder=" " />
                                                             <label for="card-holder-line1" class="form__label">Address line
-                                                                2</label>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-12 mt-3">
-                                                        <div class="form__div">
-                                                            <input id="card-holder-line2" type="text" class="form-control"
-                                                                placeholder=" " />
-                                                            <label for="card-holder-line2" class="form__label">Address line
                                                                 1</label>
                                                         </div>
                                                     </div>
 
                                                     <div class="col-12 mt-3">
                                                         <div class="form__div">
-                                                            <input id="card-holder-town" type="text" class="form-control"
+                                                            <input id="card-holder-line2" v-model="cardHolderLine2" type="text" class="form-control"
+                                                                placeholder=" " />
+                                                            <label for="card-holder-line2" class="form__label">Address line
+                                                                2</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-12 mt-3">
+                                                        <div class="form__div">
+                                                            <input id="card-holder-town" v-model="cardHolderTown" type="text" class="form-control"
                                                                 placeholder=" " />
                                                             <label for="card-holder-town" class="form__label">Town /
                                                                 City</label>
@@ -164,7 +164,7 @@
 
                                                     <div class="col-12 mt-3">
                                                         <div class="form__div">
-                                                            <input id="card-holder-Postal" type="text" class="form-control"
+                                                            <input id="card-holder-Postal" v-model="cardHolderPostal" type="text" class="form-control"
                                                                 placeholder=" " />
                                                             <label for="card-holder-Postal" class="form__label">Postal
                                                                 Code</label>
@@ -176,7 +176,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> 
                                         </form>
                                     </div>
                                 </div>
@@ -200,14 +200,20 @@ export default {
             cardExpiry: "",
             cardCvc: "",
             cardHolderName: "",
-            cardHolderAddress: "",
+            cardHolderLine1:"",
+            cardHolderLine2:"",
+            cardHolderTown:"",
+            cardHolderPostal:"",
             stripe: null,
 
         };
     },
     props: {
-        stripeKey: {
+        stripePubKey: {
             type: String
+        },
+        stripeSecKey:{
+            type:String
         }
     },
     methods: {
@@ -285,7 +291,6 @@ export default {
                     card_exp_year: parseInt(cardExpYear),
                     card_cvc: this.cardCvc,
                     card_holder_name: this.cardHolderName,
-                    card_holder_address: this.cardHolderAddress,
                     card_holder_email: this.cardHolderEmail,
                 });
 
@@ -330,8 +335,9 @@ export default {
         },
     },
     async mounted() {
-        this.stripe = await loadStripe(this.stripeKey);
-        
+        this.stripe = await loadStripe(this.stripePubKey);
+       
+        console.log(this.stripe.elements)
     },
 };
 </script>
