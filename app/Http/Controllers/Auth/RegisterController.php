@@ -102,15 +102,17 @@ class RegisterController extends Controller
     protected function createTradesmen(array $data)
     {
         
-        // dd($data);
+         
         // 2. Assign values to the user attributes
         
-        $skill=collect($data['strongesttrades'])->map(function($item ,$key) {
-            return collect($item['skill'])->pluck('id');
-             
-        })->flatten()->toJson();
-        
-        
+        $skills = collect($data['strongesttrades'])
+                ->map(function($item) {
+                    return $item['id'];
+                })
+                ->filter()
+                ->values();
+       
+       
         $userData = [
             'name' => $data['name'] ?? null,
             'email' => $data['email'] ?? null,
@@ -123,10 +125,11 @@ class RegisterController extends Controller
         $user_profile = new UserProfile;
         $user_profile->bio = $data['bio'];
         $user_profile->distance =$data['workaddress']['distance'];
+        $user_profile->specialist = $data['specialist_at'];
         $user_profile->user_id = $user->id;
        
         
-        $user_profile->skills = $skill;
+        $user_profile->skills = $skills->toJson();
         $user_profile->save();
         $tradingInfo=[
             'partnersname' => $data['trading_info']['partners_name'] ?? '',

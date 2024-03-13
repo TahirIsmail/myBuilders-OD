@@ -58,6 +58,7 @@ export default {
   },
   methods: {
       nextQuestion() {
+        
           this.$emit("next", this.selectedAnswer);
       },
   },

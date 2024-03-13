@@ -4,8 +4,8 @@
           <component :is="currentStepComponent" :key="currentStep" :navigationMethods="{prevStep,nextStep}" />
 
       </KeepAlive>
-      <!-- <button @click="prevStep" :disabled="currentStep === 1">Previous</button>
-      <button @click="nextStep" :disabled="currentStep === totalSteps">Next</button> -->
+      <button @click="prevStep" :disabled="currentStep === 1">Previous</button>
+      <button @click="nextStep" :disabled="currentStep === totalSteps">Next</button>
     </div>
   </template>
   

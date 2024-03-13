@@ -102,7 +102,7 @@ class HireController extends Controller
 
     public function store(Request $request)
     {
-        
+
         if ($request->project_slug) {
             $hire_invitation = new HireInvitation;
             $hire_invitation->project_id = $request->project_id;
