@@ -87,25 +87,25 @@ const registerUser = async () => {
       // to the user using Swal or any other alert mechanism.
       const message = e.response.data.message;
       if (typeof message === "object") {
-        loading.value = true;
+        loading.value = false;
         await Swal.fire({
           title: 'Verification Error',
           text: e.response.data.message.verification[0],
           icon: 'error',
         });
-        loading.value = false;
+        
         window.location.href = '/register';
 
       }
       else {
-        loading.value = true
+        loading.value = false
         await Swal.fire({
           title: 'Validation Error',
           text: e.response.data.message,
           icon: 'error',
 
         });
-        loading.value = false
+       
         window.location.href = '/register';
 
       }

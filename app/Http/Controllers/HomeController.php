@@ -292,7 +292,7 @@ $freelancers = \App\Models\User::where('user_type', 'freelancer')
         } else {
             // User does not exist
             // Handle accordingly
-            return response()->json(['msg' => "User Does not Exists", 'code' => 404]);
+            return response()->json(['msg' => "User Does not Exists as Client or its doesnot exist completely", 'code' => 404]);
         }
     }
     public function post_job_magic(Request $request)

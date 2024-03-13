@@ -726,7 +726,9 @@
                               </div>						
                         </div>
                         
-                        @endforeach
+                        @empty
+                                    <p>Tradesmen not found</p>
+                        @endforelse
                        
 					</div>
 				</div>

@@ -47,6 +47,7 @@
         "@stripe/stripe-js": "^3.0.5",
         "@vee-validate/rules": "^4.12.4",
         "@vee-validate/yup": "^4.12.4",
+        "animate.css": "^4.1.1",
         "install": "^0.13.0",
         "mapbox-gl": "^2.15.0",
         "npm": "^10.3.0",

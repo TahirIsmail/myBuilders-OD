@@ -523,8 +523,10 @@ if (!function_exists('userExistsWithEmail')) {
     function userExistsWithEmail($email)
     {
         // Use the Eloquent ORM to check if a user with the specified email exists
-        $user = \App\Models\User::where('email', $email)->first();
-
+        $user = \App\Models\User::where('email', $email)->where(function($query) use ($email) {
+            return $query->where('user_type','client');
+        })->first();
+        
         return !is_null($user);
     }
 }

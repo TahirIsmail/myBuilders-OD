@@ -38,8 +38,9 @@
 
                         <div class="input-group mb-3 ">
                             <span class="input-group-text span_width" id="basic-addon1">PostCode</span>
-                            <input type="text" class="form-control" v-model="form.postcode" placeholder="Enter Postal Code"
-                                aria-label="postalcode" aria-describedby="basic-addon1" />
+                            <input type="text" class="form-control" v-model="form.postcode"
+                                placeholder="Enter Postal Code" aria-label="postalcode"
+                                aria-describedby="basic-addon1" />
                         </div>
 
                         <div class="input-group mb-3 ">
@@ -57,7 +58,7 @@
                 </Transition>
                 <div v-if="!store.jobInformation || user">
                     <div class="form-group button-container">
-                        <button type="submit" class="btn btn-primary" v-bind:disabled="processing == true" >
+                        <button type="submit" class="btn btn-primary" v-bind:disabled="processing == true">
                             <i class='fa fa-circle-notch fa-spin' v-if="processing == true"></i>
                             Continue
                         </button>
@@ -69,7 +70,8 @@
         <div class="col-md-10 bg-white" v-if="!user">
             <KeepAlive>
                 <Transition>
-                    <component :is="currentComponent" v-if="store.jobInformation" @toggleCurrent="handleComponentChange">
+                    <component :is="currentComponent" v-if="store.jobInformation"
+                        @toggleCurrent="handleComponentChange">
                     </component>
                 </Transition>
             </KeepAlive>
@@ -151,75 +153,116 @@ const validationSchema = computed(() => {
 const store = useQuestionnaireStore();
 
 const submitForm = async () => {
-    try {
-        // Validate the form using Yup schema
-        processing.value = true
-        await validationSchema.value.validate(form, { abortEarly: false });
-        
-        // If validation succeeds, show SweetAlert2 success message
-        if (user !== null && user !== undefined) {
-            // Object exists and is not null or undefined
-            store.setjobInformation({
-                ...user,
-                ...form,
-                JobQuestionAnswer: store.getAllSelectedAnswers,
-                SelectedCategory: store.selectedCategory,
-                JobDescription: store.getJobDescription,
-            });
-
-            Swal.fire({
-                icon: "success",
-                title: `The Job Information has been for ${user.name},\nDo you want to save it!`,
-                showConfirmButton: true,
-                // timer: 1500,
-                confirmButtonText: "Save",
-                denyButtonText: `Don't save`,
-            }).then((result) => {
-
-
-                if (result.isConfirmed) {
-                    store.sendJobinformation();
-                    
-                    Swal.fire("Saved!", "", "success");
-                    processing.value = false
-                } else if (result.isDenied) {
-                    Swal.fire("Changes are not saved", "", "info");
-                    processing.value = false
-                }
-            });
-        } else {
-            // Object is null or undefined
-
-            store.setjobInformation({
-                ...form,
-                JobQuestionAnswer: store.getAllSelectedAnswers,
-                SelectedCategory: store.selectedCategory,
-                JobDescription: store.getJobDescription,
-            });
-
-            Swal.fire({
-                icon: "success",
-                title: "The Job Information has been set!",
-                showConfirmButton: false,
-                timer: 1500,
-            });
-        }
-
-        // You can also submit the form data to your server here if needed
-        // For example: this.$axios.post('/submit', form);
-    } catch (error) {
-        // If validation fails, show SweetAlert2 error message with validation errors
-        console.log(error);
-        const validationErrors = error.inner.map((err) => err.message);
+    if (store.jobDescription == undefined || store.jobDescription == '') {
         Swal.fire({
-            icon: "error",
-            title: "Invalid Job Information!",
-            html: `<ul>${validationErrors
-                .map((err) => `<li>${err}</li>`)
-                .join("")}</ul>`,
+            title: "Please Set the description for the Job",
+            showClass: {
+                popup: `
+      animate__animated
+      animate__bounce
+      animate__fast
+    `
+            },
+            hideClass: {
+                popup: `
+      animate__animated
+      animate__fadeOutDown
+      animate__fast
+    `
+            }
         });
-        processing.value = false
     }
+    else if (store.jobDescription.length < 150) {
+        Swal.fire({
+            title: "Job Description must be at least 150 characters long",
+            showClass: {
+                popup: `
+      animate__animated
+      animate__bounce
+      animate__fast
+    `
+            },
+            hideClass: {
+                popup: `
+      animate__animated
+      animate__fadeOutDown
+      animate__fast
+    `
+            }
+        });
+    }
+    else {
+        try {
+            // Validate the form using Yup schema
+            processing.value = true
+            await validationSchema.value.validate(form, { abortEarly: false });
+
+            // If validation succeeds, show SweetAlert2 success message
+            if (user !== null && user !== undefined) {
+                // Object exists and is not null or undefined
+                store.setjobInformation({
+                    ...user,
+                    ...form,
+                    JobQuestionAnswer: store.getAllSelectedAnswers,
+                    SelectedCategory: store.selectedCategory,
+                    JobDescription: store.getJobDescription,
+                });
+
+                Swal.fire({
+                    icon: "success",
+                    title: `The Job Information has been for ${user.name},\nDo you want to save it!`,
+                    showConfirmButton: true,
+                    // timer: 1500,
+                    confirmButtonText: "Save",
+                    denyButtonText: `Don't save`,
+                }).then((result) => {
+
+
+                    if (result.isConfirmed) {
+                        store.sendJobinformation();
+
+                        Swal.fire("Saved!", "", "success");
+                        processing.value = false
+                    } else if (result.isDenied) {
+                        Swal.fire("Changes are not saved", "", "info");
+                        processing.value = false
+                    }
+                });
+            } else {
+                // Object is null or undefined
+
+                store.setjobInformation({
+                    ...form,
+                    JobQuestionAnswer: store.getAllSelectedAnswers,
+                    SelectedCategory: store.selectedCategory,
+                    JobDescription: store.getJobDescription,
+                });
+
+                Swal.fire({
+                    icon: "success",
+                    title: "The Job Information has been set!",
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
+            }
+
+            // You can also submit the form data to your server here if needed
+            // For example: this.$axios.post('/submit', form);
+        } catch (error) {
+            // If validation fails, show SweetAlert2 error message with validation errors
+            console.log(error);
+            const validationErrors = error.inner.map((err) => err.message);
+            Swal.fire({
+                icon: "error",
+                title: "Invalid Job Information!",
+                html: `<ul>${validationErrors
+                    .map((err) => `<li>${err}</li>`)
+                    .join("")}</ul>`,
+            });
+            processing.value = false
+        }
+    }
+
 };
 
 onMounted(async () => {

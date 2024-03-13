@@ -152,8 +152,5 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function handleJobInformation(Request $request)
-    {
-        dd($request);
-    }
+    
 }
