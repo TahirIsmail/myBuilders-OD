@@ -44,7 +44,7 @@
 
 
 
-    /* @media (min-width: 1200px) {
+    @media (min-width: 1200px) {
 
         .container,
         .container-lg,
@@ -53,7 +53,7 @@
         .container-xl {
             max-width: 90% !important;
         }
-    } */
+    } 
 </style>
 <footer class="aiz-footer " style="background: #343944">
     <div class="footer-content rounded-2" style="background: #343944">
