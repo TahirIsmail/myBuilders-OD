@@ -286,6 +286,9 @@ Route::get('/project-lists', 'HomeController@all_projects')->name('projects.list
 Route::get('/trade-signup-up', 'HomeController@trade_sign_content')->name('trade_signup');
 Route::get('/job-signup-up', 'HomeController@job_sign_content')->name('post_signup');
 Route::get('/trade_career_content', 'HomeController@trade_career_content')->name('trade_career');
+Route::get('/about_content', 'HomeController@about_content')->name('about');
+
+
 Route::get('/client/{user_name}', 'HomeController@client_details')->name('client.details');
 Route::get('/client-lists', 'HomeController@client_list')->name('client.lists');
 
