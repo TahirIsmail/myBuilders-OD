@@ -37,16 +37,16 @@ class BookmarkedFreelancerController extends Controller
      */
     public function store($id)
     {
-        $userPackage = Auth::user()->userPackage;
-        if($userPackage->following_status){
+        // $userPackage = Auth::user()->userPackage;
+        // if($userPackage->following_status){
             $bookmarked_freelancer = new BookmarkedFreelancer;
             $bookmarked_freelancer->user_id = Auth::user()->id;
             $bookmarked_freelancer->freelancer_user_id = decrypt($id);
             $bookmarked_freelancer->save();
-        }
-        else {
-            flash(translate('Freelancer following option is not available on your package.'))->warning();
-        }
+        // }
+        // else {
+        //     flash(translate('Freelancer following option is not available on your package.'))->warning();
+        // }
 
         return back();
     }

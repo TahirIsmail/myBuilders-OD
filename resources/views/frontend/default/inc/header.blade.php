@@ -239,8 +239,9 @@
             {{-- <button class="btn-post">Post a job</button> --}}
             <ul class="navbar-nav ">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle my-custom-button" href="#" id="navbarDropdownMenuButton1"
-                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About us</a>
+                    <a class="nav-link dropdown-toggle my-custom-button" href="{{ route('about')}}">About us</a>
+
+
                     {{-- <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuButton1">
                         <a class="dropdown-item" href="#">
                             <i class="fa fa-book icon-gray" aria-hidden="true"></i> Post a job

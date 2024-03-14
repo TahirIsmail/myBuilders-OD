@@ -62,6 +62,9 @@ Route::resource('subscribers', 'SubscriberController');
 
 Auth::routes(['verify' => true]);
 
+Route::get('/about_content', 'HomeController@about_content')->name('about');
+
+
 
 Route::controller('Auth\VerificationController')->group(function () {
 	Route::get('/email/resend', 'resend')->name('verification.resend');
