@@ -14,11 +14,12 @@
                     <div class="col-xxl-12 col-xl-12 col-md-12 mx-auto">
                         <div class="mt-3">
                             <template v-for="trade in store.getStrongestTrade" :key="trade.id">
-                                <button :class="{ active: isActive === trade }" class="jSiDrI" @click.prevent="setTradeEvaluation(trade)">
-                                {{ trade.name }}
-                            </button>
+                                <button :class="{ active: isActive === trade }" class="jSiDrI"
+                                    @click.prevent="setTradeEvaluation(trade)">
+                                    {{ trade.name }}
+                                </button>
                             </template>
-                           
+
 
 
                             <div class="lp-header__content">
@@ -37,56 +38,36 @@
     </div>
 </template>
 <script setup>
-import { reactive,onMounted, onBeforeMount, ref, shallowReadonly } from 'vue'
+import { reactive, onMounted, ref, shallowReadonly } from 'vue'
 import { useTrademensStore } from '../store/trademensStore';
 const store = useTrademensStore();
-const strongestTradeRef =  ref(null)
+const strongestTradeRef = ref(null)
 const isActive = ref(null)
 const props = defineProps(['navigationMethods'])
-onBeforeMount(() => {
-    const scrollComponent = document.querySelector('div');
 
-    // Check if the element is found before scrolling
-    if (scrollComponent) {
-      // Use scrollIntoView to scroll to the element
-      scrollComponent.scrollIntoView({ behavior: 'smooth' });
-    }
-    if (Object.keys(store.getStrongestTrade).length === 0) {
-        Swal.fire({
-            title: 'Strongest Trades Selection',
-            text: 'Please Select the Strongest Trades!',
-            icon: 'error',
-            showCancelButton: false,
-            confirmButtonColor: '#3085d6',
-            confirmButtonText: 'Yes,I want to move to selection!'
-        }).then((result) => {
-            if (result.isConfirmed) {
 
-                if (props.navigationMethods && typeof props.navigationMethods.prevStep === 'function') {
-                    props.navigationMethods.prevStep();
-                }
-            }
-        });
-    }
 
-})
 
-onMounted(() => {
-    strongestTradeRef.value.scrollIntoView({behavior:"smooth"})
-})
 const setTradeEvaluation = (trade) => {
-    
+
     isActive.value = isActive.value === trade ? null : trade;
 }
 
 const submit = () => {
-    store.setEvaluationTrade(isActive)
-    store.setAssessment();
-    if (props.navigationMethods &&
-     typeof props.navigationMethods.nextStep === 'function') {
-        props.navigationMethods.nextStep();
+    if (isActive.value) {
+        store.setEvaluationTrade(isActive.value);
+        store.setAssessment();
+        if (props.navigationMethods && typeof props.navigationMethods.nextStep === 'function') {
+            props.navigationMethods.nextStep();
+        }
+    } else {
+        // Use SweetAlert to show an alert if no trade is selected
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please select your strongest trade before continuing!',
+        });
     }
-
 }
 
 const back = () => {
@@ -98,8 +79,8 @@ const back = () => {
 <style scoped>
 @media only screen and (min-width: 320px) and (max-width: 600px) {
     .jSiDrI {
-        font-size:0.8rem !important;
-        padding:0.5 rem !important;
+        font-size: 0.8rem !important;
+        padding: 0.5 rem !important;
     }
 }
 
@@ -115,12 +96,13 @@ const back = () => {
     }
 }
 
-.active{
+.active {
     background-color: rgba(74, 144, 226, 0.1);
     border: 1px solid rgb(74, 144, 226);
     box-shadow: rgb(74, 144, 226) 0px 0px 0px 1px inset;
     color: rgb(52, 57, 68);
 }
+
 .jSiDrI {
     appearance: none;
     width: 100%;

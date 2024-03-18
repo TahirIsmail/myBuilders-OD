@@ -64,7 +64,7 @@ Auth::routes(['verify' => true]);
 
 Route::get('/about_content', 'HomeController@about_content')->name('about');
 
-
+Route::get('/contact_content', 'HomeController@contact_content')->name('contact');
 
 Route::controller('Auth\VerificationController')->group(function () {
 	Route::get('/email/resend', 'resend')->name('verification.resend');

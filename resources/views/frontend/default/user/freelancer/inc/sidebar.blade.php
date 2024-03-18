@@ -254,6 +254,14 @@
                                 <span class="aiz-side-nav-text ml-2">{{ translate('Invoices') }}</span>
                             </a>
                         </li>
+                        <li class="aiz-side-nav-item">
+                            <a href="{{ route('user.account') }}"
+                                class="aiz-side-nav-link {{ areActiveRoutes(['user.account']) }}">
+                                <i class="fas fa-caret-right mt-auto mb-auto" style="color: #65cb75;"></i>
+                                
+                                <span class="aiz-side-nav-text ml-2">{{ translate('Bank Account Setting') }}</span>
+                            </a>
+                        </li>
 
                         {{-- <li class="aiz-side-nav-item">
                             <a href="{{ route('recieved_milestone_payment_index') }}"
@@ -319,14 +327,7 @@
                     </a>
                 </li>
 
-                <li class="aiz-side-nav-item">
-                    <a href="{{ route('user.account') }}"
-                        class="aiz-side-nav-link {{ areActiveRoutes(['user.account']) }}">
-                        <img src="{{ asset('public\assets\frontend\default\img\icons\user-gear.png') }}"
-                            style="width:25px" ;height="25px" />
-                        <span class="aiz-side-nav-text ml-2">{{ translate('Account Setting') }}</span>
-                    </a>
-                </li>
+                
 
                 {{-- <li class="aiz-side-nav-item">
                     <a href="{{ route('recieved_shortlist_payment_index') }}"

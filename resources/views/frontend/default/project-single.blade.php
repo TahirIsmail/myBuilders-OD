@@ -550,8 +550,8 @@
                     <div class="aiz-carousel gutters-10 half-outside-arrow" data-items="3" data-xl-items="3"
                         data-md-items="2" data-sm-items="1" data-arrows='true'>
 
-                        @foreach ($similar_types = \App\Models\Project::where('type', $project->type)->where('id', '!=', $project->id)->where('closed', '!=', 1)->limit(4)->get() as $similar_type_project)
-@if (count($similar_types) > 0)
+                        @foreach ($projectsInWorkingArea as $similar_type_project)
+@if (count($projectsInWorkingArea) > 0)
 <div class="caorusel-box">
         							<div class="card rounded-2 border-gray-light hov-box">
         								<div class="card-header border-bottom-0 pt-4 pb-0 align-items-start minw-0">
@@ -582,10 +582,10 @@
                                                             </g>
                                                         </svg>
         												<span class="ml-1">
-@if ($similar_type_project->project_category != null)
-{{ $similar_type_project->project_category->name }}
-@endif
-</span>
+                                                    @if ($similar_type_project->project_category != null)
+                                                    {{ $similar_type_project->project_category->name }}
+                                                    @endif
+                                                    </span>
         											</a>
         										</li>
         										<li class="list-inline-item">

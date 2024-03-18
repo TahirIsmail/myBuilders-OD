@@ -158,9 +158,31 @@ $freelancers = \App\Models\User::where('user_type', 'freelancer')
                 }
                 return false;
             });
+
+        $userId  = auth()->user()->id;
+        $user = \App\Models\User::with('profile','address')->where('id',auth()->user()->id)->first();
+        
+        $projects = \App\Models\Project::has('address')->notcancel()->biddable()
+    ->whereDoesntHave('projectBids', function ($query) use ($userId) {
+        $query->where('bid_by_user_id', $userId);
+    })
+    ->with(['project_category', 'address'])
+    ->get();
+        $userCord = new \Ballen\Distical\Entities\LatLong($user->address->latitude, $user->address->longitude);
+        $projects->transform(function ($project) use ($userCord) {
+            $projectCord = new \Ballen\Distical\Entities\LatLong($project->address->latitude, $project->address->longitude);
+            $distance = new \Ballen\Distical\Calculator($userCord, $projectCord); // Assuming you have a method to calculate distance in your LatLong class
+            $project->distance_from_user =  round($distance->get()->asMiles(), 2); // Adding distance to the project object
+            return $project;
+        });
+        $radius = $user->profile->distance;
+
+        $projectsInWorkingArea = $projects->filter(function ($project) use ($radius) {
+            return $project->distance_from_user <= $radius;
+        });
     
             
-        return view('frontend.default.project-single', compact('project', 'questionare','suggested_tradesmen'));
+        return view('frontend.default.project-single', compact('project', 'questionare','suggested_tradesmen','projectsInWorkingArea'));
     }
 
     //Show details info of specific project
@@ -389,5 +411,11 @@ $freelancers = \App\Models\User::where('user_type', 'freelancer')
     function  about_content()
     {
         return view('frontend.default.content.about');
+    }
+    
+
+function  contact_content()
+    {
+        return view('frontend.default.content.contact');
     }
 }

@@ -108,9 +108,30 @@ onMounted(async () => {
 const submit = () => {
        
         const filterSelectedValue  = trades.value.filter(item => selectedCheckboxes.value.includes(item.id))
-        store.setStrongestTrades(filterSelectedValue)
-        if (props.navigationMethods && typeof props.navigationMethods.nextStep === 'function') {
-        props.navigationMethods.nextStep();
+        store.setStrongestTrades(filterSelectedValue);
+        if(store.strongestTrades.length == 0){
+
+            Swal.fire({
+                title: 'Trade Selection',
+                text: 'Please Select the Trades First!',
+                icon: 'error',
+                showCancelButton: false,
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Yes,I want to move to selection!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const scrollComponent = document.querySelector('div');
+
+                   scrollComponent.scrollIntoView({ behavior: 'smooth' });
+                  
+                }
+            });
+        }
+        else{
+
+            if (props.navigationMethods && typeof props.navigationMethods.nextStep === 'function') {
+            props.navigationMethods.nextStep();
+        }
     }
 }
 
