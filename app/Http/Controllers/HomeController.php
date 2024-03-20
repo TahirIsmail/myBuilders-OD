@@ -385,11 +385,14 @@ $freelancers = \App\Models\User::where('user_type', 'freelancer')
         return view('frontend.default.content.trade_career');
     }
 
-
-
-
+    
     function  about_content()
     {
         return view('frontend.default.content.about');
+    }
+
+    function  contact_content()
+    {
+        return view('frontend.default.content.contact');
     }
 }

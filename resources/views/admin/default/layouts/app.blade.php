@@ -9,7 +9,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<title>{{ config('app.name', 'MyBuilders') }}</title>
+	<title>{{ config('app.name') }}</title>
 
 	<!-- Favicon -->
     <link rel="icon" href="{{ custom_asset(get_setting('site_icon')) }}">

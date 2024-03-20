@@ -256,6 +256,7 @@
                         </div>
 
                     </div>
+                    @if(isClient())
                     <div class="card rounded-2 border-gray-light">
                         <div class="card-body">
                             <h6 class="text-left mb-3"><span
@@ -265,13 +266,14 @@
                                     <span>{{ $project->address->street ?? '' }}</span>,
                                     <span>{{ $project->address->city ?? '' }}</span>,
                                     <span>{{ $project->address->country ?? '' }}<span>
-                                            <span>{{ $project->address->postal_code ?? '' }}</span>,
-                                            <span>{{ $project->address->region ?? '' }}</span>
+                                    <span>{{ $project->address->postal_code ?? '' }}</span>,
+                                    <span>{{ $project->address->region ?? '' }}</span>
                                 </div>
                             </div>
                         </div>
 
                     </div>
+                    @endif
                     <div class="card rounded-2 border-gray-light">
                         <div class="card-body">
                             <h6 class="text-left mb-3"><span
@@ -404,10 +406,20 @@
                                             $allow_for_bid = \App\Models\ProjectBid::where('project_id', $project->id)
                                                 ->where('bid_by_user_id', Auth::user()->id)
                                                 ->first();
+                                               
+                                            $verification = \App\Models\Verification::where('user_id', Auth::user()->id)->where('type', 'identity_verification')->first();
+                                                
                                         @endphp
                                         @if ($allow_for_bid == null)
+                                            @if($verification !== null && $verification->verfied)
                                             <a href="javascript:void(0)" class="btn btn-primary btn-block rounded-1"
                                                 onclick="show_interest({{ $project->id }})">{{ translate('Show Interest') }}</a>
+                                            @else
+                                            <div class="alert alert-info rounded-1" role="alert">
+                                                {{ translate('You need to verify yourself to show interest.') }}
+                                            </div>
+                                            @endif
+                        
                                         @else
                                             <div class="alert alert-info rounded-1" role="alert">
                                                 {{ translate('You have already showed interest for this Job.') }}

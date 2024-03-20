@@ -29,7 +29,7 @@
                                 </div>
                             </div>
 
-                            <div class=" d-flex mt-20 mb-5">
+                            <div class=" d-flex mt-20 mb-3">
 
                                 {{-- <div class="col-md-6 pl-0">
                                     <select class="form-control aiz-selectpicker" name="work_area_radius"
@@ -74,6 +74,25 @@
 
 
                             </div>
+
+                            <div class="job-description__body">
+                                <div class="markdown-description">
+
+                                    <h3 class="h2_custom">Update your Working area</h3>
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 d-flex align-items-center mb-5">
+
+                                <input type="text" class="form-control" id="address" placeholder="Enter an address"
+                                    style="width :80%">
+                                <button class="btn--Tradec" id="updateMap"
+                                    style="width:auto !important;padding: 0.6em 0.25em 0.7em !important;font-size:15px ">Update
+                                    Map</button>
+                            </div>
+
+
                             <div class="d-flex">
                                 <div class="col-md-6 pl-0 "
                                     style=" padding-left: 20px !important;
@@ -248,35 +267,36 @@
 
         });
 
+
+
         function showConfirmation() {
             var latitude = $('#latitude').val();
             var longitude = $('#longitude').val();
             var distance = $('#miles').val();
             if (latitude != '' && longitude != '' && distance != '') {
                 Swal.fire({
-                title: 'Are you sure?',
-                text: 'Do you want to change your working area?',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, Change it!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // User clicked "Yes, send it!" button
+                    title: 'Are you sure?',
+                    text: 'Do you want to change your working area?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, Change it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // User clicked "Yes, send it!" button
 
-                        sendData(latitude,longitude,distance);
-                    
+                        sendData(latitude, longitude, distance);
 
-                }
-            });
-            }
-            else {
+
+                    }
+                });
+            } else {
                 Swal.fire({
-                    text:"Please change the radius and center of your working area"
+                    text: "Please change the radius and center of your working area"
                 })
             }
-            
+
         }
 
         function sendData(latitude, longitude, distance) {
@@ -309,7 +329,39 @@
                 }
             });
         }
+
+
+        $(document).ready(function() {
+            // Existing code...
+
+            $(document).on('click', '#updateMap', function() {
+                updateMapWithAddress();
+            });
+
+            function updateMapWithAddress() {
+                const address = document.getElementById('address').value;
+                if (address.trim() === '') {
+                    alert('Please enter an address.');
+                    return;
+                }
+
+                geocoder.geocode({
+                    'address': address
+                }, function(results, status) {
+                    if (status === 'OK') {
+                        const location = results[0].geometry.location;
+                        showSelectedArea(location.lat(), location.lng(),
+                        5); // Assuming a default radius of 5 miles
+                        map.setCenter(location);
+                    } else {
+                        alert('Geocode was not successful for the following reason: ' + status);
+                    }
+                });
+            }
+        });
     </script>
+
+
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC6BbwI05bsqkWZCStzkLIMquD8WL_wqU&callback=initMap"></script>
 

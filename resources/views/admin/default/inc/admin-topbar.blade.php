@@ -2,7 +2,7 @@
     <div class="d-xl-none d-flex">
         <div class="aiz-topbar-nav-toggler d-flex align-items-center justify-content-start mr-2 mr-md-3" data-toggle="aiz-mobile-nav">
             <button class="aiz-mobile-toggler">
-                <span></span>
+                <span>Hello Buddy</span>
             </button>
         </div>
         <div class="aiz-topbar-logo-wrap d-flex align-items-center justify-content-start">

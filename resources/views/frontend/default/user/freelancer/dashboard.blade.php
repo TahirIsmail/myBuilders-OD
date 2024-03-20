@@ -271,7 +271,30 @@
                                     <div class="aiz-auto-scroll c-scrollbar-light px-4"
                                         style="height: 340px;overflow-y: scroll;">
                                         <ul class="list-group list-group-flush">
-                                            @foreach (\App\Models\Project::biddable()->notcancel()->open()->where('private', '0')->latest()->get()->take(10) as $key => $project)
+                                            @php 
+                                                                $userId  = auth()->user()->id;
+                                                                $user = \App\Models\User::with('profile','address')->where('id',auth()->user()->id)->first();
+                                                                
+                                                                $projects = \App\Models\Project::has('address')->notcancel()->biddable()
+                                                            ->whereDoesntHave('projectBids', function ($query) use ($userId) {
+                                                                $query->where('bid_by_user_id', $userId);
+                                                            })
+                                                            ->with(['project_category', 'address'])
+                                                            ->get();
+                                                                $userCord = new \Ballen\Distical\Entities\LatLong($user->address->latitude, $user->address->longitude);
+                                                                $projects->transform(function ($project) use ($userCord) {
+                                                                    $projectCord = new \Ballen\Distical\Entities\LatLong($project->address->latitude, $project->address->longitude);
+                                                                    $distance = new \Ballen\Distical\Calculator($userCord, $projectCord); // Assuming you have a method to calculate distance in your LatLong class
+                                                                    $project->distance_from_user =  round($distance->get()->asMiles(), 2); // Adding distance to the project object
+                                                                    return $project;
+                                                                });
+                                                                $radius = $user->profile->distance;
+
+                                                                $projectsInWorkingArea = $projects->filter(function ($project) use ($radius) {
+                                                                    return $project->distance_from_user <= $radius;
+                                                                });
+                                            @endphp
+                                            @foreach ($projectsInWorkingArea as $key => $project)
                                                 <li class="list-group-item border-0 px-0">
                                                     <a href="{{ route('project.details', $project->slug) }}"
                                                         class="text-inherit d-flex align-items-center">
