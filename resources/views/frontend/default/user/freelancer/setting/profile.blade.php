@@ -560,7 +560,7 @@
                                     <div class="form-group">
                                         <label class="aiz-checkbox">
                                             <input type="checkbox" name="present">
-                                            {{ translate('currently working here') }}
+                                            {{ translate('Currently Working Here') }}
                                             <span class="aiz-square-check"></span>
                                         </label>
                                     </div>
