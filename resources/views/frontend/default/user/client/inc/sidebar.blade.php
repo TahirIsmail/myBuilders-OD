@@ -146,28 +146,28 @@
                             <a href="{{ route('projects.index') }}"
                                 class="aiz-side-nav-link {{ areActiveRoutes(['projects.index', 'projects.create', 'projects.edit']) }}">
                                 <i class="fas fa-caret-right mt-auto mb-auto" style="color: #65cb75;"></i>
-                                <span class="aiz-side-nav-text ml-2">{{ translate('All Job') }}</span>
+                                <span class="aiz-side-nav-text ml-2">{{ translate('All Jobs') }}</span>
                             </a>
                         </li>
                         <li class="aiz-side-nav-item">
                             <a href="{{ route('projects.my_open_project') }}"
                                 class="aiz-side-nav-link {{ areActiveRoutes(['projects.my_open_project', 'call_for_interview', 'project.bids']) }}">
                                 <i class="fas fa-caret-right mt-auto mb-auto" style="color: #65cb75;"></i>
-                                <span class="aiz-side-nav-text ml-2">{{ translate('Open Job') }}</span>
+                                <span class="aiz-side-nav-text ml-2">{{ translate('Open for bidding') }}</span>
                             </a>
                         </li>
                         <li class="aiz-side-nav-item">
                             <a href="{{ route('projects.my_running_project') }}"
                                 class="aiz-side-nav-link {{ areActiveRoutes(['projects.my_running_project']) }}">
                                 <i class="fas fa-caret-right mt-auto mb-auto" style="color: #65cb75;"></i>
-                                <span class="aiz-side-nav-text ml-2">{{ translate('Running') }}</span>
+                                <span class="aiz-side-nav-text ml-2">{{ translate('Find the Interested Tradepersons') }}</span>
                             </a>
                         </li>
                         <li class="aiz-side-nav-item">
                             <a href="{{ route('projects.my_completed_project') }}"
                                 class="aiz-side-nav-link {{ areActiveRoutes(['projects.my_completed_project']) }}">
                                 <i class="fas fa-caret-right mt-auto mb-auto" style="color: #65cb75;"></i>
-                                <span class="aiz-side-nav-text ml-2">{{ translate('Completed') }}</span>
+                                <span class="aiz-side-nav-text ml-2">{{ translate('Find the Shortlisted Tradepersons') }}</span>
                             </a>
                         </li>
                         <li class="aiz-side-nav-item">

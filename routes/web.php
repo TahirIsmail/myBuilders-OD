@@ -259,7 +259,8 @@ Route::group(['middleware' => ['auth', 'freelancer', 'phoneverified']], function
 	Route::post('/milestone-payment-select-modal', 'MilestonePaymentController@show_payment_select_modal')->name('show_payment_select_modal');
 	Route::post('/milestone-payment', 'MilestonePaymentController@index')->name('milestone.pay_to_admin');
 	Route::get('/credit-card-details', 'MilestonePaymentController@user_card')->name('user.credit_card');
-	
+	//trade career
+	Route::get('/post_advertisement', 'TradeCareerController@post_advertisement')->name('post_advertisement');
 	//payment history
 	Route::get('/send-withdrawal-request', 'PaytoFreelancerController@send_withdrawal_request_index')->name('send_withdrawal_request_to_admin');
 	Route::get('/withdrawal-history', 'PaytoFreelancerController@withdrawal_history_index')->name('withdrawal_history_index');

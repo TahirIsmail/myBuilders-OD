@@ -262,7 +262,7 @@
                     </div> --}}
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle my-custom-button"  href="{{ route('contact')}}">contact us</a>
+                    <a class="nav-link dropdown-toggle my-custom-button" href="{{ route('contact')}}">Contact us</a>
                     {{-- <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuButton2">
                         <a class="dropdown-item" href="#">
                             <i class="fa fa-book icon-gray" aria-hidden="true"></i> Trade sign up

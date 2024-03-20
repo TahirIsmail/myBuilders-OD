@@ -68,6 +68,34 @@
                         <span class="aiz-side-nav-text ml-2">{{ translate('Dashboard') }}</span>
                     </a>
                 </li>
+
+
+                <li class="aiz-side-nav-item">
+                    <a href="javascript:void(0);" class="aiz-side-nav-link d-flex align-items-center">
+                        {{-- <svg xmlns="http://www.w3.org/2000/svg" width="11.998" height="11.999" viewBox="0 0 11.998 11.999">
+                            <g id="Group_22184" data-name="Group 22184" transform="translate(-13015.002 -765.001)">
+                              <path id="Subtraction_201" data-name="Subtraction 201" d="M18383,5809a6,6,0,1,1,6-6A6.006,6.006,0,0,1,18383,5809Zm-1.434-4.7c-.068,0-.1.062-.137.169l-.041.142c-.018.065-.037.13-.057.2l-.041.143c-.055.222-.033.27.172.369a2.939,2.939,0,0,0,.83.24c.229.037.236.044.24.277v.319a.19.19,0,0,0,.2.217c.154,0,.314,0,.467,0a.173.173,0,0,0,.193-.2c0-.057,0-.115,0-.173,0-.081.006-.173,0-.261a.228.228,0,0,1,.2-.263,1.566,1.566,0,0,0,.816-.526,1.441,1.441,0,0,0,.311-1.186,1.557,1.557,0,0,0-.785-1.057,7.562,7.562,0,0,0-.7-.318l-.014-.006-.111-.045a1.939,1.939,0,0,1-.453-.254.415.415,0,0,1-.17-.379.419.419,0,0,1,.268-.318.835.835,0,0,1,.277-.06c.039,0,.08,0,.129,0a2.058,2.058,0,0,1,.908.211.358.358,0,0,0,.139.042c.063,0,.1-.042.135-.162.047-.137.086-.27.133-.429l.033-.115a.2.2,0,0,0-.125-.254,2.809,2.809,0,0,0-.654-.194c-.3-.046-.3-.052-.3-.346,0-.42,0-.42-.424-.42h-.123l-.062,0c-.2,0-.23.04-.234.235v.268c0,.261-.006.263-.236.348l-.018.007a1.4,1.4,0,0,0-1.029,1.3,1.325,1.325,0,0,0,.752,1.278,4.381,4.381,0,0,0,.652.3l.006,0,.045.018c.082.033.166.066.248.1a1.681,1.681,0,0,1,.34.2.508.508,0,0,1,.2.453.5.5,0,0,1-.3.378,1.206,1.206,0,0,1-.453.089,1.222,1.222,0,0,1-.156-.01,2.721,2.721,0,0,1-.924-.277A.328.328,0,0,0,18381.568,5804.3Z" transform="translate(-5362 -5032)" fill="#989ea8"/>
+                            </g>
+                        </svg> --}}
+                        <img src="{{ asset('public\assets\frontend\default\img\icons\dollar-symbol.png') }}"
+                            style="width:24px" ;height="24px" />
+
+
+                        <span class="aiz-side-nav-text ml-2">{{ translate('Employee a Trade Worker') }}</span>
+                        <span class="aiz-side-nav-arrow"></span>
+                    </a>
+                    <ul class="aiz-side-nav-list level-2">
+                        <li class="aiz-side-nav-item">
+                            <a href="{{ route('post_advertisement') }}"
+                                class="aiz-side-nav-link {{ areActiveRoutes(['post_advertisement']) }}">
+                                <i class="fas fa-caret-right mt-auto mb-auto" style="color: #65cb75;"></i>
+                                <span class="aiz-side-nav-text ml-2">{{ translate('post job Advertisement') }}</span>
+                            </a>
+                        </li>
+                      
+
+                    </ul>
+                </li>
                 @php
 					$verification = \App\Models\Verification::where('user_id', Auth::user()->id)->where('type', 'identity_verification')->first();
 				@endphp
@@ -254,6 +282,14 @@
                                 <span class="aiz-side-nav-text ml-2">{{ translate('Invoices') }}</span>
                             </a>
                         </li>
+                        <li class="aiz-side-nav-item">
+                            <a href="{{ route('user.account') }}"
+                                class="aiz-side-nav-link {{ areActiveRoutes(['user.account']) }}">
+                                <i class="fas fa-caret-right mt-auto mb-auto" style="color: #65cb75;"></i>
+                                
+                                <span class="aiz-side-nav-text ml-2">{{ translate('Bank Account Setting') }}</span>
+                            </a>
+                        </li>
 
                         {{-- <li class="aiz-side-nav-item">
                             <a href="{{ route('recieved_milestone_payment_index') }}"
@@ -319,14 +355,7 @@
                     </a>
                 </li>
 
-                <li class="aiz-side-nav-item">
-                    <a href="{{ route('user.account') }}"
-                        class="aiz-side-nav-link {{ areActiveRoutes(['user.account']) }}">
-                        <img src="{{ asset('public\assets\frontend\default\img\icons\user-gear.png') }}"
-                            style="width:25px" ;height="25px" />
-                        <span class="aiz-side-nav-text ml-2">{{ translate('Account Setting') }}</span>
-                    </a>
-                </li>
+                
 
                 {{-- <li class="aiz-side-nav-item">
                     <a href="{{ route('recieved_shortlist_payment_index') }}"

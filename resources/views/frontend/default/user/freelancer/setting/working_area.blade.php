@@ -83,10 +83,10 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6 d-flex align-items-center mb-5">
+                            <div class="col-md-12 d-flex align-items-center mb-5">
 
                                 <input type="text" class="form-control" id="address" placeholder="Enter an address"
-                                    style="width :80%">
+                                    style="width :70%">
                                 <button class="btn--Tradec" id="updateMap"
                                     style="width:auto !important;padding: 0.6em 0.25em 0.7em !important;font-size:15px ">Update
                                     Map</button>
@@ -367,3 +367,6 @@
 
     <script src="{{ my_asset('assets/common/js/app.js') }}"></script>
 @endsection
+
+
+
