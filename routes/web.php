@@ -275,6 +275,10 @@ Route::group(['middleware' => ['auth', 'freelancer', 'phoneverified']], function
 
 	Route::get('/services', 'ServiceController@freelancer_index')->name('service.freelancer_index');
 	Route::get('services/purchased', 'ServiceController@sold_services')->name('service.sold');
+
+
+
+	Route::get('/job_post_advert','EmployTradesmenController@index')->name('job_post_advert');
 });
 
 Route::get('/search', 'SearchController@index')->name('search');

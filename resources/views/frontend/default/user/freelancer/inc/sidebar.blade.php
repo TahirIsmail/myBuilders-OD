@@ -121,6 +121,27 @@
                         </li> --}}
                     </ul>
                 </li>
+
+
+                <li class="aiz-side-nav-item">
+                    <a href="javascript:void(0);" class="aiz-side-nav-link d-flex align-items-center">
+                       
+                        <img src="{{ asset('public\assets\frontend\default\img\icons\flash.png') }}" style="width:20px"
+                            ;height="20px" />
+                        <span class="aiz-side-nav-text ml-2">{{ translate('Employ a TradeWorker') }}</span>
+                        <span class="aiz-side-nav-arrow"></span>
+                    </a>
+                    <ul class="aiz-side-nav-list level-2">
+                        <li class="aiz-side-nav-item">
+
+                            <a href="{{ route('job_post_advert') }}"
+                                class="aiz-side-nav-link {{ areActiveRoutes(['job_post_advert']) }}">
+                                <i class="fas fa-caret-right mt-auto mb-auto" style="color: #65cb75;"></i>
+                                <span class="aiz-side-nav-text ml-2">{{ translate('Post Job Advertisement') }}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 @endif
 
 
