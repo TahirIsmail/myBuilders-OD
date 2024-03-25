@@ -134,10 +134,18 @@
                     <ul class="aiz-side-nav-list level-2">
                         <li class="aiz-side-nav-item">
 
-                            <a href="{{ route('job_post_advert') }}"
-                                class="aiz-side-nav-link {{ areActiveRoutes(['job_post_advert']) }}">
+                            <a href="{{ route('job-post-advert') }}"
+                                class="aiz-side-nav-link {{ areActiveRoutes(['job-post-advert']) }}">
                                 <i class="fas fa-caret-right mt-auto mb-auto" style="color: #65cb75;"></i>
                                 <span class="aiz-side-nav-text ml-2">{{ translate('Post Job Advertisement') }}</span>
+                            </a>
+                        </li>
+                        <li class="aiz-side-nav-item">
+
+                            <a href="{{ route('company-profile') }}"
+                                class="aiz-side-nav-link {{ areActiveRoutes(['company-profile']) }}">
+                                <i class="fas fa-caret-right mt-auto mb-auto" style="color: #65cb75;"></i>
+                                <span class="aiz-side-nav-text ml-2">{{ translate('Company Profile') }}</span>
                             </a>
                         </li>
                     </ul>

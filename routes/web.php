@@ -278,7 +278,8 @@ Route::group(['middleware' => ['auth', 'freelancer', 'phoneverified']], function
 
 
 
-	Route::get('/job_post_advert','EmployTradesmenController@index')->name('job_post_advert');
+	Route::get('/job-post-advert','EmployTradesmenController@index')->name('job-post-advert');
+	Route::get('/company-profile','ProfileController@company_profile')->name('company-profile');
 });
 
 Route::get('/search', 'SearchController@index')->name('search');
