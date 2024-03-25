@@ -104,6 +104,7 @@
         color: white;
         font-weight: 600;
     }
+    
 </style>
 
 @section('content')
@@ -112,18 +113,12 @@
             <div class="d-flex align-items-start">
                 @include('frontend.default.user.freelancer.inc.sidebar')
                 <div class="aiz-user-panel">
-                    <div class="aiz-titlebar mb-4">
-                        <div class="row align-items-center">
-                            <div class="col-md-6">
-                                <h1 class="fs-16 fw-700">{{ translate('Create an advertisement') }}</h1>
-                            </div>
-                        </div>
-                    </div>
+                    
 
                     <div class="card rounded-2 border-gray-light">
                         <div class="card-header">
                             <h4 class="h6 font-weight-medium mb-0">
-                                {{ translate('Preferred country you want your advertisement to be shown.') }}</h4>
+                                {{ translate('Create Job Advertisement') }}</h4>
                         </div>
                         <div class="card-body">
                             <!-- Personal Info Form -->
@@ -138,9 +133,9 @@
 
                                         </label>
                                         <input type="text" class="form-control" name="name"
-                                            placeholder="{{ translate('') }}" aria-label="" required
-                                            aria-describedby="nameLabel" data-msg="" data-error-class="u-has-error"
-                                            data-success-class="u-has-success" />
+                                            placeholder="{{ translate('position e.g electrician ,gas engineers') }}"
+                                            aria-label="" required aria-describedby="nameLabel" data-msg=""
+                                            data-error-class="u-has-error" data-success-class="u-has-success" />
 
                                     </div>
                                 </div>
@@ -148,11 +143,11 @@
                                 <div class="js-form-message">
                                     <div class="form-group">
                                         <label id="nameLabel" class="form-label">
-                                            {{ translate('Job Position/Tital') }}
+                                            {{ translate('Job Designation') }}
 
                                         </label>
                                         <input type="text" class="form-control" name="name"
-                                            placeholder="{{ translate('') }}" aria-label="" required
+                                            placeholder="{{ translate('e.g foreman, supervisor') }}" aria-label="" required
                                             aria-describedby="nameLabel" data-msg="" data-error-class="u-has-error"
                                             data-success-class="u-has-success" />
 
@@ -162,7 +157,7 @@
                                 <div class="js-form-message">
                                     <div class="form-group">
                                         <label id="nameLabel" class="form-label">
-                                            {{ translate('Job Position/Tital') }}
+                                            {{ translate('Nature Of Employment') }}
 
                                         </label>
                                         <div class="radio-inputs">
@@ -188,15 +183,9 @@
                                         </label>
                                         <select class="form-control aiz-selectpicker" id="country_id" name="country_id"
                                             data-live-search="true" required data-msg="Please select your country.">
-                                            {{-- @foreach (\App\Models\Country::all() as $key => $country)
-                                                @if (optional($user_profile->user->address)->country_id != null)
-                                                    <option value="{{ $country->id }}"
-                                                        @if ($user_profile->user->address->country_id == $country->id) selected @endif>
-                                                        {{ $country->name }}</option>
-                                                @else
-                                                    <option value="{{ $country->id }}">{{ $country->name }}</option>
-                                                @endif
-                                            @endforeach --}}
+                                            @foreach (\App\Models\Country::all() as $key => $country)
+                                                <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="col-lg-6">
@@ -236,12 +225,13 @@
                                             {{ translate('Duration of contract:') }}
 
                                         </label>
-                                        <input type="text" class="form-control" name="name"
-                                            placeholder="{{ translate('') }}" aria-label="" required
-                                            aria-describedby="nameLabel" data-msg="" data-error-class="u-has-error"
-                                            data-success-class="u-has-success" />
-
-                                    </div>
+                                        <div class="container d-flex justify-content-between">
+                                            
+                                            <input type="text" class="aiz-date-range form-control" name="date_range"
+                                            placeholder="{{ translate('Select Date Range') }}" 
+                                            data-show-dropdown="true" autocomplete="on" />
+                                        </div>
+                                    </div>     
                                 </div>
 
 
@@ -285,8 +275,6 @@
                                             </div>
                                         </div>
                                     </div>
-
-
                                 </div>
 
                                 <div class="row">
@@ -298,11 +286,11 @@
                                                 </label>
                                                 <div class="radio-inputs">
                                                     <label class="radio">
-                                                        <input type="radio" name="allowances" checked="">
+                                                        <input type="radio" name="allowances" value="Yes" checked>
                                                         <span class="name">Yes</span>
                                                     </label>
                                                     <label class="radio">
-                                                        <input type="radio" name="allowances">
+                                                        <input type="radio" name="allowances" value="NA">
                                                         <span class="name">NA</span>
                                                     </label>
                                                 </div>
@@ -317,18 +305,17 @@
                                                 </label>
                                                 <div class="radio-inputs">
                                                     <label class="radio">
-                                                        <input type="radio" name="allowances" checked="">
+                                                        <input type="radio" name="visa" value="Yes">
                                                         <span class="name">Yes</span>
                                                     </label>
                                                     <label class="radio">
-                                                        <input type="radio" name="allowances">
+                                                        <input type="radio" name="visa" value="NA" checked>
                                                         <span class="name">NA</span>
                                                     </label>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
 
                                 <div class="form-group row">
@@ -337,27 +324,22 @@
                                             {{ translate('Number of people Required') }}
 
                                         </label>
-                                        <select class="form-control aiz-selectpicker" id="country_id" name="country_id"
-                                            data-live-search="true" required data-msg="Please select your country.">
-                                            {{-- @foreach (\App\Models\Country::all() as $key => $country)
-                                                @if (optional($user_profile->user->address)->country_id != null)
-                                                    <option value="{{ $country->id }}"
-                                                        @if ($user_profile->user->address->country_id == $country->id) selected @endif>
-                                                        {{ $country->name }}</option>
-                                                @else
-                                                    <option value="{{ $country->id }}">{{ $country->name }}</option>
-                                                @endif
-                                            @endforeach --}}
-                                        </select>
+
+                                        <div class="slider d-flex justify-content-between">
+                                            <input type="range" min="1" max="25" value="" oninput="rangeValue.innerText = this.value">
+                                            <p id="rangeValue"></p>   
+                                          </div> 
                                     </div>
                                     <div class="col-lg-6">
-                                        <label for="country" class="form-label">{{ translate('Language') }}</label>
-                                        <select class="form-control aiz-selectpicker" name="city_id" id="city_id"
+                                        <label for="language" class="form-label">{{ translate('Language') }}</label>
+                                        <select class="form-control aiz-selectpicker" name="lang_id" id="lang_id"
                                             data-msg="Please select your city." data-live-search="true">
 
+                                            @foreach (\App\Models\Language::all() as $key => $language)
+                                                <option value="{{ $language->id }}">{{ $language->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
-
                                 </div>
 
 
@@ -376,4 +358,74 @@
     </section>
 @endsection
 @section('script')
+    <script type="text/javascript">
+        function get_city_by_country() {
+            var country_id = $('#country_id').val();
+            $.post('{{ route('cities.get_city_by_country') }}', {
+                _token: '{{ csrf_token() }}',
+                country_id: country_id
+            }, function(data) {
+                $('#city_id').html(null);
+                for (var i = 0; i < data.length; i++) {
+                    $('#city_id').append($('<option>', {
+                        value: data[i].id,
+                        text: data[i].name
+                    }));
+                }
+                $("#city_id > option").each(function() {
+
+                    $("#city_id").val(this.value).change();
+
+                });
+                AIZ.plugins.bootstrapSelect('refresh');
+            });
+        }
+
+        $(document).ready(function() {
+            get_city_by_country();
+        });
+
+        $('#country_id').on('change', function() {
+            get_city_by_country();
+        });
+    </script>
+    <script>
+        
+
+        function getDuration(startDate, endDate) {
+            var diffInMilliseconds = Math.abs(endDate - startDate);
+            var years = Math.floor(diffInMilliseconds / (1000 * 60 * 60 * 24 * 365.25));
+            diffInMilliseconds -= years * (1000 * 60 * 60 * 24 * 365.25);
+            var months = Math.floor(diffInMilliseconds / (1000 * 60 * 60 * 24 * 30.44));
+            diffInMilliseconds -= months * (1000 * 60 * 60 * 24 * 30.44);
+            var weeks = Math.floor(diffInMilliseconds / (1000 * 60 * 60 * 24 * 7));
+            diffInMilliseconds -= weeks * (1000 * 60 * 60 * 24 * 7);
+            var days = Math.floor(diffInMilliseconds / (1000 * 60 * 60 * 24));
+
+            var result = "";
+            if (years > 0) {
+                result += years + " years, ";
+            }
+            if (months > 0) {
+                result += months + " months, ";
+            }
+            if (weeks > 0) {
+                result += weeks + " weeks, ";
+            }
+            if (days > 0) {
+                result += days + " days";
+            }
+
+            return result.trim();
+        }
+
+        $('#endDate').on('change', function() {
+            var startDate = new Date($('#startDate').val());
+            var endDate = new Date($('#endDate').val());
+
+            var duration = getDuration(startDate, endDate);
+
+            $('#duration').val(duration);
+        });
+    </script>
 @endsection

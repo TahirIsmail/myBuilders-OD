@@ -92,6 +92,13 @@
                                 <span class="aiz-side-nav-text ml-2">{{ translate('post job Advertisement') }}</span>
                             </a>
                         </li>
+                        <li class="aiz-side-nav-item">
+                            <a href="{{ route('company_profile') }}"
+                                class="aiz-side-nav-link {{ areActiveRoutes(['company_profile']) }}">
+                                <i class="fas fa-caret-right mt-auto mb-auto" style="color: #65cb75;"></i>
+                                <span class="aiz-side-nav-text ml-2">{{ translate('Company Profile') }}</span>
+                            </a>
+                        </li>
                       
 
                     </ul>

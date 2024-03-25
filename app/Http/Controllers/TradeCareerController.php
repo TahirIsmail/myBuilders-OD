@@ -13,4 +13,9 @@ class TradeCareerController extends Controller
        
         return view('frontend.default.user.freelancer.trade_career.post_advertisement_content');
     }
+
+    function company_profile(){
+       
+        return view('frontend.default.user.freelancer.trade_career.company_profile');
+    }
 }
