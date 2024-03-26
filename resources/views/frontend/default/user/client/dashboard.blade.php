@@ -69,7 +69,7 @@
                                     <div class="mb-4">
                                         <div class="row">
                                             <div class="col-8">
-                                                <div class="fs-14">{{ translate('Total Job') }}</div>
+                                                <div class="fs-14">{{ translate('Total Posted Job') }}</div>
                                                 <div class="h3 fs-24 fw-700">{{ count(Auth::user()->number_of_projects) }}
                                                 </div>
                                             </div>
@@ -101,7 +101,7 @@
                                     <div class="mb-4">
                                         <div class="row">
                                             <div class="col-8">
-                                                <div class="fs-14">{{ translate('Completed Job') }}</div>
+                                                <div class="fs-14">{{ translate('Completed Job') }} <br><span class="fs-12 text-secondary"> (Already shortlisted trade peoples)<span\></div>
                                                 @php
                                                     $completedProjects = 0;
                                                     foreach (Auth::user()->number_of_projects as $key => $project) {
@@ -140,7 +140,7 @@
                                     <div class="">
                                         <div class="row">
                                             <div class="col-8">
-                                                <div class="fs-14">{{ translate('Running Job') }}</div>
+                                                <div class="fs-14">{{ translate('Running Job ') }} <br><span class="fs-12 text-secondary"> (Open for bidding)<span\></div>
                                                 @php
                                                     $onGoingProjects = 0;
                                                     foreach (Auth::user()->number_of_projects as $key => $project) {

@@ -150,6 +150,36 @@
                         </li>
                     </ul>
                 </li>
+                @else
+                <li class="aiz-side-nav-item">
+                    <a href="javascript:void(0);" class="aiz-side-nav-link d-flex align-items-center">
+                       
+                        <img src="{{ asset('public\assets\frontend\default\img\icons\flash.png') }}" style="width:20px"
+                            ;height="20px" />
+                        <span class="aiz-side-nav-text ml-2">{{ translate('Trade Career') }}</span>
+                        <span class="aiz-side-nav-arrow"></span>
+                    </a>
+                    <ul class="aiz-side-nav-list level-2">
+                        <li class="aiz-side-nav-item">
+
+                            <a href="{{ route('freelancer_all_jobs') }}"
+                                class="aiz-side-nav-link {{ areActiveRoutes(['freelancer_all_jobs']) }}">
+                                <i class="fas fa-caret-right mt-auto mb-auto" style="color: #65cb75;"></i>
+                                <span class="aiz-side-nav-text ml-2">{{ translate('Post Job Advertisement') }}</span>
+                            </a>
+                        </li>
+                        <li class="aiz-side-nav-item">
+
+                            <a href=""
+                                class="aiz-side-nav-link">
+                                <i class="fas fa-caret-right mt-auto mb-auto" style="color: #65cb75;"></i>
+                                <span class="aiz-side-nav-text ml-2">{{ translate('Applied Jobs') }}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
                 @endif
                 @endif
 
