@@ -122,7 +122,7 @@
                     </ul>
                 </li>
 
-
+                @if(Auth::user()->trading_info->operating_as != "selfEmployed")
                 <li class="aiz-side-nav-item">
                     <a href="javascript:void(0);" class="aiz-side-nav-link d-flex align-items-center">
                        
@@ -150,6 +150,7 @@
                         </li>
                     </ul>
                 </li>
+                @endif
                 @endif
 
 
