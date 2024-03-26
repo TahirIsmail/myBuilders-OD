@@ -23,7 +23,7 @@
                         <div class="card-body">
                             <!-- Personal Info Form -->
 
-                            <form class="js-validate" action="{{ route('user_profile.basic_info_update') }}" method="POST"
+                            <form class="js-validate" action="" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="js-form-message">
@@ -88,7 +88,7 @@
                         <div class="card-body">
                             <!-- Personal Info Form -->
 
-                            <form class="js-validate" action="{{ route('user_profile.basic_info_update') }}" method="POST"
+                            <form class="js-validate" action="" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="js-form-message">
@@ -135,30 +135,26 @@
                                                 </label>
                                                 <select class="form-control aiz-selectpicker" id="specialist"
                                                     name="specialist" data-live-search="true" required>
-                                                    {{-- @foreach (\App\Models\ProjectCategory::all() as $category)
-                                                        <option value="{{ $category->id }}" @if ($user_profile->specialist == $category->id) selected @endif>
+                                                    @foreach (\App\Models\ProjectCategory::all() as $category)
+                                                        <option value="{{ $category->id }}" >
                                                             {{ $category->name }}
                                                         </option>
-                                                    @endforeach --}}
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>{{ translate('Skill') }} <span class="text-danger">*</span></label>
-                                                <select class="form-control aiz-selectpicker" multiple name="skills[]"
+                                                <label>{{ translate('Services') }} <span class="text-danger">*</span></label>
+                                                <select class="form-control aiz-selectpicker" multiple name="services[]"
                                                     data-live-search="true" data-selected-text-format="count">
-                                                    {{-- @if ($user_profile->skills != null)
+                                                    
                                                         @foreach (\App\Models\Skill::all() as $key => $skill)
-                                                            <option value="{{ $skill->id }}" @if (in_array($skill->id, json_decode($user_profile->skills))) selected @endif>
+                                                            <option value="{{ $skill->id }}" >
                                                                 {{ $skill->name }}
                                                             </option>
                                                         @endforeach
-                                                    @else
-                                                        @foreach (\App\Models\Skill::all() as $key => $skill)
-                                                            <option value="{{ $skill->id }}">{{ $skill->name }}</option>
-                                                        @endforeach
-                                                    @endif --}}
+                                                   
                                                 </select>
                                             </div>
                                         </div>

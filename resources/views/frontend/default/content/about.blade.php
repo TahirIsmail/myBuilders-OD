@@ -328,14 +328,14 @@
                             <h2>Builders Valley.com</h2>
                         </div>
                         <div class="text">Finding a good trade person or looking for an appropriate work is a hectic job.
-                            But Builder’s valley makes this process easier for the peoples through our unique match making
-                            system. We provides a distinctive platform for both the worker and the trade person to get
-                            beneficial opportunity to prove themselves.
+                            But Builders valley makes this process easier for the peoples through our unique match making
+                            system. We provide a distinctive platform for the trade persons to get beneficial opportunity to
+                            prove themselves.
                         </div>
                         <div class="text">
-                            Builder’s valley team has been working since last 30 years in the construction industry. We have
+                            Builders valley team has been working since last 30 years in the construction industry. We have
                             a team of well-trained professionals who are well aware about the market needs and trends. Here
-                            not only the trade businesses but also Builders merchants can enhance their busines
+                            are not only the trade businesses but also Builder merchants can enhance their businesses.
                         </div>
 
 
@@ -383,31 +383,27 @@
 
 
                         <div class="text">
-                            Once a customer post his job we alert the relevant trade person to get in touch , on the
-                            other
-                            hand trade person’s work history , feedback, and comments will help you to choose the best
-                            worker for your project .
+                            Once a customer post his job we alert the relevant trade person to get in touch , on the other
+                            hand trade persons work history , feedback, and comments will help you to choose the best worker
+                            for your project .
                         </div>
                         <div class="text">
-                            Now a days construction industry suffering from the shortage of skilled labor, which causes
-                            a
-                            delay in project completion and sometimes end with a hefty penalties. To avoid this hustle,
-                            Builder’s valley welcome to the individual trade professionals and businesses to use our
-                            platform to build a better team for their projects.
+                            Now a days construction industry suffering from the shortage of skilled labour, which causes a
+                            delay in project completion and sometimes ends with very hefty penalties to the businesses. To
+                            avoid this hassle, Builders valley welcome to the individual trade professionals and businesses
+                            to use our platform to build a better team for their projects.
                         </div>
                         <div class="text">
-                            Builder’s valley also provides a platform to small and big businesses for their financial
-                            growth. Here not only the trade businesses even the Builders merchants can grow their
-                            business
-                            by advertising on this forum. By advertising you can enhance the chance to reach highly
-                            skilled
-                            individuals and businesses , Potential customers and to be first to find out recent Builders
-                            Merchants offers before the stock finish for your domestic and commercial projects.
+                            Builders valley also provides a platform to small and big businesses for their financial growth.
+                            Here is not only the trade businesses even the Builder merchants can grow their business by
+                            advertising on this forum. By advertising you can enhance the chance to reach highly skilled
+                            individuals, businesses and potential customers. At the Builders valley you can be the first to
+                            find out recent Builder Merchants offers before the stock finish for your domestic and
+                            commercial projects.
                         </div>
                         <div class="text">
                             In our journey towards excellence we are expanding our business to the different countries
-                            around the globe. So next time don't forget to search BuildersVally.com in your home town
-                            for
+                            around the globe. So next time don't forget to search BuildersValley.com in your home town for
                             your next project.
                         </div>
                     </div>

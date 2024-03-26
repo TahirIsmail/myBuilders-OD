@@ -189,4 +189,9 @@ class ProfileController extends Controller
 
         return response()->json(['message' => 'Your working area has been updated successfully']);
     }
+
+    public function company_profile (Request $request){
+        //resources\views\frontend\default\user\freelancer\trade_career\company_profile.blade.php
+            return view('frontend.default.user.freelancer.trade_career.company_profile');
+    }
 }

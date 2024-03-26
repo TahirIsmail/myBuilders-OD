@@ -17,13 +17,14 @@
 
                             <div class="custom-content-inner">
                                 <h1>
-                                    The trade directory you can trust
+                                </h1>
+                                THE TRADE DIRECTORY YOU CAN TRUST
                                 </h1>
                                 <h5>
-                                    Looking to find a reliable tradesperson? Or are you a company looking for a hassle-free
-                                    way to contact new customers? Builders’ Valley is the place for you! Our trade directory
-                                    team is based in Manchester, but we connect customers and companies across the UK. For
-                                    any enquiries, contact us today using the details below.
+                                    LOOKING TO FIND A RELIABLE TRADE PERSON or a company? OR YOU are A COMPANY LOOKING FOR A
+                                    HASSLE-FREE WAY TO CONTACT NEW CUSTOMERS? BUILDERS VALLEY IS THE PLACE FOR YOU! OUR
+                                    TRADE DIRECTORY CONNECTS CUSTOMERS AND COMPANIES ACROSS THE country. FOR ANY ENQUIRIES,
+                                    CONTACT US TODAY USING THE DETAILS BELOW.
                                 </h5>
                                 {{-- <div class="lp-header__content">
                                     <a class='btn--lp'href={{ route('trade_career') }}>Advertise Job Vacancies</a>
@@ -48,17 +49,44 @@
                             <div class="col-md-5">
                                 <div class="contact_info_sec">
                                     <h4>Contact Info</h4>
-                                    <div class="d-flex info_single align-items-center">
+                                    {{-- <div class=" info_single align-items-center">
+
                                         <i class="fas fa-headset"></i>
                                         <span>+44 7404 704169</span>
+                                    </div> --}}
+
+
+
+                                    <div class=" info_single align-items-center">
+                                        <div class="mb-2 d-flex">
+                                            <span>For all general inquires, and payment issues please use the following
+                                                email address</span>
+                                        </div>
+                                        <div class="mb-2 d-flex">
+                                            <i class="fas fa-envelope-open-text align-self-center"></i>
+                                            <span>advertisement@buildersvalley.com</span>
+                                        </div>
+
+
+                                    </div>
+                                    <div class=" info_single align-items-center">
+                                        <div class="mb-2 d-flex">
+                                            <span>For a quarry about a business Advertisement on the forum and creating a
+                                                Trade Career opportunity please contact on the following emails</span>
+                                        </div>
+                                        <div class="mb-2 d-flex">
+                                            <i class="fas fa-envelope-open-text align-self-center"></i>
+                                            <span>advertisement@buildersvalley.com</span>
+                                        </div>
+                                        <div class="mb-2 d-flex">
+                                            <i class="fas fa-envelope-open-text align-self-center"></i>
+                                            <span>trade-careers@buildersvalley.com</span>
+                                        </div>
+
                                     </div>
                                     <div class="d-flex info_single align-items-center">
-                                        <i class="fas fa-envelope-open-text"></i>
-                                        <span>info@buildersvalley.com</span>
-                                    </div>
-                                    <div class="d-flex info_single align-items-center">
-                                        <i class="fas fa-map-marked-alt"></i>
-                                        <span>We accept payment for memberships via most major credit/debit cards.</span>
+                                       
+                                        <span><strong>Note:  </strong>whenever you contact us please always mention your country name in subject</span>
                                     </div>
                                 </div>
                             </div>
@@ -84,12 +112,25 @@
                                             </div>
 
 
+                                          
                                             <div class="input-box">
                                                 <textarea required="true" name=""></textarea>
                                                 <span>Type your Message...</span>
                                             </div>
 
+                                            <div class="form-group">
+                                                <h6
+                                                    style="letter-spacing: 1px;
+                                                padding-top: 15px; font-weight:bold">
+                                                   Country:</h6>
+                                                <select id="user_type" name="user_type" class="form-control">
+                                                    <option value="home_owner">HomeOwner</option>
+                                                    <option value="tradesman">Tradesman</option>
+                                                    <option value="recruiter">Recruiter</option>
 
+                                                    <option value="other">Other</option>
+                                                </select>
+                                            </div>
                                             <div class="form-group">
                                                 <h6
                                                     style="letter-spacing: 1px;

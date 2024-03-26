@@ -130,7 +130,7 @@
             files: '{{ translate('Files') }}',
         }
 	</script>
-    <script src='https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.js'></script>
+    
 
     <style type="text/css">
         body{
@@ -265,7 +265,9 @@
     <script src="{{ my_asset('assets/common/js/vendors.js') }}"></script>
     <script src="{{ my_asset('assets/common/js/jssocials.min.js') }}" ></script>
     <script src="{{ my_asset('assets/common/js/aiz-core.js?v=') }}{{ rand(1000,9999) }}"></script>
-    
+    <script src="https://unpkg.com/gijgo@1.9.14/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.14/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+   
     <script type="text/javascript">
         @foreach (session('flash_notification', collect())->toArray() as $message)
             AIZ.plugins.notify('{{ $message['level'] }}', '{{ $message['message'] }}');

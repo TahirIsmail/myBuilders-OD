@@ -104,7 +104,6 @@
         color: white;
         font-weight: 600;
     }
-    
 </style>
 
 @section('content')
@@ -113,7 +112,7 @@
             <div class="d-flex align-items-start">
                 @include('frontend.default.user.freelancer.inc.sidebar')
                 <div class="aiz-user-panel">
-                    
+
 
                     <div class="card rounded-2 border-gray-light">
                         <div class="card-header">
@@ -153,25 +152,46 @@
 
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="js-form-message">
+                                            <div class="form-group">
+                                                <label id="nameLabel" class="form-label">
+                                                    {{ translate('Nature Of Employment') }}
 
-                                <div class="js-form-message">
-                                    <div class="form-group">
-                                        <label id="nameLabel" class="form-label">
-                                            {{ translate('Nature Of Employment') }}
+                                                </label>
+                                                <div class="radio-inputs">
+                                                    <label class="radio">
+                                                        <input type="radio" name="radio" checked="">
+                                                        <span class="name">Permanent</span>
+                                                    </label>
+                                                    <label class="radio">
+                                                        <input type="radio" name="radio">
+                                                        <span class="name">Temporary</span>
+                                                    </label>
 
-                                        </label>
-                                        <div class="radio-inputs">
-                                            <label class="radio">
-                                                <input type="radio" name="radio" checked="">
-                                                <span class="name">Permanent</span>
-                                            </label>
-                                            <label class="radio">
-                                                <input type="radio" name="radio">
-                                                <span class="name">Temporary</span>
-                                            </label>
-
+                                                </div>
+                                            </div>
                                         </div>
-
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="js-form-message">
+                                            <div class="form-group">
+                                                <label id="nameLabel" class="form-label">
+                                                    {{ translate('Nature of contract:') }}
+                                                </label>
+                                                <div class="radio-inputs">
+                                                    <label class="radio">
+                                                        <input type="radio" name="contract" checked="">
+                                                        <span class="name">Permanent</span>
+                                                    </label>
+                                                    <label class="radio">
+                                                        <input type="radio" name="contract">
+                                                        <span class="name">Temporary</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -198,13 +218,6 @@
 
                                 </div>
 
-                                {{-- <div class="card-header">
-                                    <h4 class="h6 font-weight-medium mb-0">{{ translate('Job requirenents') }}</h4>
-                                </div>
-                                 --}}
-
-
-
                                 <div class="js-form-message">
                                     <div class="form-group">
                                         <label id="nameLabel" class="form-label">
@@ -226,12 +239,17 @@
 
                                         </label>
                                         <div class="container d-flex justify-content-between">
-                                            
+
                                             <input type="text" class="aiz-date-range form-control" name="date_range"
-                                            placeholder="{{ translate('Select Date Range') }}" 
-                                            data-show-dropdown="true" autocomplete="on" />
+                                                placeholder="{{ translate('Select Date Range') }}"
+                                                data-show-dropdown="true" autocomplete="on" />
+
                                         </div>
-                                    </div>     
+
+                                    </div>
+
+
+
                                 </div>
 
 
@@ -240,16 +258,16 @@
                                         <div class="js-form-message">
                                             <div class="form-group">
                                                 <label id="nameLabel" class="form-label">
-                                                    {{ translate('Nature of contract:') }}
+                                                    {{ translate('Interview') }}
                                                 </label>
                                                 <div class="radio-inputs">
                                                     <label class="radio">
-                                                        <input type="radio" name="contract" checked="">
-                                                        <span class="name">Permanent</span>
+                                                        <input type="radio" name="interview" checked="">
+                                                        <span class="name">Required</span>
                                                     </label>
                                                     <label class="radio">
-                                                        <input type="radio" name="contract">
-                                                        <span class="name">Temporary</span>
+                                                        <input type="radio" name="interview">
+                                                        <span class="name">Not Required</span>
                                                     </label>
                                                 </div>
                                             </div>
@@ -275,6 +293,8 @@
                                             </div>
                                         </div>
                                     </div>
+
+
                                 </div>
 
                                 <div class="row">
@@ -316,6 +336,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
 
                                 <div class="form-group row">
@@ -326,9 +347,10 @@
                                         </label>
 
                                         <div class="slider d-flex justify-content-between">
-                                            <input type="range" min="1" max="25" value="" oninput="rangeValue.innerText = this.value">
-                                            <p id="rangeValue"></p>   
-                                          </div> 
+                                            <input type="range" min="1" max="25" value=""
+                                                oninput="rangeValue.innerText = this.value">
+                                            <p id="rangeValue"></p>
+                                        </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <label for="language" class="form-label">{{ translate('Language') }}</label>
@@ -340,6 +362,20 @@
                                             @endforeach
                                         </select>
                                     </div>
+
+                                </div>
+                                <div class="mb-3">
+                                    <h5 class="h6 mb-0">
+                                        Job Description
+                                        <span class="text-danger">*</span>
+                                    </h5>
+                                    <small class="form-text text-muted">..</small>
+                                    {{-- <small
+                                        class="form-text text-muted">{{ translate('Tell us about yourself in few sentences') }}..</small> --}}
+                                </div>
+                                <!-- End Title -->
+                                <div class="form-group">
+                                    <textarea class="form-control" rows="3" name="bio" required></textarea>
                                 </div>
 
 
@@ -390,8 +426,6 @@
         });
     </script>
     <script>
-        
-
         function getDuration(startDate, endDate) {
             var diffInMilliseconds = Math.abs(endDate - startDate);
             var years = Math.floor(diffInMilliseconds / (1000 * 60 * 60 * 24 * 365.25));

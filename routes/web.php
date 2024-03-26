@@ -55,7 +55,7 @@ Route::post('/magic-job-post', 'HomeController@storemagicjobpost');
 Route::post('/checkuser', 'HomeController@checkuser')->name('check_user_exist');
 Route::get('/getskills', 'HomeController@getSkills');
 Route::post('/getAssessment', 'HomeController@getAssessment');
-Route::post('/tradesmen-list','HomeController@getFreelancers')->name('tradesmen-list');
+Route::post('/tradesmen-list', 'HomeController@getFreelancers')->name('tradesmen-list');
 // Subscribe
 
 Route::resource('subscribers', 'SubscriberController');
@@ -76,6 +76,10 @@ Route::controller('Auth\VerificationController')->group(function () {
 
 Route::get('/admin/login', 'HomeController@admin_login')->name('admin.login');
 Route::get('/users/login', 'HomeController@login')->name('user.login');
+
+//freelancer_jobs 
+Route::get('/freelancer_All_jobs', 'TradeCareerController@freelancer_All_jobs')->name('freelancer_All_jobs');
+
 //sociallite login
 Route::get('/social-login/redirect/{provider}', 'Auth\LoginController@redirectToProvider')->name('social.login');
 Route::get('/social-login/{provider}/callback', 'Auth\LoginController@handleProviderCallback')->name('social.callback');
@@ -169,7 +173,7 @@ Route::group(['middleware' => ['auth', 'client', 'phoneverified']], function () 
 	Route::get('/my-openPurchased Services-projects', 'ProjectController@my_open_project')->name('projects.my_open_project');
 	Route::get('/project-bids/{slug}', 'ProjectController@project_bids')->name('project.bids');
 	Route::get('/invition-for-hire-freelancer/{username}', 'HireController@freelancer_invition')->name('invition_for_hire_freelancer');
-	Route::post('/project-detail-for-invite','HireController@job_details');
+	Route::post('/project-detail-for-invite', 'HireController@job_details');
 	Route::post('/invition-for-hire-freelancer/store', 'HireController@store')->name('invition_for_hire_freelancer_sent');
 
 	//Leads 
@@ -233,7 +237,7 @@ Route::group(['middleware' => ['auth', 'freelancer', 'phoneverified']], function
 
 	Route::get('/show-lead/{id}', 'ProjectController@showLead')->name('show-lead');
 	Route::get('/show-interested-lead/{id}', 'ProjectController@showInterestedLead')->name('show-interested-lead');
-	Route::get('/show-shortlisted-lead/{id}','ProjectController@showShortlistedLead')->name('show-shortlisted-lead');
+	Route::get('/show-shortlisted-lead/{id}', 'ProjectController@showShortlistedLead')->name('show-shortlisted-lead');
 
 	Route::get('/freelancer_Leads', 'ProjectController@freelancer_Leads')->name('freelancer_Leads');
 	Route::get('/freelancer_Interested_leads', 'ProjectController@freelancer_Interested_leads')->name('freelancer_Interested_leads');
@@ -279,6 +283,11 @@ Route::group(['middleware' => ['auth', 'freelancer', 'phoneverified']], function
 
 	Route::get('/services', 'ServiceController@freelancer_index')->name('service.freelancer_index');
 	Route::get('services/purchased', 'ServiceController@sold_services')->name('service.sold');
+
+
+
+	Route::get('/job-post-advert', 'EmployTradesmenController@index')->name('job-post-advert');
+	Route::get('/company-profile', 'ProfileController@company_profile')->name('company-profile');
 });
 
 Route::get('/search', 'SearchController@index')->name('search');
@@ -316,7 +325,7 @@ Route::post('/stripe/create-checkout-session', 'App\Http\Controllers\Payment\Str
 Route::any('/stripe/payment/callback', 'App\Http\Controllers\Payment\StripeController@callback')->name('stripe.callback');
 Route::get('/stripe/success', 'App\Http\Controllers\Payment\StripeController@success')->name('stripe.success');
 Route::get('/stripe/cancel', 'App\Http\Controllers\Payment\StripeController@cancel')->name('stripe.cancel');
-Route::post('/stripe/store-user-card','App\Http\Controllers\Payment\StripeController@store_user_card')->name('stripe.store_user_card');
+Route::post('/stripe/store-user-card', 'App\Http\Controllers\Payment\StripeController@store_user_card')->name('stripe.store_user_card');
 
 //Paystack
 Route::get('/paystack/payment/callback', 'App\Http\Controllers\Payment\PaystackController@handleGatewayCallback');

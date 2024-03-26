@@ -18,4 +18,16 @@ class TradeCareerController extends Controller
        
         return view('frontend.default.user.freelancer.trade_career.company_profile');
     }
+
+
+
+
+
+    public function freelancer_All_jobs()
+    {
+       
+        return view('frontend.default.user.freelancer.jobs.all_jobs');
+    }
+
+
 }

@@ -156,6 +156,60 @@
                         </li> --}}
                     </ul>
                 </li>
+                <li class="aiz-side-nav-item">
+                    <a href="javascript:void(0);" class="aiz-side-nav-link d-flex align-items-center">
+                        <img src="{{ asset('public\assets\frontend\default\img\icons\flash.png') }}" style="width:20px"
+                            ;height="20px" />
+                        <span class="aiz-side-nav-text ml-2">{{ translate('Jobs') }}</span>
+                        <span class="aiz-side-nav-arrow"></span>
+                    </a>
+                    <ul class="aiz-side-nav-list level-2">
+                        <li class="aiz-side-nav-item">
+
+                            <a href="{{ route('freelancer_All_jobs') }}"
+                                class="aiz-side-nav-link {{ areActiveRoutes(['freelancer_All_jobs']) }}">
+                                <i class="fas fa-caret-right mt-auto mb-auto" style="color: #65cb75;"></i>
+                                <span class="aiz-side-nav-text ml-2">{{ translate('All jobs') }}</span>
+                            </a>
+                        </li>
+
+                        <li class="aiz-side-nav-item">
+                            <a href="{{ route('freelancer_Interested_leads') }}"
+                                class="aiz-side-nav-link {{ areActiveRoutes(['freelancer_Interested_leads']) }}">
+                                <i class="fas fa-caret-right mt-auto mb-auto" style="color: #65cb75;"></i>
+                                <span class="aiz-side-nav-text ml-2">{{ translate('Posted jobs') }} </span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="aiz-side-nav-item">
+                    <a href="javascript:void(0);" class="aiz-side-nav-link d-flex align-items-center">
+                       
+                        <img src="{{ asset('public\assets\frontend\default\img\icons\flash.png') }}" style="width:20px"
+                            ;height="20px" />
+                        <span class="aiz-side-nav-text ml-2">{{ translate('Employ a TradeWorker') }}</span>
+                        <span class="aiz-side-nav-arrow"></span>
+                    </a>
+                    <ul class="aiz-side-nav-list level-2">
+                        <li class="aiz-side-nav-item">
+
+                            <a href="{{ route('job-post-advert') }}"
+                                class="aiz-side-nav-link {{ areActiveRoutes(['job-post-advert']) }}">
+                                <i class="fas fa-caret-right mt-auto mb-auto" style="color: #65cb75;"></i>
+                                <span class="aiz-side-nav-text ml-2">{{ translate('Post Job Advertisement') }}</span>
+                            </a>
+                        </li>
+                        <li class="aiz-side-nav-item">
+
+                            <a href="{{ route('company-profile') }}"
+                                class="aiz-side-nav-link {{ areActiveRoutes(['company-profile']) }}">
+                                <i class="fas fa-caret-right mt-auto mb-auto" style="color: #65cb75;"></i>
+                                <span class="aiz-side-nav-text ml-2">{{ translate('Company Profile') }}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 @endif
 
 
