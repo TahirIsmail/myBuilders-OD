@@ -13,224 +13,275 @@
                             <div class="col-md-6">
                                 <h1 class="fs-16 fw-700">{{ translate('All Job') }}</h1>
                             </div>
-							<div class="col-md-6 text-md-right">
-								<a href="{{ route('post_project') }}" class="btn btn-primary rounded-1">
-									<i class="las la-plus"></i>
-									<span>{{ translate('Add New Job') }}</span>
-								</a>
-							</div>
+                            <div class="col-md-6 text-md-right">
+                                <a href="{{ route('post_project') }}" class="btn btn-primary rounded-1">
+                                    <i class="las la-plus"></i>
+                                    <span>{{ translate('Add New Job') }}</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div class="">
                         @forelse ($projects as $key => $project)
-							<div class="card card_shadow project-card rounded-2 border-gray-light">
-								<div class="card-header border-bottom-0">
-									{{-- <div>
+                            <div class="card card_shadow project-card rounded-2 border-gray-light">
+                                <div class="card-header border-bottom-0">
+                                    {{-- <div>
 										<span class="badge badge-primary badge-inline badge-md">{{ single_price($project->price) }}</span>
 									</div> --}}
-									<div>
-										@if ($project->cancel_status == 1)
-											<span class="badge badge-danger badge-inline badge-md">{{ translate('Cancelled') }}</span>
-										@elseif ($project->closed == 1)
-											<span class="badge badge-success badge-inline badge-md">{{ translate('Completed') }}</span>
-										@elseif ($project->private == 1)
-											<span class="badge badge-warning badge-inline badge-md">{{ translate('Private') }}</span>
-										@elseif ($project->biddable == 0)
-											<span class="badge badge-info badge-inline badge-md">{{ translate('Running') }}</span>
-										@else
-											<span class="badge badge-primary badge-inline badge-md">{{ translate('Open') }}</span>
-										@endif
-									</div>
-								</div>
+                                    <div>
+                                        @if ($project->cancel_status == 1)
+                                            <span
+                                                class="badge badge-danger badge-inline badge-md">{{ translate('Cancelled') }}</span>
+                                        @elseif ($project->closed == 1)
+                                            <span
+                                                class="badge badge-success badge-inline badge-md">{{ translate('Completed') }}</span>
+                                        @elseif ($project->private == 1)
+                                            <span
+                                                class="badge badge-warning badge-inline badge-md">{{ translate('Private') }}</span>
+                                        @elseif ($project->biddable == 0)
+                                            <span
+                                                class="badge badge-info badge-inline badge-md">{{ translate('Running') }}</span>
+                                        @else
+                                            <span
+                                                class="badge badge-primary badge-inline badge-md">{{ translate('Open') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
 
-								<div class="card-body pt-1">
-									<h5 class="h6 fw-600 lh-1-5">
-										<a href="{{ route('project.details', $project->slug) }}" class="text-inherit" target="_blank">{{ $project->name }}</a>
-									</h5>
-									<ul class="list-inline opacity-70 fs-12">
-										<li class="list-inline-item">
-											{{-- <i class="las la-clock opacity-40"></i> --}}
-											<img src="{{ asset('public\assets\frontend\default\img\icons\timer.png') }}"
-											style="margin-right:5px" />
-											<span>{{ Carbon\Carbon::parse($project->created_at)->diffForHumans() }}</span>
-										</li>
-										<li class="list-inline-item">
-											<a href="" target="_blank" class="text-inherit">
-												<img src="{{ asset('public\assets\frontend\default\img\icons\tag.png') }}"
-												style="margin-right:5px" />
-												<span>@if ($project->project_category != null) {{ $project->project_category->name }} @else {{ translate('Removed Category') }} @endif</span>
-											</a>
-										</li>
-										<li class="list-inline-item">
-											<img src="{{ asset('public\assets\frontend\default\img\icons\relationships.png') }}"
-											style="margin-right:5px" />
-											<span>{{ translate($project->type) }}</span>
-										</li>
-									</ul>
-									<div class="text-muted lh-1-8">
-										<p>{{ $project->excerpt }}</p>
-									</div>
-									<div>
+                                <div class="card-body pt-1">
+                                    <h5 class="h6 fw-600 lh-1-5">
+                                        <a href="{{ route('project.details', $project->slug) }}" class="text-inherit"
+                                            target="_blank">{{ $project->name }}</a>
+                                    </h5>
+                                    <ul class="list-inline opacity-70 fs-12">
+                                        <li class="list-inline-item">
+                                            {{-- <i class="las la-clock opacity-40"></i> --}}
+                                            <img src="{{ asset('public\assets\frontend\default\img\icons\timer.png') }}"
+                                                style="margin-right:5px" />
+                                            <span>{{ Carbon\Carbon::parse($project->created_at)->diffForHumans() }}</span>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="" target="_blank" class="text-inherit">
+                                                <img src="{{ asset('public\assets\frontend\default\img\icons\tag.png') }}"
+                                                    style="margin-right:5px" />
+                                                <span>
+                                                    @if ($project->project_category != null)
+                                                        {{ $project->project_category->name }}
+                                                    @else
+                                                        {{ translate('Removed Category') }}
+                                                    @endif
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <img src="{{ asset('public\assets\frontend\default\img\icons\relationships.png') }}"
+                                                style="margin-right:5px" />
+                                            <span>{{ translate($project->type) }}</span>
+                                        </li>
+                                    </ul>
+                                    <div class="text-muted lh-1-8">
+                                        <p>{{ $project->excerpt }}</p>
+                                    </div>
+                                    <div>
                                         @foreach (json_decode($project->skills) as $key => $skill_id)
                                             @php
                                                 $skill = \App\Models\Skill::find($skill_id);
                                             @endphp
                                             @if ($skill != null)
-                                                <span class="btn btn-light btn-xs mb-1 ml-1 bg-soft-info-light rounded-2">{{ $skill->name }}</span>
+                                                <span
+                                                    class="btn btn-light btn-xs mb-1 ml-1 bg-soft-info-light rounded-2">{{ $skill->name }}</span>
                                             @endif
                                         @endforeach
-									</div>
-								</div>
+                                    </div>
+                                </div>
                                 <div class="card-footer">
-                                	@if ($project->cancel_status == 1)
-                                		@if($project->private == 1)
-                                			<a href="{{ route('freelancer.details', $project->hire_invitation->freelancer->user_name) }}" target="_blank" class="d-flex mr-3 align-items-center text-inherit" tabindex="0">
-			                                    <span class="avatar avatar-xs">
-	                                                @if($project->hire_invitation->freelancer->photo != null)
-	                                                    <img src="{{ custom_asset($project->hire_invitation->freelancer->photo) }}">
-	                                                @else
-	                                                    <img src="{{ my_asset('assets/frontend/default/img/avatar-place.png') }}">
-	                                                @endif
-			                                    </span>
-			                                    <div class="pl-2">
-			                                    	<h4 class="h6 mb-0 fs-14">{{ $project->hire_invitation->freelancer->name }}</h4>
-	                                                <div class="">
-	    												<span class="bg-rating rounded text-white px-1 mr-1 fs-10">
-	                                                        {{ getAverageRating($project->hire_invitation->freelancer->id) }}
-	    												</span>
-	    												<span class="opacity-50">
-	    													({{ getNumberOfReview($project->hire_invitation->freelancer->id) }} {{ translate('Reviews') }})
-	    												</span>
-	    											</div>
-			                                    </div>
-			                                </a>
-                                		@else
-	                                		<div class="d-flex align-items-center">
-												<ul class="d-flex list-inline mb-0">
-													<li>
-						                                <span class="small text-secondary">{{ translate('Total Bids') }}</span>
-		                                                @if ($project->bids > 0)
-		                                                    <h4 class="mb-0 h6 fs-13">{{ $project->bids }} +</h4>
-		                                                @else
-		                                                    <h4 class="mb-0 h6 fs-13">{{ $project->bids }}</h4>
-		                                                @endif
-													</li>
-												</ul>
-											</div>
-										@endif
-	                                    <span class="badge badge-inline badge-soft-secondary">
-	                                        {{ translate('Cancelled By') }}
-	                                        @if ($project->cancel_by_user != null)
-	                                            {{ $project->cancel_by_user->name }}
-	                                        @endif
-	                                    </span>
-                                	@elseif ($project->closed == 1)
-	                                	<div class="d-md-flex align-items-center">
-											<a href="{{ route('freelancer.details', $project->project_user->user->user_name) }}" target="_blank" class="d-md-flex mr-3 align-items-center text-inherit" tabindex="0">
-			                                    <span class="avatar avatar-xs">
-	                                                @if($project->project_user->user->photo != null)
-	                                                    <img src="{{ custom_asset($project->project_user->user->photo) }}">
-	                                                @else
-	                                                    <img src="{{ my_asset('assets/frontend/default/img/avatar-place.png') }}">
-	                                                @endif
-			                                    </span>
-			                                    <div class="pl-md-2 pt-2 pt-md-0">
-			                                    	<h4 class="h6 mb-0 fs-14">{{ $project->project_user->user->name }}</h4>
-	                                                <div class="">
-	    												<span class="bg-rating rounded text-white px-1 mr-1 fs-10">
-	                                                        {{ getAverageRating($project->project_user->user_id) }}
-	    												</span>
-	    												<span class="opacity-50">
-	    													({{ getNumberOfReview($project->project_user->user_id) }} {{ translate('Reviews') }})
-	    												</span>
-	    											</div>
-			                                    </div>
-			                                </a>
-			                                <span class="border-md-left ml-2 pl-2">
-                                                <h4 class="mb-0 h6 fs-13">{{ single_price($project->project_user->hired_at) }}</h4>
+                                    @if ($project->cancel_status == 1)
+                                        @if ($project->private == 1)
+                                            <a href="{{ route('freelancer.details', $project->hire_invitation->freelancer->user_name) }}"
+                                                target="_blank" class="d-flex mr-3 align-items-center text-inherit"
+                                                tabindex="0">
+                                                <span class="avatar avatar-xs">
+                                                    @if ($project->hire_invitation->freelancer->photo != null)
+                                                        <img
+                                                            src="{{ custom_asset($project->hire_invitation->freelancer->photo) }}">
+                                                    @else
+                                                        <img
+                                                            src="{{ my_asset('assets/frontend/default/img/avatar-place.png') }}">
+                                                    @endif
+                                                </span>
+                                                <div class="pl-2">
+                                                    <h4 class="h6 mb-0 fs-14">
+                                                        {{ $project->hire_invitation->freelancer->name }}</h4>
+                                                    <div class="">
+                                                        <span class="bg-rating rounded text-white px-1 mr-1 fs-10">
+                                                            {{ getAverageRating($project->hire_invitation->freelancer->id) }}
+                                                        </span>
+                                                        <span class="opacity-50">
+                                                            ({{ getNumberOfReview($project->hire_invitation->freelancer->id) }}
+                                                            {{ translate('Reviews') }})
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        @else
+                                            <div class="d-flex align-items-center">
+                                                <ul class="d-flex list-inline mb-0">
+                                                    <li>
+                                                        <span
+                                                            class="small text-secondary">{{ translate('Total Bids') }}</span>
+                                                        @if ($project->bids > 0)
+                                                            <h4 class="mb-0 h6 fs-13">{{ $project->bids }} +</h4>
+                                                        @else
+                                                            <h4 class="mb-0 h6 fs-13">{{ $project->bids }}</h4>
+                                                        @endif
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        @endif
+                                        <span class="badge badge-inline badge-soft-secondary">
+                                            {{ translate('Cancelled By') }}
+                                            @if ($project->cancel_by_user != null)
+                                                {{ $project->cancel_by_user->name }}
+                                            @endif
+                                        </span>
+                                    @elseif ($project->closed == 1)
+                                        <div class="d-md-flex align-items-center">
+                                            <a href="{{ route('freelancer.details', $project->project_user->user->user_name) }}"
+                                                target="_blank" class="d-md-flex mr-3 align-items-center text-inherit"
+                                                tabindex="0">
+                                                <span class="avatar avatar-xs">
+                                                    @if ($project->project_user->user->photo != null)
+                                                        <img src="{{ custom_asset($project->project_user->user->photo) }}">
+                                                    @else
+                                                        <img
+                                                            src="{{ my_asset('assets/frontend/default/img/avatar-place.png') }}">
+                                                    @endif
+                                                </span>
+                                                <div class="pl-md-2 pt-2 pt-md-0">
+                                                    <h4 class="h6 mb-0 fs-14">{{ $project->project_user->user->name }}</h4>
+                                                    <div class="">
+                                                        <span class="bg-rating rounded text-white px-1 mr-1 fs-10">
+                                                            {{ getAverageRating($project->project_user->user_id) }}
+                                                        </span>
+                                                        <span class="opacity-50">
+                                                            ({{ getNumberOfReview($project->project_user->user_id) }}
+                                                            {{ translate('Reviews') }})
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <span class="border-md-left ml-2 pl-2">
+                                                <h4 class="mb-0 h6 fs-13">
+                                                    {{ single_price($project->project_user->hired_at) }}</h4>
                                                 <span class="small text-secondary">{{ translate('Hired At') }}</span>
                                             </span>
-										</div>
-	                                    @if (\App\Models\Review::where('project_id', $project->id)->where('reviewer_user_id', Auth::user()->id)->first() == null)
-	                                        <button type="button" onclick="showRatingModal({{ $project->id }})" class="btn btn-secondary btn-sm fw-500 rounded-1">{{ translate('Rate This Freelancer') }}</button>
-	                                    @else
-	                                        <span class="badge badge-inline badge-soft-secondary">{{ translate('You Already rated this client') }}</span>
-	                                    @endif
-									@elseif($project->private == 1)
-	                                    <a href="{{ route('freelancer.details', $project->hire_invitation->freelancer->user_name) }}" target="_blank" class="d-flex mr-3 align-items-center text-inherit" tabindex="0">
-		                                    <span class="avatar avatar-xs">
-                                                @if($project->hire_invitation->freelancer->photo != null)
-                                                    <img src="{{ custom_asset($project->hire_invitation->freelancer->photo) }}">
+                                        </div>
+                                        @if (\App\Models\Review::where('project_id', $project->id)->where('reviewer_user_id', Auth::user()->id)->first() == null)
+                                            <button type="button" onclick="showRatingModal({{ $project->id }})"
+                                                class="btn btn-secondary btn-sm fw-500 rounded-1">{{ translate('Rate This Freelancer') }}</button>
+                                        @else
+                                            <span
+                                                class="badge badge-inline badge-soft-secondary">{{ translate('You Already rated this client') }}</span>
+                                        @endif
+                                    @elseif($project->private == 1)
+                                        <a href="{{ route('freelancer.details', $project->hire_invitation->freelancer->user_name) }}"
+                                            target="_blank" class="d-flex mr-3 align-items-center text-inherit"
+                                            tabindex="0">
+                                            <span class="avatar avatar-xs">
+                                                @if ($project->hire_invitation->freelancer->photo != null)
+                                                    <img
+                                                        src="{{ custom_asset($project->hire_invitation->freelancer->photo) }}">
                                                 @else
-                                                    <img src="{{ my_asset('assets/frontend/default/img/avatar-place.png') }}">
+                                                    <img
+                                                        src="{{ my_asset('assets/frontend/default/img/avatar-place.png') }}">
                                                 @endif
-		                                    </span>
-		                                    <div class="pl-2">
-		                                    	<h4 class="h6 mb-0 fs-14">{{ $project->hire_invitation->freelancer->name }}</h4>
+                                            </span>
+                                            <div class="pl-2">
+                                                <h4 class="h6 mb-0 fs-14">{{ $project->hire_invitation->freelancer->name }}
+                                                </h4>
                                                 <div class="">
-    												<span class="bg-rating rounded text-white px-1 mr-1 fs-10">
+                                                    <span class="bg-rating rounded text-white px-1 mr-1 fs-10">
                                                         {{ getAverageRating($project->hire_invitation->freelancer->id) }}
-    												</span>
-    												<span class="opacity-50">
-    													({{ getNumberOfReview($project->hire_invitation->freelancer->id) }} {{ translate('Reviews') }})
-    												</span>
-    											</div>
-		                                    </div>
-		                                </a>
-										<div class="text-right">
-											<a href="javascript:void(0)" class="btn btn-secondary btn-sm fw-500 confirm-cancel rounded-1 mb-1 mb-mb-0" data-href="{{route('projects.cancel', $project->id)}}">{{ translate('Cancel') }}</a>
-	                                        @if($project->hire_invitation->status == 'pending')
-	                                        	<a href="{{ route('projects.edit',encrypt($project->id)) }}" class="btn btn-primary btn-sm fw-500 rounded-1 mb-1 mb-mb-0">{{ translate('Edit') }}</a>
-	                                        @else
-	                                        	<a href="javascript:void(0)" class="btn btn-primary btn-sm fw-500 confirm-complete rounded-1 mb-1 mb-mb-0" data-href="{{route('projects.complete', $project->id)}}">{{ translate('Complete This') }}</a>
-	                                        @endif
-										</div>
-									@elseif ($project->biddable == 0)
-										<a href="{{ route('freelancer.details', $project->project_user->user->user_name) }}" target="_blank" class="d-flex mr-3 align-items-center text-inherit" tabindex="0">
-		                                    <span class="avatar avatar-xs">
-                                                @if($project->project_user->user->photo != null)
+                                                    </span>
+                                                    <span class="opacity-50">
+                                                        ({{ getNumberOfReview($project->hire_invitation->freelancer->id) }}
+                                                        {{ translate('Reviews') }})
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div class="text-right">
+                                            <a href="javascript:void(0)"
+                                                class="btn btn-secondary btn-sm fw-500 confirm-cancel rounded-1 mb-1 mb-mb-0"
+                                                data-href="{{ route('projects.cancel', $project->id) }}">{{ translate('Cancel') }}</a>
+                                            @if ($project->hire_invitation->status == 'pending')
+                                                <a href="{{ route('projects.edit', encrypt($project->id)) }}"
+                                                    class="btn btn-primary btn-sm fw-500 rounded-1 mb-1 mb-mb-0">{{ translate('Edit') }}</a>
+                                            @else
+                                                <a href="javascript:void(0)"
+                                                    class="btn btn-primary btn-sm fw-500 confirm-complete rounded-1 mb-1 mb-mb-0"
+                                                    data-href="{{ route('projects.complete', $project->id) }}">{{ translate('Complete This') }}</a>
+                                            @endif
+                                        </div>
+                                    @elseif ($project->biddable == 0)
+                                        <a href="{{ route('freelancer.details', $project->project_user->user->user_name) }}"
+                                            target="_blank" class="d-flex mr-3 align-items-center text-inherit"
+                                            tabindex="0">
+                                            <span class="avatar avatar-xs">
+                                                @if ($project->project_user->user->photo != null)
                                                     <img src="{{ custom_asset($project->project_user->user->photo) }}">
                                                 @else
-                                                    <img src="{{ my_asset('assets/frontend/default/img/avatar-place.png') }}">
+                                                    <img
+                                                        src="{{ my_asset('assets/frontend/default/img/avatar-place.png') }}">
                                                 @endif
-		                                    </span>
-		                                    <div class="pl-2">
-		                                    	<h4 class="h6 mb-0 fs-14">{{ $project->project_user->user->name }}</h4>
+                                            </span>
+                                            <div class="pl-2">
+                                                <h4 class="h6 mb-0 fs-14">{{ $project->project_user->user->name }}</h4>
                                                 <div class="">
-    												<span class="bg-rating rounded text-white px-1 mr-1 fs-10">
+                                                    <span class="bg-rating rounded text-white px-1 mr-1 fs-10">
                                                         {{ getAverageRating($project->project_user->user->id) }}
-    												</span>
-    												<span class="opacity-50">
-    													({{ getNumberOfReview($project->project_user->user->id) }} {{ translate('Reviews') }})
-    												</span>
-    											</div>
-		                                    </div>
-		                                </a>
-										<div class="text-right">
-											<a href="javascript:void(0)" class="btn btn-secondary btn-sm fw-500 confirm-cancel rounded-1 mb-1 mb-mb-0" data-href="{{route('projects.cancel', $project->id)}}">{{ translate('Cancel') }}</a>
-	                                        <a href="javascript:void(0)" class="btn btn-primary btn-sm fw-500 confirm-complete rounded-1 mb-1 mb-mb-0" data-href="{{route('projects.complete', $project->id)}}">{{ translate('Complete This') }}</a>
-										</div>
-									@else
-										<div class="d-flex align-items-center">
-											<ul class="d-flex list-inline mb-0">
-												<li>
-					                                <span class="small text-secondary">{{ translate('Total Bids') }}</span>
-	                                                @if ($project->bids > 0)
-	                                                    <h4 class="mb-0 h6 fs-13">{{ $project->bids }} +</h4>
-	                                                @else
-	                                                    <h4 class="mb-0 h6 fs-13">{{ $project->bids }}</h4>
-	                                                @endif
-												</li>
-											</ul>
-										</div>
-										<div class="text-right">
-											<a href="javascript:void(0)" class="btn btn-secondary btn-sm fw-500 confirm-cancel rounded-1 mb-1 mb-mb-0" data-href="{{route('projects.cancel', $project->id)}}">{{ translate('Cancel') }}</a>
-	                                        <a href="{{ route('projects.edit',encrypt($project->id)) }}" class="btn btn-secondary btn-sm fw-500 rounded-1 mb-1 mb-mb-0">{{ translate('Edit') }}</a>
-	                                        <a href="{{ route('project.bids', $project->slug) }}" class="btn btn-primary btn-sm fw-500 rounded-1 mb-1 mb-mb-0">{{translate('See All Who Shown Interest')}}</a>
-										</div>
-									@endif
-								</div>
-							</div>
+                                                    </span>
+                                                    <span class="opacity-50">
+                                                        ({{ getNumberOfReview($project->project_user->user->id) }}
+                                                        {{ translate('Reviews') }})
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div class="text-right">
+                                            <a href="javascript:void(0)"
+                                                class="btn btn-secondary btn-sm fw-500 confirm-cancel rounded-1 mb-1 mb-mb-0"
+                                                data-href="{{ route('projects.cancel', $project->id) }}">{{ translate('Cancel') }}</a>
+                                            <a href="javascript:void(0)"
+                                                class="btn btn-primary btn-sm fw-500 confirm-complete rounded-1 mb-1 mb-mb-0"
+                                                data-href="{{ route('projects.complete', $project->id) }}">{{ translate('Complete This') }}</a>
+                                        </div>
+                                    @else
+                                        <div class="d-flex align-items-center">
+                                            <ul class="d-flex list-inline mb-0">
+                                                <li>
+                                                    <span
+                                                        class="small text-secondary">{{ translate('Total Bids') }}</span>
+                                                    @if ($project->bids > 0)
+                                                        <h4 class="mb-0 h6 fs-13">{{ $project->bids }} +</h4>
+                                                    @else
+                                                        <h4 class="mb-0 h6 fs-13">{{ $project->bids }}</h4>
+                                                    @endif
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="text-right">
+                                            <a href="javascript:void(0)"
+                                                class="btn btn-secondary btn-sm fw-500 confirm-cancel rounded-1 mb-1 mb-mb-0"
+                                                data-href="{{ route('projects.cancel', $project->id) }}">{{ translate('Cancel') }}</a>
+                                            <a href="{{ route('projects.edit', encrypt($project->id)) }}"
+                                                class="btn btn-secondary btn-sm fw-500 rounded-1 mb-1 mb-mb-0">{{ translate('Edit') }}</a>
+                                            <a href="{{ route('project.bids', $project->slug) }}"
+                                                class="btn btn-primary btn-sm fw-500 rounded-1 mb-1 mb-mb-0">{{ translate('See All Who Shown Interest') }}</a>
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
                         @empty
                             <div class="card overflow-hidden rounded-2 border-gray-light">
                                 <div class="card-body text-center">
@@ -239,10 +290,10 @@
                                 </div>
                             </div>
                         @endforelse
-					</div>
-					<div class="aiz-pagination aiz-pagination-center">
-	                    {{ $projects->links() }}
-	                </div>
+                    </div>
+                    <div class="aiz-pagination aiz-pagination-center">
+                        {{ $projects->links() }}
+                    </div>
                 </div>
             </div>
         </div>
@@ -253,60 +304,97 @@
     @include('frontend.default.partials.cancel_modal')
     @include('frontend.default.partials.complete_modal')
 
-	<div class="modal fade" id="rate-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal fade" id="rate-modal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <form action="{{ route('reviews.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-header">
-                        <h4 class="h6 mb-0">{{translate('Rate This Freelancer')}}</h4>
+                        <h4 class="h6 mb-0">{{ translate('Rate This Freelancer') }}</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
                     </div>
                     <div class="modal-body">
                         <input type="hidden" name="project_id" value="">
                         <div class="form-group">
                             <div class="rating rating-input rating-lg">
-        						<label>
-        							<input type="radio" name="rating" value="1">
-        							<i class="las la-star active"></i>
-        						</label>
-        						<label>
-        							<input type="radio" name="rating" value="2">
-        							<i class="las la-star active"></i>
-        						</label>
-        						<label>
-        							<input type="radio" name="rating" value="3" >
-        							<i class="las la-star active"></i>
-        						</label>
-        						<label>
-        							<input type="radio" name="rating" value="4">
-        							<i class="las la-star"></i>
-        						</label>
-        						<label>
-        							<input type="radio" name="rating" value="5" checked="">
-        							<i class="las la-star"></i>
-        						</label>
-        					</div>
-    					</div>
+                                <label>
+                                    <input type="radio" name="rating" value="1">
+                                    <i class="las la-star active"></i>
+                                </label>
+                                <label>
+                                    <input type="radio" name="rating" value="2">
+                                    <i class="las la-star active"></i>
+                                </label>
+                                <label>
+                                    <input type="radio" name="rating" value="3">
+                                    <i class="las la-star active"></i>
+                                </label>
+                                <label>
+                                    <input type="radio" name="rating" value="4">
+                                    <i class="las la-star"></i>
+                                </label>
+                                <label>
+                                    <input type="radio" name="rating" value="5" checked="">
+                                    <i class="las la-star"></i>
+                                </label>
+                            </div>
+                        </div>
                         <div class="form-group">
-    						<label>{{ translate('Comment') }}</label>
-    						<textarea class="form-control" rows="5" name="review" required></textarea>
-    					</div>
+                            <label>{{ translate('Comment') }}</label>
+                            <textarea class="form-control" rows="5" name="review" required></textarea>
+                        </div>
                     </div>
                     <div class="modal-footer">
-        				<button type="button" class="btn btn-light rounded-1" data-dismiss="modal">{{ translate('Close') }}</button>
-        				<button type="submit" class="btn btn-primary rounded-1">{{ translate('Rate This Freelancer') }}</button>
-        			</div>
+                        <button type="button" class="btn btn-light rounded-1"
+                            data-dismiss="modal">{{ translate('Close') }}</button>
+                        <button type="submit"
+                            class="btn btn-primary rounded-1">{{ translate('Rate This Freelancer') }}</button>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
-
 @endsection
+@section('script')
+    <script type="text/javascript">
+        $.when($.ready).then(function() {
+            // Document is ready.
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var latitude = position.coords.latitude;
+                    var longitude = position.coords.longitude;
 
-<script type="text/javascript">
-    function showRatingModal(id){
-        $('input[name=project_id]').val(id);
-        $('#rate-modal').modal('show');
-    }
-</script>
+                    // Send latitude and longitude to server
+                    fetch('/client-location-update', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                latitude: latitude,
+                                longitude: longitude
+                            }),
+                        })
+                        .then(response => {
+                            if (response.ok) {
+                                console.log('Location sent to server successfully');
+                            } else {
+                                console.error('Failed to send location to server');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error sending location to server:', error);
+                        });
+                });
+            } else {
+                console.error('Geolocation is not supported by this browser.');
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        function showRatingModal(id) {
+            $('input[name=project_id]').val(id);
+            $('#rate-modal').modal('show');
+        }
+    </script>
+@endsection

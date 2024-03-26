@@ -196,6 +196,9 @@ Route::group(['middleware' => ['auth', 'client', 'phoneverified']], function () 
 
 	Route::get('/client/cancel-requests-services', 'ServiceController@client_cancel_requested_services')->name('client.services.cancel.requests');
 	Route::get('/client/cancelled-services', 'ServiceController@client_cancelled_services')->name('client.services.cancelled');
+
+
+	Route::post('/client-location-update','HomeController@updateClientLocation');
 });
 
 
